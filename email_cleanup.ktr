@@ -73,8 +73,8 @@
   <notepads>
     <notepad>
       <note>Requires&#x3a;&#xa;contact_id&#xa;e-mail&#xa;location_type &#x28;make a blank one if you don&#x27;t have one&#x29;</note>
-      <xloc>602</xloc>
-      <yloc>103</yloc>
+      <xloc>472</xloc>
+      <yloc>29</yloc>
       <width>327</width>
       <heigth>74</heigth>
       <fontname>Arial</fontname>
@@ -310,12 +310,12 @@
   <hop> <from>Remap location types</from><to>location_type_id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid emails</from><to>Remove non-import fields 2</to><enabled>Y</enabled> </hop>
   <hop> <from>location_type_id lookup</from><to>Fix common e-mail problems</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter invalid emails</from><to>get names for invalid email</to><enabled>Y</enabled> </hop>
   <hop> <from>email input</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines</from><to>Remap location types</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove non-import fields 2</from><to>valid emails</to><enabled>Y</enabled> </hop>
   <hop> <from>get names for invalid email</from><to>Remove irrelevant fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove irrelevant fields</from><to>invalid emails</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter invalid emails</from><to>get names for invalid email</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Fix common e-mail problems</name>
@@ -620,8 +620,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>356</xloc>
-      <yloc>9</yloc>
+      <xloc>360</xloc>
+      <yloc>5</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -639,7 +639,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -680,8 +680,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>498</xloc>
-      <yloc>505</yloc>
+      <xloc>589</xloc>
+      <yloc>557</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -747,8 +747,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>561</xloc>
-      <yloc>621</yloc>
+      <xloc>652</xloc>
+      <yloc>673</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -807,8 +807,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>542</xloc>
-      <yloc>560</yloc>
+      <xloc>633</xloc>
+      <yloc>612</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
