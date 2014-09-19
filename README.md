@@ -25,3 +25,6 @@ This transformation will:
 * remap prefixes to prefix_ids (and suffixes to suffix_ids)
 * output a list of prefixes unknown to your current CiviCRM database
 
+h3. create_prefix_or_suffix
+
+This transformation will take invalid prefixes and/or suffixes and create them, live, in CiviCRM via the REST API.
