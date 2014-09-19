@@ -28,3 +28,7 @@ This transformation will:
 h3. create_prefix_or_suffix
 
 This transformation will take invalid prefixes and/or suffixes and create them, live, in CiviCRM via the REST API.
+
+h3. website_cleanup
+
+Given a contact_id, a url, and a website_type, will return website fields ready for API import.
