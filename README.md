@@ -28,6 +28,8 @@ TODO: Refactor into "cleanup" and "wrapper" functions for more transforms.
 
 TODO: Refactor website_cleanup to have two outputs.
 
+TODO: Document Constant Contact transforms.
+
 h2. Transformations
 
 h3. prefix_suffix_remapping.ktr
