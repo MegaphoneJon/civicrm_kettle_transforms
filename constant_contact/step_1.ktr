@@ -285,12 +285,40 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>constant_contact.csv</from><to>Add a primary key &#x28;external_identifier&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add a primary key &#x28;external_identifier&#x29;</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
   <hop> <from>Step 1 fields</from><to>Add &#x22;Unknown&#x22; for blank first name</to><enabled>Y</enabled> </hop>
   <hop> <from>Add &#x22;Unknown&#x22; for blank first name</from><to>cli_step_1</to><enabled>Y</enabled> </hop>
   <hop> <from>add contact_type &#x3d; individual</from><to>Step 1 fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>constant_contact.csv</from><to>Add a primary key &#x28;external_identifier&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add a primary key &#x28;external_identifier&#x29;</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
   </order>
+  <step>
+    <name>Add &#x22;Unknown&#x22; for blank first name</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>first_name</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value/>
+        <target_value>Unknown</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>163</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Add a primary key &#x28;external_identifier&#x29;</name>
     <type>Sequence</type>
@@ -315,7 +343,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>156</xloc>
-      <yloc>122</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -902,8 +930,8 @@
     </step>
 
   <step>
-    <name>Add &#x22;Unknown&#x22; for blank first name</name>
-    <type>ValueMapper</type>
+    <name>email to contact_id</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -912,19 +940,33 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>first_name</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value/>
-        <target_value>Unknown</target_value>
-      </field>
-    </fields>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_email</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>City - Home</name>
+        <field>email</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>163</xloc>
-      <yloc>352</yloc>
+      <xloc>453</xloc>
+      <yloc>299</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
