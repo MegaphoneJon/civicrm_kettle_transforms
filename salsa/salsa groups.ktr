@@ -333,6 +333,7 @@
     <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>Group</Entity>
+    <EntityAction/>
     <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
@@ -766,7 +767,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;home&#x2f;jon&#x2f;ownCloud&#x2f;Shared&#x2f;Palante Tech Shared&#x2f;Current Clients and Projects&#x2f;CCR&#x2f;data&#x2f;raw data&#x2f;Salsa&#x2f;group_export.txt</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;group_export.txt</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>

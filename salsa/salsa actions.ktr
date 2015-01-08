@@ -373,7 +373,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;home&#x2f;jon&#x2f;ownCloud&#x2f;Shared&#x2f;Palante Tech Shared&#x2f;Current Clients and Projects&#x2f;CCR&#x2f;data&#x2f;raw data&#x2f;Salsa&#x2f;action_export.txt</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;action_export.txt</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
