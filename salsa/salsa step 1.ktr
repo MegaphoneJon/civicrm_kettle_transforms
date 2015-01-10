@@ -73,8 +73,8 @@
   <notepads>
     <notepad>
       <note>Because Salsa doesn&#x27;t require a last name, we must&#xa;import e-mail address as part of step 1.</note>
-      <xloc>351</xloc>
-      <yloc>99</yloc>
+      <xloc>466</xloc>
+      <yloc>24</yloc>
       <width>317</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -98,6 +98,27 @@
       <yloc>563</yloc>
       <width>329</width>
       <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Client-specific - after sending client invalid e-mails, if they want to just drop the e-mails&#xa;off of certain contacts, put those e-mails here.</note>
+      <xloc>310</xloc>
+      <yloc>226</yloc>
+      <width>515</width>
+      <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -333,11 +354,12 @@
   <hop> <from>email_cleanup</from><to>invalid_email</to><enabled>Y</enabled> </hop>
   <hop> <from>Get only step 1 fields</from><to>Add location_type</to><enabled>Y</enabled> </hop>
   <hop> <from>email_cleanup</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add location_type</from><to>Don&#x27;t validate blank emails</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t validate blank emails</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t validate blank emails</from><to>email_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>add contact_type &#x3d; individual</from><to>change blank first_name to &#x22;Single-Payer Supporter&#x22;</to><enabled>Y</enabled> </hop>
   <hop> <from>change blank first_name to &#x22;Single-Payer Supporter&#x22;</from><to>step_1_individual_cleanup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add location_type</from><to>Blank invalid e-mails</to><enabled>Y</enabled> </hop>
+  <hop> <from>Blank invalid e-mails</from><to>Don&#x27;t validate blank emails</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Active supporters only</name>
@@ -362,8 +384,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>218</xloc>
-      <yloc>108</yloc>
+      <xloc>171</xloc>
+      <yloc>49</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -395,8 +417,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>223</xloc>
-      <yloc>266</yloc>
+      <xloc>270</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -464,8 +486,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>216</xloc>
-      <yloc>199</yloc>
+      <xloc>263</xloc>
+      <yloc>94</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -499,6 +521,34 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>211</xloc>
       <yloc>494</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>change blank first_name to &#x22;Single-Payer Supporter&#x22;</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>first_name</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value/>
+        <target_value>Single-Payer Supporter</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>214</xloc>
+      <yloc>568</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1659,14 +1709,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>28</yloc>
+      <xloc>52</xloc>
+      <yloc>20</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>change blank first_name to &#x22;Single-Payer Supporter&#x22;</name>
+    <name>Blank invalid e-mails</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -1676,19 +1726,31 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>first_name</field_to_use>
+    <field_to_use>email</field_to_use>
     <target_field/>
     <non_match_default/>
     <fields>
       <field>
-        <source_value/>
-        <target_value>Single-Payer Supporter</target_value>
+        <source_value>ta-moose.msn.com</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>r</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>none</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>khailstone</source_value>
+        <target_value/>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>214</xloc>
-      <yloc>568</yloc>
+      <xloc>238</xloc>
+      <yloc>242</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
