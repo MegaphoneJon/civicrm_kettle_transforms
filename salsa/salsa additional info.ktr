@@ -74,8 +74,8 @@
   <notepads>
     <notepad>
       <note>This subtransformation is disabled by default on purpose.&#xa;Turning it on creates the unknown prefixes&#x2f;suffixes in CiviCRM via REST API.&#xa;Use with caution&#x21;</note>
-      <xloc>418</xloc>
-      <yloc>830</yloc>
+      <xloc>426</xloc>
+      <yloc>836</yloc>
       <width>470</width>
       <heigth>58</heigth>
       <fontname>Arial</fontname>
@@ -157,10 +157,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>org-specific address cleanup                                            </note>
-      <xloc>582</xloc>
-      <yloc>596</yloc>
-      <width>352</width>
+      <note>Org-specific items that might get reused go in this little pile.</note>
+      <xloc>732</xloc>
+      <yloc>70</yloc>
+      <width>356</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -178,10 +178,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Org-specific items that might get reused go in this little pile.</note>
-      <xloc>732</xloc>
-      <yloc>70</yloc>
-      <width>356</width>
+      <note>This is for Alternative_Email only - the primary e-mail field got imported in Step 1 for Salsa.</note>
+      <xloc>499</xloc>
+      <yloc>443</yloc>
+      <width>538</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -424,34 +424,28 @@
   <hop> <from>generate websites</from><to>cli_website</to><enabled>Y</enabled> </hop>
   <hop> <from>Concatenate source and source_tracking_code</from><to>Add website_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Add website_type</from><to>generate websites</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type &#x3d; Other</to><enabled>Y</enabled> </hop>
   <hop> <from>Concatenate source and source_tracking_code</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
   <hop> <from>Row Normaliser</from><to>Create phone_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Create phone_type</from><to>phone_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_cleanup</from><to>cli_phone</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_cleanup</from><to>invalid_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>supporter_export.txt</from><to>step_1_individual_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type 2</to><enabled>Y</enabled> </hop>
   <hop> <from>address_cleanup</from><to>cli_address</to><enabled>Y</enabled> </hop>
   <hop> <from>address_cleanup</from><to>invalid_address</to><enabled>Y</enabled> </hop>
   <hop> <from>Add location_type 2</from><to>remove non-address fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-address fields</from><to>Remove question mark from zip code</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove question mark from zip code</from><to>fix &#x22;ot&#x22; as state</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix &#x22;ot&#x22; as state</from><to>fix bad country data</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix bad country data</from><to>blank zip code for bad import group</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code for bad import group</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code for bad import group</from><to>blank zip code</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add location_type</from><to>email_wrapper</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add location_type &#x3d; Other</from><to>email_wrapper</to><enabled>Y</enabled> </hop>
   <hop> <from>email_wrapper</from><to>invalid_email</to><enabled>Y</enabled> </hop>
   <hop> <from>email_wrapper</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove non-import fields</from><to>cli_email</to><enabled>Y</enabled> </hop>
   <hop> <from>filter records with no contact_id</from><to>invalid_salsa_additional_info</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>cli_salsa_additional_info</to><enabled>Y</enabled> </hop>
-  <hop> <from>step_1_individual_cleanup</from><to>Non-custom fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>Non-custom fields only</from><to>Rename standard fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Non-custom fields only, no primary e-mail</from><to>Rename standard fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Rename standard fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap prefixes&#x2f;suffixes</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-address fields</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
+  <hop> <from>supporter_export.txt</from><to>Non-custom fields only, no primary e-mail</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter records with no contact_id</from><to>remove non-import fields 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 2</from><to>cli_salsa_additional_info</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Active supporters only</name>
@@ -478,39 +472,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>832</xloc>
       <yloc>123</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add location_type</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>249</xloc>
-      <yloc>402</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -544,6 +505,39 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>224</xloc>
       <yloc>585</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add location_type &#x3d; Other</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>location_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Other</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>249</xloc>
+      <yloc>402</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -708,8 +702,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>554</xloc>
-      <yloc>769</yloc>
+      <xloc>661</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -761,6 +755,242 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>474</xloc>
       <yloc>770</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Non-custom fields only, no primary e-mail</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>supporter_KEY</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Last_Modified</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Date_Created</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Title</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>First_Name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>MI</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Last_Name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Suffix</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Password</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Receive_Email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Email_Status</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Email_Preference</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Soft_Bounce_Count</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Hard_Bounce_Count</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Last_Bounce</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Receive_Phone_Blasts</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Phone</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Cell_Phone</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Phone_Provider</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Work_Phone</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Pager</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Home_Fax</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Work_Fax</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Street</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Street_2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Street_3</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>City</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>State</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Zip</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>PRIVATE_Zip_Plus_4</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>County</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>District</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Country</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Latitude</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Longitude</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Organization</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Department</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Occupation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Instant_Messenger_Service</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Instant_Messenger_Name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Web_Page</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Alternative_Email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Other_Data_1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Other_Data_2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Other_Data_3</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Notes</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Source</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Source_Details</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Source_Tracking_Code</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Tracking_Code</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Status</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>uid</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Timezone</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Language_Code</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>102</xloc>
+      <yloc>115</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -877,115 +1107,223 @@
     <non_match_default/>
     <fields>
       <field>
-        <source_value>&#x2a;</source_value>
+        <source_value>Activist</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>1575</source_value>
+        <source_value>Actor</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>94107</source_value>
+        <source_value>Adjunct Assistan</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>ACTIVIST</source_value>
+        <source_value>Administrative O</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Administrative A</source_value>
+        <source_value>Albany County Le</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>AGAINST WAR IN S</source_value>
+        <source_value>American</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Angel Schatz</source_value>
+        <source_value>Assistant Direct</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>as well as Rebe</source_value>
+        <source_value>Assistant to the</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Assistant Counse</source_value>
+        <source_value>Association Pres</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Assitant Counsel</source_value>
+        <source_value>Asst Bus Agent</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Associate Genera</source_value>
+        <source_value>Attorney</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>B. Sheehan</source_value>
+        <source_value>Austin Business</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Blogger</source_value>
+        <source_value>Austin Chronicle</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Brian Lamb</source_value>
+        <source_value>BUSINESS AGENT</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>ca 90005</source_value>
+        <source_value>Bargaining Agent</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Calitics</source_value>
+        <source_value>Bargaining Chair</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Catherine C Clas</source_value>
+        <source_value>Bargaining Repre</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>CDR, USCG Ret.</source_value>
+        <source_value>Bassam</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Charles F. Rudol</source_value>
+        <source_value>Bergen Labor Cou</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>CITIZEN</source_value>
+        <source_value>Bhavana</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Co-Executive Dir</source_value>
+        <source_value>Billie</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Connecticut</source_value>
+        <source_value>Blair</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Constitutional R</source_value>
+        <source_value>Board Member</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Dalal McCarthy</source_value>
+        <source_value>Board of Directo</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Debra Lewis</source_value>
+        <source_value>Boycott Organize</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Deputy Clerk, Br</source_value>
+        <source_value>Bricklayer</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Deputy Director</source_value>
+        <source_value>Bus Driver</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Dianna Stallone</source_value>
+        <source_value>Bus. Representat</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Business Agent</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Business Manager</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Business Represe</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>CNA&#x2f;NNOC</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>COCONVENOR</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>CURRENT Fin Sec&#x27;</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Cantor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Chair</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Chair Region 1A</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Chairman Local 2</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Chief Exec. Offi</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>City Employee</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Co-Chair</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Co-Chair Rail Wk</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Co-Director Reti</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Co-President</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Co-chair, Health</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Columnist</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Communications a</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Consultant</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Contract Captain</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Contract Special</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Coordinator, SPA</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Council Rep</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Council Represen</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Daily Texan</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Delegate</source_value>
         <target_value/>
       </field>
       <field>
@@ -993,295 +1331,1079 @@
         <target_value/>
       </field>
       <field>
-        <source_value>Director, Admini</source_value>
+        <source_value>Director of Orga</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Director, Immigr</source_value>
+        <source_value>Director, Govern</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Director, Legal</source_value>
+        <source_value>Dude</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Dr. and Mrs Absh</source_value>
+        <source_value>ED</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Dr. Valerie Wern</source_value>
+        <source_value>Electrician</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Emperor</source_value>
+        <source_value>Elizabeth</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Eric Cook</source_value>
+        <source_value>Environmental En</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Esq.</source_value>
+        <source_value>Ex-Secty-Treas</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>friend &#x26; equal</source_value>
+        <source_value>Exec Asst</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Geraldine Rohrke</source_value>
+        <source_value>Exec Director</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Government Relat</source_value>
+        <source_value>Exec Secty</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Hannah Mermelste</source_value>
+        <source_value>Exec Secty-Treas</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Harold Siegel</source_value>
+        <source_value>Exec-Director</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Human Rights Att</source_value>
+        <source_value>Exec-Secty</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Instructor</source_value>
+        <source_value>Exec. Dir</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Irrelevant</source_value>
+        <source_value>Executive Counci</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Jacob A. Barton</source_value>
+        <source_value>Executive Direct</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>James Bolduc</source_value>
+        <source_value>Executive Office</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>John M. Cote</source_value>
+        <source_value>Executive Secret</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Judy</source_value>
+        <source_value>Executive V.P.</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Legal Administra</source_value>
+        <source_value>Executive Vice P</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Legislative</source_value>
+        <source_value>Facilitator</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>library assistan</source_value>
+        <source_value>Family Nurse Pra</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>LN</source_value>
+        <source_value>Field Director</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>M</source_value>
+        <source_value>Field Technician</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>M Miran</source_value>
+        <source_value>Field rep.</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>M.</source_value>
+        <source_value>Filibuster</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>M.P.A.</source_value>
+        <source_value>Filmmaker</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>MA</source_value>
+        <source_value>Financial-Secty</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>MAria Wilkens</source_value>
+        <source_value>Former Exec VP</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Matt</source_value>
+        <source_value>Former organizer</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Maureen Hearn</source_value>
+        <source_value>General Chairman</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>michael and lore</source_value>
+        <source_value>General Secretar</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mike D&#x27;Ambrosio</source_value>
+        <source_value>Graduate Teachin</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Military Interve</source_value>
+        <source_value>Head, Music Depa</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mona Burton</source_value>
+        <source_value>Hersh</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mona Mayy</source_value>
+        <source_value>IAMAW Dist. 98,</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr David Tefft</source_value>
+        <source_value>Int&#x27;l. Rep. reti</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr Napoleon Salv</source_value>
+        <source_value>Intl Representat</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Andre Baloig</source_value>
+        <source_value>JW inside wirema</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Bradleigh H</source_value>
+        <source_value>Joanne</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. George Swans</source_value>
+        <source_value>Journalist&#x2f;autho</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. John Sherry</source_value>
+        <source_value>Journeyman Ironw</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Leotis Foste</source_value>
+        <source_value>Journeyman wirem</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Martin Bacli</source_value>
+        <source_value>KEYE Channel 5 C</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Nicolas Thom</source_value>
+        <source_value>KLRU-TV  PBS</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Pickering</source_value>
+        <source_value>KTBC Fox 7</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Robert Arang</source_value>
+        <source_value>KUT Radio NPR Au</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr. Roger Allan</source_value>
+        <source_value>KVUE ABC</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr.Manuel Staffa</source_value>
+        <source_value>KXAN NBC</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr.Shahriar Imam</source_value>
+        <source_value>LCPC</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mr.William Gonza</source_value>
+        <source_value>LCSW-CADC</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>mrs angela rodri</source_value>
+        <source_value>La Prensa</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>MRS. Churchwell</source_value>
+        <source_value>Labor Economist</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mrs. Patricia Vi</source_value>
+        <source_value>Labor Ed Special</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Mrs. Stephanie D</source_value>
+        <source_value>Lead Operator</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>mrs&#x2f;Senior</source_value>
+        <source_value>Lead Organizer</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms karen</source_value>
+        <source_value>Lead Organizer,</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms Karen Pratt</source_value>
+        <source_value>Legislative Assi</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms Teresa Zana</source_value>
+        <source_value>Legislative Chai</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Alian Teach</source_value>
+        <source_value>Legislative Dir&#x28;</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Dagmar Brook</source_value>
+        <source_value>Legislative Dire</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. DeLuke</source_value>
+        <source_value>Len</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Julia Braker</source_value>
+        <source_value>Librarian</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Kathleen Ken</source_value>
+        <source_value>Librarian - semi</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Linda Nicole</source_value>
+        <source_value>Light Rail Opr.</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Micaela Ensm</source_value>
+        <source_value>Lil</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Nushin Sarka</source_value>
+        <source_value>Local email</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Tasleem Raza</source_value>
+        <source_value>Lois</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms. Yosefa Forma</source_value>
+        <source_value>MAJOR, USAF RETI</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Ms.Eva Poole-Gil</source_value>
+        <source_value>MD</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Nadine Strossen</source_value>
+        <source_value>Mail Clerk II</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>New Haven</source_value>
+        <source_value>Material Leader</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Medical Officer&#x2f;</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Member Advocate</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Member Strength</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Member, Executiv</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Midwest Region</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Molly</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Mr.&#x2f;Mrs.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Ms Pamela Copela</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Musician</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Musician and Pro</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Musician&#x2f;Singer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>National Coordin</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Neil</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>No Mail</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Non, please</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Nurse Practition</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Ohio State Counc</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Online Journalis</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Only Send End of</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Operating Engine</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Operation Admini</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Operations Dir.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Organizer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Organizer&#x2f;County</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>PEF Executive Bo</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Pastor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Paul</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Permit Worker</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Personal Assista</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Physician</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Political Action</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Political Affair</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Political Direct</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Pres. Sublocal 0</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>President</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>President &#x28;ident</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>President Emerit</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>President of ILW</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Producer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Professor of Pub</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Professor, Schoo</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>RETIRED</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>RN</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>RN BSN CCRN</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>RN LSWA</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>RR Labor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Recording-Secty</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired Autowork</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired Internat</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired Libraria</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired Member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired Steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired UPS driv</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired educator</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retired staff</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retiree</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>School Social Wo</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Sec-Treas</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secretary</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secretary Treasu</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secretary-Treasu</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secretary&#x2f;Treasu</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secty-Pres</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secty-Treas.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Secty-Treasurer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Senior Admin</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Sgt. At Arms</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Sheet Metal Joun</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Shop Steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Shop Steward, CC</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Shop steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Songwriter</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Sr. Admin. Asst.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>StL Coordinator</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Staff</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Staff  Represent</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Staff Representa</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Stagehand</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Station Agent</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Steelworker</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Steward, Public</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Steward&#x2f;Officer&#x2f;</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Sub-Dist. Direct</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Tamara</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Teacher</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Teamster</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Technician</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Title</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Treasurer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>UAW CAP Council</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>UTMB AMSA Presid</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Umass  Professor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Union  Represent</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>VP Troy Area Lab</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Vice President</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Vice-President</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Visiting Profess</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Vistor Services</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Web Coordinator</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Web Production A</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Worker</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>YNN Time-Warner</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>adjunct communit</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>attorney&#x2f;client</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>bdennison&#x40;local8</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>bennett5849&#x40;gmai</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>boilermaker reti</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>clinical social</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>co-chair</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>communicator</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>computer operato</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>cook</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>delegate, San Fr</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>director of orga</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>disabled</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>eboard member re</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>editor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>emmycharI&#x40;yahoo.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>engineer</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>ex-President, Ex</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>fiber network te</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>field production</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>financial secret</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>firefighter</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>formargaretn&#x40;ear</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former Committee</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former Exec. Boa</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former PEF Execu</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former Pres.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former Pres&#x3f;</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>former Vice-Pres</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>furniture mill s</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>hiv counselor</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>housekeeper</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>human being plan</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>legislative comm</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>librarian</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>longshoreman</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>lpn</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>mS</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>member in good s</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>mr&#x2f;mrs</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>none</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>nswofnco</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>part-time instru</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>past Exec Bd mem</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>past president</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>patherrmann&#x40;sbcg</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>pattymichaels&#x40;me</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>personal capacit</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>president</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>rank and file un</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>rank-and-file me</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>registered nurse</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>reproter</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>ret. RN</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retired dist.2 p</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retired teacher</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retired, SOCLC d</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retiree</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retiree&#x3b; labor c</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>rs.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>s&#x2f;a</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>school social wo</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>service tech</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>shrnloudon&#x40;yahoo</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>social worker</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>sr. building cus</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>staff rep</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>staff representa</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>steamfitter fore</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>steering comm.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>teacher</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>technician</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>title</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>trhageman&#x40;foxval</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>trustee</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>union member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>unit rep&#x2f;staff n</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>waitress</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>wireman &#x28;retired</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>&#x3f;</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>BUSINESS AGENT</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Blogger</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Board Member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Director</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Executive V.P.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>IAMAW Dist. 98,</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Lead Organizer,</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Light Rail Opr.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Lois</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Member Strength</source_value>
         <target_value/>
       </field>
       <field>
@@ -1289,67 +2411,15 @@
         <target_value/>
       </field>
       <field>
-        <source_value>Nik Ritchie</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>No action on Mil</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>No Military Inte</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Noel Browne</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>NY</source_value>
-        <target_value/>
-      </field>
-      <field>
         <source_value>Office Manager</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Operations Direc</source_value>
+        <source_value>Organizer</source_value>
         <target_value/>
       </field>
       <field>
-        <source_value>Operations Manag</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>other</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>OWNER</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Pastor Barry Kre</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>PEACE</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>PhD psychologist</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>phil alewitz</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Political Consul</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Professor</source_value>
+        <source_value>President</source_value>
         <target_value/>
       </field>
       <field>
@@ -1357,103 +2427,7 @@
         <target_value/>
       </field>
       <field>
-        <source_value>Project Director</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>QA</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>R Joyner</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>retired</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>rick Brown</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Robert Boyer</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Scott Foster</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Social Worker</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Staff Attorney</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Stephen Spring,</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Student</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Supervising Atto</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>syria</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>The one and only</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Thomas</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Thomas O&#x27;Flanaga</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Title&#x2a;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>TSgt, USAF &#x28;Ret&#x29;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Voter</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>William Morgan</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x26; Nikolaidis</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Owner</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>m</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>citizen</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>professor emerit</source_value>
+        <source_value>RN</source_value>
         <target_value/>
       </field>
       <field>
@@ -1461,11 +2435,63 @@
         <target_value/>
       </field>
       <field>
-        <source_value>Syria</source_value>
+        <source_value>Retired Member</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Retiree</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Shop Steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Shop steward</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>StL Coordinator</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Staff</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Steward, Public</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Teacher</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Vistor Services</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>YNN Time-Warner</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>attorney&#x2f;client</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>clinical social</source_value>
         <target_value/>
       </field>
       <field>
         <source_value>owner</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>retired</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>teacher</source_value>
         <target_value/>
       </field>
     </fields>
@@ -1840,6 +2866,26 @@
         <source_value>Ratner</source_value>
         <target_value/>
       </field>
+      <field>
+        <source_value>Rev.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Rev. Dr.</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>security Guard</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>vitunac,usaf</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>Dale</source_value>
+        <target_value/>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1882,38 +2928,6 @@
     </step>
 
   <step>
-    <name>Remove question mark from zip code</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>postal_code</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x3f;</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>556</xloc>
-      <yloc>653</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Rename standard fields</name>
     <type>SelectValues</type>
     <description/>
@@ -1934,10 +2948,6 @@
         <precision>-2</precision>
       </field>      <field>        <name>Suffix</name>
         <rename>suffix</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email</name>
-        <rename>email</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Email_Preference</name>
@@ -1969,11 +2979,11 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Street_2</name>
-        <rename>additional_address_1</rename>
+        <rename>supplemental_address_1</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Street_3</name>
-        <rename>additional_address_2</rename>
+        <rename>supplemental_address_2</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>City</name>
@@ -2089,7 +3099,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Alternative_Email</name>
-        <rename/>
+        <rename>email</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Other_Data_1</name>
@@ -2217,83 +3227,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1014</xloc>
-      <yloc>714</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>blank zip code</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-   <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>postal_code</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-        </field>
-      <field>
-        <name>postal_code_suffix</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>911</xloc>
-      <yloc>642</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>blank zip code for bad import group</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>blank zip code</send_true_to>
-<send_false_to>address_cleanup</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>external_identifier</leftvalue>
-   <function>&#x3e;&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>37131969</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>external_identifier</leftvalue>
-   <function>&#x3c;&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>37136282</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>813</xloc>
-      <yloc>695</yloc>
+      <xloc>439</xloc>
+      <yloc>666</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2366,7 +3301,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_1</name>
+        <name>supplemental_address_1</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2378,7 +3313,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_2</name>
+        <name>supplemental_address_2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2536,8 +3471,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1144</xloc>
-      <yloc>678</yloc>
+      <xloc>569</xloc>
+      <yloc>630</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2774,354 +3709,6 @@
     </file>
     <fields>
       <field>
-        <name>prefix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>suffix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Alternative_Email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>County</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Date_Created</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Department</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>District</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Email_Status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Hard_Bounce_Count</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Instant_Messenger_Name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Instant_Messenger_Service</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Language_Code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Last_Bounce</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Last_Modified</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Notes</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Other_Data_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Other_Data_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Other_Data_3</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Pager</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Phone_Provider</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Receive_Email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Receive_Phone_Blasts</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Soft_Bounce_Count</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Source_Details</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Timezone</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>city</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
@@ -3134,67 +3721,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>country</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>current_employer</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>fax_home</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>fax_work</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3242,187 +3769,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>phone_mobile</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>phone_primary</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>phone_work</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code_suffix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>preferred_mail_format</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>source</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>source_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>source_tracking_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>street_address</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>tracking_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>uid</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>website1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>prefix_option_group_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>suffix_option_group_id</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3460,8 +3807,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>102</xloc>
-      <yloc>1104</yloc>
+      <xloc>117</xloc>
+      <yloc>1065</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3572,14 +3919,14 @@
     <directory_path/>
     <mappings>
       <input>
-    <mapping>    <input_step>Add location_type</input_step>
+    <mapping>    <input_step>Add location_type &#x3d; Other</input_step>
     <output_step>email wrapper</output_step>
     <main_path>N</main_path>
     <rename_on_output>Y</rename_on_output>
     <description/>
-       <connector><parent>email</parent><child>email</child></connector>
+       <connector><parent>country</parent><child>country</child></connector>
        <connector><parent>location_type</parent><child>location_type</child></connector>
-       <connector><parent>contact_id</parent><child>contact_id</child></connector>
+       <connector><parent>email</parent><child>email</child></connector>
     </mapping>      </input>
       <output>
     <mapping>    <input_step>valid emails</input_step>
@@ -3659,7 +4006,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>cli_salsa_additional_info</send_true_to>
+<send_true_to>remove non-import fields 2</send_true_to>
 <send_false_to>invalid_salsa_additional_info</send_false_to>
     <compare>
 <condition>
@@ -3671,180 +4018,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>107</xloc>
-      <yloc>1034</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>fix &#x22;ot&#x22; as state</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>state</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>ot</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>627</xloc>
-      <yloc>672</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>fix bad country data</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>country</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>&#x3f;0000</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2220</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10031</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>48220</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>11205</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10003-9518</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10025</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10014</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10009</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>12572</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>1002</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10017</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>19081-1397</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;4886</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;0021</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1712</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1953</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1213</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;n&#x2f;a</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;4741</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1001</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8756</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;6520</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2014</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8457</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1116</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8108</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1121</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2224</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;3335</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>713</xloc>
-      <yloc>688</yloc>
+      <xloc>109</xloc>
+      <yloc>891</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3964,7 +4139,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_1</name>
+        <name>supplemental_address_1</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3976,7 +4151,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_2</name>
+        <name>supplemental_address_2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4134,8 +4309,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1142</xloc>
-      <yloc>748</yloc>
+      <xloc>567</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4604,18 +4779,6 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>Alternative_Email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>County</name>
         <type>String</type>
         <format/>
@@ -4892,7 +5055,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_1</name>
+        <name>supplemental_address_1</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4904,7 +5067,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>additional_address_2</name>
+        <name>supplemental_address_2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -5266,8 +5429,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>267</xloc>
-      <yloc>1044</yloc>
+      <xloc>269</xloc>
+      <yloc>901</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -5408,11 +5571,11 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>additional_address_1</name>
+      </field>      <field>        <name>supplemental_address_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>additional_address_2</name>
+      </field>      <field>        <name>supplemental_address_2</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -5472,81 +5635,43 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>prefix</name>
-      </remove>      <remove>        <name>suffix</name>
-      </remove>      <remove>        <name>source_1</name>
-      </remove>      <remove>        <name>source_tracking_code</name>
-      </remove>      <remove>        <name>prefix_option_group_id</name>
-      </remove>      <remove>        <name>suffix_option_group_id</name>
-      </remove>      <remove>        <name>email</name>
-      </remove>      <remove>        <name>fax_home</name>
-      </remove>      <remove>        <name>fax_work</name>
-      </remove>      <remove>        <name>phone_mobile</name>
-      </remove>      <remove>        <name>phone_primary</name>
-      </remove>      <remove>        <name>website2</name>
-      </remove>      <remove>        <name>website1</name>
-      </remove>      <remove>        <name>additional_address_1</name>
-      </remove>      <remove>        <name>additional_address_2</name>
-      </remove>      <remove>        <name>city</name>
-      </remove>      <remove>        <name>country</name>
-      </remove>      <remove>        <name>postal_code</name>
-      </remove>      <remove>        <name>postal_code_suffix</name>
-      </remove>      <remove>        <name>state</name>
-      </remove>      <remove>        <name>street_address</name>
-      </remove>      <remove>        <name>geo_code_1</name>
-      </remove>      <remove>        <name>geo_code_2</name>
-      </remove>    </fields>     <cluster_schema/>
+    <fields>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>current_employer</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>geo_code_1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>geo_code_2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>job_title</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>preferred_mail_format</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>prefix_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>suffix_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>564</xloc>
-      <yloc>1004</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>step_1_individual_cleanup</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;step_1_individual_cleanup.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step>supporter_export.txt</input_step>
-    <output_step>Mapping Input</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>First_Name</parent><child>first_name</child></connector>
-       <connector><parent>Email</parent><child>email</child></connector>
-       <connector><parent>Last_Name</parent><child>last_name</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step>valid individuals</input_step>
-    <output_step>Non-custom fields only</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>101</xloc>
-      <yloc>54</yloc>
+      <xloc>110</xloc>
+      <yloc>986</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -5555,7 +5680,7 @@
     <name>supporter_export.txt</name>
     <type>CsvInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -5585,7 +5710,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Last_Modified</name>
@@ -5596,7 +5721,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Date_Created</name>
@@ -5607,7 +5732,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Title</name>
@@ -5618,7 +5743,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>First_Name</name>
@@ -5629,7 +5754,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>MI</name>
@@ -5640,7 +5765,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Last_Name</name>
@@ -5651,7 +5776,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Suffix</name>
@@ -5662,7 +5787,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Email</name>
@@ -5673,7 +5798,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Password</name>
@@ -5684,7 +5809,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Receive_Email</name>
@@ -5695,7 +5820,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Email_Status</name>
@@ -5706,7 +5831,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Email_Preference</name>
@@ -5717,7 +5842,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Soft_Bounce_Count</name>
@@ -5728,7 +5853,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Hard_Bounce_Count</name>
@@ -5739,7 +5864,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Last_Bounce</name>
@@ -5750,7 +5875,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Receive_Phone_Blasts</name>
@@ -5761,7 +5886,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Phone</name>
@@ -5772,7 +5897,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Cell_Phone</name>
@@ -5783,7 +5908,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Phone_Provider</name>
@@ -5794,7 +5919,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Work_Phone</name>
@@ -5805,7 +5930,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Pager</name>
@@ -5816,7 +5941,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Home_Fax</name>
@@ -5827,7 +5952,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Work_Fax</name>
@@ -5838,7 +5963,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Street</name>
@@ -5849,7 +5974,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Street_2</name>
@@ -5860,7 +5985,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Street_3</name>
@@ -5871,7 +5996,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>City</name>
@@ -5882,7 +6007,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>State</name>
@@ -5893,7 +6018,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Zip</name>
@@ -5904,7 +6029,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>PRIVATE_Zip_Plus_4</name>
@@ -5915,7 +6040,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>County</name>
@@ -5926,7 +6051,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>District</name>
@@ -5937,7 +6062,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Country</name>
@@ -5948,7 +6073,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Latitude</name>
@@ -5959,7 +6084,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Longitude</name>
@@ -5970,7 +6095,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Organization</name>
@@ -5981,7 +6106,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Department</name>
@@ -5992,7 +6117,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Occupation</name>
@@ -6003,7 +6128,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Instant_Messenger_Service</name>
@@ -6014,7 +6139,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Instant_Messenger_Name</name>
@@ -6025,7 +6150,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Web_Page</name>
@@ -6036,7 +6161,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Alternative_Email</name>
@@ -6047,7 +6172,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Other_Data_1</name>
@@ -6058,7 +6183,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Other_Data_2</name>
@@ -6069,7 +6194,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Other_Data_3</name>
@@ -6080,7 +6205,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Notes</name>
@@ -6091,7 +6216,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Source</name>
@@ -6102,7 +6227,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Source_Details</name>
@@ -6113,7 +6238,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Source_Tracking_Code</name>
@@ -6124,7 +6249,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Tracking_Code</name>
@@ -6135,7 +6260,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Status</name>
@@ -6146,7 +6271,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>uid</name>
@@ -6157,7 +6282,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Timezone</name>
@@ -6168,7 +6293,7 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
         <name>Language_Code</name>
@@ -6179,803 +6304,13 @@
         <group/>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>salesforce_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>append_run_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>salsa_deleted</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>wellpoint_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>declaration_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>stand_with_kate_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>start_from_scratch_obama_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>hands_off_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>fair_elections_now_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lapsed_amount</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lapsed_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>state_district</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_il_1_5</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_prospective</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_cd</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_ld</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_councilman</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_ward</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_precinct</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_last_reached</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_by</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supportive_comment_for_kevin</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lcsp_conference_registration</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>hr_676_petition_signers</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>nominee</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>why_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>are_you_a_tiaa_cref_policy_holder_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ac_committee_of_100</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>union_affiliation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>comment</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lcsp_registration_payment</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lc_need_a_ride</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>lcsp_registration_donation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>md_also_pnhp</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>empower_call_response</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>receive_snail_mail</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>campaign_donation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>tiaa_cref</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>meet_with_congressperson</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>collect_stories</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>member_shirt_size</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>dinner_option</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>language</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>in_memory_of_jerry_tucker</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>comments_for_jerry_s_family</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>membership_last_donate</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>tax_status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>103</xloc>
       <yloc>0</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Non-custom fields only</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>supporter_KEY</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Last_Modified</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Date_Created</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Title</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>First_Name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>MI</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Last_Name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Suffix</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Password</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Receive_Email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email_Status</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email_Preference</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Soft_Bounce_Count</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Hard_Bounce_Count</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Last_Bounce</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Receive_Phone_Blasts</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Phone</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Cell_Phone</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Phone_Provider</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Work_Phone</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Pager</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Home_Fax</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Work_Fax</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street_2</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street_3</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>City</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>State</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Zip</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>PRIVATE_Zip_Plus_4</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>County</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>District</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Country</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Latitude</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Longitude</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Organization</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Department</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Occupation</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Instant_Messenger_Service</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Instant_Messenger_Name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Web_Page</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Alternative_Email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_1</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_2</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_3</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Notes</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Source</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Source_Details</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Source_Tracking_Code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Tracking_Code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Status</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>uid</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Timezone</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Language_Code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>102</xloc>
-      <yloc>115</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -471,6 +471,168 @@
     </step>
 
   <step>
+    <name>Concat In Honor&#x2f;Memory Address</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>In Honor Address&#x28;donation&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>soft_credit_address</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>Y</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>479</xloc>
+      <yloc>518</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Concat In Honor&#x2f;Memory Name</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>In Honor Name&#x28;donation&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>In Memory Name&#x28;donation&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>soft_credit_name</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>Y</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>479</xloc>
+      <yloc>469</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Convert Transaction Dates 1</name>
     <type>SelectValues</type>
     <description/>
@@ -633,6 +795,34 @@
     </step>
 
   <step>
+    <name>Merge Join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>LEFT OUTER</join_type>
+<step1>Sort rows</step1>
+<step2>Sort rows 2</step2>
+    <keys_1>
+      <key>Donation.donation KEY&#x28;donation&#x29;</key>
+    </keys_1>
+    <keys_2>
+      <key>Donation.donation KEY&#x28;donation&#x29;</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>128</xloc>
+      <yloc>172</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Only contact import fields</name>
     <type>SelectValues</type>
     <description/>
@@ -769,8 +959,8 @@
     </step>
 
   <step>
-    <name>rename fields</name>
-    <type>SelectValues</type>
+    <name>Sort rows</name>
+    <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -779,75 +969,59 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>Donation.donation KEY&#x28;donation&#x29;</name>
-        <rename>Donation KEY&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Supporter.VARCHAR5&#x28;supporter_custom&#x29;</name>
-        <rename>In Memory Name&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.In Honor Address&#x28;donation&#x29;</name>
-        <rename>In Honor Address&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.In Honor Email&#x28;donation&#x29;</name>
-        <rename>In Honor Email&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.In Honor Name&#x28;donation&#x29;</name>
-        <rename>In Honor Name&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.Tracking Code&#x28;donation&#x29;</name>
-        <rename>source</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.Email&#x28;donation&#x29;</name>
-        <rename>Email&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.Last Name&#x28;donation&#x29;</name>
-        <rename>Last Name&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.First Name&#x28;donation&#x29;</name>
-        <rename>First Name&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.RESULT&#x28;donation&#x29;</name>
-        <rename>RESULT&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.Transaction Type&#x28;donation&#x29;</name>
-        <rename>Transaction Type&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.amount&#x28;donation&#x29;</name>
-        <rename>Amount&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.Transaction Date&#x28;donation&#x29;</name>
-        <rename>receive_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donation.supporter KEY&#x28;donation&#x29;</name>
-        <rename>Supporter KEY&#x28;donation&#x29;</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Recurring donation.Transaction Date&#x28;recurring_donation&#x29;</name>
-        <rename>recurring_start_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Donation.donation KEY&#x28;donation&#x29;</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>195</xloc>
-      <yloc>217</yloc>
+      <xloc>89</xloc>
+      <yloc>99</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Donation.donation KEY&#x28;donation&#x29;</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>248</xloc>
+      <yloc>93</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1288,7 +1462,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;home&#x2f;jon&#x2f;ownCloud&#x2f;Shared&#x2f;Palante Tech Shared&#x2f;Current Clients and Projects&#x2f;CCR&#x2f;data&#x2f;raw data&#x2f;Salsa&#x2f;donation_export.txt</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;donation_export.txt</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -1466,6 +1640,73 @@
     </step>
 
   <step>
+    <name>donation_memory_export.txt</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;donation_memory_export.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>Donation.donation KEY&#x28;donation&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Supporter.VARCHAR5&#x28;supporter_custom&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>279</xloc>
+      <yloc>22</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>email to contact_id</name>
     <type>DBLookup</type>
     <description/>
@@ -1503,6 +1744,48 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>470</xloc>
       <yloc>390</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>email to contact_id - soft credit</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_email</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>In Honor Email&#x28;donation&#x29;</name>
+        <field>email</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>contact_id</name>
+        <rename>contact_id_soft_credit</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>484</xloc>
+      <yloc>580</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1611,50 +1894,8 @@
     </step>
 
   <step>
-    <name>email to contact_id - soft credit</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>N</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_email</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>In Honor Email&#x28;donation&#x29;</name>
-        <field>email</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>contact_id</name>
-        <rename>contact_id_soft_credit</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>484</xloc>
-      <yloc>580</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Concat In Honor&#x2f;Memory Name</name>
-    <type>ConcatFields</type>
+    <name>rename fields</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1663,316 +1904,75 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>In Honor Name&#x28;donation&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>In Memory Name&#x28;donation&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-<targetFieldName>soft_credit_name</targetFieldName>
-<targetFieldLength>0</targetFieldLength>
-<removeSelectedFields>Y</removeSelectedFields>
-    </ConcatFields>
-     <cluster_schema/>
+    <fields>      <field>        <name>Donation.donation KEY&#x28;donation&#x29;</name>
+        <rename>Donation KEY&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Supporter.VARCHAR5&#x28;supporter_custom&#x29;</name>
+        <rename>In Memory Name&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.In Honor Address&#x28;donation&#x29;</name>
+        <rename>In Honor Address&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.In Honor Email&#x28;donation&#x29;</name>
+        <rename>In Honor Email&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.In Honor Name&#x28;donation&#x29;</name>
+        <rename>In Honor Name&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.Tracking Code&#x28;donation&#x29;</name>
+        <rename>source</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.Email&#x28;donation&#x29;</name>
+        <rename>Email&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.Last Name&#x28;donation&#x29;</name>
+        <rename>Last Name&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.First Name&#x28;donation&#x29;</name>
+        <rename>First Name&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.RESULT&#x28;donation&#x29;</name>
+        <rename>RESULT&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.Transaction Type&#x28;donation&#x29;</name>
+        <rename>Transaction Type&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.amount&#x28;donation&#x29;</name>
+        <rename>Amount&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.Transaction Date&#x28;donation&#x29;</name>
+        <rename>receive_date</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Donation.supporter KEY&#x28;donation&#x29;</name>
+        <rename>Supporter KEY&#x28;donation&#x29;</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Recurring donation.Transaction Date&#x28;recurring_donation&#x29;</name>
+        <rename>recurring_start_date</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>479</xloc>
-      <yloc>469</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>donation_memory_export.txt</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x2f;home&#x2f;jon&#x2f;ownCloud&#x2f;Shared&#x2f;Palante Tech Shared&#x2f;Current Clients and Projects&#x2f;CCR&#x2f;data&#x2f;raw data&#x2f;Salsa&#x2f;donation_memory_export.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>Donation.donation KEY&#x28;donation&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Supporter.VARCHAR5&#x28;supporter_custom&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>279</xloc>
-      <yloc>22</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Merge Join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>LEFT OUTER</join_type>
-<step1>Sort rows</step1>
-<step2>Sort rows 2</step2>
-    <keys_1>
-      <key>Donation.donation KEY&#x28;donation&#x29;</key>
-    </keys_1>
-    <keys_2>
-      <key>Donation.donation KEY&#x28;donation&#x29;</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>172</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Donation.donation KEY&#x28;donation&#x29;</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>89</xloc>
-      <yloc>99</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Donation.donation KEY&#x28;donation&#x29;</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>248</xloc>
-      <yloc>93</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Concat In Honor&#x2f;Memory Address</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>file</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>In Honor Address&#x28;donation&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Supporter.BLOB1&#x28;supporter_custom&#x29;</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-<targetFieldName>soft_credit_address</targetFieldName>
-<targetFieldLength>0</targetFieldLength>
-<removeSelectedFields>Y</removeSelectedFields>
-    </ConcatFields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>479</xloc>
-      <yloc>518</yloc>
+      <xloc>195</xloc>
+      <yloc>217</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

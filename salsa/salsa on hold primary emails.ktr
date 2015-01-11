@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>salsa groups</name>
+    <name>salsa on hold primary emails</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -66,17 +66,59 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;20 20&#x3a;32&#x3a;46.259</created_date>
+  <created_date>2015&#x2f;01&#x2f;10 18&#x3a;39&#x3a;23.632</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;20 20&#x3a;32&#x3a;46.259</modified_date>
+  <modified_date>2015&#x2f;01&#x2f;10 18&#x3a;39&#x3a;23.632</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>Enabling this step programmatically creates groups.&#xa;Use with caution&#x21;</note>
-      <xloc>544</xloc>
-      <yloc>355</yloc>
-      <width>311</width>
-      <heigth>42</heigth>
+      <note>We need to import e-mails in step 1 because otherwise we&#x27;ll lose records with no last name&#xa;But we can&#x27;t mark which records are &#x22;on hold&#x22; from a Contact import &#x28;without chaining...hmm&#x29;&#xa;So this step creates a CSV for updating the &#x22;on hold&#x22; e-mails</note>
+      <xloc>546</xloc>
+      <yloc>85</yloc>
+      <width>557</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Except -3, which is &#x22;unsubscribe&#x22; and is handled in step_1.</note>
+      <xloc>150</xloc>
+      <yloc>231</yloc>
+      <width>355</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Don&#x27;t cache, so we can do case-insensitive compares</note>
+      <xloc>150</xloc>
+      <yloc>487</yloc>
+      <width>325</width>
+      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -305,23 +347,19 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>group_export.txt</from><to>rename fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>external_identifier to contact_id</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>group id lookup</from><to>filter invalid groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter invalid groups</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_group_contact</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter invalid groups</from><to>Sort rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique rows</from><to>remove non-group fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-group fields</from><to>invalid_groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_groups</from><to>CiviCrm Output</to><enabled>N</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>change &#x2b; to underscore in group names</to><enabled>Y</enabled> </hop>
-  <hop> <from>change &#x2b; to underscore in group names</from><to>group id lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>supporter_export.txt</from><to>Get only step 1 fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>external_identifier to contact_id</from><to>Get e-mail ID</to><enabled>Y</enabled> </hop>
+  <hop> <from>Mark negative receive_email as on_hold</from><to>On hold and non-blank e-mails only</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get only step 1 fields</from><to>Mark negative receive_email as on_hold</to><enabled>Y</enabled> </hop>
+  <hop> <from>email_cleanup</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>On hold and non-blank e-mails only</from><to>Add location_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add location_type</from><to>email_cleanup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get e-mail ID</from><to>just import fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>just import fields</from><to>cli_salsa_primary_emails_on_hold</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>CiviCrm Output</name>
-    <type>CiviCrmOutput</type>
+    <name>Add location_type</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -330,291 +368,85 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
-    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>Group</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-      <entity-name>Acl</entity-name>
-      <entity-name>AclRole</entity-name>
-      <entity-name>ActionSchedule</entity-name>
-      <entity-name>Activity</entity-name>
-      <entity-name>ActivityContact</entity-name>
-      <entity-name>ActivityType</entity-name>
-      <entity-name>Address</entity-name>
-      <entity-name>Batch</entity-name>
-      <entity-name>Campaign</entity-name>
-      <entity-name>Case</entity-name>
-      <entity-name>CaseType</entity-name>
-      <entity-name>Constant</entity-name>
-      <entity-name>Contact</entity-name>
-      <entity-name>ContactType</entity-name>
-      <entity-name>Contribution</entity-name>
-      <entity-name>ContributionPage</entity-name>
-      <entity-name>ContributionRecur</entity-name>
-      <entity-name>ContributionSoft</entity-name>
-      <entity-name>Country</entity-name>
-      <entity-name>CustomField</entity-name>
-      <entity-name>CustomGroup</entity-name>
-      <entity-name>CustomSearch</entity-name>
-      <entity-name>CustomValue</entity-name>
-      <entity-name>Dashboard</entity-name>
-      <entity-name>DashboardContact</entity-name>
-      <entity-name>Domain</entity-name>
-      <entity-name>Email</entity-name>
-      <entity-name>Entity</entity-name>
-      <entity-name>EntityTag</entity-name>
-      <entity-name>Event</entity-name>
-      <entity-name>Extension</entity-name>
-      <entity-name>File</entity-name>
-      <entity-name>FinancialAccount</entity-name>
-      <entity-name>FinancialType</entity-name>
-      <entity-name>Grant</entity-name>
-      <entity-name>Group</entity-name>
-      <entity-name>GroupContact</entity-name>
-      <entity-name>GroupNesting</entity-name>
-      <entity-name>GroupOrganization</entity-name>
-      <entity-name>Im</entity-name>
-      <entity-name>Job</entity-name>
-      <entity-name>LineItem</entity-name>
-      <entity-name>LocBlock</entity-name>
-      <entity-name>Location</entity-name>
-      <entity-name>LocationType</entity-name>
-      <entity-name>MailSettings</entity-name>
-      <entity-name>Mailing</entity-name>
-      <entity-name>MailingComponent</entity-name>
-      <entity-name>MailingContact</entity-name>
-      <entity-name>MailingEventConfirm</entity-name>
-      <entity-name>MailingEventResubscribe</entity-name>
-      <entity-name>MailingEventSubscribe</entity-name>
-      <entity-name>MailingEventUnsubscribe</entity-name>
-      <entity-name>MailingGroup</entity-name>
-      <entity-name>MailingJob</entity-name>
-      <entity-name>MailingRecipients</entity-name>
-      <entity-name>Membership</entity-name>
-      <entity-name>MembershipBlock</entity-name>
-      <entity-name>MembershipPayment</entity-name>
-      <entity-name>MembershipStatus</entity-name>
-      <entity-name>MembershipType</entity-name>
-      <entity-name>MessageTemplate</entity-name>
-      <entity-name>Note</entity-name>
-      <entity-name>OptionGroup</entity-name>
-      <entity-name>OptionValue</entity-name>
-      <entity-name>Participant</entity-name>
-      <entity-name>ParticipantPayment</entity-name>
-      <entity-name>ParticipantStatusType</entity-name>
-      <entity-name>PaymentProcessor</entity-name>
-      <entity-name>PaymentProcessorType</entity-name>
-      <entity-name>Phone</entity-name>
-      <entity-name>Pledge</entity-name>
-      <entity-name>PledgePayment</entity-name>
-      <entity-name>Premium</entity-name>
-      <entity-name>PriceField</entity-name>
-      <entity-name>PriceFieldValue</entity-name>
-      <entity-name>PriceSet</entity-name>
-      <entity-name>PrintLabel</entity-name>
-      <entity-name>Product</entity-name>
-      <entity-name>Profile</entity-name>
-      <entity-name>Relationship</entity-name>
-      <entity-name>RelationshipType</entity-name>
-      <entity-name>ReportInstance</entity-name>
-      <entity-name>ReportTemplate</entity-name>
-      <entity-name>Setting</entity-name>
-      <entity-name>SmsProvider</entity-name>
-      <entity-name>Survey</entity-name>
-      <entity-name>SurveyRespondant</entity-name>
-      <entity-name>System</entity-name>
-      <entity-name>SystemLog</entity-name>
-      <entity-name>Tag</entity-name>
-      <entity-name>UFField</entity-name>
-      <entity-name>UFGroup</entity-name>
-      <entity-name>UFJoin</entity-name>
-      <entity-name>UFMatch</entity-name>
-      <entity-name>Website</entity-name>
-      <entity-name>WordReplacement</entity-name>
-      <action-name>create</action-name>
-      <action-name>delete</action-name>
-      <action-name>getlist</action-name>
-      <action-name>getrefcount</action-name>
-      <action-name>setvalue</action-name>
+    <fields>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Type&#x22;,&#x22;maxlength&#x22;&#x3a;128,&#x22;name&#x22;&#x3a;&#x22;group_type&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>group_type</fieldName>
-        <name>group_type</name>
-        <title>Group Type</title>
-        <type>2</type>
-        <source>getfields</source>
+        <name>location_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>Y</set_empty_string>
       </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Saved Search ID&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_SavedSearch&#x22;,&#x22;name&#x22;&#x3a;&#x22;saved_search_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;SavedSearch&#x22;&#x7d;</fieldDef>
-        <fieldName>saved_search_id</fieldName>
-        <name>saved_search_id</name>
-        <title>Saved Search ID</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Parents&#x22;,&#x22;name&#x22;&#x3a;&#x22;parents&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>parents</fieldName>
-        <name>parents</name>
-        <title>Group Parents</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_clause&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>where_clause</fieldName>
-        <name>where_clause</name>
-        <title>Group Where Clause</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Visibility Setting&#x22;,&#x22;default&#x22;&#x3a;&#x22;User and User Admin Only&#x22;,&#x22;maxlength&#x22;&#x3a;24,&#x22;name&#x22;&#x3a;&#x22;visibility&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;callback&#x22;&#x3a;&#x22;CRM_Core_SelectValues&#x3a;&#x3a;groupVisibility&#x22;&#x7d;,&#x22;size&#x22;&#x3a;20&#x7d;</fieldDef>
-        <fieldName>visibility</fieldName>
-        <name>visibility</name>
-        <title>Group Visibility Setting</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Enabled&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_active</fieldName>
-        <name>is_active</name>
-        <title>Group Enabled</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Cache Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;cache_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>cache_date</fieldName>
-        <name>cache_date</name>
-        <title>Group Cache Date</title>
-        <type>12</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Children&#x22;,&#x22;name&#x22;&#x3a;&#x22;children&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>children</fieldName>
-        <name>children</name>
-        <title>Group Children</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Next Group Refresh Time&#x22;,&#x22;name&#x22;&#x3a;&#x22;refresh_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>refresh_date</fieldName>
-        <name>refresh_date</name>
-        <title>Next Group Refresh Time</title>
-        <type>12</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Reserved&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Group is Reserved</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Select Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;select_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>select_tables</fieldName>
-        <name>select_tables</name>
-        <title>Tables For Select Clause</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
-        <fieldName>created_id</fieldName>
-        <name>created_id</name>
-        <title>Group Created By</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>89</xloc>
+      <yloc>299</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get e-mail ID</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_email</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id</name>
+        <field>contact_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>email</name>
+        <field>email</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
         <name>id</name>
-        <title>Group ID</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Title&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;title&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>title</fieldName>
-        <name>title</name>
-        <title>Group Title</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Modified By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;modified_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
-        <fieldName>modified_id</fieldName>
-        <name>modified_id</name>
-        <title>Group Modified By</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Source&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;source&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>source</fieldName>
-        <name>source</name>
-        <title>Group Source</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Group Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;2&#x7d;</fieldDef>
-        <fieldName>description</fieldName>
-        <name>description</name>
-        <title>Group Description</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>where_tables</fieldName>
-        <name>where_tables</name>
-        <title>Tables For Where Clause</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Hidden&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_hidden&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_hidden</fieldName>
-        <name>is_hidden</name>
-        <title>Group is Hidden</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Group Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <key-index>name</key-index>
-      <output-field>
-        <input-field>name</input-field>
-        <output-field>title</output-field>
-      </output-field>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>location_type_id</name>
+        <rename>location_type_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>571</xloc>
-      <yloc>416</yloc>
+      <xloc>99</xloc>
+      <yloc>487</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
+    <name>Get only step 1 fields</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -623,32 +455,30 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>name</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
+    <fields>      <field>        <name>supporter_KEY</name>
+        <rename>external_identifier</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Email</name>
+        <rename>email</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Receive_Email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>180</xloc>
-      <yloc>439</yloc>
+      <xloc>77</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
+    <name>Mark negative receive_email as on_hold</name>
+    <type>NumberRange</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -657,23 +487,32 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>name</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
+    <inputField>Receive_Email</inputField>
+    <outputField>on_hold</outputField>
+    <fallBackValue>0</fallBackValue>
+    <rules>
+      <rule>
+        <lower_bound>-2.0</lower_bound>
+        <upper_bound>0.0</upper_bound>
+        <value>1</value>
+      </rule>
+      <rule>
+        <lower_bound>-999.0</lower_bound>
+        <upper_bound>-4.0</upper_bound>
+        <value>1</value>
+      </rule>
+    </rules>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>259</xloc>
-      <yloc>441</yloc>
+      <xloc>85</xloc>
+      <yloc>169</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>change &#x2b; to underscore in group names</name>
-    <type>ReplaceString</type>
+    <name>On hold and non-blank e-mails only</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -682,29 +521,38 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>name</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x2b;</replace_string>
-        <replace_by_string>_</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>email</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>on_hold</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>1</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>292</yloc>
+      <xloc>90</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_group_contact</name>
+    <name>cli_salsa_primary_emails_on_hold</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -728,7 +576,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_group_contact</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_salsa_primary_emails_on_hold</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -747,7 +595,19 @@
     </file>
     <fields>
       <field>
-        <name>contact_id</name>
+        <name>on_hold</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>id</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -759,12 +619,12 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>group_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>email</name>
+        <type>String</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal/>
+        <group/>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -773,8 +633,54 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>76</xloc>
-      <yloc>587</yloc>
+      <xloc>102</xloc>
+      <yloc>626</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>email_cleanup</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;email_cleanup.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step>Add location_type</input_step>
+    <output_step>email input</output_step>
+    <main_path>N</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+       <connector><parent>email</parent><child>email</child></connector>
+       <connector><parent>location_type</parent><child>location_type</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step>valid emails</input_step>
+    <output_step>external_identifier to contact_id</output_step>
+    <main_path>N</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>95</xloc>
+      <yloc>353</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -815,15 +721,15 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>144</yloc>
+      <xloc>100</xloc>
+      <yloc>409</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>filter invalid groups</name>
-    <type>FilterRows</type>
+    <name>just import fields</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -832,97 +738,33 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>remove non-import fields</send_true_to>
-<send_false_to>Sort rows</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>group_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
+    <fields>      <field>        <name>on_hold</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>location_type_id_1</name>
+        <rename>location_type_id</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>424</yloc>
+      <xloc>98</xloc>
+      <yloc>566</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>filter records with no contact_id</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>contact_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>214</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>group id lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_group</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>name</name>
-        <field>title</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>group_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>359</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>group_export.txt</name>
+    <name>supporter_export.txt</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -932,7 +774,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;group_export.txt</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;supporter_export.txt</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -947,7 +789,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>supporter_id</name>
+        <name>supporter_KEY</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -958,7 +800,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>name</name>
+        <name>Last_Modified</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -968,155 +810,594 @@
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>15</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_groups</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_groups</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
       <field>
-        <name>name</name>
+        <name>Date_Created</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Title</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>First_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>MI</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Last_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Suffix</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
         <trim_type>both</trim_type>
+      </field>
+      <field>
+        <name>Password</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Receive_Email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Email_Status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Email_Preference</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Soft_Bounce_Count</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Hard_Bounce_Count</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Last_Bounce</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Receive_Phone_Blasts</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Phone</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Cell_Phone</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Phone_Provider</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Work_Phone</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Pager</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Home_Fax</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Work_Fax</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Street</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Street_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Street_3</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>City</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>State</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Zip</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>PRIVATE_Zip_Plus_4</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>County</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>District</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Country</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Latitude</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Longitude</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Organization</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Department</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Occupation</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Instant_Messenger_Service</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Instant_Messenger_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Web_Page</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Alternative_Email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Other_Data_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Other_Data_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Other_Data_3</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Notes</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Source</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Source_Details</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Source_Tracking_Code</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Tracking_Code</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>uid</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Timezone</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Language_Code</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
      <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>470</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-group fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>361</xloc>
-      <yloc>425</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-import fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>group_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>504</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>rename fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>supporter_id</name>
-        <rename>external_identifier</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>79</xloc>
-      <yloc>79</yloc>
+      <yloc>6</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
