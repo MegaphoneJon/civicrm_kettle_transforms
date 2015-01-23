@@ -74,8 +74,8 @@
   <notepads>
     <notepad>
       <note>Enabling this step programmatically creates tags.&#xa;Use with caution&#x21;</note>
-      <xloc>544</xloc>
-      <yloc>565</yloc>
+      <xloc>596</xloc>
+      <yloc>598</yloc>
       <width>297</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -95,9 +95,30 @@
     </notepad>
     <notepad>
       <note>Salsa generates an unholy number of tags.&#xa;It&#x27;s a good idea to ask the client to specify which you want to keep, drop them in here, and dump the rest.</note>
-      <xloc>160</xloc>
-      <yloc>157</yloc>
+      <xloc>144</xloc>
+      <yloc>167</yloc>
       <width>625</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>This can import Salsa tags as tags, or as groups.  &#xa;Where the paths branch, delete the hops for either tags or groups.</note>
+      <xloc>163</xloc>
+      <yloc>24</yloc>
+      <width>392</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -329,507 +350,29 @@
   <order>
   <hop> <from>tag_export.txt</from><to>rename fields</to><enabled>Y</enabled> </hop>
   <hop> <from>external_identifier to contact_id</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>tag id lookup</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_entity_tag</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>cli_entity_tag</to><enabled>N</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique rows</from><to>remove non-group fields</to><enabled>Y</enabled> </hop>
   <hop> <from>remove non-group fields</from><to>invalid_tags</to><enabled>Y</enabled> </hop>
   <hop> <from>filter records with no contact_id</from><to>change &#x2b; to underscore in tag names</to><enabled>Y</enabled> </hop>
-  <hop> <from>change &#x2b; to underscore in tag names</from><to>tag id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_tags</from><to>description is &#x22;imported from Salsa&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>description is &#x22;imported from Salsa&#x22;</from><to>create tags</to><enabled>Y</enabled> </hop>
+  <hop> <from>description is &#x22;imported from Salsa&#x22;</from><to>create tags</to><enabled>N</enabled> </hop>
   <hop> <from>rename fields</from><to>Only keep these tags</to><enabled>Y</enabled> </hop>
   <hop> <from>Only keep these tags</from><to>Keep tags only</to><enabled>Y</enabled> </hop>
   <hop> <from>Keep tags only</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>change &#x2b; to underscore in tag names</from><to>Lookup tags as a group</to><enabled>Y</enabled> </hop>
+  <hop> <from>change &#x2b; to underscore in tag names</from><to>tag id lookup</to><enabled>N</enabled> </hop>
+  <hop> <from>description is &#x22;imported from Salsa&#x22;</from><to>create tags as groups</to><enabled>N</enabled> </hop>
+  <hop> <from>tag id lookup</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
+  <hop> <from>Lookup tags as a group</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>rename tag_id to group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename tag_id to group_id</from><to>cli_tag_as_group</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter records with no contact_id</from><to>TEMP</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>tag</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>180</xloc>
-      <yloc>649</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>tag</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>259</xloc>
-      <yloc>651</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>change &#x2b; to underscore in tag names</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>tag</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x2b;</replace_string>
-        <replace_by_string>_</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>502</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_entity_tag</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_entity_tag</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>tag_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>76</xloc>
-      <yloc>797</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>create tags</name>
-    <type>CiviCrmOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
-    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>Tag</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-      <entity-name>Acl</entity-name>
-      <entity-name>AclRole</entity-name>
-      <entity-name>ActionSchedule</entity-name>
-      <entity-name>Activity</entity-name>
-      <entity-name>ActivityContact</entity-name>
-      <entity-name>ActivityType</entity-name>
-      <entity-name>Address</entity-name>
-      <entity-name>Batch</entity-name>
-      <entity-name>Campaign</entity-name>
-      <entity-name>Case</entity-name>
-      <entity-name>CaseType</entity-name>
-      <entity-name>Constant</entity-name>
-      <entity-name>Contact</entity-name>
-      <entity-name>ContactType</entity-name>
-      <entity-name>Contribution</entity-name>
-      <entity-name>ContributionPage</entity-name>
-      <entity-name>ContributionRecur</entity-name>
-      <entity-name>ContributionSoft</entity-name>
-      <entity-name>Country</entity-name>
-      <entity-name>CustomField</entity-name>
-      <entity-name>CustomGroup</entity-name>
-      <entity-name>CustomSearch</entity-name>
-      <entity-name>CustomValue</entity-name>
-      <entity-name>Dashboard</entity-name>
-      <entity-name>DashboardContact</entity-name>
-      <entity-name>Domain</entity-name>
-      <entity-name>Email</entity-name>
-      <entity-name>Entity</entity-name>
-      <entity-name>EntityTag</entity-name>
-      <entity-name>Event</entity-name>
-      <entity-name>Extension</entity-name>
-      <entity-name>File</entity-name>
-      <entity-name>FinancialAccount</entity-name>
-      <entity-name>FinancialType</entity-name>
-      <entity-name>Grant</entity-name>
-      <entity-name>Group</entity-name>
-      <entity-name>GroupContact</entity-name>
-      <entity-name>GroupNesting</entity-name>
-      <entity-name>GroupOrganization</entity-name>
-      <entity-name>Im</entity-name>
-      <entity-name>Job</entity-name>
-      <entity-name>LineItem</entity-name>
-      <entity-name>LocBlock</entity-name>
-      <entity-name>Location</entity-name>
-      <entity-name>LocationType</entity-name>
-      <entity-name>MailSettings</entity-name>
-      <entity-name>Mailing</entity-name>
-      <entity-name>MailingComponent</entity-name>
-      <entity-name>MailingContact</entity-name>
-      <entity-name>MailingEventConfirm</entity-name>
-      <entity-name>MailingEventResubscribe</entity-name>
-      <entity-name>MailingEventSubscribe</entity-name>
-      <entity-name>MailingEventUnsubscribe</entity-name>
-      <entity-name>MailingGroup</entity-name>
-      <entity-name>MailingJob</entity-name>
-      <entity-name>MailingRecipients</entity-name>
-      <entity-name>Membership</entity-name>
-      <entity-name>MembershipBlock</entity-name>
-      <entity-name>MembershipPayment</entity-name>
-      <entity-name>MembershipStatus</entity-name>
-      <entity-name>MembershipType</entity-name>
-      <entity-name>MessageTemplate</entity-name>
-      <entity-name>Note</entity-name>
-      <entity-name>OptionGroup</entity-name>
-      <entity-name>OptionValue</entity-name>
-      <entity-name>Participant</entity-name>
-      <entity-name>ParticipantPayment</entity-name>
-      <entity-name>ParticipantStatusType</entity-name>
-      <entity-name>PaymentProcessor</entity-name>
-      <entity-name>PaymentProcessorType</entity-name>
-      <entity-name>Phone</entity-name>
-      <entity-name>Pledge</entity-name>
-      <entity-name>PledgePayment</entity-name>
-      <entity-name>Premium</entity-name>
-      <entity-name>PriceField</entity-name>
-      <entity-name>PriceFieldValue</entity-name>
-      <entity-name>PriceSet</entity-name>
-      <entity-name>PrintLabel</entity-name>
-      <entity-name>Product</entity-name>
-      <entity-name>Profile</entity-name>
-      <entity-name>Relationship</entity-name>
-      <entity-name>RelationshipType</entity-name>
-      <entity-name>ReportInstance</entity-name>
-      <entity-name>ReportTemplate</entity-name>
-      <entity-name>Setting</entity-name>
-      <entity-name>SmsProvider</entity-name>
-      <entity-name>Survey</entity-name>
-      <entity-name>SurveyRespondant</entity-name>
-      <entity-name>System</entity-name>
-      <entity-name>SystemLog</entity-name>
-      <entity-name>Tag</entity-name>
-      <entity-name>UFField</entity-name>
-      <entity-name>UFGroup</entity-name>
-      <entity-name>UFJoin</entity-name>
-      <entity-name>UFMatch</entity-name>
-      <entity-name>Website</entity-name>
-      <entity-name>WordReplacement</entity-name>
-      <action-name>create</action-name>
-      <action-name>delete</action-name>
-      <action-name>getlist</action-name>
-      <action-name>getrefcount</action-name>
-      <action-name>setvalue</action-name>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>created_date</fieldName>
-        <name>created_date</name>
-        <title>Tag Created Date</title>
-        <type>12</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
-        <fieldName>created_id</fieldName>
-        <name>created_id</name>
-        <title>Tag Created By</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Tag ID</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tagset&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_tagset&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_tagset</fieldName>
-        <name>is_tagset</name>
-        <title>Tagset</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>description</fieldName>
-        <name>description</name>
-        <title>Description</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Tag Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Used For&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;used_for&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;optionGroupName&#x22;&#x3a;&#x22;tag_used_for&#x22;&#x7d;,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>used_for</fieldName>
-        <name>used_for</name>
-        <title>Used For</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_selectable</fieldName>
-        <name>is_selectable</name>
-        <title>Display Tag&#x3f;</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Reserved&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Reserved</title>
-        <type>16</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Parent Tag&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Tag&#x22;,&#x22;name&#x22;&#x3a;&#x22;parent_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Tag&#x22;&#x7d;</fieldDef>
-        <fieldName>parent_id</fieldName>
-        <name>parent_id</name>
-        <title>Parent Tag</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <key-index>tag</key-index>
-      <output-field>
-        <input-field>tag</input-field>
-        <output-field>name</output-field>
-      </output-field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>788</xloc>
-      <yloc>643</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>description is &#x22;imported from Salsa&#x22;</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>description</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>imported from Salsa</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>632</xloc>
-      <yloc>642</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>external_identifier to contact_id</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_contact</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>external_identifier</name>
-        <field>external_identifier</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>354</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>filter invalid tags</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>remove non-import fields</send_true_to>
-<send_false_to>Sort rows</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>tag_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>634</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>filter records with no contact_id</name>
+    <name>Keep tags only</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -844,165 +387,21 @@
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>contact_id</leftvalue>
- <function>IS NOT NULL</function>
+ <leftvalue>keep</leftvalue>
+ <function>&#x3d;</function>
  <rightvalue/>
- </condition>
+ <value><name>constant</name><type>String</type><text>1</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>81</xloc>
-      <yloc>424</yloc>
+      <yloc>266</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_tags</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_tags</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>tag</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>470</xloc>
-      <yloc>642</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-group fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>tag</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>361</xloc>
-      <yloc>635</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-import fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>tag_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>714</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>rename fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>tag.tag</name>
-        <rename>tag</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>tag_data.table_key</name>
-        <rename>external_identifier</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>79</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>tag id lookup</name>
+    <name>Lookup tags as a group</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -1018,13 +417,13 @@
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
-      <table>civicrm_tag</table>
+      <table>civicrm_group</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>tag</name>
-        <field>name</field>
+        <field>title</field>
         <condition>&#x3d;</condition>
         <name2/>
       </key>
@@ -1037,64 +436,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>569</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>tag_export.txt</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;tag_export.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>tag.tag</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>tag_data.table_key</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>15</yloc>
+      <xloc>155</xloc>
+      <yloc>571</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1436,7 +779,831 @@
     </step>
 
   <step>
-    <name>Keep tags only</name>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>tag</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>176</xloc>
+      <yloc>717</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <count_rows>N</count_rows>
+      <count_field/>
+      <reject_duplicate_row>N</reject_duplicate_row>
+      <error_description/>
+    <fields>      <field>        <name>tag</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>255</xloc>
+      <yloc>719</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>change &#x2b; to underscore in tag names</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>tag</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x2b;</replace_string>
+        <replace_by_string>_</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>79</xloc>
+      <yloc>502</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_entity_tag</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_entity_tag</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tag_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>43</xloc>
+      <yloc>867</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_tag_as_group</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_tag_as_group</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>group_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>171</xloc>
+      <yloc>904</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>create tags</name>
+    <type>CiviCrmOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
+    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
+    <Entity>Tag</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+      <entity-name>Acl</entity-name>
+      <entity-name>AclRole</entity-name>
+      <entity-name>ActionSchedule</entity-name>
+      <entity-name>Activity</entity-name>
+      <entity-name>ActivityContact</entity-name>
+      <entity-name>ActivityType</entity-name>
+      <entity-name>Address</entity-name>
+      <entity-name>Batch</entity-name>
+      <entity-name>Campaign</entity-name>
+      <entity-name>Case</entity-name>
+      <entity-name>CaseType</entity-name>
+      <entity-name>Constant</entity-name>
+      <entity-name>Contact</entity-name>
+      <entity-name>ContactType</entity-name>
+      <entity-name>Contribution</entity-name>
+      <entity-name>ContributionPage</entity-name>
+      <entity-name>ContributionRecur</entity-name>
+      <entity-name>ContributionSoft</entity-name>
+      <entity-name>Country</entity-name>
+      <entity-name>CustomField</entity-name>
+      <entity-name>CustomGroup</entity-name>
+      <entity-name>CustomSearch</entity-name>
+      <entity-name>CustomValue</entity-name>
+      <entity-name>Dashboard</entity-name>
+      <entity-name>DashboardContact</entity-name>
+      <entity-name>Domain</entity-name>
+      <entity-name>Email</entity-name>
+      <entity-name>Entity</entity-name>
+      <entity-name>EntityTag</entity-name>
+      <entity-name>Event</entity-name>
+      <entity-name>Extension</entity-name>
+      <entity-name>File</entity-name>
+      <entity-name>FinancialAccount</entity-name>
+      <entity-name>FinancialType</entity-name>
+      <entity-name>Grant</entity-name>
+      <entity-name>Group</entity-name>
+      <entity-name>GroupContact</entity-name>
+      <entity-name>GroupNesting</entity-name>
+      <entity-name>GroupOrganization</entity-name>
+      <entity-name>Im</entity-name>
+      <entity-name>Job</entity-name>
+      <entity-name>LineItem</entity-name>
+      <entity-name>LocBlock</entity-name>
+      <entity-name>Location</entity-name>
+      <entity-name>LocationType</entity-name>
+      <entity-name>MailSettings</entity-name>
+      <entity-name>Mailing</entity-name>
+      <entity-name>MailingComponent</entity-name>
+      <entity-name>MailingContact</entity-name>
+      <entity-name>MailingEventConfirm</entity-name>
+      <entity-name>MailingEventResubscribe</entity-name>
+      <entity-name>MailingEventSubscribe</entity-name>
+      <entity-name>MailingEventUnsubscribe</entity-name>
+      <entity-name>MailingGroup</entity-name>
+      <entity-name>MailingJob</entity-name>
+      <entity-name>MailingRecipients</entity-name>
+      <entity-name>Membership</entity-name>
+      <entity-name>MembershipBlock</entity-name>
+      <entity-name>MembershipPayment</entity-name>
+      <entity-name>MembershipStatus</entity-name>
+      <entity-name>MembershipType</entity-name>
+      <entity-name>MessageTemplate</entity-name>
+      <entity-name>Note</entity-name>
+      <entity-name>OptionGroup</entity-name>
+      <entity-name>OptionValue</entity-name>
+      <entity-name>Participant</entity-name>
+      <entity-name>ParticipantPayment</entity-name>
+      <entity-name>ParticipantStatusType</entity-name>
+      <entity-name>PaymentProcessor</entity-name>
+      <entity-name>PaymentProcessorType</entity-name>
+      <entity-name>Phone</entity-name>
+      <entity-name>Pledge</entity-name>
+      <entity-name>PledgePayment</entity-name>
+      <entity-name>Premium</entity-name>
+      <entity-name>PriceField</entity-name>
+      <entity-name>PriceFieldValue</entity-name>
+      <entity-name>PriceSet</entity-name>
+      <entity-name>PrintLabel</entity-name>
+      <entity-name>Product</entity-name>
+      <entity-name>Profile</entity-name>
+      <entity-name>Relationship</entity-name>
+      <entity-name>RelationshipType</entity-name>
+      <entity-name>ReportInstance</entity-name>
+      <entity-name>ReportTemplate</entity-name>
+      <entity-name>Setting</entity-name>
+      <entity-name>SmsProvider</entity-name>
+      <entity-name>Survey</entity-name>
+      <entity-name>SurveyRespondant</entity-name>
+      <entity-name>System</entity-name>
+      <entity-name>SystemLog</entity-name>
+      <entity-name>Tag</entity-name>
+      <entity-name>UFField</entity-name>
+      <entity-name>UFGroup</entity-name>
+      <entity-name>UFJoin</entity-name>
+      <entity-name>UFMatch</entity-name>
+      <entity-name>Website</entity-name>
+      <entity-name>WordReplacement</entity-name>
+      <action-name>create</action-name>
+      <action-name>delete</action-name>
+      <action-name>getlist</action-name>
+      <action-name>getrefcount</action-name>
+      <action-name>setvalue</action-name>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Tag ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>created_id</fieldName>
+        <name>created_id</name>
+        <title>Tag Created By</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>created_date</fieldName>
+        <name>created_date</name>
+        <title>Tag Created Date</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tagset&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_tagset&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_tagset</fieldName>
+        <name>is_tagset</name>
+        <title>Tagset</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>description</fieldName>
+        <name>description</name>
+        <title>Description</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Tag Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_selectable</fieldName>
+        <name>is_selectable</name>
+        <title>Display Tag&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Used For&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;used_for&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;optionGroupName&#x22;&#x3a;&#x22;tag_used_for&#x22;&#x7d;,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>used_for</fieldName>
+        <name>used_for</name>
+        <title>Used For</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Reserved&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_reserved</fieldName>
+        <name>is_reserved</name>
+        <title>Reserved</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Parent Tag&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Tag&#x22;,&#x22;name&#x22;&#x3a;&#x22;parent_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Tag&#x22;&#x7d;</fieldDef>
+        <fieldName>parent_id</fieldName>
+        <name>parent_id</name>
+        <title>Parent Tag</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>821</xloc>
+      <yloc>660</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>create tags as groups</name>
+    <type>CiviCrmOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
+    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
+    <Entity>Group</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+      <entity-name>Acl</entity-name>
+      <entity-name>AclRole</entity-name>
+      <entity-name>ActionSchedule</entity-name>
+      <entity-name>Activity</entity-name>
+      <entity-name>ActivityContact</entity-name>
+      <entity-name>ActivityType</entity-name>
+      <entity-name>Address</entity-name>
+      <entity-name>Batch</entity-name>
+      <entity-name>Campaign</entity-name>
+      <entity-name>Case</entity-name>
+      <entity-name>CaseType</entity-name>
+      <entity-name>Constant</entity-name>
+      <entity-name>Contact</entity-name>
+      <entity-name>ContactType</entity-name>
+      <entity-name>Contribution</entity-name>
+      <entity-name>ContributionPage</entity-name>
+      <entity-name>ContributionRecur</entity-name>
+      <entity-name>ContributionSoft</entity-name>
+      <entity-name>Country</entity-name>
+      <entity-name>CustomField</entity-name>
+      <entity-name>CustomGroup</entity-name>
+      <entity-name>CustomSearch</entity-name>
+      <entity-name>CustomValue</entity-name>
+      <entity-name>Dashboard</entity-name>
+      <entity-name>DashboardContact</entity-name>
+      <entity-name>Domain</entity-name>
+      <entity-name>Email</entity-name>
+      <entity-name>Entity</entity-name>
+      <entity-name>EntityTag</entity-name>
+      <entity-name>Event</entity-name>
+      <entity-name>Extension</entity-name>
+      <entity-name>File</entity-name>
+      <entity-name>FinancialAccount</entity-name>
+      <entity-name>FinancialType</entity-name>
+      <entity-name>Grant</entity-name>
+      <entity-name>Group</entity-name>
+      <entity-name>GroupContact</entity-name>
+      <entity-name>GroupNesting</entity-name>
+      <entity-name>GroupOrganization</entity-name>
+      <entity-name>Im</entity-name>
+      <entity-name>Job</entity-name>
+      <entity-name>LineItem</entity-name>
+      <entity-name>LocBlock</entity-name>
+      <entity-name>Location</entity-name>
+      <entity-name>LocationType</entity-name>
+      <entity-name>MailSettings</entity-name>
+      <entity-name>Mailing</entity-name>
+      <entity-name>MailingComponent</entity-name>
+      <entity-name>MailingContact</entity-name>
+      <entity-name>MailingEventConfirm</entity-name>
+      <entity-name>MailingEventResubscribe</entity-name>
+      <entity-name>MailingEventSubscribe</entity-name>
+      <entity-name>MailingEventUnsubscribe</entity-name>
+      <entity-name>MailingGroup</entity-name>
+      <entity-name>MailingJob</entity-name>
+      <entity-name>MailingRecipients</entity-name>
+      <entity-name>Membership</entity-name>
+      <entity-name>MembershipBlock</entity-name>
+      <entity-name>MembershipPayment</entity-name>
+      <entity-name>MembershipStatus</entity-name>
+      <entity-name>MembershipType</entity-name>
+      <entity-name>MessageTemplate</entity-name>
+      <entity-name>Note</entity-name>
+      <entity-name>OptionGroup</entity-name>
+      <entity-name>OptionValue</entity-name>
+      <entity-name>Participant</entity-name>
+      <entity-name>ParticipantPayment</entity-name>
+      <entity-name>ParticipantStatusType</entity-name>
+      <entity-name>PaymentProcessor</entity-name>
+      <entity-name>PaymentProcessorType</entity-name>
+      <entity-name>Phone</entity-name>
+      <entity-name>Pledge</entity-name>
+      <entity-name>PledgePayment</entity-name>
+      <entity-name>Premium</entity-name>
+      <entity-name>PriceField</entity-name>
+      <entity-name>PriceFieldValue</entity-name>
+      <entity-name>PriceSet</entity-name>
+      <entity-name>PrintLabel</entity-name>
+      <entity-name>Product</entity-name>
+      <entity-name>Profile</entity-name>
+      <entity-name>Relationship</entity-name>
+      <entity-name>RelationshipType</entity-name>
+      <entity-name>ReportInstance</entity-name>
+      <entity-name>ReportTemplate</entity-name>
+      <entity-name>Setting</entity-name>
+      <entity-name>SmsProvider</entity-name>
+      <entity-name>Survey</entity-name>
+      <entity-name>SurveyRespondant</entity-name>
+      <entity-name>System</entity-name>
+      <entity-name>SystemLog</entity-name>
+      <entity-name>Tag</entity-name>
+      <entity-name>UFField</entity-name>
+      <entity-name>UFGroup</entity-name>
+      <entity-name>UFJoin</entity-name>
+      <entity-name>UFMatch</entity-name>
+      <entity-name>Website</entity-name>
+      <entity-name>WordReplacement</entity-name>
+      <action-name>create</action-name>
+      <action-name>delete</action-name>
+      <action-name>getlist</action-name>
+      <action-name>getrefcount</action-name>
+      <action-name>setvalue</action-name>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Type&#x22;,&#x22;maxlength&#x22;&#x3a;128,&#x22;name&#x22;&#x3a;&#x22;group_type&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>group_type</fieldName>
+        <name>group_type</name>
+        <title>Group Type</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Saved Search ID&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_SavedSearch&#x22;,&#x22;name&#x22;&#x3a;&#x22;saved_search_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;SavedSearch&#x22;&#x7d;</fieldDef>
+        <fieldName>saved_search_id</fieldName>
+        <name>saved_search_id</name>
+        <title>Saved Search ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Parents&#x22;,&#x22;name&#x22;&#x3a;&#x22;parents&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>parents</fieldName>
+        <name>parents</name>
+        <title>Group Parents</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_clause&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>where_clause</fieldName>
+        <name>where_clause</name>
+        <title>Group Where Clause</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Visibility Setting&#x22;,&#x22;default&#x22;&#x3a;&#x22;User and User Admin Only&#x22;,&#x22;maxlength&#x22;&#x3a;24,&#x22;name&#x22;&#x3a;&#x22;visibility&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;callback&#x22;&#x3a;&#x22;CRM_Core_SelectValues&#x3a;&#x3a;groupVisibility&#x22;&#x7d;,&#x22;size&#x22;&#x3a;20&#x7d;</fieldDef>
+        <fieldName>visibility</fieldName>
+        <name>visibility</name>
+        <title>Group Visibility Setting</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Enabled&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_active</fieldName>
+        <name>is_active</name>
+        <title>Group Enabled</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Cache Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;cache_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>cache_date</fieldName>
+        <name>cache_date</name>
+        <title>Group Cache Date</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Children&#x22;,&#x22;name&#x22;&#x3a;&#x22;children&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>children</fieldName>
+        <name>children</name>
+        <title>Group Children</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Next Group Refresh Time&#x22;,&#x22;name&#x22;&#x3a;&#x22;refresh_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>refresh_date</fieldName>
+        <name>refresh_date</name>
+        <title>Next Group Refresh Time</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Reserved&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_reserved</fieldName>
+        <name>is_reserved</name>
+        <title>Group is Reserved</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Select Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;select_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>select_tables</fieldName>
+        <name>select_tables</name>
+        <title>Tables For Select Clause</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Group ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>created_id</fieldName>
+        <name>created_id</name>
+        <title>Group Created By</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Title&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;title&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>title</fieldName>
+        <name>title</name>
+        <title>Group Title</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Modified By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;modified_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>modified_id</fieldName>
+        <name>modified_id</name>
+        <title>Group Modified By</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Source&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;source&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>source</fieldName>
+        <name>source</name>
+        <title>Group Source</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>where_tables</fieldName>
+        <name>where_tables</name>
+        <title>Tables For Where Clause</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Group Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;2&#x7d;</fieldDef>
+        <fieldName>description</fieldName>
+        <name>description</name>
+        <title>Group Description</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Group Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Hidden&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_hidden&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_hidden</fieldName>
+        <name>is_hidden</name>
+        <title>Group is Hidden</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <key-index>tag</key-index>
+      <key-index>description</key-index>
+      <output-field>
+        <input-field>tag</input-field>
+        <output-field>title</output-field>
+      </output-field>
+      <output-field>
+        <input-field>description</input-field>
+        <output-field>description</output-field>
+      </output-field>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>816</xloc>
+      <yloc>779</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>description is &#x22;imported from Salsa&#x22;</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>imported from Salsa</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>628</xloc>
+      <yloc>710</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>external_identifier to contact_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_contact</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>external_identifier</name>
+        <field>external_identifier</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>82</xloc>
+      <yloc>354</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>filter invalid tags</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1446,20 +1613,419 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to/>
-<send_false_to/>
+<send_true_to>remove non-import fields</send_true_to>
+<send_false_to>Sort rows</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>keep</leftvalue>
- <function>&#x3d;</function>
+ <leftvalue>tag_id</leftvalue>
+ <function>IS NOT NULL</function>
  <rightvalue/>
- <value><name>constant</name><type>String</type><text>1</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>74</xloc>
+      <yloc>668</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>filter records with no contact_id</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>change &#x2b; to underscore in tag names</send_true_to>
+<send_false_to>TEMP</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>contact_id</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>81</xloc>
-      <yloc>266</yloc>
+      <yloc>424</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>invalid_tags</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_tags</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>tag</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>466</xloc>
+      <yloc>710</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>remove non-group fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>tag</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>357</xloc>
+      <yloc>703</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>remove non-import fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tag_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>74</xloc>
+      <yloc>782</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>rename fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>tag.tag</name>
+        <rename>tag</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tag_data.table_key</name>
+        <rename>external_identifier</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>79</xloc>
+      <yloc>79</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>rename tag_id to group_id</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tag_id</name>
+        <rename>group_id</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>162</xloc>
+      <yloc>837</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tag id lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_tag</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>tag</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tag_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>25</xloc>
+      <yloc>583</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tag_export.txt</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;tag_export.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>tag.tag</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>tag_data.table_key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>81</xloc>
+      <yloc>15</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>TEMP</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;TEMP</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>tag</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>external_identifier</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>keep</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>242</xloc>
+      <yloc>414</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

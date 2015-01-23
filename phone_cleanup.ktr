@@ -315,14 +315,14 @@
   <hop> <from>phone input</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines</from><to>Remove phones &#x3e; 32 chars</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_type_id lookup</from><to>Remove records without location_id and phone_type_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove records without location_id and phone_type_id</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove phones &#x3e; 32 chars</from><to>Add reason&#x3a; &#x22;Phone length &#x3e; 32 characters&#x22;</to><enabled>Y</enabled> </hop>
   <hop> <from>Add reason&#x3a; &#x22;Phone length &#x3e; 32 characters&#x22;</from><to>get names for invalid phone</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove records without location_id and phone_type_id</from><to>Reason&#x3a; Missing location_type_id or phone_type_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Reason&#x3a; Missing location_type_id or phone_type_id</from><to>Remove irrelevant fields 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove irrelevant fields 2</from><to>get names for invalid phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove non-import fields</from><to>Force phone_type_id and location_type_id to integers</to><enabled>Y</enabled> </hop>
   <hop> <from>Force phone_type_id and location_type_id to integers</from><to>valid phones</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove records without location_id and phone_type_id</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove non-import fields</from><to>Force phone_type_id and location_type_id to integers</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove phones &#x3e; 32 chars</from><to>Add reason&#x3a; &#x22;Phone length &#x3e; 32 characters&#x22;</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add phone_type option group ID</name>

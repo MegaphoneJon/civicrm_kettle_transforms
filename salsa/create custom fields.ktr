@@ -73,27 +73,6 @@
   </info>
   <notepads>
     <notepad>
-      <note>Option Groups</note>
-      <xloc>1152</xloc>
-      <yloc>100</yloc>
-      <width>94</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>Custom Field Group</note>
       <xloc>26</xloc>
       <yloc>5</yloc>
@@ -116,31 +95,10 @@
     </notepad>
     <notepad>
       <note>Option Values</note>
-      <xloc>675</xloc>
-      <yloc>7</yloc>
+      <xloc>440</xloc>
+      <yloc>6</yloc>
       <width>92</width>
       <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>ugh - non-enums can have&#xa;option values&#x21; And some&#xa;enums have no values.</note>
-      <xloc>1183</xloc>
-      <yloc>17</yloc>
-      <width>164</width>
-      <heigth>58</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -393,29 +351,20 @@
   <hop> <from>Data for custom group</from><to>look to see if group&#x27;s already created</to><enabled>Y</enabled> </hop>
   <hop> <from>look to see if group&#x27;s already created</from><to>Don&#x27;t create existing group</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t create existing group</from><to>Create Custom Group</to><enabled>Y</enabled> </hop>
-  <hop> <from>type &#x3d; enum or has option_values</from><to>Create Option Groups</to><enabled>Y</enabled> </hop>
   <hop> <from>custom_column_options.txt</from><to>Wait for Custom Fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Wait for Custom Fields</from><to>Option Values fields only</to><enabled>Y</enabled> </hop>
   <hop> <from>Option Values fields only</from><to>lookup option_group_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_column_options.txt 2</from><to>Column keys only</to><enabled>N</enabled> </hop>
-  <hop> <from>Column keys only</from><to>Sort rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows</from><to>Unique column keys</to><enabled>Y</enabled> </hop>
-  <hop> <from>Option Group fields only</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort rows 2</from><to>Merge Join</to><enabled>Y</enabled> </hop>
-  <hop> <from>Merge Join</from><to>type &#x3d; enum or has option_values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique column keys</from><to>Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>look to see if value&#x27;s already created</from><to>Don&#x27;t create existing option value</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup option_group_id</from><to>If field value is null</to><enabled>Y</enabled> </hop>
   <hop> <from>If field value is null</from><to>look to see if value&#x27;s already created</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t create existing option value</from><to>Create Option Values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Civi-friendly names</from><to>custom_group is Salsa Custom Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_group is Salsa Custom Fields</from><to>get custom_group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Civi-friendly names</from><to>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</from><to>get custom_group_id</to><enabled>Y</enabled> </hop>
   <hop> <from>get custom_group_id</from><to>Remap data_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap data_type</from><to>Remap html_type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Create Custom Fields</from><to>TEMP</to><enabled>Y</enabled> </hop>
   <hop> <from>If field value is null 2</from><to>Convert integers to strings</to><enabled>Y</enabled> </hop>
   <hop> <from>Convert integers to strings</from><to>Create Custom Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_columns.txt 2</from><to>Wait for Custom Group</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_columns.txt</from><to>Wait for Custom Group</to><enabled>Y</enabled> </hop>
   <hop> <from>Wait for Custom Group</from><to>Civi-friendly names</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap html_type</from><to>If field value is null 2</to><enabled>Y</enabled> </hop>
   </order>
@@ -440,10 +389,6 @@
         <precision>-2</precision>
       </field>      <field>        <name>custom_column.Date_Created</name>
         <rename>created_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column.name</name>
-        <rename>name</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>custom_column.label</name>
@@ -476,7 +421,7 @@
     </step>
 
   <step>
-    <name>Column keys only</name>
+    <name>Convert integers to strings</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -486,2094 +431,26 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>custom_column_option.custom_column_KEY</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1330</xloc>
-      <yloc>212</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Create Custom Group</name>
-    <type>CiviCrmOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
-    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>CustomGroup</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-      <entity-name>Acl</entity-name>
-      <entity-name>AclRole</entity-name>
-      <entity-name>ActionSchedule</entity-name>
-      <entity-name>Activity</entity-name>
-      <entity-name>ActivityContact</entity-name>
-      <entity-name>ActivityType</entity-name>
-      <entity-name>Address</entity-name>
-      <entity-name>Batch</entity-name>
-      <entity-name>Campaign</entity-name>
-      <entity-name>Case</entity-name>
-      <entity-name>CaseType</entity-name>
-      <entity-name>Constant</entity-name>
-      <entity-name>Contact</entity-name>
-      <entity-name>ContactType</entity-name>
-      <entity-name>Contribution</entity-name>
-      <entity-name>ContributionPage</entity-name>
-      <entity-name>ContributionRecur</entity-name>
-      <entity-name>ContributionSoft</entity-name>
-      <entity-name>Country</entity-name>
-      <entity-name>CustomField</entity-name>
-      <entity-name>CustomGroup</entity-name>
-      <entity-name>CustomSearch</entity-name>
-      <entity-name>CustomValue</entity-name>
-      <entity-name>Dashboard</entity-name>
-      <entity-name>DashboardContact</entity-name>
-      <entity-name>Domain</entity-name>
-      <entity-name>Email</entity-name>
-      <entity-name>Entity</entity-name>
-      <entity-name>EntityTag</entity-name>
-      <entity-name>Event</entity-name>
-      <entity-name>Extension</entity-name>
-      <entity-name>File</entity-name>
-      <entity-name>FinancialAccount</entity-name>
-      <entity-name>FinancialType</entity-name>
-      <entity-name>Grant</entity-name>
-      <entity-name>Group</entity-name>
-      <entity-name>GroupContact</entity-name>
-      <entity-name>GroupNesting</entity-name>
-      <entity-name>GroupOrganization</entity-name>
-      <entity-name>Im</entity-name>
-      <entity-name>Job</entity-name>
-      <entity-name>LineItem</entity-name>
-      <entity-name>LocBlock</entity-name>
-      <entity-name>Location</entity-name>
-      <entity-name>LocationType</entity-name>
-      <entity-name>MailSettings</entity-name>
-      <entity-name>Mailing</entity-name>
-      <entity-name>MailingComponent</entity-name>
-      <entity-name>MailingContact</entity-name>
-      <entity-name>MailingEventConfirm</entity-name>
-      <entity-name>MailingEventResubscribe</entity-name>
-      <entity-name>MailingEventSubscribe</entity-name>
-      <entity-name>MailingEventUnsubscribe</entity-name>
-      <entity-name>MailingGroup</entity-name>
-      <entity-name>MailingJob</entity-name>
-      <entity-name>MailingRecipients</entity-name>
-      <entity-name>Membership</entity-name>
-      <entity-name>MembershipBlock</entity-name>
-      <entity-name>MembershipPayment</entity-name>
-      <entity-name>MembershipStatus</entity-name>
-      <entity-name>MembershipType</entity-name>
-      <entity-name>MessageTemplate</entity-name>
-      <entity-name>Note</entity-name>
-      <entity-name>OptionGroup</entity-name>
-      <entity-name>OptionValue</entity-name>
-      <entity-name>Participant</entity-name>
-      <entity-name>ParticipantPayment</entity-name>
-      <entity-name>ParticipantStatusType</entity-name>
-      <entity-name>PaymentProcessor</entity-name>
-      <entity-name>PaymentProcessorType</entity-name>
-      <entity-name>Phone</entity-name>
-      <entity-name>Pledge</entity-name>
-      <entity-name>PledgePayment</entity-name>
-      <entity-name>Premium</entity-name>
-      <entity-name>PriceField</entity-name>
-      <entity-name>PriceFieldValue</entity-name>
-      <entity-name>PriceSet</entity-name>
-      <entity-name>PrintLabel</entity-name>
-      <entity-name>Product</entity-name>
-      <entity-name>Profile</entity-name>
-      <entity-name>Relationship</entity-name>
-      <entity-name>RelationshipType</entity-name>
-      <entity-name>ReportInstance</entity-name>
-      <entity-name>ReportTemplate</entity-name>
-      <entity-name>Setting</entity-name>
-      <entity-name>SmsProvider</entity-name>
-      <entity-name>Survey</entity-name>
-      <entity-name>SurveyRespondant</entity-name>
-      <entity-name>System</entity-name>
-      <entity-name>SystemLog</entity-name>
-      <entity-name>Tag</entity-name>
-      <entity-name>UFField</entity-name>
-      <entity-name>UFGroup</entity-name>
-      <entity-name>UFJoin</entity-name>
-      <entity-name>UFMatch</entity-name>
-      <entity-name>Website</entity-name>
-      <entity-name>WordReplacement</entity-name>
-      <action-name>create</action-name>
-      <action-name>delete</action-name>
-      <action-name>getlist</action-name>
-      <action-name>getrefcount</action-name>
-      <action-name>setvalue</action-name>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Minimum Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;min_multiple&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>min_multiple</fieldName>
-        <name>min_multiple</name>
-        <title>Minimum Multiple Records</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>created_date</fieldName>
-        <name>created_date</name>
-        <title>Custom Group Created Date</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Weight&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;weight&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>weight</fieldName>
-        <name>weight</name>
-        <title>Custom Group Weight</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Is Active&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_active</fieldName>
-        <name>is_active</name>
-        <title>Custom Group Is Active&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Extends&#x22;,&#x22;default&#x22;&#x3a;&#x22;Contact&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;extends&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>extends</fieldName>
-        <name>extends</name>
-        <title>Custom Group Extends</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Subtype&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;extends_entity_column_value&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>extends_entity_column_value</fieldName>
-        <name>extends_entity_column_value</name>
-        <title>Custom Group Subtype</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Collapse Group Display&#x22;,&#x22;name&#x22;&#x3a;&#x22;collapse_adv_display&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>collapse_adv_display</fieldName>
-        <name>collapse_adv_display</name>
-        <title>Collapse Group Display</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Reserved Group&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Reserved Group&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;custom_group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Custom Group ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
-        <fieldName>created_id</fieldName>
-        <name>created_id</name>
-        <title>Custom Group Created By</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;80,&#x22;title&#x22;&#x3a;&#x22;Custom Group Post Text&#x22;,&#x22;name&#x22;&#x3a;&#x22;help_post&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;4&#x7d;</fieldDef>
-        <fieldName>help_post</fieldName>
-        <name>help_post</name>
-        <title>Custom Group Post Text</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Subtype List&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;name&#x22;&#x3a;&#x22;extends_entity_column_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>extends_entity_column_id</fieldName>
-        <name>extends_entity_column_id</name>
-        <title>Custom Group Subtype List</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Title&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;title&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>title</fieldName>
-        <name>title</name>
-        <title>Custom Group Title</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Style&#x22;,&#x22;maxlength&#x22;&#x3a;15,&#x22;name&#x22;&#x3a;&#x22;style&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;callback&#x22;&#x3a;&#x22;CRM_Core_SelectValues&#x3a;&#x3a;customGroupStyle&#x22;&#x7d;,&#x22;size&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>style</fieldName>
-        <name>style</name>
-        <title>Custom Group Style</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;80,&#x22;title&#x22;&#x3a;&#x22;Custom Group Pre Text&#x22;,&#x22;name&#x22;&#x3a;&#x22;help_pre&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;4&#x7d;</fieldDef>
-        <fieldName>help_pre</fieldName>
-        <name>help_pre</name>
-        <title>Custom Group Pre Text</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Custom Group Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Table Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;table_name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>table_name</fieldName>
-        <name>table_name</name>
-        <title>Table Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Supports Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_multiple&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_multiple</fieldName>
-        <name>is_multiple</name>
-        <title>Supports Multiple Records</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Collapse Custom Group&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;collapse_display&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>collapse_display</fieldName>
-        <name>collapse_display</name>
-        <title>Collapse Custom Group&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Maximum Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;max_multiple&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>max_multiple</fieldName>
-        <name>max_multiple</name>
-        <title>Maximum Multiple Records</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <key-index>title</key-index>
-      <key-index>extends</key-index>
-      <key-index>style</key-index>
-      <key-index>is_active</key-index>
-      <output-field>
-        <input-field>title</input-field>
-        <output-field>title</output-field>
-      </output-field>
-      <output-field>
-        <input-field>style</input-field>
-        <output-field>style</output-field>
-      </output-field>
-      <output-field>
-        <input-field>extends</input-field>
-        <output-field>extends</output-field>
-      </output-field>
-      <output-field>
-        <input-field>is_active</input-field>
-        <output-field>is_active</output-field>
-      </output-field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>261</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Create Option Groups</name>
-    <type>CiviCrmOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
-    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>OptionGroup</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-      <entity-name>Acl</entity-name>
-      <entity-name>AclRole</entity-name>
-      <entity-name>ActionSchedule</entity-name>
-      <entity-name>Activity</entity-name>
-      <entity-name>ActivityContact</entity-name>
-      <entity-name>ActivityType</entity-name>
-      <entity-name>Address</entity-name>
-      <entity-name>Batch</entity-name>
-      <entity-name>Campaign</entity-name>
-      <entity-name>Case</entity-name>
-      <entity-name>CaseType</entity-name>
-      <entity-name>Constant</entity-name>
-      <entity-name>Contact</entity-name>
-      <entity-name>ContactType</entity-name>
-      <entity-name>Contribution</entity-name>
-      <entity-name>ContributionPage</entity-name>
-      <entity-name>ContributionRecur</entity-name>
-      <entity-name>ContributionSoft</entity-name>
-      <entity-name>Country</entity-name>
-      <entity-name>CustomField</entity-name>
-      <entity-name>CustomGroup</entity-name>
-      <entity-name>CustomSearch</entity-name>
-      <entity-name>CustomValue</entity-name>
-      <entity-name>Dashboard</entity-name>
-      <entity-name>DashboardContact</entity-name>
-      <entity-name>Domain</entity-name>
-      <entity-name>Email</entity-name>
-      <entity-name>Entity</entity-name>
-      <entity-name>EntityTag</entity-name>
-      <entity-name>Event</entity-name>
-      <entity-name>Extension</entity-name>
-      <entity-name>File</entity-name>
-      <entity-name>FinancialAccount</entity-name>
-      <entity-name>FinancialType</entity-name>
-      <entity-name>Grant</entity-name>
-      <entity-name>Group</entity-name>
-      <entity-name>GroupContact</entity-name>
-      <entity-name>GroupNesting</entity-name>
-      <entity-name>GroupOrganization</entity-name>
-      <entity-name>Im</entity-name>
-      <entity-name>Job</entity-name>
-      <entity-name>LineItem</entity-name>
-      <entity-name>LocBlock</entity-name>
-      <entity-name>Location</entity-name>
-      <entity-name>LocationType</entity-name>
-      <entity-name>MailSettings</entity-name>
-      <entity-name>Mailing</entity-name>
-      <entity-name>MailingComponent</entity-name>
-      <entity-name>MailingContact</entity-name>
-      <entity-name>MailingEventConfirm</entity-name>
-      <entity-name>MailingEventResubscribe</entity-name>
-      <entity-name>MailingEventSubscribe</entity-name>
-      <entity-name>MailingEventUnsubscribe</entity-name>
-      <entity-name>MailingGroup</entity-name>
-      <entity-name>MailingJob</entity-name>
-      <entity-name>MailingRecipients</entity-name>
-      <entity-name>Membership</entity-name>
-      <entity-name>MembershipBlock</entity-name>
-      <entity-name>MembershipPayment</entity-name>
-      <entity-name>MembershipStatus</entity-name>
-      <entity-name>MembershipType</entity-name>
-      <entity-name>MessageTemplate</entity-name>
-      <entity-name>Note</entity-name>
-      <entity-name>OptionGroup</entity-name>
-      <entity-name>OptionValue</entity-name>
-      <entity-name>Participant</entity-name>
-      <entity-name>ParticipantPayment</entity-name>
-      <entity-name>ParticipantStatusType</entity-name>
-      <entity-name>PaymentProcessor</entity-name>
-      <entity-name>PaymentProcessorType</entity-name>
-      <entity-name>Phone</entity-name>
-      <entity-name>Pledge</entity-name>
-      <entity-name>PledgePayment</entity-name>
-      <entity-name>Premium</entity-name>
-      <entity-name>PriceField</entity-name>
-      <entity-name>PriceFieldValue</entity-name>
-      <entity-name>PriceSet</entity-name>
-      <entity-name>PrintLabel</entity-name>
-      <entity-name>Product</entity-name>
-      <entity-name>Profile</entity-name>
-      <entity-name>Relationship</entity-name>
-      <entity-name>RelationshipType</entity-name>
-      <entity-name>ReportInstance</entity-name>
-      <entity-name>ReportTemplate</entity-name>
-      <entity-name>Setting</entity-name>
-      <entity-name>SmsProvider</entity-name>
-      <entity-name>Survey</entity-name>
-      <entity-name>SurveyRespondant</entity-name>
-      <entity-name>System</entity-name>
-      <entity-name>SystemLog</entity-name>
-      <entity-name>Tag</entity-name>
-      <entity-name>UFField</entity-name>
-      <entity-name>UFGroup</entity-name>
-      <entity-name>UFJoin</entity-name>
-      <entity-name>UFMatch</entity-name>
-      <entity-name>Website</entity-name>
-      <entity-name>WordReplacement</entity-name>
-      <action-name>create</action-name>
-      <action-name>delete</action-name>
-      <action-name>getlist</action-name>
-      <action-name>getrefcount</action-name>
-      <action-name>setvalue</action-name>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;option_group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Option Group ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group title&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;title&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>title</fieldName>
-        <name>title</name>
-        <title>Option Group title</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group Is Active&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_active</fieldName>
-        <name>is_active</name>
-        <title>Option Group Is Active&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>description</fieldName>
-        <name>description</name>
-        <title>Option Group Description</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Option Group Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group Is Reserved&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Option Group Is Reserved&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group Is Locked&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_locked&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_locked</fieldName>
-        <name>is_locked</name>
-        <title>Option Group Is Locked</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <key-index>name</key-index>
-      <key-index>title</key-index>
-      <key-index>description</key-index>
-      <output-field>
-        <input-field>title</input-field>
-        <output-field>title</output-field>
-      </output-field>
-      <output-field>
-        <input-field>description</input-field>
-        <output-field>description</output-field>
-      </output-field>
-      <output-field>
-        <input-field>name</input-field>
-        <output-field>name</output-field>
-      </output-field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1188</xloc>
-      <yloc>543</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Create Option Values</name>
-    <type>CiviCrmOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
-    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>OptionValue</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-      <entity-name>Acl</entity-name>
-      <entity-name>AclRole</entity-name>
-      <entity-name>ActionSchedule</entity-name>
-      <entity-name>Activity</entity-name>
-      <entity-name>ActivityContact</entity-name>
-      <entity-name>ActivityType</entity-name>
-      <entity-name>Address</entity-name>
-      <entity-name>Batch</entity-name>
-      <entity-name>Campaign</entity-name>
-      <entity-name>Case</entity-name>
-      <entity-name>CaseType</entity-name>
-      <entity-name>Constant</entity-name>
-      <entity-name>Contact</entity-name>
-      <entity-name>ContactType</entity-name>
-      <entity-name>Contribution</entity-name>
-      <entity-name>ContributionPage</entity-name>
-      <entity-name>ContributionRecur</entity-name>
-      <entity-name>ContributionSoft</entity-name>
-      <entity-name>Country</entity-name>
-      <entity-name>CustomField</entity-name>
-      <entity-name>CustomGroup</entity-name>
-      <entity-name>CustomSearch</entity-name>
-      <entity-name>CustomValue</entity-name>
-      <entity-name>Dashboard</entity-name>
-      <entity-name>DashboardContact</entity-name>
-      <entity-name>Domain</entity-name>
-      <entity-name>Email</entity-name>
-      <entity-name>Entity</entity-name>
-      <entity-name>EntityTag</entity-name>
-      <entity-name>Event</entity-name>
-      <entity-name>Extension</entity-name>
-      <entity-name>File</entity-name>
-      <entity-name>FinancialAccount</entity-name>
-      <entity-name>FinancialType</entity-name>
-      <entity-name>Grant</entity-name>
-      <entity-name>Group</entity-name>
-      <entity-name>GroupContact</entity-name>
-      <entity-name>GroupNesting</entity-name>
-      <entity-name>GroupOrganization</entity-name>
-      <entity-name>Im</entity-name>
-      <entity-name>Job</entity-name>
-      <entity-name>LineItem</entity-name>
-      <entity-name>LocBlock</entity-name>
-      <entity-name>Location</entity-name>
-      <entity-name>LocationType</entity-name>
-      <entity-name>MailSettings</entity-name>
-      <entity-name>Mailing</entity-name>
-      <entity-name>MailingComponent</entity-name>
-      <entity-name>MailingContact</entity-name>
-      <entity-name>MailingEventConfirm</entity-name>
-      <entity-name>MailingEventResubscribe</entity-name>
-      <entity-name>MailingEventSubscribe</entity-name>
-      <entity-name>MailingEventUnsubscribe</entity-name>
-      <entity-name>MailingGroup</entity-name>
-      <entity-name>MailingJob</entity-name>
-      <entity-name>MailingRecipients</entity-name>
-      <entity-name>Membership</entity-name>
-      <entity-name>MembershipBlock</entity-name>
-      <entity-name>MembershipPayment</entity-name>
-      <entity-name>MembershipStatus</entity-name>
-      <entity-name>MembershipType</entity-name>
-      <entity-name>MessageTemplate</entity-name>
-      <entity-name>Note</entity-name>
-      <entity-name>OptionGroup</entity-name>
-      <entity-name>OptionValue</entity-name>
-      <entity-name>Participant</entity-name>
-      <entity-name>ParticipantPayment</entity-name>
-      <entity-name>ParticipantStatusType</entity-name>
-      <entity-name>PaymentProcessor</entity-name>
-      <entity-name>PaymentProcessorType</entity-name>
-      <entity-name>Phone</entity-name>
-      <entity-name>Pledge</entity-name>
-      <entity-name>PledgePayment</entity-name>
-      <entity-name>Premium</entity-name>
-      <entity-name>PriceField</entity-name>
-      <entity-name>PriceFieldValue</entity-name>
-      <entity-name>PriceSet</entity-name>
-      <entity-name>PrintLabel</entity-name>
-      <entity-name>Product</entity-name>
-      <entity-name>Profile</entity-name>
-      <entity-name>Relationship</entity-name>
-      <entity-name>RelationshipType</entity-name>
-      <entity-name>ReportInstance</entity-name>
-      <entity-name>ReportTemplate</entity-name>
-      <entity-name>Setting</entity-name>
-      <entity-name>SmsProvider</entity-name>
-      <entity-name>Survey</entity-name>
-      <entity-name>SurveyRespondant</entity-name>
-      <entity-name>System</entity-name>
-      <entity-name>SystemLog</entity-name>
-      <entity-name>Tag</entity-name>
-      <entity-name>UFField</entity-name>
-      <entity-name>UFGroup</entity-name>
-      <entity-name>UFJoin</entity-name>
-      <entity-name>UFMatch</entity-name>
-      <entity-name>Website</entity-name>
-      <entity-name>WordReplacement</entity-name>
-      <action-name>create</action-name>
-      <action-name>delete</action-name>
-      <action-name>getlist</action-name>
-      <action-name>getrefcount</action-name>
-      <action-name>setvalue</action-name>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Weight&#x22;,&#x22;name&#x22;&#x3a;&#x22;weight&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>weight</fieldName>
-        <name>weight</name>
-        <title>Option Weight</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Active&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_active</fieldName>
-        <name>is_active</name>
-        <title>Option Is Active</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Domain&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Domain&#x22;,&#x22;name&#x22;&#x3a;&#x22;domain_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Domain&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_domain&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>domain_id</fieldName>
-        <name>domain_id</name>
-        <title>Option Domain</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Default&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_default&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_default</fieldName>
-        <name>is_default</name>
-        <title>Option is Default&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Label&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;label&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>label</fieldName>
-        <name>label</name>
-        <title>Option Label</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Reserved&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Option Is Reserved&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group ID&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_OptionGroup&#x22;,&#x22;name&#x22;&#x3a;&#x22;option_group_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;OptionGroup&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_option_group&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>option_group_id</fieldName>
-        <name>option_group_id</name>
-        <title>Option Group ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;option_value_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Option Value ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Component&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Component&#x22;,&#x22;name&#x22;&#x3a;&#x22;component_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;1,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_component&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>component_id</fieldName>
-        <name>component_id</name>
-        <title>Option Component</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Grouping Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;grouping&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>grouping</fieldName>
-        <name>grouping</name>
-        <title>Option Grouping Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Option Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;8&#x7d;</fieldDef>
-        <fieldName>description</fieldName>
-        <name>description</name>
-        <title>Option Description</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;export&#x22;&#x3a;true,&#x22;title&#x22;&#x3a;&#x22;Option Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;dataPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;headerPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;import&#x22;&#x3a;true,&#x22;where&#x22;&#x3a;&#x22;civicrm_option_value.name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Option Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value&#x22;,&#x22;maxlength&#x22;&#x3a;512,&#x22;name&#x22;&#x3a;&#x22;value&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>value</fieldName>
-        <name>value</name>
-        <title>Option Value</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Visibility&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;name&#x22;&#x3a;&#x22;visibility_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>visibility_id</fieldName>
-        <name>visibility_id</name>
-        <title>Option Visibility</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Filter&#x22;,&#x22;name&#x22;&#x3a;&#x22;filter&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>filter</fieldName>
-        <name>filter</name>
-        <title>Filter</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Header&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_optgroup&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_optgroup</fieldName>
-        <name>is_optgroup</name>
-        <title>Option is Header&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <key-index>value</key-index>
-      <key-index>label</key-index>
-      <key-index>is_default</key-index>
-      <key-index>is_active</key-index>
-      <key-index>weight</key-index>
-      <key-index>name</key-index>
-      <key-index>option_group_id</key-index>
-      <output-field>
-        <input-field>weight</input-field>
-        <output-field>weight</output-field>
-      </output-field>
-      <output-field>
-        <input-field>is_active</input-field>
-        <output-field>is_active</output-field>
-      </output-field>
-      <output-field>
-        <input-field>name</input-field>
-        <output-field>name</output-field>
-      </output-field>
-      <output-field>
-        <input-field>value</input-field>
-        <output-field>value</output-field>
-      </output-field>
-      <output-field>
-        <input-field>is_default</input-field>
-        <output-field>is_default</output-field>
-      </output-field>
-      <output-field>
-        <input-field>label</input-field>
-        <output-field>label</output-field>
-      </output-field>
-      <output-field>
-        <input-field>option_group_id</input-field>
-        <output-field>option_group_id</output-field>
-      </output-field>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>728</xloc>
-      <yloc>501</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data for custom group</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>title</name>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>custom_group_id</name>
+        <rename>custom_group_id</rename>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>extends</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>style</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <data>
-      <line> <item>Salsa Custom Fields</item><item>Contact</item><item>Tab</item><item>1</item> </line>
-    </data>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Don&#x27;t create existing group</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>id</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>181</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Don&#x27;t create existing option value</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>id</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>724</xloc>
-      <yloc>433</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Handle non-enums that should be enums</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var data_type&#x3b;&#xa;var html_type&#x3b;&#xa;&#xa;if &#x28;option_group_id&#x29; &#x7b;&#xa;  data_type &#x3d; &#x27;String&#x27;&#x3b;&#xa;  html_type &#x3d; &#x27;Select&#x27;&#x3b;&#xa;&#x7d;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>data_type</name>
-        <rename>data_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>      <field>        <name>html_type</name>
-        <rename>html_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>490</xloc>
-      <yloc>447</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>If field value is null</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <replaceAllByValue/>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-      <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>is_active</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-        </field>
-      <field>
-        <name>is_default</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-        </field>
-      <field>
-        <name>weight</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>718</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Merge Join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>LEFT OUTER</join_type>
-<step1>Sort rows 2</step1>
-<step2>Unique column keys</step2>
-    <keys_1>
-      <key>description</key>
-    </keys_1>
-    <keys_2>
-      <key>custom_column_option.custom_column_KEY</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1191</xloc>
-      <yloc>395</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Option Group fields only</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>custom_column.name</name>
-        <rename>name</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_column.label</name>
-        <rename>title</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column.type</name>
-        <rename>type</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column.custom_column_KEY</name>
-        <rename>description</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1191</xloc>
-      <yloc>277</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Option Values fields only</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>custom_column_option.custom_column_KEY</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.value</name>
-        <rename>value</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.label</name>
-        <rename>label</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.isDefault</name>
-        <rename>is_default</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.isDisplayed</name>
-        <rename>is_active</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option._Order</name>
-        <rename>weight</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.value</name>
-        <rename>name</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>710</xloc>
-      <yloc>185</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remap data_type</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>data_type</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>bool</source_value>
-        <target_value>Boolean</target_value>
-      </field>
-      <field>
-        <source_value>enum</source_value>
-        <target_value>String</target_value>
-      </field>
-      <field>
-        <source_value>text</source_value>
-        <target_value>Memo</target_value>
-      </field>
-      <field>
-        <source_value>varchar</source_value>
-        <target_value>String</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>287</xloc>
-      <yloc>391</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remap html_type</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>html_type</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>bool</source_value>
-        <target_value>Radio</target_value>
-      </field>
-      <field>
-        <source_value>enum</source_value>
-        <target_value>Select</target_value>
-      </field>
-      <field>
-        <source_value>text</source_value>
-        <target_value>TextArea</target_value>
-      </field>
-      <field>
-        <source_value>varchar</source_value>
-        <target_value>Text</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>447</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>custom_column_option.custom_column_KEY</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1331</xloc>
-      <yloc>263</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>description</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1191</xloc>
-      <yloc>331</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique column keys</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1325</xloc>
-      <yloc>324</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Wait for Custom Group</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <steps>
-      <step>
-        <name>Create Custom Group</name>
-        <CopyNr>0</CopyNr>
-        </step>
-      </steps>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>275</xloc>
-      <yloc>124</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Wait for Custom Fields</name>
-    <type>BlockUntilStepsFinish</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <steps>
-      <step>
-        <name>Create Custom Fields</name>
-        <CopyNr>0</CopyNr>
-        </step>
-      </steps>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>710</xloc>
-      <yloc>120</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom_column_options.txt</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_column_options.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure/>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>custom_column_option.custom_column_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.value</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.label</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.isDefault</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.isDisplayed</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option._Order</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>710</xloc>
-      <yloc>50</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom_column_options.txt 2</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_column_options.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure/>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>custom_column_option.custom_column_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.value</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.label</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.isDefault</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.isDisplayed</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option._Order</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1338</xloc>
-      <yloc>153</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom_columns.txt</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_columns.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure/>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>custom_column.custom_column_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.data_table</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.Date_Created</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.label</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.Description</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column._Order</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1184</xloc>
-      <yloc>149</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom_columns.txt 2</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_columns.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure/>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>custom_column.custom_column_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.data_table</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.Date_Created</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.label</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column.Description</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column._Order</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>273</xloc>
-      <yloc>59</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom_group is Salsa Custom Fields</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>custom_group</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>Salsa Custom Fields</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>282</xloc>
-      <yloc>250</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>look to see if group&#x27;s already created</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_custom_group</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>title</name>
-        <field>title</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>extends</name>
-        <field>extends</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>look to see if value&#x27;s already created</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_option_value</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>option_group_id</name>
-        <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>value</name>
-        <field>value</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>722</xloc>
-      <yloc>371</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>get custom_group_id</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_custom_group</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>custom_group</name>
-        <field>title</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>custom_group_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>285</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>lookup option_group_id</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_custom_field</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>custom_column_option.custom_column_KEY</name>
-        <field>filter</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>option_group_id</name>
-        <rename>option_group_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>716</xloc>
-      <yloc>257</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>lookup option_group_id 2</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_option_group</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>custom_column.custom_column_KEY</name>
-        <field>description</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>option_group_id</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>513</xloc>
-      <yloc>516</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>type &#x3d; enum or has option_values</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>type</leftvalue>
-   <function>&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>enum</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>OR</operator>
-   <leftvalue>custom_column_option.custom_column_KEY</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1189</xloc>
-      <yloc>461</yloc>
+      <yloc>575</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2939,12 +816,12 @@
         <source>getfields</source>
       </field>
       <key-index>filter</key-index>
-      <key-index>name</key-index>
       <key-index>label</key-index>
       <key-index>data_type</key-index>
       <key-index>help_pre</key-index>
       <key-index>weight</key-index>
       <key-index>html_type</key-index>
+      <key-index>is_searchable</key-index>
       <key-index>custom_group_id</key-index>
       <output-field>
         <input-field>custom_group_id</input-field>
@@ -2955,16 +832,16 @@
         <output-field>weight</output-field>
       </output-field>
       <output-field>
+        <input-field>is_searchable</input-field>
+        <output-field>is_searchable</output-field>
+      </output-field>
+      <output-field>
         <input-field>help_pre</input-field>
         <output-field>help_pre</output-field>
       </output-field>
       <output-field>
         <input-field>data_type</input-field>
         <output-field>data_type</output-field>
-      </output-field>
-      <output-field>
-        <input-field>name</input-field>
-        <output-field>name</output-field>
       </output-field>
       <output-field>
         <input-field>html_type</input-field>
@@ -2982,6 +859,777 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>290</xloc>
       <yloc>637</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Create Custom Group</name>
+    <type>CiviCrmOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
+    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
+    <Entity>CustomGroup</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+      <entity-name>Acl</entity-name>
+      <entity-name>AclRole</entity-name>
+      <entity-name>ActionSchedule</entity-name>
+      <entity-name>Activity</entity-name>
+      <entity-name>ActivityContact</entity-name>
+      <entity-name>ActivityType</entity-name>
+      <entity-name>Address</entity-name>
+      <entity-name>Batch</entity-name>
+      <entity-name>Campaign</entity-name>
+      <entity-name>Case</entity-name>
+      <entity-name>CaseType</entity-name>
+      <entity-name>Constant</entity-name>
+      <entity-name>Contact</entity-name>
+      <entity-name>ContactType</entity-name>
+      <entity-name>Contribution</entity-name>
+      <entity-name>ContributionPage</entity-name>
+      <entity-name>ContributionRecur</entity-name>
+      <entity-name>ContributionSoft</entity-name>
+      <entity-name>Country</entity-name>
+      <entity-name>CustomField</entity-name>
+      <entity-name>CustomGroup</entity-name>
+      <entity-name>CustomSearch</entity-name>
+      <entity-name>CustomValue</entity-name>
+      <entity-name>Dashboard</entity-name>
+      <entity-name>DashboardContact</entity-name>
+      <entity-name>Domain</entity-name>
+      <entity-name>Email</entity-name>
+      <entity-name>Entity</entity-name>
+      <entity-name>EntityTag</entity-name>
+      <entity-name>Event</entity-name>
+      <entity-name>Extension</entity-name>
+      <entity-name>File</entity-name>
+      <entity-name>FinancialAccount</entity-name>
+      <entity-name>FinancialType</entity-name>
+      <entity-name>Grant</entity-name>
+      <entity-name>Group</entity-name>
+      <entity-name>GroupContact</entity-name>
+      <entity-name>GroupNesting</entity-name>
+      <entity-name>GroupOrganization</entity-name>
+      <entity-name>Im</entity-name>
+      <entity-name>Job</entity-name>
+      <entity-name>LineItem</entity-name>
+      <entity-name>LocBlock</entity-name>
+      <entity-name>Location</entity-name>
+      <entity-name>LocationType</entity-name>
+      <entity-name>MailSettings</entity-name>
+      <entity-name>Mailing</entity-name>
+      <entity-name>MailingComponent</entity-name>
+      <entity-name>MailingContact</entity-name>
+      <entity-name>MailingEventConfirm</entity-name>
+      <entity-name>MailingEventResubscribe</entity-name>
+      <entity-name>MailingEventSubscribe</entity-name>
+      <entity-name>MailingEventUnsubscribe</entity-name>
+      <entity-name>MailingGroup</entity-name>
+      <entity-name>MailingJob</entity-name>
+      <entity-name>MailingRecipients</entity-name>
+      <entity-name>Membership</entity-name>
+      <entity-name>MembershipBlock</entity-name>
+      <entity-name>MembershipPayment</entity-name>
+      <entity-name>MembershipStatus</entity-name>
+      <entity-name>MembershipType</entity-name>
+      <entity-name>MessageTemplate</entity-name>
+      <entity-name>Note</entity-name>
+      <entity-name>OptionGroup</entity-name>
+      <entity-name>OptionValue</entity-name>
+      <entity-name>Participant</entity-name>
+      <entity-name>ParticipantPayment</entity-name>
+      <entity-name>ParticipantStatusType</entity-name>
+      <entity-name>PaymentProcessor</entity-name>
+      <entity-name>PaymentProcessorType</entity-name>
+      <entity-name>Phone</entity-name>
+      <entity-name>Pledge</entity-name>
+      <entity-name>PledgePayment</entity-name>
+      <entity-name>Premium</entity-name>
+      <entity-name>PriceField</entity-name>
+      <entity-name>PriceFieldValue</entity-name>
+      <entity-name>PriceSet</entity-name>
+      <entity-name>PrintLabel</entity-name>
+      <entity-name>Product</entity-name>
+      <entity-name>Profile</entity-name>
+      <entity-name>Relationship</entity-name>
+      <entity-name>RelationshipType</entity-name>
+      <entity-name>ReportInstance</entity-name>
+      <entity-name>ReportTemplate</entity-name>
+      <entity-name>Setting</entity-name>
+      <entity-name>SmsProvider</entity-name>
+      <entity-name>Survey</entity-name>
+      <entity-name>SurveyRespondant</entity-name>
+      <entity-name>System</entity-name>
+      <entity-name>SystemLog</entity-name>
+      <entity-name>Tag</entity-name>
+      <entity-name>UFField</entity-name>
+      <entity-name>UFGroup</entity-name>
+      <entity-name>UFJoin</entity-name>
+      <entity-name>UFMatch</entity-name>
+      <entity-name>Website</entity-name>
+      <entity-name>WordReplacement</entity-name>
+      <action-name>create</action-name>
+      <action-name>delete</action-name>
+      <action-name>getlist</action-name>
+      <action-name>getrefcount</action-name>
+      <action-name>setvalue</action-name>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Minimum Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;min_multiple&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>min_multiple</fieldName>
+        <name>min_multiple</name>
+        <title>Minimum Multiple Records</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>created_date</fieldName>
+        <name>created_date</name>
+        <title>Custom Group Created Date</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Weight&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;weight&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>weight</fieldName>
+        <name>weight</name>
+        <title>Custom Group Weight</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Is Active&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_active</fieldName>
+        <name>is_active</name>
+        <title>Custom Group Is Active&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Extends&#x22;,&#x22;default&#x22;&#x3a;&#x22;Contact&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;extends&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>extends</fieldName>
+        <name>extends</name>
+        <title>Custom Group Extends</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Subtype&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;extends_entity_column_value&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>extends_entity_column_value</fieldName>
+        <name>extends_entity_column_value</name>
+        <title>Custom Group Subtype</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Collapse Group Display&#x22;,&#x22;name&#x22;&#x3a;&#x22;collapse_adv_display&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>collapse_adv_display</fieldName>
+        <name>collapse_adv_display</name>
+        <title>Collapse Group Display</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Reserved Group&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_reserved</fieldName>
+        <name>is_reserved</name>
+        <title>Reserved Group&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;custom_group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Custom Group ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>created_id</fieldName>
+        <name>created_id</name>
+        <title>Custom Group Created By</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;80,&#x22;title&#x22;&#x3a;&#x22;Custom Group Post Text&#x22;,&#x22;name&#x22;&#x3a;&#x22;help_post&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;4&#x7d;</fieldDef>
+        <fieldName>help_post</fieldName>
+        <name>help_post</name>
+        <title>Custom Group Post Text</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Subtype List&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;name&#x22;&#x3a;&#x22;extends_entity_column_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>extends_entity_column_id</fieldName>
+        <name>extends_entity_column_id</name>
+        <title>Custom Group Subtype List</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Title&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;title&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>title</fieldName>
+        <name>title</name>
+        <title>Custom Group Title</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Style&#x22;,&#x22;maxlength&#x22;&#x3a;15,&#x22;name&#x22;&#x3a;&#x22;style&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;callback&#x22;&#x3a;&#x22;CRM_Core_SelectValues&#x3a;&#x3a;customGroupStyle&#x22;&#x7d;,&#x22;size&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>style</fieldName>
+        <name>style</name>
+        <title>Custom Group Style</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;80,&#x22;title&#x22;&#x3a;&#x22;Custom Group Pre Text&#x22;,&#x22;name&#x22;&#x3a;&#x22;help_pre&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;4&#x7d;</fieldDef>
+        <fieldName>help_pre</fieldName>
+        <name>help_pre</name>
+        <title>Custom Group Pre Text</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Custom Group Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Table Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;table_name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>table_name</fieldName>
+        <name>table_name</name>
+        <title>Table Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Supports Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_multiple&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_multiple</fieldName>
+        <name>is_multiple</name>
+        <title>Supports Multiple Records</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Collapse Custom Group&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;collapse_display&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>collapse_display</fieldName>
+        <name>collapse_display</name>
+        <title>Collapse Custom Group&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Maximum Multiple Records&#x22;,&#x22;name&#x22;&#x3a;&#x22;max_multiple&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>max_multiple</fieldName>
+        <name>max_multiple</name>
+        <title>Maximum Multiple Records</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <key-index>title</key-index>
+      <key-index>extends</key-index>
+      <key-index>style</key-index>
+      <key-index>is_active</key-index>
+      <output-field>
+        <input-field>title</input-field>
+        <output-field>title</output-field>
+      </output-field>
+      <output-field>
+        <input-field>style</input-field>
+        <output-field>style</output-field>
+      </output-field>
+      <output-field>
+        <input-field>extends</input-field>
+        <output-field>extends</output-field>
+      </output-field>
+      <output-field>
+        <input-field>is_active</input-field>
+        <output-field>is_active</output-field>
+      </output-field>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>82</xloc>
+      <yloc>261</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Create Option Values</name>
+    <type>CiviCrmOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
+    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
+    <Entity>OptionValue</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+      <entity-name>Acl</entity-name>
+      <entity-name>AclRole</entity-name>
+      <entity-name>ActionSchedule</entity-name>
+      <entity-name>Activity</entity-name>
+      <entity-name>ActivityContact</entity-name>
+      <entity-name>ActivityType</entity-name>
+      <entity-name>Address</entity-name>
+      <entity-name>Batch</entity-name>
+      <entity-name>Campaign</entity-name>
+      <entity-name>Case</entity-name>
+      <entity-name>CaseType</entity-name>
+      <entity-name>Constant</entity-name>
+      <entity-name>Contact</entity-name>
+      <entity-name>ContactType</entity-name>
+      <entity-name>Contribution</entity-name>
+      <entity-name>ContributionPage</entity-name>
+      <entity-name>ContributionRecur</entity-name>
+      <entity-name>ContributionSoft</entity-name>
+      <entity-name>Country</entity-name>
+      <entity-name>CustomField</entity-name>
+      <entity-name>CustomGroup</entity-name>
+      <entity-name>CustomSearch</entity-name>
+      <entity-name>CustomValue</entity-name>
+      <entity-name>Dashboard</entity-name>
+      <entity-name>DashboardContact</entity-name>
+      <entity-name>Domain</entity-name>
+      <entity-name>Email</entity-name>
+      <entity-name>Entity</entity-name>
+      <entity-name>EntityTag</entity-name>
+      <entity-name>Event</entity-name>
+      <entity-name>Extension</entity-name>
+      <entity-name>File</entity-name>
+      <entity-name>FinancialAccount</entity-name>
+      <entity-name>FinancialType</entity-name>
+      <entity-name>Grant</entity-name>
+      <entity-name>Group</entity-name>
+      <entity-name>GroupContact</entity-name>
+      <entity-name>GroupNesting</entity-name>
+      <entity-name>GroupOrganization</entity-name>
+      <entity-name>Im</entity-name>
+      <entity-name>Job</entity-name>
+      <entity-name>LineItem</entity-name>
+      <entity-name>LocBlock</entity-name>
+      <entity-name>Location</entity-name>
+      <entity-name>LocationType</entity-name>
+      <entity-name>MailSettings</entity-name>
+      <entity-name>Mailing</entity-name>
+      <entity-name>MailingComponent</entity-name>
+      <entity-name>MailingContact</entity-name>
+      <entity-name>MailingEventConfirm</entity-name>
+      <entity-name>MailingEventResubscribe</entity-name>
+      <entity-name>MailingEventSubscribe</entity-name>
+      <entity-name>MailingEventUnsubscribe</entity-name>
+      <entity-name>MailingGroup</entity-name>
+      <entity-name>MailingJob</entity-name>
+      <entity-name>MailingRecipients</entity-name>
+      <entity-name>Membership</entity-name>
+      <entity-name>MembershipBlock</entity-name>
+      <entity-name>MembershipPayment</entity-name>
+      <entity-name>MembershipStatus</entity-name>
+      <entity-name>MembershipType</entity-name>
+      <entity-name>MessageTemplate</entity-name>
+      <entity-name>Note</entity-name>
+      <entity-name>OptionGroup</entity-name>
+      <entity-name>OptionValue</entity-name>
+      <entity-name>Participant</entity-name>
+      <entity-name>ParticipantPayment</entity-name>
+      <entity-name>ParticipantStatusType</entity-name>
+      <entity-name>PaymentProcessor</entity-name>
+      <entity-name>PaymentProcessorType</entity-name>
+      <entity-name>Phone</entity-name>
+      <entity-name>Pledge</entity-name>
+      <entity-name>PledgePayment</entity-name>
+      <entity-name>Premium</entity-name>
+      <entity-name>PriceField</entity-name>
+      <entity-name>PriceFieldValue</entity-name>
+      <entity-name>PriceSet</entity-name>
+      <entity-name>PrintLabel</entity-name>
+      <entity-name>Product</entity-name>
+      <entity-name>Profile</entity-name>
+      <entity-name>Relationship</entity-name>
+      <entity-name>RelationshipType</entity-name>
+      <entity-name>ReportInstance</entity-name>
+      <entity-name>ReportTemplate</entity-name>
+      <entity-name>Setting</entity-name>
+      <entity-name>SmsProvider</entity-name>
+      <entity-name>Survey</entity-name>
+      <entity-name>SurveyRespondant</entity-name>
+      <entity-name>System</entity-name>
+      <entity-name>SystemLog</entity-name>
+      <entity-name>Tag</entity-name>
+      <entity-name>UFField</entity-name>
+      <entity-name>UFGroup</entity-name>
+      <entity-name>UFJoin</entity-name>
+      <entity-name>UFMatch</entity-name>
+      <entity-name>Website</entity-name>
+      <entity-name>WordReplacement</entity-name>
+      <action-name>create</action-name>
+      <action-name>delete</action-name>
+      <action-name>getlist</action-name>
+      <action-name>getrefcount</action-name>
+      <action-name>setvalue</action-name>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Weight&#x22;,&#x22;name&#x22;&#x3a;&#x22;weight&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>weight</fieldName>
+        <name>weight</name>
+        <title>Option Weight</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Active&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_active</fieldName>
+        <name>is_active</name>
+        <title>Option Is Active</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Domain&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Domain&#x22;,&#x22;name&#x22;&#x3a;&#x22;domain_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Domain&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_domain&#x22;&#x7d;&#x7d;</fieldDef>
+        <fieldName>domain_id</fieldName>
+        <name>domain_id</name>
+        <title>Option Domain</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Default&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_default&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_default</fieldName>
+        <name>is_default</name>
+        <title>Option is Default&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Label&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;label&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>label</fieldName>
+        <name>label</name>
+        <title>Option Label</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Reserved&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_reserved</fieldName>
+        <name>is_reserved</name>
+        <title>Option Is Reserved&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group ID&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_OptionGroup&#x22;,&#x22;name&#x22;&#x3a;&#x22;option_group_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;OptionGroup&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_option_group&#x22;&#x7d;&#x7d;</fieldDef>
+        <fieldName>option_group_id</fieldName>
+        <name>option_group_id</name>
+        <title>Option Group ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;option_value_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Option Value ID</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Component&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Component&#x22;,&#x22;name&#x22;&#x3a;&#x22;component_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;1,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_component&#x22;&#x7d;&#x7d;</fieldDef>
+        <fieldName>component_id</fieldName>
+        <name>component_id</name>
+        <title>Option Component</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Grouping Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;grouping&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>grouping</fieldName>
+        <name>grouping</name>
+        <title>Option Grouping Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Option Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;8&#x7d;</fieldDef>
+        <fieldName>description</fieldName>
+        <name>description</name>
+        <title>Option Description</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;export&#x22;&#x3a;true,&#x22;title&#x22;&#x3a;&#x22;Option Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;dataPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;headerPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;import&#x22;&#x3a;true,&#x22;where&#x22;&#x3a;&#x22;civicrm_option_value.name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Option Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value&#x22;,&#x22;maxlength&#x22;&#x3a;512,&#x22;name&#x22;&#x3a;&#x22;value&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>value</fieldName>
+        <name>value</name>
+        <title>Option Value</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Visibility&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;name&#x22;&#x3a;&#x22;visibility_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>visibility_id</fieldName>
+        <name>visibility_id</name>
+        <title>Option Visibility</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Filter&#x22;,&#x22;name&#x22;&#x3a;&#x22;filter&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>filter</fieldName>
+        <name>filter</name>
+        <title>Filter</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Header&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_optgroup&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_optgroup</fieldName>
+        <name>is_optgroup</name>
+        <title>Option is Header&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <key-index>value</key-index>
+      <key-index>label</key-index>
+      <key-index>is_default</key-index>
+      <key-index>is_active</key-index>
+      <key-index>weight</key-index>
+      <key-index>name</key-index>
+      <key-index>option_group_id</key-index>
+      <output-field>
+        <input-field>weight</input-field>
+        <output-field>weight</output-field>
+      </output-field>
+      <output-field>
+        <input-field>is_active</input-field>
+        <output-field>is_active</output-field>
+      </output-field>
+      <output-field>
+        <input-field>name</input-field>
+        <output-field>name</output-field>
+      </output-field>
+      <output-field>
+        <input-field>value</input-field>
+        <output-field>value</output-field>
+      </output-field>
+      <output-field>
+        <input-field>is_default</input-field>
+        <output-field>is_default</output-field>
+      </output-field>
+      <output-field>
+        <input-field>label</input-field>
+        <output-field>label</output-field>
+      </output-field>
+      <output-field>
+        <input-field>option_group_id</input-field>
+        <output-field>option_group_id</output-field>
+      </output-field>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>493</xloc>
+      <yloc>500</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Data for custom group</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>title</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>extends</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>style</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line> <item>Salsa Custom Fields</item><item>Contact</item><item>Tab</item><item>1</item> </line>
+    </data>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>78</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Don&#x27;t create existing group</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>82</xloc>
+      <yloc>181</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Don&#x27;t create existing option value</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>489</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>If field value is null</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <replaceAllByValue/>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+      <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>is_active</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>is_default</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      <field>
+        <name>weight</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>483</xloc>
+      <yloc>319</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3045,203 +1693,7 @@
     </step>
 
   <step>
-    <name>TEMP</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;TEMP</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>filter</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_column.data_table</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>created_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>label</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>data_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>help_pre</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>weight</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>html_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_group</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_group_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Result</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>291</xloc>
-      <yloc>701</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Convert integers to strings</name>
+    <name>Option Values fields only</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3251,26 +1703,627 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>custom_group_id</name>
-        <rename>custom_group_id</rename>
-        <type>String</type>
+    <fields>      <field>        <name>custom_column_option.custom_column_KEY</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
+      </field>      <field>        <name>custom_column_option.custom_column_option_KEY</name>
+        <rename>value</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option.label</name>
+        <rename>label</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option.isDefault</name>
+        <rename>is_default</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option.isDisplayed</name>
+        <rename>is_active</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option._Order</name>
+        <rename>weight</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option.value</name>
+        <rename>name</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>475</xloc>
+      <yloc>184</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remap data_type</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>data_type</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>bool</source_value>
+        <target_value>Boolean</target_value>
+      </field>
+      <field>
+        <source_value>enum</source_value>
+        <target_value>String</target_value>
+      </field>
+      <field>
+        <source_value>text</source_value>
+        <target_value>Memo</target_value>
+      </field>
+      <field>
+        <source_value>varchar</source_value>
+        <target_value>String</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>287</xloc>
-      <yloc>575</yloc>
+      <yloc>391</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remap html_type</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>html_type</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>bool</source_value>
+        <target_value>Radio</target_value>
+      </field>
+      <field>
+        <source_value>enum</source_value>
+        <target_value>Select</target_value>
+      </field>
+      <field>
+        <source_value>text</source_value>
+        <target_value>TextArea</target_value>
+      </field>
+      <field>
+        <source_value>varchar</source_value>
+        <target_value>Text</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>288</xloc>
+      <yloc>447</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Wait for Custom Fields</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <steps>
+      <step>
+        <name>Create Custom Fields</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>475</xloc>
+      <yloc>119</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Wait for Custom Group</name>
+    <type>BlockUntilStepsFinish</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <steps>
+      <step>
+        <name>Create Custom Group</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>275</xloc>
+      <yloc>124</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>custom_column_options.txt</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_column_options.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure/>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>custom_column_option.custom_column_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option.value</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option.label</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option.isDefault</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option.isDisplayed</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option._Order</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column_option.custom_column_option_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>475</xloc>
+      <yloc>49</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>custom_columns.txt</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_columns.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure/>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>custom_column.custom_column_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.data_table</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.Date_Created</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.label</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.Description</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column._Order</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>273</xloc>
+      <yloc>59</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>custom_group</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Salsa Custom Fields</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>is_searchable</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>282</xloc>
+      <yloc>250</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>get custom_group_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_custom_group</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>custom_group</name>
+        <field>title</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>custom_group_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>285</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>look to see if group&#x27;s already created</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_custom_group</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>title</name>
+        <field>title</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>extends</name>
+        <field>extends</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>82</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>look to see if value&#x27;s already created</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_value</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>option_group_id</name>
+        <field>option_group_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>value</name>
+        <field>value</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>487</xloc>
+      <yloc>370</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lookup option_group_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_custom_field</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>custom_column_option.custom_column_KEY</name>
+        <field>filter</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>option_group_id</name>
+        <rename>option_group_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>481</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

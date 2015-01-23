@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>salsa participants</name>
+    <name>salsa letters</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -66,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;21 11&#x3a;56&#x3a;08.589</created_date>
+  <created_date>2015&#x2f;01&#x2f;22 12&#x3a;07&#x3a;29.736</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;21 11&#x3a;56&#x3a;08.589</modified_date>
+  <modified_date>2015&#x2f;01&#x2f;22 12&#x3a;07&#x3a;29.736</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -284,206 +284,154 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>external_identifier to contact_id</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>event_key to event_id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>participant_export.txt</from><to>rename&#x2f;remove fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>event_key to event_id lookup</from><to>Remap status</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap status</from><to>get participant_status_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>get participant_status_id</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_participants</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename&#x2f;remove fields</from><to>remove records with no external_identifier at all</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove records with no external_identifier at all</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Civi-friendly fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>supporter_letter_export.txt</from><to>Civi-friendly fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>external_identifier to contact_id</from><to>activity_type &#x3d; &#x22;Letter to the Editor&#x22;</to><enabled>Y</enabled> </hop>
+  <hop> <from>activity_type &#x3d; &#x22;Letter to the Editor&#x22;</from><to>Lookup activity_type_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Lookup activity_type_id</from><to>Concat Subject&#x2f;Letter to make details</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concat Subject&#x2f;Letter to make details</from><to>export fields only&#x3b; activity_type_id to String</to><enabled>Y</enabled> </hop>
+  <hop> <from>export fields only&#x3b; activity_type_id to String</from><to>cli_salsa_letters</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Remap status</name>
-    <type>ValueMapper</type>
+    <name>supporter_letter_export.txt</name>
+    <type>CsvInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>status</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>Invited</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Invoiced</source_value>
-        <target_value>Attended</target_value>
-      </field>
-      <field>
-        <source_value>Signed Up</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Waiting List</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>blank</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Attended</source_value>
-        <target_value>Attended</target_value>
-      </field>
-      <field>
-        <source_value/>
-        <target_value>Registered</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>341</xloc>
-      <yloc>449</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_participants</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;supporter_letter_export.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure/>
     <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_participants</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
     <fields>
       <field>
-        <name>register_date</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
+        <name>supporter_letter.Date_Created</name>
+        <type>String</type>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>supporter_letter.supporter_KEY</name>
+        <type>String</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>supporter_letter.person_media_ID</name>
+        <type>String</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>status_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>supporter_letter.Letter_Subject</name>
+        <type>String</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>supporter_letter.Letter_Content</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>letter.Reference_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>692</yloc>
+      <xloc>292</xloc>
+      <yloc>45</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>event_key to event_id lookup</name>
-    <type>DBLookup</type>
+    <name>Civi-friendly fields</name>
+    <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_event</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>event_key</name>
-        <field>fee_label</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>event_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
+    <fields>      <field>        <name>supporter_letter.Date_Created</name>
+        <rename>activity_date_time</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>supporter_letter.supporter_KEY</name>
+        <rename>external_identifier</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>supporter_letter.person_media_ID</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>supporter_letter.Letter_Subject</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>supporter_letter.Letter_Content</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>letter.Reference_Name</name>
+        <rename>subject</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>342</xloc>
-      <yloc>386</yloc>
+      <xloc>291</xloc>
+      <yloc>126</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -524,46 +472,17 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>235</yloc>
+      <xloc>295</xloc>
+      <yloc>198</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>filter records with no contact_id</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>contact_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>337</xloc>
-      <yloc>312</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>get participant_status_id</name>
+    <name>Lookup activity_type_id</name>
     <type>DBLookup</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -571,39 +490,39 @@
            <schema_name/>
            </partitioning>
     <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
-      <table>civicrm_participant_status_type</table>
+      <table>civicrm_option_value</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>status</name>
+        <name>activity_type</name>
         <field>name</field>
         <condition>&#x3d;</condition>
         <name2/>
       </key>
       <value>
-        <name>id</name>
-        <rename>status_id</rename>
+        <name>value</name>
+        <rename>activity_type_id</rename>
         <default/>
         <type>Integer</type>
       </value>
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>532</yloc>
+      <xloc>294</xloc>
+      <yloc>331</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>participant_export.txt</name>
-    <type>CsvInput</type>
+    <name>activity_type &#x3d; &#x22;Letter to the Editor&#x22;</name>
+    <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -612,170 +531,31 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;participant_export.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
     <fields>
       <field>
-        <name>supporter_event.supporter_event_KEY</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event.event_KEY</name>
+        <name>activity_type</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
+        <nullif>Letter to the Editor</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event._Status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event._Type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>event.Date_Created</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event.supporter_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>335</xloc>
-      <yloc>35</yloc>
+      <xloc>295</xloc>
+      <yloc>266</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>remove non-import fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>register_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>event_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>status_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>340</xloc>
-      <yloc>610</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>rename&#x2f;remove fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>supporter_event.supporter_KEY</name>
-        <rename>external_identifier</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>supporter_event.event_KEY</name>
-        <rename>event_key</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>supporter_event._Status</name>
-        <rename>status</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>event.Date_Created</name>
-        <rename>register_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>333</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove records with no external_identifier at all</name>
-    <type>FilterRows</type>
+    <name>Concat Subject&#x2f;Letter to make details</name>
+    <type>ConcatFields</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -784,20 +564,239 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>external_identifier</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
+    <separator>&#x3a; </separator>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>supporter_letter.Letter_Subject</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>supporter_letter.Letter_Content</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>details</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>331</xloc>
-      <yloc>165</yloc>
+      <xloc>292</xloc>
+      <yloc>395</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>export fields only&#x3b; activity_type_id to String</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>activity_date_time</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>subject</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_id</name>
+        <rename>source_contact_id</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>activity_type_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>details</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>activity_type_id</name>
+        <rename>activity_type_id</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>288</xloc>
+      <yloc>453</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_salsa_letters</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_salsa_letters</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>activity_date_time</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>subject</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source_contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>activity_type_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>details</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>289</xloc>
+      <yloc>523</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

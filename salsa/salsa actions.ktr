@@ -72,6 +72,48 @@
   <modified_date>2014&#x2f;09&#x2f;21 11&#x3a;16&#x3a;31.457</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>Salsa has &#x22;Title&#x22; and &#x22;Reference Name&#x22;, Civi only has one corresponding field.&#xa;I removed &#x22;Thank you Text&#x22; in this version, but you may want to include it.</note>
+      <xloc>254</xloc>
+      <yloc>66</yloc>
+      <width>471</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>In Civi &#x3c;&#x3d; 4.5.5, you can only import as activity IDs 28-31.  In 4.6a2 this is fixed.</note>
+      <xloc>210</xloc>
+      <yloc>179</yloc>
+      <width>482</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -300,7 +342,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>action_key</name>
+    <fields>      <field>        <name>action.action_KEY</name>
         <rename>max_number_of_participants</rename>
         <length>-2</length>
         <precision>-2</precision>
@@ -312,12 +354,12 @@
         <rename>title</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>action.Thank_You_Text</name>
-        <rename>thankyou_text</rename>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>action.Description</name>
         <rename>instructions</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>action.Title</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -348,7 +390,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>32</nullif>
+        <nullif>31</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -388,23 +430,12 @@
     <encoding/>
     <fields>
       <field>
-        <name>action_key</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>action.Date_Created</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <name>action.action_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -413,21 +444,21 @@
         <name>action.Reference_Name</name>
         <type>String</type>
         <format/>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>64</length>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>action.Thank_You_Text</name>
+        <name>action.Date_Created</name>
         <type>String</type>
         <format/>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>866</length>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -435,10 +466,43 @@
         <name>action.Description</name>
         <type>String</type>
         <format/>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>23546</length>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>action.Signatures</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>action.Last_Modified</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>action.Title</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -520,18 +584,6 @@
       </field>
       <field>
         <name>title</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>thankyou_text</name>
         <type>String</type>
         <format/>
         <currency/>

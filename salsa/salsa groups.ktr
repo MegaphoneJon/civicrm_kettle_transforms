@@ -452,7 +452,7 @@
         <fieldName>saved_search_id</fieldName>
         <name>saved_search_id</name>
         <title>Saved Search ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -460,7 +460,7 @@
         <fieldName>parents</fieldName>
         <name>parents</name>
         <title>Group Parents</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -468,7 +468,7 @@
         <fieldName>where_clause</fieldName>
         <name>where_clause</name>
         <title>Group Where Clause</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -484,7 +484,7 @@
         <fieldName>is_active</fieldName>
         <name>is_active</name>
         <title>Group Enabled</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -492,7 +492,7 @@
         <fieldName>cache_date</fieldName>
         <name>cache_date</name>
         <title>Group Cache Date</title>
-        <type>12</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -500,7 +500,7 @@
         <fieldName>children</fieldName>
         <name>children</name>
         <title>Group Children</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -508,7 +508,7 @@
         <fieldName>refresh_date</fieldName>
         <name>refresh_date</name>
         <title>Next Group Refresh Time</title>
-        <type>12</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -516,7 +516,7 @@
         <fieldName>is_reserved</fieldName>
         <name>is_reserved</name>
         <title>Group is Reserved</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -524,15 +524,7 @@
         <fieldName>select_tables</fieldName>
         <name>select_tables</name>
         <title>Tables For Select Clause</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
-        <fieldName>created_id</fieldName>
-        <name>created_id</name>
-        <title>Group Created By</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -540,7 +532,15 @@
         <fieldName>id</fieldName>
         <name>id</name>
         <title>Group ID</title>
-        <type>1</type>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>created_id</fieldName>
+        <name>created_id</name>
+        <title>Group Created By</title>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -556,7 +556,7 @@
         <fieldName>modified_id</fieldName>
         <name>modified_id</name>
         <title>Group Modified By</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -568,27 +568,19 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Group Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;2&#x7d;</fieldDef>
-        <fieldName>description</fieldName>
-        <name>description</name>
-        <title>Group Description</title>
-        <type>32</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
         <fieldName>where_tables</fieldName>
         <name>where_tables</name>
         <title>Tables For Where Clause</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Hidden&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_hidden&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_hidden</fieldName>
-        <name>is_hidden</name>
-        <title>Group is Hidden</title>
-        <type>16</type>
+        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Group Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;2&#x7d;</fieldDef>
+        <fieldName>description</fieldName>
+        <name>description</name>
+        <title>Group Description</title>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -596,6 +588,14 @@
         <fieldName>name</fieldName>
         <name>name</name>
         <title>Group Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group is Hidden&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_hidden&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_hidden</fieldName>
+        <name>is_hidden</name>
+        <title>Group is Hidden</title>
         <type>2</type>
         <source>getfields</source>
       </field>

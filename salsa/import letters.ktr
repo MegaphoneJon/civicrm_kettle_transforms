@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>salsa participants</name>
+    <name>import letters</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -66,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;21 11&#x3a;56&#x3a;08.589</created_date>
+  <created_date>2015&#x2f;01&#x2f;22 12&#x3a;28&#x3a;09.825</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;21 11&#x3a;56&#x3a;08.589</modified_date>
+  <modified_date>2015&#x2f;01&#x2f;22 12&#x3a;28&#x3a;09.825</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -284,70 +284,46 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>external_identifier to contact_id</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>event_key to event_id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>participant_export.txt</from><to>rename&#x2f;remove fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>event_key to event_id lookup</from><to>Remap status</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap status</from><to>get participant_status_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>get participant_status_id</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_participants</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename&#x2f;remove fields</from><to>remove records with no external_identifier at all</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove records with no external_identifier at all</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Run SSH commands</from><to>Text file output 2</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Remap status</name>
-    <type>ValueMapper</type>
+    <name>Run SSH commands</name>
+    <type>SSH</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>status</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>Invited</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Invoiced</source_value>
-        <target_value>Attended</target_value>
-      </field>
-      <field>
-        <source_value>Signed Up</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Waiting List</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>blank</source_value>
-        <target_value>Registered</target_value>
-      </field>
-      <field>
-        <source_value>Attended</source_value>
-        <target_value>Attended</target_value>
-      </field>
-      <field>
-        <source_value/>
-        <target_value>Registered</target_value>
-      </field>
-    </fields>
+    <dynamicCommandField>N</dynamicCommandField>
+    <command>php &#x24;&#x7b;IMPORTSCRIPT&#x7d; -e Activity --file&#x3d;&#x24;&#x7b;SQLDUMP&#x7d;&#x2f;csvs&#x2f;cli_salsa_letters.csv</command>
+    <commandfieldname/>
+    <port>22</port>
+    <servername>&#x24;&#x7b;DEVSERVER&#x7d;</servername>
+    <userName>jon</userName>
+    <password>Encrypted </password>
+    <usePrivateKey>Y</usePrivateKey>
+    <keyFileName>&#x24;&#x7b;RSAKEY&#x7d;</keyFileName>
+    <passPhrase/>
+    <stdOutFieldName>stdOut</stdOutFieldName>
+    <stdErrFieldName>stdErr</stdErrFieldName>
+    <timeOut>0</timeOut>
+    <proxyHost/>
+    <proxyPort/>
+    <proxyUsername/>
+    <proxyPassword>Encrypted </proxyPassword>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>341</xloc>
-      <yloc>449</yloc>
+      <xloc>161</xloc>
+      <yloc>81</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_participants</name>
+    <name>Text file output 2</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -357,25 +333,25 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator>,</separator>
+    <separator>&#x3b;</separator>
     <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding>UTF-8</encoding>
+    <encoding/>
     <endedLine/>
     <fileNameInField>N</fileNameInField>
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_participants</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x5c;importlogs&#x5c;log_import_salsa_letters</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention>txt</extention>
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -390,414 +366,34 @@
     </file>
     <fields>
       <field>
-        <name>register_date</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
+        <name>stdOut</name>
+        <type>String</type>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>stdErr</name>
+        <type>Boolean</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal/>
+        <group/>
         <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>event_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>status_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>692</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>event_key to event_id lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_event</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>event_key</name>
-        <field>fee_label</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>event_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>342</xloc>
-      <yloc>386</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>external_identifier to contact_id</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_contact</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>external_identifier</name>
-        <field>external_identifier</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
-      <yloc>235</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>filter records with no contact_id</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>contact_id</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>337</xloc>
-      <yloc>312</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>get participant_status_id</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_participant_status_type</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>status</name>
-        <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>status_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>532</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>participant_export.txt</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;participant_export.txt</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>supporter_event.supporter_event_KEY</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event.event_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event._Status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event._Type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>event.Date_Created</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>supporter_event.supporter_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>335</xloc>
-      <yloc>35</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-import fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>register_date</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>event_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>status_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>340</xloc>
-      <yloc>610</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>rename&#x2f;remove fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>supporter_event.supporter_KEY</name>
-        <rename>external_identifier</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>supporter_event.event_KEY</name>
-        <rename>event_key</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>supporter_event._Status</name>
-        <rename>status</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>event.Date_Created</name>
-        <rename>register_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>333</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove records with no external_identifier at all</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>external_identifier</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>331</xloc>
-      <yloc>165</yloc>
+      <xloc>158</xloc>
+      <yloc>145</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

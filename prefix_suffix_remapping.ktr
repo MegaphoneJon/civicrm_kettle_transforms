@@ -657,6 +657,10 @@
         <target_value>Dr.</target_value>
       </field>
       <field>
+        <source_value>Dr.&#x2f;</source_value>
+        <target_value>Dr.</target_value>
+      </field>
+      <field>
         <source_value>Dr. &#x26; Mrs.</source_value>
         <target_value>Dr. and Mrs.</target_value>
       </field>
@@ -671,10 +675,6 @@
       <field>
         <source_value>Fr</source_value>
         <target_value>Fr.</target_value>
-      </field>
-      <field>
-        <source_value>Judge</source_value>
-        <target_value>The Honorable</target_value>
       </field>
       <field>
         <source_value>Miss.</source_value>
@@ -722,6 +722,10 @@
       </field>
       <field>
         <source_value>mr.</source_value>
+        <target_value>Mr.</target_value>
+      </field>
+      <field>
+        <source_value>mr,</source_value>
         <target_value>Mr.</target_value>
       </field>
       <field>
@@ -777,6 +781,14 @@
         <target_value>Mrs.</target_value>
       </field>
       <field>
+        <source_value>MRS</source_value>
+        <target_value>Mrs.</target_value>
+      </field>
+      <field>
+        <source_value>Mrs,</source_value>
+        <target_value>Mrs.</target_value>
+      </field>
+      <field>
         <source_value>MS</source_value>
         <target_value>Ms.</target_value>
       </field>
@@ -805,6 +817,10 @@
         <target_value>Ms.</target_value>
       </field>
       <field>
+        <source_value>Ms,</source_value>
+        <target_value>Ms.</target_value>
+      </field>
+      <field>
         <source_value>Prof</source_value>
         <target_value>Professor</target_value>
       </field>
@@ -826,6 +842,10 @@
       </field>
       <field>
         <source_value>prof</source_value>
+        <target_value>Professor</target_value>
+      </field>
+      <field>
+        <source_value>professor</source_value>
         <target_value>Professor</target_value>
       </field>
       <field>
@@ -853,6 +873,10 @@
         <target_value>Rev.</target_value>
       </field>
       <field>
+        <source_value>reverend</source_value>
+        <target_value>Rev.</target_value>
+      </field>
+      <field>
         <source_value>Rev Dr</source_value>
         <target_value>Rev. Dr.</target_value>
       </field>
@@ -873,6 +897,10 @@
         <target_value>Sister</target_value>
       </field>
       <field>
+        <source_value>Judge</source_value>
+        <target_value>The Honorable</target_value>
+      </field>
+      <field>
         <source_value>Honorable</source_value>
         <target_value>The Honorable</target_value>
       </field>
@@ -891,30 +919,6 @@
       <field>
         <source_value>The Honorable Judge</source_value>
         <target_value>The Honorable</target_value>
-      </field>
-      <field>
-        <source_value>Dr.&#x2f;</source_value>
-        <target_value>Dr.</target_value>
-      </field>
-      <field>
-        <source_value>MRS</source_value>
-        <target_value>Mrs.</target_value>
-      </field>
-      <field>
-        <source_value>mr,</source_value>
-        <target_value>Mr.</target_value>
-      </field>
-      <field>
-        <source_value>Mrs,</source_value>
-        <target_value>Mrs.</target_value>
-      </field>
-      <field>
-        <source_value>Ms,</source_value>
-        <target_value>Ms.</target_value>
-      </field>
-      <field>
-        <source_value>reverend</source_value>
-        <target_value>Rev.</target_value>
       </field>
     </fields>
      <cluster_schema/>
@@ -1195,7 +1199,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>CCR</connection>
+    <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
     <cache_size>0</cache_size>

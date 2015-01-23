@@ -198,6 +198,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>This &#x22;source&#x22; flow might be org-specific,&#xa;but in this case, 82K contacts have a source,&#xa;only 3.5K have some other add&#x27;l info.</note>
+      <xloc>306</xloc>
+      <yloc>1234</yloc>
+      <width>274</width>
+      <heigth>58</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -418,19 +439,19 @@
   <hop> <from>invalid_suffixes</from><to>Mapping &#x28;sub-transformation&#x29;</to><enabled>N</enabled> </hop>
   <hop> <from>invalid_prefixes</from><to>Mapping &#x28;sub-transformation&#x29;</to><enabled>N</enabled> </hop>
   <hop> <from>Mapping &#x28;sub-transformation&#x29;</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap Preferred Mail Format</from><to>Concatenate source and source_tracking_code</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Remove bogus prefixes &#x28;specific to this org&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remap Preferred Mail Format</from><to>Concatenate source and source_details</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_details</from><to>Remove bogus prefixes &#x28;specific to this org&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>external_identifier to contact_id</from><to>Remap Preferred Mail Format</to><enabled>Y</enabled> </hop>
   <hop> <from>generate websites</from><to>cli_website</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add website_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_details</from><to>Add website_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Add website_type</from><to>generate websites</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type &#x3d; Other</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_details</from><to>Add location_type &#x3d; Other</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_details</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
   <hop> <from>Row Normaliser</from><to>Create phone_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Create phone_type</from><to>phone_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_cleanup</from><to>cli_phone</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_cleanup</from><to>invalid_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and source_details</from><to>Add location_type 2</to><enabled>N</enabled> </hop>
   <hop> <from>address_cleanup</from><to>cli_address</to><enabled>Y</enabled> </hop>
   <hop> <from>address_cleanup</from><to>invalid_address</to><enabled>Y</enabled> </hop>
   <hop> <from>Add location_type 2</from><to>remove non-address fields</to><enabled>Y</enabled> </hop>
@@ -442,10 +463,15 @@
   <hop> <from>Non-custom fields only, no primary e-mail</from><to>Rename standard fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Rename standard fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap prefixes&#x2f;suffixes</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-address fields</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>supporter_export.txt</from><to>Non-custom fields only, no primary e-mail</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>remove non-import fields 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields 2</from><to>cli_salsa_additional_info</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 2</from><to>Remove blanks</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove blanks</from><to>cli_salsa_additional_info</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-address fields</from><to>Map postal_code_suffix 0000 to NULL</to><enabled>Y</enabled> </hop>
+  <hop> <from>Map postal_code_suffix 0000 to NULL</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter records with no contact_id</from><to>Dummy &#x28;do nothing&#x29; 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy &#x28;do nothing&#x29; 2</from><to>remove non-import fields 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy &#x28;do nothing&#x29; 2</from><to>source fields only</to><enabled>Y</enabled> </hop>
+  <hop> <from>source fields only</from><to>cli_salsa_source</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Active supporters only</name>
@@ -503,8 +529,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>585</yloc>
+      <xloc>174</xloc>
+      <yloc>553</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -576,7 +602,7 @@
     </step>
 
   <step>
-    <name>Concatenate source and source_tracking_code</name>
+    <name>Concatenate source and source_details</name>
     <type>ConcatFields</type>
     <description/>
     <distribute>N</distribute>
@@ -586,7 +612,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator> </separator>
+    <separator>&#x3a; </separator>
     <enclosure/>
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
@@ -631,7 +657,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>source_tracking_code</name>
+        <name>source_details</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -644,7 +670,7 @@
       </field>
     </fields>
     <ConcatFields>
-<targetFieldName>source</targetFieldName>
+<targetFieldName>source_1</targetFieldName>
 <targetFieldLength>0</targetFieldLength>
 <removeSelectedFields>N</removeSelectedFields>
     </ConcatFields>
@@ -704,6 +730,38 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>661</xloc>
       <yloc>768</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Map postal_code_suffix 0000 to NULL</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>postal_code_suffix</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>0</source_value>
+        <target_value/>
+      </field>
+      <field>
+        <source_value>0000</source_value>
+        <target_value/>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>364</xloc>
+      <yloc>639</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1087,6 +1145,80 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>113</xloc>
       <yloc>796</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove blanks</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>Y</negated>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>current_employer</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>geo_code_1</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>geo_code_2</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>job_title</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>prefix_id</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>suffix_id</leftvalue>
+     <function>IS NULL</function>
+     <rightvalue/>
+     </condition>
+    </conditions>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>115</xloc>
+      <yloc>1241</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3807,8 +3939,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>117</xloc>
-      <yloc>1065</yloc>
+      <xloc>112</xloc>
+      <yloc>1306</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4006,7 +4138,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>remove non-import fields 2</send_true_to>
+<send_true_to>Dummy &#x28;do nothing&#x29; 2</send_true_to>
 <send_false_to>invalid_salsa_additional_info</send_false_to>
     <compare>
 <condition>
@@ -4018,8 +4150,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>109</xloc>
-      <yloc>891</yloc>
+      <xloc>116</xloc>
+      <yloc>1051</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -5429,8 +5561,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>269</xloc>
-      <yloc>901</yloc>
+      <xloc>276</xloc>
+      <yloc>1061</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -5670,8 +5802,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>110</xloc>
-      <yloc>986</yloc>
+      <xloc>114</xloc>
+      <yloc>1167</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -6311,6 +6443,129 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>103</xloc>
       <yloc>0</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>source fields only</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>source_1</name>
+        <rename>source</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>243</xloc>
+      <yloc>1154</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Dummy &#x28;do nothing&#x29; 2</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>118</xloc>
+      <yloc>1100</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_salsa_source</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_salsa_source</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>source</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>264</xloc>
+      <yloc>1287</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

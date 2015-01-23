@@ -683,7 +683,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>supporter_key</name>
+    <fields>      <field>        <name>supporter_action.supporter_KEY</name>
         <rename>external_identifier</rename>
         <length>-2</length>
         <precision>-2</precision>
@@ -712,7 +712,7 @@
     <name>supporter_action_export.txt</name>
     <type>CsvInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -724,7 +724,7 @@
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure/>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
@@ -734,23 +734,23 @@
     <encoding/>
     <fields>
       <field>
-        <name>supporter_key</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>0</precision>
+        <name>supporter_action.supporter_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
         <name>action.Reference_Name</name>
         <type>String</type>
         <format/>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -759,9 +759,9 @@
         <name>supporter_action.Date_Created</name>
         <type>Date</type>
         <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -770,9 +770,20 @@
         <name>supporter_action_comment.Comment</name>
         <type>String</type>
         <format/>
-        <currency>&#x24;</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>255</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>action.action_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>

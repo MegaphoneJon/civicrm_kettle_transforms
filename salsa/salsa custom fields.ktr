@@ -73,52 +73,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>This subtransformation is disabled by default on purpose.&#xa;Turning it on creates the unknown prefixes&#x2f;suffixes in CiviCRM via REST API.&#xa;Use with caution&#x21;</note>
-      <xloc>418</xloc>
-      <yloc>830</yloc>
-      <width>470</width>
-      <heigth>58</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>Org-specific BEGIN</note>
       <xloc>784</xloc>
       <yloc>176</yloc>
       <width>126</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Salsa-specific</note>
-      <xloc>217</xloc>
-      <yloc>293</yloc>
-      <width>92</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -157,10 +115,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>org-specific address cleanup                                            </note>
-      <xloc>582</xloc>
-      <yloc>596</yloc>
-      <width>352</width>
+      <note>Org-specific items that might get reused go in this little pile.</note>
+      <xloc>732</xloc>
+      <yloc>70</yloc>
+      <width>356</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -178,11 +136,11 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Org-specific items that might get reused go in this little pile.</note>
-      <xloc>732</xloc>
-      <yloc>70</yloc>
-      <width>356</width>
-      <heigth>26</heigth>
+      <note>&#x22;Source&#x22; and &#x22;Source Details&#x22; should be removed -&#xa; they&#x27;re not removed here for an org-specific reason.</note>
+      <xloc>150</xloc>
+      <yloc>97</yloc>
+      <width>313</width>
+      <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -411,47 +369,13 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Remove bogus prefixes &#x28;specific to this org&#x29;</from><to>Remove bogus suffixes &#x28;specific to this org&#x29; 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove bogus suffixes &#x28;specific to this org&#x29; 2</from><to>Remap prefixes&#x2f;suffixes</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap prefixes&#x2f;suffixes</from><to>invalid_suffixes</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap prefixes&#x2f;suffixes</from><to>invalid_prefixes</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_suffixes</from><to>Mapping &#x28;sub-transformation&#x29;</to><enabled>N</enabled> </hop>
-  <hop> <from>invalid_prefixes</from><to>Mapping &#x28;sub-transformation&#x29;</to><enabled>N</enabled> </hop>
-  <hop> <from>Mapping &#x28;sub-transformation&#x29;</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap Preferred Mail Format</from><to>Concatenate source and source_tracking_code</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Remove bogus prefixes &#x28;specific to this org&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>external_identifier to contact_id</from><to>Remap Preferred Mail Format</to><enabled>Y</enabled> </hop>
-  <hop> <from>generate websites</from><to>cli_website</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add website_type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add website_type</from><to>generate websites</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
-  <hop> <from>Row Normaliser</from><to>Create phone_type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Create phone_type</from><to>phone_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>phone_cleanup</from><to>cli_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>phone_cleanup</from><to>invalid_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate source and source_tracking_code</from><to>Add location_type 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>address_cleanup</from><to>cli_address</to><enabled>Y</enabled> </hop>
-  <hop> <from>address_cleanup</from><to>invalid_address</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add location_type 2</from><to>remove non-address fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-address fields</from><to>Remove question mark from zip code</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove question mark from zip code</from><to>fix &#x22;ot&#x22; as state</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix &#x22;ot&#x22; as state</from><to>fix bad country data</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix bad country data</from><to>blank zip code for bad import group</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code for bad import group</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code for bad import group</from><to>blank zip code</to><enabled>Y</enabled> </hop>
-  <hop> <from>blank zip code</from><to>address_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add location_type</from><to>email_wrapper</to><enabled>Y</enabled> </hop>
-  <hop> <from>email_wrapper</from><to>invalid_email</to><enabled>Y</enabled> </hop>
-  <hop> <from>email_wrapper</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove non-import fields</from><to>cli_email</to><enabled>Y</enabled> </hop>
   <hop> <from>filter records with no contact_id</from><to>invalid_salsa_additional_info</to><enabled>Y</enabled> </hop>
   <hop> <from>filter records with no contact_id</from><to>cli_salsa_additional_info</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom fields only</from><to>Rename standard fields</to><enabled>N</enabled> </hop>
-  <hop> <from>Rename standard fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap prefixes&#x2f;suffixes</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom fields only</from><to>Keep only certain fields, rename them</to><enabled>Y</enabled> </hop>
+  <hop> <from>Keep only certain fields, rename them</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>supporter_export.txt</from><to>custom fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom fields only</from><to>CUSTOMFIELDTEMP</to><enabled>Y</enabled> </hop>
+  <hop> <from>external_identifier to contact_id</from><to>Concatenate source and Source Details</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source and Source Details</from><to>cli_salsa_custom_fields</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Active supporters only</name>
@@ -483,770 +407,7 @@
     </step>
 
   <step>
-    <name>Add location_type</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>249</xloc>
-      <yloc>402</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add location_type 2</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>585</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add website_type</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>website_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>262</xloc>
-      <yloc>322</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>CUSTOMFIELDTEMP</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;CUSTOMFIELDTEMP</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>supporter_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>salesforce_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>append_run_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>salsa_deleted</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>wellpoint_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>declaration_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>stand_with_kate_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>start_from_scratch_obama_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>hands_off_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>fair_elections_now_action</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lapsed_amount</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lapsed_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state_district</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_il_1_5</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_prospective</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_cd</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_ld</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_councilman</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_ward</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_precinct</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_last_reached</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_by</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>supportive_comment_for_kevin</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lcsp_conference_registration</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>hr_676_petition_signers</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nominee</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>why_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>are_you_a_tiaa_cref_policy_holder_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ac_committee_of_100</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>union_affiliation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>comment</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lcsp_registration_payment</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lc_need_a_ride</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lcsp_registration_donation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>md_also_pnhp</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>empower_call_response</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>receive_snail_mail</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>campaign_donation</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>tiaa_cref</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>meet_with_congressperson</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>collect_stories</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>member_shirt_size</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>dinner_option</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>language</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>in_memory_of_jerry_tucker</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>comments_for_jerry_s_family</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>membership_last_donate</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>tax_status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>313</xloc>
-      <yloc>114</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Concatenate source and source_tracking_code</name>
+    <name>Concatenate source and Source Details</name>
     <type>ConcatFields</type>
     <description/>
     <distribute>N</distribute>
@@ -1256,7 +417,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator> </separator>
+    <separator>&#x3a; </separator>
     <enclosure/>
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
@@ -1301,7 +462,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>source_tracking_code</name>
+        <name>Source_Details</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1321,1264 +482,13 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>105</xloc>
-      <yloc>433</yloc>
+      <yloc>350</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Create phone_type</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>phone_type</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>location_type</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>273</xloc>
-      <yloc>516</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Dummy &#x28;do nothing&#x29;</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>554</xloc>
-      <yloc>769</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Mapping &#x28;sub-transformation&#x29;</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;create_prefix_or_suffix.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step>invalid_prefixes</input_step>
-    <output_step>Prefixes</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>prefix</parent><child>label</child></connector>
-    </mapping>    <mapping>    <input_step>invalid_suffixes</input_step>
-    <output_step>Suffixes</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>suffix</parent><child>label</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step>Dummy &#x28;do nothing&#x29;</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>474</xloc>
-      <yloc>770</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remap Preferred Mail Format</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>preferred_mail_format</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>HTML Email</source_value>
-        <target_value>HTML</target_value>
-      </field>
-      <field>
-        <source_value>Text Email</source_value>
-        <target_value>Text</target_value>
-      </field>
-      <field>
-        <source_value/>
-        <target_value>HTML</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>101</xloc>
-      <yloc>353</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remap prefixes&#x2f;suffixes</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;prefix_suffix_remapping.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>prefix</parent><child>prefix</child></connector>
-       <connector><parent>suffix</parent><child>suffix</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step>Main data stream</input_step>
-    <output_step>filter records with no contact_id</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>prefix_id</parent><child>prefix_id</child></connector>
-       <connector><parent>suffix_id</parent><child>suffix_id</child></connector>
-    </mapping>    <mapping>    <input_step>Unknown Prefixes</input_step>
-    <output_step>invalid_prefixes</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>prefix</parent><child>prefix</child></connector>
-    </mapping>    <mapping>    <input_step>Unknown Suffixes</input_step>
-    <output_step>invalid_suffixes</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>suffix</parent><child>suffix</child></connector>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>113</xloc>
-      <yloc>796</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove bogus prefixes &#x28;specific to this org&#x29;</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>prefix</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>&#x2a;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>1575</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>94107</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>ACTIVIST</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Administrative A</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>AGAINST WAR IN S</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Angel Schatz</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>as well as Rebe</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Assistant Counse</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Assitant Counsel</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Associate Genera</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>B. Sheehan</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Blogger</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Brian Lamb</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>ca 90005</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Calitics</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Catherine C Clas</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>CDR, USCG Ret.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Charles F. Rudol</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>CITIZEN</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Co-Executive Dir</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Connecticut</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Constitutional R</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dalal McCarthy</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Debra Lewis</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Deputy Clerk, Br</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Deputy Director</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dianna Stallone</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Director</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Director, Admini</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Director, Immigr</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Director, Legal</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dr. and Mrs Absh</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dr. Valerie Wern</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Emperor</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Eric Cook</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Esq.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>friend &#x26; equal</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Geraldine Rohrke</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Government Relat</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Hannah Mermelste</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Harold Siegel</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Human Rights Att</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Instructor</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Irrelevant</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Jacob A. Barton</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>James Bolduc</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>John M. Cote</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Judy</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Legal Administra</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Legislative</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>library assistan</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>LN</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>M</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>M Miran</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>M.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>M.P.A.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>MA</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>MAria Wilkens</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Matt</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Maureen Hearn</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>michael and lore</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mike D&#x27;Ambrosio</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Military Interve</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mona Burton</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mona Mayy</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr David Tefft</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr Napoleon Salv</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Andre Baloig</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Bradleigh H</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. George Swans</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. John Sherry</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Leotis Foste</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Martin Bacli</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Nicolas Thom</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Pickering</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Robert Arang</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr. Roger Allan</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr.Manuel Staffa</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr.Shahriar Imam</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr.William Gonza</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mrs angela rodri</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>MRS. Churchwell</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mrs. Patricia Vi</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mrs. Stephanie D</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mrs&#x2f;Senior</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms karen</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms Karen Pratt</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms Teresa Zana</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Alian Teach</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Dagmar Brook</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. DeLuke</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Julia Braker</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Kathleen Ken</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Linda Nicole</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Micaela Ensm</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Nushin Sarka</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Tasleem Raza</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Yosefa Forma</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms.Eva Poole-Gil</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Nadine Strossen</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>New Haven</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>New York</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Nik Ritchie</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>No action on Mil</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>No Military Inte</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Noel Browne</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>NY</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Office Manager</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Operations Direc</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Operations Manag</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>other</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>OWNER</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Pastor Barry Kre</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>PEACE</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>PhD psychologist</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>phil alewitz</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Political Consul</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Professor</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Professor Emerit</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Project Director</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>QA</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>R Joyner</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>retired</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>rick Brown</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Robert Boyer</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Scott Foster</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Social Worker</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Staff Attorney</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Stephen Spring,</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Student</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Supervising Atto</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>syria</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>The one and only</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Thomas</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Thomas O&#x27;Flanaga</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Title&#x2a;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>TSgt, USAF &#x28;Ret&#x29;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Voter</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>William Morgan</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x26; Nikolaidis</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Owner</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>m</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>citizen</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>professor emerit</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Retired</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Syria</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>owner</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>115</xloc>
-      <yloc>672</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove bogus suffixes &#x28;specific to this org&#x29; 2</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>suffix</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>-</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>--</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>---</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>0</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>263 West End Ave</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>6656556150</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>8 gardenia ave</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>A.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Been there, done</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Bill J Ballard</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>C</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Chris Gordon Owe</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Civ rts cmtee</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>crc</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dr</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Dr.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Edgar</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Eisler</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Esquire</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Foss</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>fr or ms</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Friden</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>gallagher</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Gratz</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Greg Kelly</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>hussain</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Jill Karpf</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Josephus Teewhy</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Kimmel</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Kinoy</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Kinoy242</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Kvam</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Levin</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Margaret Cargiol</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Melloh</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mike</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Miss</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mpd</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr Robert J Mill</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mr.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mrs</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mrs.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mrs.Vivian Penni</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms Patricia Tayl</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms. Eleanor Seag</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ms..</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Mx</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>NA</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>no suffix&#x21;</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>None</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Nysda</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>pdr</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>phd</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Prof.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Professor</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>q</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Rath</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Rowland</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>RSVP</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Schlesinger</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Solnit</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Suffix</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Tate</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>telemaque</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>TPD</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Vacanti</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>VARCHAR1</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Wesley-Smith</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>White</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>wilson</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Wolfson</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Zerfas</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>DR</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>gratz</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mr</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mr.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>mrs.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>ms.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>none</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>white</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x28;and Candace Fal</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>MR</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>MR.</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>Ratner</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>730</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove non-import fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>location_type_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>423</xloc>
-      <yloc>390</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove question mark from zip code</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>postal_code</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x3f;</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>556</xloc>
-      <yloc>653</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Rename standard fields</name>
+    <name>Keep only certain fields, rename them</name>
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
@@ -2592,203 +502,103 @@
         <rename>external_identifier</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Title</name>
-        <rename>prefix</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Suffix</name>
-        <rename>suffix</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email</name>
-        <rename>email</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email_Preference</name>
-        <rename>preferred_mail_format</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Phone</name>
-        <rename>phone_primary</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Cell_Phone</name>
-        <rename>phone_mobile</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Work_Phone</name>
-        <rename>phone_work</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Home_Fax</name>
-        <rename>fax_home</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Work_Fax</name>
-        <rename>fax_work</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street</name>
-        <rename>street_address</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street_2</name>
-        <rename>additional_address_1</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Street_3</name>
-        <rename>additional_address_2</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>City</name>
-        <rename>city</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>State</name>
-        <rename>state</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Zip</name>
-        <rename>postal_code</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>PRIVATE_Zip_Plus_4</name>
-        <rename>postal_code_suffix</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Country</name>
-        <rename>country</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Latitude</name>
-        <rename>geo_code_1</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Longitude</name>
-        <rename>geo_code_2</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Organization</name>
-        <rename>current_employer</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Occupation</name>
-        <rename>job_title</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Web_Page</name>
-        <rename>website1</rename>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>Source</name>
         <rename>source</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Source_Tracking_Code</name>
-        <rename>source_tracking_code</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Tracking_Code</name>
-        <rename>tracking_code</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Last_Modified</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Date_Created</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Receive_Email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Email_Status</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Soft_Bounce_Count</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Hard_Bounce_Count</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Last_Bounce</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Receive_Phone_Blasts</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Phone_Provider</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Pager</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>County</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>District</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Department</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Instant_Messenger_Service</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Instant_Messenger_Name</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Alternative_Email</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_1</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_2</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Other_Data_3</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Notes</name>
-        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Source_Details</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Status</name>
+      </field>      <field>        <name>state_district</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>uid</name>
+      </field>      <field>        <name>md_il_1_5</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Timezone</name>
+      </field>      <field>        <name>md_prospective</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Language_Code</name>
+      </field>      <field>        <name>md_status</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_cd</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_ld</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_ward</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_precinct</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_last_reached</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_by</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>are_you_a_tiaa_cref_policy_holder_</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ac_committee_of_100</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>union_affiliation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>lcsp_registration_payment</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>lcsp_registration_donation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>md_also_pnhp</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tiaa_cref</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>member_shirt_size</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>in_memory_of_jerry_tucker</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>comments_for_jerry_s_family</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>tax_status</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -2797,599 +607,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>103</xloc>
       <yloc>193</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Row Normaliser</name>
-    <type>Normaliser</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-   <typefield>location_type</typefield>
-    <fields>      <field>        <name>phone_primary</name>
-        <value>Main_Phone</value>
-        <norm>phone</norm>
-        </field>      <field>        <name>phone_mobile</name>
-        <value>Main_Mobile</value>
-        <norm>phone</norm>
-        </field>      <field>        <name>fax_home</name>
-        <value>Home_Fax</value>
-        <norm>phone</norm>
-        </field>      <field>        <name>fax_work</name>
-        <value>Work_Fax</value>
-        <norm>phone</norm>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>190</xloc>
-      <yloc>485</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>address_cleanup</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;address_cleanup.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step>Mapping Input</output_step>
-    <main_path>Y</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>country</parent><child>country</child></connector>
-       <connector><parent>location_type</parent><child>location_type</child></connector>
-       <connector><parent>state</parent><child>state</child></connector>
-       <connector><parent>postal_code</parent><child>postal_code</child></connector>
-       <connector><parent>street_address</parent><child>street_address</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step>valid addresses</input_step>
-    <output_step>cli_address</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>    <mapping>    <input_step>invalid addresses</input_step>
-    <output_step>invalid_address</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1014</xloc>
-      <yloc>714</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>blank zip code</name>
-    <type>SetValueConstant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-   <usevar>N</usevar>
-    <fields>
-      <field>
-        <name>postal_code</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-        </field>
-      <field>
-        <name>postal_code_suffix</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>911</xloc>
-      <yloc>642</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>blank zip code for bad import group</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>blank zip code</send_true_to>
-<send_false_to>address_cleanup</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>external_identifier</leftvalue>
-   <function>&#x3e;&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>37131969</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>external_identifier</leftvalue>
-   <function>&#x3c;&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>37136282</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>813</xloc>
-      <yloc>695</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_address</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_address</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>street_address</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>city</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code_suffix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>country</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>geo_code_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>geo_code_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>country_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state_province_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1144</xloc>
-      <yloc>678</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_email</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_email</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>510</xloc>
-      <yloc>377</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_phone</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_phone</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>phone</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>phone_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>447</xloc>
-      <yloc>513</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4131,94 +1348,6 @@
     </step>
 
   <step>
-    <name>cli_website</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_website</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>url</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>website_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>470</xloc>
-      <yloc>295</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>custom fields only</name>
     <type>SelectValues</type>
     <description/>
@@ -4276,8 +1405,6 @@
       </remove>      <remove>        <name>Other_Data_2</name>
       </remove>      <remove>        <name>Other_Data_3</name>
       </remove>      <remove>        <name>Notes</name>
-      </remove>      <remove>        <name>Source</name>
-      </remove>      <remove>        <name>Source_Details</name>
       </remove>      <remove>        <name>Source_Tracking_Code</name>
       </remove>      <remove>        <name>Tracking_Code</name>
       </remove>      <remove>        <name>Status</name>
@@ -4288,58 +1415,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>103</xloc>
       <yloc>114</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>email_wrapper</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;email_wrapper.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step>Add location_type</input_step>
-    <output_step>email wrapper</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>Y</rename_on_output>
-    <description/>
-       <connector><parent>email</parent><child>email</child></connector>
-       <connector><parent>location_type</parent><child>location_type</child></connector>
-       <connector><parent>contact_id</parent><child>contact_id</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step>valid emails</input_step>
-    <output_step>Remove non-import fields</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>    <mapping>    <input_step>invalid emails with names</input_step>
-    <output_step>invalid_email</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>342</xloc>
-      <yloc>412</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4380,8 +1455,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>103</xloc>
-      <yloc>288</yloc>
+      <xloc>106</xloc>
+      <yloc>275</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4411,865 +1486,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>107</xloc>
       <yloc>1034</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>fix &#x22;ot&#x22; as state</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>state</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>ot</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>627</xloc>
-      <yloc>672</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>fix bad country data</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>country</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>&#x3f;0000</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2220</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10031</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>48220</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>11205</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10003-9518</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10025</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10014</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10009</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>12572</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>1002</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>10017</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>19081-1397</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;4886</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;0021</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1712</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1953</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1213</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;n&#x2f;a</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;4741</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1001</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8756</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;6520</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2014</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8457</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1116</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;8108</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;1121</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;2224</source_value>
-        <target_value/>
-      </field>
-      <field>
-        <source_value>&#x3f;3335</source_value>
-        <target_value/>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>713</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>generate websites</name>
-    <type>SimpleMapping</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;website_cleanup.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>website1</parent><child>url</child></connector>
-       <connector><parent>website_type</parent><child>website_type</child></connector>
-       <connector><parent>contact_id</parent><child>contact_id</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step/>
-    <output_step/>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>url</parent><child>url</child></connector>
-       <connector><parent>website_type_id</parent><child>website_type_id</child></connector>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>371</xloc>
-      <yloc>319</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_address</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_address</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>street_address</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>additional_address_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>city</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_code_suffix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>country</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>geo_code_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>geo_code_2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>country_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>state_province_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>error</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1142</xloc>
-      <yloc>748</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_email</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_email</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>result</name>
-        <type>Boolean</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error message</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>419</xloc>
-      <yloc>449</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_phone</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_phone</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>phone</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>invalid_reason</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>phone_type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>445</xloc>
-      <yloc>583</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_prefixes</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_prefixes</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>prefix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>347</xloc>
-      <yloc>811</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -6006,195 +2222,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>267</xloc>
       <yloc>1044</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_suffixes</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_suffixes</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>suffix</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>337</xloc>
-      <yloc>734</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>phone_cleanup</name>
-    <type>Mapping</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;phone_cleanup.ktr</filename>
-    <directory_path/>
-    <mappings>
-      <input>
-    <mapping>    <input_step/>
-    <output_step>phone input</output_step>
-    <main_path>Y</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-       <connector><parent>contact_id</parent><child>contact_id</child></connector>
-       <connector><parent>location_type</parent><child>location_type</child></connector>
-       <connector><parent>phone</parent><child>phone</child></connector>
-       <connector><parent>phone_type</parent><child>phone_type</child></connector>
-    </mapping>      </input>
-      <output>
-    <mapping>    <input_step>valid phones</input_step>
-    <output_step>cli_phone</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>    <mapping>    <input_step>invalid phones</input_step>
-    <output_step>invalid_phone</output_step>
-    <main_path>N</main_path>
-    <rename_on_output>N</rename_on_output>
-    <description/>
-    </mapping>      </output>
-          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>351</xloc>
-      <yloc>531</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>remove non-address fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>external_identifier</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>street_address</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>additional_address_1</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>additional_address_2</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>city</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>state</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>postal_code</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>postal_code_suffix</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>country</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>geo_code_1</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>geo_code_2</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>location_type</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>293</xloc>
-      <yloc>611</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -7432,76 +3459,389 @@
     </step>
 
   <step>
-    <name>custom fields only 2</name>
-    <type>SelectValues</type>
+    <name>cli_salsa_custom_fields</name>
+    <type>TextFileOutput</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>supporter_KEY</name>
-      </remove>      <remove>        <name>Last_Modified</name>
-      </remove>      <remove>        <name>Date_Created</name>
-      </remove>      <remove>        <name>Title</name>
-      </remove>      <remove>        <name>First_Name</name>
-      </remove>      <remove>        <name>MI</name>
-      </remove>      <remove>        <name>Last_Name</name>
-      </remove>      <remove>        <name>Suffix</name>
-      </remove>      <remove>        <name>Email</name>
-      </remove>      <remove>        <name>Password</name>
-      </remove>      <remove>        <name>Receive_Email</name>
-      </remove>      <remove>        <name>Email_Status</name>
-      </remove>      <remove>        <name>Email_Preference</name>
-      </remove>      <remove>        <name>Soft_Bounce_Count</name>
-      </remove>      <remove>        <name>Hard_Bounce_Count</name>
-      </remove>      <remove>        <name>Last_Bounce</name>
-      </remove>      <remove>        <name>Receive_Phone_Blasts</name>
-      </remove>      <remove>        <name>Phone</name>
-      </remove>      <remove>        <name>Cell_Phone</name>
-      </remove>      <remove>        <name>Phone_Provider</name>
-      </remove>      <remove>        <name>Work_Phone</name>
-      </remove>      <remove>        <name>Pager</name>
-      </remove>      <remove>        <name>Home_Fax</name>
-      </remove>      <remove>        <name>Work_Fax</name>
-      </remove>      <remove>        <name>Street</name>
-      </remove>      <remove>        <name>Street_2</name>
-      </remove>      <remove>        <name>Street_3</name>
-      </remove>      <remove>        <name>City</name>
-      </remove>      <remove>        <name>State</name>
-      </remove>      <remove>        <name>Zip</name>
-      </remove>      <remove>        <name>PRIVATE_Zip_Plus_4</name>
-      </remove>      <remove>        <name>County</name>
-      </remove>      <remove>        <name>District</name>
-      </remove>      <remove>        <name>Country</name>
-      </remove>      <remove>        <name>Latitude</name>
-      </remove>      <remove>        <name>Longitude</name>
-      </remove>      <remove>        <name>Organization</name>
-      </remove>      <remove>        <name>Department</name>
-      </remove>      <remove>        <name>Occupation</name>
-      </remove>      <remove>        <name>Instant_Messenger_Service</name>
-      </remove>      <remove>        <name>Instant_Messenger_Name</name>
-      </remove>      <remove>        <name>Web_Page</name>
-      </remove>      <remove>        <name>Alternative_Email</name>
-      </remove>      <remove>        <name>Other_Data_1</name>
-      </remove>      <remove>        <name>Other_Data_2</name>
-      </remove>      <remove>        <name>Other_Data_3</name>
-      </remove>      <remove>        <name>Notes</name>
-      </remove>      <remove>        <name>Source</name>
-      </remove>      <remove>        <name>Source_Details</name>
-      </remove>      <remove>        <name>Source_Tracking_Code</name>
-      </remove>      <remove>        <name>Tracking_Code</name>
-      </remove>      <remove>        <name>Status</name>
-      </remove>      <remove>        <name>uid</name>
-      </remove>      <remove>        <name>Timezone</name>
-      </remove>      <remove>        <name>Language_Code</name>
-      </remove>    </fields>     <cluster_schema/>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_salsa_custom_fields</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>external_identifier</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Source_Details</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_district</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_il_1_5</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_prospective</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_cd</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_ld</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_ward</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_precinct</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_last_reached</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_by</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>are_you_a_tiaa_cref_policy_holder_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ac_committee_of_100</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>union_affiliation</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>lcsp_registration_payment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>lcsp_registration_donation</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>md_also_pnhp</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tiaa_cref</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>member_shirt_size</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>in_memory_of_jerry_tucker</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>comments_for_jerry_s_family</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tax_status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>379</xloc>
-      <yloc>54</yloc>
+      <xloc>106</xloc>
+      <yloc>484</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
