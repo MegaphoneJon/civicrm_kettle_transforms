@@ -290,9 +290,11 @@
   <hop> <from>event_key to event_id lookup</from><to>Remap status</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap status</from><to>get participant_status_id</to><enabled>Y</enabled> </hop>
   <hop> <from>get participant_status_id</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_participants</to><enabled>Y</enabled> </hop>
   <hop> <from>rename&#x2f;remove fields</from><to>remove records with no external_identifier at all</to><enabled>Y</enabled> </hop>
   <hop> <from>remove records with no external_identifier at all</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Check for existing participant</from><to>New participants only</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>Check for existing participant</to><enabled>Y</enabled> </hop>
+  <hop> <from>New participants only</from><to>cli_participants</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Remap status</name>
@@ -440,8 +442,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>339</xloc>
-      <yloc>692</yloc>
+      <xloc>343</xloc>
+      <yloc>795</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -738,6 +740,35 @@
     </step>
 
   <step>
+    <name>remove records with no external_identifier at all</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>external_identifier</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>331</xloc>
+      <yloc>165</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>rename&#x2f;remove fields</name>
     <type>SelectValues</type>
     <description/>
@@ -774,7 +805,61 @@
     </step>
 
   <step>
-    <name>remove records with no external_identifier at all</name>
+    <name>Check for existing participant</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_participant</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id</name>
+        <field>contact_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>event_id</name>
+        <field>event_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>status_id</name>
+        <field>status_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>343</xloc>
+      <yloc>682</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>New participants only</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -789,15 +874,15 @@
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>external_identifier</leftvalue>
- <function>IS NOT NULL</function>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
  <rightvalue/>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>331</xloc>
-      <yloc>165</yloc>
+      <xloc>344</xloc>
+      <yloc>737</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -134,6 +134,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>Better performance if you add more contacts later</note>
+      <xloc>149</xloc>
+      <yloc>566</yloc>
+      <width>298</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -354,8 +375,9 @@
   <hop> <from>email_cleanup</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>On hold and non-blank e-mails only</from><to>Add location_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Add location_type</from><to>email_cleanup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get e-mail ID</from><to>just import fields</to><enabled>Y</enabled> </hop>
   <hop> <from>just import fields</from><to>cli_salsa_primary_emails_on_hold</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get e-mail ID</from><to>Emails not already on hold</to><enabled>Y</enabled> </hop>
+  <hop> <from>Emails not already on hold</from><to>just import fields</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add location_type</name>
@@ -432,6 +454,12 @@
       <value>
         <name>location_type_id</name>
         <rename>location_type_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>on_hold</name>
+        <rename>db_on_hold</rename>
         <default/>
         <type>Integer</type>
       </value>
@@ -633,8 +661,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>102</xloc>
-      <yloc>626</yloc>
+      <xloc>107</xloc>
+      <yloc>699</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -757,8 +785,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>98</xloc>
-      <yloc>566</yloc>
+      <xloc>103</xloc>
+      <yloc>639</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1398,6 +1426,35 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>79</xloc>
       <yloc>6</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Emails not already on hold</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>db_on_hold</leftvalue>
+ <function>&#x3c;&#x3e;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>Integer</type><text>1</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>106</xloc>
+      <yloc>568</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

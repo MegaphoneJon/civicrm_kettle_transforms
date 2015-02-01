@@ -426,7 +426,8 @@
   <hop> <from>Mark negative receive_email as on_hold</from><to>Don&#x27;t add folks already in the database</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove backslashes from name</from><to>Mark -3 Receive_Email as is_opt_out</to><enabled>Y</enabled> </hop>
   <hop> <from>Mark -3 Receive_Email as is_opt_out</from><to>Mark negative receive_email as on_hold</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get only step 1 fields</from><to>Add location_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get only step 1 fields</from><to>Receive_Email is number</to><enabled>Y</enabled> </hop>
+  <hop> <from>Receive_Email is number</from><to>Add location_type</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Active supporters only</name>
@@ -668,8 +669,8 @@
     </rules>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>301</xloc>
-      <yloc>282</yloc>
+      <xloc>307</xloc>
+      <yloc>279</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2024,6 +2025,41 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>52</xloc>
       <yloc>20</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Receive_Email is number</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>Receive_Email</name>
+        <rename>Receive_Email</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>272</xloc>
+      <yloc>39</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
