@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>import addresses</name>
+    <name>API update relationship notes</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -66,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;14 16&#x3a;51&#x3a;16.653</created_date>
+  <created_date>2014&#x2f;09&#x2f;10 17&#x3a;34&#x3a;16.113</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;14 16&#x3a;51&#x3a;16.653</modified_date>
+  <modified_date>2014&#x2f;09&#x2f;10 17&#x3a;34&#x3a;16.113</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -310,47 +310,19 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Run SSH commands</from><to>Text file output</to><enabled>Y</enabled> </hop>
+  <hop> <from>temp ID to relationship_id</from><to>entity_id is null</to><enabled>Y</enabled> </hop>
+  <hop> <from>entity_id is null</from><to>flip contact_id_a and contact_id_b</to><enabled>Y</enabled> </hop>
+  <hop> <from>entity_id is null</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>Import Step 1</to><enabled>Y</enabled> </hop>
+  <hop> <from>flip contact_id_a and contact_id_b</from><to>Remove entity_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove entity_id</from><to>temp ID to relationship_id 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>temp ID to relationship_id 2</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>cli_relationship_notes</from><to>civicrm_relationship</to><enabled>Y</enabled> </hop>
+  <hop> <from>civicrm_relationship</from><to>temp ID to relationship_id</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Run SSH commands</name>
-    <type>SSH</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <dynamicCommandField>N</dynamicCommandField>
-    <command>php &#x24;&#x7b;IMPORTSCRIPT&#x7d; -e Address --file&#x3d;&#x24;&#x7b;SQLDUMP&#x7d;&#x2f;csvs&#x2f;cli_addresses.csv&#xa;</command>
-    <commandfieldname/>
-    <port>22</port>
-    <servername>&#x24;&#x7b;DEVSERVER&#x7d;</servername>
-    <userName>jon</userName>
-    <password>Encrypted </password>
-    <usePrivateKey>Y</usePrivateKey>
-    <keyFileName>&#x24;&#x7b;RSAKEY&#x7d;</keyFileName>
-    <passPhrase/>
-    <stdOutFieldName>stdOut</stdOutFieldName>
-    <stdErrFieldName>stdErr</stdErrFieldName>
-    <timeOut>0</timeOut>
-    <proxyHost/>
-    <proxyPort/>
-    <proxyUsername/>
-    <proxyPassword>Encrypted </proxyPassword>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>105</xloc>
-      <yloc>55</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Text file output</name>
-    <type>TextFileOutput</type>
+    <name>Dummy &#x28;do nothing&#x29;</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -359,55 +331,534 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <separator>&#x3b;</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x5c;importlogs&#x5c;log_addresses</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>414</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Import Step 1</name>
+    <type>CiviCrmOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
+    <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
+    <Entity>Note</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+      <entity-name>Acl</entity-name>
+      <entity-name>AclRole</entity-name>
+      <entity-name>ActionSchedule</entity-name>
+      <entity-name>Activity</entity-name>
+      <entity-name>ActivityContact</entity-name>
+      <entity-name>ActivityType</entity-name>
+      <entity-name>Address</entity-name>
+      <entity-name>Batch</entity-name>
+      <entity-name>Campaign</entity-name>
+      <entity-name>Case</entity-name>
+      <entity-name>CaseType</entity-name>
+      <entity-name>Constant</entity-name>
+      <entity-name>Contact</entity-name>
+      <entity-name>ContactType</entity-name>
+      <entity-name>Contribution</entity-name>
+      <entity-name>ContributionPage</entity-name>
+      <entity-name>ContributionRecur</entity-name>
+      <entity-name>ContributionSoft</entity-name>
+      <entity-name>Country</entity-name>
+      <entity-name>CustomField</entity-name>
+      <entity-name>CustomGroup</entity-name>
+      <entity-name>CustomSearch</entity-name>
+      <entity-name>CustomValue</entity-name>
+      <entity-name>Dashboard</entity-name>
+      <entity-name>DashboardContact</entity-name>
+      <entity-name>Domain</entity-name>
+      <entity-name>Email</entity-name>
+      <entity-name>Entity</entity-name>
+      <entity-name>EntityTag</entity-name>
+      <entity-name>Event</entity-name>
+      <entity-name>Extension</entity-name>
+      <entity-name>File</entity-name>
+      <entity-name>FinancialAccount</entity-name>
+      <entity-name>FinancialType</entity-name>
+      <entity-name>Grant</entity-name>
+      <entity-name>Group</entity-name>
+      <entity-name>GroupContact</entity-name>
+      <entity-name>GroupNesting</entity-name>
+      <entity-name>GroupOrganization</entity-name>
+      <entity-name>Im</entity-name>
+      <entity-name>Job</entity-name>
+      <entity-name>LineItem</entity-name>
+      <entity-name>LocBlock</entity-name>
+      <entity-name>Location</entity-name>
+      <entity-name>LocationType</entity-name>
+      <entity-name>MailSettings</entity-name>
+      <entity-name>Mailing</entity-name>
+      <entity-name>MailingComponent</entity-name>
+      <entity-name>MailingContact</entity-name>
+      <entity-name>MailingEventConfirm</entity-name>
+      <entity-name>MailingEventResubscribe</entity-name>
+      <entity-name>MailingEventSubscribe</entity-name>
+      <entity-name>MailingEventUnsubscribe</entity-name>
+      <entity-name>MailingGroup</entity-name>
+      <entity-name>MailingJob</entity-name>
+      <entity-name>MailingRecipients</entity-name>
+      <entity-name>Membership</entity-name>
+      <entity-name>MembershipBlock</entity-name>
+      <entity-name>MembershipPayment</entity-name>
+      <entity-name>MembershipStatus</entity-name>
+      <entity-name>MembershipType</entity-name>
+      <entity-name>MessageTemplate</entity-name>
+      <entity-name>Note</entity-name>
+      <entity-name>OptionGroup</entity-name>
+      <entity-name>OptionValue</entity-name>
+      <entity-name>Participant</entity-name>
+      <entity-name>ParticipantPayment</entity-name>
+      <entity-name>ParticipantStatusType</entity-name>
+      <entity-name>PaymentProcessor</entity-name>
+      <entity-name>PaymentProcessorType</entity-name>
+      <entity-name>Phone</entity-name>
+      <entity-name>Pledge</entity-name>
+      <entity-name>PledgePayment</entity-name>
+      <entity-name>Premium</entity-name>
+      <entity-name>PriceField</entity-name>
+      <entity-name>PriceFieldValue</entity-name>
+      <entity-name>PriceSet</entity-name>
+      <entity-name>PrintLabel</entity-name>
+      <entity-name>Product</entity-name>
+      <entity-name>Profile</entity-name>
+      <entity-name>Relationship</entity-name>
+      <entity-name>RelationshipType</entity-name>
+      <entity-name>ReportInstance</entity-name>
+      <entity-name>ReportTemplate</entity-name>
+      <entity-name>Setting</entity-name>
+      <entity-name>SmsProvider</entity-name>
+      <entity-name>Survey</entity-name>
+      <entity-name>SurveyRespondant</entity-name>
+      <entity-name>System</entity-name>
+      <entity-name>SystemLog</entity-name>
+      <entity-name>Tag</entity-name>
+      <entity-name>UFField</entity-name>
+      <entity-name>UFGroup</entity-name>
+      <entity-name>UFJoin</entity-name>
+      <entity-name>UFMatch</entity-name>
+      <entity-name>Website</entity-name>
+      <entity-name>WordReplacement</entity-name>
+      <action-name>create</action-name>
+      <action-name>delete</action-name>
+      <action-name>getlist</action-name>
+      <action-name>getrefcount</action-name>
+      <action-name>setvalue</action-name>
+      <action-name>tree_get</action-name>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Note ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;note_id&#x22;&#x5d;,&#x22;description&#x22;&#x3a;&#x22;Note ID&#x22;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Note ID</title>
+        <type>1</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Note Modified By&#x22;,&#x22;description&#x22;&#x3a;&#x22;When was this note last modified&#x5c;&#x2f;edited&#x22;,&#x22;name&#x22;&#x3a;&#x22;modified_date&#x22;,&#x22;type&#x22;&#x3a;4&#x7d;</fieldDef>
+        <fieldName>modified_date</fieldName>
+        <name>modified_date</name>
+        <title>Note Modified By</title>
+        <type>4</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Note Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;description&#x22;&#x3a;&#x22;FK to Contact ID creator&#x22;,&#x22;name&#x22;&#x3a;&#x22;contact_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldName>contact_id</fieldName>
+        <name>contact_id</name>
+        <title>Note Created By</title>
+        <type>1</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Subject&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;description&#x22;&#x3a;&#x22;subject of note description&#x22;,&#x22;name&#x22;&#x3a;&#x22;subject&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>subject</fieldName>
+        <name>subject</name>
+        <title>Subject</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Note Entity&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;api.default&#x22;&#x3a;&#x22;civicrm_contact&#x22;,&#x22;description&#x22;&#x3a;&#x22;Name of table where item being referenced is stored.&#x22;,&#x22;name&#x22;&#x3a;&#x22;entity_table&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>entity_table</fieldName>
+        <name>entity_table</name>
+        <title>Note Entity</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Privacy&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;description&#x22;&#x3a;&#x22;Foreign Key to Note Privacy Level &#x28;which is an option value pair and hence an implicit FK&#x29;&#x22;,&#x22;name&#x22;&#x3a;&#x22;privacy&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldName>privacy</fieldName>
+        <name>privacy</name>
+        <title>Privacy</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Note Entity ID&#x22;,&#x22;description&#x22;&#x3a;&#x22;Foreign key to the referenced item.&#x22;,&#x22;name&#x22;&#x3a;&#x22;entity_id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>entity_id</fieldName>
+        <name>entity_id</name>
+        <title>Note Entity ID</title>
+        <type>1</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;export&#x22;&#x3a;true,&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Note&#x22;,&#x22;dataPattern&#x22;&#x3a;&#x22;&#x5c;&#x2f;&#x5c;&#x2f;&#x22;,&#x22;description&#x22;&#x3a;&#x22;Note and&#x5c;&#x2f;or Comment.&#x22;,&#x22;name&#x22;&#x3a;&#x22;note&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;headerPattern&#x22;&#x3a;&#x22;&#x5c;&#x2f;Note&#x7c;Comment&#x5c;&#x2f;i&#x22;,&#x22;import&#x22;&#x3a;true,&#x22;where&#x22;&#x3a;&#x22;civicrm_note.note&#x22;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;4&#x7d;</fieldDef>
+        <fieldName>note</fieldName>
+        <name>note</name>
+        <title>Note</title>
+        <type>32</type>
+        <source>getfields</source>
+      </field>
+      <key-index>note</key-index>
+      <key-index>entity_table</key-index>
+      <key-index>entity_id</key-index>
+      <output-field>
+        <input-field>entity_table</input-field>
+        <output-field>entity_table</output-field>
+      </output-field>
+      <output-field>
+        <input-field>entity_id</input-field>
+        <output-field>entity_id</output-field>
+      </output-field>
+      <output-field>
+        <input-field>note</input-field>
+        <output-field>note</output-field>
+      </output-field>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>418</xloc>
+      <yloc>449</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove entity_id</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>entity_id</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>592</xloc>
+      <yloc>287</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>civicrm_relationship</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
     <fields>
       <field>
-        <name>stdOut</name>
+        <name>entity_table</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
+        <nullif>civicrm_relationship</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>103</xloc>
-      <yloc>130</yloc>
+      <xloc>409</xloc>
+      <yloc>67</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_relationship_notes</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x2f;home&#x2f;jon&#x2f;ownCloud&#x2f;Shared&#x2f;Palante Tech Shared&#x2f;Current Clients and Projects&#x2f;CCR&#x2f;data&#x2f;data&#x2f;cli_relationship_notes.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>note</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_5</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contact_id_a</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>relationship_type_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>407</xloc>
+      <yloc>7</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>entity_id is null</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>flip contact_id_a and contact_id_b</send_true_to>
+<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>entity_id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>415</xloc>
+      <yloc>193</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>flip contact_id_a and contact_id_b</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var contact_id_a&#x3b;&#xa;var contact_id_b&#x3b;&#xa;var temp &#x3d; contact_id_b&#x3b;&#xa;contact_id_b &#x3d; contact_id_a&#x3b;&#xa;contact_id_a &#x3d; temp&#x3b;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>contact_id_a</name>
+        <rename>contact_id_a</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>contact_id_b</name>
+        <rename>contact_id_b</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>566</xloc>
+      <yloc>211</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>temp ID to relationship_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_relationship</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id_a</name>
+        <field>contact_id_a</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>contact_id_b</name>
+        <field>contact_id_b</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>relationship_type_id</name>
+        <field>relationship_type_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>entity_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>414</xloc>
+      <yloc>122</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>temp ID to relationship_id 2</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>CCR</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_relationship</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id_a</name>
+        <field>contact_id_a</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>contact_id_b</name>
+        <field>contact_id_b</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>relationship_type_id</name>
+        <field>relationship_type_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>entity_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>561</xloc>
+      <yloc>369</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

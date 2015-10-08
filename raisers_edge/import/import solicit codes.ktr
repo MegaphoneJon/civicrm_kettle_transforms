@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>import addresses</name>
+    <name>import solicit codes</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -66,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;14 16&#x3a;51&#x3a;16.653</created_date>
+  <created_date>2015&#x2f;08&#x2f;31 14&#x3a;22&#x3a;27.491</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;14 16&#x3a;51&#x3a;16.653</modified_date>
+  <modified_date>2015&#x2f;08&#x2f;31 14&#x3a;22&#x3a;27.491</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -230,32 +230,6 @@
     </attributes>
   </connection>
   <connection>
-    <name>Raiser&#x27;s Edge LCCR</name>
-    <server>b1rnml2</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>LCCR</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -324,7 +298,7 @@
            <schema_name/>
            </partitioning>
     <dynamicCommandField>N</dynamicCommandField>
-    <command>php &#x24;&#x7b;IMPORTSCRIPT&#x7d; -e Address --file&#x3d;&#x24;&#x7b;SQLDUMP&#x7d;&#x2f;csvs&#x2f;cli_addresses.csv&#xa;</command>
+    <command>php &#x24;&#x7b;IMPORTSCRIPT&#x7d; -e CustomValue --file&#x3d;&#x24;&#x7b;SQLDUMP&#x7d;&#x2f;csvs&#x2f;cli_solicit_codes.csv&#xa;</command>
     <commandfieldname/>
     <port>22</port>
     <servername>&#x24;&#x7b;DEVSERVER&#x7d;</servername>
@@ -342,8 +316,8 @@
     <proxyPassword>Encrypted </proxyPassword>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>105</xloc>
-      <yloc>55</yloc>
+      <xloc>63</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -373,7 +347,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x5c;importlogs&#x5c;log_addresses</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x5c;importlogs&#x5c;log_solicit_codes</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -406,8 +380,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>103</xloc>
-      <yloc>130</yloc>
+      <xloc>62</xloc>
+      <yloc>182</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
