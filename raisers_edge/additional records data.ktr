@@ -134,6 +134,69 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>WARNING&#x3a; Enabling the subtransform&#xa;steps will result in live data written to Civi.</note>
+      <xloc>1194</xloc>
+      <yloc>105</yloc>
+      <width>257</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>TODO&#x3a; Programmattically create tags&#x3a;&#xa;No Valid Address&#xa;Inactive&#xa;Anonymous</note>
+      <xloc>1140</xloc>
+      <yloc>596</yloc>
+      <width>234</width>
+      <heigth>74</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>NOTE&#x3a; Remap to YOUR custom field IDs</note>
+      <xloc>651</xloc>
+      <yloc>833</yloc>
+      <width>255</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -386,11 +449,9 @@
   <hop> <from>Sort by suffix</from><to>Group by 2 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap Prefixes</from><to>Remap Suffixes</to><enabled>Y</enabled> </hop>
   <hop> <from>prefix_id lookup</from><to>suffix_id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add prefix and suffix option group IDs</from><to>Trim prefix&#x2f;suffix fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Trim prefix&#x2f;suffix fields</from><to>Remap Prefixes</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap Suffixes</from><to>prefix_id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy</from><to>Remove Unneeded fields, change prefix&#x2f;suffix id to integer</to><enabled>Y</enabled> </hop>
-  <hop> <from>Dummy</from><to>Filter records with match notes</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter records with match notes</from><to>Select values 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values 2</from><to>Add subject and entity_table</to><enabled>Y</enabled> </hop>
   <hop> <from>Add subject and entity_table</from><to>cli_match_notes</to><enabled>Y</enabled> </hop>
@@ -410,13 +471,9 @@
   <hop> <from>Reformat lenient dates</from><to>Convert date format to the format Civi expects</to><enabled>Y</enabled> </hop>
   <hop> <from>Convert date format to the format Civi expects</from><to>Convert date format to the format Civi expects 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Convert date format to the format Civi expects 2</from><to>Remap &#x22;No Target&#x22; to 0</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap &#x22;No Target&#x22; to 0</from><to>Remove commas from prefixes and suffixes</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap Gender</from><to>Remap ANONYMOUS</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap ANONYMOUS</from><to>Add prefix and suffix option group IDs</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup TARGET in RE db</from><to>Map salutation IDs per ticket &#x23;13634</to><enabled>Y</enabled> </hop>
-  <hop> <from>Dummy</from><to>Filter to only bad greetings&#x2f;salutations</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter to only bad greetings&#x2f;salutations</from><to>TEMP_additional_records_bad_greetings_salutations</to><enabled>Y</enabled> </hop>
-  <hop> <from>Map salutation IDs per ticket &#x23;13634</from><to>Map addressee IDs per ticket &#x23;13634</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap is_deceased</from><to>Remove dollar sign and commas from target</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove Unneeded fields, change prefix&#x2f;suffix id to integer</from><to>cli_additional_records_data</to><enabled>Y</enabled> </hop>
   <hop> <from>Handle null greetings&#x2f;salutations</from><to>Remap is_deceased</to><enabled>Y</enabled> </hop>
@@ -426,10 +483,17 @@
   <hop> <from>suffix_id lookup</from><to>Filter unrecognized prefixes</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized prefixes</from><to>Filter unrecognized suffixes</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized suffixes</from><to>Dummy</to><enabled>Y</enabled> </hop>
-  <hop> <from>Map addressee IDs per ticket &#x23;13634</from><to>Set greetings id to &#x22;customized&#x22; if the value isn&#x27;t null</to><enabled>Y</enabled> </hop>
   <hop> <from>Set greetings id to &#x22;customized&#x22; if the value isn&#x27;t null</from><to>Handle null greetings&#x2f;salutations</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove commas from prefixes and suffixes</from><to>Remap Gender</to><enabled>Y</enabled> </hop>
   <hop> <from>RE&#x3a; RECORDS 2</from><to>multiple prefix and-or suffix</to><enabled>Y</enabled> </hop>
+  <hop> <from>Map salutation IDs per ticket &#x23;13634</from><to>Set greetings id to &#x22;customized&#x22; if the value isn&#x27;t null</to><enabled>Y</enabled> </hop>
+  <hop> <from>Generate prefixes&#x2f;suffixes in Civi</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output unrecognized prefixes</from><to>Generate prefixes&#x2f;suffixes in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>Output unrecognized suffixes</from><to>Generate prefixes&#x2f;suffixes in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add prefix and suffix option group IDs</from><to>Fix punctuation in prefixes and suffixes</to><enabled>Y</enabled> </hop>
+  <hop> <from>Fix punctuation in prefixes and suffixes</from><to>Trim prefix&#x2f;suffix fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remap &#x22;No Target&#x22; to 0</from><to>Remap Gender</to><enabled>Y</enabled> </hop>
+  <hop> <from>Dummy</from><to>Trim match notes</to><enabled>Y</enabled> </hop>
+  <hop> <from>Trim match notes</from><to>Filter records with match notes</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add Anonymous</name>
@@ -604,8 +668,8 @@
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>563</xloc>
-      <yloc>346</yloc>
+      <xloc>565</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -651,8 +715,8 @@
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>853</xloc>
-      <yloc>598</yloc>
+      <xloc>837</xloc>
+      <yloc>670</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -961,7 +1025,7 @@
            <schema_name/>
            </partitioning>
     <fields>      <field>        <name>DATE_ADDED</name>
-        <rename>custom_105</rename>
+        <rename>custom_2</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>contact_id</name>
@@ -969,11 +1033,11 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>target_1</name>
-        <rename>custom_3</rename>
+        <rename>custom_1</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_67</name>
-        <rename/>
+      </field>      <field>        <name>anonymous_donor</name>
+        <rename>custom_3</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -1114,73 +1178,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>854</xloc>
-      <yloc>468</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter to only bad greetings&#x2f;salutations</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <conditions>
-    <condition>
-     <negated>N</negated>
-     <leftvalue>PRIMARY_SALUTATION_ID</leftvalue>
-     <function>IS NOT NULL</function>
-     <rightvalue/>
-     </condition>
-    <condition>
-     <negated>N</negated>
-     <operator>AND</operator>
-     <leftvalue>postal_greeting_id</leftvalue>
-     <function>IS NULL</function>
-     <rightvalue/>
-     </condition>
-    </conditions>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>OR</operator>
-   <conditions>
-    <condition>
-     <negated>N</negated>
-     <leftvalue>PRIMARY_ADDRESSEE_ID</leftvalue>
-     <function>IS NOT NULL</function>
-     <rightvalue/>
-     </condition>
-    <condition>
-     <negated>N</negated>
-     <operator>AND</operator>
-     <leftvalue>addressee_id</leftvalue>
-     <function>IS NULL</function>
-     <rightvalue/>
-     </condition>
-    </conditions>
-   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>885</xloc>
-      <yloc>757</yloc>
+      <xloc>847</xloc>
+      <yloc>538</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1420,7 +1419,7 @@
     </step>
 
   <step>
-    <name>Map addressee IDs per ticket &#x23;13634</name>
+    <name>Map RE addressee IDs to Civi IDs</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -1585,8 +1584,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>213</xloc>
-      <yloc>602</yloc>
+      <xloc>94</xloc>
+      <yloc>859</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1821,8 +1820,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1251</xloc>
-      <yloc>185</yloc>
+      <xloc>1207</xloc>
+      <yloc>180</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1885,8 +1884,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1266</xloc>
-      <yloc>274</yloc>
+      <xloc>1222</xloc>
+      <yloc>269</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1913,6 +1912,32 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>42</xloc>
       <yloc>6</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RE&#x3a; RECORDS 2</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Raiser&#x27;s Edge LCCR</connection>
+    <sql>SELECT&#xa;TE3.LONGDESCRIPTION AS prefix1&#xa;, TE4.LONGDESCRIPTION AS prefix2&#xa;, FIRST_NAME&#xa;, LAST_NAME&#xa;, TE1.LONGDESCRIPTION AS suffix1&#xa;, TE2.LONGDESCRIPTION AS suffix2&#xa;, CONSTITUENT_ID&#xa;FROM RECORDS&#xa;LEFT JOIN TABLEENTRIES TE1 ON SUFFIX_1 &#x3d; TE1.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE2 ON SUFFIX_2 &#x3d; TE2.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE3 ON TITLE_1 &#x3d; TE3.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE4 ON TITLE_2 &#x3d; TE4.TABLEENTRIESID&#xa;WHERE TITLE_2 IS NOT NULL OR SUFFIX_2 IS NOT NULL</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>591</xloc>
+      <yloc>1080</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1993,7 +2018,7 @@
            <schema_name/>
            </partitioning>
     <field_to_use>ANONYMOUS</field_to_use>
-    <target_field>custom_67</target_field>
+    <target_field>anonymous_donor</target_field>
     <non_match_default/>
     <fields>
       <field>
@@ -2007,8 +2032,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>561</xloc>
-      <yloc>277</yloc>
+      <xloc>568</xloc>
+      <yloc>124</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2043,8 +2068,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>562</xloc>
-      <yloc>217</yloc>
+      <xloc>569</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2368,7 +2393,7 @@
     </step>
 
   <step>
-    <name>Remove commas from prefixes and suffixes</name>
+    <name>Fix punctuation in prefixes and suffixes</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -2423,11 +2448,55 @@
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
       </field>
+      <field>
+        <in_stream_name>prefix</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>prefix2</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>suffix</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>suffix2</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>563</xloc>
-      <yloc>6</yloc>
+      <yloc>310</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2497,8 +2566,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>851</xloc>
-      <yloc>536</yloc>
+      <xloc>835</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2540,9 +2609,9 @@
       </field>      <field>        <name>postal_greeting_id</name>
         <rename>postal_greeting_id</rename>
         <type>Integer</type>
-        <length>16</length>
-        <precision>2</precision>
-        <replace>N</replace>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>      <field>        <name>email_greeting_id</name>
         <rename>email_greeting_id</rename>
         <type>Integer</type>
@@ -2626,178 +2695,6 @@
     </step>
 
   <step>
-    <name>TEMP_additional_records_bad_greetings_salutations</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;TEMP_additional_records_bad_greetings_salutations</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_SALUTATION</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_ADDRESSEE</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_SALUTATION_ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_ADDRESSEE_ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_SALUTATION_EDIT</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PRIMARY_ADDRESSEE_EDIT</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_greeting_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>addressee_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>880</xloc>
-      <yloc>845</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>Trim prefix&#x2f;suffix fields</name>
     <type>StringOperations</type>
     <description/>
@@ -2865,7 +2762,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>562</xloc>
-      <yloc>391</yloc>
+      <yloc>402</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3172,8 +3069,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>851</xloc>
-      <yloc>658</yloc>
+      <xloc>835</xloc>
+      <yloc>730</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3222,7 +3119,7 @@
     </file>
     <fields>
       <field>
-        <name>custom_105</name>
+        <name>custom_2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3246,7 +3143,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_3</name>
+        <name>custom_1</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3258,7 +3155,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_67</name>
+        <name>custom_3</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3272,8 +3169,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>738</xloc>
-      <yloc>642</yloc>
+      <xloc>719</xloc>
+      <yloc>777</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3625,170 +3522,6 @@
     </step>
 
   <step>
-    <name>prefix_id lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_option_value</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>prefix</name>
-        <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>prefix_option_group_id</name>
-        <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>value</name>
-        <rename>prefix_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>876</xloc>
-      <yloc>3</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>suffix_id lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_option_value</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>suffix</name>
-        <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>suffix_option_group_id</name>
-        <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>value</name>
-        <rename>suffix_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>908</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>tag lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>CCR</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_tag</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>tag</name>
-        <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>tag_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1093</xloc>
-      <yloc>591</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>RE&#x3a; RECORDS 2</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Raiser&#x27;s Edge LCCR</connection>
-    <sql>SELECT&#xa;TE3.LONGDESCRIPTION AS prefix1&#xa;, TE4.LONGDESCRIPTION AS prefix2&#xa;, FIRST_NAME&#xa;, LAST_NAME&#xa;, TE1.LONGDESCRIPTION AS suffix1&#xa;, TE2.LONGDESCRIPTION AS suffix2&#xa;, CONSTITUENT_ID&#xa;FROM RECORDS&#xa;LEFT JOIN TABLEENTRIES TE1 ON SUFFIX_1 &#x3d; TE1.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE2 ON SUFFIX_2 &#x3d; TE2.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE3 ON TITLE_1 &#x3d; TE3.TABLEENTRIESID&#xa;LEFT JOIN TABLEENTRIES TE4 ON TITLE_2 &#x3d; TE4.TABLEENTRIESID&#xa;WHERE TITLE_2 IS NOT NULL OR SUFFIX_2 IS NOT NULL</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>591</xloc>
-      <yloc>1080</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>multiple prefix and-or suffix</name>
     <type>TextFileOutput</type>
     <description/>
@@ -3920,6 +3653,248 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>600</xloc>
       <yloc>1158</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>prefix_id lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_value</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>prefix</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>prefix_option_group_id</name>
+        <field>option_group_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>value</name>
+        <rename>prefix_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>876</xloc>
+      <yloc>3</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>suffix_id lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_value</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>suffix</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>suffix_option_group_id</name>
+        <field>option_group_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>value</name>
+        <rename>suffix_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>908</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>tag lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_tag</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>tag</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>tag_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1093</xloc>
+      <yloc>591</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Dummy &#x28;do nothing&#x29;</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1491</xloc>
+      <yloc>232</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Generate prefixes&#x2f;suffixes in Civi</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;home&#x2f;jon&#x2f;local&#x2f;transforms&#x2f;create_prefix_or_suffix.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step>Output unrecognized prefixes</input_step>
+    <output_step>Prefixes</output_step>
+    <main_path>N</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>prefix</parent><child>label</child></connector>
+    </mapping>    <mapping>    <input_step>Output unrecognized suffixes</input_step>
+    <output_step>Suffixes</output_step>
+    <main_path>N</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+       <connector><parent>suffix</parent><child>label</child></connector>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step>Dummy &#x28;do nothing&#x29;</output_step>
+    <main_path>N</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1324</xloc>
+      <yloc>233</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Trim match notes</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>MATCH_NOTES</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>866</xloc>
+      <yloc>483</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

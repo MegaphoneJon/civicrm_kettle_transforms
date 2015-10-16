@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>constituent codes to custom field</name>
+    <name>RE soft credits</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -67,80 +67,38 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;06 17&#x3a;43&#x3a;54.667</created_date>
+  <created_date>2014&#x2f;09&#x2f;28 18&#x3a;21&#x3a;03.098</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;06 17&#x3a;43&#x3a;54.667</modified_date>
+  <modified_date>2014&#x2f;09&#x2f;28 18&#x3a;21&#x3a;03.098</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>This converts RE Constituent Codes to custom fields.&#xa;There&#x27;s a separate transform for converting them to a group.</note>
-      <xloc>211</xloc>
-      <yloc>28</yloc>
-      <width>359</width>
+      <note>&#x3c;-- Look up the custom field name &#x28;and table name&#x21;&#x29; used to store the RE GiftID.</note>
+      <xloc>330</xloc>
+      <yloc>405</yloc>
+      <width>482</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Tribute &#x28;in honor&#x2f;memory of&#x29; data is a paid add-on for RE.&#xa;Your RE may not have this table.</note>
+      <xloc>184</xloc>
+      <yloc>12</yloc>
+      <width>345</width>
       <heigth>42</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&#x3c;-- Create a multi-value record</note>
-      <xloc>181</xloc>
-      <yloc>161</yloc>
-      <width>187</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Org-specific - reduce to a single constituent code</note>
-      <xloc>174</xloc>
-      <yloc>363</yloc>
-      <width>295</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Set your custom field ID here.</note>
-      <xloc>188</xloc>
-      <yloc>525</yloc>
-      <width>185</width>
-      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -395,190 +353,22 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>RE&#x3a; Constituent Codes</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove unneeded fields</from><to>cli_constituent_codes</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id in Civi</from><to>re-sort on contact ID</to><enabled>Y</enabled> </hop>
-  <hop> <from>re-sort on contact ID</from><to>Unique rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique rows</from><to>Group by</to><enabled>Y</enabled> </hop>
-  <hop> <from>Group by</from><to>LCCR-specific</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert commas to separation characters</from><to>Remove unneeded fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>LCCR-specific</from><to>LCCR-specific&#x3a; Remove records with multiple codes</to><enabled>Y</enabled> </hop>
-  <hop> <from>LCCR-specific&#x3a; Remove records with multiple codes</from><to>Convert commas to separation characters</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE&#x3a; Tribute data</from><to>Map Soft Credit Types</to><enabled>Y</enabled> </hop>
+  <hop> <from>Map Soft Credit Types</from><to>Amount as BigNumber</to><enabled>Y</enabled> </hop>
+  <hop> <from>Amount as BigNumber</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE&#x3a; soft credits</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE&#x3a; Gift Solicitor data</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>external ID to contact_id in Civi</from><to>GiftId to contribution_id in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>GiftId to contribution_id in Civi</from><to>Filter tributes so we can look up amounts</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter tributes so we can look up amounts</from><to>Remove amount field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove amount field</from><to>Look up gift amount</to><enabled>Y</enabled> </hop>
+  <hop> <from>Look up gift amount</from><to>Rearrange field order</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter tributes so we can look up amounts</from><to>Import fields only</to><enabled>Y</enabled> </hop>
+  <hop> <from>Import fields only</from><to>cli_soft_credit</to><enabled>Y</enabled> </hop>
+  <hop> <from>Rearrange field order</from><to>Import fields only</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Convert commas to separation characters</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var LONGDESCRIPTION&#x3b;&#xa;LONGDESCRIPTION &#x3d; LONGDESCRIPTION.replace&#x28;&#x2f;, &#x2f;g,&#x27;&#x5c;x01&#x27;&#x29;&#x3b;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>LONGDESCRIPTION</name>
-        <rename>LONGDESCRIPTION</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>468</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>contact_id</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>LONGDESCRIPTION</aggregate>
-          <subject>LONGDESCRIPTION</subject>
-          <type>CONCAT_COMMA</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>278</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>LCCR-specific</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Former Board Member, Individual</replace_string>
-        <replace_by_string>Former Board Member</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Board Member, Individual</replace_string>
-        <replace_by_string>Board Member</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Law Firm, Organization</replace_string>
-        <replace_by_string>Law Firm</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Foundation, Organization</replace_string>
-        <replace_by_string>Foundation</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Donor Advised Fund, Organization</replace_string>
-        <replace_by_string>Organization</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>115</xloc>
-      <yloc>332</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>RE&#x3a; Constituent Codes</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Raiser&#x27;s Edge LCCR</connection>
-    <sql>SELECT&#xa;CONSTIT_ID&#xa;, LONGDESCRIPTION&#xa;FROM CONSTITUENT_CODES&#xa;LEFT JOIN TABLEENTRIES ON TABLEENTRIESID &#x3d; CODE&#xa;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>107</xloc>
-      <yloc>18</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove unneeded fields</name>
+    <name>Amount as BigNumber</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -588,26 +378,33 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename>entity_id</rename>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>amount</name>
+        <rename>amount</rename>
+        <type>BigNumber</type>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>LONGDESCRIPTION</name>
-        <rename>custom_7</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>127</xloc>
-      <yloc>526</yloc>
+      <xloc>155</xloc>
+      <yloc>259</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
+    <name>Filter tributes so we can look up amounts</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -616,20 +413,337 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      </fields>     <cluster_schema/>
+<send_true_to>Remove amount field</send_true_to>
+<send_false_to>Import fields only</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>amount</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>112</xloc>
-      <yloc>218</yloc>
+      <xloc>284</xloc>
+      <yloc>482</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_constituent_codes</name>
+    <name>GiftId to contribution_id in Civi</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_value_re_salsa_contribution_info_4</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>GiftId</name>
+        <field>re_internal_gift_id_18</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>entity_id</name>
+        <rename>contribution_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>282</xloc>
+      <yloc>404</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>soft_credit_type_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pcp_personal_note</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>amount</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contribution_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>GiftId</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ConstitId</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>286</xloc>
+      <yloc>671</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Look up gift amount</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_contribution</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contribution_id</name>
+        <field>id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>total_amount</name>
+        <rename>amount</rename>
+        <default/>
+        <type>BigNumber</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>489</xloc>
+      <yloc>574</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Map Soft Credit Types</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>soft_credit_type_id</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>In Honor Of</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>In Memory Of</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>142</xloc>
+      <yloc>183</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RE&#x3a; Gift Solicitor data</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Raiser&#x27;s Edge LCCR</connection>
+    <sql>SELECT&#xa;ParentId as GiftId&#xa;, SolicitorId as ConstitId&#xa;, &#x27;3&#x27; as soft_credit_type_id&#xa;, &#x27;&#x27; as pcp_personal_note&#xa;, Amount as amount&#xa;FROM GiftSolicitor</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>408</xloc>
+      <yloc>109</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RE&#x3a; Tribute data</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Raiser&#x27;s Edge LCCR</connection>
+    <sql>SELECT&#xa;gt.GIFT_ID as GiftId&#xa;, t.RECORDS_ID as ConstitId&#xa;, te.LONGDESCRIPTION as soft_credit_type_id&#xa;, t.DESCRIPTION as pcp_personal_note&#xa;, &#x27;&#x27; as amount&#xa;FROM GIFT_TRIBUTE gt&#xa;JOIN TRIBUTE t ON gt.TRIBUTE_ID &#x3d; t.ID&#xa;LEFT JOIN TABLEENTRIES te on gt.TRIBUTE_TYPE &#x3d; te.TABLEENTRIESID</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>138</xloc>
+      <yloc>28</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>RE&#x3a; soft credits</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Raiser&#x27;s Edge LCCR</connection>
+    <sql>SELECT&#xa;GiftId&#xa;, ConstitId&#xa;, &#x27;11&#x27; as soft_credit_type_id&#xa;, &#x27;&#x27; as pcp_personal_note&#xa;, Amount as amount&#xa;FROM GiftSoftCredit&#xa;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>280</xloc>
+      <yloc>103</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rearrange field order</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>GiftId</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ConstitId</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>soft_credit_type_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>pcp_personal_note</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>amount</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contribution_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>407</xloc>
+      <yloc>611</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Remove amount field</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>amount</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>383</xloc>
+      <yloc>526</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_soft_credit</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -653,7 +767,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_constituent_codes</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_soft_credit</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -672,7 +786,43 @@
     </file>
     <fields>
       <field>
-        <name>entity_id</name>
+        <name>soft_credit_type_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pcp_personal_note</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>amount</name>
+        <type>BigNumber</type>
+        <format/>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -684,12 +834,36 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_7</name>
-        <type>String</type>
-        <format/>
+        <name>contribution_id</name>
+        <type>Integer</type>
+        <format>0</format>
         <currency/>
-        <decimal/>
-        <group/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>GiftId</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ConstitId</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -698,8 +872,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>139</xloc>
-      <yloc>621</yloc>
+      <xloc>281</xloc>
+      <yloc>760</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -708,7 +882,7 @@
     <name>external ID to contact_id in Civi</name>
     <type>DBLookup</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -726,7 +900,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTIT_ID</name>
+        <name>ConstitId</name>
         <field>external_identifier</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -740,77 +914,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>109</xloc>
-      <yloc>89</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>re-sort on contact ID</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>contact_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>LONGDESCRIPTION</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>111</xloc>
-      <yloc>153</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>LCCR-specific&#x3a; Remove records with multiple codes</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>Y</negated>
- <leftvalue>LONGDESCRIPTION</leftvalue>
- <function>LIKE</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>&#x25;,&#x25;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>123</xloc>
-      <yloc>402</yloc>
+      <xloc>277</xloc>
+      <yloc>332</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

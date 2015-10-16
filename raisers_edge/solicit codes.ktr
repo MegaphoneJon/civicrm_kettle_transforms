@@ -336,8 +336,8 @@
   <hop> <from>RE&#x3a; Solicit Codes</from><to>Sort on external_identifier</to><enabled>Y</enabled> </hop>
   <hop> <from>GROUP_CONCAT solicit codes</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>external ID to contact_id in Civi</from><to>Remove spaces after commas</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove spaces after commas</from><to>Replace commas with CiviCRM separation character</to><enabled>Y</enabled> </hop>
-  <hop> <from>Replace commas with CiviCRM separation character</from><to>Remove&#x2f;rename fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove spaces after commas</from><to>insert CiviCRM separation characters</to><enabled>Y</enabled> </hop>
+  <hop> <from>insert CiviCRM separation characters</from><to>Remove&#x2f;rename fields</to><enabled>Y</enabled> </hop>
   <hop> <from>RE&#x3a; Solicit Codes</from><to>solicit codes only</to><enabled>Y</enabled> </hop>
   <hop> <from>solicit codes only</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
@@ -457,7 +457,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>solicit_code</name>
-        <rename>custom_114</rename>
+        <rename>custom_8</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -470,7 +470,7 @@
     </step>
 
   <step>
-    <name>Replace commas with CiviCRM separation character</name>
+    <name>insert CiviCRM separation characters</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -484,7 +484,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var solicit_code&#x3b;&#xa;&#xa;solicit_code &#x3d; solicit_code.replace&#x28;&#x2f;,&#x2f;g,&#x27;&#x5c;x01&#x27;&#x29;&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var solicit_code&#x3b;&#xa;&#xa;solicit_code &#x3d; solicit_code.replace&#x28;&#x2f;,&#x2f;g,&#x27;&#x5c;x01&#x27;&#x29;&#x3b;&#xa;solicit_code &#x3d; &#x27;&#x5c;x01&#x27; &#x2b; solicit_code&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>solicit_code</name>
         <rename>solicit_code</rename>
         <type>String</type>
@@ -529,6 +529,65 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>138</xloc>
       <yloc>166</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>solicit_code</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>328</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <count_rows>N</count_rows>
+      <count_field/>
+      <reject_duplicate_row>N</reject_duplicate_row>
+      <error_description/>
+    <fields>      <field>        <name>solicit_code</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>387</xloc>
+      <yloc>156</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -589,7 +648,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_114</name>
+        <name>custom_8</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -671,65 +730,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>254</xloc>
       <yloc>128</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>solicit_code</name>
-        <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>387</xloc>
-      <yloc>156</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>solicit_code</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>328</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

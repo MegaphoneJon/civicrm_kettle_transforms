@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>constituent codes to custom field</name>
+    <name>RE participants</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -67,17 +66,17 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;08&#x2f;06 17&#x3a;43&#x3a;54.667</created_date>
+  <created_date>2015&#x2f;04&#x2f;16 21&#x3a;25&#x3a;36.910</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;08&#x2f;06 17&#x3a;43&#x3a;54.667</modified_date>
+  <modified_date>2015&#x2f;04&#x2f;16 21&#x3a;25&#x3a;36.910</modified_date>
   </info>
   <notepads>
     <notepad>
-      <note>This converts RE Constituent Codes to custom fields.&#xa;There&#x27;s a separate transform for converting them to a group.</note>
-      <xloc>211</xloc>
-      <yloc>28</yloc>
-      <width>359</width>
-      <heigth>42</heigth>
+      <note>&#x3c;-- Add two new Participant Roles to Civi&#x3a;&#xa;Coordinator &#x28;id 5&#x29;&#xa;Vendor &#x28;id 6&#x29;</note>
+      <xloc>329</xloc>
+      <yloc>53</yloc>
+      <width>256</width>
+      <heigth>58</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -94,53 +93,11 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Create a multi-value record</note>
-      <xloc>181</xloc>
-      <yloc>161</yloc>
-      <width>187</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Org-specific - reduce to a single constituent code</note>
-      <xloc>174</xloc>
-      <yloc>363</yloc>
-      <width>295</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Set your custom field ID here.</note>
-      <xloc>188</xloc>
-      <yloc>525</yloc>
-      <width>185</width>
-      <heigth>26</heigth>
+      <note>&#x3c;-- Optional - custom field of type &#x22;Contact Reference&#x22;&#xa;to store &#x22;Guest Of&#x22; ID.&#xa;&#xa;If used, set custom field ID here.</note>
+      <xloc>330</xloc>
+      <yloc>413</yloc>
+      <width>329</width>
+      <heigth>74</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -395,18 +352,45 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>RE&#x3a; Constituent Codes</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove unneeded fields</from><to>cli_constituent_codes</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id in Civi</from><to>re-sort on contact ID</to><enabled>Y</enabled> </hop>
-  <hop> <from>re-sort on contact ID</from><to>Unique rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique rows</from><to>Group by</to><enabled>Y</enabled> </hop>
-  <hop> <from>Group by</from><to>LCCR-specific</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert commas to separation characters</from><to>Remove unneeded fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>LCCR-specific</from><to>LCCR-specific&#x3a; Remove records with multiple codes</to><enabled>Y</enabled> </hop>
-  <hop> <from>LCCR-specific&#x3a; Remove records with multiple codes</from><to>Convert commas to separation characters</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE Participants</from><to>Set role_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set role_id</from><to>rename some fields, remove is&#x2a; fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup contact ID from external_id</from><to>lookup events in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>fix date formats</from><to>fix date formats 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename some fields, remove is&#x2a; fields</from><to>fix date formats</to><enabled>Y</enabled> </hop>
+  <hop> <from>fix date formats 2</from><to>lookup contact ID from external_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>map status_id</from><to>remove unused fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove unused fields</from><to>cli_participant</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup events in Civi</from><to>lookup guest&#x27;s contact ID from external_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup guest&#x27;s contact ID from external_id</from><to>map status_id</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Convert commas to separation characters</name>
+    <name>RE Participants</name>
+    <type>TableInput</type>
+    <description>test description</description>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Raiser&#x27;s Edge LCCR</connection>
+    <sql>SELECT&#xa;part.EventID&#xa;, part.RecordsID&#xa;, part.Type&#xa;, part.Sponsor&#xa;, part.GuestOf&#xa;, guest.RecordsID as GuestID&#xa;, part.Participation&#xa;, part.Invitation&#xa;, part.InviteDate&#xa;, part.Response&#xa;, part.ResponseDate&#xa;, part.Registration&#xa;, part.RegistrationDate&#xa;, part.Attended&#xa;, part.IsCoordinator&#xa;, part.Contact&#xa;, part.IsSpeaker&#xa;, part.IsVendor&#xa;, part.Notes&#xa;, part.DateAdded&#xa;, part.IsParticipant&#xa;, part.NumGuests&#xa;, part.IsVolunteer&#xa;FROM Participants part&#xa;LEFT JOIN Participants guest ON part.GuestOf &#x3d; guest.ID</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>271</xloc>
+      <yloc>0</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set role_id</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -420,216 +404,23 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var LONGDESCRIPTION&#x3b;&#xa;LONGDESCRIPTION &#x3d; LONGDESCRIPTION.replace&#x28;&#x2f;, &#x2f;g,&#x27;&#x5c;x01&#x27;&#x29;&#x3b;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>LONGDESCRIPTION</name>
-        <rename>LONGDESCRIPTION</rename>
+        <jsScript_script>var role_id&#x3b;&#xa;&#xa;if&#x28;IsParticipant &#x3d;&#x3d; -1&#x29; &#x7b;&#xa;  role_id &#x3d; 1&#x3b;&#xa;&#x7d;&#xa;&#xa;&#xa;if&#x28;IsVolunteer &#x3d;&#x3d; -1&#x29; &#x7b;&#xa;  role_id &#x3d; 2&#x3b;&#xa;&#x7d;&#xa;&#xa;&#xa;if&#x28;IsSpeaker &#x3d;&#x3d; -1&#x29; &#x7b;&#xa;  role_id &#x3d; 4&#x3b;&#xa;&#x7d;&#xa;&#xa;&#x2f;&#x2f; These next two must be added to Civi, they&#x27;re not there already&#x21;&#xa;if&#x28;IsCoordinator &#x3d;&#x3d; -1&#x29; &#x7b;&#xa;  role_id &#x3d; 5&#x3b;&#xa;&#x7d;&#xa;&#xa;if&#x28;IsVendor &#x3d;&#x3d; -1&#x29; &#x7b;&#xa;  role_id &#x3d; 6&#x3b;&#xa;&#x7d;&#xa;&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>role_id</name>
+        <rename>role_id</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>Y</replace>
+        <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>128</xloc>
-      <yloc>468</yloc>
+      <xloc>272</xloc>
+      <yloc>50</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>contact_id</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>LONGDESCRIPTION</aggregate>
-          <subject>LONGDESCRIPTION</subject>
-          <type>CONCAT_COMMA</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>278</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>LCCR-specific</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Former Board Member, Individual</replace_string>
-        <replace_by_string>Former Board Member</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Board Member, Individual</replace_string>
-        <replace_by_string>Board Member</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Law Firm, Organization</replace_string>
-        <replace_by_string>Law Firm</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Foundation, Organization</replace_string>
-        <replace_by_string>Foundation</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>LONGDESCRIPTION</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Donor Advised Fund, Organization</replace_string>
-        <replace_by_string>Organization</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>115</xloc>
-      <yloc>332</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>RE&#x3a; Constituent Codes</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Raiser&#x27;s Edge LCCR</connection>
-    <sql>SELECT&#xa;CONSTIT_ID&#xa;, LONGDESCRIPTION&#xa;FROM CONSTITUENT_CODES&#xa;LEFT JOIN TABLEENTRIES ON TABLEENTRIESID &#x3d; CODE&#xa;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>107</xloc>
-      <yloc>18</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Remove unneeded fields</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename>entity_id</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>LONGDESCRIPTION</name>
-        <rename>custom_7</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>127</xloc>
-      <yloc>526</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>112</xloc>
-      <yloc>218</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>cli_constituent_codes</name>
+    <name>cli_participant</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -653,7 +444,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_constituent_codes</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_participant</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -672,7 +463,43 @@
     </file>
     <fields>
       <field>
-        <name>entity_id</name>
+        <name>note</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>register_date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>role_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -684,7 +511,19 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_7</name>
+        <name>event_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>status_id</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -695,20 +534,102 @@
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>custom_20</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>139</xloc>
-      <yloc>621</yloc>
+      <xloc>282</xloc>
+      <yloc>674</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>external ID to contact_id in Civi</name>
-    <type>DBLookup</type>
+    <name>fix date formats</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>register_date</name>
+        <rename>register_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>269</xloc>
+      <yloc>170</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>fix date formats 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>register_date</name>
+        <rename>register_date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>278</xloc>
+      <yloc>232</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lookup contact ID from external_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -726,7 +647,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTIT_ID</name>
+        <name>RecordsID</name>
         <field>external_identifier</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -740,15 +661,99 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>109</xloc>
-      <yloc>89</yloc>
+      <xloc>276</xloc>
+      <yloc>287</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>re-sort on contact ID</name>
-    <type>SortRows</type>
+    <name>lookup events in Civi</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_event</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>EventID</name>
+        <field>confirm_from_name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>event_id</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>276</xloc>
+      <yloc>342</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lookup guest&#x27;s contact ID from external_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_contact</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>GuestID</name>
+        <field>external_identifier</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>custom_20</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>276</xloc>
+      <yloc>414</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>map status_id</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -757,38 +762,30 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <field_to_use>Attended</field_to_use>
+    <target_field>status_id</target_field>
+    <non_match_default/>
     <fields>
       <field>
-        <name>contact_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
+        <source_value>-1</source_value>
+        <target_value>2</target_value>
       </field>
       <field>
-        <name>LONGDESCRIPTION</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>111</xloc>
-      <yloc>153</yloc>
+      <xloc>277</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>LCCR-specific&#x3a; Remove records with multiple codes</name>
-    <type>FilterRows</type>
+    <name>remove unused fields</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -797,20 +794,131 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>Y</negated>
- <leftvalue>LONGDESCRIPTION</leftvalue>
- <function>LIKE</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>&#x25;,&#x25;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
+    <fields>      <field>        <name>note</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>register_date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>role_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>event_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>status_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_20</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>123</xloc>
-      <yloc>402</yloc>
+      <xloc>285</xloc>
+      <yloc>594</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>rename some fields, remove is&#x2a; fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>EventID</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RecordsID</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Type</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Sponsor</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Participation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Invitation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>InviteDate</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Response</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ResponseDate</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Registration</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RegistrationDate</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Attended</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Contact</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Notes</name>
+        <rename>note</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>DateAdded</name>
+        <rename>register_date</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>NumGuests</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>role_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>GuestID</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>269</xloc>
+      <yloc>114</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

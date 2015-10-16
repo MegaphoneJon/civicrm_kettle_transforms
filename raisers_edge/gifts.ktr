@@ -92,6 +92,90 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>In Civi, create a &#x22;Campaign Type&#x22; of &#x22;Imported from RE&#x22;, put campaign_type_id here.</note>
+      <xloc>603</xloc>
+      <yloc>0</yloc>
+      <width>510</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>See below</note>
+      <xloc>125</xloc>
+      <yloc>319</yloc>
+      <width>71</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>For gift type&#x2f;subtype&#x2f;fund&#x2f;appeal&#x3a;&#xa;&#x2a; Create custom fields for each of type Alphanumeric&#x2f;Select.&#xa;&#x2a; Fill in a single option value for each.&#xa;&#x2a; Go to Administer menu &#x3e; System Settings &#x3e; Option Groups.&#xa;&#x2a; Hover over the &#x22;Options&#x22; link to get their option_value_group ID.&#xa;&#x2a; Fill in the option_value_group ID next to the &#x22;see below&#x22; note above.&#xa;&#xa;Payment instrument&#x3a;&#xa;&#x2a; This transform assumes you have a payment instrument &#x22;other&#x22; with&#xa;  a payment_instrument_id of 6.</note>
+      <xloc>675</xloc>
+      <yloc>536</yloc>
+      <width>418</width>
+      <heigth>170</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>RE&#x27;s internal gift ID must be stored as a custom field&#xa;because we need to use it later to do soft credit lookups.</note>
+      <xloc>167</xloc>
+      <yloc>1355</yloc>
+      <width>340</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -338,7 +422,7 @@
   <hop> <from>Unique campaigns</from><to>Add campaign_type_id &#x3d; 4</to><enabled>Y</enabled> </hop>
   <hop> <from>Add campaign_type_id &#x3d; 4</from><to>lookup campaigns data in RE</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup campaigns data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_campaigns</from><to>Create Campaigns</to><enabled>N</enabled> </hop>
+  <hop> <from>invalid_campaigns</from><to>Create Campaigns</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22;</from><to>invalid_campaigns</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized campaigns</from><to>Add option_value_group ids</to><enabled>Y</enabled> </hop>
   <hop> <from>Add option_value_group ids</from><to>lookup type in Civi</to><enabled>Y</enabled> </hop>
@@ -351,7 +435,7 @@
   <hop> <from>Sort by Gift Type</from><to>Unique Gift Types</to><enabled>Y</enabled> </hop>
   <hop> <from>Gift Type fields Only</from><to>Sort by Gift Type</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique Gift Types</from><to>invalid_gift_types</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add is_active &#x3d; 0</from><to>Create Gift Types</to><enabled>N</enabled> </hop>
+  <hop> <from>Add is_active &#x3d; 0</from><to>Create Gift Types</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_gift_types</from><to>create value, equal to label</to><enabled>Y</enabled> </hop>
   <hop> <from>create value, equal to label</from><to>Add is_active &#x3d; 0</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized gift types</from><to>Filter unrecognized gift subtypes</to><enabled>Y</enabled> </hop>
@@ -359,7 +443,7 @@
   <hop> <from>Sort by Gift Subtype</from><to>Unique Gift Subtypes</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique Gift Subtypes</from><to>invalid_gift_subtypes</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_gift_subtypes</from><to>create value, equal to label 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add is_active &#x3d; 0 3</from><to>Create Gift Subtypes</to><enabled>N</enabled> </hop>
+  <hop> <from>Add is_active &#x3d; 0 3</from><to>Create Gift Subtypes</to><enabled>Y</enabled> </hop>
   <hop> <from>create value, equal to label 2</from><to>Add is_active &#x3d; 0 3</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized gift subtypes</from><to>Gift Subtype fields Only</to><enabled>Y</enabled> </hop>
   <hop> <from>fund fields Only</from><to>Sort by fund</to><enabled>Y</enabled> </hop>
@@ -369,7 +453,7 @@
   <hop> <from>create value, equal to label 3</from><to>lookup fund data in RE</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup fund data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2</from><to>invalid_funds</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_funds</from><to>Create funds</to><enabled>N</enabled> </hop>
+  <hop> <from>invalid_funds</from><to>Create funds</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique funds</from><to>create value, equal to label 3</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized funds</from><to>Filter unrecognized appeals</to><enabled>Y</enabled> </hop>
   <hop> <from>appeal fields Only</from><to>Sort by appeal</to><enabled>Y</enabled> </hop>
@@ -378,10 +462,10 @@
   <hop> <from>create value, equal to label 3 2</from><to>lookup appeal data in RE</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup appeal data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2 2</from><to>invalid_appeals</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_appeals</from><to>Create appeals</to><enabled>N</enabled> </hop>
+  <hop> <from>invalid_appeals</from><to>Create appeals</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized appeals</from><to>appeal fields Only</to><enabled>Y</enabled> </hop>
-  <hop> <from>RE&#x3a; GiftSplit</from><to>Replace ampersand in appeals</to><enabled>Y</enabled> </hop>
-  <hop> <from>Replace ampersand in appeals</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE&#x3a; GiftSplit</from><to>Fix punctuation in fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Fix punctuation in fields</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup appeal in Civi</from><to>Filter unrecognized gift types</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter out GL reversals</from><to>Remap PAYMENT_TYPE to payment_instrument_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Rename fields for import</from><to>cli_gift</to><enabled>Y</enabled> </hop>
@@ -424,8 +508,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>548</xloc>
-      <yloc>49</yloc>
+      <xloc>550</xloc>
+      <yloc>5</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -548,7 +632,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>97</nullif>
+        <nullif>94</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -560,7 +644,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>98</nullif>
+        <nullif>95</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -572,7 +656,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>99</nullif>
+        <nullif>96</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -584,7 +668,7 @@
         <currency/>
         <decimal/>
         <group/>
-        <nullif>100</nullif>
+        <nullif>97</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -707,7 +791,7 @@
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>Campaign</Entity>
     <EntityAction>create</EntityAction>
-    <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
       <entity-name>Acl</entity-name>
@@ -1011,7 +1095,7 @@
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>OptionValue</Entity>
     <EntityAction>create</EntityAction>
-    <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
       <entity-name>Acl</entity-name>
@@ -1253,12 +1337,12 @@
         <output-field>option_group_id</output-field>
       </output-field>
       <output-field>
-        <input-field>giftsubtype</input-field>
-        <output-field>label</output-field>
-      </output-field>
-      <output-field>
         <input-field>is_active</input-field>
         <output-field>is_active</output-field>
+      </output-field>
+      <output-field>
+        <input-field>giftsubtype</input-field>
+        <output-field>label</output-field>
       </output-field>
       <output-field>
         <input-field>value</input-field>
@@ -1287,7 +1371,7 @@
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>OptionValue</Entity>
     <EntityAction>create</EntityAction>
-    <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
       <entity-name>Acl</entity-name>
@@ -1563,7 +1647,7 @@
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>OptionValue</Entity>
     <EntityAction>create</EntityAction>
-    <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
       <entity-name>Acl</entity-name>
@@ -1809,12 +1893,12 @@
         <output-field>option_group_id</output-field>
       </output-field>
       <output-field>
-        <input-field>appeal</input-field>
-        <output-field>label</output-field>
-      </output-field>
-      <output-field>
         <input-field>value</input-field>
         <output-field>value</output-field>
+      </output-field>
+      <output-field>
+        <input-field>appeal</input-field>
+        <output-field>label</output-field>
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1839,7 +1923,7 @@
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
     <Entity>OptionValue</Entity>
     <EntityAction>create</EntityAction>
-    <RestUrl>http&#x3a;&#x2f;&#x2f;&#x24;&#x7b;DEVSERVER&#x7d;&#x2f;sites&#x2f;all&#x2f;modules&#x2f;civicrm&#x2f;extern&#x2f;rest.php</RestUrl>
+    <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
     <DebugMode>N</DebugMode>
       <entity-name>Acl</entity-name>
@@ -2119,7 +2203,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_32</leftvalue>
+   <leftvalue>custom_type</leftvalue>
    <function>&#x3c;&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>GL Reversal</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -2153,7 +2237,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_35</leftvalue>
+   <leftvalue>custom_appeal</leftvalue>
    <function>IS NOT NULL</function>
    <rightvalue/>
    </condition>
@@ -2235,7 +2319,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_34</leftvalue>
+   <leftvalue>custom_fund</leftvalue>
    <function>IS NOT NULL</function>
    <rightvalue/>
    </condition>
@@ -2276,7 +2360,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_33</leftvalue>
+   <leftvalue>custom_subtype</leftvalue>
    <function>IS NOT NULL</function>
    <rightvalue/>
    </condition>
@@ -2317,7 +2401,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_32</leftvalue>
+   <leftvalue>custom_type</leftvalue>
    <function>IS NOT NULL</function>
    <rightvalue/>
    </condition>
@@ -2335,6 +2419,192 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>192</xloc>
       <yloc>572</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Fix punctuation in fields</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>appeal</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>fund</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>giftsubtype</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>type</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x26;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>appeal</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x27;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x27;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>fund</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x27;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>giftsubtype</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x27;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>type</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x27;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>appeal</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x22;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x22;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>fund</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x22;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>giftsubtype</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x22;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>type</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x22;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>71</xloc>
+      <yloc>56</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2725,7 +2995,7 @@
            <schema_name/>
            </partitioning>
     <field_to_use>recurring_gift</field_to_use>
-    <target_field>custom_69</target_field>
+    <target_field>custom_recurring_gift</target_field>
     <non_match_default/>
     <fields>
       <field>
@@ -2821,7 +3091,7 @@
            <schema_name/>
            </partitioning>
     <fields>      <field>        <name>GiftId</name>
-        <rename>custom_40</rename>
+        <rename>custom_18</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Amount</name>
@@ -2841,19 +3111,19 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>CHECK_DATE</name>
-        <rename>custom_38</rename>
+        <rename>custom_16</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>BATCH_NUMBER</name>
-        <rename>custom_36</rename>
+        <rename>custom_15</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>ANONYMOUS</name>
-        <rename>custom_37</rename>
+        <rename>custom_19</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>UserGiftId</name>
-        <rename>custom_39</rename>
+        <rename>custom_17</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>note</name>
@@ -2872,20 +3142,20 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_32</name>
-        <rename/>
+      </field>      <field>        <name>custom_type</name>
+        <rename>custom_11</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_33</name>
-        <rename/>
+      </field>      <field>        <name>custom_subtype</name>
+        <rename>custom_12</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_34</name>
-        <rename/>
+      </field>      <field>        <name>custom_fund</name>
+        <rename>custom_13</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_35</name>
-        <rename/>
+      </field>      <field>        <name>custom_appeal</name>
+        <rename>custom_14</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>payment_instrument_id</name>
@@ -2900,7 +3170,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_69</name>
+      </field>      <field>        <name>custom_recurring_gift</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -2909,38 +3179,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>72</xloc>
       <yloc>1353</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Replace ampersand in appeals</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x26;</replace_string>
-        <replace_by_string>and</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>71</xloc>
-      <yloc>56</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3312,7 +3550,7 @@
     </file>
     <fields>
       <field>
-        <name>custom_40</name>
+        <name>custom_18</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -3372,7 +3610,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_38</name>
+        <name>custom_16</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3384,7 +3622,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_36</name>
+        <name>custom_15</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3396,7 +3634,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_37</name>
+        <name>custom_19</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3408,7 +3646,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_39</name>
+        <name>custom_17</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3468,7 +3706,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_32</name>
+        <name>custom_11</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3480,7 +3718,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_33</name>
+        <name>custom_12</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3492,7 +3730,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_34</name>
+        <name>custom_13</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3504,7 +3742,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_35</name>
+        <name>custom_14</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3552,12 +3790,12 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_69</name>
+        <name>custom_recurring_gift</name>
         <type>String</type>
         <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal/>
+        <group/>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -4517,7 +4755,7 @@
       </key>
       <value>
         <name>value</name>
-        <rename>custom_35</rename>
+        <rename>custom_appeal</rename>
         <default/>
         <type>String</type>
       </value>
@@ -4721,7 +4959,7 @@
       </key>
       <value>
         <name>value</name>
-        <rename>custom_34</rename>
+        <rename>custom_fund</rename>
         <default/>
         <type>String</type>
       </value>
@@ -4769,7 +5007,7 @@
       </key>
       <value>
         <name>value</name>
-        <rename>custom_33</rename>
+        <rename>custom_subtype</rename>
         <default/>
         <type>String</type>
       </value>
@@ -4817,7 +5055,7 @@
       </key>
       <value>
         <name>value</name>
-        <rename>custom_32</rename>
+        <rename>custom_type</rename>
         <default/>
         <type>String</type>
       </value>
