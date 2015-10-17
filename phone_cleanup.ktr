@@ -92,6 +92,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>phone_type option_group_id can change from &#xa;version to version, can&#x27;t be hardcoded. &#x3a;-&#x28;</note>
+      <xloc>94</xloc>
+      <yloc>535</yloc>
+      <width>277</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -251,6 +272,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -305,14 +352,12 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Add phone_type option group ID</from><to>phone_type_id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap location types</from><to>Remap phone types</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap phone types</from><to>location_type_id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove phones &#x3e; 32 chars</from><to>Remap location types</to><enabled>Y</enabled> </hop>
-  <hop> <from>location_type_id lookup</from><to>Add phone_type option group ID</to><enabled>Y</enabled> </hop>
+  <hop> <from>location_type_id lookup</from><to>Add phone_type option group name</to><enabled>Y</enabled> </hop>
   <hop> <from>get names for invalid phone</from><to>Remove irrelevant fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove irrelevant fields</from><to>invalid phones</to><enabled>Y</enabled> </hop>
-  <hop> <from>phone input</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines</from><to>Remove phones &#x3e; 32 chars</to><enabled>Y</enabled> </hop>
   <hop> <from>phone_type_id lookup</from><to>Remove records without location_id and phone_type_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Add reason&#x3a; &#x22;Phone length &#x3e; 32 characters&#x22;</from><to>get names for invalid phone</to><enabled>Y</enabled> </hop>
@@ -323,9 +368,13 @@
   <hop> <from>Remove records without location_id and phone_type_id</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove non-import fields</from><to>Force phone_type_id and location_type_id to integers</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove phones &#x3e; 32 chars</from><to>Add reason&#x3a; &#x22;Phone length &#x3e; 32 characters&#x22;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add phone_type option group name</from><to>phone_type option_group_id lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>phone_type option_group_id lookup</from><to>phone_type_id lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>phone input</from><to>Trim phones</to><enabled>Y</enabled> </hop>
+  <hop> <from>Trim phones</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Add phone_type option group ID</name>
+    <name>Add phone_type option group name</name>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
@@ -335,12 +384,12 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-       <calculation><field_name>phone_option_group_id</field_name>
+       <calculation><field_name>phone_option_group</field_name>
 <calc_type>CONSTANT</calc_type>
-<field_a>34</field_a>
+<field_a>phone_type</field_a>
 <field_b/>
 <field_c/>
-<value_type>None</value_type>
+<value_type>String</value_type>
 <value_length>-1</value_length>
 <value_precision>-1</value_precision>
 <remove>N</remove>
@@ -351,8 +400,8 @@
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>453</xloc>
-      <yloc>468</yloc>
+      <xloc>445</xloc>
+      <yloc>475</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -434,8 +483,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>374</xloc>
-      <yloc>743</yloc>
+      <xloc>365</xloc>
+      <yloc>824</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -467,8 +516,8 @@
 </calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>631</xloc>
-      <yloc>408</yloc>
+      <xloc>623</xloc>
+      <yloc>498</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -641,9 +690,21 @@
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue>phone</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>phone</leftvalue>
+   <function>IS NOT NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>phone</leftvalue>
+   <function>&#x3c;&#x3e;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text/><length>-1</length><precision>-1</precision><isnull>Y</isnull><mask/></value>   </condition>
+  </conditions>
  </condition>
     </compare>
      <cluster_schema/>
@@ -704,8 +765,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>755</xloc>
-      <yloc>610</yloc>
+      <xloc>746</xloc>
+      <yloc>691</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -744,8 +805,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>484</yloc>
+      <xloc>651</xloc>
+      <yloc>565</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -780,8 +841,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>373</xloc>
-      <yloc>664</yloc>
+      <xloc>364</xloc>
+      <yloc>745</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -850,8 +911,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>415</xloc>
-      <yloc>600</yloc>
+      <xloc>406</xloc>
+      <yloc>681</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -910,8 +971,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>753</xloc>
-      <yloc>533</yloc>
+      <xloc>744</xloc>
+      <yloc>614</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -929,8 +990,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>760</xloc>
-      <yloc>703</yloc>
+      <xloc>751</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1012,7 +1073,49 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>500</xloc>
-      <yloc>60</yloc>
+      <yloc>1</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>phone_type option_group_id lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_group</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>phone_option_group</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>phone_option_group_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>442</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1059,8 +1162,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>449</xloc>
-      <yloc>537</yloc>
+      <xloc>440</xloc>
+      <yloc>618</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1078,8 +1181,42 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>371</xloc>
-      <yloc>803</yloc>
+      <xloc>362</xloc>
+      <yloc>884</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Trim phones</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>phone</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>499</xloc>
+      <yloc>70</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
