@@ -73,8 +73,8 @@
   <notepads>
     <notepad>
       <note>Org-specific BEGIN</note>
-      <xloc>176</xloc>
-      <yloc>115</yloc>
+      <xloc>116</xloc>
+      <yloc>84</yloc>
       <width>126</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -94,8 +94,8 @@
     </notepad>
     <notepad>
       <note>Org-specific END</note>
-      <xloc>173</xloc>
-      <yloc>220</yloc>
+      <xloc>107</xloc>
+      <yloc>195</yloc>
       <width>113</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -115,9 +115,72 @@
     </notepad>
     <notepad>
       <note>This is to support the &#x22;concat fields&#x22; step, which lets us &#xa;cut out contacts with no custom data.</note>
-      <xloc>336</xloc>
-      <yloc>757</yloc>
+      <xloc>303</xloc>
+      <yloc>756</yloc>
       <width>339</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- It&#x27;s important to grab the field names on a per-client basis.</note>
+      <xloc>193</xloc>
+      <yloc>28</yloc>
+      <width>368</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- The &#x22;Keep only certain fields&#x22; should match the &#x22;Keep only certain fields&#x22; list&#xa;that&#x27;s in the &#x22;create custom fields&#x22; transform.</note>
+      <xloc>182</xloc>
+      <yloc>115</yloc>
+      <width>477</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>If this transform fails with the error&#x3a; Field &#x27;custom_null&#x27; is specified twice &#x28;or more&#x29; with the same name&#x21;&#xa;That means some of the custom fields don&#x27;t exist in Civi.</note>
+      <xloc>187</xloc>
+      <yloc>481</yloc>
+      <width>613</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -293,6 +356,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -347,24 +436,23 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>supporter_export.txt</from><to>custom fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>Keep only certain fields</from><to>Metadata structure of stream</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom fields only</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Metadata structure of stream</from><to>remove useless metadata</to><enabled>Y</enabled> </hop>
   <hop> <from>Generate Civi fieldname based on id</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove useless metadata</from><to>Add format field</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
   <hop> <from>Inject contact_id</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>custom_columns.txt</from><to>lookup fields only</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup fields only</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Add format field</from><to>Sort by Fieldname</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by Fieldname</from><to>Merge Join</to><enabled>Y</enabled> </hop>
-  <hop> <from>Merge Join</from><to>Lookup custom field ids by filter</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>Lookup custom field ids by filter</from><to>drop more useless fields</to><enabled>Y</enabled> </hop>
   <hop> <from>drop more useless fields</from><to>Generate Civi fieldname based on id</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>custom fields, no ids</to><enabled>Y</enabled> </hop>
   <hop> <from>custom fields, no ids</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
+  <hop> <from>supporter_export.txt</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Keep only certain fields</from><to>Metadata structure of stream</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove useless metadata</from><to>Add format field</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge Join</from><to>Lookup custom field ids by filter</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add format field</name>
@@ -394,7 +482,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>142</xloc>
-      <yloc>368</yloc>
+      <yloc>355</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -412,8 +500,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>147</xloc>
-      <yloc>727</yloc>
+      <xloc>144</xloc>
+      <yloc>734</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -450,15 +538,15 @@
         <source_step>custom fields, no ids</source_step>
         <source_field>Fieldname</source_field>
       </mapping>      <mapping>        <target_step_name>cli_salsa_custom_fields</target_step_name>
-        <target_attribute_key>OUTPUT_FIELDNAME</target_attribute_key>
-        <target_detail>Y</target_detail>
-        <source_step>Dummy &#x28;do nothing&#x29;</source_step>
-        <source_field>rename_to</source_field>
-      </mapping>      <mapping>        <target_step_name>cli_salsa_custom_fields</target_step_name>
         <target_attribute_key>OUTPUT_TYPE</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>Dummy &#x28;do nothing&#x29;</source_step>
         <source_field>Type</source_field>
+      </mapping>      <mapping>        <target_step_name>cli_salsa_custom_fields</target_step_name>
+        <target_attribute_key>OUTPUT_FIELDNAME</target_attribute_key>
+        <target_detail>Y</target_detail>
+        <source_step>Dummy &#x28;do nothing&#x29;</source_step>
+        <source_field>rename_to</source_field>
       </mapping>      <mapping>        <target_step_name>rename custom fields to CiviCRM field names</target_step_name>
         <target_attribute_key>FIELD_NAME</target_attribute_key>
         <target_detail>Y</target_detail>
@@ -491,8 +579,8 @@
         <source_field>Type</source_field>
       </mapping>    </mappings>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>150</xloc>
-      <yloc>806</yloc>
+      <xloc>147</xloc>
+      <yloc>813</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -521,8 +609,8 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>144</xloc>
-      <yloc>663</yloc>
+      <xloc>141</xloc>
+      <yloc>670</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -601,8 +689,8 @@
     </data>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>266</xloc>
-      <yloc>678</yloc>
+      <xloc>263</xloc>
+      <yloc>685</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -618,107 +706,307 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>state_district</name>
+    <fields>      <field>        <name>ncvr_hearing_special_needs</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_il_1_5</name>
+      </field>      <field>        <name>ncvr_testimony</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_prospective</name>
+      </field>      <field>        <name>ncvr_hearing_testimony_assistance</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_status</name>
+      </field>      <field>        <name>ncvr_volunteer</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_cd</name>
+      </field>      <field>        <name>ambassadorsfordemocracy_addlcomments</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_ld</name>
+      </field>      <field>        <name>race_ethnicity</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_ward</name>
+      </field>      <field>        <name>VARCHAR0</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_precinct</name>
+      </field>      <field>        <name>ges_address</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_last_reached</name>
+      </field>      <field>        <name>congressional</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_by</name>
+      </field>      <field>        <name>executive</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>are_you_a_tiaa_cref_policy_holder_</name>
+      </field>      <field>        <name>state_local_policy_maker</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
+      </field>      <field>        <name>foundation</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
+      </field>      <field>        <name>pro_bono_volunteer</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>ac_committee_of_100</name>
+      </field>      <field>        <name>media</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>union_affiliation</name>
+      </field>      <field>        <name>peer_organization</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>lcsp_registration_payment</name>
+      </field>      <field>        <name>corporate</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>lcsp_registration_donation</name>
+      </field>      <field>        <name>affiliates</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>md_also_pnhp</name>
+      </field>      <field>        <name>vendors</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>tiaa_cref</name>
+      </field>      <field>        <name>fundraise_advocacy</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>member_shirt_size</name>
+      </field>      <field>        <name>clients</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>in_memory_of_jerry_tucker</name>
+      </field>      <field>        <name>academic</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>comments_for_jerry_s_family</name>
+      </field>      <field>        <name>current_staff</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>tax_status</name>
+      </field>      <field>        <name>pledge_amount</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>supporter_KEY</name>
+      </field>      <field>        <name>pledge_frequency</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>what_year_s__were_you_associated_with_the_lawyers__committee_</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>what_project_s__did_you_work_with_</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RADIO1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RADIO0</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RADIO2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>RADIO3</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>VARCHAR3</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_vol_has_car</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_preferred_shift</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_field_preferred_shifts</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>car_capacity</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>VARCHAR2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>breakout_2</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>breakout_1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_polling_place_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_absentee_voting_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_registration_inquiry</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_registration_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_voting_equipment_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_accessibility_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_voter_intimidation_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_student_voting_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_language_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_id_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_poll_worker_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_electioneering_problem</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_polling_place_inquiry</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_absentee_voting_inquiry</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_criminal_status_related_inquiry</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_provisional_ballot_concern</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_sys_race_ethnicity</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_sys_description</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_post_ed_volunteer_survey_whatwentwell</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_post_ed_volunteer_survey_improvements</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_post_ed_volunteer_survey_electionreform</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>VARCHAR1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>VARCHAR4</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>former_staff</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>has_no_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ep_sys_narrative</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>yli_company_organization</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>yli_title</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>yli_law_school_attended</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>yli_year_of_graduation</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ylc_pledge_city_state</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ylc_pledge_org_or_firm</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ylc_pledge_name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ylc_updates</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ylc_pledge_date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>dietary_restrictions</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>141</xloc>
-      <yloc>164</yloc>
+      <xloc>144</xloc>
+      <yloc>131</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -745,7 +1033,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>custom_column.custom_column_KEY</name>
+        <name>Custom column.custom column KEY</name>
         <field>filter</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -759,8 +1047,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>143</xloc>
-      <yloc>543</yloc>
+      <xloc>141</xloc>
+      <yloc>551</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -783,11 +1071,11 @@
       <key>Fieldname</key>
     </keys_1>
     <keys_2>
-      <key>custom_column.name</key>
+      <key>Custom column.name</key>
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>143</xloc>
+      <xloc>141</xloc>
       <yloc>485</yloc>
       <draw>Y</draw>
       </GUI>
@@ -842,8 +1130,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>141</xloc>
-      <yloc>426</yloc>
+      <xloc>145</xloc>
+      <yloc>409</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -868,7 +1156,7 @@
       <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>custom_column.name</name>
+        <name>Custom column.name</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <presorted>N</presorted>
@@ -876,82 +1164,56 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>293</xloc>
+      <xloc>291</xloc>
       <yloc>439</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>custom fields only</name>
-    <type>SelectValues</type>
+    <name>custom fields, no ids</name>
+    <type>FilterRows</type>
     <description/>
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>Last_Modified</name>
-      </remove>      <remove>        <name>Date_Created</name>
-      </remove>      <remove>        <name>Title</name>
-      </remove>      <remove>        <name>First_Name</name>
-      </remove>      <remove>        <name>MI</name>
-      </remove>      <remove>        <name>Last_Name</name>
-      </remove>      <remove>        <name>Suffix</name>
-      </remove>      <remove>        <name>Email</name>
-      </remove>      <remove>        <name>Password</name>
-      </remove>      <remove>        <name>Receive_Email</name>
-      </remove>      <remove>        <name>Email_Status</name>
-      </remove>      <remove>        <name>Email_Preference</name>
-      </remove>      <remove>        <name>Soft_Bounce_Count</name>
-      </remove>      <remove>        <name>Hard_Bounce_Count</name>
-      </remove>      <remove>        <name>Last_Bounce</name>
-      </remove>      <remove>        <name>Receive_Phone_Blasts</name>
-      </remove>      <remove>        <name>Phone</name>
-      </remove>      <remove>        <name>Cell_Phone</name>
-      </remove>      <remove>        <name>Phone_Provider</name>
-      </remove>      <remove>        <name>Work_Phone</name>
-      </remove>      <remove>        <name>Pager</name>
-      </remove>      <remove>        <name>Home_Fax</name>
-      </remove>      <remove>        <name>Work_Fax</name>
-      </remove>      <remove>        <name>Street</name>
-      </remove>      <remove>        <name>Street_2</name>
-      </remove>      <remove>        <name>Street_3</name>
-      </remove>      <remove>        <name>City</name>
-      </remove>      <remove>        <name>State</name>
-      </remove>      <remove>        <name>Zip</name>
-      </remove>      <remove>        <name>PRIVATE_Zip_Plus_4</name>
-      </remove>      <remove>        <name>County</name>
-      </remove>      <remove>        <name>District</name>
-      </remove>      <remove>        <name>Country</name>
-      </remove>      <remove>        <name>Latitude</name>
-      </remove>      <remove>        <name>Longitude</name>
-      </remove>      <remove>        <name>Organization</name>
-      </remove>      <remove>        <name>Department</name>
-      </remove>      <remove>        <name>Occupation</name>
-      </remove>      <remove>        <name>Instant_Messenger_Service</name>
-      </remove>      <remove>        <name>Instant_Messenger_Name</name>
-      </remove>      <remove>        <name>Web_Page</name>
-      </remove>      <remove>        <name>Alternative_Email</name>
-      </remove>      <remove>        <name>Other_Data_1</name>
-      </remove>      <remove>        <name>Other_Data_2</name>
-      </remove>      <remove>        <name>Other_Data_3</name>
-      </remove>      <remove>        <name>Notes</name>
-      </remove>      <remove>        <name>Source_Tracking_Code</name>
-      </remove>      <remove>        <name>Tracking_Code</name>
-      </remove>      <remove>        <name>Status</name>
-      </remove>      <remove>        <name>uid</name>
-      </remove>      <remove>        <name>Timezone</name>
-      </remove>      <remove>        <name>Language_Code</name>
-      </remove>      <remove>        <name>Source</name>
-      </remove>      <remove>        <name>Source_Details</name>
-      </remove>    </fields>     <cluster_schema/>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>Fieldname</leftvalue>
+   <function>&#x3c;&#x3e;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>contact_id</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>Fieldname</leftvalue>
+   <function>&#x3c;&#x3e;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>supporter_KEY</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>Fieldname</leftvalue>
+   <function>&#x3c;&#x3e;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>concatted</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>140</xloc>
-      <yloc>87</yloc>
+      <xloc>253</xloc>
+      <yloc>761</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -982,7 +1244,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>custom_column.custom_column_KEY</name>
+        <name>Custom column.custom column KEY</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -993,7 +1255,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.data_table</name>
+        <name>Custom column.data table</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1004,7 +1266,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.Date_Created</name>
+        <name>Custom column.Date Created</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1015,7 +1277,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.name</name>
+        <name>Custom column.label</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1026,7 +1288,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.label</name>
+        <name>Custom column.type</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1037,7 +1299,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.type</name>
+        <name>Custom column.Description</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1048,7 +1310,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.Description</name>
+        <name>Custom column. Order</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1059,7 +1321,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column._Order</name>
+        <name>Custom column.name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1072,7 +1334,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>326</xloc>
+      <xloc>324</xloc>
       <yloc>315</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1108,8 +1370,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>140</xloc>
-      <yloc>596</yloc>
+      <xloc>137</xloc>
+      <yloc>603</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1125,18 +1387,18 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>custom_column.custom_column_KEY</name>
+    <fields>      <field>        <name>Custom column.custom column KEY</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_column.name</name>
+      </field>      <field>        <name>Custom column.name</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>322</xloc>
+      <xloc>320</xloc>
       <yloc>378</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1164,8 +1426,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>146</xloc>
-      <yloc>303</yloc>
+      <xloc>144</xloc>
+      <yloc>296</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1834,7 +2096,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>wellpoint_action</name>
+        <name>pledge_amount</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1845,7 +2107,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>declaration_action</name>
+        <name>ylc_updates</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1856,7 +2118,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>stand_with_kate_action</name>
+        <name>work_address</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1867,7 +2129,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>start_from_scratch_obama_action</name>
+        <name>work_address_2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1878,7 +2140,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>hands_off_action</name>
+        <name>work_city</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1889,7 +2151,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>fair_elections_now_action</name>
+        <name>work_state</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1900,7 +2162,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lapsed_amount</name>
+        <name>work_zip</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1911,7 +2173,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lapsed_date</name>
+        <name>work_country</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1922,7 +2184,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>state_district</name>
+        <name>nickname</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1933,7 +2195,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_il_1_5</name>
+        <name>yli_company_organization</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1944,7 +2206,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_prospective</name>
+        <name>yli_title</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1955,7 +2217,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_status</name>
+        <name>yli_law_school_attended</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1966,7 +2228,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_cd</name>
+        <name>yli_year_of_graduation</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1977,7 +2239,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_ld</name>
+        <name>nyc_mandatory_training</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1988,7 +2250,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_councilman</name>
+        <name>former_staff</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1999,7 +2261,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_ward</name>
+        <name>nyc_prep_clinic</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2010,7 +2272,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_precinct</name>
+        <name>congressional</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2021,7 +2283,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_last_reached</name>
+        <name>nyc_prep_can_t_attend</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2032,7 +2294,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_by</name>
+        <name>executive</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2043,7 +2305,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>supportive_comment_for_kevin</name>
+        <name>epapp_optin</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2054,7 +2316,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lcsp_conference_registration</name>
+        <name>state_local_policy_maker</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2065,7 +2327,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>hr_676_petition_signers</name>
+        <name>epapp_optin_electioninfo</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2076,7 +2338,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>nominee</name>
+        <name>foundation</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2087,7 +2349,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>why_</name>
+        <name>pro_bono_volunteer</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2098,7 +2360,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>are_you_a_tiaa_cref_policy_holder_</name>
+        <name>media</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2109,7 +2371,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>are_you_a_member_of_a_faith_group__if_yes__which_one_</name>
+        <name>peer_organization</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2120,7 +2382,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>would_you_like_to_donate_towards_the_divestment_campaign_</name>
+        <name>corporate</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2131,7 +2393,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ac_committee_of_100</name>
+        <name>affiliates</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2142,7 +2404,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>union_affiliation</name>
+        <name>if_you_worked_with_one_of_our_local_affiliate_organizations__please_indicate_which_one</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2153,7 +2415,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>comment</name>
+        <name>vendors</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2164,7 +2426,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lcsp_registration_payment</name>
+        <name>fundraise_advocacy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2175,7 +2437,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lc_need_a_ride</name>
+        <name>ep_field_preferred_shifts</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2186,7 +2448,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>lcsp_registration_donation</name>
+        <name>what_year_s__were_you_associated_with_the_lawyers__committee_</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2197,7 +2459,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>md_also_pnhp</name>
+        <name>clients</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2208,7 +2470,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>empower_call_response</name>
+        <name>what_project_s__did_you_work_with_</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2219,7 +2481,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>receive_snail_mail</name>
+        <name>academic</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2230,7 +2492,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>campaign_donation</name>
+        <name>affiliation</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2241,7 +2503,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>tiaa_cref</name>
+        <name>ges_address</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2252,7 +2514,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>meet_with_congressperson</name>
+        <name>pledge_frequency</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2263,7 +2525,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>collect_stories</name>
+        <name>city_where_live_or_work</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2274,7 +2536,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>member_shirt_size</name>
+        <name>has_no_id</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2285,7 +2547,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>dinner_option</name>
+        <name>il_hearing_participation___attend</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2296,7 +2558,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>language</name>
+        <name>il_hearing_participation___written_testimony</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2307,7 +2569,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>in_memory_of_jerry_tucker</name>
+        <name>il_hearing_participation___oral_testimony</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2318,7 +2580,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>comments_for_jerry_s_family</name>
+        <name>il_hearing_participation___topic_of_testimony</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2329,7 +2591,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>membership_last_donate</name>
+        <name>name_org</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2340,7 +2602,1404 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>tax_status</name>
+        <name>prep_clinic_11_2_9</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name__org</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_clinic_11_9_13</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_school</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_clinic_volunteer_later</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_grade</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>car_capacity</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>number_of_shifts</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_childcare</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_ages</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_youth</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_clinic</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>pa70_vidc_d2dc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_post_ed_volunteer_survey_whatwentwell</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_volunteer_language</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>pa70_vidc_vpb</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_post_ed_volunteer_survey_improvements</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>pa70_vidc_rides</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_post_ed_volunteer_survey_electionreform</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_arlington_vol_singup</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>pa70_vidc_de</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>pa70_vidc_edv</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_clinic_y_or_n</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>twitter_handle</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_sys_narrative</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyc_mandatory_training_live_feed</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyc_prep_clinic__4_6_13_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyc_mandatory_training__4_4_13_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>current_staff</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>race_ethnicity</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>voting_changes___stories</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_sped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_preferred_shift</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>affiliation_if_any</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>app_partner_signup_orgname</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>app_partner_signup_orgurl</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ncvr_volunteer</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clinic_issue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clinic_appt</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__i_am_a___</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ncvr_hearing_special_needs</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ncvr_testimony</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>word_cloud_mandela</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project_comments</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_youth_grade</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__volunteer_activity_overview</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_youth_school</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__vol_activity_coordinate_law</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__vol_activity_3</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project_vol_activity_4</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_administration</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project_membership_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_anniversary_events</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_community_development</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_involvement</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_criminal_justice</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_disability_rights</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_education</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_employment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_environmental_justice</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_fair_housing</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_annoucements</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_immigrant_rights</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_communications</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_development</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_monthly_call</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_public_policy</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ambassadorsfordemocracy_addlcomments</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>lc_listserve_voting_rights</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_il_field_area</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_il_field_area_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>breakout_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>breakout_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>dietary_restrictions</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ylc_pledge_date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ylc_pledge_city_state</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_polling_place_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ylc_pledge_org_or_firm</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_absentee_voting_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ylc_pledge_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_registration_inquiry</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_registration_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_voting_equipment_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_accessibility_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_voter_intimidation_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_student_voting_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_language_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_id_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_poll_worker_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_electioneering_problem</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_polling_place_inquiry</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_absentee_voting_inquiry</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_criminal_status_related_inquiry</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_provisional_ballot_concern</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_sys_race_ethnicity</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_sys_description</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ep_vol_has_car</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clinic_date_july_24</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>prep_clinic_july_25</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ncvr_hearing_testimony_assistance</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>allergies</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>deasdas</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>overnight_stay_option</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>retreat_parking</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>additional_requests</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project_type_of_org</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__criminal_law_practicioner</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project_what_type_of_criminal_law_</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project__org_referral</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>clemency_project___of_time_of_criminal_law_practice</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>RADIO1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>RADIO0</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>RADIO2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR4</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR0</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR15</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR3</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>VARCHAR2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>RADIO3</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyrole</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyshift</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyshift2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyborough</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nyborough2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nypartnername</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>nypartneremail</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>RADIO4</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2355,54 +4014,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>140</xloc>
       <yloc>25</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>custom fields, no ids</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>Fieldname</leftvalue>
-   <function>&#x3c;&#x3e;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>contact_id</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>Fieldname</leftvalue>
-   <function>&#x3c;&#x3e;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>supporter_KEY</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>Fieldname</leftvalue>
-   <function>&#x3c;&#x3e;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>concatted</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>256</xloc>
-      <yloc>754</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

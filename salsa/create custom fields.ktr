@@ -135,6 +135,48 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&#x3c;-- The &#x22;Keep only certain fields&#x22; should match the &#x22;Keep only certain fields&#x22; list&#xa;that&#x27;s in the &#x22;rename custom fields&#x22; transform.</note>
+      <xloc>354</xloc>
+      <yloc>246</yloc>
+      <width>477</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>This does NOT handle identically named custom fields in Salsa&#xa;&#x28;including those where the first 64 characters are the same&#x29;</note>
+      <xloc>587</xloc>
+      <yloc>23</yloc>
+      <width>379</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>CCR</name>
@@ -294,6 +336,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -353,12 +421,10 @@
   <hop> <from>Don&#x27;t create existing group</from><to>Create Custom Group</to><enabled>Y</enabled> </hop>
   <hop> <from>custom_column_options.txt</from><to>Wait for Custom Fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Wait for Custom Fields</from><to>Option Values fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>Option Values fields only</from><to>lookup option_group_id</to><enabled>Y</enabled> </hop>
   <hop> <from>look to see if value&#x27;s already created</from><to>Don&#x27;t create existing option value</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup option_group_id</from><to>If field value is null</to><enabled>Y</enabled> </hop>
   <hop> <from>If field value is null</from><to>look to see if value&#x27;s already created</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t create existing option value</from><to>Create Option Values</to><enabled>Y</enabled> </hop>
-  <hop> <from>Civi-friendly names</from><to>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</to><enabled>Y</enabled> </hop>
   <hop> <from>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</from><to>get custom_group_id</to><enabled>Y</enabled> </hop>
   <hop> <from>get custom_group_id</from><to>Remap data_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap data_type</from><to>Remap html_type</to><enabled>Y</enabled> </hop>
@@ -367,6 +433,10 @@
   <hop> <from>custom_columns.txt</from><to>Wait for Custom Group</to><enabled>Y</enabled> </hop>
   <hop> <from>Wait for Custom Group</from><to>Civi-friendly names</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap html_type</from><to>If field value is null 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Civi-friendly names</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Keep only certain fields</from><to>Only rows marked &#x22;keep&#x22;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Only rows marked &#x22;keep&#x22;</from><to>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Option Values fields only</from><to>lookup option_group_id</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Civi-friendly names</name>
@@ -405,6 +475,10 @@
         <precision>-2</precision>
       </field>      <field>        <name>custom_column._Order</name>
         <rename>weight</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column.name</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>custom_column.type</name>
@@ -450,7 +524,7 @@
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>287</xloc>
-      <yloc>575</yloc>
+      <yloc>706</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -580,7 +654,7 @@
         <fieldName>weight</fieldName>
         <name>weight</name>
         <title>Custom Field Weight</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -588,7 +662,7 @@
         <fieldName>start_date_years</fieldName>
         <name>start_date_years</name>
         <title>Field Start Date</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -596,7 +670,7 @@
         <fieldName>is_view</fieldName>
         <name>is_view</name>
         <title>Field is Viewable</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -612,7 +686,7 @@
         <fieldName>in_selector</fieldName>
         <name>in_selector</name>
         <title>Field Display</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -624,19 +698,19 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Field Option Group&#x22;,&#x22;name&#x22;&#x3a;&#x22;option_group_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>option_group_id</fieldName>
-        <name>option_group_id</name>
-        <title>Field Option Group</title>
-        <type>1</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Field Note Rows&#x22;,&#x22;name&#x22;&#x3a;&#x22;note_rows&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
         <fieldName>note_rows</fieldName>
         <name>note_rows</name>
         <title>Field Note Rows</title>
-        <type>1</type>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Field Option Group&#x22;,&#x22;name&#x22;&#x3a;&#x22;option_group_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>option_group_id</fieldName>
+        <name>option_group_id</name>
+        <title>Field Option Group</title>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -644,7 +718,7 @@
         <fieldName>id</fieldName>
         <name>id</name>
         <title>Custom Field ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -652,7 +726,7 @@
         <fieldName>is_search_range</fieldName>
         <name>is_search_range</name>
         <title>Search as a Range</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -684,7 +758,7 @@
         <fieldName>end_date_years</fieldName>
         <name>end_date_years</name>
         <title>Field End Date</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -700,7 +774,7 @@
         <fieldName>custom_group_id</fieldName>
         <name>custom_group_id</name>
         <title>Custom Group</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -708,7 +782,7 @@
         <fieldName>note_columns</fieldName>
         <name>note_columns</name>
         <title>Field Note Columns</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -716,7 +790,7 @@
         <fieldName>is_active</fieldName>
         <name>is_active</name>
         <title>Custom Field Is Active&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -724,7 +798,7 @@
         <fieldName>text_length</fieldName>
         <name>text_length</name>
         <title>Field Length</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -732,7 +806,7 @@
         <fieldName>options_per_line</fieldName>
         <name>options_per_line</name>
         <title>Field Options Per Line</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -748,7 +822,7 @@
         <fieldName>help_post</fieldName>
         <name>help_post</name>
         <title>Custom Field Post Text</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -756,7 +830,7 @@
         <fieldName>is_required</fieldName>
         <name>is_required</name>
         <title>Custom Field Is Required&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -764,7 +838,7 @@
         <fieldName>is_searchable</fieldName>
         <name>is_searchable</name>
         <title>Allow Searching on Field&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -772,7 +846,7 @@
         <fieldName>help_pre</fieldName>
         <name>help_pre</name>
         <title>Custom Field Pre Text</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -784,19 +858,19 @@
         <source>getfields</source>
       </field>
       <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Field Time Format&#x22;,&#x22;name&#x22;&#x3a;&#x22;time_format&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>time_format</fieldName>
+        <name>time_format</name>
+        <title>Field Time Format</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Field HTMl Type&#x22;,&#x22;maxlength&#x22;&#x3a;32,&#x22;name&#x22;&#x3a;&#x22;html_type&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;callback&#x22;&#x3a;&#x22;CRM_Core_SelectValues&#x3a;&#x3a;customHtmlType&#x22;&#x7d;,&#x22;size&#x22;&#x3a;20&#x7d;</fieldDef>
         <fieldName>html_type</fieldName>
         <name>html_type</name>
         <title>Custom Field HTMl Type</title>
         <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Field Time Format&#x22;,&#x22;name&#x22;&#x3a;&#x22;time_format&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>time_format</fieldName>
-        <name>time_format</name>
-        <title>Field Time Format</title>
-        <type>1</type>
         <source>getfields</source>
       </field>
       <field>
@@ -857,8 +931,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>290</xloc>
-      <yloc>637</yloc>
+      <xloc>286</xloc>
+      <yloc>780</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1104,18 +1178,18 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Custom Group Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Table Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;table_name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
         <fieldName>table_name</fieldName>
         <name>table_name</name>
         <title>Table Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Custom Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Custom Group Name</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -1156,12 +1230,12 @@
         <output-field>style</output-field>
       </output-field>
       <output-field>
-        <input-field>extends</input-field>
-        <output-field>extends</output-field>
-      </output-field>
-      <output-field>
         <input-field>is_active</input-field>
         <output-field>is_active</output-field>
+      </output-field>
+      <output-field>
+        <input-field>extends</input-field>
+        <output-field>extends</output-field>
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1456,8 +1530,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>493</xloc>
-      <yloc>500</yloc>
+      <xloc>483</xloc>
+      <yloc>655</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1582,8 +1656,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>489</xloc>
-      <yloc>432</yloc>
+      <xloc>486</xloc>
+      <yloc>548</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1628,8 +1702,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>483</xloc>
-      <yloc>319</yloc>
+      <xloc>480</xloc>
+      <yloc>435</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1687,7 +1761,356 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>290</xloc>
-      <yloc>516</yloc>
+      <yloc>647</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Keep only certain fields</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>custom_column.name</field_to_use>
+    <target_field>keep</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>ncvr_hearing_special_needs</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ncvr_testimony</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ncvr_hearing_testimony_assistance</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ncvr_volunteer</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ambassadorsfordemocracy_addlcomments</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>race_ethnicity</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>VARCHAR0</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ges_address</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>congressional</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>executive</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>state_local_policy_maker</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>foundation</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>pro_bono_volunteer</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>media</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>peer_organization</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>corporate</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>affiliates</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>vendors</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>fundraise_advocacy</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>clients</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>academic</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>current_staff</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>pledge_amount</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>pledge_frequency</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>what_year_s__were_you_associated_with_the_lawyers__committee_</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>what_project_s__did_you_work_with_</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>RADIO1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>RADIO0</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>RADIO2</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>RADIO3</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>VARCHAR3</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_vol_has_car</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_preferred_shift</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_field_preferred_shifts</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>car_capacity</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>VARCHAR2</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>breakout_2</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>breakout_1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_polling_place_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_absentee_voting_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_registration_inquiry</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_registration_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_voting_equipment_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_accessibility_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_voter_intimidation_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_student_voting_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_language_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_id_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_poll_worker_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_electioneering_problem</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_polling_place_inquiry</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_absentee_voting_inquiry</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_criminal_status_related_inquiry</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_provisional_ballot_concern</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_sys_race_ethnicity</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_sys_description</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_post_ed_volunteer_survey_whatwentwell</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_post_ed_volunteer_survey_improvements</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_post_ed_volunteer_survey_electionreform</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>VARCHAR1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>VARCHAR4</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>former_staff</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>has_no_id</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ep_sys_narrative</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>yli_company_organization</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>yli_title</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>yli_law_school_attended</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>yli_year_of_graduation</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ylc_pledge_city_state</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ylc_pledge_org_or_firm</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ylc_pledge_name</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ylc_updates</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>ylc_pledge_date</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>dietary_restrictions</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>285</xloc>
+      <yloc>247</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Only rows marked &#x22;keep&#x22;</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>keep</leftvalue>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>1</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>289</xloc>
+      <yloc>327</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1711,6 +2134,10 @@
         <rename>value</rename>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>custom_column_option.value</name>
+        <rename>name</rename>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>      <field>        <name>custom_column_option.label</name>
         <rename>label</rename>
         <length>-2</length>
@@ -1727,15 +2154,11 @@
         <rename>weight</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>custom_column_option.value</name>
-        <rename>name</rename>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>475</xloc>
-      <yloc>184</yloc>
+      <xloc>474</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1771,11 +2194,27 @@
         <source_value>varchar</source_value>
         <target_value>String</target_value>
       </field>
+      <field>
+        <source_value>int</source_value>
+        <target_value>Int</target_value>
+      </field>
+      <field>
+        <source_value>mediumtext</source_value>
+        <target_value>Memo</target_value>
+      </field>
+      <field>
+        <source_value>currency</source_value>
+        <target_value>Money</target_value>
+      </field>
+      <field>
+        <source_value>date</source_value>
+        <target_value>Date</target_value>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>287</xloc>
-      <yloc>391</yloc>
+      <yloc>522</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1811,11 +2250,27 @@
         <source_value>varchar</source_value>
         <target_value>Text</target_value>
       </field>
+      <field>
+        <source_value>int</source_value>
+        <target_value>Text</target_value>
+      </field>
+      <field>
+        <source_value>mediumtext</source_value>
+        <target_value>TextArea</target_value>
+      </field>
+      <field>
+        <source_value>currency</source_value>
+        <target_value>Text</target_value>
+      </field>
+      <field>
+        <source_value>date</source_value>
+        <target_value>Select Date</target_value>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>288</xloc>
-      <yloc>447</yloc>
+      <yloc>578</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1907,6 +2362,17 @@
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>custom_column_option.custom_column_option_KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>custom_column_option.value</name>
         <type>String</type>
         <format/>
@@ -1952,17 +2418,6 @@
       </field>
       <field>
         <name>custom_column_option._Order</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>custom_column_option.custom_column_option_KEY</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2040,17 +2495,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>custom_column.name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>custom_column.label</name>
         <type>String</type>
         <format/>
@@ -2085,6 +2529,17 @@
       </field>
       <field>
         <name>custom_column._Order</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2142,8 +2597,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>282</xloc>
-      <yloc>250</yloc>
+      <xloc>287</xloc>
+      <yloc>395</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2185,7 +2640,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>285</xloc>
-      <yloc>320</yloc>
+      <yloc>451</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2280,8 +2735,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>487</xloc>
-      <yloc>370</yloc>
+      <xloc>484</xloc>
+      <yloc>486</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2322,8 +2777,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>481</xloc>
-      <yloc>256</yloc>
+      <xloc>478</xloc>
+      <yloc>372</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
