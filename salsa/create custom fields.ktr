@@ -73,11 +73,11 @@
   </info>
   <notepads>
     <notepad>
-      <note>Custom Field Group</note>
-      <xloc>26</xloc>
-      <yloc>5</yloc>
-      <width>127</width>
-      <heigth>26</heigth>
+      <note>Custom Field Group&#x28;s&#x29; &#xa;&#x28;one per 64 fields&#x3b; see CRM-16887&#x29;</note>
+      <xloc>81</xloc>
+      <yloc>3</yloc>
+      <width>217</width>
+      <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -95,8 +95,8 @@
     </notepad>
     <notepad>
       <note>Option Values</note>
-      <xloc>440</xloc>
-      <yloc>6</yloc>
+      <xloc>580</xloc>
+      <yloc>11</yloc>
       <width>92</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -116,8 +116,8 @@
     </notepad>
     <notepad>
       <note>Custom fields</note>
-      <xloc>257</xloc>
-      <yloc>9</yloc>
+      <xloc>397</xloc>
+      <yloc>14</yloc>
       <width>91</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -137,8 +137,8 @@
     </notepad>
     <notepad>
       <note>&#x3c;-- The &#x22;Keep only certain fields&#x22; should match the &#x22;Keep only certain fields&#x22; list&#xa;that&#x27;s in the &#x22;rename custom fields&#x22; transform.</note>
-      <xloc>354</xloc>
-      <yloc>246</yloc>
+      <xloc>493</xloc>
+      <yloc>268</yloc>
       <width>477</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -157,10 +157,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>This does NOT handle identically named custom fields in Salsa&#xa;&#x28;including those where the first 64 characters are the same&#x29;</note>
-      <xloc>587</xloc>
-      <yloc>23</yloc>
-      <width>379</width>
+      <note>This tranform does NOT handle identically named custom fields in Salsa&#xa;&#x28;including those where the first 64 characters are the same&#x29;</note>
+      <xloc>732</xloc>
+      <yloc>9</yloc>
+      <width>431</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -416,28 +416,122 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Data for custom group</from><to>look to see if group&#x27;s already created</to><enabled>Y</enabled> </hop>
   <hop> <from>look to see if group&#x27;s already created</from><to>Don&#x27;t create existing group</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t create existing group</from><to>Create Custom Group</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_column_options.txt</from><to>Wait for Custom Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Wait for Custom Fields</from><to>Option Values fields only</to><enabled>Y</enabled> </hop>
   <hop> <from>look to see if value&#x27;s already created</from><to>Don&#x27;t create existing option value</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup option_group_id</from><to>If field value is null</to><enabled>Y</enabled> </hop>
   <hop> <from>If field value is null</from><to>look to see if value&#x27;s already created</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t create existing option value</from><to>Create Option Values</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</from><to>get custom_group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>is_searchable&#x3d;1</from><to>get custom_group_id</to><enabled>Y</enabled> </hop>
   <hop> <from>get custom_group_id</from><to>Remap data_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap data_type</from><to>Remap html_type</to><enabled>Y</enabled> </hop>
   <hop> <from>If field value is null 2</from><to>Convert integers to strings</to><enabled>Y</enabled> </hop>
   <hop> <from>Convert integers to strings</from><to>Create Custom Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>custom_columns.txt</from><to>Wait for Custom Group</to><enabled>Y</enabled> </hop>
-  <hop> <from>Wait for Custom Group</from><to>Civi-friendly names</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap html_type</from><to>If field value is null 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Civi-friendly names</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Keep only certain fields</from><to>Only rows marked &#x22;keep&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Only rows marked &#x22;keep&#x22;</from><to>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</to><enabled>Y</enabled> </hop>
-  <hop> <from>Option Values fields only</from><to>lookup option_group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_columns.txt 2</from><to>Find zero-indexed enums</to><enabled>Y</enabled> </hop>
+  <hop> <from>Option Values fields only</from><to>Find zero-indexed enums</to><enabled>Y</enabled> </hop>
+  <hop> <from>Find zero-indexed enums</from><to>Fix zero-indexed enums</to><enabled>Y</enabled> </hop>
+  <hop> <from>Fix zero-indexed enums</from><to>lookup option_group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Wait for Custom Group</from><to>is_searchable&#x3d;1</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_columns.txt</from><to>Civi-friendly names</to><enabled>Y</enabled> </hop>
+  <hop> <from>Only rows marked &#x22;keep&#x22;</from><to>Add rowcount</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add rowcount</from><to>Set custom group</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set custom group</from><to>Wait for Custom Group</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set custom group</from><to>custom_group only</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_group only</from><to>Group by</to><enabled>Y</enabled> </hop>
+  <hop> <from>Group by</from><to>Add constants</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add constants</from><to>look to see if group&#x27;s already created</to><enabled>Y</enabled> </hop>
+  <hop> <from>custom_column_options.txt</from><to>Wait for Custom Fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Wait for Custom Fields</from><to>Option Values fields only</to><enabled>Y</enabled> </hop>
   </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>extends</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Contact</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>style</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Tab</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>196</xloc>
+      <yloc>230</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add rowcount</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>rowcount</valuename>
+      <use_database>N</use_database>
+      <connection/>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>426</xloc>
+      <yloc>335</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Civi-friendly names</name>
     <type>SelectValues</type>
@@ -488,8 +582,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>278</xloc>
-      <yloc>189</yloc>
+      <xloc>414</xloc>
+      <yloc>126</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -523,8 +617,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>287</xloc>
-      <yloc>706</yloc>
+      <xloc>428</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -931,8 +1025,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>286</xloc>
-      <yloc>780</yloc>
+      <xloc>428</xloc>
+      <yloc>890</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1239,8 +1333,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>261</yloc>
+      <xloc>197</xloc>
+      <yloc>451</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1530,76 +1624,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>483</xloc>
-      <yloc>655</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Data for custom group</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>title</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>extends</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>style</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <data>
-      <line> <item>Salsa Custom Fields</item><item>Contact</item><item>Tab</item><item>1</item> </line>
-    </data>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>48</yloc>
+      <xloc>613</xloc>
+      <yloc>761</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1627,8 +1653,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>181</yloc>
+      <xloc>197</xloc>
+      <yloc>371</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1656,8 +1682,108 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>486</xloc>
-      <yloc>548</yloc>
+      <xloc>616</xloc>
+      <yloc>654</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Find zero-indexed enums</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>custom_columns.txt 2</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>custom_column_option.custom_column_KEY</name>
+        <field>custom_column.custom_column_KEY</field>
+      </key>
+      <value>
+        <name>custom_column.is_a_zero_index_enum</name>
+        <rename>is_a_zero_index_enum</rename>
+        <default/>
+        <type>None</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>614</xloc>
+      <yloc>350</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Fix zero-indexed enums</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var value&#x3b;&#xa;if &#x28;is_a_zero_index_enum &#x3d;&#x3d; 1&#x29; &#x7b;&#xa;  value &#x3d; name&#x3b;&#xa;&#x7d;  &#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>value</name>
+        <rename>value</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>613</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <all_rows>N</all_rows>
+      <ignore_aggregate>N</ignore_aggregate>
+      <field_ignore/>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>grp</prefix>
+      <add_linenr>N</add_linenr>
+      <linenr_fieldname/>
+      <give_back_row>N</give_back_row>
+      <group>
+        <field>
+          <name>title</name>
+        </field>
+      </group>
+      <fields>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>195</xloc>
+      <yloc>165</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1702,8 +1828,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>435</yloc>
+      <xloc>610</xloc>
+      <yloc>541</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1760,8 +1886,8 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>290</xloc>
-      <yloc>647</yloc>
+      <xloc>432</xloc>
+      <yloc>757</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2080,8 +2206,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>285</xloc>
-      <yloc>247</yloc>
+      <xloc>421</xloc>
+      <yloc>184</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2109,8 +2235,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>289</xloc>
-      <yloc>327</yloc>
+      <xloc>425</xloc>
+      <yloc>264</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2157,8 +2283,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>474</xloc>
-      <yloc>176</yloc>
+      <xloc>616</xloc>
+      <yloc>188</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2213,8 +2339,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>287</xloc>
-      <yloc>522</yloc>
+      <xloc>429</xloc>
+      <yloc>632</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2269,8 +2395,38 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>288</xloc>
-      <yloc>578</yloc>
+      <xloc>430</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set custom group</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;If fewer than 64 custom fields, just put into &#x22;Salsa Custom Fields&#x22;.&#xa;&#x2f;&#x2f;If more than that, we need to start creating add&#x27;l custom field groups.&#xa;&#x2f;&#x2f;InnoDB only allows 64 indexes per table.&#xa;var custom_group &#x3d; &#x27;Salsa Custom Fields&#x27;&#x3b;&#xa;if &#x28;rowcount &#x3e; 64&#x29; &#x7b;&#xa;  custom_group &#x3d; custom_group &#x2b; &#x27; &#x27; &#x2b; &#x28;Math.floor&#x28;rowcount &#x2f; 64&#x29; &#x2b; 1&#x29;&#x3b;&#xa;&#x7d;&#xa;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>custom_group</name>
+        <rename>custom_group</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>426</xloc>
+      <yloc>396</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2279,7 +2435,7 @@
     <name>Wait for Custom Fields</name>
     <type>BlockUntilStepsFinish</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -2294,8 +2450,8 @@
       </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>475</xloc>
-      <yloc>119</yloc>
+      <xloc>617</xloc>
+      <yloc>121</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2304,7 +2460,7 @@
     <name>Wait for Custom Group</name>
     <type>BlockUntilStepsFinish</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -2319,8 +2475,8 @@
       </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>275</xloc>
-      <yloc>124</yloc>
+      <xloc>427</xloc>
+      <yloc>450</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2430,8 +2586,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>475</xloc>
-      <yloc>49</yloc>
+      <xloc>615</xloc>
+      <yloc>54</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2549,18 +2705,29 @@
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
+      <field>
+        <name>custom_column.is_a_zero_index_enum</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>273</xloc>
-      <yloc>59</yloc>
+      <xloc>412</xloc>
+      <yloc>52</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>custom_group is Salsa Custom Fields, is_searchable&#x3d;1</name>
-    <type>Constant</type>
+    <name>custom_columns.txt 2</name>
+    <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -2569,36 +2736,148 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;custom_columns.txt</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>	</separator>
+    <enclosure/>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
     <fields>
       <field>
-        <name>custom_group</name>
+        <name>custom_column.custom_column_KEY</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>Salsa Custom Fields</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>is_searchable</name>
+        <name>custom_column.data_table</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.Date_Created</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.label</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.Description</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column._Order</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.is_a_zero_index_enum</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>287</xloc>
-      <yloc>395</yloc>
+      <xloc>740</xloc>
+      <yloc>323</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>custom_group only</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>custom_group</name>
+        <rename>title</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>194</xloc>
+      <yloc>67</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2639,8 +2918,41 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>285</xloc>
-      <yloc>451</yloc>
+      <xloc>425</xloc>
+      <yloc>562</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>is_searchable&#x3d;1</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>is_searchable</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>427</xloc>
+      <yloc>506</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2687,8 +2999,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>82</xloc>
-      <yloc>112</yloc>
+      <xloc>197</xloc>
+      <yloc>302</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2735,8 +3047,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>484</xloc>
-      <yloc>486</yloc>
+      <xloc>614</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2777,8 +3089,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>478</xloc>
-      <yloc>372</yloc>
+      <xloc>608</xloc>
+      <yloc>478</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
