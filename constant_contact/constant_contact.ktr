@@ -70,12 +70,14 @@
   <created_date>2014&#x2f;11&#x2f;10 16&#x3a;55&#x3a;36.745</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;11&#x2f;10 16&#x3a;55&#x3a;36.745</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
       <note>Enabling this step programmatically creates tags.&#xa;Use with caution&#x21;</note>
-      <xloc>1170</xloc>
-      <yloc>427</yloc>
+      <xloc>1181</xloc>
+      <yloc>645</yloc>
       <width>297</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -95,9 +97,72 @@
     </notepad>
     <notepad>
       <note>Enabling this step programmatically creates groups.&#xa;Use with caution&#x21;</note>
-      <xloc>1272</xloc>
-      <yloc>233</yloc>
+      <xloc>1283</xloc>
+      <yloc>451</yloc>
       <width>311</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Disable&#x2f;enable tags if they don&#x27;t&#x2f;do exist.</note>
+      <xloc>640</xloc>
+      <yloc>281</yloc>
+      <width>271</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Constant Contact doesn&#x27;t export empty fields like Tags&#x2f;Notes,&#xa;so reload your field names here.</note>
+      <xloc>274</xloc>
+      <yloc>20</yloc>
+      <width>394</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Use these if you have&#xa;multiple address fields.</note>
+      <xloc>0</xloc>
+      <yloc>415</yloc>
+      <width>144</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -273,6 +338,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -327,85 +418,60 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>constant_contact.csv</from><to>Add a primary key &#x28;external_identifier&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add a primary key &#x28;external_identifier&#x29;</from><to>external ID to contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id</from><to>Address Data</to><enabled>Y</enabled> </hop>
-  <hop> <from>Address Data</from><to>Row Normaliser</to><enabled>Y</enabled> </hop>
-  <hop> <from>Address cleanup</from><to>invalid_addresses</to><enabled>Y</enabled> </hop>
-  <hop> <from>Row Normaliser</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
+  <hop> <from>Address cleanup</from><to>invalid_cc_addresses</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines</from><to>Address cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>Address cleanup</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_address</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id</from><to>Email Data</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>cli_cc_address</to><enabled>Y</enabled> </hop>
   <hop> <from>Email Data</from><to>Email Normaliser</to><enabled>Y</enabled> </hop>
   <hop> <from>Email Normaliser</from><to>Remove blank lines 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines 2</from><to>Email cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>Email cleanup</from><to>remove non-import fields 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Email cleanup</from><to>invalid_emails</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields 2</from><to>cli_email</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id</from><to>Phone Data</to><enabled>Y</enabled> </hop>
+  <hop> <from>Email cleanup</from><to>invalid_cc_emails</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 2</from><to>cli_cc_email</to><enabled>Y</enabled> </hop>
   <hop> <from>Phone Data</from><to>Phone Normaliser</to><enabled>Y</enabled> </hop>
   <hop> <from>Phone Normaliser</from><to>Remove blank lines 3</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines 3</from><to>Add phone_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Add phone_type</from><to>Phone cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>Phone cleanup</from><to>remove non-import fields 3</to><enabled>Y</enabled> </hop>
-  <hop> <from>Phone cleanup</from><to>invalid_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields 3</from><to>cli_phone</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id</from><to>Tags</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id</from><to>Groups</to><enabled>Y</enabled> </hop>
+  <hop> <from>Phone cleanup</from><to>invalid_cc_phone</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 3</from><to>cli_cc_phone</to><enabled>Y</enabled> </hop>
   <hop> <from>Tags</from><to>Remove blank lines 4</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines 4</from><to>tag id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields 4</from><to>cli_tag</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 4</from><to>cli_cc_tag</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique rows</from><to>remove non-tag fields</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>Sort rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_tags</from><to>CiviCrm Output</to><enabled>N</enabled> </hop>
-  <hop> <from>remove non-tag fields</from><to>invalid_tags</to><enabled>Y</enabled> </hop>
+  <hop> <from>invalid_cc_tags</from><to>CiviCrm Output</to><enabled>N</enabled> </hop>
+  <hop> <from>remove non-tag fields</from><to>invalid_cc_tags</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows 2</from><to>Unique rows 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique rows 2</from><to>remove non-group fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-group fields</from><to>invalid_groups</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-group fields</from><to>invalid_cc_groups</to><enabled>Y</enabled> </hop>
   <hop> <from>tag id lookup</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>remove non-import fields 4</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove blank lines 5</from><to>Split field to rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Split field to rows</from><to>group id lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>group id lookup</from><to>filter invalid groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields 5</from><to>cli_group</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields 5</from><to>cli_cc_group</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid groups</from><to>remove non-import fields 5</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid groups</from><to>Sort rows 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_groups</from><to>Escape ampersands and apostrophes</to><enabled>Y</enabled> </hop>
-  <hop> <from>Escape ampersands and apostrophes</from><to>CiviCrm Output 2</to><enabled>N</enabled> </hop>
+  <hop> <from>invalid_cc_groups</from><to>Escape ampersands and apostrophes</to><enabled>Y</enabled> </hop>
+  <hop> <from>Escape ampersands and apostrophes</from><to>CiviCrm Output 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Groups</from><to>Remove apostrophes</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove apostrophes</from><to>Remove blank lines 5</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add a primary key &#x28;external_identifier&#x29;</from><to>Set external_identifier to string</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set external_identifier to string</from><to>Prefix the external identifier</to><enabled>Y</enabled> </hop>
+  <hop> <from>constant_contact.csv</from><to>Add a primary key &#x28;external_identifier&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Prefix the external identifier</from><to>external ID to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>external ID to contact_id</from><to>email to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>email to contact_id</from><to>Merge contact IDs</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge contact IDs</from><to>Groups</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge contact IDs</from><to>Tags</to><enabled>N</enabled> </hop>
+  <hop> <from>Merge contact IDs</from><to>Phone Data</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge contact IDs</from><to>Email Data</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge contact IDs</from><to>Address Data 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Address Data 2</from><to>Row Normaliser 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Row Normaliser 2</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
   </order>
-  <step>
-    <name>Add a primary key &#x28;external_identifier&#x29;</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>external_identifier</valuename>
-      <use_database>N</use_database>
-      <connection/>
-      <schema/>
-      <seqname>SEQ_</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name/>
-      <start_at>10001</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>193</xloc>
-      <yloc>101</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
   <step>
     <name>Add phone_type</name>
     <type>Constant</type>
@@ -433,8 +499,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>488</xloc>
-      <yloc>490</yloc>
+      <xloc>499</xloc>
+      <yloc>708</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -497,8 +563,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>195</xloc>
-      <yloc>255</yloc>
+      <xloc>58</xloc>
+      <yloc>481</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -539,7 +605,7 @@
     <rename_on_output>N</rename_on_output>
     <description/>
     </mapping>    <mapping>    <input_step>invalid addresses</input_step>
-    <output_step>invalid_addresses</output_step>
+    <output_step>invalid_cc_addresses</output_step>
     <main_path>N</main_path>
     <rename_on_output>N</rename_on_output>
     <description/>
@@ -551,8 +617,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>198</xloc>
-      <yloc>446</yloc>
+      <xloc>209</xloc>
+      <yloc>664</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -678,10 +744,10 @@
       <action-name>getrefcount</action-name>
       <action-name>setvalue</action-name>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Tag ID</title>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldName>created_date</fieldName>
+        <name>created_date</name>
+        <title>Tag Created Date</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -694,10 +760,10 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
-        <fieldName>created_date</fieldName>
-        <name>created_date</name>
-        <title>Tag Created Date</title>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Tag ID</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -726,18 +792,18 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_selectable</fieldName>
-        <name>is_selectable</name>
-        <title>Display Tag&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Used For&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;used_for&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;optionGroupName&#x22;&#x3a;&#x22;tag_used_for&#x22;&#x7d;,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
         <fieldName>used_for</fieldName>
         <name>used_for</name>
         <title>Used For</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_selectable</fieldName>
+        <name>is_selectable</name>
+        <title>Display Tag&#x3f;</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -764,8 +830,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1284</xloc>
-      <yloc>490</yloc>
+      <xloc>1295</xloc>
+      <yloc>708</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -979,18 +1045,18 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>id</fieldName>
-        <name>id</name>
-        <title>Group ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
         <fieldName>created_id</fieldName>
         <name>created_id</name>
         <title>Group Created By</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;group_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldName>id</fieldName>
+        <name>id</name>
+        <title>Group ID</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -1019,14 +1085,6 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
-        <fieldName>where_tables</fieldName>
-        <name>where_tables</name>
-        <title>Tables For Where Clause</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
         <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Group Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;2&#x7d;</fieldDef>
         <fieldName>description</fieldName>
         <name>description</name>
@@ -1035,10 +1093,10 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
-        <name>name</name>
-        <title>Group Name</title>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tables For Where Clause&#x22;,&#x22;name&#x22;&#x3a;&#x22;where_tables&#x22;,&#x22;type&#x22;&#x3a;32&#x7d;</fieldDef>
+        <fieldName>where_tables</fieldName>
+        <name>where_tables</name>
+        <title>Tables For Where Clause</title>
         <type>2</type>
         <source>getfields</source>
       </field>
@@ -1050,6 +1108,14 @@
         <type>2</type>
         <source>getfields</source>
       </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Group Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>name</fieldName>
+        <name>name</name>
+        <title>Group Name</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
       <key-index>group</key-index>
       <output-field>
         <input-field>group</input-field>
@@ -1057,8 +1123,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1372</xloc>
-      <yloc>293</yloc>
+      <xloc>1383</xloc>
+      <yloc>511</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1117,8 +1183,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>319</xloc>
-      <yloc>239</yloc>
+      <xloc>330</xloc>
+      <yloc>457</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1164,8 +1230,8 @@
         <norm>email_permission_status</norm>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>350</xloc>
-      <yloc>309</yloc>
+      <xloc>361</xloc>
+      <yloc>527</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1204,7 +1270,7 @@
     <rename_on_output>N</rename_on_output>
     <description/>
     </mapping>    <mapping>    <input_step>invalid emails with names</input_step>
-    <output_step>invalid_emails</output_step>
+    <output_step>invalid_cc_emails</output_step>
     <main_path>N</main_path>
     <rename_on_output>N</rename_on_output>
     <description/>
@@ -1216,8 +1282,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>355</xloc>
-      <yloc>452</yloc>
+      <xloc>366</xloc>
+      <yloc>670</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1248,8 +1314,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1281</xloc>
-      <yloc>303</yloc>
+      <xloc>1292</xloc>
+      <yloc>521</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1276,8 +1342,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>499</xloc>
-      <yloc>136</yloc>
+      <xloc>510</xloc>
+      <yloc>354</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1308,8 +1374,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>473</xloc>
-      <yloc>251</yloc>
+      <xloc>484</xloc>
+      <yloc>469</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1334,8 +1400,8 @@
         <norm>phone</norm>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>471</xloc>
-      <yloc>317</yloc>
+      <xloc>482</xloc>
+      <yloc>535</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1374,7 +1440,7 @@
     <rename_on_output>N</rename_on_output>
     <description/>
     </mapping>    <mapping>    <input_step>invalid phones</input_step>
-    <output_step>invalid_phone</output_step>
+    <output_step>invalid_cc_phone</output_step>
     <main_path>N</main_path>
     <rename_on_output>N</rename_on_output>
     <description/>
@@ -1386,8 +1452,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>486</xloc>
-      <yloc>567</yloc>
+      <xloc>497</xloc>
+      <yloc>785</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1418,8 +1484,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>582</xloc>
-      <yloc>154</yloc>
+      <xloc>593</xloc>
+      <yloc>372</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1480,8 +1546,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>197</xloc>
-      <yloc>385</yloc>
+      <xloc>208</xloc>
+      <yloc>603</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1515,8 +1581,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>353</xloc>
-      <yloc>381</yloc>
+      <xloc>364</xloc>
+      <yloc>599</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1550,8 +1616,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>378</yloc>
+      <xloc>491</xloc>
+      <yloc>596</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1585,8 +1651,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>584</xloc>
-      <yloc>358</yloc>
+      <xloc>595</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1620,8 +1686,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>659</xloc>
-      <yloc>169</yloc>
+      <xloc>670</xloc>
+      <yloc>387</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1670,8 +1736,8 @@
         <norm>country</norm>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>196</xloc>
-      <yloc>326</yloc>
+      <xloc>59</xloc>
+      <yloc>552</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1704,8 +1770,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>893</xloc>
-      <yloc>513</yloc>
+      <xloc>904</xloc>
+      <yloc>731</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1738,8 +1804,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>908</xloc>
-      <yloc>317</yloc>
+      <xloc>919</xloc>
+      <yloc>535</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1764,8 +1830,8 @@
    <delimiter_is_regex>N</delimiter_is_regex>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>660</xloc>
-      <yloc>242</yloc>
+      <xloc>671</xloc>
+      <yloc>460</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1792,8 +1858,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>563</xloc>
-      <yloc>263</yloc>
+      <xloc>585</xloc>
+      <yloc>284</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1817,8 +1883,8 @@
         <case_insensitive>N</case_insensitive>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>972</xloc>
-      <yloc>515</yloc>
+      <xloc>983</xloc>
+      <yloc>733</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1842,14 +1908,14 @@
         <case_insensitive>N</case_insensitive>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>981</xloc>
-      <yloc>335</yloc>
+      <xloc>992</xloc>
+      <yloc>553</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_address</name>
+    <name>cli_cc_address</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1873,7 +1939,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_address</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_cc_address</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1978,14 +2044,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>195</xloc>
-      <yloc>598</yloc>
+      <xloc>206</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_email</name>
+    <name>cli_cc_email</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2009,7 +2075,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_email</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_cc_email</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2090,14 +2156,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>360</xloc>
-      <yloc>601</yloc>
+      <xloc>371</xloc>
+      <yloc>819</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_group</name>
+    <name>cli_cc_group</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2121,7 +2187,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_group</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_cc_group</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2166,14 +2232,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>740</xloc>
-      <yloc>688</yloc>
+      <xloc>751</xloc>
+      <yloc>906</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_phone</name>
+    <name>cli_cc_phone</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2197,7 +2263,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_phone</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_cc_phone</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2266,14 +2332,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>493</xloc>
-      <yloc>701</yloc>
+      <xloc>504</xloc>
+      <yloc>919</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>cli_tag</name>
+    <name>cli_cc_tag</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2297,7 +2363,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_tag</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_cc_tag</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2342,8 +2408,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>629</xloc>
-      <yloc>729</yloc>
+      <xloc>640</xloc>
+      <yloc>947</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2359,7 +2425,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;constant_contact.csv</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw_data&#x2f;constant_contact.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -2528,6 +2594,17 @@
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>Phone number - mobile</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>Phone number - work</name>
         <type>String</type>
         <format/>
@@ -2594,62 +2671,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Street address line 1 - Other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>City - Other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>State&#x2f;Province - Other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Zip&#x2f;Postal Code - Other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Country - Other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Tags</name>
+        <name>E-mail Address</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2661,6 +2683,17 @@
       </field>
       <field>
         <name>Email Lists</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Notes</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2706,8 +2739,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>186</xloc>
-      <yloc>31</yloc>
+      <xloc>203</xloc>
+      <yloc>11</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2748,8 +2781,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>197</xloc>
-      <yloc>166</yloc>
+      <xloc>204</xloc>
+      <yloc>253</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2777,8 +2810,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>706</xloc>
-      <yloc>483</yloc>
+      <xloc>717</xloc>
+      <yloc>701</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2806,8 +2839,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>623</xloc>
-      <yloc>550</yloc>
+      <xloc>634</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2848,14 +2881,14 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>677</xloc>
-      <yloc>319</yloc>
+      <xloc>688</xloc>
+      <yloc>537</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_addresses</name>
+    <name>invalid_cc_addresses</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2879,7 +2912,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_addresses</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_cc_addresses</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -3032,14 +3065,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>64</xloc>
-      <yloc>651</yloc>
+      <xloc>75</xloc>
+      <yloc>869</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_emails</name>
+    <name>invalid_cc_emails</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3063,7 +3096,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_emails</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_cc_emails</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -3204,14 +3237,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>224</xloc>
-      <yloc>691</yloc>
+      <xloc>235</xloc>
+      <yloc>909</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_groups</name>
+    <name>invalid_cc_groups</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3235,7 +3268,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_groups</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_cc_groups</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -3268,14 +3301,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1198</xloc>
-      <yloc>310</yloc>
+      <xloc>1209</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_phone</name>
+    <name>invalid_cc_phone</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3299,7 +3332,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_phone</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_cc_phone</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -3428,14 +3461,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>350</xloc>
-      <yloc>697</yloc>
+      <xloc>361</xloc>
+      <yloc>915</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>invalid_tags</name>
+    <name>invalid_cc_tags</name>
     <type>TextFileOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3459,7 +3492,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_tags</name>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_cc_tags</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -3492,8 +3525,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1183</xloc>
-      <yloc>506</yloc>
+      <xloc>1194</xloc>
+      <yloc>724</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3516,8 +3549,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1089</xloc>
-      <yloc>303</yloc>
+      <xloc>1100</xloc>
+      <yloc>521</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3564,8 +3597,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>194</xloc>
-      <yloc>514</yloc>
+      <xloc>205</xloc>
+      <yloc>732</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3604,8 +3637,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>354</xloc>
-      <yloc>527</yloc>
+      <xloc>365</xloc>
+      <yloc>745</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3640,8 +3673,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>485</xloc>
-      <yloc>631</yloc>
+      <xloc>496</xloc>
+      <yloc>849</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3668,8 +3701,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>626</xloc>
-      <yloc>644</yloc>
+      <xloc>637</xloc>
+      <yloc>862</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3696,8 +3729,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>737</xloc>
-      <yloc>603</yloc>
+      <xloc>748</xloc>
+      <yloc>821</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3720,8 +3753,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1074</xloc>
-      <yloc>499</yloc>
+      <xloc>1085</xloc>
+      <yloc>717</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3762,8 +3795,255 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>603</xloc>
-      <yloc>453</yloc>
+      <xloc>614</xloc>
+      <yloc>671</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add a primary key &#x28;external_identifier&#x29;</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>external_identifier</valuename>
+      <use_database>N</use_database>
+      <connection/>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>10001</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>208</xloc>
+      <yloc>63</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Prefix the external identifier</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>external_identifier</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>&#x5e;</replace_string>
+        <replace_by_string>Constant-Contact-</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>204</xloc>
+      <yloc>184</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set external_identifier to string</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>external_identifier</name>
+        <rename>external_identifier</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>205</xloc>
+      <yloc>118</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>email to contact_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_email</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>Email address - other</name>
+        <field>email</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>204</xloc>
+      <yloc>323</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Merge contact IDs</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var contact_id&#x3b;&#xa;&#xa;if &#x28;&#x21;contact_id&#x29; &#x7b;&#xa;  contact_id &#x3d; contact_id_1&#x3b;&#xa;&#x7d;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>contact_id</name>
+        <rename>contact_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>207</xloc>
+      <yloc>381</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Address Data 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>contact_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Street address line 1 - Home</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>City - Home</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>State&#x2f;Province - Home</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Zip&#x2f;Postal Code - Home</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Country - Home</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>203</xloc>
+      <yloc>452</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Row Normaliser 2</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+   <typefield>typefield</typefield>
+    <fields>      <field>        <name>Street address line 1 - Home</name>
+        <value>Home</value>
+        <norm>street_address</norm>
+        </field>      <field>        <name>City - Home</name>
+        <value>Home</value>
+        <norm>city</norm>
+        </field>      <field>        <name>State&#x2f;Province - Home</name>
+        <value>Home</value>
+        <norm>state_province</norm>
+        </field>      <field>        <name>Zip&#x2f;Postal Code - Home</name>
+        <value>Home</value>
+        <norm>postal_code</norm>
+        </field>      <field>        <name>Country - Home</name>
+        <value>Home</value>
+        <norm>country</norm>
+        </field>      </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>206</xloc>
+      <yloc>527</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
