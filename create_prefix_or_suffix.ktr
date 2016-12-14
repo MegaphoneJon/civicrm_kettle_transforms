@@ -231,6 +231,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -288,10 +314,10 @@
   <hop> <from>Add prefix option group id</from><to>Cross the streams</to><enabled>Y</enabled> </hop>
   <hop> <from>Add suffix option group id</from><to>Cross the streams</to><enabled>Y</enabled> </hop>
   <hop> <from>Copy label to name</from><to>CiviCrm Output</to><enabled>Y</enabled> </hop>
-  <hop> <from>Cross the streams</from><to>Copy label to name</to><enabled>Y</enabled> </hop>
   <hop> <from>Prefixes</from><to>Add prefix option group id</to><enabled>Y</enabled> </hop>
   <hop> <from>Suffixes</from><to>Add suffix option group id</to><enabled>Y</enabled> </hop>
   <hop> <from>CiviCrm Output</from><to>Just because we need one</to><enabled>Y</enabled> </hop>
+  <hop> <from>Cross the streams</from><to>Copy label to name</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add prefix option group id</name>
@@ -484,7 +510,7 @@
         <fieldName>weight</fieldName>
         <name>weight</name>
         <title>Option Weight</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -492,7 +518,7 @@
         <fieldName>is_active</fieldName>
         <name>is_active</name>
         <title>Option Is Active</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -500,7 +526,7 @@
         <fieldName>domain_id</fieldName>
         <name>domain_id</name>
         <title>Option Domain</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -508,7 +534,7 @@
         <fieldName>is_default</fieldName>
         <name>is_default</name>
         <title>Option is Default&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -524,7 +550,7 @@
         <fieldName>is_reserved</fieldName>
         <name>is_reserved</name>
         <title>Option Is Reserved&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -532,7 +558,7 @@
         <fieldName>option_group_id</fieldName>
         <name>option_group_id</name>
         <title>Option Group ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -540,7 +566,7 @@
         <fieldName>id</fieldName>
         <name>id</name>
         <title>Option Value ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -548,7 +574,7 @@
         <fieldName>component_id</fieldName>
         <name>component_id</name>
         <title>Option Component</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -564,7 +590,7 @@
         <fieldName>description</fieldName>
         <name>description</name>
         <title>Option Description</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -588,7 +614,7 @@
         <fieldName>visibility_id</fieldName>
         <name>visibility_id</name>
         <title>Option Visibility</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -596,7 +622,7 @@
         <fieldName>filter</fieldName>
         <name>filter</name>
         <title>Filter</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -604,7 +630,7 @@
         <fieldName>is_optgroup</fieldName>
         <name>is_optgroup</name>
         <title>Option is Header&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <key-index>label</key-index>
