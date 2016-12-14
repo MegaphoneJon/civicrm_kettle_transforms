@@ -70,13 +70,120 @@
   <created_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
       <note>&#x3c;-- To reintegrate multi-value records</note>
-      <xloc>559</xloc>
-      <yloc>576</yloc>
+      <xloc>572</xloc>
+      <yloc>655</yloc>
       <width>224</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Org-specific.  Remove to grab all attributes.</note>
+      <xloc>148</xloc>
+      <yloc>80</yloc>
+      <width>284</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Org-specific&#x3a; Multi-value custom fields only.</note>
+      <xloc>218</xloc>
+      <yloc>293</yloc>
+      <width>285</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Org-specific</note>
+      <xloc>559</xloc>
+      <yloc>479</yloc>
+      <width>100</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Org-specific</note>
+      <xloc>373</xloc>
+      <yloc>523</yloc>
+      <width>100</width>
+      <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- Org-specific</note>
+      <xloc>204</xloc>
+      <yloc>533</yloc>
+      <width>100</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -283,7 +390,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -295,7 +402,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -355,24 +462,23 @@
   <hop> <from>external ID to contact_id in Civi</from><to>Atributes to Custom Fields</to><enabled>Y</enabled> </hop>
   <hop> <from>TEMP&#x3a; Find select values</from><to>Sort</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort</from><to>Unique rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Atributes to Custom Fields</from><to>data is not blank &#x28;or is FOV Category&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>status_id &#x3d;2 &#x28;completed&#x29;,source_contact_id&#x3d;3 &#x28;Jon&#x29;</from><to>if WE 2014 validation and is NO, status_id is &#x22;scheduled&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Row denormaliser</from><to>FOV Category Fixes</to><enabled>Y</enabled> </hop>
-  <hop> <from>data is not blank &#x28;or is FOV Category&#x29;</from><to>Blank FOV Category is Other</to><enabled>Y</enabled> </hop>
-  <hop> <from>FOV Category Fixes</from><to>fix date formats</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename to Civi custom field names</from><to>cli_attributes_custom_fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix date formats</from><to>fix date formats 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix date formats 2</from><to>rename to Civi custom field names</to><enabled>Y</enabled> </hop>
-  <hop> <from>Blank FOV Category is Other</from><to>re-sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
+  <hop> <from>Atributes to Custom Fields</from><to>data is not blank</to><enabled>Y</enabled> </hop>
   <hop> <from>re-sort on external_identifier&#x2f;category</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>
   <hop> <from>fix date formats 3</from><to>fix date formats 3a</to><enabled>Y</enabled> </hop>
-  <hop> <from>if WE 2014 validation and is NO, status_id is &#x22;scheduled&#x22;</from><to>fix date formats 3</to><enabled>Y</enabled> </hop>
   <hop> <from>fix date formats 3a</from><to>cli_attributes_activities</to><enabled>Y</enabled> </hop>
-  <hop> <from>RE Attributes</from><to>Sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
-  <hop> <from>RE Attributes</from><to>Categories only</to><enabled>Y</enabled> </hop>
   <hop> <from>Categories only</from><to>Sort on category</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort on category</from><to>Count of attribute usage</to><enabled>Y</enabled> </hop>
   <hop> <from>Count of attribute usage</from><to>attribute_categories</to><enabled>Y</enabled> </hop>
+  <hop> <from>RE Attributes</from><to>Keep only the attributes we want</to><enabled>Y</enabled> </hop>
+  <hop> <from>Keep only the attributes we want</from><to>Sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
+  <hop> <from>Keep only the attributes we want</from><to>Categories only</to><enabled>Y</enabled> </hop>
+  <hop> <from>data is not blank</from><to>re-sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
+  <hop> <from>status_id &#x3d;2 &#x28;completed&#x29;,source_contact_id&#x3d;3 &#x28;Jon&#x29;</from><to>fix date formats 3</to><enabled>Y</enabled> </hop>
+  <hop> <from>Row denormaliser</from><to>Convert 0 to &#x22;zero&#x22;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Convert 0 to &#x22;zero&#x22;</from><to>Convert boolean -1 to 1</to><enabled>Y</enabled> </hop>
+  <hop> <from>Convert boolean -1 to 1</from><to>rename to Civi custom field names</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename to Civi custom field names</from><to>Set contact subtype</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set contact subtype</from><to>cli_attributes_custom_fields</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>-1 is yes</name>
@@ -396,8 +502,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>154</xloc>
-      <yloc>650</yloc>
+      <xloc>167</xloc>
+      <yloc>729</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -431,8 +537,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>327</xloc>
-      <yloc>449</yloc>
+      <xloc>340</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -460,14 +566,14 @@
    <leftvalue>Category</leftvalue>
    <function>IN LIST</function>
    <rightvalue/>
-   <value><name>constant</name><type>String</type><text>Acquisition Code&#x3b;Donor Status&#x3b;Interests&#x3b;Invite Status&#x3b;Long Term Strategy&#x3b;Special Ask&#x3b;Foundation Status&#x3b;Annual Report Listing&#x3b;Annual Report Listing Thelma Newman&#x3b;Do Not List in AR&#x3b;FOV Category&#x3b;P2G Score&#x3b;WealthEngine Code 11</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+   <value><name>constant</name><type>String</type><text>Board Class&#x3b;Board Commitees&#x3b;Board Firm&#x3b;Board Giving Level&#x3b;Board Type&#x3b;Former Board&#x3b;Planned Giving&#x3b;Project Interest</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>507</xloc>
-      <yloc>403</yloc>
+      <xloc>520</xloc>
+      <yloc>482</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -501,15 +607,15 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>151</xloc>
-      <yloc>460</yloc>
+      <xloc>164</xloc>
+      <yloc>539</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Blank FOV Category is Other</name>
-    <type>ScriptValueMod</type>
+    <name>Categories only</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -518,21 +624,15 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var data&#x3b;&#xa;if&#x28;Category &#x3d;&#x3d; &#x27;FOV Category&#x27; &#x26;&#x26; &#x28;data &#x3d;&#x3d; &#x27;&#x27; &#x7c;&#x7c; data &#x3d;&#x3d; null&#x29;&#x29;&#x7b;&#xa;  data &#x3d; &#x27;Other&#x27;&#x3b;&#xa;&#x7d;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>data</name>
-        <rename>data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
+    <fields>      <field>        <name>Category</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>511</xloc>
-      <yloc>515</yloc>
+      <xloc>191</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -586,8 +686,104 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>335</xloc>
-      <yloc>247</yloc>
+      <xloc>352</xloc>
+      <yloc>351</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Convert 0 to &#x22;zero&#x22;</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>Board Giving Level</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>0</source_value>
+        <target_value>zero</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>543</xloc>
+      <yloc>818</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Convert boolean -1 to 1</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>Planned Giving</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>543</xloc>
+      <yloc>901</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Count of attribute usage</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <all_rows>N</all_rows>
+      <ignore_aggregate>N</ignore_aggregate>
+      <field_ignore/>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>grp</prefix>
+      <add_linenr>N</add_linenr>
+      <linenr_fieldname/>
+      <give_back_row>N</give_back_row>
+      <group>
+        <field>
+          <name>Category</name>
+        </field>
+      </group>
+      <fields>
+        <field>
+          <aggregate>Count</aggregate>
+          <subject>Category</subject>
+          <type>COUNT_ANY</type>
+          <valuefield/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>391</xloc>
+      <yloc>37</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -605,48 +801,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>172</xloc>
-      <yloc>283</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>FOV Category Fixes</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>FOV Category</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>FDN</source_value>
-        <target_value>Foundation</target_value>
-      </field>
-      <field>
-        <source_value>Coop</source_value>
-        <target_value>Cooperating Attorney</target_value>
-      </field>
-      <field>
-        <source_value>Coorperationg Attorney</source_value>
-        <target_value>Cooperating Attorney</target_value>
-      </field>
-      <field>
-        <source_value>Coop.</source_value>
-        <target_value>Cooperating Attorney</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>525</xloc>
-      <yloc>704</yloc>
+      <xloc>185</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -679,8 +835,37 @@
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>327</xloc>
-      <yloc>502</yloc>
+      <xloc>340</xloc>
+      <yloc>581</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Keep only the attributes we want</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>Category</leftvalue>
+ <function>IN LIST</function>
+ <rightvalue/>
+ <value><name>constant</name><type>String</type><text>Board Class&#x3b;Board Commitees&#x3b;Board Firm&#x3b;Board Giving Level&#x3b;Board Type&#x3b;Former Board&#x3b;Planned Giving&#x3b;Project Interest</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>110</xloc>
+      <yloc>70</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -772,8 +957,8 @@
     </ConcatFields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>155</xloc>
-      <yloc>108</yloc>
+      <xloc>189</xloc>
+      <yloc>161</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -802,8 +987,8 @@
         <replace>Y</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>298</xloc>
-      <yloc>184</yloc>
+      <xloc>345</xloc>
+      <yloc>239</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -828,8 +1013,8 @@
     <lazy_conversion_active>N</lazy_conversion_active>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>78</xloc>
-      <yloc>0</yloc>
+      <xloc>83</xloc>
+      <yloc>6</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -869,8 +1054,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>151</xloc>
-      <yloc>526</yloc>
+      <xloc>164</xloc>
+      <yloc>605</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -879,7 +1064,7 @@
     <name>Remove length&#x2f;precision from fields</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -934,8 +1119,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>154</xloc>
-      <yloc>171</yloc>
+      <xloc>188</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -974,8 +1159,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>329</xloc>
-      <yloc>623</yloc>
+      <xloc>342</xloc>
+      <yloc>702</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1006,8 +1191,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>156</xloc>
-      <yloc>779</yloc>
+      <xloc>169</xloc>
+      <yloc>858</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1032,8 +1217,8 @@
       <fields>
         <field>
           <field_name>data</field_name>
-          <key_value>Acquisition Code</key_value>
-          <target_name>Acquisition Code</target_name>
+          <key_value>Board Class</key_value>
+          <target_name>Board Class</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1046,8 +1231,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Annual Report Listing</key_value>
-          <target_name>Annual Report Listing</target_name>
+          <key_value>Board Commitees</key_value>
+          <target_name>Board Commitees</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1060,8 +1245,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Annual Report Listing Thelma Newman</key_value>
-          <target_name>Annual Report Listing Thelma Newman</target_name>
+          <key_value>Board Firm</key_value>
+          <target_name>Board Firm</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1074,8 +1259,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Do Not List in AR</key_value>
-          <target_name>Do Not List in AR</target_name>
+          <key_value>Board Giving Level</key_value>
+          <target_name>Board Giving Level</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1088,8 +1273,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Donor Status</key_value>
-          <target_name>Donor Status</target_name>
+          <key_value>Board Type</key_value>
+          <target_name>Board Type</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1102,8 +1287,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Foundation Status</key_value>
-          <target_name>Foundation Status</target_name>
+          <key_value>Former Board</key_value>
+          <target_name>Former Board</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1116,8 +1301,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>FOV Category</key_value>
-          <target_name>FOV Category</target_name>
+          <key_value>Planned Giving</key_value>
+          <target_name>Planned Giving</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1130,162 +1315,8 @@
           </field>
         <field>
           <field_name>data</field_name>
-          <key_value>Interests</key_value>
-          <target_name>Interests</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Invite Status</key_value>
-          <target_name>Invite Status</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Long Term Strategy</key_value>
-          <target_name>Long Term Strategy</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>P2G Score</key_value>
-          <target_name>P2G Score</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Special Ask</key_value>
-          <target_name>Special Ask</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>WealthEngine Code 11</key_value>
-          <target_name>WealthEngine Code 11</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>COMMENTS</field_name>
-          <key_value>Acquisition Code</key_value>
-          <target_name>Acquisition Code Comments</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>COMMENTS</field_name>
-          <key_value>Donor Status</key_value>
-          <target_name>Donor Status Comments</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>COMMENTS</field_name>
-          <key_value>Interests</key_value>
-          <target_name>Interests Comments</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>COMMENTS</field_name>
-          <key_value>Foundation Status</key_value>
-          <target_name>Foundation Status Comments</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>ATTRIBUTEDATE</field_name>
-          <key_value>Acquisition Code</key_value>
-          <target_name>Acquisition Code Date</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>ATTRIBUTEDATE</field_name>
-          <key_value>Foundation Status</key_value>
-          <target_name>Foundation Status Date</target_name>
+          <key_value>Project Interest</key_value>
+          <target_name>Project Interest</target_name>
           <target_type>String</target_type>
           <target_format/>
           <target_length>-1</target_length>
@@ -1299,8 +1330,8 @@
         </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>519</xloc>
-      <yloc>643</yloc>
+      <xloc>532</xloc>
+      <yloc>722</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1335,8 +1366,38 @@
         <replace>Y</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>154</xloc>
-      <yloc>584</yloc>
+      <xloc>167</xloc>
+      <yloc>663</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set contact subtype</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Org-specific - set contacts with board fields to have a Board Member contact subtype.&#xa;&#xa;var contact_sub_type &#x3d; &#x27;&#x27;&#x3b;&#xa;if &#x28;&#x21;&#x28;&#x21;custom_96 &#x26;&#x26; &#x21;custom_97 &#x26;&#x26; &#x21;custom_98 &#x26;&#x26; &#x21;custom_99 &#x26;&#x26; &#x21;custom_103 &#x26;&#x26; &#x21;custom_104&#x29;&#x29; &#x7b;&#xa;  contact_sub_type &#x3d; &#x22;Board_Member&#x22;&#x3b;&#xa;&#x7d; </jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>contact_sub_type</name>
+        <rename>contact_sub_type</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>545</xloc>
+      <yloc>1039</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1369,8 +1430,42 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1036</xloc>
-      <yloc>652</yloc>
+      <xloc>1049</xloc>
+      <yloc>731</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Sort on category</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>Category</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>303</xloc>
+      <yloc>28</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1409,8 +1504,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>122</xloc>
-      <yloc>55</yloc>
+      <xloc>136</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1438,8 +1533,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>904</xloc>
-      <yloc>629</yloc>
+      <xloc>917</xloc>
+      <yloc>708</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1463,8 +1558,8 @@
         <case_insensitive>N</case_insensitive>
         </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1115</xloc>
-      <yloc>657</yloc>
+      <xloc>1128</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1505,8 +1600,84 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>328</xloc>
-      <yloc>562</yloc>
+      <xloc>341</xloc>
+      <yloc>641</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>attribute_categories</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;attribute_categories</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>Category</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Count</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>477</xloc>
+      <yloc>50</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1641,8 +1812,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>328</xloc>
-      <yloc>939</yloc>
+      <xloc>341</xloc>
+      <yloc>978</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1691,7 +1862,7 @@
     </file>
     <fields>
       <field>
-        <name>entity_id</name>
+        <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
@@ -1703,151 +1874,19 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_9</name>
+        <name>contact_sub_type</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>both</trim_type>
+        <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_10</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_11</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_12</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_15</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_16</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_17</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_18</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_24</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_25</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_26</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_103</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_31</name>
+        <name>custom_96</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1895,7 +1934,19 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_100</name>
+        <name>custom_103</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_104</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1933,8 +1984,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>534</xloc>
-      <yloc>955</yloc>
+      <xloc>544</xloc>
+      <yloc>1100</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2021,14 +2072,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>158</xloc>
-      <yloc>840</yloc>
+      <xloc>171</xloc>
+      <yloc>919</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>data is not blank &#x28;or is FOV Category&#x29;</name>
+    <name>data is not blank</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2051,20 +2102,13 @@
    <function>&#x3c;&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text/><length>-1</length><precision>-1</precision><isnull>Y</isnull><mask/></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>OR</operator>
-   <leftvalue>Category</leftvalue>
-   <function>&#x3d;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>FOV Category</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>508</xloc>
-      <yloc>462</yloc>
+      <xloc>528</xloc>
+      <yloc>574</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2082,7 +2126,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -2111,8 +2155,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>175</xloc>
-      <yloc>353</yloc>
+      <xloc>188</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2161,8 +2205,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>529</xloc>
-      <yloc>766</yloc>
+      <xloc>715</xloc>
+      <yloc>828</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2211,8 +2255,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>538</xloc>
-      <yloc>828</yloc>
+      <xloc>701</xloc>
+      <yloc>892</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2246,8 +2290,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>326</xloc>
-      <yloc>809</yloc>
+      <xloc>339</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2281,8 +2325,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>335</xloc>
-      <yloc>871</yloc>
+      <xloc>348</xloc>
+      <yloc>910</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2323,38 +2367,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>154</xloc>
-      <yloc>708</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>if WE 2014 validation and is NO, status_id is &#x22;scheduled&#x22;</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var status_id&#x3b;&#xa;if&#x28;subject &#x3d;&#x3d; &#x27;WealthEngine 2014 Validation&#x27; &#x26;&#x26; data &#x3d;&#x3d; 0&#x29; &#x7b;&#xa;  status_id &#x3d; 1&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>status_id</name>
-        <rename>status_id</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>330</xloc>
-      <yloc>750</yloc>
+      <xloc>167</xloc>
+      <yloc>787</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2382,8 +2396,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>161</xloc>
-      <yloc>215</yloc>
+      <xloc>174</xloc>
+      <yloc>294</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2422,8 +2436,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>514</xloc>
-      <yloc>581</yloc>
+      <xloc>527</xloc>
+      <yloc>660</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2440,90 +2454,46 @@
            <schema_name/>
            </partitioning>
     <fields>      <field>        <name>contact_id</name>
-        <rename>entity_id</rename>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Acquisition Code</name>
-        <rename>custom_9</rename>
+      </field>      <field>        <name>Board Class</name>
+        <rename>custom_96</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Acquisition Code Comments</name>
-        <rename>custom_10</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Acquisition Code Date</name>
-        <rename>custom_11</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Annual Report Listing</name>
-        <rename>custom_12</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Annual Report Listing Thelma Newman</name>
-        <rename>custom_15</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Do Not List in AR</name>
-        <rename>custom_16</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donor Status</name>
-        <rename>custom_17</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Donor Status Comments</name>
-        <rename>custom_18</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Foundation Status</name>
-        <rename>custom_24</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Foundation Status Comments</name>
-        <rename>custom_25</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Foundation Status Date</name>
-        <rename>custom_26</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>FOV Category</name>
-        <rename>custom_103</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Interests</name>
-        <rename>custom_31</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Interests Comments</name>
+      </field>      <field>        <name>Board Commitees</name>
         <rename>custom_97</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Invite Status</name>
+      </field>      <field>        <name>Board Firm</name>
         <rename>custom_98</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Long Term Strategy</name>
+      </field>      <field>        <name>Board Giving Level</name>
         <rename>custom_99</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>P2G Score</name>
-        <rename>custom_100</rename>
+      </field>      <field>        <name>Board Type</name>
+        <rename>custom_103</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Special Ask</name>
+      </field>      <field>        <name>Former Board</name>
+        <rename>custom_104</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Planned Giving</name>
         <rename>custom_101</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>WealthEngine Code 11</name>
+      </field>      <field>        <name>Project Interest</name>
         <rename>custom_102</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>539</xloc>
-      <yloc>892</yloc>
+      <xloc>538</xloc>
+      <yloc>971</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2567,182 +2537,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>326</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Sort on category</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Category</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>298</xloc>
-      <yloc>22</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Categories only</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>Category</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>186</xloc>
-      <yloc>10</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>attribute_categories</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;attribute_categories</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>Category</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Count</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>472</xloc>
-      <yloc>44</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Count of attribute usage</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>Category</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>Count</aggregate>
-          <subject>Category</subject>
-          <type>COUNT_ANY</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>386</xloc>
-      <yloc>31</yloc>
+      <xloc>339</xloc>
+      <yloc>767</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

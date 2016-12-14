@@ -69,6 +69,8 @@
   <created_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
@@ -94,7 +96,7 @@
     </notepad>
     <notepad>
       <note>In Civi, create a &#x22;Campaign Type&#x22; of &#x22;Imported from RE&#x22;, put campaign_type_id here.</note>
-      <xloc>603</xloc>
+      <xloc>611</xloc>
       <yloc>0</yloc>
       <width>510</width>
       <heigth>26</heigth>
@@ -366,7 +368,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -378,7 +380,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -423,19 +425,18 @@
   <hop> <from>Add campaign_type_id &#x3d; 4</from><to>lookup campaigns data in RE</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup campaigns data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22;</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_campaigns</from><to>Create Campaigns</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22;</from><to>invalid_campaigns</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized campaigns</from><to>Add option_value_group ids</to><enabled>Y</enabled> </hop>
   <hop> <from>Add option_value_group ids</from><to>lookup type in Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup type in Civi</from><to>lookup subtype in Civi</to><enabled>Y</enabled> </hop>
-  <hop> <from>lookup subtype in Civi</from><to>lookup fund in Civi</to><enabled>Y</enabled> </hop>
-  <hop> <from>lookup fund in Civi</from><to>lookup appeal in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup subtype in Civi</from><to>lookup financial type in Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup financial type in Civi</from><to>lookup appeal in Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove non-import fields</from><to>Reformat currency, date, and anonymous fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Campaigns only</from><to>Sort by Campaign</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized gift types</from><to>Gift Type fields Only</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by Gift Type</from><to>Unique Gift Types</to><enabled>Y</enabled> </hop>
   <hop> <from>Gift Type fields Only</from><to>Sort by Gift Type</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique Gift Types</from><to>invalid_gift_types</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add is_active &#x3d; 0</from><to>Create Gift Types</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add is_active &#x3d; 0</from><to>Create Gift Types</to><enabled>N</enabled> </hop>
   <hop> <from>invalid_gift_types</from><to>create value, equal to label</to><enabled>Y</enabled> </hop>
   <hop> <from>create value, equal to label</from><to>Add is_active &#x3d; 0</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized gift types</from><to>Filter unrecognized gift subtypes</to><enabled>Y</enabled> </hop>
@@ -443,19 +444,18 @@
   <hop> <from>Sort by Gift Subtype</from><to>Unique Gift Subtypes</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique Gift Subtypes</from><to>invalid_gift_subtypes</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_gift_subtypes</from><to>create value, equal to label 2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add is_active &#x3d; 0 3</from><to>Create Gift Subtypes</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add is_active &#x3d; 0 3</from><to>Create Gift Subtypes</to><enabled>N</enabled> </hop>
   <hop> <from>create value, equal to label 2</from><to>Add is_active &#x3d; 0 3</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter unrecognized gift subtypes</from><to>Gift Subtype fields Only</to><enabled>Y</enabled> </hop>
-  <hop> <from>fund fields Only</from><to>Sort by fund</to><enabled>Y</enabled> </hop>
+  <hop> <from>financial type only</from><to>Sort by fund</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by fund</from><to>Unique funds</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter unrecognized gift subtypes</from><to>Filter unrecognized funds</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter unrecognized funds</from><to>fund fields Only</to><enabled>Y</enabled> </hop>
-  <hop> <from>create value, equal to label 3</from><to>lookup fund data in RE</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter unrecognized gift subtypes</from><to>Filter unrecognized financial type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter unrecognized financial type</from><to>financial type only</to><enabled>Y</enabled> </hop>
+  <hop> <from>constant fields</from><to>lookup fund data in RE</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup fund data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2</from><to>invalid_funds</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_funds</from><to>Create funds</to><enabled>Y</enabled> </hop>
-  <hop> <from>Unique funds</from><to>create value, equal to label 3</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter unrecognized funds</from><to>Filter unrecognized appeals</to><enabled>Y</enabled> </hop>
+  <hop> <from>invalid_funds</from><to>Create financial types</to><enabled>N</enabled> </hop>
+  <hop> <from>Unique funds</from><to>constant fields</to><enabled>Y</enabled> </hop>
   <hop> <from>appeal fields Only</from><to>Sort by appeal</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by appeal</from><to>Unique appeals</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique appeals</from><to>create value, equal to label 3 2</to><enabled>Y</enabled> </hop>
@@ -463,7 +463,6 @@
   <hop> <from>lookup appeal data in RE</from><to>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22; 2 2</from><to>invalid_appeals</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_appeals</from><to>Create appeals</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter unrecognized appeals</from><to>appeal fields Only</to><enabled>Y</enabled> </hop>
   <hop> <from>RE&#x3a; GiftSplit</from><to>Fix punctuation in fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Fix punctuation in fields</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>lookup appeal in Civi</from><to>Filter unrecognized gift types</to><enabled>Y</enabled> </hop>
@@ -471,15 +470,19 @@
   <hop> <from>Rename fields for import</from><to>cli_gift</to><enabled>Y</enabled> </hop>
   <hop> <from>Convert date format to the format Civi expects</from><to>Convert date format to the format Civi expects 2</to><enabled>Y</enabled> </hop>
   <hop> <from>Reformat lenient dates</from><to>Convert date format to the format Civi expects</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert date format to the format Civi expects 2</from><to>Add financial_type_id &#x3d; Donation</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add financial_type_id &#x3d; Donation</from><to>Rename fields for import</to><enabled>Y</enabled> </hop>
   <hop> <from>Reformat currency, date, and anonymous fields</from><to>Remap ANONYMOUS</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap PAYMENT_TYPE to payment_instrument_id</from><to>Remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter unrecognized appeals</from><to>Remove non-numeric batch numbers</to><enabled>Y</enabled> </hop>
   <hop> <from>Remove non-numeric batch numbers</from><to>Filter out GL reversals</to><enabled>Y</enabled> </hop>
   <hop> <from>Create Campaigns</from><to>log_api_campaigns</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap ANONYMOUS</from><to>Remap recurring_gift</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap recurring_gift</from><to>Reformat lenient dates</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remap PAYMENT_TYPE to payment_instrument_id</from><to>cli_gift 2</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter unrecognized financial type</from><to>Filter unrecognized appeals</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter unrecognized appeals</from><to>Remove non-numeric batch numbers</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter unrecognized appeals</from><to>appeal fields Only</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remap &#x22;Inactive&#x22; to &#x22;is_active&#x22;</from><to>Cast goal_revenue as Integer</to><enabled>Y</enabled> </hop>
+  <hop> <from>Cast goal_revenue as Integer</from><to>invalid_campaigns</to><enabled>Y</enabled> </hop>
+  <hop> <from>Convert date format to the format Civi expects 2</from><to>Rename fields for import</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add campaign_type_id &#x3d; 4</name>
@@ -510,39 +513,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>550</xloc>
       <yloc>5</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add financial_type_id &#x3d; Donation</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>financial_type_id</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>1291</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -650,18 +620,6 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>temp_fund_id</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>96</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>temp_appeal_id</name>
         <type>Integer</type>
         <format/>
@@ -702,6 +660,41 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>215</xloc>
       <yloc>63</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Cast goal_revenue as Integer</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>goal_revenue</name>
+        <rename>goal_revenue</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>765</xloc>
+      <yloc>19</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1041,12 +1034,12 @@
       <key-index>description</key-index>
       <key-index>external_identifier</key-index>
       <output-field>
-        <input-field>goal_revenue</input-field>
-        <output-field>goal_revenue</output-field>
-      </output-field>
-      <output-field>
         <input-field>end_date</input-field>
         <output-field>end_date</output-field>
+      </output-field>
+      <output-field>
+        <input-field>goal_revenue</input-field>
+        <output-field>goal_revenue</output-field>
       </output-field>
       <output-field>
         <input-field>campaign_type_id</input-field>
@@ -1061,12 +1054,12 @@
         <output-field>description</output-field>
       </output-field>
       <output-field>
-        <input-field>external_identifier</input-field>
-        <output-field>external_identifier</output-field>
-      </output-field>
-      <output-field>
         <input-field>campaign</input-field>
         <output-field>title</output-field>
+      </output-field>
+      <output-field>
+        <input-field>external_identifier</input-field>
+        <output-field>external_identifier</output-field>
       </output-field>
       <output-field>
         <input-field>start_date</input-field>
@@ -1074,8 +1067,8 @@
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>877</xloc>
-      <yloc>34</yloc>
+      <xloc>932</xloc>
+      <yloc>36</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1337,12 +1330,12 @@
         <output-field>option_group_id</output-field>
       </output-field>
       <output-field>
-        <input-field>is_active</input-field>
-        <output-field>is_active</output-field>
-      </output-field>
-      <output-field>
         <input-field>giftsubtype</input-field>
         <output-field>label</output-field>
+      </output-field>
+      <output-field>
+        <input-field>is_active</input-field>
+        <output-field>is_active</output-field>
       </output-field>
       <output-field>
         <input-field>value</input-field>
@@ -1893,12 +1886,12 @@
         <output-field>option_group_id</output-field>
       </output-field>
       <output-field>
-        <input-field>value</input-field>
-        <output-field>value</output-field>
-      </output-field>
-      <output-field>
         <input-field>appeal</input-field>
         <output-field>label</output-field>
+      </output-field>
+      <output-field>
+        <input-field>value</input-field>
+        <output-field>value</output-field>
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1909,7 +1902,7 @@
     </step>
 
   <step>
-    <name>Create funds</name>
+    <name>Create financial types</name>
     <type>CiviCrmOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1921,7 +1914,7 @@
            </partitioning>
     <ApiKey>&#x24;&#x7b;APIKEY&#x7d;</ApiKey>
     <SiteKey>&#x24;&#x7b;SITEKEY&#x7d;</SiteKey>
-    <Entity>OptionValue</Entity>
+    <Entity>FinancialType</Entity>
     <EntityAction>create</EntityAction>
     <RestUrl>&#x24;&#x7b;RESTPATH&#x7d;</RestUrl>
     <ResultField>Result</ResultField>
@@ -2029,152 +2022,72 @@
       <action-name>getrefcount</action-name>
       <action-name>setvalue</action-name>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Weight&#x22;,&#x22;name&#x22;&#x3a;&#x22;weight&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>weight</fieldName>
-        <name>weight</name>
-        <title>Option Weight</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Active&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_active</fieldName>
-        <name>is_active</name>
-        <title>Option Is Active</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Domain&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Domain&#x22;,&#x22;name&#x22;&#x3a;&#x22;domain_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Domain&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_domain&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>domain_id</fieldName>
-        <name>domain_id</name>
-        <title>Option Domain</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Default&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_default&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_default</fieldName>
-        <name>is_default</name>
-        <title>Option is Default&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Label&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;label&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>label</fieldName>
-        <name>label</name>
-        <title>Option Label</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Is Reserved&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_reserved</fieldName>
-        <name>is_reserved</name>
-        <title>Option Is Reserved&#x3f;</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Group ID&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_OptionGroup&#x22;,&#x22;name&#x22;&#x3a;&#x22;option_group_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;OptionGroup&#x22;,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_option_group&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>option_group_id</fieldName>
-        <name>option_group_id</name>
-        <title>Option Group ID</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;option_value_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Financial Type ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;financial_type_id&#x22;&#x5d;,&#x22;description&#x22;&#x3a;&#x22;ID of original financial_type so you can search this table by the financial_type.id and then select the relevant version based on the timestamp&#x22;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
         <fieldName>id</fieldName>
         <name>id</name>
-        <title>Option Value ID</title>
+        <title>Financial Type ID</title>
         <type>2</type>
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Component&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Component&#x22;,&#x22;name&#x22;&#x3a;&#x22;component_id&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;1,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;keyColumn&#x22;&#x3a;&#x22;id&#x22;,&#x22;labelColumn&#x22;&#x3a;&#x22;name&#x22;,&#x22;table&#x22;&#x3a;&#x22;civicrm_component&#x22;&#x7d;&#x7d;</fieldDef>
-        <fieldName>component_id</fieldName>
-        <name>component_id</name>
-        <title>Option Component</title>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Is Tax Deductible&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;description&#x22;&#x3a;&#x22;Is this financial type tax-deductible&#x3f; If true, contributions of this type may be fully OR partially deductible - non-deductible amount is stored in the Contribution record.&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_deductible&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_deductible</fieldName>
+        <name>is_deductible</name>
+        <title>Is Tax Deductible&#x3f;</title>
         <type>2</type>
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Grouping Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;grouping&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>grouping</fieldName>
-        <name>grouping</name>
-        <title>Option Grouping Name</title>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Financial Type Is Active&#x3f;&#x22;,&#x22;description&#x22;&#x3a;&#x22;Is this property active&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_active&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_active</fieldName>
+        <name>is_active</name>
+        <title>Financial Type Is Active&#x3f;</title>
         <type>2</type>
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;cols&#x22;&#x3a;60,&#x22;title&#x22;&#x3a;&#x22;Option Description&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;TextArea&#x22;&#x7d;,&#x22;type&#x22;&#x3a;32,&#x22;rows&#x22;&#x3a;8&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;description&#x22;&#x3a;&#x22;Financial Type Description.&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
         <fieldName>description</fieldName>
         <name>description</name>
-        <title>Option Description</title>
+        <title>Description</title>
         <type>2</type>
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;export&#x22;&#x3a;true,&#x22;title&#x22;&#x3a;&#x22;Option Name&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;dataPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;headerPattern&#x22;&#x3a;&#x22;&#x22;,&#x22;import&#x22;&#x3a;true,&#x22;where&#x22;&#x3a;&#x22;civicrm_option_value.name&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>name</fieldName>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Financial Type is Reserved&#x3f;&#x22;,&#x22;description&#x22;&#x3a;&#x22;Is this a predefined system object&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_reserved&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldName>is_reserved</fieldName>
+        <name>is_reserved</name>
+        <title>Financial Type is Reserved&#x3f;</title>
+        <type>2</type>
+        <source>getfields</source>
+      </field>
+      <field>
+        <fieldDef>&#x7b;&#x22;export&#x22;&#x3a;true,&#x22;title&#x22;&#x3a;&#x22;Financial Type&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;dataPattern&#x22;&#x3a;&#x22;&#x5c;&#x2f;donation&#x7c;member&#x7c;campaign&#x5c;&#x2f;i&#x22;,&#x22;description&#x22;&#x3a;&#x22;Financial Type Name.&#x22;,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;headerPattern&#x22;&#x3a;&#x22;&#x5c;&#x2f;&#x28;finan&#x28;cial&#x29;&#x3f;&#x29;&#x3f;type&#x5c;&#x2f;i&#x22;,&#x22;import&#x22;&#x3a;true,&#x22;where&#x22;&#x3a;&#x22;civicrm_financial_type.name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldName>financial_type</fieldName>
         <name>name</name>
-        <title>Option Name</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Value&#x22;,&#x22;maxlength&#x22;&#x3a;512,&#x22;name&#x22;&#x3a;&#x22;value&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
-        <fieldName>value</fieldName>
-        <name>value</name>
-        <title>Option Value</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option Visibility&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;name&#x22;&#x3a;&#x22;visibility_id&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>visibility_id</fieldName>
-        <name>visibility_id</name>
-        <title>Option Visibility</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Filter&#x22;,&#x22;name&#x22;&#x3a;&#x22;filter&#x22;,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
-        <fieldName>filter</fieldName>
-        <name>filter</name>
-        <title>Filter</title>
-        <type>2</type>
-        <source>getfields</source>
-      </field>
-      <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Option is Header&#x3f;&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_optgroup&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
-        <fieldName>is_optgroup</fieldName>
-        <name>is_optgroup</name>
-        <title>Option is Header&#x3f;</title>
+        <title>Financial Type</title>
         <type>2</type>
         <source>getfields</source>
       </field>
       <key-index>fund</key-index>
-      <key-index>temp_fund_id</key-index>
-      <key-index>value</key-index>
+      <key-index>is_reserved</key-index>
+      <key-index>is_deductible</key-index>
       <key-index>is_active</key-index>
+      <output-field>
+        <input-field>is_deductible</input-field>
+        <output-field>is_deductible</output-field>
+      </output-field>
       <output-field>
         <input-field>is_active</input-field>
         <output-field>is_active</output-field>
       </output-field>
       <output-field>
-        <input-field>value</input-field>
-        <output-field>value</output-field>
-      </output-field>
-      <output-field>
-        <input-field>temp_fund_id</input-field>
-        <output-field>option_group_id</output-field>
-      </output-field>
-      <output-field>
         <input-field>fund</input-field>
-        <output-field>label</output-field>
+        <output-field>financial_type</output-field>
+      </output-field>
+      <output-field>
+        <input-field>is_reserved</input-field>
+        <output-field>is_reserved</output-field>
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -2301,7 +2214,7 @@
     </step>
 
   <step>
-    <name>Filter unrecognized funds</name>
+    <name>Filter unrecognized financial type</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2312,22 +2225,15 @@
            <schema_name/>
            </partitioning>
 <send_true_to>Filter unrecognized appeals</send_true_to>
-<send_false_to>fund fields Only</send_false_to>
+<send_false_to>financial type only</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>custom_fund</leftvalue>
+   <leftvalue>financial_type_id</leftvalue>
    <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>OR</operator>
-   <leftvalue>fund</leftvalue>
-   <function>IS NULL</function>
    <rightvalue/>
    </condition>
   </conditions>
@@ -2352,7 +2258,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Filter unrecognized funds</send_true_to>
+<send_true_to>Filter unrecognized financial type</send_true_to>
 <send_false_to>Gift Subtype fields Only</send_false_to>
     <compare>
 <condition>
@@ -2939,7 +2845,7 @@
     <name>Remap PAYMENT_TYPE to payment_instrument_id</name>
     <type>ValueMapper</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -3019,7 +2925,7 @@
     <name>Remove non-import fields</name>
     <type>SelectValues</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -3035,7 +2941,6 @@
       </remove>      <remove>        <name>display_name</name>
       </remove>      <remove>        <name>temp_type_id</name>
       </remove>      <remove>        <name>temp_subtype_id</name>
-      </remove>      <remove>        <name>temp_fund_id</name>
       </remove>      <remove>        <name>temp_appeal_id</name>
       </remove>      <remove>        <name>CONSTIT_ID</name>
       </remove>      <remove>        <name>PAYMENT_TYPE</name>
@@ -3148,10 +3053,6 @@
         <precision>-2</precision>
       </field>      <field>        <name>custom_subtype</name>
         <rename>custom_12</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_fund</name>
-        <rename>custom_13</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>custom_appeal</name>
@@ -3730,18 +3631,6 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_13</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>custom_14</name>
         <type>String</type>
         <format/>
@@ -3806,6 +3695,477 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>74</xloc>
       <yloc>1422</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>cli_gift 2</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_gift_TEMP</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>GiftId</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CONSTIT_ID</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount</name>
+        <type>BigNumber</type>
+        <format>&#x23;.&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x3b;-&#x23;.&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>RECEIPT_AMOUNT</name>
+        <type>BigNumber</type>
+        <format>&#x23;.&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x3b;-&#x23;.&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;&#x23;</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>receive_date</name>
+        <type>Timestamp</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>fund</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>appeal</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>PAYMENT_TYPE</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ACKNOWLEDGEDATE</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHECK_NUMBER</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CHECK_DATE</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>BATCH_NUMBER</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ANONYMOUS</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>giftsubtype</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>UserGiftId</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>note</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>note_date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>recurring_gift</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>display_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>temp_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>temp_subtype_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>temp_appeal_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_subtype</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>financial_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_appeal</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>payment_instrument_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>202</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>constant fields</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>is_reserved</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>0</field_a>
+<field_b/>
+<field_c/>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+       <calculation><field_name>is_deductible</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>1</field_a>
+<field_b/>
+<field_c/>
+<value_type>Integer</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>573</xloc>
+      <yloc>356</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3877,39 +4237,6 @@
     </step>
 
   <step>
-    <name>create value, equal to label 3</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>value</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>fund</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>573</xloc>
-      <yloc>356</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>create value, equal to label 3 2</name>
     <type>Calculator</type>
     <description/>
@@ -3955,7 +4282,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -3991,7 +4318,7 @@
     </step>
 
   <step>
-    <name>fund fields Only</name>
+    <name>financial type only</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -4002,10 +4329,6 @@
            <schema_name/>
            </partitioning>
     <fields>      <field>        <name>fund</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>temp_fund_id</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -4107,6 +4430,18 @@
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DATEADDED</name>
+        <type>Timestamp</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>3</length>
         <precision>-1</precision>
       </field>
     </fields>
@@ -4260,8 +4595,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>783</xloc>
-      <yloc>32</yloc>
+      <xloc>838</xloc>
+      <yloc>34</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4322,21 +4657,21 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>temp_fund_id</name>
+        <name>is_reserved</name>
         <type>Integer</type>
         <format>0</format>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal/>
+        <group/>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>value</name>
-        <type>String</type>
-        <format/>
+        <name>is_deductible</name>
+        <type>Integer</type>
+        <format>0</format>
         <currency/>
         <decimal/>
         <group/>
@@ -4672,8 +5007,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>966</xloc>
-      <yloc>43</yloc>
+      <xloc>1021</xloc>
+      <yloc>45</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4710,6 +5045,12 @@
         <rename>is_active</rename>
         <default/>
         <type>Integer</type>
+      </value>
+      <value>
+        <name>DATEADDED</name>
+        <rename>DATEADDED</rename>
+        <default/>
+        <type>None</type>
       </value>
     </lookup>
      <cluster_schema/>
@@ -4811,7 +5152,7 @@
         <name>GOAL</name>
         <rename>goal_revenue</rename>
         <default/>
-        <type>Integer</type>
+        <type>Number</type>
       </value>
       <value>
         <name>INACTIVE</name>
@@ -4883,6 +5224,48 @@
     </step>
 
   <step>
+    <name>lookup financial type in Civi</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_financial_type</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fund</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>financial_type_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>77</xloc>
+      <yloc>495</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>lookup fund data in RE</name>
     <type>DBLookup</type>
     <description/>
@@ -4920,54 +5303,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>662</xloc>
       <yloc>368</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>lookup fund in Civi</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_option_value</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>fund</name>
-        <field>label</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>temp_fund_id</name>
-        <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>value</name>
-        <rename>custom_fund</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>77</xloc>
-      <yloc>495</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

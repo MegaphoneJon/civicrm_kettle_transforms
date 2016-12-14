@@ -230,6 +230,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -285,11 +311,13 @@
   </connection>
   <order>
   <hop> <from>event_export.txt</from><to>Rename to Civi-friendly fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove unused fields</from><to>cli_events</to><enabled>Y</enabled> </hop>
   <hop> <from>Rename to Civi-friendly fields</from><to>Set NULL start date to creation_date</to><enabled>Y</enabled> </hop>
   <hop> <from>Set event_type_id to 7 &#x28;imported from Salsa&#x29;</from><to>remove unused fields</to><enabled>Y</enabled> </hop>
   <hop> <from>If no end date, set it to start date</from><to>Set event_type_id to 7 &#x28;imported from Salsa&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>Set NULL start date to creation_date</from><to>If no end date, set it to start date</to><enabled>Y</enabled> </hop>
+  <hop> <from>Check for existing event</from><to>New event only</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove unused fields</from><to>Check for existing event</to><enabled>Y</enabled> </hop>
+  <hop> <from>New event only</from><to>cli_events</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>If no end date, set it to start date</name>
@@ -315,8 +343,8 @@
         <replace>Y</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>144</xloc>
-      <yloc>311</yloc>
+      <xloc>138</xloc>
+      <yloc>243</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -332,32 +360,40 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>event.event_KEY</name>
+    <fields>      <field>        <name>Event.event KEY&#x28;event&#x29;</name>
         <rename>fee_label</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.Reference_Name</name>
+      </field>      <field>        <name>Event.Reference Name&#x28;event&#x29;</name>
         <rename>reference_name</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.Event_Name</name>
+      </field>      <field>        <name>Event.Event Name&#x28;event&#x29;</name>
         <rename>title</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.Start</name>
+      </field>      <field>        <name>Event.Description&#x28;event&#x29;</name>
+        <rename>description</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Event.Start&#x28;event&#x29;</name>
         <rename>start_date</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.End</name>
+      </field>      <field>        <name>Event.End&#x28;event&#x29;</name>
         <rename>end_date</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.Deadline</name>
+      </field>      <field>        <name>Event.Deadline&#x28;event&#x29;</name>
         <rename>registration_end_date</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>event.Description</name>
-        <rename>description</rename>
+      </field>      <field>        <name>Event.Maximum Attendees&#x28;event&#x29;</name>
+        <rename>max_participants</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Event.Date Created&#x28;event&#x29;</name>
+        <rename>creation_date</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -426,8 +462,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>147</xloc>
-      <yloc>394</yloc>
+      <xloc>141</xloc>
+      <yloc>326</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -562,8 +598,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>153</xloc>
-      <yloc>546</yloc>
+      <xloc>156</xloc>
+      <yloc>596</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -584,7 +620,7 @@
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure/>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
@@ -594,18 +630,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>event.event_KEY</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>event.Reference_Name</name>
+        <name>Event.event KEY&#x28;event&#x29;</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -616,7 +641,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event.Event_Name</name>
+        <name>Event.Reference Name&#x28;event&#x29;</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -627,7 +652,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event.Description</name>
+        <name>Event.Event Name&#x28;event&#x29;</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -638,9 +663,9 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event.Start</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
+        <name>Event.Description&#x28;event&#x29;</name>
+        <type>String</type>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
@@ -649,9 +674,9 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event.End</name>
+        <name>Event.Start&#x28;event&#x29;</name>
         <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
+        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss.SSS</format>
         <currency/>
         <decimal/>
         <group/>
@@ -660,9 +685,42 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>event.Deadline</name>
+        <name>Event.End&#x28;event&#x29;</name>
         <type>Date</type>
-        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</format>
+        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss.SSS</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Event.Deadline&#x28;event&#x29;</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss.SSS</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Event.Maximum Attendees&#x28;event&#x29;</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Event.Date Created&#x28;event&#x29;</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd HH&#x3a;mm&#x3a;ss.SSS</format>
         <currency/>
         <decimal/>
         <group/>
@@ -721,8 +779,79 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>151</xloc>
-      <yloc>456</yloc>
+      <xloc>145</xloc>
+      <yloc>388</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Check for existing event</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_event</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fee_label</name>
+        <field>fee_label</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>148</xloc>
+      <yloc>458</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>New event only</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>152</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -69,6 +69,8 @@
   <created_date>2014&#x2f;10&#x2f;02 22&#x3a;25&#x3a;38.478</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;10&#x2f;02 22&#x3a;25&#x3a;38.478</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
@@ -303,7 +305,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -315,7 +317,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -556,7 +558,7 @@
         <fieldName>weight</fieldName>
         <name>weight</name>
         <title>Order</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -564,7 +566,7 @@
         <fieldName>is_active</fieldName>
         <name>is_active</name>
         <title>Option Is Active</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -572,7 +574,7 @@
         <fieldName>domain_id</fieldName>
         <name>domain_id</name>
         <title>Option Domain</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -580,7 +582,7 @@
         <fieldName>is_default</fieldName>
         <name>is_default</name>
         <title>Option is Default&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -596,7 +598,7 @@
         <fieldName>is_reserved</fieldName>
         <name>is_reserved</name>
         <title>Option Is Reserved&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -604,7 +606,7 @@
         <fieldName>option_group_id</fieldName>
         <name>option_group_id</name>
         <title>Option Group ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -612,7 +614,7 @@
         <fieldName>id</fieldName>
         <name>id</name>
         <title>Option Value ID</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -620,7 +622,7 @@
         <fieldName>component_id</fieldName>
         <name>component_id</name>
         <title>Option Component</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -636,7 +638,7 @@
         <fieldName>description</fieldName>
         <name>description</name>
         <title>Option Description</title>
-        <type>32</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -660,7 +662,7 @@
         <fieldName>visibility_id</fieldName>
         <name>visibility_id</name>
         <title>Option Visibility</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -668,7 +670,7 @@
         <fieldName>filter</fieldName>
         <name>filter</name>
         <title>Filter</title>
-        <type>1</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <field>
@@ -676,7 +678,7 @@
         <fieldName>is_optgroup</fieldName>
         <name>is_optgroup</name>
         <title>Option is Header&#x3f;</title>
-        <type>16</type>
+        <type>2</type>
         <source>getfields</source>
       </field>
       <key-index>type</key-index>
@@ -1214,7 +1216,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -1268,7 +1270,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
@@ -1478,6 +1480,39 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>620</xloc>
       <yloc>414</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>label &#x3d; type</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>label</field_name>
+<calc_type>COPY_FIELD</calc_type>
+<field_a>type</field_a>
+<field_b/>
+<field_c/>
+<value_type>String</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>746</xloc>
+      <yloc>479</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1708,39 +1743,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>178</xloc>
       <yloc>477</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>label &#x3d; type</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-       <calculation><field_name>label</field_name>
-<calc_type>COPY_FIELD</calc_type>
-<field_a>type</field_a>
-<field_b/>
-<field_c/>
-<value_type>String</value_type>
-<value_length>-1</value_length>
-<value_precision>-1</value_precision>
-<remove>N</remove>
-<conversion_mask/>
-<decimal_symbol/>
-<grouping_symbol/>
-<currency_symbol/>
-</calculation>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>746</xloc>
-      <yloc>479</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

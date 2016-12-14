@@ -69,6 +69,8 @@
   <created_date>2014&#x2f;09&#x2f;18 14&#x3a;41&#x3a;30.267</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;09&#x2f;18 14&#x3a;41&#x3a;30.267</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
@@ -93,10 +95,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>This step is optional, deals with Salsa&#x27;s&#xa;not requiring a first name.</note>
-      <xloc>150</xloc>
-      <yloc>875</yloc>
-      <width>241</width>
+      <note>These steps are optional, deals with Salsa&#x27;s&#xa;not requiring a first name.</note>
+      <xloc>393</xloc>
+      <yloc>1107</yloc>
+      <width>267</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -178,8 +180,8 @@
     </notepad>
     <notepad>
       <note>on_hold no longer works on Contact import so this step is defunct &#x3a;&#x28;</note>
-      <xloc>238</xloc>
-      <yloc>670</yloc>
+      <xloc>325</xloc>
+      <yloc>665</yloc>
       <width>404</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -199,8 +201,8 @@
     </notepad>
     <notepad>
       <note>This step might go to &#x22;errors&#x22; or &#x22;data&#x22; depending &#xa;on whether you&#x27;re importing these folks.</note>
-      <xloc>313</xloc>
-      <yloc>1184</yloc>
+      <xloc>421</xloc>
+      <yloc>1311</yloc>
       <width>301</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -220,8 +222,8 @@
     </notepad>
     <notepad>
       <note>The following steps are optional, and are used if you&#x27;re deduping&#xa;Salsa against contacts already imported to Civi&#x3a;&#xa;salsa_dedupe_list&#xa;Stream lookup&#xa;Merge in dedupe info from Civi</note>
-      <xloc>547</xloc>
-      <yloc>52</yloc>
+      <xloc>405</xloc>
+      <yloc>66</yloc>
       <width>383</width>
       <heigth>90</heigth>
       <fontname>Arial</fontname>
@@ -429,7 +431,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -441,7 +443,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -478,27 +480,59 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>step_1_individual_cleanup</from><to>cli_salsa_step_1</to><enabled>Y</enabled> </hop>
-  <hop> <from>step_1_individual_cleanup</from><to>cli_invalid_step_1_individuals</to><enabled>Y</enabled> </hop>
   <hop> <from>email_cleanup</from><to>invalid_step1_email</to><enabled>Y</enabled> </hop>
-  <hop> <from>email_cleanup</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
-  <hop> <from>Don&#x27;t validate blank emails</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
   <hop> <from>Don&#x27;t validate blank emails</from><to>email_cleanup</to><enabled>Y</enabled> </hop>
   <hop> <from>Add location_type</from><to>Blank invalid e-mails</to><enabled>Y</enabled> </hop>
-  <hop> <from>Don&#x27;t add folks already in the database</from><to>Users without a contact ID only</to><enabled>Y</enabled> </hop>
   <hop> <from>Blank invalid e-mails</from><to>Remove backslashes from name</to><enabled>Y</enabled> </hop>
   <hop> <from>supporter_export.txt</from><to>Get only step 1 fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Mark negative receive_email as on_hold</from><to>Don&#x27;t add folks already in the database</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove backslashes from name</from><to>Mark -3 Receive_Email as is_opt_out</to><enabled>Y</enabled> </hop>
-  <hop> <from>Mark -3 Receive_Email as is_opt_out</from><to>Mark negative receive_email as on_hold</to><enabled>Y</enabled> </hop>
-  <hop> <from>Receive_Email is number</from><to>Add location_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Receive_Email is integer</from><to>Add location_type</to><enabled>Y</enabled> </hop>
   <hop> <from>Stream lookup</from><to>Merge in dedupe info from Civi</to><enabled>Y</enabled> </hop>
   <hop> <from>salsa_dedupe_list</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
   <hop> <from>Get only step 1 fields</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Merge in dedupe info from Civi</from><to>Receive_Email is number</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge in dedupe info from Civi</from><to>Receive_Email is integer</to><enabled>Y</enabled> </hop>
+  <hop> <from>Import fields only</from><to>cli_salsa_step_1</to><enabled>Y</enabled> </hop>
+  <hop> <from>step_1_individual_cleanup</from><to>Import fields only</to><enabled>Y</enabled> </hop>
   <hop> <from>add contact_type &#x3d; individual</from><to>step_1_individual_cleanup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Mark negative receive_email as on_hold</from><to>Don&#x27;t add folks already in the database</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove backslashes from name</from><to>-3 for Receive_Email &#x3d; is_opt_out</to><enabled>Y</enabled> </hop>
+  <hop> <from>-3 for Receive_Email &#x3d; is_opt_out</from><to>Mark negative receive_email as on_hold</to><enabled>Y</enabled> </hop>
+  <hop> <from>Don&#x27;t validate blank emails</from><to>Remove location_type</to><enabled>Y</enabled> </hop>
+  <hop> <from>Remove location_type</from><to>add location_type_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>add location_type_id</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
+  <hop> <from>email_cleanup</from><to>add contact_type &#x3d; individual</to><enabled>Y</enabled> </hop>
+  <hop> <from>step_1_individual_cleanup</from><to>change first name to &#x22;No name&#x2f;email in Salsa&#x22; if no first&#x2f;last&#x2f;email</to><enabled>Y</enabled> </hop>
+  <hop> <from>change first name to &#x22;No name&#x2f;email in Salsa&#x22; if no first&#x2f;last&#x2f;email</from><to>cli_invalid_step_1_individuals</to><enabled>Y</enabled> </hop>
+  <hop> <from>Don&#x27;t add folks already in the database</from><to>Users without a contact ID only</to><enabled>Y</enabled> </hop>
   <hop> <from>Users without a contact ID only</from><to>Don&#x27;t validate blank emails</to><enabled>Y</enabled> </hop>
   </order>
+  <step>
+    <name>-3 for Receive_Email &#x3d; is_opt_out</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <field_to_use>Receive_Email</field_to_use>
+    <target_field>is_opt_out</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>-3</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>256</xloc>
+      <yloc>589</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Add location_type</name>
     <type>Constant</type>
@@ -592,8 +626,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>130</xloc>
-      <yloc>740</yloc>
+      <xloc>132</xloc>
+      <yloc>741</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -609,7 +643,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>add contact_type &#x3d; individual</send_true_to>
+<send_true_to>Remove location_type</send_true_to>
 <send_false_to>email_cleanup</send_false_to>
     <compare>
 <condition>
@@ -621,8 +655,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>84</xloc>
-      <yloc>961</yloc>
+      <xloc>125</xloc>
+      <yloc>899</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -672,8 +706,8 @@
     </step>
 
   <step>
-    <name>Mark -3 Receive_Email as is_opt_out</name>
-    <type>NumberRange</type>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -682,27 +716,54 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <inputField>Receive_Email</inputField>
-    <outputField>is_opt_out</outputField>
-    <fallBackValue>0</fallBackValue>
-    <rules>
-      <rule>
-        <lower_bound>-3.1</lower_bound>
-        <upper_bound>-2.9</upper_bound>
-        <value>1</value>
-      </rule>
-    </rules>
-     <cluster_schema/>
+    <fields>      <field>        <name>external_identifier</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>first_name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>middle_name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>last_name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>contact_type</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>is_opt_out</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>on_hold</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Receive_Email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>261</xloc>
-      <yloc>594</yloc>
+      <xloc>107</xloc>
+      <yloc>1287</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
     <name>Mark negative receive_email as on_hold</name>
-    <type>NumberRange</type>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -711,31 +772,75 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <inputField>Receive_Email</inputField>
-    <outputField>on_hold</outputField>
-    <fallBackValue>0</fallBackValue>
-    <rules>
-      <rule>
-        <lower_bound>-2.0</lower_bound>
-        <upper_bound>0.0</upper_bound>
-        <value>1</value>
-      </rule>
-      <rule>
-        <lower_bound>-999.0</lower_bound>
-        <upper_bound>-4.0</upper_bound>
-        <value>1</value>
-      </rule>
-    </rules>
-     <cluster_schema/>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var on_hold &#x3d; 0&#x3b;&#xa;&#xa;&#x2f;&#x2f;all negative values for receive_email except for -3.&#xa;if &#x28;Receive_Email &#x3c; 0 &#x26;&#x26; Receive_Email &#x21;&#x3d; -3&#x29; &#x7b;&#xa;  on_hold &#x3d; 1&#x3b;&#xa;&#x7d;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>on_hold</name>
+        <rename>on_hold</rename>
+        <type>Integer</type>
+        <length>1</length>
+        <precision>0</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>192</xloc>
-      <yloc>670</yloc>
+      <yloc>664</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Receive_Email is number</name>
+    <name>Merge in dedupe info from Civi</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var external_identifier&#x3b;&#xa;var first_name&#x3b;&#xa;var middle_name&#x3b;&#xa;var last_name&#x3b;&#xa;&#xa;&#x2f;&#x2f;If the record exists in Civi, it&#x27;s a dupe.&#xa;&#x2f;&#x2f;So substitute the external_identifier and name from Civi into the data stream.&#xa;if&#x28;external_identifier_civi&#x29; &#x7b;&#xa;  first_name &#x3d; first_name_civi&#x3b;&#xa;  middle_name &#x3d; middle_name_civi&#x3b;&#xa;  last_name &#x3d; last_name_civi&#x3b;&#xa;  external_identifier &#x3d; external_identifier_civi&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>external_identifier</name>
+        <rename>external_identifier</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>first_name</name>
+        <rename>first_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>middle_name</name>
+        <rename>middle_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>last_name</name>
+        <rename>last_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>234</xloc>
+      <yloc>250</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Receive_Email is integer</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -748,7 +853,7 @@
     <fields>        <select_unspecified>N</select_unspecified>
       <meta>        <name>Receive_Email</name>
         <rename>Receive_Email</rename>
-        <type>Number</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -802,6 +907,81 @@
     </step>
 
   <step>
+    <name>Remove location_type</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>location_type</name>
+      </remove>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>67</xloc>
+      <yloc>975</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>salsa_dedupe_list</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>external_identifier</name>
+        <field>Supporter KEY</field>
+      </key>
+      <value>
+        <name>external_identifier_civi</name>
+        <rename>external_identifier_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>first_name_civi</name>
+        <rename>first_name_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>middle_name_civi</name>
+        <rename>middle_name_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>last_name_civi</name>
+        <rename>last_name_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>235</xloc>
+      <yloc>151</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Users without a contact ID only</name>
     <type>FilterRows</type>
     <description/>
@@ -824,8 +1004,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>91</xloc>
-      <yloc>796</yloc>
+      <xloc>133</xloc>
+      <yloc>808</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -857,8 +1037,41 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>1063</yloc>
+      <xloc>110</xloc>
+      <yloc>1122</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>add location_type_id</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>location_type_id</field_name>
+<calc_type>CONSTANT</calc_type>
+<field_a>1</field_a>
+<field_b/>
+<field_c/>
+<value_type>None</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>54</xloc>
+      <yloc>1041</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -885,8 +1098,38 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>255</xloc>
-      <yloc>874</yloc>
+      <xloc>457</xloc>
+      <yloc>1139</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>change first name to &#x22;No name&#x2f;email in Salsa&#x22; if no first&#x2f;last&#x2f;email</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var first_name&#x3b;&#xa;if&#x28;&#x21;first_name &#x26;&#x26; &#x21;last_name &#x26;&#x26; &#x21;email&#x29; &#x7b;&#xa;  first_name &#x3d; &#x22;No name&#x2f;email in Salsa&#x22;&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>first_name</name>
+        <rename>first_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>301</xloc>
+      <yloc>1247</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1021,8 +1264,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>207</xloc>
-      <yloc>1187</yloc>
+      <xloc>383</xloc>
+      <yloc>1329</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1143,18 +1386,6 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>Receive_Email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>is_opt_out</name>
         <type>String</type>
         <format/>
@@ -1162,7 +1393,7 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
@@ -1174,15 +1405,27 @@
         <decimal/>
         <group/>
         <nullif/>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Receive_Email</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>80</xloc>
-      <yloc>1248</yloc>
+      <xloc>100</xloc>
+      <yloc>1360</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1232,8 +1475,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>167</xloc>
-      <yloc>1020</yloc>
+      <xloc>213</xloc>
+      <yloc>979</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1392,8 +1635,141 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>279</xloc>
-      <yloc>1023</yloc>
+      <xloc>325</xloc>
+      <yloc>982</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>salsa_dedupe_list</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;salsa_dedupe_list.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>Supporter KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>external_identifier_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>middle_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>319</xloc>
+      <yloc>52</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1427,12 +1803,12 @@
     </mapping>      </input>
       <output>
     <mapping>    <input_step>valid individuals</input_step>
-    <output_step>cli_salsa_step_1</output_step>
+    <output_step>Import fields only</output_step>
     <main_path>N</main_path>
     <rename_on_output>N</rename_on_output>
     <description/>
     </mapping>    <mapping>    <input_step>invalid individuals</input_step>
-    <output_step>cli_invalid_step_1_individuals</output_step>
+    <output_step>change first name to &#x22;No name&#x2f;email in Salsa&#x22; if no first&#x2f;last&#x2f;email</output_step>
     <main_path>N</main_path>
     <rename_on_output>N</rename_on_output>
     <description/>
@@ -1444,8 +1820,8 @@
     <allow_multiple_output>Y</allow_multiple_output>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>80</xloc>
-      <yloc>1142</yloc>
+      <xloc>109</xloc>
+      <yloc>1201</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1472,11 +1848,33 @@
     <lazy_conversion>N</lazy_conversion>
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
+    <newline_possible>Y</newline_possible>
     <encoding/>
     <fields>
       <field>
         <name>Supporter KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Organization Key</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>Chapter Key</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2118,241 +2516,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>87</xloc>
       <yloc>19</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Merge in dedupe info from Civi</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var external_identifier&#x3b;&#xa;var first_name&#x3b;&#xa;var middle_name&#x3b;&#xa;var last_name&#x3b;&#xa;&#xa;&#x2f;&#x2f;If the record exists in Civi, it&#x27;s a dupe.&#xa;&#x2f;&#x2f;So substitute the external_identifier and name from Civi into the data stream.&#xa;if&#x28;external_identifier_civi&#x29; &#x7b;&#xa;  first_name &#x3d; first_name_civi&#x3b;&#xa;  middle_name &#x3d; middle_name_civi&#x3b;&#xa;  last_name &#x3d; last_name_civi&#x3b;&#xa;  external_identifier &#x3d; external_identifier_civi&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>external_identifier</name>
-        <rename>external_identifier</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>      <field>        <name>first_name</name>
-        <rename>first_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>      <field>        <name>middle_name</name>
-        <rename>middle_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>      <field>        <name>last_name</name>
-        <rename>last_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>234</xloc>
-      <yloc>250</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <from>salsa_dedupe_list</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>external_identifier</name>
-        <field>Supporter KEY</field>
-      </key>
-      <value>
-        <name>external_identifier_civi</name>
-        <rename>external_identifier_civi</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>first_name_civi</name>
-        <rename>first_name_civi</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>middle_name_civi</name>
-        <rename>middle_name_civi</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>last_name_civi</name>
-        <rename>last_name_civi</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>235</xloc>
-      <yloc>151</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>salsa_dedupe_list</name>
-    <type>CsvInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;salsa_dedupe_list.csv</filename>
-    <filename_field/>
-    <rownum_field/>
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding/>
-    <fields>
-      <field>
-        <name>Supporter KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>email</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>external_identifier_civi</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>first_name_civi</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>middle_name_civi</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>last_name_civi</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>319</xloc>
-      <yloc>52</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

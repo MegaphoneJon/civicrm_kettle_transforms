@@ -73,8 +73,8 @@
   <notepads>
     <notepad>
       <note>org-specific BEGIN</note>
-      <xloc>301</xloc>
-      <yloc>221</yloc>
+      <xloc>1130</xloc>
+      <yloc>0</yloc>
       <width>123</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -94,8 +94,8 @@
     </notepad>
     <notepad>
       <note>org-specific END</note>
-      <xloc>296</xloc>
-      <yloc>459</yloc>
+      <xloc>1135</xloc>
+      <yloc>286</yloc>
       <width>110</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -115,10 +115,52 @@
     </notepad>
     <notepad>
       <note>Auto-generates financial types, use with caution</note>
-      <xloc>754</xloc>
-      <yloc>558</yloc>
+      <xloc>890</xloc>
+      <yloc>491</yloc>
       <width>289</width>
       <heigth>26</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Insert this step if you have recurring &#xa;donations you&#x27;re importing.</note>
+      <xloc>519</xloc>
+      <yloc>63</yloc>
+      <width>223</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x3c;-- If recurring donations, add &#xa;contribution_recur_id here and in output CSVs.</note>
+      <xloc>390</xloc>
+      <yloc>857</yloc>
+      <width>281</width>
+      <heigth>42</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -348,13 +390,6 @@
   </connection>
   <order>
   <hop> <from>donation_export.txt</from><to>rename fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename fields</from><to>filter out test and unapproved transactions</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter out test and unapproved transactions</from><to>recurring donation key to contribution_recur_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter trxn_id &#x3c;&#x3d; 11642754</from><to>Fixed fucked records for HCN</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter invalid donations</from><to>invalid_donations</to><enabled>Y</enabled> </hop>
-  <hop> <from>Valid financial_type_id only</from><to>Only donation import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Only donation import fields</from><to>filter invalid donations</to><enabled>Y</enabled> </hop>
-  <hop> <from>financial_type to financial_type_id</from><to>Valid financial_type_id only</to><enabled>Y</enabled> </hop>
   <hop> <from>Valid financial_type_id only</from><to>financial type only</to><enabled>Y</enabled> </hop>
   <hop> <from>financial type only</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
@@ -363,17 +398,147 @@
   <hop> <from>Remap financial_type</from><to>financial_type to financial_type_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Generate Financial Types</from><to>invalid_financial_types 2</to><enabled>Y</enabled> </hop>
   <hop> <from>invalid_financial_types</from><to>is_active&#x3d;1</to><enabled>Y</enabled> </hop>
-  <hop> <from>is_active&#x3d;1</from><to>Generate Financial Types</to><enabled>N</enabled> </hop>
-  <hop> <from>recurring donation key to contribution_recur_id</from><to>map blank receive_date to 1999-12-31</to><enabled>Y</enabled> </hop>
-  <hop> <from>map blank receive_date to 1999-12-31</from><to>filter trxn_id &#x3c;&#x3d; 11642754</to><enabled>Y</enabled> </hop>
+  <hop> <from>is_active&#x3d;1</from><to>Generate Financial Types</to><enabled>Y</enabled> </hop>
   <hop> <from>New donations only</from><to>cli_salsa_donation</to><enabled>Y</enabled> </hop>
-  <hop> <from>Fixed fucked records for HCN</from><to>Rename C3&#x2f;C4 Donations appropriately</to><enabled>Y</enabled> </hop>
-  <hop> <from>Rename C3&#x2f;C4 Donations appropriately</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Check for existing donation</from><to>New donations only</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter invalid donations</from><to>trxn_id as string</to><enabled>Y</enabled> </hop>
   <hop> <from>trxn_id as string</from><to>Trim trxn_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Trim trxn_id</from><to>Check for existing donation</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename fields</from><to>filter out test and unapproved transactions</to><enabled>Y</enabled> </hop>
+  <hop> <from>map blank receive_date to 1999-12-31</from><to>Concatenate source fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>Concatenate source fields</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>payment_instrument to payment_instrument_id</from><to>Valid financial_type_id only</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter out test and unapproved transactions</from><to>map blank receive_date to 1999-12-31</to><enabled>Y</enabled> </hop>
+  <hop> <from>financial_type to financial_type_id</from><to>option_group_name &#x3d; payment_instrument</to><enabled>Y</enabled> </hop>
+  <hop> <from>option_group_name &#x3d; payment_instrument</from><to>lookup payment_instrument option_group_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>lookup payment_instrument option_group_id</from><to>payment_instrument to payment_instrument_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Valid financial_type_id only</from><to>filter invalid donations</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter invalid donations</from><to>invalid_donations</to><enabled>Y</enabled> </hop>
+  <hop> <from>Only donation import fields</from><to>trxn_id as string</to><enabled>Y</enabled> </hop>
+  <hop> <from>filter invalid donations</from><to>Only donation import fields</to><enabled>Y</enabled> </hop>
   </order>
+  <step>
+    <name>Check for existing donation</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_contribution</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>trxn_id</name>
+        <field>trxn_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>343</xloc>
+      <yloc>1033</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Concatenate source fields</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>source_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+<targetFieldName>source</targetFieldName>
+<targetFieldLength>0</targetFieldLength>
+<removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>277</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Fixed fucked records for HCN</name>
     <type>ValueMapper</type>
@@ -400,8 +565,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>278</xloc>
-      <yloc>330</yloc>
+      <xloc>1165</xloc>
+      <yloc>134</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -575,14 +740,48 @@
         <source>getfields</source>
       </field>
       <key-index>financial_type</key-index>
+      <key-index>is_active</key-index>
+      <output-field>
+        <input-field>is_active</input-field>
+        <output-field>is_active</output-field>
+      </output-field>
       <output-field>
         <input-field>financial_type</input-field>
         <output-field>financial_type</output-field>
       </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>925</xloc>
-      <yloc>604</yloc>
+      <xloc>1110</xloc>
+      <yloc>536</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>New donations only</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>344</xloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -603,10 +802,6 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>source</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>custom_12</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -634,10 +829,6 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>contribution_recur_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>contact_id</name>
         <rename/>
         <length>-2</length>
@@ -646,11 +837,15 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>payment_instrument_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>369</xloc>
-      <yloc>841</yloc>
+      <xloc>329</xloc>
+      <yloc>858</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -677,8 +872,38 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>324</xloc>
-      <yloc>627</yloc>
+      <xloc>284</xloc>
+      <yloc>343</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rename C3&#x2f;C4 Donations appropriately</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var financial_type&#x3b;&#xa;if &#x28;financial_type &#x3d;&#x3d; &#x27;Donation&#x27;&#x29; &#x7b;&#xa;  if &#x28;custom_12 &#x3d;&#x3d; &#x27;C3&#x27;&#x29;&#x7b;&#xa;    financial_type &#x3d; &#x22;C3 Donation&#x22;&#x3b;&#xa;  &#x7d; &#xa;  if &#x28;custom_12 &#x3d;&#x3d; &#x27;C4&#x27;&#x29;&#x7b;&#xa;    financial_type &#x3d; &#x22;C4 Donation&#x22;&#x3b;&#xa;  &#x7d;&#xa;&#x7d;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>financial_type</name>
+        <rename>financial_type</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1172</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -711,8 +936,42 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>633</xloc>
-      <yloc>664</yloc>
+      <xloc>818</xloc>
+      <yloc>596</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Trim trxn_id</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>trxn_id</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>342</xloc>
+      <yloc>977</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -734,8 +993,8 @@
       <error_description/>
     <fields>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>689</xloc>
-      <yloc>645</yloc>
+      <xloc>874</xloc>
+      <yloc>577</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -751,7 +1010,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>Only donation import fields</send_true_to>
+<send_true_to>filter invalid donations</send_true_to>
 <send_false_to>financial type only</send_false_to>
     <compare>
 <condition>
@@ -763,8 +1022,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>358</xloc>
-      <yloc>768</yloc>
+      <xloc>323</xloc>
+      <yloc>722</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -826,18 +1085,6 @@
       </field>
       <field>
         <name>source</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_12</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -921,18 +1168,6 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>contribution_recur_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
@@ -956,11 +1191,23 @@
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>payment_instrument_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>384</xloc>
-      <yloc>1183</yloc>
+      <xloc>340</xloc>
+      <yloc>1173</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -981,7 +1228,7 @@
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure/>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
@@ -992,105 +1239,6 @@
     <fields>
       <field>
         <name>donation.donation_KEY</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.Designation_Code</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.RESULT</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.recurring_donation_KEY</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.Tax_Status</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.Transaction_Type</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.amount</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.Transaction_Date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donation.Date_Entered</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>donate_page.Reference_Name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1112,7 +1260,139 @@
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>donate_page.Reference_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Date_Entered</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Transaction_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.amount</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Transaction_Type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.RESULT</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Tracking_Code</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Designation_Code</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.In_Honor_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.In_Honor_Email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.In_Honor_Address</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>donation.Order_Info</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>donation.Form_Of_Payment</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1167,8 +1447,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>309</xloc>
-      <yloc>571</yloc>
+      <xloc>269</xloc>
+      <yloc>287</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1184,7 +1464,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>trxn_id as string</send_true_to>
+<send_true_to>Only donation import fields</send_true_to>
 <send_false_to>invalid_donations</send_false_to>
     <compare>
 <condition>
@@ -1208,8 +1488,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>377</xloc>
-      <yloc>908</yloc>
+      <xloc>325</xloc>
+      <yloc>795</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1290,8 +1570,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>276</xloc>
-      <yloc>264</yloc>
+      <xloc>1163</xloc>
+      <yloc>68</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1314,8 +1594,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>554</xloc>
-      <yloc>744</yloc>
+      <xloc>739</xloc>
+      <yloc>676</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1356,8 +1636,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>335</xloc>
-      <yloc>687</yloc>
+      <xloc>295</xloc>
+      <yloc>403</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1407,78 +1687,6 @@
     <fields>
       <field>
         <name>trxn_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>source</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_12</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>total_amount</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>receive_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_13</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_15</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1502,6 +1710,138 @@
         <precision>-1</precision>
       </field>
       <field>
+        <name>custom_15</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_13</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>receive_date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>total_amount</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>financial_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>donation.RESULT</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source_2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>donation.In_Honor_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>donation.In_Honor_Email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>donation.In_Honor_Address</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>custom_14</name>
         <type>String</type>
         <format/>
@@ -1514,12 +1854,24 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>contribution_recur_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>payment_instrument</name>
+        <type>String</type>
+        <format/>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>source</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <nullif/>
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1549,11 +1901,47 @@
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>option_group_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>option_group_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>payment_instrument_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>530</xloc>
-      <yloc>931</yloc>
+      <xloc>418</xloc>
+      <yloc>794</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1616,8 +2004,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>770</xloc>
-      <yloc>633</yloc>
+      <xloc>955</xloc>
+      <yloc>565</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1692,8 +2080,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1017</xloc>
-      <yloc>594</yloc>
+      <xloc>1202</xloc>
+      <yloc>526</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1725,8 +2113,50 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>840</xloc>
-      <yloc>616</yloc>
+      <xloc>1025</xloc>
+      <yloc>548</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>lookup payment_instrument option_group_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_group</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>option_group_name</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>option_group_id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>308</xloc>
+      <yloc>575</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1755,6 +2185,87 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>276</xloc>
       <yloc>163</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>option_group_name &#x3d; payment_instrument</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>
+      <field>
+        <name>option_group_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>payment_instrument</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>303</xloc>
+      <yloc>514</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>payment_instrument to payment_instrument_id</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_option_value</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>payment_instrument</name>
+        <field>name</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>option_group_id</name>
+        <field>option_group_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>value</name>
+        <rename>payment_instrument_id</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>313</xloc>
+      <yloc>651</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1795,8 +2306,8 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>279</xloc>
-      <yloc>101</yloc>
+      <xloc>535</xloc>
+      <yloc>110</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1816,48 +2327,60 @@
         <rename>trxn_id</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>donation.Designation_Code</name>
-        <rename>source</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.RESULT</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.recurring_donation_KEY</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.Tax_Status</name>
-        <rename>custom_12</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.Transaction_Type</name>
-        <rename>financial_type</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.amount</name>
-        <rename>total_amount</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.Transaction_Date</name>
-        <rename>receive_date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>donation.Date_Entered</name>
-        <rename>custom_13</rename>
+      </field>      <field>        <name>donation.supporter_KEY</name>
+        <rename>external_identifier</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>donate_page.Reference_Name</name>
         <rename>custom_15</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>donation.supporter_KEY</name>
-        <rename>external_identifier</rename>
+      </field>      <field>        <name>donation.Date_Entered</name>
+        <rename>custom_13</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.Transaction_Date</name>
+        <rename>receive_date</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.amount</name>
+        <rename>total_amount</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.Transaction_Type</name>
+        <rename>financial_type</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.RESULT</name>
+        <rename>donation.RESULT</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.Tracking_Code</name>
+        <rename>source_2</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.Designation_Code</name>
+        <rename>source_1</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.In_Honor_Name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.In_Honor_Email</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.In_Honor_Address</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>donation.Order_Info</name>
         <rename>custom_14</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>donation.Form_Of_Payment</name>
+        <rename>payment_instrument</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -1865,77 +2388,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>121</xloc>
       <yloc>34</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Check for existing donation</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_contribution</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>trxn_id</name>
-        <field>trxn_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>378</xloc>
-      <yloc>1079</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>New donations only</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>id</leftvalue>
- <function>IS NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>379</xloc>
-      <yloc>1134</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1969,107 +2421,8 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>372</xloc>
-      <yloc>968</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Receive_date reformatted</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>receive_date</name>
-        <rename>receive_date</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH&#x3a;mm&#x3a;ss</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>113</xloc>
-      <yloc>1059</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Rename C3&#x2f;C4 Donations appropriately</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var financial_type&#x3b;&#xa;if &#x28;financial_type &#x3d;&#x3d; &#x27;Donation&#x27;&#x29; &#x7b;&#xa;  if &#x28;custom_12 &#x3d;&#x3d; &#x27;C3&#x27;&#x29;&#x7b;&#xa;    financial_type &#x3d; &#x22;C3 Donation&#x22;&#x3b;&#xa;  &#x7d; &#xa;  if &#x28;custom_12 &#x3d;&#x3d; &#x27;C4&#x27;&#x29;&#x7b;&#xa;    financial_type &#x3d; &#x22;C4 Donation&#x22;&#x3b;&#xa;  &#x7d;&#xa;&#x7d;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>financial_type</name>
-        <rename>financial_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>285</xloc>
-      <yloc>396</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Trim trxn_id</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>trxn_id</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>none</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>377</xloc>
-      <yloc>1023</yloc>
+      <xloc>337</xloc>
+      <yloc>922</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

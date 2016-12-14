@@ -73,11 +73,11 @@
   </info>
   <notepads>
     <notepad>
-      <note>Org-specfic step&#x3a; Handle badly merged records</note>
-      <xloc>241</xloc>
-      <yloc>262</yloc>
-      <width>284</width>
-      <heigth>26</heigth>
+      <note>The following steps are optional, and are used if you&#x27;re deduping&#xa;Salsa against contacts already imported to Civi&#x3a;&#xa;salsa_dedupe_list&#xa;Stream lookup&#xa;Merge in dedupe info from Civi</note>
+      <xloc>269</xloc>
+      <yloc>155</yloc>
+      <width>383</width>
+      <heigth>90</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -252,6 +252,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -308,17 +334,19 @@
   <order>
   <hop> <from>recurring_donation_export.txt</from><to>Civi-friendly names</to><enabled>Y</enabled> </hop>
   <hop> <from>valid contact_id only</from><to>invalid_recurring_donation</to><enabled>Y</enabled> </hop>
-  <hop> <from>Civi-friendly names</from><to>Valid results only</to><enabled>Y</enabled> </hop>
   <hop> <from>external_identifier to contact_id</from><to>Create frequency_interval</to><enabled>Y</enabled> </hop>
   <hop> <from>Create frequency_interval</from><to>Remap frequency_unit</to><enabled>Y</enabled> </hop>
   <hop> <from>Remap frequency_unit</from><to>valid contact_id only</to><enabled>Y</enabled> </hop>
   <hop> <from>valid contact_id only</from><to>export fields only</to><enabled>Y</enabled> </hop>
   <hop> <from>export fields only</from><to>cli_salsa_contribution_recur</to><enabled>N</enabled> </hop>
-  <hop> <from>Valid results only</from><to>Fixed fucked records for HCN</to><enabled>Y</enabled> </hop>
-  <hop> <from>Fixed fucked records for HCN</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>export fields only</from><to>filter any already imported</to><enabled>Y</enabled> </hop>
   <hop> <from>filter any already imported</from><to>unimported only</to><enabled>Y</enabled> </hop>
   <hop> <from>unimported only</from><to>cli_reimport_salsa_contribution_recur</to><enabled>Y</enabled> </hop>
+  <hop> <from>Valid results only</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>Merge in dedupe info from Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>salsa_dedupe_list</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Civi-friendly names</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge in dedupe info from Civi</from><to>Valid results only</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Civi-friendly names</name>
@@ -374,8 +402,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>149</xloc>
-      <yloc>119</yloc>
+      <xloc>129</xloc>
+      <yloc>58</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -416,38 +444,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>248</xloc>
       <yloc>393</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Fixed fucked records for HCN</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>external_identifier</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>30234736</source_value>
-        <target_value>43790157</target_value>
-      </field>
-      <field>
-        <source_value>45572538</source_value>
-        <target_value>33725901</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>201</xloc>
-      <yloc>265</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -515,8 +511,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>179</xloc>
-      <yloc>193</yloc>
+      <xloc>200</xloc>
+      <yloc>259</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1193,7 +1189,7 @@
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure/>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
@@ -1315,8 +1311,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>114</xloc>
-      <yloc>43</yloc>
+      <xloc>126</xloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1375,6 +1371,205 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>294</xloc>
       <yloc>518</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Merge in dedupe info from Civi</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var external_identifier&#x3b;&#xa;&#xa;&#x2f;&#x2f;If the record exists in Civi, it&#x27;s a dupe.&#xa;&#x2f;&#x2f;So substitute the external_identifier and name from Civi into the data stream.&#xa;if&#x28;external_identifier_civi&#x29; &#x7b;&#xa;  external_identifier &#x3d; external_identifier_civi&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>external_identifier</name>
+        <rename>external_identifier</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>198</xloc>
+      <yloc>214</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>salsa_dedupe_list</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>external_identifier</name>
+        <field>Supporter KEY</field>
+      </key>
+      <value>
+        <name>external_identifier_civi</name>
+        <rename>external_identifier_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>198</xloc>
+      <yloc>155</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>salsa_dedupe_list</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;salsa_dedupe_list.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>Supporter KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>external_identifier_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>middle_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>335</xloc>
+      <yloc>85</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

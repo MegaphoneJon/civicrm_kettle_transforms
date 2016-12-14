@@ -69,6 +69,8 @@
   <created_date>2014&#x2f;08&#x2f;07 17&#x3a;11&#x3a;45.673</created_date>
   <modified_user>-</modified_user>
   <modified_date>2014&#x2f;08&#x2f;07 17&#x3a;11&#x3a;45.673</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
@@ -282,7 +284,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -294,7 +296,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -604,6 +606,7 @@
         <format/>
         <group/>
         <decimal/>
+        <currency/>
         <length>-1</length>
         <precision>-1</precision>
         <nullif/>
@@ -616,6 +619,7 @@
         <format/>
         <group/>
         <decimal/>
+        <currency/>
         <length>-1</length>
         <precision>-1</precision>
         <nullif/>
@@ -628,6 +632,7 @@
         <format/>
         <group/>
         <decimal/>
+        <currency/>
         <length>-1</length>
         <precision>-1</precision>
         <nullif/>
@@ -640,6 +645,7 @@
         <format/>
         <group/>
         <decimal/>
+        <currency/>
         <length>-1</length>
         <precision>-1</precision>
         <nullif/>
@@ -652,6 +658,7 @@
         <format/>
         <group/>
         <decimal/>
+        <currency/>
         <length>-1</length>
         <precision>-1</precision>
         <nullif/>
@@ -987,7 +994,7 @@
            </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
+    <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
       <schema/>

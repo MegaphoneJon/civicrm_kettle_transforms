@@ -69,6 +69,8 @@
   <created_date>2015&#x2f;01&#x2f;22 18&#x3a;09&#x3a;07.948</created_date>
   <modified_user>-</modified_user>
   <modified_date>2015&#x2f;01&#x2f;22 18&#x3a;09&#x3a;07.948</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
@@ -182,6 +184,27 @@
       <yloc>481</yloc>
       <width>613</width>
       <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>These fields SHOULD get injected in the metadata &#x28;to null zeroes&#x29;&#xa;but certain steps &#x28;Value Mapper, Null If&#x29; don&#x27;t support metadata injection yet. &#xa;http&#x3a;&#x2f;&#x2f;jira.pentaho.com&#x2f;browse&#x2f;PDI-13437</note>
+      <xloc>598</xloc>
+      <yloc>599</yloc>
+      <width>461</width>
+      <heigth>58</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -387,7 +410,7 @@
     <type>MYSQL</type>
     <access>Native</access>
     <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3306</port>
+    <port>3307</port>
     <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
     <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
     <servername/>
@@ -399,7 +422,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
       <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
@@ -437,7 +460,6 @@
   </connection>
   <order>
   <hop> <from>Metadata structure of stream</from><to>remove useless metadata</to><enabled>Y</enabled> </hop>
-  <hop> <from>Generate Civi fieldname based on id</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
   <hop> <from>Inject contact_id</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>custom_columns.txt</from><to>lookup fields only</to><enabled>Y</enabled> </hop>
@@ -445,14 +467,17 @@
   <hop> <from>Add format field</from><to>Sort by Fieldname</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort by Fieldname</from><to>Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Merge Join</to><enabled>Y</enabled> </hop>
-  <hop> <from>Lookup custom field ids by filter</from><to>drop more useless fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>drop more useless fields</from><to>Generate Civi fieldname based on id</to><enabled>Y</enabled> </hop>
   <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>custom fields, no ids</to><enabled>Y</enabled> </hop>
   <hop> <from>custom fields, no ids</from><to>ETL Metadata Injection</to><enabled>Y</enabled> </hop>
-  <hop> <from>supporter_export.txt</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>supporter_with_custom_export.txt</from><to>Keep only certain fields</to><enabled>Y</enabled> </hop>
   <hop> <from>Keep only certain fields</from><to>Metadata structure of stream</to><enabled>Y</enabled> </hop>
   <hop> <from>remove useless metadata</from><to>Add format field</to><enabled>Y</enabled> </hop>
   <hop> <from>Merge Join</from><to>Lookup custom field ids by filter</to><enabled>Y</enabled> </hop>
+  <hop> <from>Lookup custom field ids by filter</from><to>Generate Civi fieldname based on id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Generate Civi fieldname based on id</from><to>drop more useless fields</to><enabled>Y</enabled> </hop>
+  <hop> <from>drop more useless fields</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Generate Civi fieldname based on id</from><to>non-zero enums only</to><enabled>Y</enabled> </hop>
+  <hop> <from>non-zero enums only</from><to>rename_to only</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add format field</name>
@@ -589,7 +614,7 @@
     <name>Generate Civi fieldname based on id</name>
     <type>ScriptValueMod</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -610,7 +635,7 @@
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>141</xloc>
-      <yloc>670</yloc>
+      <yloc>607</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1033,7 +1058,7 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>Custom column.custom column KEY</name>
+        <name>custom_column.custom_column_KEY</name>
         <field>filter</field>
         <condition>&#x3d;</condition>
         <name2/>
@@ -1071,7 +1096,7 @@
       <key>Fieldname</key>
     </keys_1>
     <keys_2>
-      <key>Custom column.name</key>
+      <key>custom_column.name</key>
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -1156,7 +1181,7 @@
       <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>Custom column.name</name>
+        <name>custom_column.name</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <presorted>N</presorted>
@@ -1244,7 +1269,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>Custom column.custom column KEY</name>
+        <name>custom_column.custom_column_KEY</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1255,7 +1280,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.data table</name>
+        <name>custom_column.data_table</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1266,7 +1291,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.Date Created</name>
+        <name>custom_column.Date_Created</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1277,7 +1302,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.label</name>
+        <name>custom_column.label</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1288,7 +1313,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.type</name>
+        <name>custom_column.type</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1299,7 +1324,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.Description</name>
+        <name>custom_column.Description</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1310,7 +1335,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column. Order</name>
+        <name>custom_column._Order</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1321,7 +1346,18 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Custom column.name</name>
+        <name>custom_column.name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>custom_column.is_a_zero_index_enum</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1367,11 +1403,15 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>rename_to</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>137</xloc>
-      <yloc>603</yloc>
+      <xloc>146</xloc>
+      <yloc>669</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1387,11 +1427,19 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>Custom column.custom column KEY</name>
+    <fields>      <field>        <name>custom_column.custom_column_KEY</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Custom column.name</name>
+      </field>      <field>        <name>custom_column.name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column.is_a_zero_index_enum</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>custom_column.type</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -1400,6 +1448,47 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>320</xloc>
       <yloc>378</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>non-zero enums only</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>custom_column.is_a_zero_index_enum</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>0</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>custom_column.type</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>enum</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>390</xloc>
+      <yloc>601</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1433,7 +1522,31 @@
     </step>
 
   <step>
-    <name>supporter_export.txt</name>
+    <name>rename_to only</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>custom_column.name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>506</xloc>
+      <yloc>599</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>supporter_with_custom_export.txt</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1443,7 +1556,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;supporter_export.txt</filename>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;raw data&#x2f;supporter_with_custom_export.txt</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -2614,6 +2727,17 @@
       </field>
       <field>
         <name>name__org</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>College_University</name>
         <type>String</type>
         <format/>
         <currency/>

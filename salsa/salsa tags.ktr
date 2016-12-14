@@ -94,11 +94,11 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Salsa generates an unholy number of tags.&#xa;It&#x27;s a good idea to ask the client to specify which you want to keep, drop them in here, and dump the rest.</note>
-      <xloc>144</xloc>
-      <yloc>167</yloc>
-      <width>625</width>
-      <heigth>42</heigth>
+      <note>Salsa generates an unholy number of tags.&#xa;On the first run-through, skip these steps.&#xa;After discusstion with the client to specify which you want to keep, drop them in here, and dump the rest.</note>
+      <xloc>242</xloc>
+      <yloc>213</yloc>
+      <width>622</width>
+      <heigth>58</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -120,6 +120,27 @@
       <yloc>24</yloc>
       <width>392</width>
       <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>The following steps are optional, and are used if you&#x27;re deduping&#xa;Salsa against contacts already imported to Civi&#x3a;&#xa;salsa_dedupe_list&#xa;Stream lookup&#xa;Merge in dedupe info from Civi</note>
+      <xloc>267</xloc>
+      <yloc>101</yloc>
+      <width>383</width>
+      <heigth>90</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -294,6 +315,32 @@
     </attributes>
   </connection>
   <connection>
+    <name>Raiser&#x27;s Edge LCCR</name>
+    <server>b1rnml2</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>LCCR</database>
+    <port>50827</port>
+    <username>jon</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
+      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -351,28 +398,80 @@
   <hop> <from>tag_export.txt</from><to>rename fields</to><enabled>Y</enabled> </hop>
   <hop> <from>external_identifier to contact_id</from><to>filter records with no contact_id</to><enabled>Y</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>remove non-import fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>cli_entity_tag</to><enabled>N</enabled> </hop>
   <hop> <from>filter invalid tags</from><to>Sort rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort rows</from><to>Unique rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Unique rows</from><to>remove non-group fields</to><enabled>Y</enabled> </hop>
   <hop> <from>remove non-group fields</from><to>invalid_tags</to><enabled>Y</enabled> </hop>
   <hop> <from>filter records with no contact_id</from><to>change &#x2b; to underscore in tag names</to><enabled>Y</enabled> </hop>
-  <hop> <from>invalid_tags</from><to>description is &#x22;imported from Salsa&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>description is &#x22;imported from Salsa&#x22;</from><to>create tags</to><enabled>N</enabled> </hop>
-  <hop> <from>rename fields</from><to>Only keep these tags</to><enabled>Y</enabled> </hop>
-  <hop> <from>Only keep these tags</from><to>Keep tags only</to><enabled>Y</enabled> </hop>
-  <hop> <from>Keep tags only</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>change &#x2b; to underscore in tag names</from><to>Lookup tags as a group</to><enabled>Y</enabled> </hop>
-  <hop> <from>change &#x2b; to underscore in tag names</from><to>tag id lookup</to><enabled>N</enabled> </hop>
-  <hop> <from>description is &#x22;imported from Salsa&#x22;</from><to>create tags as groups</to><enabled>N</enabled> </hop>
+  <hop> <from>invalid_tags</from><to>description is &#x22;imported from Salsa&#x22;, entity is &#x22;Contact&#x22;</to><enabled>Y</enabled> </hop>
+  <hop> <from>description is &#x22;imported from Salsa&#x22;, entity is &#x22;Contact&#x22;</from><to>create tags</to><enabled>Y</enabled> </hop>
+  <hop> <from>change &#x2b; to underscore in tag names</from><to>Lookup tags as a group</to><enabled>N</enabled> </hop>
+  <hop> <from>change &#x2b; to underscore in tag names</from><to>tag id lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>description is &#x22;imported from Salsa&#x22;, entity is &#x22;Contact&#x22;</from><to>create tags as groups</to><enabled>N</enabled> </hop>
   <hop> <from>tag id lookup</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
   <hop> <from>Lookup tags as a group</from><to>filter invalid tags</to><enabled>Y</enabled> </hop>
-  <hop> <from>remove non-import fields</from><to>rename tag_id to group_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>filter records with no contact_id</from><to>TEMP</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>rename tag_id to group_id</to><enabled>N</enabled> </hop>
   <hop> <from>Check for existing group_contact</from><to>New group_contacts only</to><enabled>Y</enabled> </hop>
   <hop> <from>rename tag_id to group_id</from><to>Check for existing group_contact</to><enabled>Y</enabled> </hop>
   <hop> <from>New group_contacts only</from><to>cli_tag_as_group</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename fields</from><to>Only keep these tags</to><enabled>N</enabled> </hop>
+  <hop> <from>Only keep these tags</from><to>Keep tags only</to><enabled>Y</enabled> </hop>
+  <hop> <from>Stream lookup</from><to>Merge in dedupe info from Civi</to><enabled>Y</enabled> </hop>
+  <hop> <from>salsa_dedupe_list</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>rename fields</from><to>Stream lookup</to><enabled>Y</enabled> </hop>
+  <hop> <from>Merge in dedupe info from Civi</from><to>external_identifier to contact_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>remove non-import fields</from><to>Check for existing entity_tag</to><enabled>Y</enabled> </hop>
+  <hop> <from>Check for existing entity_tag</from><to>New entity_tag only</to><enabled>Y</enabled> </hop>
+  <hop> <from>New entity_tag only</from><to>cli_entity_tag</to><enabled>Y</enabled> </hop>
   </order>
+  <step>
+    <name>Check for existing group_contact</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>civicrm_group_contact</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id</name>
+        <field>contact_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>group_id</name>
+        <field>group_id</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>162</xloc>
+      <yloc>892</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
   <step>
     <name>Keep tags only</name>
     <type>FilterRows</type>
@@ -396,8 +495,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>81</xloc>
-      <yloc>266</yloc>
+      <xloc>168</xloc>
+      <yloc>261</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -445,6 +544,35 @@
     </step>
 
   <step>
+    <name>New group_contacts only</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>id</leftvalue>
+ <function>IS NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>162</xloc>
+      <yloc>949</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Only keep these tags</name>
     <type>ValueMapper</type>
     <description/>
@@ -459,323 +587,11 @@
     <target_field>keep</target_field>
     <non_match_default>0</non_match_default>
     <fields>
-      <field>
-        <source_value>2011 Anniv Signup</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2012 Activist Survey</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2012 Conference Attendee</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2012 Voter</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2013 March Mailing</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2014 March Empower</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2014 March Mailing</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2014 Voter</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>AASP</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>AC Labor Party</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Activist List</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>archive</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Board Member 2012</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Board Member 2014</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>chicago single-payer action network</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>CNYH Albany</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>CNYH Buffalo</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>CNYH Long Island</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>CNYH Rochester</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>CNYH Syracuse</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Conference 2013 Attendee</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Divest C</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Divest Non-C</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Divestment Campaign</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>dubois</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Empower Call List 2012</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCAT</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - Austin</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - Dallas</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - GI</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - Houston</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - Media</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCFAT - PNHP</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCN Coordinator</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCN MD Movie</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCN-MD</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>HCN-NH</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Health Care for All Philadelphia</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare Now New York</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Activist</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Board</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Coordinator</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Member</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; New Hampshire</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Staff</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Healthcare-NOW&#x21; Supporter</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Houston Everybody Institute</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Labor Campaign for Single Payer</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP CLCs</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP Conference 2011</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP General</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP Non Endorsing CLCs</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP Non Endorsing State Feds</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP Open Letter</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP optinNewsite</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP Partial List</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP pledge</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>LCSP State Feds</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Legislative Contact</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Major Donors 2013</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Medicare Talk</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>NC Survey</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>NJ One Plan</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>No</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>NOW 2011</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>OPS 2012</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>RootsActionWorstVote2014</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>SCAPHA</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Single Payer</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Single Payer New York</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Single Payer New York Activist</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Single Payer Now</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Socialist Caucus of the APHA</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Southern States 2012</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>UE Action</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>UnitedHealth</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Worst Ins 2013</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>UnitedHealth</source_value>
-        <target_value>1</target_value>
-      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>170</yloc>
+      <xloc>163</xloc>
+      <yloc>172</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -810,106 +626,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>176</xloc>
       <yloc>717</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>TEMP</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;TEMP</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>tag</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>keep</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>242</xloc>
-      <yloc>414</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1041,8 +757,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>43</xloc>
-      <yloc>867</yloc>
+      <xloc>41</xloc>
+      <yloc>1011</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1244,7 +960,7 @@
       <action-name>getrefcount</action-name>
       <action-name>setvalue</action-name>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created Date&#x22;,&#x22;description&#x22;&#x3a;&#x22;Date and time that tag was created.&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_date&#x22;,&#x22;type&#x22;&#x3a;12&#x7d;</fieldDef>
         <fieldName>created_date</fieldName>
         <name>created_date</name>
         <title>Tag Created Date</title>
@@ -1252,7 +968,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Created By&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Contact_DAO_Contact&#x22;,&#x22;description&#x22;&#x3a;&#x22;FK to civicrm_contact, who created this tag&#x22;,&#x22;name&#x22;&#x3a;&#x22;created_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Contact&#x22;&#x7d;</fieldDef>
         <fieldName>created_id</fieldName>
         <name>created_id</name>
         <title>Tag Created By</title>
@@ -1260,7 +976,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;api.aliases&#x22;&#x3a;&#x5b;&#x22;tag_id&#x22;&#x5d;,&#x22;description&#x22;&#x3a;&#x22;Tag ID&#x22;,&#x22;name&#x22;&#x3a;&#x22;id&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;1&#x7d;</fieldDef>
         <fieldName>id</fieldName>
         <name>id</name>
         <title>Tag ID</title>
@@ -1276,7 +992,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Description&#x22;,&#x22;maxlength&#x22;&#x3a;255,&#x22;description&#x22;&#x3a;&#x22;Optional verbose description of the tag.&#x22;,&#x22;name&#x22;&#x3a;&#x22;description&#x22;,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;45&#x7d;</fieldDef>
         <fieldName>description</fieldName>
         <name>description</name>
         <title>Description</title>
@@ -1284,7 +1000,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Tag Name&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;description&#x22;&#x3a;&#x22;Name of Tag.&#x22;,&#x22;name&#x22;&#x3a;&#x22;name&#x22;,&#x22;required&#x22;&#x3a;true,&#x22;type&#x22;&#x3a;2,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
         <fieldName>name</fieldName>
         <name>name</name>
         <title>Tag Name</title>
@@ -1292,7 +1008,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Used For&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;used_for&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;optionGroupName&#x22;&#x3a;&#x22;tag_used_for&#x22;&#x7d;,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Used For&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;maxlength&#x22;&#x3a;64,&#x22;name&#x22;&#x3a;&#x22;used_for&#x22;,&#x22;html&#x22;&#x3a;&#x7b;&#x22;type&#x22;&#x3a;&#x22;Select&#x22;&#x7d;,&#x22;type&#x22;&#x3a;2,&#x22;pseudoconstant&#x22;&#x3a;&#x7b;&#x22;optionGroupName&#x22;&#x3a;&#x22;tag_used_for&#x22;,&#x22;optionEditPath&#x22;&#x3a;&#x22;civicrm&#x5c;&#x2f;admin&#x5c;&#x2f;options&#x5c;&#x2f;tag_used_for&#x22;&#x7d;,&#x22;size&#x22;&#x3a;30&#x7d;</fieldDef>
         <fieldName>used_for</fieldName>
         <name>used_for</name>
         <title>Used For</title>
@@ -1300,7 +1016,7 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Display Tag&#x3f;&#x22;,&#x22;default&#x22;&#x3a;&#x22;1&#x22;,&#x22;description&#x22;&#x3a;&#x22;Is this tag selectable &#x5c;&#x2f; displayed&#x22;,&#x22;name&#x22;&#x3a;&#x22;is_selectable&#x22;,&#x22;type&#x22;&#x3a;16&#x7d;</fieldDef>
         <fieldName>is_selectable</fieldName>
         <name>is_selectable</name>
         <title>Display Tag&#x3f;</title>
@@ -1316,13 +1032,23 @@
         <source>getfields</source>
       </field>
       <field>
-        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Parent Tag&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Tag&#x22;,&#x22;name&#x22;&#x3a;&#x22;parent_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Tag&#x22;&#x7d;</fieldDef>
+        <fieldDef>&#x7b;&#x22;title&#x22;&#x3a;&#x22;Parent Tag&#x22;,&#x22;default&#x22;&#x3a;&#x22;NULL&#x22;,&#x22;FKClassName&#x22;&#x3a;&#x22;CRM_Core_DAO_Tag&#x22;,&#x22;description&#x22;&#x3a;&#x22;Optional parent id for this tag.&#x22;,&#x22;name&#x22;&#x3a;&#x22;parent_id&#x22;,&#x22;type&#x22;&#x3a;1,&#x22;FKApiName&#x22;&#x3a;&#x22;Tag&#x22;&#x7d;</fieldDef>
         <fieldName>parent_id</fieldName>
         <name>parent_id</name>
         <title>Parent Tag</title>
         <type>2</type>
         <source>getfields</source>
       </field>
+      <key-index>tag</key-index>
+      <key-index>description</key-index>
+      <output-field>
+        <input-field>description</input-field>
+        <output-field>description</output-field>
+      </output-field>
+      <output-field>
+        <input-field>tag</input-field>
+        <output-field>name</output-field>
+      </output-field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>821</xloc>
@@ -1630,7 +1356,7 @@
     </step>
 
   <step>
-    <name>description is &#x22;imported from Salsa&#x22;</name>
+    <name>description is &#x22;imported from Salsa&#x22;, entity is &#x22;Contact&#x22;</name>
     <type>Constant</type>
     <description/>
     <distribute>Y</distribute>
@@ -1745,7 +1471,7 @@
            <schema_name/>
            </partitioning>
 <send_true_to>change &#x2b; to underscore in tag names</send_true_to>
-<send_false_to>TEMP</send_false_to>
+<send_false_to/>
     <compare>
 <condition>
  <negated>N</negated>
@@ -1889,11 +1615,11 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>tag.tag</name>
+    <fields>      <field>        <name>Tag.tag&#x28;tag&#x29;</name>
         <rename>tag</rename>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>tag_data.table_key</name>
+      </field>      <field>        <name>Tag data.table key&#x28;tag_data&#x29;</name>
         <rename>external_identifier</rename>
         <length>-2</length>
         <precision>-2</precision>
@@ -1992,7 +1718,7 @@
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>	</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure/>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
@@ -2002,7 +1728,7 @@
     <encoding/>
     <fields>
       <field>
-        <name>tag.tag</name>
+        <name>Tag.tag&#x28;tag&#x29;</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2013,7 +1739,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>tag_data.table_key</name>
+        <name>Tag data.table key&#x28;tag_data&#x29;</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2033,7 +1759,206 @@
     </step>
 
   <step>
-    <name>Check for existing group_contact</name>
+    <name>Merge in dedupe info from Civi</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var external_identifier&#x3b;&#xa;&#xa;&#x2f;&#x2f;If the record exists in Civi, it&#x27;s a dupe.&#xa;&#x2f;&#x2f;So substitute the external_identifier and name from Civi into the data stream.&#xa;if&#x28;external_identifier_civi&#x29; &#x7b;&#xa;  external_identifier &#x3d; external_identifier_civi&#x3b;&#xa;&#x7d;&#xa;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>external_identifier</name>
+        <rename>external_identifier</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>81</xloc>
+      <yloc>259</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <from>salsa_dedupe_list</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>external_identifier</name>
+        <field>Supporter KEY</field>
+      </key>
+      <value>
+        <name>external_identifier_civi</name>
+        <rename>external_identifier_civi</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>81</xloc>
+      <yloc>200</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>salsa_dedupe_list</name>
+    <type>CsvInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <filename>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;salsa_dedupe_list.csv</filename>
+    <filename_field/>
+    <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>&#x22;</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding/>
+    <fields>
+      <field>
+        <name>Supporter KEY</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>email</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>external_identifier_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>first_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>middle_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>last_name_civi</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>0</xloc>
+      <yloc>135</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Check for existing entity_tag</name>
     <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
@@ -2049,19 +1974,19 @@
     <cache_size>0</cache_size>
     <lookup>
       <schema/>
-      <table>civicrm_group_contact</table>
+      <table>civicrm_entity_tag</table>
       <orderby/>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>contact_id</name>
-        <field>contact_id</field>
+        <field>entity_id</field>
         <condition>&#x3d;</condition>
         <name2/>
       </key>
       <key>
-        <name>group_id</name>
-        <field>group_id</field>
+        <name>tag_id</name>
+        <field>tag_id</field>
         <condition>&#x3d;</condition>
         <name2/>
       </key>
@@ -2074,14 +1999,14 @@
     </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
-      <yloc>892</yloc>
+      <xloc>54</xloc>
+      <yloc>850</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>New group_contacts only</name>
+    <name>New entity_tag only</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2103,8 +2028,8 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>162</xloc>
-      <yloc>949</yloc>
+      <xloc>41</xloc>
+      <yloc>925</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
