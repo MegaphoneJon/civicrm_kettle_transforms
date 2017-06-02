@@ -10,34 +10,395 @@
     <parameters>
     </parameters>
     <log>
-<trans-log-table><connection/>
-<schema/>
-<table/>
-<size_limit_lines/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
-<perf-log-table><connection/>
-<schema/>
-<table/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
-<channel-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
-<step-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
-<metrics-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
+      <trans-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <size_limit_lines/>
+        <interval/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject/>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject/>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <interval/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
     </log>
     <maxdate>
       <connection/>
@@ -65,10 +426,10 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;18 23&#x3a;18&#x3a;35.243</created_date>
-  <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;18 23&#x3a;18&#x3a;35.243</modified_date>
+    <created_user>-</created_user>
+    <created_date>2014&#x2f;09&#x2f;18 23&#x3a;18&#x3a;35.243</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2014&#x2f;09&#x2f;18 23&#x3a;18&#x3a;35.243</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -96,137 +457,6 @@
     </notepad>
   </notepads>
   <connection>
-    <name>CCR</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ccr_civi</database>
-    <port>3306</port>
-    <username>ccr</username>
-    <password>Encrypted 2befddfa903df938da80cad78db9ba8d5</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_civi</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN legacy</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_legacy</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code><attribute>convertToNull</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Newpress2</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>newpress_civi</database>
-    <port>3306</port>
-    <username>newpress</username>
-    <password>Encrypted 2bee8c7a702d3938cb90ca365d297a6d8</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Raiser&#x27;s Edge LCCR</name>
-    <server>b1rnml2</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>LCCR</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
@@ -253,48 +483,125 @@
       <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>UJC</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ujc_civi</database>
-    <port>3306</port>
-    <username>ujc</username>
-    <password>Encrypted 2beffceb105cf918cbe10a265d785a6df</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
   <order>
-  <hop> <from>Add&#x2f;remove &#x22;http&#x3a;&#x2f;&#x2f;&#x22; to Websites that need it</from><to>Convert Twitter IDs to URLs</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove non-import fields 3</from><to>Add&#x2f;remove &#x22;http&#x3a;&#x2f;&#x2f;&#x22; to Websites that need it</to><enabled>Y</enabled> </hop>
-  <hop> <from>website_type_id lookup</from><to>Remove non-import fields 3</to><enabled>Y</enabled> </hop>
-  <hop> <from>Website</from><to>Remove blank lines</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove blank lines</from><to>Remap website_type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove website &#x3e; 128 chars</from><to>get names for invalid website</to><enabled>Y</enabled> </hop>
-  <hop> <from>get names for invalid website</from><to>invalid_website</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert Twitter IDs to URLs</from><to>Remove website &#x3e; 128 chars</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove website &#x3e; 128 chars</from><to>Force website_type_id to integers</to><enabled>Y</enabled> </hop>
-  <hop> <from>Force website_type_id to integers</from><to>Mapping output specification</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remap website_type</from><to>Add website_option_group_id to stream</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get website option group ID</from><to>Add website_option_group_id to stream</to><enabled>Y</enabled> </hop>
-  <hop> <from>Add website_option_group_id to stream</from><to>website_type_id lookup</to><enabled>Y</enabled> </hop>
+    <hop>
+      <from>Add&#x2f;remove &#x22;http&#x3a;&#x2f;&#x2f;&#x22; to Websites that need it</from>
+      <to>Convert Twitter IDs to URLs</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove non-import fields 3</from>
+      <to>Add&#x2f;remove &#x22;http&#x3a;&#x2f;&#x2f;&#x22; to Websites that need it</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>website_type_id lookup</from>
+      <to>Remove non-import fields 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Website</from>
+      <to>Remove blank lines</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove blank lines</from>
+      <to>Remap website_type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove website &#x3e; 128 chars</from>
+      <to>get names for invalid website</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove website &#x3e; 128 chars</from>
+      <to>Force website_type_id to integers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Force website_type_id to integers</from>
+      <to>valid_website</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap website_type</from>
+      <to>Add website_option_group_id to stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get website option group ID</from>
+      <to>Add website_option_group_id to stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>get names for invalid website</from>
+      <to>invalid_website</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert Twitter IDs to URLs</from>
+      <to>Valid URL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Valid URL</from>
+      <to>Remove website &#x3e; 128 chars</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Valid URL</from>
+      <to>get names for invalid website</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add website_option_group_id to stream</from>
+      <to>Trim&#x2f;lowercase URL</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Trim&#x2f;lowercase URL</from>
+      <to>website_type_id lookup</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Add website_option_group_id to stream</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <cache_size>500</cache_size>
+      <main>Remap website_type</main>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue/>
+ <function>&#x3d;</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>267</xloc>
+      <yloc>263</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
   <step>
     <name>Add&#x2f;remove &#x22;http&#x3a;&#x2f;&#x2f;&#x22; to Websites that need it</name>
     <type>ScriptValueMod</type>
@@ -302,10 +609,10 @@
     <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
@@ -317,12 +624,18 @@
         <length>-1</length>
         <precision>-1</precision>
         <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>268</xloc>
-      <yloc>490</yloc>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -332,10 +645,10 @@
     <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
@@ -347,12 +660,18 @@
         <length>-1</length>
         <precision>-1</precision>
         <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>272</xloc>
-      <yloc>561</yloc>
+      </field>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -362,10 +681,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
       <meta>        <name>website_type_id</name>
         <rename>website_type_id</rename>
@@ -382,31 +701,75 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>271</xloc>
-      <yloc>696</yloc>
+      </meta>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
-    <name>Mapping output specification</name>
+    <name>Get website option group ID</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select id AS website_option_group_id from civicrm_option_group WHERE title &#x3d; &#x27;Website Type&#x27;&#x3b;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>410</xloc>
+      <yloc>201</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>valid_website</name>
     <type>MappingOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>267</xloc>
-      <yloc>751</yloc>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -416,10 +779,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <field_to_use>website_type</field_to_use>
     <target_field/>
     <non_match_default/>
@@ -441,12 +804,18 @@
         <target_value>Main</target_value>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>263</xloc>
       <yloc>187</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -456,10 +825,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
 <send_true_to/>
 <send_false_to/>
     <compare>
@@ -470,12 +839,18 @@
  <rightvalue/>
  </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>265</xloc>
       <yloc>133</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -485,29 +860,26 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>      <field>        <name>url</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>      <field>        <name>website_type_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>268</xloc>
-      <yloc>421</yloc>
+    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -517,10 +889,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
 <send_true_to>Force website_type_id to integers</send_true_to>
 <send_false_to>get names for invalid website</send_false_to>
     <compare>
@@ -531,12 +903,18 @@
  <rightvalue/>
  <value><name>constant</name><type>String</type><text>.&#x7b;0,128&#x7d;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>275</xloc>
-      <yloc>630</yloc>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -546,10 +924,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>
       <field>
         <name>url</name>
@@ -571,12 +949,18 @@
       </field>
         <select_unspecified>N</select_unspecified>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>264</xloc>
       <yloc>71</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -586,10 +970,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
@@ -631,148 +1015,18 @@
         <type>Integer</type>
       </value>
     </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>397</xloc>
-      <yloc>664</yloc>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>invalid_website</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;errors&#x2f;invalid_website</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>url</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>website_type_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>475</xloc>
-      <yloc>684</yloc>
-      <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
@@ -782,10 +1036,10 @@
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
@@ -815,75 +1069,123 @@
         <type>Integer</type>
       </value>
     </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>265</xloc>
-      <yloc>343</yloc>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
-    <name>Get website option group ID</name>
-    <type>TableInput</type>
+    <name>invalid_website</name>
+    <type>MappingOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select id AS website_option_group_id from civicrm_option_group WHERE title &#x3d; &#x27;Website Type&#x27;&#x3b;</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>410</xloc>
-      <yloc>201</yloc>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
     </step>
 
   <step>
-    <name>Add website_option_group_id to stream</name>
-    <type>JoinRows</type>
+    <name>Valid URL</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <cache_size>500</cache_size>
-      <main>Remap website_type</main>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<send_true_to>Remove website &#x3e; 128 chars</send_true_to>
+<send_false_to>get names for invalid website</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
- <leftvalue/>
- <function>&#x3d;</function>
+ <leftvalue>url</leftvalue>
+ <function>REGEXP</function>
  <rightvalue/>
- </condition>
+ <value><name>constant</name><type>String</type><text>&#x28;&#x3f;i&#x29;&#x5e;&#x5b;a-z&#x5d;&#x28;&#x3f;&#x3a;&#x5b;-a-z0-9&#x5c;&#x2b;&#x5c;.&#x5d;&#x29;&#x2a;&#x3a;&#x28;&#x3f;&#x3a;&#x5c;&#x2f;&#x5c;&#x2f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x5d;&#x29;&#x2a;&#x40;&#x29;&#x3f;&#x28;&#x3f;&#x3a;&#x5c;&#x5b;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;6&#x7d;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x3a;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;5&#x7d;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;4&#x7d;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;3&#x7d;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;0,2&#x7d;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;2&#x7d;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;0,3&#x7d;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;0,4&#x7d;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x29;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;0,5&#x7d;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x3a;&#x29;&#x7b;0,6&#x7d;&#x5b;0-9a-f&#x5d;&#x7b;1,4&#x7d;&#x29;&#x3f;&#x3a;&#x3a;&#x29;&#x7c;v&#x5b;0-9a-f&#x5d;&#x2b;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x5d;&#x2b;&#x29;&#x5c;&#x5d;&#x7c;&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x28;&#x3f;&#x3a;&#x5c;.&#x28;&#x3f;&#x3a;&#x5b;0-9&#x5d;&#x7c;&#x5b;1-9&#x5d;&#x5b;0-9&#x5d;&#x7c;1&#x5b;0-9&#x5d;&#x5b;0-9&#x5d;&#x7c;2&#x5b;0-4&#x5d;&#x5b;0-9&#x5d;&#x7c;25&#x5b;0-5&#x5d;&#x29;&#x29;&#x7b;3&#x7d;&#x7c;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x40;&#x5d;&#x29;&#x2a;&#x29;&#x28;&#x3f;&#x3a;&#x3a;&#x5b;0-9&#x5d;&#x2a;&#x29;&#x3f;&#x28;&#x3f;&#x3a;&#x5c;&#x2f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x2a;&#x29;&#x2a;&#x7c;&#x5c;&#x2f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x2b;&#x29;&#x28;&#x3f;&#x3a;&#x5c;&#x2f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x2a;&#x29;&#x2a;&#x29;&#x3f;&#x7c;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x2b;&#x29;&#x28;&#x3f;&#x3a;&#x5c;&#x2f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x2a;&#x29;&#x2a;&#x7c;&#x28;&#x3f;&#x21;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x29;&#x29;&#x28;&#x3f;&#x3a;&#x5c;&#x3f;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x7c;&#x5b;&#x5c;x&#x7b;E000&#x7d;-&#x5c;x&#x7b;F8FF&#x7d;&#x5c;x&#x7b;F0000&#x7d;-&#x5c;x&#x7b;FFFFD&#x7d;&#x5c;x&#x7b;100000&#x7d;-&#x5c;x&#x7b;10FFFD&#x7d;&#x5c;&#x2f;&#x5c;&#x3f;&#x5d;&#x29;&#x2a;&#x29;&#x3f;&#x28;&#x3f;&#x3a;&#x5c;&#x23;&#x28;&#x3f;&#x3a;&#x28;&#x3f;&#x3a;&#x25;&#x5b;0-9a-f&#x5d;&#x5b;0-9a-f&#x5d;&#x7c;&#x5b;-a-z0-9&#x5c;._&#x7e;&#x5c;x&#x7b;A0&#x7d;-&#x5c;x&#x7b;D7FF&#x7d;&#x5c;x&#x7b;F900&#x7d;-&#x5c;x&#x7b;FDCF&#x7d;&#x5c;x&#x7b;FDF0&#x7d;-&#x5c;x&#x7b;FFEF&#x7d;&#x5c;x&#x7b;10000&#x7d;-&#x5c;x&#x7b;1FFFD&#x7d;&#x5c;x&#x7b;20000&#x7d;-&#x5c;x&#x7b;2FFFD&#x7d;&#x5c;x&#x7b;30000&#x7d;-&#x5c;x&#x7b;3FFFD&#x7d;&#x5c;x&#x7b;40000&#x7d;-&#x5c;x&#x7b;4FFFD&#x7d;&#x5c;x&#x7b;50000&#x7d;-&#x5c;x&#x7b;5FFFD&#x7d;&#x5c;x&#x7b;60000&#x7d;-&#x5c;x&#x7b;6FFFD&#x7d;&#x5c;x&#x7b;70000&#x7d;-&#x5c;x&#x7b;7FFFD&#x7d;&#x5c;x&#x7b;80000&#x7d;-&#x5c;x&#x7b;8FFFD&#x7d;&#x5c;x&#x7b;90000&#x7d;-&#x5c;x&#x7b;9FFFD&#x7d;&#x5c;x&#x7b;A0000&#x7d;-&#x5c;x&#x7b;AFFFD&#x7d;&#x5c;x&#x7b;B0000&#x7d;-&#x5c;x&#x7b;BFFFD&#x7d;&#x5c;x&#x7b;C0000&#x7d;-&#x5c;x&#x7b;CFFFD&#x7d;&#x5c;x&#x7b;D0000&#x7d;-&#x5c;x&#x7b;DFFFD&#x7d;&#x5c;x&#x7b;E1000&#x7d;-&#x5c;x&#x7b;EFFFD&#x7d;&#x21;&#x5c;&#x24;&#x26;&#x27;&#x5c;&#x28;&#x5c;&#x29;&#x5c;&#x2a;&#x5c;&#x2b;,&#x3b;&#x3d;&#x3a;&#x40;&#x5d;&#x29;&#x7c;&#x5b;&#x5c;&#x2f;&#x5c;&#x3f;&#x5d;&#x29;&#x2a;&#x29;&#x3f;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>267</xloc>
-      <yloc>263</yloc>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
-      </GUI>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Trim&#x2f;lowercase URL</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>url</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
     </step>
 
   <step_error_handling>
   </step_error_handling>
-   <slave-step-copy-partition-distribution>
-</slave-step-copy-partition-distribution>
-   <slave_transformation>N</slave_transformation>
-
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
 </transformation>
