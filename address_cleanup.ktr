@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>These three steps seem silly,&#xa;but this is much more performant &#xa;because it allows caching.</note>
-      <xloc>16</xloc>
-      <yloc>416</yloc>
+      <xloc>32</xloc>
+      <yloc>496</yloc>
       <width>206</width>
       <heigth>58</heigth>
       <fontname>Arial</fontname>
@@ -493,11 +493,6 @@
     <hop>
       <from>Remap countries</from>
       <to>remap states</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>remap states</from>
-      <to>remap location_type</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -626,11 +621,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>remap location_type</from>
-      <to>country_id by ISO</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>country_id by ISO</from>
       <to>country_id by name</to>
       <enabled>Y</enabled>
@@ -648,16 +638,6 @@
     <hop>
       <from>state_province_id by abbrev</from>
       <to>Combine state_province_ids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remap obviously Canadian provinces</from>
-      <to>state_province_id by name</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>US to Canada</from>
-      <to>state_province_id by name</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -683,6 +663,46 @@
     <hop>
       <from>Title Case Country</from>
       <to>Remap blank country to united States</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap location_type</from>
+      <to>country_id by ISO</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap states</from>
+      <to>remap states 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap states 2</from>
+      <to>remap location_type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>US to Canada</from>
+      <to>Remap obviously US States</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap obviously Canadian provinces</from>
+      <to>Remap obviously US States</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap obviously US States</from>
+      <to>Canada to US</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Canada to US</from>
+      <to>state_province_id by name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap obviously US States</from>
+      <to>state_province_id by name</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -961,7 +981,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>608</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1000,8 +1020,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>928</yloc>
+      <xloc>176</xloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1672,6 +1692,66 @@
         <source_value>POL</source_value>
         <target_value>Poland</target_value>
       </field>
+      <field>
+        <source_value>ON</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Quebec</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>ONT</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>CAN</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Toronto, Can.</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>BC</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Ontario,Can.</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>ALberta</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>5027   USA</source_value>
+        <target_value>United States</target_value>
+      </field>
+      <field>
+        <source_value>ONT CAN</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Ontario</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>CAN.</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Ont, Canada</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Scoti</source_value>
+        <target_value>Canada</target_value>
+      </field>
+      <field>
+        <source_value>Ontario Canada</source_value>
+        <target_value>Canada</target_value>
+      </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -1699,7 +1779,7 @@
       <schema_name/>
     </partitioning>
 <send_true_to>US to Canada</send_true_to>
-<send_false_to>state_province_id by name</send_false_to>
+<send_false_to>Remap obviously US States</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -1729,7 +1809,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>688</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1880,7 +1960,7 @@
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>640</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1948,8 +2028,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>848</yloc>
+      <xloc>80</xloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1997,7 +2077,7 @@
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>448</yloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -2045,7 +2125,7 @@
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>528</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -2207,8 +2287,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>384</yloc>
+      <xloc>96</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -2340,6 +2420,226 @@
         <source_value>ot</source_value>
         <target_value/>
       </field>
+      <field>
+        <source_value>N.Y</source_value>
+        <target_value>NY</target_value>
+      </field>
+      <field>
+        <source_value>MAS</source_value>
+        <target_value>MA</target_value>
+      </field>
+      <field>
+        <source_value>NEV</source_value>
+        <target_value>NV</target_value>
+      </field>
+      <field>
+        <source_value>PEN</source_value>
+        <target_value>PA</target_value>
+      </field>
+      <field>
+        <source_value>ILL</source_value>
+        <target_value>IL</target_value>
+      </field>
+      <field>
+        <source_value>N.J</source_value>
+        <target_value>NJ</target_value>
+      </field>
+      <field>
+        <source_value>OHI</source_value>
+        <target_value>OH</target_value>
+      </field>
+      <field>
+        <source_value>COL</source_value>
+        <target_value>CO</target_value>
+      </field>
+      <field>
+        <source_value>MIC</source_value>
+        <target_value>MI</target_value>
+      </field>
+      <field>
+        <source_value>KEN</source_value>
+        <target_value>KY</target_value>
+      </field>
+      <field>
+        <source_value>FLO</source_value>
+        <target_value>FL</target_value>
+      </field>
+      <field>
+        <source_value>ON,</source_value>
+        <target_value>ON</target_value>
+      </field>
+      <field>
+        <source_value>MAR</source_value>
+        <target_value>MD</target_value>
+      </field>
+      <field>
+        <source_value>MIN</source_value>
+        <target_value>MN</target_value>
+      </field>
+      <field>
+        <source_value>CON</source_value>
+        <target_value>CT</target_value>
+      </field>
+      <field>
+        <source_value>Ont</source_value>
+        <target_value>ON</target_value>
+      </field>
+      <field>
+        <source_value>WAS</source_value>
+        <target_value>WA</target_value>
+      </field>
+      <field>
+        <source_value>GEO</source_value>
+        <target_value>GA</target_value>
+      </field>
+      <field>
+        <source_value>PA.</source_value>
+        <target_value>PA</target_value>
+      </field>
+      <field>
+        <source_value>DIS</source_value>
+        <target_value>DC</target_value>
+      </field>
+      <field>
+        <source_value>MN.</source_value>
+        <target_value>MN</target_value>
+      </field>
+      <field>
+        <source_value>VIR</source_value>
+        <target_value>VA</target_value>
+      </field>
+      <field>
+        <source_value>CAL</source_value>
+        <target_value>CA</target_value>
+      </field>
+      <field>
+        <source_value>LOU</source_value>
+        <target_value>LA</target_value>
+      </field>
+      <field>
+        <source_value>UTA</source_value>
+        <target_value>UT</target_value>
+      </field>
+      <field>
+        <source_value>ARI</source_value>
+        <target_value>AZ</target_value>
+      </field>
+      <field>
+        <source_value>ORE</source_value>
+        <target_value>OR</target_value>
+      </field>
+      <field>
+        <source_value>CT.</source_value>
+        <target_value>CT</target_value>
+      </field>
+      <field>
+        <source_value>RHO</source_value>
+        <target_value>RI</target_value>
+      </field>
+      <field>
+        <source_value>WIS</source_value>
+        <target_value>WI</target_value>
+      </field>
+      <field>
+        <source_value>IDA</source_value>
+        <target_value>ID</target_value>
+      </field>
+      <field>
+        <source_value>IND</source_value>
+        <target_value>IN</target_value>
+      </field>
+      <field>
+        <source_value>ALA</source_value>
+        <target_value>AL</target_value>
+      </field>
+      <field>
+        <source_value>ALB</source_value>
+        <target_value>Alberta</target_value>
+      </field>
+      <field>
+        <source_value>BC,</source_value>
+        <target_value>BC</target_value>
+      </field>
+      <field>
+        <source_value>DEL</source_value>
+        <target_value>DE</target_value>
+      </field>
+      <field>
+        <source_value>FL.</source_value>
+        <target_value>FL</target_value>
+      </field>
+      <field>
+        <source_value>GA.</source_value>
+        <target_value>GA</target_value>
+      </field>
+      <field>
+        <source_value>HAW</source_value>
+        <target_value>HI</target_value>
+      </field>
+      <field>
+        <source_value>IOW</source_value>
+        <target_value>IA</target_value>
+      </field>
+      <field>
+        <source_value>KAN</source_value>
+        <target_value>KS</target_value>
+      </field>
+      <field>
+        <source_value>MAI</source_value>
+        <target_value>ME</target_value>
+      </field>
+      <field>
+        <source_value>MD.</source_value>
+        <target_value>MD</target_value>
+      </field>
+      <field>
+        <source_value>MI.</source_value>
+        <target_value>MI</target_value>
+      </field>
+      <field>
+        <source_value>MIS</source_value>
+        <target_value>MS</target_value>
+      </field>
+      <field>
+        <source_value>MON</source_value>
+        <target_value>MT</target_value>
+      </field>
+      <field>
+        <source_value>N&#x3a;Y</source_value>
+        <target_value>NY</target_value>
+      </field>
+      <field>
+        <source_value>N.C</source_value>
+        <target_value>NC</target_value>
+      </field>
+      <field>
+        <source_value>NEB</source_value>
+        <target_value>Nebraska</target_value>
+      </field>
+      <field>
+        <source_value>OKL</source_value>
+        <target_value>OK</target_value>
+      </field>
+      <field>
+        <source_value>QUE</source_value>
+        <target_value>Quebec</target_value>
+      </field>
+      <field>
+        <source_value>Que</source_value>
+        <target_value>Quebec</target_value>
+      </field>
+      <field>
+        <source_value>R.I</source_value>
+        <target_value>RI</target_value>
+      </field>
+      <field>
+        <source_value>S.C</source_value>
+        <target_value>SC</target_value>
+      </field>
+      <field>
+        <source_value>TEN</source_value>
+        <target_value>TN</target_value>
+      </field>
     </fields>
     <cluster_schema/>
     <remotesteps>
@@ -2403,8 +2703,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>896</yloc>
+      <xloc>80</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -2457,52 +2757,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>784</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>state_province_id lookup</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <rowlimit>1</rowlimit>
-    <sql>SELECT id AS state_province_id &#xa;FROM civicrm_state_province&#xa;WHERE country_id &#x3d; &#x3f; AND&#xa;&#x28;abbreviation &#x3d; UPPER&#x28;&#x3f;&#x29; OR&#xa; name &#x3d; &#x3f;&#x29;</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>country_id</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-      </field>
-      <field>
-        <name>state</name>
-        <type>String</type>
-      </field>
-    </parameter>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>848</yloc>
+      <xloc>80</xloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -2607,6 +2863,137 @@
     <GUI>
       <xloc>579</xloc>
       <yloc>612</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>remap states 2</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>state</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>TEX</source_value>
+        <target_value>TX</target_value>
+      </field>
+      <field>
+        <source_value>TX&#x5c;</source_value>
+        <target_value>TX</target_value>
+      </field>
+      <field>
+        <source_value>VER</source_value>
+        <target_value>VT</target_value>
+      </field>
+      <field>
+        <source_value>WES</source_value>
+        <target_value>WV</target_value>
+      </field>
+      <field>
+        <source_value>WYO</source_value>
+        <target_value>WY</target_value>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Remap obviously US States</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<send_true_to>Canada to US</send_true_to>
+<send_false_to>state_province_id by name</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>country_id</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>Integer</type><text>1039</text><length>-1</length><precision>0</precision><isnull>N</isnull><mask>&#x23;&#x3b;-&#x23;</mask></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>state</leftvalue>
+   <function>REGEXP</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>Alabama&#x7c;Alaska&#x7c;Arizona&#x7c;Arkansas&#x7c;California&#x7c;Colorado&#x7c;Connecticut&#x7c;Delaware&#x7c;Florida&#x7c;Georgia&#x7c;Hawaii&#x7c;Idaho&#x7c;Illinois&#x7c;Indiana&#x7c;Iowa&#x7c;Kansas&#x7c;Kentucky&#x7c;Louisiana&#x7c;Maine&#x7c;Maryland&#x7c;Massachusetts&#x7c;Michigan&#x7c;Minnesota&#x7c;Mississippi&#x7c;Missouri&#x7c;Montana&#x7c;Nebraska&#x7c;Nevada&#x7c;New Hampshire&#x7c;New Jersey&#x7c;New Mexico&#x7c;New York&#x7c;North Carolina&#x7c;North Dakota&#x7c;Ohio&#x7c;Oklahoma&#x7c;Oregon&#x7c;Pennsylvania&#x7c;Rhode Island&#x7c;South Carolina&#x7c;South Dakota&#x7c;Tennessee&#x7c;Texas&#x7c;Utah&#x7c;Vermont&#x7c;Virginia&#x7c;Washington&#x7c;West Virginia&#x7c;Wisconsin&#x7c;Wyoming&#x7c;District of Columbia&#x7c;American Samoa&#x7c;Guam&#x7c;Northern Mariana Islands&#x7c;Puerto Rico&#x7c;Virgin Islands&#x7c;United States Minor Outlying Islands&#x7c;Armed Forces Europe&#x7c;Armed Forces Americas&#x7c;Armed Forces Pacific&#x7c;AL&#x7c;AK&#x7c;AZ&#x7c;AR&#x7c;CA&#x7c;CO&#x7c;CT&#x7c;DE&#x7c;FL&#x7c;GA&#x7c;HI&#x7c;ID&#x7c;IL&#x7c;IN&#x7c;IA&#x7c;KS&#x7c;KY&#x7c;LA&#x7c;ME&#x7c;MD&#x7c;MA&#x7c;MI&#x7c;MN&#x7c;MS&#x7c;MO&#x7c;MT&#x7c;NE&#x7c;NV&#x7c;NH&#x7c;NJ&#x7c;NM&#x7c;NY&#x7c;NC&#x7c;ND&#x7c;OH&#x7c;OK&#x7c;OR&#x7c;PA&#x7c;RI&#x7c;SC&#x7c;SD&#x7c;TN&#x7c;TX&#x7c;UT&#x7c;VT&#x7c;VA&#x7c;WA&#x7c;WV&#x7c;WI&#x7c;WY&#x7c;DC&#x7c;AS&#x7c;GU&#x7c;MP&#x7c;PR&#x7c;VI&#x7c;UM&#x7c;AE&#x7c;AA&#x7c;AP</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Canada to US</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>country_id</field_to_use>
+    <target_field/>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1039</source_value>
+        <target_value>1228</target_value>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
