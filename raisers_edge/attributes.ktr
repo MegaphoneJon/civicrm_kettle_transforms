@@ -2,48 +2,409 @@
 <transformation>
   <info>
     <name>RE attributes</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>&#x2f;</directory>
+    <directory>/</directory>
     <parameters>
     </parameters>
     <log>
-<trans-log-table><connection/>
-<schema/>
-<table/>
-<size_limit_lines/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
-<perf-log-table><connection/>
-<schema/>
-<table/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
-<channel-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
-<step-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
-<metrics-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -54,7 +415,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -66,16 +427,16 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>-</created_user>
-  <created_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</created_date>
-  <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;24 17&#x3a;16&#x3a;02.269</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <created_user>-</created_user>
+    <created_date>2014/09/24 17:16:02.269</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>&#x3c;-- To reintegrate multi-value records</note>
+      <note>&lt;-- To reintegrate multi-value records</note>
       <xloc>572</xloc>
       <yloc>655</yloc>
       <width>224</width>
@@ -96,7 +457,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Org-specific.  Remove to grab all attributes.</note>
+      <note>&lt;-- Org-specific.  Remove to grab all attributes.</note>
       <xloc>148</xloc>
       <yloc>80</yloc>
       <width>284</width>
@@ -117,7 +478,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Org-specific&#x3a; Multi-value custom fields only.</note>
+      <note>&lt;-- Org-specific: Multi-value custom fields only.</note>
       <xloc>218</xloc>
       <yloc>293</yloc>
       <width>285</width>
@@ -138,7 +499,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Org-specific</note>
+      <note>&lt;-- Org-specific</note>
       <xloc>559</xloc>
       <yloc>479</yloc>
       <width>100</width>
@@ -159,7 +520,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Org-specific</note>
+      <note>&lt;-- Org-specific</note>
       <xloc>373</xloc>
       <yloc>523</yloc>
       <width>100</width>
@@ -180,7 +541,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&#x3c;-- Org-specific</note>
+      <note>&lt;-- Org-specific</note>
       <xloc>204</xloc>
       <yloc>533</yloc>
       <width>100</width>
@@ -200,188 +561,85 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific</note>
+      <xloc>176</xloc>
+      <yloc>688</yloc>
+      <width>104</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
-    <name>CCR</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ccr_civi</database>
-    <port>3306</port>
-    <username>ccr</username>
-    <password>Encrypted 2befddfa903df938da80cad78db9ba8d5</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CCR Raiser&#x27;s Edge</name>
-    <server>b1rnml2</server>
+    <name>Raiser's Edge</name>
+    <server>${MSSQL_HOSTNAME}</server>
     <type>MSSQLNATIVE</type>
     <access>Native</access>
-    <database>CCR_July_Snapshot</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <database>${MSSQL_DBNAME}</database>
+    <port>1433</port>
+    <username>${MSSQL_USER}</username>
+    <password>${MSSQL_PASSWORD}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_civi</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN legacy</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_legacy</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code><attribute>convertToNull</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Newpress2</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>newpress_civi</database>
-    <port>3306</port>
-    <username>newpress</username>
-    <password>Encrypted 2bee8c7a702d3938cb90ca365d297a6d8</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Raiser&#x27;s Edge CCR</name>
-    <server>b1rnml2</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>CCR_July_Snapshot</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Raiser&#x27;s Edge LCCR</name>
-    <server>b1rnml2</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>LCCR</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>1433</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
     </attributes>
   </connection>
   <connection>
@@ -389,510 +647,738 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
-    <port>3307</port>
-    <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
-    <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3307</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>UJC</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ujc_civi</database>
+    <database>${CIVIDB}</database>
     <port>3306</port>
-    <username>ujc</username>
-    <password>Encrypted 2beffceb105cf918cbe10a265d785a6df</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Give a default activity_date if null</from><to>activity_type_id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>activity_type_id lookup</from><to>Remove non-activity fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove blank groups</from><to>Separate Executive Sig Ink&#x2f;Proxy</to><enabled>Y</enabled> </hop>
-  <hop> <from>group_id lookup</from><to>Remove non-group fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove non-group fields</from><to>cli_attributes_groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove non-activity fields</from><to>status_id &#x3d;2 &#x28;completed&#x29;,source_contact_id&#x3d;3 &#x28;Jon&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Separate Executive Sig Ink&#x2f;Proxy</from><to>-1 is yes</to><enabled>Y</enabled> </hop>
-  <hop> <from>-1 is yes</from><to>group_id lookup</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort on external_identifier&#x2f;category</from><to>Merge Data fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>multi-value custom fields</from><to>Modify interest comments</to><enabled>Y</enabled> </hop>
-  <hop> <from>Modify interest comments</from><to>Concatenate multiple-value fields &#x28;like Interests&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>multi-value custom fields</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Merge Data fields</from><to>Remove length&#x2f;precision from fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Remove length&#x2f;precision from fields</from><to>multi-value custom fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>Concatenate multiple-value fields &#x28;like Interests&#x29;</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Dummy &#x28;do nothing&#x29;</from><to>external ID to contact_id in Civi</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id in Civi</from><to>Atributes to Groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>Atributes to Groups</from><to>Remove blank groups</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id in Civi</from><to>Atributes to Activities</to><enabled>Y</enabled> </hop>
-  <hop> <from>Atributes to Activities</from><to>Give a default activity_date if null</to><enabled>Y</enabled> </hop>
-  <hop> <from>external ID to contact_id in Civi</from><to>Atributes to Custom Fields</to><enabled>Y</enabled> </hop>
-  <hop> <from>TEMP&#x3a; Find select values</from><to>Sort</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort</from><to>Unique rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Atributes to Custom Fields</from><to>data is not blank</to><enabled>Y</enabled> </hop>
-  <hop> <from>re-sort on external_identifier&#x2f;category</from><to>Row denormaliser</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix date formats 3</from><to>fix date formats 3a</to><enabled>Y</enabled> </hop>
-  <hop> <from>fix date formats 3a</from><to>cli_attributes_activities</to><enabled>Y</enabled> </hop>
-  <hop> <from>Categories only</from><to>Sort on category</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort on category</from><to>Count of attribute usage</to><enabled>Y</enabled> </hop>
-  <hop> <from>Count of attribute usage</from><to>attribute_categories</to><enabled>Y</enabled> </hop>
-  <hop> <from>RE Attributes</from><to>Keep only the attributes we want</to><enabled>Y</enabled> </hop>
-  <hop> <from>Keep only the attributes we want</from><to>Sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
-  <hop> <from>Keep only the attributes we want</from><to>Categories only</to><enabled>Y</enabled> </hop>
-  <hop> <from>data is not blank</from><to>re-sort on external_identifier&#x2f;category</to><enabled>Y</enabled> </hop>
-  <hop> <from>status_id &#x3d;2 &#x28;completed&#x29;,source_contact_id&#x3d;3 &#x28;Jon&#x29;</from><to>fix date formats 3</to><enabled>Y</enabled> </hop>
-  <hop> <from>Row denormaliser</from><to>Convert 0 to &#x22;zero&#x22;</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert 0 to &#x22;zero&#x22;</from><to>Convert boolean -1 to 1</to><enabled>Y</enabled> </hop>
-  <hop> <from>Convert boolean -1 to 1</from><to>rename to Civi custom field names</to><enabled>Y</enabled> </hop>
-  <hop> <from>rename to Civi custom field names</from><to>Set contact subtype</to><enabled>Y</enabled> </hop>
-  <hop> <from>Set contact subtype</from><to>cli_attributes_custom_fields</to><enabled>Y</enabled> </hop>
+    <hop>
+      <from>Give a default activity_date if null</from>
+      <to>activity_type_id lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>activity_type_id lookup</from>
+      <to>Remove non-activity fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>group_id lookup</from>
+      <to>Remove non-group fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove non-group fields</from>
+      <to>cli_attributes_groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove non-activity fields</from>
+      <to>status_id =2 (completed),source_contact_id=3 (Jon)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort on external_identifier/category</from>
+      <to>Merge Data fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>multi-value custom fields</from>
+      <to>Modify interest comments</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modify interest comments</from>
+      <to>Concatenate multiple-value fields (like Interests)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>multi-value custom fields</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Data fields</from>
+      <to>Remove length/precision from fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove length/precision from fields</from>
+      <to>multi-value custom fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Concatenate multiple-value fields (like Interests)</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>Atributes to Groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Atributes to Groups</from>
+      <to>Remove blank groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>Atributes to Activities</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Atributes to Activities</from>
+      <to>Give a default activity_date if null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>Atributes to Custom Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>TEMP: Find select values</from>
+      <to>Sort</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Atributes to Custom Fields</from>
+      <to>data is not blank</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>re-sort on external_identifier/category</from>
+      <to>Row denormaliser</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix date formats 3</from>
+      <to>fix date formats 3a</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix date formats 3a</from>
+      <to>cli_attributes_activities</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Categories only</from>
+      <to>Sort on category</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort on category</from>
+      <to>Count of attribute usage</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Count of attribute usage</from>
+      <to>attribute_categories</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE Attributes</from>
+      <to>Keep only the attributes we want</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Keep only the attributes we want</from>
+      <to>Sort on external_identifier/category</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Keep only the attributes we want</from>
+      <to>Categories only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>data is not blank</from>
+      <to>re-sort on external_identifier/category</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>status_id =2 (completed),source_contact_id=3 (Jon)</from>
+      <to>fix date formats 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Row denormaliser</from>
+      <to>Convert 0 to "zero"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert 0 to "zero"</from>
+      <to>Convert boolean -1 to 1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert boolean -1 to 1</from>
+      <to>rename to Civi custom field names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>rename to Civi custom field names</from>
+      <to>Set contact subtype</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set contact subtype</from>
+      <to>cli_attributes_custom_fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove blank groups</from>
+      <to>Rename misnamed groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rename misnamed groups</from>
+      <to>group_id lookup</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
-  <step>
-    <name>-1 is yes</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>data</field_to_use>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>-1</source_value>
-        <target_value>1</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>167</xloc>
-      <yloc>729</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
   <step>
     <name>Atributes to Activities</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>Category</leftvalue>
-   <function>IN LIST</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>House Party&#x3b;Visitation Rights&#x3b;WealthEngine 2014 Validation</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Category</leftvalue>
+            <function>IN LIST</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>House Party;Visitation Rights;WealthEngine 2014 Validation</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>340</xloc>
       <yloc>528</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Atributes to Custom Fields</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>Category</leftvalue>
-   <function>IN LIST</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>Board Class&#x3b;Board Commitees&#x3b;Board Firm&#x3b;Board Giving Level&#x3b;Board Type&#x3b;Former Board&#x3b;Planned Giving&#x3b;Project Interest</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Category</leftvalue>
+            <function>IN LIST</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Board Class;Board Commitees;Board Firm;Board Giving Level;Board Type;Former Board;Planned Giving;Project Interest</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>520</xloc>
       <yloc>482</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Atributes to Groups</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>Category</leftvalue>
-   <function>IN LIST</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>Executive Sig&#x3b;Holiday Card 2013&#x3b;New Years Card Dec 2012&#x3b;WealthEngine Free 500</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>Category</leftvalue>
+            <function>IN LIST</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;70;71;72;69;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;51;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;75;76;77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98;</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>164</xloc>
       <yloc>539</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Categories only</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>Category</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>Category</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>191</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Concatenate multiple-value fields &#x28;like Interests&#x29;</name>
+    <name>Concatenate multiple-value fields (like Interests)</name>
     <type>GroupBy</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>Y</give_back_row>
-      <group>
-        <field>
-          <name>external_identifier</name>
-        </field>
-        <field>
-          <name>Category</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>COMMENTS</aggregate>
-          <subject>COMMENTS</subject>
-          <type>CONCAT_COMMA</type>
-          <valuefield/>
-        </field>
-        <field>
-          <aggregate>ATTRIBUTEDATE</aggregate>
-          <subject>ATTRIBUTEDATE</subject>
-          <type>MAX</type>
-          <valuefield/>
-        </field>
-        <field>
-          <aggregate>data</aggregate>
-          <subject>data</subject>
-          <type>CONCAT_COMMA</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>Y</give_back_row>
+    <group>
+      <field>
+        <name>external_identifier</name>
+      </field>
+      <field>
+        <name>Category</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>COMMENTS</aggregate>
+        <subject>COMMENTS</subject>
+        <type>CONCAT_COMMA</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>ATTRIBUTEDATE</aggregate>
+        <subject>ATTRIBUTEDATE</subject>
+        <type>MAX</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>data</aggregate>
+        <subject>data</subject>
+        <type>CONCAT_COMMA</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>352</xloc>
       <yloc>351</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Convert 0 to &#x22;zero&#x22;</name>
+    <name>Convert 0 to "zero"</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <field_to_use>Board Giving Level</field_to_use>
-    <target_field/>
-    <non_match_default/>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
         <source_value>0</source_value>
         <target_value>zero</target_value>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>543</xloc>
       <yloc>818</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Convert boolean -1 to 1</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <field_to_use>Planned Giving</field_to_use>
-    <target_field/>
-    <non_match_default/>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
         <source_value>-1</source_value>
         <target_value>1</target_value>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>543</xloc>
       <yloc>901</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Count of attribute usage</name>
     <type>GroupBy</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>Category</name>
-        </field>
-      </group>
-      <fields>
-        <field>
-          <aggregate>Count</aggregate>
-          <subject>Category</subject>
-          <type>COUNT_ANY</type>
-          <valuefield/>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>Category</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>Count</aggregate>
+        <subject>Category</subject>
+        <type>COUNT_ANY</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>391</xloc>
       <yloc>37</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Dummy &#x28;do nothing&#x29;</name>
+    <name>Dummy (do nothing)</name>
     <type>Dummy</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>185</xloc>
       <yloc>362</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Give a default activity_date if null</name>
     <type>IfNull</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <replaceAllByValue>2015&#x2f;01&#x2f;01 00&#x3a;00&#x3a;00.000000000</replaceAllByValue>
-      <replaceAllMask/>
-      <selectFields>Y</selectFields>
-      <selectValuesType>N</selectValuesType>
-      <setEmptyStringAll>N</setEmptyStringAll>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue>2015/01/01 00:00:00.000000000</replaceAllByValue>
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
     <valuetypes>
       </valuetypes>
     <fields>
       <field>
         <name>ATTRIBUTEDATE</name>
-        <value>2015&#x2f;01&#x2f;01 00&#x3a;00&#x3a;00.000000000</value>
-        <mask/>
+        <value>2015/01/01 00:00:00.000000000</value>
+        <mask />
         <set_empty_string>N</set_empty_string>
-        </field>
-      </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>340</xloc>
       <yloc>581</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Keep only the attributes we want</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>Category</leftvalue>
- <function>IN LIST</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>Board Class&#x3b;Board Commitees&#x3b;Board Firm&#x3b;Board Giving Level&#x3b;Board Type&#x3b;Former Board&#x3b;Planned Giving&#x3b;Project Interest</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Category</leftvalue>
+        <function>IN LIST</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;70;71;72;69;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;51;52;53;54;55;56;57;58;59;60;61;62;63;64;65;66;67;68;75;76;77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98;</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>110</xloc>
       <yloc>70</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Merge Data fields</name>
     <type>ConcatFields</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <separator/>
-    <enclosure/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator />
+    <enclosure />
     <enclosure_forced>N</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>N</header>
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding/>
-    <endedLine/>
+    <encoding />
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>file</name>
@@ -906,7 +1392,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -916,11 +1402,11 @@
       <field>
         <name>Description</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -928,11 +1414,11 @@
       <field>
         <name>TEXT</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -941,684 +1427,791 @@
         <name>BOOLEAN</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
     <ConcatFields>
-<targetFieldName>data</targetFieldName>
-<targetFieldLength>0</targetFieldLength>
-<removeSelectedFields>Y</removeSelectedFields>
+      <targetFieldName>data</targetFieldName>
+      <targetFieldLength>0</targetFieldLength>
+      <removeSelectedFields>Y</removeSelectedFields>
     </ConcatFields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>189</xloc>
       <yloc>161</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Modify interest comments</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f; We want to integrate the interest data into the comments&#xa;&#x2f;&#x2f; So the comments make sense when concatenated&#xa;var COMMENTS&#x3b;&#xa;if&#x28;Category &#x3d;&#x3d; &#x27;Interests&#x27; &#x26;&#x26; COMMENTS &#x21;&#x3d; null&#x29; &#x7b;&#xa;  COMMENTS &#x3d; &#x27;Interest&#x3a; &#x27; &#x2b; data &#x2b; &#x27; Comment&#x3a; &#x27; &#x2b; COMMENTS&#xa;&#x7d;&#xa;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>COMMENTS</name>
+        <jsScript_script>// We want to integrate the interest data into the comments
+// So the comments make sense when concatenated
+var COMMENTS;
+if(Category == 'Interests' &amp;&amp; COMMENTS != null) {
+  COMMENTS = 'Interest: ' + data + ' Comment: ' + COMMENTS
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>COMMENTS</name>
         <rename>COMMENTS</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>345</xloc>
       <yloc>239</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>RE Attributes</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Raiser&#x27;s Edge LCCR</connection>
-    <sql>SELECT&#xa;ca.PARENTID as external_identifier&#xa;, at.DESCRIPTION as Category&#xa;, TABLEENTRIES.LONGDESCRIPTION as Description&#xa;, TEXT&#xa;, &#x22;BOOLEAN&#x22;&#xa;, COMMENTS&#xa;, ca.ATTRIBUTEDATE&#xa;FROM ConstituentAttributes ca&#xa;JOIN AttributeTypes at ON ca.ATTRIBUTETYPESID &#x3d; at.ATTRIBUTETYPESID&#xa;LEFT JOIN TABLEENTRIES ON ca.TABLEENTRIESID &#x3d; TABLEENTRIES.TABLEENTRIESID</sql>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>SELECT
+ca.PARENTID as external_identifier
+, at.DESCRIPTION as Category
+, TABLEENTRIES.LONGDESCRIPTION as Description
+, TEXT
+, "BOOLEAN"
+, COMMENTS
+, ca.ATTRIBUTEDATE
+FROM ConstituentAttributes ca
+JOIN AttributeTypes at ON ca.ATTRIBUTETYPESID = at.ATTRIBUTETYPESID
+LEFT JOIN TABLEENTRIES ON ca.TABLEENTRIESID = TABLEENTRIES.TABLEENTRIESID</sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>83</xloc>
       <yloc>6</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Remove blank groups</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>data</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>data</leftvalue>
-   <function>&#x3c;&#x3e;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>0</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>data</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>data</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>0</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>164</xloc>
       <yloc>605</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Remove length&#x2f;precision from fields</name>
+    <name>Remove length/precision from fields</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>COMMENTS</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>COMMENTS</name>
         <rename>COMMENTS</rename>
         <type>None</type>
         <length>0</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>ATTRIBUTEDATE</name>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>ATTRIBUTEDATE</name>
         <rename>ATTRIBUTEDATE</rename>
         <type>None</type>
         <length>0</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>data</name>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>data</name>
         <rename>data</rename>
         <type>None</type>
         <length>0</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>188</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Remove non-activity fields</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id</name>
         <rename>target_contact_id</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>COMMENTS</name>
+      </field>
+      <field>
+        <name>COMMENTS</name>
         <rename>details</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>ATTRIBUTEDATE</name>
+      </field>
+      <field>
+        <name>ATTRIBUTEDATE</name>
         <rename>activity_date_time</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>activity_type_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>data</name>
+      </field>
+      <field>
+        <name>activity_type_id</name>
+      </field>
+      <field>
+        <name>data</name>
         <rename>subject</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>342</xloc>
       <yloc>702</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Remove non-group fields</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>ATTRIBUTEDATE</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>ATTRIBUTEDATE</name>
         <rename>date</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>group_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>169</xloc>
-      <yloc>858</yloc>
+      </field>
+      <field>
+        <name>group_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Row denormaliser</name>
     <type>Denormaliser</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <key_field>Category</key_field>
-      <group>
-        <field>
-          <name>external_identifier</name>
-          </field>
-        </group>
-      <fields>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Board Class</key_value>
-          <target_name>Board Class</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Board Commitees</key_value>
-          <target_name>Board Commitees</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Board Firm</key_value>
-          <target_name>Board Firm</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Board Giving Level</key_value>
-          <target_name>Board Giving Level</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Board Type</key_value>
-          <target_name>Board Type</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Former Board</key_value>
-          <target_name>Former Board</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Planned Giving</key_value>
-          <target_name>Planned Giving</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        <field>
-          <field_name>data</field_name>
-          <key_value>Project Interest</key_value>
-          <target_name>Project Interest</target_name>
-          <target_type>String</target_type>
-          <target_format/>
-          <target_length>-1</target_length>
-          <target_precision>-1</target_precision>
-          <target_decimal_symbol/>
-          <target_grouping_symbol/>
-          <target_currency_symbol/>
-          <target_null_string/>
-          <target_aggregation_type>-</target_aggregation_type>
-          </field>
-        </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <key_field>Category</key_field>
+    <group>
+      <field>
+        <name>external_identifier</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Board Class</key_value>
+        <target_name>Board Class</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Board Commitees</key_value>
+        <target_name>Board Commitees</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Board Firm</key_value>
+        <target_name>Board Firm</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Board Giving Level</key_value>
+        <target_name>Board Giving Level</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Board Type</key_value>
+        <target_name>Board Type</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Former Board</key_value>
+        <target_name>Former Board</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Planned Giving</key_value>
+        <target_name>Planned Giving</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>data</field_name>
+        <key_value>Project Interest</key_value>
+        <target_name>Project Interest</target_name>
+        <target_type>String</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>532</xloc>
       <yloc>722</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Separate Executive Sig Ink&#x2f;Proxy</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;var data&#x3b;&#xa;var Category&#x3b;&#xa;&#xa;if &#x28;Category &#x3d;&#x3d; &#x27;Executive Sig&#x27;&#x29;&#x7b;&#xa;  if &#x28;data &#x3d;&#x3d; &#x22;Ink&#x22;&#x29;&#x7b;&#xa;    data &#x3d; -1&#x3b;&#xa;    Category &#x3d; &#x27;Executive Sig - Ink&#x27;&#x3b;&#xa;  &#x7d;&#xa;  if &#x28;data &#x3d;&#x3d; &#x22;Proxy&#x22;&#x29;&#x7b;&#xa;    data &#x3d; -1&#x3b;&#xa;    Category &#x3d; &#x27;Executive Sig - Proxy&#x27;&#x3b;&#xa;  &#x7d;&#xa;&#x7d;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>data</name>
-        <rename>data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>      <field>        <name>Category</name>
-        <rename>Category</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>167</xloc>
-      <yloc>663</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Set contact subtype</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Org-specific - set contacts with board fields to have a Board Member contact subtype.&#xa;&#xa;var contact_sub_type &#x3d; &#x27;&#x27;&#x3b;&#xa;if &#x28;&#x21;&#x28;&#x21;custom_96 &#x26;&#x26; &#x21;custom_97 &#x26;&#x26; &#x21;custom_98 &#x26;&#x26; &#x21;custom_99 &#x26;&#x26; &#x21;custom_103 &#x26;&#x26; &#x21;custom_104&#x29;&#x29; &#x7b;&#xa;  contact_sub_type &#x3d; &#x22;Board_Member&#x22;&#x3b;&#xa;&#x7d; </jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>contact_sub_type</name>
+        <jsScript_script>//Org-specific - set contacts with board fields to have a Board Member contact subtype.
+
+var contact_sub_type = '';
+if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_99 &amp;&amp; !custom_103 &amp;&amp; !custom_104)) {
+  contact_sub_type = "Board_Member";
+} </jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>contact_sub_type</name>
         <rename>contact_sub_type</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>545</xloc>
       <yloc>1039</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Sort</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>Special Ask</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>1049</xloc>
       <yloc>731</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Sort on category</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>Category</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>303</xloc>
       <yloc>28</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Sort on external_identifier&#x2f;category</name>
+    <name>Sort on external_identifier/category</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>external_identifier</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
       <field>
         <name>Category</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>136</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>TEMP&#x3a; Find select values</name>
+    <name>TEMP: Find select values</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>Special Ask</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Special Ask</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>917</xloc>
       <yloc>708</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Unique rows</name>
     <type>Unique</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>Special Ask</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>Special Ask</name>
         <case_insensitive>N</case_insensitive>
-        </field>      </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>1128</xloc>
       <yloc>736</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>activity_type_id lookup</name>
     <type>DBLookup</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
+      <schema />
       <table>civicrm_option_value</table>
-      <orderby/>
+      <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>Category</name>
         <field>label</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
         <name>value</name>
         <rename>activity_type_id</rename>
-        <default/>
+        <default />
         <type>String</type>
       </value>
     </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>341</xloc>
       <yloc>641</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>attribute_categories</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure>"</enclosure>
     <enclosure_forced>Y</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -1626,12 +2219,12 @@
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;attribute_categories</name>
+      <name>${LOCALFILES}/data/attribute_categories</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1642,7 +2235,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -1652,11 +2245,11 @@
       <field>
         <name>Category</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1665,36 +2258,41 @@
         <name>Count</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>477</xloc>
       <yloc>50</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>cli_attributes_activities</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure>"</enclosure>
     <enclosure_forced>Y</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -1702,12 +2300,12 @@
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_attributes_activities</name>
+      <name>${LOCALFILES}/data/cli_attributes_activities</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1718,7 +2316,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -1729,10 +2327,10 @@
         <name>target_contact_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1740,11 +2338,11 @@
       <field>
         <name>subject</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1752,11 +2350,11 @@
       <field>
         <name>details</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1764,11 +2362,11 @@
       <field>
         <name>activity_date_time</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1776,11 +2374,11 @@
       <field>
         <name>activity_type_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1789,10 +2387,10 @@
         <name>status_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1801,36 +2399,41 @@
         <name>source_contact_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>341</xloc>
       <yloc>978</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>cli_attributes_custom_fields</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure>"</enclosure>
     <enclosure_forced>Y</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -1838,12 +2441,12 @@
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_attributes_custom_fields</name>
+      <name>${LOCALFILES}/data/cli_attributes_custom_fields</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1854,7 +2457,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -1865,10 +2468,10 @@
         <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1876,11 +2479,11 @@
       <field>
         <name>contact_sub_type</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1888,11 +2491,11 @@
       <field>
         <name>custom_96</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1900,11 +2503,11 @@
       <field>
         <name>custom_97</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1912,11 +2515,11 @@
       <field>
         <name>custom_98</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1924,11 +2527,11 @@
       <field>
         <name>custom_99</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1936,11 +2539,11 @@
       <field>
         <name>custom_103</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1948,11 +2551,11 @@
       <field>
         <name>custom_104</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1960,11 +2563,11 @@
       <field>
         <name>custom_101</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1972,37 +2575,42 @@
       <field>
         <name>custom_102</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>544</xloc>
       <yloc>1100</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>cli_attributes_groups</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure>"</enclosure>
     <enclosure_forced>Y</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -2010,12 +2618,12 @@
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_attributes_groups</name>
+      <name>${LOCALFILES}/data/cli_attributes_groups</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2026,7 +2634,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -2037,10 +2645,10 @@
         <name>contact_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -2048,11 +2656,11 @@
       <field>
         <name>date</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -2061,462 +2669,560 @@
         <name>group_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>171</xloc>
-      <yloc>919</yloc>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>data is not blank</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to/>
-<send_false_to/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>data</leftvalue>
-   <function>&#x3c;&#x3e;</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text/><length>-1</length><precision>-1</precision><isnull>Y</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>data</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text />
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>Y</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>528</xloc>
       <yloc>574</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>external ID to contact_id in Civi</name>
     <type>DBLookup</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>Y</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
+      <schema />
       <table>civicrm_contact</table>
-      <orderby/>
+      <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>external_identifier</name>
         <field>external_identifier</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
         <name>id</name>
         <rename>contact_id</rename>
-        <default/>
+        <default />
         <type>String</type>
       </value>
       <value>
         <name>display_name</name>
         <rename>display_name</rename>
-        <default/>
+        <default />
         <type>String</type>
       </value>
     </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>188</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>fix date formats</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>Acquisition Code Date</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>Acquisition Code Date</name>
         <rename>Acquisition Code Date</rename>
         <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</conversion_mask>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>Foundation Status Date</name>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Foundation Status Date</name>
         <rename>Foundation Status Date</rename>
         <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</conversion_mask>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>715</xloc>
       <yloc>828</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>fix date formats 2</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>Acquisition Code Date</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>Acquisition Code Date</name>
         <rename>Acquisition Code Date</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask>yyyyMMddHHmmss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>Foundation Status Date</name>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>Foundation Status Date</name>
         <rename>Foundation Status Date</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask>yyyyMMddHHmmss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>701</xloc>
       <yloc>892</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>fix date formats 3</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>activity_date_time</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>activity_date_time</name>
         <rename>activity_date_time</rename>
         <type>Date</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>yyyy&#x2f;MM&#x2f;dd HH&#x3a;mm&#x3a;ss.SSS</conversion_mask>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>339</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>fix date formats 3a</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>activity_date_time</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>activity_date_time</name>
         <rename>activity_date_time</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>348</xloc>
       <yloc>910</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>group_id lookup</name>
     <type>DBLookup</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
+      <schema />
       <table>civicrm_group</table>
-      <orderby/>
+      <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>Category</name>
         <field>title</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
         <name>id</name>
         <rename>group_id</rename>
-        <default/>
+        <default />
         <type>String</type>
       </value>
     </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>167</xloc>
-      <yloc>787</yloc>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>multi-value custom fields</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Modify interest comments</send_true_to>
-<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Modify interest comments</send_true_to>
+    <send_false_to>Dummy (do nothing)</send_false_to>
     <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>Category</leftvalue>
- <function>IN LIST</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>Interests&#x3b;Long Term Strategy</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>Category</leftvalue>
+        <function>IN LIST</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Interests;Long Term Strategy</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
     </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>174</xloc>
       <yloc>294</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>re-sort on external_identifier&#x2f;category</name>
+    <name>re-sort on external_identifier/category</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>external_identifier</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
       <field>
         <name>Category</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
         <presorted>N</presorted>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>527</xloc>
       <yloc>660</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>rename to Civi custom field names</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>contact_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Board Class</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>Board Class</name>
         <rename>custom_96</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Board Commitees</name>
+      </field>
+      <field>
+        <name>Board Commitees</name>
         <rename>custom_97</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Board Firm</name>
+      </field>
+      <field>
+        <name>Board Firm</name>
         <rename>custom_98</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Board Giving Level</name>
+      </field>
+      <field>
+        <name>Board Giving Level</name>
         <rename>custom_99</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Board Type</name>
+      </field>
+      <field>
+        <name>Board Type</name>
         <rename>custom_103</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Former Board</name>
+      </field>
+      <field>
+        <name>Former Board</name>
         <rename>custom_104</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Planned Giving</name>
+      </field>
+      <field>
+        <name>Planned Giving</name>
         <rename>custom_101</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Project Interest</name>
+      </field>
+      <field>
+        <name>Project Interest</name>
         <rename>custom_102</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>538</xloc>
       <yloc>971</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>status_id &#x3d;2 &#x28;completed&#x29;,source_contact_id&#x3d;3 &#x28;Jon&#x29;</name>
+    <name>status_id =2 (completed),source_contact_id=3 (Jon)</name>
     <type>Constant</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <fields>
       <field>
         <name>status_id</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <nullif>2</nullif>
         <length>-1</length>
         <precision>-1</precision>
@@ -2525,28 +3231,441 @@
       <field>
         <name>source_contact_id</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <nullif>3</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>339</xloc>
       <yloc>767</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
+  <step>
+    <name>Rename misnamed groups</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>Category</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>2</source_value>
+        <target_value>USY Israel Pilgrimage 1988</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>USY Israel Pilgrimage 1989</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>USY Israel Pilgrimage 1990</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>USY Israel Pilgrimage 1991</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>USY Israel Pilgrimage 1992</target_value>
+      </field>
+      <field>
+        <source_value>7</source_value>
+        <target_value>USY Israel Pilgrimage 1993</target_value>
+      </field>
+      <field>
+        <source_value>8</source_value>
+        <target_value>USY Israel Pilgrimage 1994</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>USY Israel Pilgrimage 1995</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>USY Israel Pilgrimage 1996</target_value>
+      </field>
+      <field>
+        <source_value>11</source_value>
+        <target_value>USY Israel Pilgrimage 1997</target_value>
+      </field>
+      <field>
+        <source_value>12</source_value>
+        <target_value>USY Israel Pilgrimage 1998</target_value>
+      </field>
+      <field>
+        <source_value>13</source_value>
+        <target_value>USY Israel Pilgrimage 1999</target_value>
+      </field>
+      <field>
+        <source_value>14</source_value>
+        <target_value>USY Israel Pilgrimage 2000</target_value>
+      </field>
+      <field>
+        <source_value>15</source_value>
+        <target_value>USY Israel Pilgrimage 2001</target_value>
+      </field>
+      <field>
+        <source_value>16</source_value>
+        <target_value>USY Israel Pilgrimage 2002</target_value>
+      </field>
+      <field>
+        <source_value>17</source_value>
+        <target_value>USY Israel Pilgrimage 2003</target_value>
+      </field>
+      <field>
+        <source_value>18</source_value>
+        <target_value>USY Israel Pilgrimage 2004</target_value>
+      </field>
+      <field>
+        <source_value>19</source_value>
+        <target_value>USY Israel Pilgrimage 2005</target_value>
+      </field>
+      <field>
+        <source_value>70</source_value>
+        <target_value>USY Israel Pilgrimage 2008</target_value>
+      </field>
+      <field>
+        <source_value>71</source_value>
+        <target_value>USY Israel Pilgrimage 2009</target_value>
+      </field>
+      <field>
+        <source_value>72</source_value>
+        <target_value>USY Israel Pilgrimage 2010</target_value>
+      </field>
+      <field>
+        <source_value>69</source_value>
+        <target_value>USY Israel Pilgrimage 2011</target_value>
+      </field>
+      <field>
+        <source_value>20</source_value>
+        <target_value>Nativ 1981</target_value>
+      </field>
+      <field>
+        <source_value>21</source_value>
+        <target_value>Nativ 1982</target_value>
+      </field>
+      <field>
+        <source_value>22</source_value>
+        <target_value>Nativ 1983</target_value>
+      </field>
+      <field>
+        <source_value>23</source_value>
+        <target_value>Nativ 1984</target_value>
+      </field>
+      <field>
+        <source_value>24</source_value>
+        <target_value>Nativ 1985</target_value>
+      </field>
+      <field>
+        <source_value>25</source_value>
+        <target_value>Nativ 1986</target_value>
+      </field>
+      <field>
+        <source_value>26</source_value>
+        <target_value>Nativ 1987</target_value>
+      </field>
+      <field>
+        <source_value>27</source_value>
+        <target_value>Nativ 1988</target_value>
+      </field>
+      <field>
+        <source_value>28</source_value>
+        <target_value>Nativ 1989</target_value>
+      </field>
+      <field>
+        <source_value>29</source_value>
+        <target_value>Nativ 1990</target_value>
+      </field>
+      <field>
+        <source_value>30</source_value>
+        <target_value>Nativ 1991</target_value>
+      </field>
+      <field>
+        <source_value>31</source_value>
+        <target_value>Nativ 1992</target_value>
+      </field>
+      <field>
+        <source_value>32</source_value>
+        <target_value>Nativ 1993</target_value>
+      </field>
+      <field>
+        <source_value>33</source_value>
+        <target_value>Nativ 1994</target_value>
+      </field>
+      <field>
+        <source_value>34</source_value>
+        <target_value>Nativ 1995</target_value>
+      </field>
+      <field>
+        <source_value>35</source_value>
+        <target_value>Nativ 1996</target_value>
+      </field>
+      <field>
+        <source_value>36</source_value>
+        <target_value>Nativ 1997</target_value>
+      </field>
+      <field>
+        <source_value>37</source_value>
+        <target_value>Nativ 1998</target_value>
+      </field>
+      <field>
+        <source_value>38</source_value>
+        <target_value>Nativ 1999</target_value>
+      </field>
+      <field>
+        <source_value>39</source_value>
+        <target_value>Nativ 2000</target_value>
+      </field>
+      <field>
+        <source_value>40</source_value>
+        <target_value>Sulam 1994</target_value>
+      </field>
+      <field>
+        <source_value>41</source_value>
+        <target_value>Sulam 1995</target_value>
+      </field>
+      <field>
+        <source_value>42</source_value>
+        <target_value>Sulam 1996</target_value>
+      </field>
+      <field>
+        <source_value>43</source_value>
+        <target_value>Sulam 1997</target_value>
+      </field>
+      <field>
+        <source_value>44</source_value>
+        <target_value>Sulam 1998</target_value>
+      </field>
+      <field>
+        <source_value>45</source_value>
+        <target_value>Sulam 1999</target_value>
+      </field>
+      <field>
+        <source_value>46</source_value>
+        <target_value>Sulam 2000</target_value>
+      </field>
+      <field>
+        <source_value>47</source_value>
+        <target_value>Sulam 2001</target_value>
+      </field>
+      <field>
+        <source_value>48</source_value>
+        <target_value>Sulam 2002</target_value>
+      </field>
+      <field>
+        <source_value>49</source_value>
+        <target_value>Sulam 2003</target_value>
+      </field>
+      <field>
+        <source_value>50</source_value>
+        <target_value>Sulam 2004</target_value>
+      </field>
+      <field>
+        <source_value>51</source_value>
+        <target_value>Sulam 2005</target_value>
+      </field>
+      <field>
+        <source_value>52</source_value>
+        <target_value>Sulam 2006</target_value>
+      </field>
+      <field>
+        <source_value>53</source_value>
+        <target_value>Sulam 2007</target_value>
+      </field>
+      <field>
+        <source_value>54</source_value>
+        <target_value>Sulam 2008</target_value>
+      </field>
+      <field>
+        <source_value>55</source_value>
+        <target_value>Sulam 2009</target_value>
+      </field>
+      <field>
+        <source_value>56</source_value>
+        <target_value>Sulam 2010</target_value>
+      </field>
+      <field>
+        <source_value>57</source_value>
+        <target_value>Sulam 2011</target_value>
+      </field>
+      <field>
+        <source_value>58</source_value>
+        <target_value>Sulam 2012</target_value>
+      </field>
+      <field>
+        <source_value>59</source_value>
+        <target_value>Hazak 2009</target_value>
+      </field>
+      <field>
+        <source_value>60</source_value>
+        <target_value>Hazak 2008</target_value>
+      </field>
+      <field>
+        <source_value>61</source_value>
+        <target_value>Hazak March 2008</target_value>
+      </field>
+      <field>
+        <source_value>62</source_value>
+        <target_value>Hazak 2012</target_value>
+      </field>
+      <field>
+        <source_value>63</source_value>
+        <target_value>Hazak Nov 2010</target_value>
+      </field>
+      <field>
+        <source_value>64</source_value>
+        <target_value>Hazak Jan 2010</target_value>
+      </field>
+      <field>
+        <source_value>65</source_value>
+        <target_value>Hazak Nov 2012</target_value>
+      </field>
+      <field>
+        <source_value>66</source_value>
+        <target_value>Hazak Dec 2011</target_value>
+      </field>
+      <field>
+        <source_value>67</source_value>
+        <target_value>Yeshiva Alumni</target_value>
+      </field>
+      <field>
+        <source_value>68</source_value>
+        <target_value>USY Alumni</target_value>
+      </field>
+      <field>
+        <source_value>75</source_value>
+        <target_value>USY on Wheels 1988</target_value>
+      </field>
+      <field>
+        <source_value>76</source_value>
+        <target_value>USY on Wheels 1990</target_value>
+      </field>
+      <field>
+        <source_value>77</source_value>
+        <target_value>USY on Wheels 1991</target_value>
+      </field>
+      <field>
+        <source_value>78</source_value>
+        <target_value>USY on Wheels 1992</target_value>
+      </field>
+      <field>
+        <source_value>79</source_value>
+        <target_value>USY on Wheels 1993</target_value>
+      </field>
+      <field>
+        <source_value>80</source_value>
+        <target_value>USY on Wheels 1994</target_value>
+      </field>
+      <field>
+        <source_value>81</source_value>
+        <target_value>USY on Wheels 1995</target_value>
+      </field>
+      <field>
+        <source_value>82</source_value>
+        <target_value>USY on Wheels 1996</target_value>
+      </field>
+      <field>
+        <source_value>83</source_value>
+        <target_value>USY on Wheels 1997</target_value>
+      </field>
+      <field>
+        <source_value>84</source_value>
+        <target_value>USY on Wheels 1998</target_value>
+      </field>
+      <field>
+        <source_value>85</source_value>
+        <target_value>USY on Wheels 1999</target_value>
+      </field>
+      <field>
+        <source_value>86</source_value>
+        <target_value>USY on Wheels 2000</target_value>
+      </field>
+      <field>
+        <source_value>87</source_value>
+        <target_value>USY on Wheels 2001</target_value>
+      </field>
+      <field>
+        <source_value>88</source_value>
+        <target_value>USY on Wheels 2002</target_value>
+      </field>
+      <field>
+        <source_value>89</source_value>
+        <target_value>USY on Wheels 2003</target_value>
+      </field>
+      <field>
+        <source_value>90</source_value>
+        <target_value>USY on Wheels 2004</target_value>
+      </field>
+      <field>
+        <source_value>91</source_value>
+        <target_value>USY on Wheels 2005</target_value>
+      </field>
+      <field>
+        <source_value>92</source_value>
+        <target_value>USY on Wheels 2006</target_value>
+      </field>
+      <field>
+        <source_value>93</source_value>
+        <target_value>USY on Wheels 2007</target_value>
+      </field>
+      <field>
+        <source_value>94</source_value>
+        <target_value>USY on Wheels 2008</target_value>
+      </field>
+      <field>
+        <source_value>95</source_value>
+        <target_value>USY on Wheels 2009</target_value>
+      </field>
+      <field>
+        <source_value>96</source_value>
+        <target_value>USY on Wheels 2010</target_value>
+      </field>
+      <field>
+        <source_value>97</source_value>
+        <target_value>USY on Wheels 2011</target_value>
+      </field>
+      <field>
+        <source_value>98</source_value>
+        <target_value>USY on Wheels 2012</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
   </step_error_handling>
-   <slave-step-copy-partition-distribution>
-</slave-step-copy-partition-distribution>
-   <slave_transformation>N</slave_transformation>
-
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
 </transformation>
