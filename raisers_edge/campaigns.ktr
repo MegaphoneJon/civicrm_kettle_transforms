@@ -1,0 +1,2483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>campaigns</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2014/09/24 17:16:02.269</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>Enabling the "CiviCRM Output" hops will create the corresponding values in CiviCRM.  
+Use with caution!</note>
+      <xloc>224</xloc>
+      <yloc>896</yloc>
+      <width>521</width>
+      <heigth>42</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
+      <xloc>192</xloc>
+      <yloc>80</yloc>
+      <width>400</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Get the campaign_type_id of "Imported from RE".  Create if it doesn't exist.</note>
+      <xloc>713</xloc>
+      <yloc>201</yloc>
+      <width>466</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <connection>
+    <name>Raiser's Edge</name>
+    <server>${MSSQL_HOSTNAME}</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>${MSSQL_DBNAME}</database>
+    <port>1433</port>
+    <username>${MSSQL_USER}</username>
+    <password>${MSSQL_PASSWORD}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>1433</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>Target CiviCRM</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${CIVIDB}</database>
+    <port>3306</port>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>lookup campaigns in Civi</from>
+      <to>Filter unrecognized campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>invalid_campaigns</from>
+      <to>Create Campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create Campaigns</from>
+      <to>log_api_campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap "Inactive" to "is_active"</from>
+      <to>Cast goal_revenue as Integer</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Cast goal_revenue as Integer</from>
+      <to>invalid_campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: GiftSplit</from>
+      <to>Step 1 contacts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Fix punctuation in fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create campaign_type_id</from>
+      <to>Get campign_type_id from JSON</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Detect empty stream</from>
+      <to>Set fields to create campaign_type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set fields to create campaign_type</from>
+      <to>Create campaign_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table input</from>
+      <to>Detect empty stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Table input</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get campign_type_id from JSON</from>
+      <to>Drop all non-value fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Drop all non-value fields</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup campaigns data in RE</from>
+      <to>set null is_active/goal_revenue to 0</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>set null is_active/goal_revenue to 0</from>
+      <to>Remap "Inactive" to "is_active"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by Campaign</from>
+      <to>Unique campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix punctuation in fields</from>
+      <to>Sort by Campaign</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Join the campaign_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join the campaign_type_id</from>
+      <to>lookup campaigns in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique campaigns</from>
+      <to>Campaigns only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Campaigns only</from>
+      <to>Join the campaign_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized campaigns</from>
+      <to>lookup campaigns data in RE</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>Campaigns only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>campaign</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Cast goal_revenue as Integer</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>goal_revenue</name>
+        <rename>goal_revenue</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Create Campaigns</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>Campaign</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+    <entity-name>Acl</entity-name>
+    <entity-name>AclRole</entity-name>
+    <entity-name>ActionSchedule</entity-name>
+    <entity-name>Activity</entity-name>
+    <entity-name>ActivityContact</entity-name>
+    <entity-name>ActivityType</entity-name>
+    <entity-name>Address</entity-name>
+    <entity-name>Batch</entity-name>
+    <entity-name>Campaign</entity-name>
+    <entity-name>Case</entity-name>
+    <entity-name>CaseType</entity-name>
+    <entity-name>Constant</entity-name>
+    <entity-name>Contact</entity-name>
+    <entity-name>ContactType</entity-name>
+    <entity-name>Contribution</entity-name>
+    <entity-name>ContributionPage</entity-name>
+    <entity-name>ContributionRecur</entity-name>
+    <entity-name>ContributionSoft</entity-name>
+    <entity-name>Country</entity-name>
+    <entity-name>CustomField</entity-name>
+    <entity-name>CustomGroup</entity-name>
+    <entity-name>CustomSearch</entity-name>
+    <entity-name>CustomValue</entity-name>
+    <entity-name>Dashboard</entity-name>
+    <entity-name>DashboardContact</entity-name>
+    <entity-name>Domain</entity-name>
+    <entity-name>Email</entity-name>
+    <entity-name>Entity</entity-name>
+    <entity-name>EntityTag</entity-name>
+    <entity-name>Event</entity-name>
+    <entity-name>Extension</entity-name>
+    <entity-name>File</entity-name>
+    <entity-name>FinancialAccount</entity-name>
+    <entity-name>FinancialType</entity-name>
+    <entity-name>Grant</entity-name>
+    <entity-name>Group</entity-name>
+    <entity-name>GroupContact</entity-name>
+    <entity-name>GroupNesting</entity-name>
+    <entity-name>GroupOrganization</entity-name>
+    <entity-name>Im</entity-name>
+    <entity-name>Job</entity-name>
+    <entity-name>LineItem</entity-name>
+    <entity-name>LocBlock</entity-name>
+    <entity-name>Location</entity-name>
+    <entity-name>LocationType</entity-name>
+    <entity-name>MailSettings</entity-name>
+    <entity-name>Mailing</entity-name>
+    <entity-name>MailingComponent</entity-name>
+    <entity-name>MailingContact</entity-name>
+    <entity-name>MailingEventConfirm</entity-name>
+    <entity-name>MailingEventResubscribe</entity-name>
+    <entity-name>MailingEventSubscribe</entity-name>
+    <entity-name>MailingEventUnsubscribe</entity-name>
+    <entity-name>MailingGroup</entity-name>
+    <entity-name>MailingJob</entity-name>
+    <entity-name>MailingRecipients</entity-name>
+    <entity-name>Membership</entity-name>
+    <entity-name>MembershipBlock</entity-name>
+    <entity-name>MembershipPayment</entity-name>
+    <entity-name>MembershipStatus</entity-name>
+    <entity-name>MembershipType</entity-name>
+    <entity-name>MessageTemplate</entity-name>
+    <entity-name>Note</entity-name>
+    <entity-name>OptionGroup</entity-name>
+    <entity-name>OptionValue</entity-name>
+    <entity-name>Participant</entity-name>
+    <entity-name>ParticipantPayment</entity-name>
+    <entity-name>ParticipantStatusType</entity-name>
+    <entity-name>PaymentProcessor</entity-name>
+    <entity-name>PaymentProcessorType</entity-name>
+    <entity-name>Phone</entity-name>
+    <entity-name>Pledge</entity-name>
+    <entity-name>PledgePayment</entity-name>
+    <entity-name>Premium</entity-name>
+    <entity-name>PriceField</entity-name>
+    <entity-name>PriceFieldValue</entity-name>
+    <entity-name>PriceSet</entity-name>
+    <entity-name>PrintLabel</entity-name>
+    <entity-name>Product</entity-name>
+    <entity-name>Profile</entity-name>
+    <entity-name>Relationship</entity-name>
+    <entity-name>RelationshipType</entity-name>
+    <entity-name>ReportInstance</entity-name>
+    <entity-name>ReportTemplate</entity-name>
+    <entity-name>Setting</entity-name>
+    <entity-name>SmsProvider</entity-name>
+    <entity-name>Survey</entity-name>
+    <entity-name>SurveyRespondant</entity-name>
+    <entity-name>System</entity-name>
+    <entity-name>SystemLog</entity-name>
+    <entity-name>Tag</entity-name>
+    <entity-name>UFField</entity-name>
+    <entity-name>UFGroup</entity-name>
+    <entity-name>UFJoin</entity-name>
+    <entity-name>UFMatch</entity-name>
+    <entity-name>Website</entity-name>
+    <entity-name>WordReplacement</entity-name>
+    <action-name>create</action-name>
+    <action-name>delete</action-name>
+    <action-name>getlist</action-name>
+    <action-name>getrefcount</action-name>
+    <action-name>setvalue</action-name>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign End Date","dataPattern":"","name":"end_date","html":{"type":"Select Date"},"headerPattern":"\/^end|(e(nd\\s)?date)$\/i","import":true,"where":"civicrm_campaign.end_date","type":12}</fieldDef>
+      <fieldName>end_date</fieldName>
+      <name>end_date</name>
+      <title>Campaign End Date</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign External ID","maxlength":32,"dataPattern":"\/^\\d{11,}$\/","name":"external_identifier","html":{"type":"Text"},"headerPattern":"\/external\\s?id\/i","import":true,"where":"civicrm_campaign.external_identifier","type":2,"size":20}</fieldDef>
+      <fieldName>external_identifier</fieldName>
+      <name>external_identifier</name>
+      <title>Campaign External ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Campaign Goals","name":"goal_general","html":{"type":"RichTextEditor"},"type":32}</fieldDef>
+      <fieldName>goal_general</fieldName>
+      <name>goal_general</name>
+      <title>Campaign Goals</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Is Campaign Active?","default":"1","name":"is_active","html":{"type":"CheckBox"},"type":16}</fieldDef>
+      <fieldName>is_active</fieldName>
+      <name>is_active</name>
+      <title>Is Campaign Active?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Goal Revenue","precision":[20,2],"name":"goal_revenue","html":{"type":"Text"},"type":1024}</fieldDef>
+      <fieldName>goal_revenue</fieldName>
+      <name>goal_revenue</name>
+      <title>Goal Revenue</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign Type","default":"NULL","dataPattern":"","name":"campaign_type_id","html":{"type":"Select"},"headerPattern":"","import":true,"where":"civicrm_campaign.campaign_type_id","type":1,"pseudoconstant":{"optionGroupName":"campaign_type"}}</fieldDef>
+      <fieldName>campaign_type_id</fieldName>
+      <name>campaign_type_id</name>
+      <title>Campaign Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Campaign Modified By","FKClassName":"CRM_Contact_DAO_Contact","name":"last_modified_id","type":1,"FKApiName":"Contact"}</fieldDef>
+      <fieldName>last_modified_id</fieldName>
+      <name>last_modified_id</name>
+      <title>Campaign Modified By</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Campaign Modified Date","name":"last_modified_date","type":12}</fieldDef>
+      <fieldName>last_modified_date</fieldName>
+      <name>last_modified_date</name>
+      <title>Campaign Modified Date</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"cols":60,"title":"Campaign Description","name":"description","html":{"type":"TextArea"},"type":32,"rows":8}</fieldDef>
+      <fieldName>description</fieldName>
+      <name>description</name>
+      <title>Campaign Description</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign Title","maxlength":255,"dataPattern":"","name":"title","html":{"type":"Text"},"headerPattern":"","import":true,"where":"civicrm_campaign.title","type":2,"size":45}</fieldDef>
+      <fieldName>title</fieldName>
+      <name>title</name>
+      <title>Campaign Title</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Campaign Created By","FKClassName":"CRM_Contact_DAO_Contact","name":"created_id","type":1,"FKApiName":"Contact"}</fieldDef>
+      <fieldName>created_id</fieldName>
+      <name>created_id</name>
+      <title>Campaign Created By</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign Status","default":"NULL","dataPattern":"","name":"status_id","html":{"type":"Select"},"headerPattern":"","import":true,"where":"civicrm_campaign.status_id","type":1,"pseudoconstant":{"optionGroupName":"campaign_status"}}</fieldDef>
+      <fieldName>status_id</fieldName>
+      <name>status_id</name>
+      <title>Campaign Status</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Parent Campaign","default":"NULL","FKClassName":"CRM_Campaign_DAO_Campaign","dataPattern":"","name":"parent_id","html":{"type":"Autocomplete-Select"},"headerPattern":"","import":true,"where":"civicrm_campaign.parent_id","type":1,"FKApiName":"Campaign"}</fieldDef>
+      <fieldName>parent_id</fieldName>
+      <name>parent_id</name>
+      <title>Parent Campaign</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign Name","maxlength":255,"dataPattern":"","name":"name","html":{"type":"Text"},"headerPattern":"","import":true,"where":"civicrm_campaign.name","required":true,"type":2,"size":45}</fieldDef>
+      <fieldName>name</fieldName>
+      <name>name</name>
+      <title>Campaign Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"title":"Campaign Created Date","name":"created_date","html":{"type":"Select Date"},"type":12}</fieldDef>
+      <fieldName>created_date</fieldName>
+      <name>created_date</name>
+      <title>Campaign Created Date</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign ID","api.aliases":["campaign_id"],"dataPattern":"","name":"id","headerPattern":"","import":true,"where":"civicrm_campaign.id","required":true,"type":1}</fieldDef>
+      <fieldName>id</fieldName>
+      <name>id</name>
+      <title>Campaign ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"export":true,"title":"Campaign Start Date","dataPattern":"","name":"start_date","html":{"type":"Select Date"},"headerPattern":"\/^start|(s(tart\\s)?date)$\/i","import":true,"where":"civicrm_campaign.start_date","type":12}</fieldDef>
+      <fieldName>start_date</fieldName>
+      <name>start_date</name>
+      <title>Campaign Start Date</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>campaign</key-index>
+    <key-index>campaign_type_id</key-index>
+    <key-index>start_date</key-index>
+    <key-index>end_date</key-index>
+    <key-index>goal_revenue</key-index>
+    <key-index>is_active</key-index>
+    <key-index>description</key-index>
+    <key-index>external_identifier</key-index>
+    <output-field>
+      <input-field>end_date</input-field>
+      <output-field>end_date</output-field>
+    </output-field>
+    <output-field>
+      <input-field>external_identifier</input-field>
+      <output-field>external_identifier</output-field>
+    </output-field>
+    <output-field>
+      <input-field>goal_revenue</input-field>
+      <output-field>goal_revenue</output-field>
+    </output-field>
+    <output-field>
+      <input-field>is_active</input-field>
+      <output-field>is_active</output-field>
+    </output-field>
+    <output-field>
+      <input-field>campaign_type_id</input-field>
+      <output-field>campaign_type_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>description</input-field>
+      <output-field>description</output-field>
+    </output-field>
+    <output-field>
+      <input-field>campaign</input-field>
+      <output-field>title</output-field>
+    </output-field>
+    <output-field>
+      <input-field>start_date</input-field>
+      <output-field>start_date</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>976</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Create campaign_type_id</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>OptionValue</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+    <entity-name>Acl</entity-name>
+    <entity-name>AclRole</entity-name>
+    <entity-name>ActionSchedule</entity-name>
+    <entity-name>Activity</entity-name>
+    <entity-name>ActivityContact</entity-name>
+    <entity-name>ActivityType</entity-name>
+    <entity-name>Address</entity-name>
+    <entity-name>Batch</entity-name>
+    <entity-name>Campaign</entity-name>
+    <entity-name>Case</entity-name>
+    <entity-name>CaseType</entity-name>
+    <entity-name>Constant</entity-name>
+    <entity-name>Contact</entity-name>
+    <entity-name>ContactType</entity-name>
+    <entity-name>Contribution</entity-name>
+    <entity-name>ContributionPage</entity-name>
+    <entity-name>ContributionRecur</entity-name>
+    <entity-name>ContributionSoft</entity-name>
+    <entity-name>Country</entity-name>
+    <entity-name>CustomField</entity-name>
+    <entity-name>CustomGroup</entity-name>
+    <entity-name>CustomSearch</entity-name>
+    <entity-name>CustomValue</entity-name>
+    <entity-name>Dashboard</entity-name>
+    <entity-name>DashboardContact</entity-name>
+    <entity-name>Domain</entity-name>
+    <entity-name>Email</entity-name>
+    <entity-name>Entity</entity-name>
+    <entity-name>EntityTag</entity-name>
+    <entity-name>Event</entity-name>
+    <entity-name>Extension</entity-name>
+    <entity-name>File</entity-name>
+    <entity-name>FinancialAccount</entity-name>
+    <entity-name>FinancialType</entity-name>
+    <entity-name>Grant</entity-name>
+    <entity-name>Group</entity-name>
+    <entity-name>GroupContact</entity-name>
+    <entity-name>GroupNesting</entity-name>
+    <entity-name>GroupOrganization</entity-name>
+    <entity-name>Im</entity-name>
+    <entity-name>Job</entity-name>
+    <entity-name>LineItem</entity-name>
+    <entity-name>LocBlock</entity-name>
+    <entity-name>Location</entity-name>
+    <entity-name>LocationType</entity-name>
+    <entity-name>MailSettings</entity-name>
+    <entity-name>Mailing</entity-name>
+    <entity-name>MailingComponent</entity-name>
+    <entity-name>MailingContact</entity-name>
+    <entity-name>MailingEventConfirm</entity-name>
+    <entity-name>MailingEventResubscribe</entity-name>
+    <entity-name>MailingEventSubscribe</entity-name>
+    <entity-name>MailingEventUnsubscribe</entity-name>
+    <entity-name>MailingGroup</entity-name>
+    <entity-name>MailingJob</entity-name>
+    <entity-name>MailingRecipients</entity-name>
+    <entity-name>Membership</entity-name>
+    <entity-name>MembershipBlock</entity-name>
+    <entity-name>MembershipPayment</entity-name>
+    <entity-name>MembershipStatus</entity-name>
+    <entity-name>MembershipType</entity-name>
+    <entity-name>MessageTemplate</entity-name>
+    <entity-name>Note</entity-name>
+    <entity-name>OptionGroup</entity-name>
+    <entity-name>OptionValue</entity-name>
+    <entity-name>Participant</entity-name>
+    <entity-name>ParticipantPayment</entity-name>
+    <entity-name>ParticipantStatusType</entity-name>
+    <entity-name>PaymentProcessor</entity-name>
+    <entity-name>PaymentProcessorType</entity-name>
+    <entity-name>Phone</entity-name>
+    <entity-name>Pledge</entity-name>
+    <entity-name>PledgePayment</entity-name>
+    <entity-name>Premium</entity-name>
+    <entity-name>PriceField</entity-name>
+    <entity-name>PriceFieldValue</entity-name>
+    <entity-name>PriceSet</entity-name>
+    <entity-name>PrintLabel</entity-name>
+    <entity-name>Product</entity-name>
+    <entity-name>Profile</entity-name>
+    <entity-name>Relationship</entity-name>
+    <entity-name>RelationshipType</entity-name>
+    <entity-name>ReportInstance</entity-name>
+    <entity-name>ReportTemplate</entity-name>
+    <entity-name>Setting</entity-name>
+    <entity-name>SmsProvider</entity-name>
+    <entity-name>Survey</entity-name>
+    <entity-name>SurveyRespondant</entity-name>
+    <entity-name>System</entity-name>
+    <entity-name>SystemLog</entity-name>
+    <entity-name>Tag</entity-name>
+    <entity-name>UFField</entity-name>
+    <entity-name>UFGroup</entity-name>
+    <entity-name>UFJoin</entity-name>
+    <entity-name>UFMatch</entity-name>
+    <entity-name>Website</entity-name>
+    <entity-name>WordReplacement</entity-name>
+    <action-name>create</action-name>
+    <action-name>delete</action-name>
+    <action-name>getfield</action-name>
+    <action-name>getlist</action-name>
+    <action-name>getrefcount</action-name>
+    <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>component_id</fieldName>
+      <name>component_id</name>
+      <title>Option Component</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_active</fieldName>
+      <name>is_active</name>
+      <title>Option Is Active</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>color</fieldName>
+      <name>color</name>
+      <title>Color</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>icon</fieldName>
+      <name>icon</name>
+      <title>Icon</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>weight</fieldName>
+      <name>weight</name>
+      <title>Order</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>description</fieldName>
+      <name>description</name>
+      <title>Option Description</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>label</fieldName>
+      <name>label</name>
+      <title>Option Label</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_default</fieldName>
+      <name>is_default</name>
+      <title>Option is Default?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>grouping</fieldName>
+      <name>grouping</name>
+      <title>Option Grouping Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>filter</fieldName>
+      <name>filter</name>
+      <title>Filter</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_reserved</fieldName>
+      <name>is_reserved</name>
+      <title>Option Is Reserved?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
+      <fieldName>domain_id</fieldName>
+      <name>domain_id</name>
+      <title>Option Domain</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
+      <fieldName>option_group_id</fieldName>
+      <name>option_group_id</name>
+      <title>Option Group ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>name</fieldName>
+      <name>name</name>
+      <title>Option Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>id</fieldName>
+      <name>id</name>
+      <title>Option Value ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>visibility_id</fieldName>
+      <name>visibility_id</name>
+      <title>Option Visibility</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>value</fieldName>
+      <name>value</name>
+      <title>Option Value</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_optgroup</fieldName>
+      <name>is_optgroup</name>
+      <title>Option is Header?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>option_group_id</key-index>
+    <key-index>label</key-index>
+    <output-field>
+      <input-field>option_group_id</input-field>
+      <output-field>option_group_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>label</input-field>
+      <output-field>label</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Detect empty stream</name>
+    <type>DetectEmptyStream</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Drop all non-value fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>value</name>
+        <rename>campaign_type_id</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized campaigns</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>Y</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>campaign_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>campaign</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix punctuation in fields</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>&amp;</replace_string>
+        <replace_by_string>and</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>'</replace_string>
+        <replace_by_string />
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>campaign</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>"</replace_string>
+        <replace_by_string />
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get campign_type_id from JSON</name>
+    <type>JsonInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <include>N</include>
+    <include_field />
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <ignoreMissingPath>N</ignoreMissingPath>
+    <rownum_field />
+    <file>
+      <name />
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>value</name>
+        <path>$..value</path>
+        <type>String</type>
+        <format>#</format>
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField>Result</valueField>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the campaign_type_id</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>RE: GiftSplit</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>SELECT
+g.CONSTIT_ID
+, CAMPAIGN.DESCRIPTION as campaign
+, r.CONSTITUENT_ID
+FROM GiftSplit gs
+LEFT JOIN CAMPAIGN on gs.CampaignId = CAMPAIGN.id 
+LEFT JOIN GIFT g on gs.GiftId = g.ID
+LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
+WHERE CAMPAIGN.DESCRIPTION IS NOT NULL</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>0</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap "Inactive" to "is_active"</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>is_active</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>0</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set fields to create campaign_type</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>option_group_id</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>campaign_type</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>label</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>Imported from RE</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by Campaign</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cov.value as campaign_type_id from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'campaign_type' AND cov.label = "Imported from RE";
+#SELECT cov.value as campaign_type_id from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'campaign_type' AND cov.label = "Referral Program";</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique campaigns</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>campaign</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_campaigns</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_campaigns</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>start_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>end_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>goal_revenue</name>
+        <type>BigNumber</type>
+        <format>#.###############################################;-#.###############################################</format>
+        <currency />
+        <decimal>.</decimal>
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>external_identifier</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>912</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>log_api_campaigns</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/importlogs/log_api_campaigns.txt</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>start_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>end_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>goal_revenue</name>
+        <type>BigNumber</type>
+        <format>#.###############################################;-#.###############################################</format>
+        <currency />
+        <decimal>.</decimal>
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>external_identifier</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Result</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup campaigns data in RE</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>CAMPAIGN</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>campaign</name>
+        <field>DESCRIPTION</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>START_DATE</name>
+        <rename>start_date</rename>
+        <default />
+        <type>Timestamp</type>
+      </value>
+      <value>
+        <name>END_DATE</name>
+        <rename>end_date</rename>
+        <default />
+        <type>Timestamp</type>
+      </value>
+      <value>
+        <name>GOAL</name>
+        <rename>goal_revenue</rename>
+        <default />
+        <type>Number</type>
+      </value>
+      <value>
+        <name>INACTIVE</name>
+        <rename>is_active</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>NOTES</name>
+        <rename>description</rename>
+        <default />
+        <type>String</type>
+      </value>
+      <value>
+        <name>ID</name>
+        <rename>external_identifier</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup campaigns in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_campaign</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>campaign</name>
+        <field>title</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>campaign_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>set null is_active/goal_revenue to 0</name>
+    <type>IfNull</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue>0</replaceAllByValue>
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>goal_revenue</name>
+        <value>0</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>is_active</name>
+        <value>0</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>
