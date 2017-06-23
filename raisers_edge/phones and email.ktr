@@ -437,11 +437,14 @@
     <notepad>
       <note>We're removing dupes here
 kind of agressively.  Might also want to compare
-on do_not_call and location_type</note>
+on do_not_call and location_type
+
+Note we dedupe aggressively again at the bottom
+for phone on phone_numeric</note>
       <xloc>448</xloc>
       <yloc>80</yloc>
-      <width>292</width>
-      <heigth>58</heigth>
+      <width>296</width>
+      <heigth>100</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -754,11 +757,6 @@ on do_not_call and location_type</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>New phones only</from>
-      <to>cli_phone</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>phone_cleanup</from>
       <to>invalid_phone</to>
       <enabled>Y</enabled>
@@ -766,11 +764,6 @@ on do_not_call and location_type</note>
     <hop>
       <from>Create phone_type</from>
       <to>filter all "do not call"</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>phone_cleanup</from>
-      <to>Check for existing phones</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -784,11 +777,6 @@ on do_not_call and location_type</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap phone types</from>
-      <to>phone_cleanup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: PHONES</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
@@ -796,6 +784,41 @@ on do_not_call and location_type</note>
     <hop>
       <from>Step 1 contacts only</from>
       <to>Drop "Sequence"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap phone types</from>
+      <to>create phone_numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>create phone_numeric</from>
+      <to>sort by CONSTITUENT_ID and phone_numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sort by CONSTITUENT_ID and phone_numeric</from>
+      <to>Remove non-unique phone_numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove non-unique phone_numeric</from>
+      <to>phone_cleanup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>phone_cleanup</from>
+      <to>create phone_numeric 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>create phone_numeric 2</from>
+      <to>Check for existing phones</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>New phones only</from>
+      <to>cli_phone</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -886,8 +909,8 @@ on do_not_call and location_type</note>
         <name2 />
       </key>
       <key>
-        <name>phone</name>
-        <field>phone</field>
+        <name>phone_numeric</name>
+        <field>phone_numeric</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -918,8 +941,8 @@ on do_not_call and location_type</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>608</yloc>
+      <xloc>80</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1114,8 +1137,8 @@ on do_not_call and location_type</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>672</yloc>
+      <xloc>80</xloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1295,6 +1318,14 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       <field>
         <source_value>E-mail 4</source_value>
         <target_value>Main 2</target_value>
+      </field>
+      <field>
+        <source_value>Bus. E-mail 1</source_value>
+        <target_value>Work</target_value>
+      </field>
+      <field>
+        <source_value>Home E-mail 1</source_value>
+        <target_value>Home</target_value>
       </field>
     </fields>
     <cluster_schema />
@@ -1861,6 +1892,62 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     </GUI>
   </step>
   <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Unique rows (HashSet)</name>
     <type>UniqueRowsByHashSet</type>
     <description />
@@ -2262,8 +2349,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>752</yloc>
+      <xloc>80</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2964,8 +3051,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>608</yloc>
+      <xloc>240</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3103,7 +3190,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       <output>
         <mapping>
           <input_step>valid phones</input_step>
-          <output_step>Check for existing phones</output_step>
+          <output_step>create phone_numeric 2</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
@@ -3130,14 +3217,14 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>528</yloc>
+      <xloc>176</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only</name>
-    <type>SimpleMapping</type>
+    <name>create phone_numeric</name>
+    <type>ScriptValueMod</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -3146,38 +3233,27 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//for better deduping and internal deduping
+var phone_numeric = NUM.replace(/\D/g, '');
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>phone_numeric</name>
+        <rename>phone_numeric</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3186,8 +3262,140 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>48</yloc>
+      <xloc>240</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sort by CONSTITUENT_ID and phone_numeric</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>CONSTITUENT_ID</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>phone_numeric</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove non-unique phone_numeric</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>CONSTITUENT_ID</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+      <field>
+        <name>phone_numeric</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>create phone_numeric 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//for better deduping and internal deduping
+var phone_numeric = phone.replace(/\D/g, '');
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>phone_numeric</name>
+        <rename>phone_numeric</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

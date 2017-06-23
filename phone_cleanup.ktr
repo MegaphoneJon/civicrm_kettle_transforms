@@ -659,11 +659,6 @@ if both of these streams have records.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove irrelevant fields 3</from>
-      <to>get names for invalid phone</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add reason: "Phone length > 32 characters"</from>
       <to>get names for invalid phone</to>
       <enabled>Y</enabled>

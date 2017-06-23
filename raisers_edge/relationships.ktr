@@ -437,7 +437,7 @@
     <notepad>
       <note>lookup relationship_type_b</note>
       <xloc>1232</xloc>
-      <yloc>800</yloc>
+      <yloc>864</yloc>
       <width>164</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -458,7 +458,7 @@
     <notepad>
       <note>Deal with hardcoded relationship type fields</note>
       <xloc>304</xloc>
-      <yloc>384</yloc>
+      <yloc>448</yloc>
       <width>263</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -479,7 +479,7 @@
     <notepad>
       <note>Set your custom field IDs here.</note>
       <xloc>912</xloc>
-      <yloc>960</yloc>
+      <yloc>1024</yloc>
       <width>192</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -500,7 +500,7 @@
     <notepad>
       <note>If you don't define these relationship types in Civi, these records won't be created.</note>
       <xloc>176</xloc>
-      <yloc>144</yloc>
+      <yloc>208</yloc>
       <width>484</width>
       <heigth>25</heigth>
       <fontname>Arial</fontname>
@@ -521,11 +521,95 @@
     <notepad>
       <note>Also set a generic relationship_type "is related to" here.</note>
       <xloc>1344</xloc>
-      <yloc>1056</yloc>
+      <yloc>1120</yloc>
       <width>332</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
+      <xloc>1168</xloc>
+      <yloc>80</yloc>
+      <width>400</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Only keep the relationship if BOTH contacts are coming over.</note>
+      <xloc>1168</xloc>
+      <yloc>144</yloc>
+      <width>399</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- FIXME Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
+      <xloc>1168</xloc>
+      <yloc>240</yloc>
+      <width>368</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- FIXME Use RELATION_ID, not RECORDS.CONSTITUENT_ID</note>
+      <xloc>1168</xloc>
+      <yloc>304</yloc>
+      <width>375</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -799,11 +883,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: CONSTIT_RELATIONSHIPS</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter invalid relationships 2</from>
       <to>unknown/null relationship filter</to>
       <enabled>Y</enabled>
@@ -869,18 +948,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Convert date format to the format Civi expects 2</from>
-      <to>cli_relationship</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi</from>
       <to>external ID to contact_id in Civi 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>#18340 - Certain relationships are always employees, set primary_contact flag</from>
-      <to>Dummy (do nothing) 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -901,11 +970,6 @@
     <hop>
       <from>Unique rows</from>
       <to>re_relationship_types</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi 2</from>
-      <to>#18340 - Certain relationships are always employees, set primary_contact flag</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -983,10 +1047,45 @@
       <to>Remove unneeded fields</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>RE: CONSTIT_RELATIONSHIPS</from>
+      <to>Step 1 contacts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Step 1 contacts only 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only 2</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi 2</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects 2</from>
+      <to>Sort rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 2</from>
+      <to>Unique rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows 2</from>
+      <to>cli_relationship</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
-    <name>#18340 - Certain relationships are always employees, set primary_contact flag</name>
-    <type>ScriptValueMod</type>
+    <name>"is related to" relationship_type_id</name>
+    <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -995,73 +1094,13 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var RELATIONSHIP_TYPE;
-var description;
-var IS_EMPLOYEE;
-var custom_89;
-
-if(RELATIONSHIP_TYPE == "Executive Director" || 
-  RELATIONSHIP_TYPE == "PR Person" || 
-  RELATIONSHIP_TYPE == "Program Officer" ||
-  RELATIONSHIP_TYPE == "Primary Contact") {
-     RELATIONSHIP_TYPE = "Employee Of";
-     IS_EMPLOYEE = null;
-}
-
-if (IS_PRIMARY == -1 || CONTACT_TYPE == 'Primary Contact') {
-  CONTACT_TYPE = null;
-  custom_89 = "1";
-} else {
-  custom_89 = "0";
-}
-
-if(CONTACT_TYPE) {
-  description = description + " - " + CONTACT_TYPE;
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>RELATIONSHIP_TYPE</name>
-        <rename>RELATIONSHIP_TYPE</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>description</name>
-        <rename>description</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>IS_EMPLOYEE</name>
-        <rename>IS_EMPLOYEE</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>custom_89</name>
-        <rename>custom_89</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'is related to'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1070,8 +1109,8 @@ if(CONTACT_TYPE) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>352</yloc>
+      <xloc>960</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1109,7 +1148,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>624</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1147,7 +1186,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>640</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1242,7 +1281,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1184</yloc>
+      <yloc>1248</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1303,7 +1342,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1248</yloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1346,7 +1385,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1440</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1370,7 +1409,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>432</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1394,7 +1433,74 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>464</yloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Employee of</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Employee relationship_type_id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Employee of'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1428,7 +1534,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>848</yloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1462,7 +1568,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1376</xloc>
-      <yloc>848</yloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1606,38 +1712,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>1488</xloc>
-      <yloc>960</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Spouse relationship_type_id</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Spouse of'</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>240</yloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1680,7 +1755,74 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>320</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Head of Household</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Head of household relationship_type_id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Head of Household for'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1723,7 +1865,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>512</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1766,7 +1908,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1809,7 +1951,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1852,7 +1994,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>544</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1895,7 +2037,74 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Matching Gift</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Matching gift relationship_type_id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Matching Gift for'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1933,7 +2142,7 @@ if(CONTACT_TYPE) {
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>624</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1962,8 +2171,8 @@ if(CONTACT_TYPE) {
 , POSITION AS description
 , CT.LONGDESCRIPTION AS CONTACT_TYPE
 , DO_NOT_MAIL
-, MATCHING_GIFT_FLAG
-, MATCH_NOTES
+, cr.MATCHING_GIFT_FLAG
+, cr.MATCH_NOTES
 , IS_CONTACT
 , IS_EMPLOYEE
 , IS_PRIMARY
@@ -1971,11 +2180,15 @@ if(CONTACT_TYPE) {
 , RLTN.LONGDESCRIPTION AS RELATIONSHIP_TYPE
 , RECIP.LONGDESCRIPTION AS RECIP_RELATIONSHIP_TYPE
 , 1 AS is_active
-, CONSTIT_RELATIONSHIPS.id as custom_5
-FROM CONSTIT_RELATIONSHIPS
+, cr.id as custom_5
+, r1.CONSTITUENT_ID as CONSTITUENT_ID_A
+, r2.CONSTITUENT_ID as CONSTITUENT_ID_B
+FROM CONSTIT_RELATIONSHIPS cr
 LEFT JOIN TABLEENTRIES as RLTN ON RELATION_CODE = RLTN.TABLEENTRIESID
 LEFT JOIN TABLEENTRIES as RECIP ON RECIP_RELATION_CODE = RECIP.TABLEENTRIESID
-LEFT JOIN TABLEENTRIES as CT ON CONTACT_TYPE = CT.TABLEENTRIESID</sql>
+LEFT JOIN TABLEENTRIES as CT ON CONTACT_TYPE = CT.TABLEENTRIESID
+LEFT JOIN RECORDS r1 ON r1.ID = CONSTIT_ID
+LEFT JOIN RECORDS r2 ON r2.ID = RELATION_ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -2062,7 +2275,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1072</xloc>
-      <yloc>1104</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2279,7 +2492,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>720</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2544,7 +2757,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>672</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2587,7 +2800,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>576</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2621,7 +2834,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1184</xloc>
-      <yloc>1040</yloc>
+      <yloc>1104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2651,7 +2864,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1200</xloc>
-      <yloc>864</yloc>
+      <yloc>928</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2681,7 +2894,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1408</xloc>
-      <yloc>976</yloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2711,26 +2924,23 @@ if (end_date != null){
       </field>
       <field>
         <name>description</name>
+        <rename />
       </field>
       <field>
         <name>contact_id_a</name>
+        <rename />
       </field>
       <field>
         <name>contact_id_b</name>
+        <rename />
       </field>
       <field>
         <name>relationship_type_id</name>
+        <rename />
       </field>
       <field>
         <name>is_active</name>
-      </field>
-      <field>
-        <name>custom_5</name>
-        <rename>custom_9</rename>
-      </field>
-      <field>
-        <name>custom_89</name>
-        <rename>custom_10</rename>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2743,7 +2953,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>960</yloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2786,7 +2996,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>544</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2816,7 +3026,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1424</xloc>
-      <yloc>592</yloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2865,7 +3075,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1360</xloc>
-      <yloc>64</yloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2901,7 +3111,38 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>672</yloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Spouse relationship_type_id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Spouse of'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2929,8 +3170,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>96</yloc>
+      <xloc>1456</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3061,30 +3302,6 @@ if (end_date != null){
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>custom_9</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_10</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -3095,7 +3312,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1312</yloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3155,18 +3372,6 @@ if (end_date != null){
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_9</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>contact_id_a</name>
         <type>Integer</type>
         <format>0</format>
@@ -3212,7 +3417,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1264</xloc>
-      <yloc>1136</yloc>
+      <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3238,7 +3443,7 @@ if (end_date != null){
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTIT_ID</name>
+        <name>CONSTITUENT_ID_A</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -3265,7 +3470,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1104</xloc>
-      <yloc>64</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3291,7 +3496,7 @@ if (end_date != null){
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>RELATION_ID</name>
+        <name>CONSTITUENT_ID_B</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -3318,7 +3523,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>192</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3375,7 +3580,7 @@ contact_id_a = temp;
     </remotesteps>
     <GUI>
       <xloc>1248</xloc>
-      <yloc>928</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3453,7 +3658,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>512</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3834,7 +4039,43 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1744</xloc>
-      <yloc>992</yloc>
+      <yloc>1056</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>is related to</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3914,8 +4155,8 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1520</xloc>
-      <yloc>144</yloc>
+      <xloc>1584</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3947,8 +4188,8 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>32</yloc>
+      <xloc>1248</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3995,7 +4236,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>784</yloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4042,7 +4283,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1296</xloc>
-      <yloc>832</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4090,7 +4331,7 @@ if (MATCH_NOTES) {
     </remotesteps>
     <GUI>
       <xloc>912</xloc>
-      <yloc>704</yloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4139,7 +4380,7 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>592</yloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4194,13 +4435,13 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     </remotesteps>
     <GUI>
       <xloc>1616</xloc>
-      <yloc>928</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Employee relationship_type_id</name>
-    <type>TableInput</type>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -4209,13 +4450,38 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Employee of'</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4224,14 +4490,14 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>224</yloc>
+      <xloc>1104</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Head of household relationship_type_id</name>
-    <type>TableInput</type>
+    <name>Step 1 contacts only 2</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -4240,13 +4506,38 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Head of Household for'</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>RELATION_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4255,81 +4546,14 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>240</yloc>
+      <xloc>1104</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Matching gift relationship_type_id</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Matching Gift for'</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Employee of</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Remap website_type</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Head of Household</name>
-    <type>JoinRows</type>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -4340,16 +4564,37 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Remap website_type</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>contact_id_a</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>relationship_type_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4358,14 +4603,14 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>608</yloc>
+      <xloc>1056</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Matching Gift</name>
-    <type>JoinRows</type>
+    <name>Unique rows 2</name>
+    <type>Unique</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -4374,18 +4619,11 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       <method>none</method>
       <schema_name />
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Remap website_type</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>      </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4394,75 +4632,8 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>"is related to" relationship_type_id</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'is related to'</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>is related to</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Remap website_type</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>1024</yloc>
+      <xloc>1056</xloc>
+      <yloc>1440</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
