@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>pledges</name>
+    <name>RE Pledges</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -430,15 +431,121 @@
     <created_date>2017/06/25 15:31:14.817</created_date>
     <modified_user>-</modified_user>
     <modified_date>2017/06/25 15:31:14.817</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
       <note>Import campaigns first</note>
-      <xloc>292</xloc>
-      <yloc>40</yloc>
+      <xloc>160</xloc>
+      <yloc>16</yloc>
       <width>149</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- org-specific</note>
+      <xloc>143</xloc>
+      <yloc>168</yloc>
+      <width>102</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- FIXME Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
+      <xloc>144</xloc>
+      <yloc>224</yloc>
+      <width>368</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Seems like everyone makes equal installment amounts,
+  so I could use the calculator - but just to be safe</note>
+      <xloc>171</xloc>
+      <yloc>441</yloc>
+      <width>367</width>
+      <heigth>38</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific fund stuff</note>
+      <xloc>640</xloc>
+      <yloc>768</yloc>
+      <width>167</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- end org-specific stuff</note>
+      <xloc>148</xloc>
+      <yloc>1317</yloc>
+      <width>160</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -515,13 +622,893 @@
       </attribute>
     </attributes>
   </connection>
+  <connection>
+    <name>Target CiviCRM</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${CIVIDB}</database>
+    <port>3306</port>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>RE: GiftSplit</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>financial_type_id = 14</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Campaigns only</from>
+      <to>Sort by Campaign</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized campaigns</from>
+      <to>Campaigns only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by Campaign</from>
+      <to>Unique campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique campaigns</from>
+      <to>invalid_campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup campaigns in Civi</from>
+      <to>Filter unrecognized campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>financial_type_id = 14</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>lookup campaigns in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized campaigns</from>
+      <to>get original_installment_amount</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects</from>
+      <to>Convert date format to the format Civi expects 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Reformat lenient dates</from>
+      <to>Convert date format to the format Civi expects</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>get original_installment_amount</from>
+      <to>Reformat lenient dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects 2</from>
+      <to>Map frequency_unit</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map frequency_unit</from>
+      <to>Map frequency_interval</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map frequency_interval</from>
+      <to>Calculate frequency_day</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>import fields only</from>
       <to>cli_pledge</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Fund list</from>
+      <to>Get abbreviation from fund</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get abbreviation from fund</from>
+      <to>Sort by fund abbreviation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by fund abbreviation</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized appeals</from>
+      <to>appeal fields Only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by appeal</from>
+      <to>Unique appeals</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by fund</from>
+      <to>Unique funds</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique appeals</from>
+      <to>invalid_appeals</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique funds</from>
+      <to>lookup fund data in RE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>appeal fields Only</from>
+      <to>Sort by appeal</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>financial type only</from>
+      <to>Sort by fund</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup fund data in RE</from>
+      <to>invalid_funds</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculate frequency_day</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized financial type</from>
+      <to>financial type only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add option_value_group ids</from>
+      <to>lookup appeal in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup appeal in Civi</from>
+      <to>Filter unrecognized appeals</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Stream lookup</from>
+      <to>Add option_value_group ids</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized appeals</from>
+      <to>Filter unrecognized financial type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized financial type</from>
+      <to>import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Add option_value_group ids</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>temp_appeal_id</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>168</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1072</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculate frequency_day</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//What day of the period is the payment due?
+var frequency_day;
+temp_date = null;
+first_of_year = null;
+
+
+// Annual.  This is the hardest; need to calculate day of year of, e.g. November 3rd.
+if (INSTALLMENT_FREQUENCY == 1) {
+  // "2017" can be any non-leap year
+  temp_date = new Date(2017, Schedule_Month - 1, Schedule_DayOfMonth);
+  start = new Date(2017, 0, 0);
+  diff = temp_date - start + (start.getTimezoneOffset() - temp_date.getTimezoneOffset()) * 60 * 1000;
+  //var diff = now - start;
+  oneDay = 1000 * 60 * 60 * 24;
+  frequency_day = Math.floor(diff / oneDay);
+}
+
+// Every 1/2/3/6 months
+if (INSTALLMENT_FREQUENCY >= 2 &amp;&amp; INSTALLMENT_FREQUENCY &lt;= 5) {
+  // "X Day of the Month"-style scheduling
+  if (Schedule_MonthlyType == 1) {
+    frequency_day = Schedule_DayOfMonth;
+  }
+  // "3rd Friday of the Month"-style scheduling.  Can't really do this in Civi, so make it up.
+  if (Schedule_MonthlyType == 2) {
+    frequency_day = 30;
+  }
+}
+
+// Twice a month on arbitrary days.  Civi doesn't support it and I don't really need to either, so...
+if (INSTALLMENT_FREQUENCY == 6) {
+  frequency_day = 1;
+}
+
+// Irregular - can't really say.
+if (INSTALLMENT_FREQUENCY == 9) {
+  frequency_day = 1;
+}
+
+// Single Installment
+if (INSTALLMENT_FREQUENCY == 10) {
+  frequency_day = 1;
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>frequency_day</name>
+        <rename>frequency_day</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Campaigns only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>campaign</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Convert date format to the format Civi expects</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Convert date format to the format Civi expects 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>receive_date</name>
+        <rename>receive_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>start_date</name>
+        <rename>start_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>create_date</name>
+        <rename>create_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>modified_date</name>
+        <rename>modified_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized appeals</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Filter unrecognized financial type</send_true_to>
+    <send_false_to>appeal fields Only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>custom_appeal</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>appeal</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized campaigns</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>get original_installment_amount</send_true_to>
+    <send_false_to>Campaigns only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>campaign_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>campaign</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized financial type</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>import fields only</send_true_to>
+    <send_false_to>financial type only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>financial_type_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fund list</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT label, value as custom_196 from civicrm_option_value WHERE option_group_id = 167;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get abbreviation from fund</name>
+    <type>RegexEval</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <script>.*\(([^)]*)\)$</script>
+    <matcher>label</matcher>
+    <resultfieldname />
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>abbreviation</name>
+        <type>String</type>
+        <format />
+        <group />
+        <decimal />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+        <currency />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map frequency_interval</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INSTALLMENT_FREQUENCY</field_to_use>
+    <target_field>frequency_interval</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>6</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map frequency_unit</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INSTALLMENT_FREQUENCY</field_to_use>
+    <target_field>frequency_unit</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>year</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>week</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>month</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>RE: GiftSplit</name>
     <type>TableInput</type>
@@ -537,7 +1524,7 @@
     <sql>/* Find all GIFT records with one or more associated Installment records. */
 SELECT DISTINCT
 g.CONSTIT_ID
-, gs.GiftId
+, g.ID as GiftId
 , g.Amount
 , g.DTE as receive_date
 , FUND.DESCRIPTION as fund
@@ -555,9 +1542,7 @@ g.CONSTIT_ID
 ,NUMBER_OF_INSTALLMENTS
 ,POST_DATE
 ,POST_STATUS
-,REF
 ,REMIND_FLAG
-,AcknowledgeDate
 ,Schedule_Month
 ,Schedule_DayOfMonth
 ,Schedule_MonthlyDayOfWeek
@@ -572,11 +1557,11 @@ g.CONSTIT_ID
 ,Schedule_EndDate
 ,FrequencyDescription
 , r.CONSTITUENT_ID
-FROM GiftSplit gs
+FROM Gift g
+LEFT JOIN GiftSplit gs on g.ID = gs.GiftId
 LEFT JOIN FUND on gs.FundId = FUND.id
 LEFT JOIN APPEAL on gs.AppealId = APPEAL.id
 LEFT JOIN CAMPAIGN on gs.CampaignId = CAMPAIGN.id 
-LEFT JOIN GIFT g on gs.GiftId = g.ID
 LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
 JOIN Installment i ON g.ID = i.PledgeId</sql>
     <limit>0</limit>
@@ -594,6 +1579,531 @@ JOIN Installment i ON g.ID = i.PledgeId</sql>
     <GUI>
       <xloc>80</xloc>
       <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Reformat lenient dates</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var acknowledge_date;
+
+if (acknowledge_date != null){
+	if (acknowledge_date.length == 4){
+	 acknowledge_date = acknowledge_date + '0101';
+	}
+	if (acknowledge_date.length == 6){
+	 acknowledge_date = acknowledge_date + '01';
+	}
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>CONSTIT_ID</name>
+      </field>
+      <field>
+        <name>GiftId</name>
+      </field>
+      <field>
+        <name>Amount</name>
+        <rename>amount</rename>
+      </field>
+      <field>
+        <name>receive_date</name>
+      </field>
+      <field>
+        <name>fund</name>
+      </field>
+      <field>
+        <name>FUND_ID</name>
+      </field>
+      <field>
+        <name>campaign</name>
+      </field>
+      <field>
+        <name>appeal</name>
+      </field>
+      <field>
+        <name>PAYMENT_TYPE</name>
+      </field>
+      <field>
+        <name>ACKNOWLEDGEDATE</name>
+        <rename>acknowledge_date</rename>
+      </field>
+      <field>
+        <name>type</name>
+      </field>
+      <field>
+        <name>note</name>
+      </field>
+      <field>
+        <name>DATE_1ST_PAY</name>
+        <rename>start_date</rename>
+      </field>
+      <field>
+        <name>DATEADDED</name>
+        <rename>create_date</rename>
+      </field>
+      <field>
+        <name>DATECHANGED</name>
+        <rename>modified_date</rename>
+      </field>
+      <field>
+        <name>INSTALLMENT_FREQUENCY</name>
+      </field>
+      <field>
+        <name>NUMBER_OF_INSTALLMENTS</name>
+        <rename>installments</rename>
+      </field>
+      <field>
+        <name>POST_DATE</name>
+      </field>
+      <field>
+        <name>POST_STATUS</name>
+      </field>
+      <field>
+        <name>Schedule_Month</name>
+      </field>
+      <field>
+        <name>Schedule_DayOfMonth</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyDayOfWeek</name>
+      </field>
+      <field>
+        <name>Schedule_Spacing</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyType</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyOrdinal</name>
+      </field>
+      <field>
+        <name>Schedule_WeeklyDayOfWeek</name>
+      </field>
+      <field>
+        <name>Schedule_DayOfMonth2</name>
+      </field>
+      <field>
+        <name>Schedule_SMDayType1</name>
+      </field>
+      <field>
+        <name>Schedule_SMDayType2</name>
+      </field>
+      <field>
+        <name>NextTransactionDate</name>
+      </field>
+      <field>
+        <name>Schedule_EndDate</name>
+      </field>
+      <field>
+        <name>FrequencyDescription</name>
+      </field>
+      <field>
+        <name>CONSTITUENT_ID</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by Campaign</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by appeal</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>appeal</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by fund</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>fund</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by fund abbreviation</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>abbreviation</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Sort by fund abbreviation</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>FUND_ID</name>
+        <field>abbreviation</field>
+      </key>
+      <value>
+        <name>custom_196</name>
+        <rename>custom_206</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique appeals</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>appeal</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique campaigns</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>campaign</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique funds</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>fund</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>appeal fields Only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>appeal</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>1232</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -641,31 +2151,7 @@ JOIN Installment i ON g.ID = i.PledgeId</sql>
     </file>
     <fields>
       <field>
-        <name>CONSTIT_ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>GiftId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Amount</name>
+        <name>amount</name>
         <type>BigNumber</type>
         <format>######0.0###################;-######0.0###################</format>
         <currency />
@@ -678,7 +2164,7 @@ JOIN Installment i ON g.ID = i.PledgeId</sql>
       </field>
       <field>
         <name>receive_date</name>
-        <type>Timestamp</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -688,380 +2174,525 @@ JOIN Installment i ON g.ID = i.PledgeId</sql>
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>acknowledge_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>start_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>create_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>modified_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>installments</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>financial_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>original_installment_amount</name>
+        <type>BigNumber</type>
+        <format>######0.0###################;-######0.0###################</format>
+        <currency />
+        <decimal>.</decimal>
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>frequency_unit</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>frequency_interval</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>frequency_day</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_205</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_204</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_206</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_207</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_208</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1728</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>external ID to contact_id in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>CONSTITUENT_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+      <value>
+        <name>display_name</name>
+        <rename>display_name</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>financial type only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
       <field>
         <name>fund</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>financial_type_id = 14</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>financial_type_id</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>14</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>get original_installment_amount</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Installment</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>GiftId</name>
+        <field>PledgeId</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Amount</name>
+        <rename>original_installment_amount</rename>
+        <default />
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>amount</name>
       </field>
       <field>
-        <name>FUND_ID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>receive_date</name>
       </field>
       <field>
-        <name>campaign</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>acknowledge_date</name>
       </field>
       <field>
-        <name>appeal</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>start_date</name>
       </field>
       <field>
-        <name>PAYMENT_TYPE</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>create_date</name>
       </field>
       <field>
-        <name>ACKNOWLEDGEDATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>modified_date</name>
       </field>
       <field>
-        <name>type</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>installments</name>
       </field>
       <field>
-        <name>note</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>financial_type_id</name>
       </field>
       <field>
-        <name>DATE_1ST_PAY</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>contact_id</name>
       </field>
       <field>
-        <name>DATEADDED</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>campaign_id</name>
       </field>
       <field>
-        <name>DATECHANGED</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>original_installment_amount</name>
       </field>
       <field>
-        <name>INSTALLMENT_FREQUENCY</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>frequency_unit</name>
       </field>
       <field>
-        <name>NUMBER_OF_INSTALLMENTS</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>frequency_interval</name>
       </field>
       <field>
-        <name>POST_DATE</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>POST_STATUS</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>REF</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>REMIND_FLAG</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>AcknowledgeDate_1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_Month</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_DayOfMonth</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_MonthlyDayOfWeek</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_Spacing</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_MonthlyType</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_MonthlyOrdinal</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_WeeklyDayOfWeek</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_DayOfMonth2</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_SMDayType1</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_SMDayType2</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NextTransactionDate</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Schedule_EndDate</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>frequency_day</name>
       </field>
       <field>
         <name>FrequencyDescription</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <rename>custom_205</rename>
       </field>
       <field>
-        <name>CONSTITUENT_ID</name>
+        <name>note</name>
+        <rename>custom_204</rename>
+      </field>
+      <field>
+        <name>custom_206</name>
+      </field>
+      <field>
+        <name>custom_appeal</name>
+        <rename>custom_207</rename>
+      </field>
+      <field>
+        <name>GiftId</name>
+        <rename>custom_208</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1648</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_appeals</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_appeals</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>appeal</name>
         <type>String</type>
         <format />
         <currency />
@@ -1081,8 +2712,389 @@ JOIN Installment i ON g.ID = i.PledgeId</sql>
       </output>
     </remotesteps>
     <GUI>
+      <xloc>576</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_campaigns</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_campaigns</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>start_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>end_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>goal_revenue</name>
+        <type>BigNumber</type>
+        <format>#.###############################################;-#.###############################################</format>
+        <currency />
+        <decimal>.</decimal>
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>external_identifier</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_funds</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_funds</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>fund</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup appeal in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_option_value</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>appeal</name>
+        <field>label</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>temp_appeal_id</name>
+        <field>option_group_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>value</name>
+        <rename>custom_appeal</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>80</xloc>
-      <yloc>256</yloc>
+      <yloc>1136</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup campaigns in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_campaign</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>campaign</name>
+        <field>title</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>campaign_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup fund data in RE</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>FUND</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fund</name>
+        <field>DESCRIPTION</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>INACTIVE</name>
+        <rename>is_active</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
