@@ -502,6 +502,28 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>This is smart enough to only bring over appeals that are used either on gifts 
+or constituent appeals that are actually tied to contacts being brought over.</note>
+      <xloc>624</xloc>
+      <yloc>16</yloc>
+      <width>474</width>
+      <heigth>38</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -627,7 +649,7 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
   </connection>
   <order>
     <hop>
-      <from>RE: GiftSplit</from>
+      <from>RE: Appeals in use</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
     </hop>
@@ -693,6 +715,44 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
     </hop>
   </order>
   <step>
+    <name>Add option_value_group ids</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>option_group_id</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>168</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Appeals only</name>
     <type>SelectValues</type>
     <description />
@@ -719,6 +779,310 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
     <GUI>
       <xloc>144</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Create appeals</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>OptionValue</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>Result</ResultField>
+    <DebugMode>N</DebugMode>
+    <entity-name>Acl</entity-name>
+    <entity-name>AclRole</entity-name>
+    <entity-name>ActionSchedule</entity-name>
+    <entity-name>Activity</entity-name>
+    <entity-name>ActivityContact</entity-name>
+    <entity-name>ActivityType</entity-name>
+    <entity-name>Address</entity-name>
+    <entity-name>Batch</entity-name>
+    <entity-name>Campaign</entity-name>
+    <entity-name>Case</entity-name>
+    <entity-name>CaseType</entity-name>
+    <entity-name>Constant</entity-name>
+    <entity-name>Contact</entity-name>
+    <entity-name>ContactType</entity-name>
+    <entity-name>Contribution</entity-name>
+    <entity-name>ContributionPage</entity-name>
+    <entity-name>ContributionRecur</entity-name>
+    <entity-name>ContributionSoft</entity-name>
+    <entity-name>Country</entity-name>
+    <entity-name>CustomField</entity-name>
+    <entity-name>CustomGroup</entity-name>
+    <entity-name>CustomSearch</entity-name>
+    <entity-name>CustomValue</entity-name>
+    <entity-name>Dashboard</entity-name>
+    <entity-name>DashboardContact</entity-name>
+    <entity-name>Domain</entity-name>
+    <entity-name>Email</entity-name>
+    <entity-name>Entity</entity-name>
+    <entity-name>EntityTag</entity-name>
+    <entity-name>Event</entity-name>
+    <entity-name>Extension</entity-name>
+    <entity-name>File</entity-name>
+    <entity-name>FinancialAccount</entity-name>
+    <entity-name>FinancialType</entity-name>
+    <entity-name>Grant</entity-name>
+    <entity-name>Group</entity-name>
+    <entity-name>GroupContact</entity-name>
+    <entity-name>GroupNesting</entity-name>
+    <entity-name>GroupOrganization</entity-name>
+    <entity-name>Im</entity-name>
+    <entity-name>Job</entity-name>
+    <entity-name>LineItem</entity-name>
+    <entity-name>LocBlock</entity-name>
+    <entity-name>Location</entity-name>
+    <entity-name>LocationType</entity-name>
+    <entity-name>MailSettings</entity-name>
+    <entity-name>Mailing</entity-name>
+    <entity-name>MailingComponent</entity-name>
+    <entity-name>MailingContact</entity-name>
+    <entity-name>MailingEventConfirm</entity-name>
+    <entity-name>MailingEventResubscribe</entity-name>
+    <entity-name>MailingEventSubscribe</entity-name>
+    <entity-name>MailingEventUnsubscribe</entity-name>
+    <entity-name>MailingGroup</entity-name>
+    <entity-name>MailingJob</entity-name>
+    <entity-name>MailingRecipients</entity-name>
+    <entity-name>Membership</entity-name>
+    <entity-name>MembershipBlock</entity-name>
+    <entity-name>MembershipPayment</entity-name>
+    <entity-name>MembershipStatus</entity-name>
+    <entity-name>MembershipType</entity-name>
+    <entity-name>MessageTemplate</entity-name>
+    <entity-name>Note</entity-name>
+    <entity-name>OptionGroup</entity-name>
+    <entity-name>OptionValue</entity-name>
+    <entity-name>Participant</entity-name>
+    <entity-name>ParticipantPayment</entity-name>
+    <entity-name>ParticipantStatusType</entity-name>
+    <entity-name>PaymentProcessor</entity-name>
+    <entity-name>PaymentProcessorType</entity-name>
+    <entity-name>Phone</entity-name>
+    <entity-name>Pledge</entity-name>
+    <entity-name>PledgePayment</entity-name>
+    <entity-name>Premium</entity-name>
+    <entity-name>PriceField</entity-name>
+    <entity-name>PriceFieldValue</entity-name>
+    <entity-name>PriceSet</entity-name>
+    <entity-name>PrintLabel</entity-name>
+    <entity-name>Product</entity-name>
+    <entity-name>Profile</entity-name>
+    <entity-name>Relationship</entity-name>
+    <entity-name>RelationshipType</entity-name>
+    <entity-name>ReportInstance</entity-name>
+    <entity-name>ReportTemplate</entity-name>
+    <entity-name>Setting</entity-name>
+    <entity-name>SmsProvider</entity-name>
+    <entity-name>Survey</entity-name>
+    <entity-name>SurveyRespondant</entity-name>
+    <entity-name>System</entity-name>
+    <entity-name>SystemLog</entity-name>
+    <entity-name>Tag</entity-name>
+    <entity-name>UFField</entity-name>
+    <entity-name>UFGroup</entity-name>
+    <entity-name>UFJoin</entity-name>
+    <entity-name>UFMatch</entity-name>
+    <entity-name>Website</entity-name>
+    <entity-name>WordReplacement</entity-name>
+    <action-name>create</action-name>
+    <action-name>delete</action-name>
+    <action-name>getfield</action-name>
+    <action-name>getlist</action-name>
+    <action-name>getrefcount</action-name>
+    <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>component_id</fieldName>
+      <name>component_id</name>
+      <title>Option Component</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_active</fieldName>
+      <name>is_active</name>
+      <title>Option Is Active</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>color</fieldName>
+      <name>color</name>
+      <title>Color</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>icon</fieldName>
+      <name>icon</name>
+      <title>Icon</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>weight</fieldName>
+      <name>weight</name>
+      <title>Order</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>description</fieldName>
+      <name>description</name>
+      <title>Option Description</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>label</fieldName>
+      <name>label</name>
+      <title>Option Label</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_default</fieldName>
+      <name>is_default</name>
+      <title>Option is Default?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>grouping</fieldName>
+      <name>grouping</name>
+      <title>Option Grouping Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>filter</fieldName>
+      <name>filter</name>
+      <title>Filter</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_reserved</fieldName>
+      <name>is_reserved</name>
+      <title>Option Is Reserved?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
+      <fieldName>domain_id</fieldName>
+      <name>domain_id</name>
+      <title>Option Domain</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
+      <fieldName>option_group_id</fieldName>
+      <name>option_group_id</name>
+      <title>Option Group ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>name</fieldName>
+      <name>name</name>
+      <title>Option Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>id</fieldName>
+      <name>id</name>
+      <title>Option Value ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>visibility_id</fieldName>
+      <name>visibility_id</name>
+      <title>Option Visibility</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>value</fieldName>
+      <name>value</name>
+      <title>Option Value</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_optgroup</fieldName>
+      <name>is_optgroup</name>
+      <title>Option is Header?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>appeal</key-index>
+    <key-index>option_group_id</key-index>
+    <key-index>option_value</key-index>
+    <key-index>is_active</key-index>
+    <key-index>DATEADDED</key-index>
+    <output-field>
+      <input-field>option_value</input-field>
+      <output-field>option_value</output-field>
+    </output-field>
+    <output-field>
+      <input-field>is_active</input-field>
+      <output-field>is_active</output-field>
+    </output-field>
+    <output-field>
+      <input-field>DATEADDED</input-field>
+      <output-field>DATEADDED</output-field>
+    </output-field>
+    <output-field>
+      <input-field>option_group_id</input-field>
+      <output-field>option_group_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>appeal</input-field>
+      <output-field>label</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -828,7 +1192,7 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
     </GUI>
   </step>
   <step>
-    <name>RE: GiftSplit</name>
+    <name>RE: Appeals in use</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -839,7 +1203,8 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>SELECT
+    <sql>/* We only bring in appeals that exist on a gift or a constituent appeal. */
+SELECT
 g.CONSTIT_ID
 , APPEAL.DESCRIPTION as appeal
 , r.CONSTITUENT_ID
@@ -847,7 +1212,15 @@ FROM GiftSplit gs
 LEFT JOIN Appeal on gs.AppealId = APPEAL.id 
 LEFT JOIN GIFT g on gs.GiftId = g.ID
 LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
-WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
+WHERE APPEAL.DESCRIPTION IS NOT NULL
+UNION
+SELECT
+ca.CONSTIT_ID
+, APPEAL.DESCRIPTION as appeal
+, r.CONSTITUENT_ID
+FROM CONSTITUENT_APPEALS ca
+LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id
+JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1031,6 +1404,123 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
     <GUI>
       <xloc>144</xloc>
       <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_appeals</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_appeals</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>appeal</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>option_group_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>option_value</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DATEADDED</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1266,465 +1756,6 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
     <GUI>
       <xloc>144</xloc>
       <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add option_value_group ids</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>option_group_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>168</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Create appeals</name>
-    <type>CiviCrmOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <ApiKey>${APIKEY}</ApiKey>
-    <SiteKey>${SITEKEY}</SiteKey>
-    <Entity>OptionValue</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>${RESTPATH}</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-    <entity-name>Acl</entity-name>
-    <entity-name>AclRole</entity-name>
-    <entity-name>ActionSchedule</entity-name>
-    <entity-name>Activity</entity-name>
-    <entity-name>ActivityContact</entity-name>
-    <entity-name>ActivityType</entity-name>
-    <entity-name>Address</entity-name>
-    <entity-name>Batch</entity-name>
-    <entity-name>Campaign</entity-name>
-    <entity-name>Case</entity-name>
-    <entity-name>CaseType</entity-name>
-    <entity-name>Constant</entity-name>
-    <entity-name>Contact</entity-name>
-    <entity-name>ContactType</entity-name>
-    <entity-name>Contribution</entity-name>
-    <entity-name>ContributionPage</entity-name>
-    <entity-name>ContributionRecur</entity-name>
-    <entity-name>ContributionSoft</entity-name>
-    <entity-name>Country</entity-name>
-    <entity-name>CustomField</entity-name>
-    <entity-name>CustomGroup</entity-name>
-    <entity-name>CustomSearch</entity-name>
-    <entity-name>CustomValue</entity-name>
-    <entity-name>Dashboard</entity-name>
-    <entity-name>DashboardContact</entity-name>
-    <entity-name>Domain</entity-name>
-    <entity-name>Email</entity-name>
-    <entity-name>Entity</entity-name>
-    <entity-name>EntityTag</entity-name>
-    <entity-name>Event</entity-name>
-    <entity-name>Extension</entity-name>
-    <entity-name>File</entity-name>
-    <entity-name>FinancialAccount</entity-name>
-    <entity-name>FinancialType</entity-name>
-    <entity-name>Grant</entity-name>
-    <entity-name>Group</entity-name>
-    <entity-name>GroupContact</entity-name>
-    <entity-name>GroupNesting</entity-name>
-    <entity-name>GroupOrganization</entity-name>
-    <entity-name>Im</entity-name>
-    <entity-name>Job</entity-name>
-    <entity-name>LineItem</entity-name>
-    <entity-name>LocBlock</entity-name>
-    <entity-name>Location</entity-name>
-    <entity-name>LocationType</entity-name>
-    <entity-name>MailSettings</entity-name>
-    <entity-name>Mailing</entity-name>
-    <entity-name>MailingComponent</entity-name>
-    <entity-name>MailingContact</entity-name>
-    <entity-name>MailingEventConfirm</entity-name>
-    <entity-name>MailingEventResubscribe</entity-name>
-    <entity-name>MailingEventSubscribe</entity-name>
-    <entity-name>MailingEventUnsubscribe</entity-name>
-    <entity-name>MailingGroup</entity-name>
-    <entity-name>MailingJob</entity-name>
-    <entity-name>MailingRecipients</entity-name>
-    <entity-name>Membership</entity-name>
-    <entity-name>MembershipBlock</entity-name>
-    <entity-name>MembershipPayment</entity-name>
-    <entity-name>MembershipStatus</entity-name>
-    <entity-name>MembershipType</entity-name>
-    <entity-name>MessageTemplate</entity-name>
-    <entity-name>Note</entity-name>
-    <entity-name>OptionGroup</entity-name>
-    <entity-name>OptionValue</entity-name>
-    <entity-name>Participant</entity-name>
-    <entity-name>ParticipantPayment</entity-name>
-    <entity-name>ParticipantStatusType</entity-name>
-    <entity-name>PaymentProcessor</entity-name>
-    <entity-name>PaymentProcessorType</entity-name>
-    <entity-name>Phone</entity-name>
-    <entity-name>Pledge</entity-name>
-    <entity-name>PledgePayment</entity-name>
-    <entity-name>Premium</entity-name>
-    <entity-name>PriceField</entity-name>
-    <entity-name>PriceFieldValue</entity-name>
-    <entity-name>PriceSet</entity-name>
-    <entity-name>PrintLabel</entity-name>
-    <entity-name>Product</entity-name>
-    <entity-name>Profile</entity-name>
-    <entity-name>Relationship</entity-name>
-    <entity-name>RelationshipType</entity-name>
-    <entity-name>ReportInstance</entity-name>
-    <entity-name>ReportTemplate</entity-name>
-    <entity-name>Setting</entity-name>
-    <entity-name>SmsProvider</entity-name>
-    <entity-name>Survey</entity-name>
-    <entity-name>SurveyRespondant</entity-name>
-    <entity-name>System</entity-name>
-    <entity-name>SystemLog</entity-name>
-    <entity-name>Tag</entity-name>
-    <entity-name>UFField</entity-name>
-    <entity-name>UFGroup</entity-name>
-    <entity-name>UFJoin</entity-name>
-    <entity-name>UFMatch</entity-name>
-    <entity-name>Website</entity-name>
-    <entity-name>WordReplacement</entity-name>
-    <action-name>create</action-name>
-    <action-name>delete</action-name>
-    <action-name>getfield</action-name>
-    <action-name>getlist</action-name>
-    <action-name>getrefcount</action-name>
-    <action-name>setvalue</action-name>
-    <action-name>validate</action-name>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>component_id</fieldName>
-      <name>component_id</name>
-      <title>Option Component</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_active</fieldName>
-      <name>is_active</name>
-      <title>Option Is Active</title>
-      <type>16</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>color</fieldName>
-      <name>color</name>
-      <title>Color</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>icon</fieldName>
-      <name>icon</name>
-      <title>Icon</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>weight</fieldName>
-      <name>weight</name>
-      <title>Order</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>description</fieldName>
-      <name>description</name>
-      <title>Option Description</title>
-      <type>32</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>label</fieldName>
-      <name>label</name>
-      <title>Option Label</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_default</fieldName>
-      <name>is_default</name>
-      <title>Option is Default?</title>
-      <type>16</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>grouping</fieldName>
-      <name>grouping</name>
-      <title>Option Grouping Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>filter</fieldName>
-      <name>filter</name>
-      <title>Filter</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_reserved</fieldName>
-      <name>is_reserved</name>
-      <title>Option Is Reserved?</title>
-      <type>16</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
-      <fieldName>domain_id</fieldName>
-      <name>domain_id</name>
-      <title>Option Domain</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
-      <fieldName>option_group_id</fieldName>
-      <name>option_group_id</name>
-      <title>Option Group ID</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>name</fieldName>
-      <name>name</name>
-      <title>Option Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>id</fieldName>
-      <name>id</name>
-      <title>Option Value ID</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>visibility_id</fieldName>
-      <name>visibility_id</name>
-      <title>Option Visibility</title>
-      <type>1</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>value</fieldName>
-      <name>value</name>
-      <title>Option Value</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_optgroup</fieldName>
-      <name>is_optgroup</name>
-      <title>Option is Header?</title>
-      <type>16</type>
-      <source>getfields</source>
-    </field>
-    <key-index>appeal</key-index>
-    <key-index>option_group_id</key-index>
-    <key-index>option_value</key-index>
-    <key-index>is_active</key-index>
-    <key-index>DATEADDED</key-index>
-    <output-field>
-      <input-field>option_value</input-field>
-      <output-field>option_value</output-field>
-    </output-field>
-    <output-field>
-      <input-field>is_active</input-field>
-      <output-field>is_active</output-field>
-    </output-field>
-    <output-field>
-      <input-field>DATEADDED</input-field>
-      <output-field>DATEADDED</output-field>
-    </output-field>
-    <output-field>
-      <input-field>option_group_id</input-field>
-      <output-field>option_group_id</output-field>
-    </output-field>
-    <output-field>
-      <input-field>appeal</input-field>
-      <output-field>label</output-field>
-    </output-field>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>960</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>invalid_appeals</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/errors/invalid_appeals</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>appeal</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_group_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_value</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DATEADDED</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
