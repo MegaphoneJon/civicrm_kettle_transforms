@@ -478,6 +478,48 @@ Your RE may not have this table.</note>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&lt;-- FIXME Use ConstitId, not RECORDS.CONSTITUENT_ID</note>
+      <xloc>336</xloc>
+      <yloc>336</yloc>
+      <width>351</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>In all 3 table inputs, you have to set your Soft Credit Type ID.</note>
+      <xloc>688</xloc>
+      <yloc>64</yloc>
+      <width>379</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -633,11 +675,6 @@ Your RE may not have this table.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>GiftId to contribution_id in Civi</from>
-      <to>Filter tributes so we can look up amounts</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter tributes so we can look up amounts</from>
       <to>Remove amount field</to>
       <enabled>Y</enabled>
@@ -658,13 +695,28 @@ Your RE may not have this table.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Rearrange field order</from>
+      <to>Import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Import fields only</from>
+      <to>Filter zero amounts</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter zero amounts</from>
       <to>cli_soft_credit</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Rearrange field order</from>
-      <to>Import fields only</to>
+      <from>GiftId to contribution_id in Civi</from>
+      <to>Filter out pledges/GL Reversals/Adjustments</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter out pledges/GL Reversals/Adjustments</from>
+      <to>Filter tributes so we can look up amounts</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -741,8 +793,8 @@ Your RE may not have this table.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>284</xloc>
-      <yloc>482</yloc>
+      <xloc>288</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -759,17 +811,17 @@ Your RE may not have this table.</note>
     </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>5000</cache_size>
     <lookup>
       <schema />
-      <table>civicrm_value_re_salsa_contribution_info_4</table>
+      <table>civicrm_value_extra_contribution_info</table>
       <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>GiftId</name>
-        <field>re_internal_gift_id_18</field>
+        <field>re_gift_id_203</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -788,8 +840,8 @@ Your RE may not have this table.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>282</xloc>
-      <yloc>404</yloc>
+      <xloc>288</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -836,8 +888,8 @@ Your RE may not have this table.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>286</xloc>
-      <yloc>671</yloc>
+      <xloc>288</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -883,8 +935,8 @@ Your RE may not have this table.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>489</xloc>
-      <yloc>574</yloc>
+      <xloc>496</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -942,8 +994,12 @@ ParentId as GiftId
 , SolicitorId as ConstitId
 , '3' as soft_credit_type_id
 , '' as pcp_personal_note
-, Amount as amount
-FROM GiftSolicitor</sql>
+, GiftSolicitor.Amount as amount
+, r.CONSTITUENT_ID
+, DBO.TranslateGiftType(g.TYPE) as type
+FROM GiftSolicitor
+LEFT JOIN RECORDS r ON GiftSolicitor.SolicitorId = r.ID
+LEFT JOIN GIFT g on GiftSolicitor.ParentId = g.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -980,9 +1036,13 @@ gt.GIFT_ID as GiftId
 , te.LONGDESCRIPTION as soft_credit_type_id
 , t.DESCRIPTION as pcp_personal_note
 , '' as amount
+, r.CONSTITUENT_ID
+, DBO.TranslateGiftType(g.TYPE) as type
 FROM GIFT_TRIBUTE gt
 JOIN TRIBUTE t ON gt.TRIBUTE_ID = t.ID
-LEFT JOIN TABLEENTRIES te on gt.TRIBUTE_TYPE = te.TABLEENTRIESID</sql>
+LEFT JOIN TABLEENTRIES te on gt.TRIBUTE_TYPE = te.TABLEENTRIESID
+LEFT JOIN RECORDS r ON t.RECORDS_ID = r.ID
+LEFT JOIN GIFT g ON gt.GIFT_ID = g.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1014,13 +1074,16 @@ LEFT JOIN TABLEENTRIES te on gt.TRIBUTE_TYPE = te.TABLEENTRIESID</sql>
     </partitioning>
     <connection>Raiser's Edge</connection>
     <sql>SELECT
-GiftId
-, ConstitId
+gsc.GiftId
+, gsc.ConstitId
 , '11' as soft_credit_type_id
 , '' as pcp_personal_note
-, Amount as amount
-FROM GiftSoftCredit
-</sql>
+, gsc.Amount as amount
+, r.CONSTITUENT_ID
+, DBO.TranslateGiftType(g.TYPE) as type
+FROM GiftSoftCredit gsc
+LEFT JOIN RECORDS r on gsc.ConstitId = r.ID
+LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1082,8 +1145,8 @@ FROM GiftSoftCredit
       </output>
     </remotesteps>
     <GUI>
-      <xloc>407</xloc>
-      <yloc>611</yloc>
+      <xloc>400</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,8 +1175,8 @@ FROM GiftSoftCredit
       </output>
     </remotesteps>
     <GUI>
-      <xloc>383</xloc>
-      <yloc>526</yloc>
+      <xloc>400</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1253,8 +1316,8 @@ FROM GiftSoftCredit
       </output>
     </remotesteps>
     <GUI>
-      <xloc>281</xloc>
-      <yloc>760</yloc>
+      <xloc>288</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1280,7 +1343,7 @@ FROM GiftSoftCredit
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>ConstitId</name>
+        <name>CONSTITUENT_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -1300,8 +1363,147 @@ FROM GiftSoftCredit
       </output>
     </remotesteps>
     <GUI>
-      <xloc>277</xloc>
-      <yloc>332</yloc>
+      <xloc>288</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter zero amounts</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>amount</leftvalue>
+        <function>&gt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>BigNumber</type>
+          <text>0.0</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask>######0.0###################;-######0.0###################</mask>
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter out pledges/GL Reversals/Adjustments</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Pledge</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>MG Pledge</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>GL Reversal</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Adjustment</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

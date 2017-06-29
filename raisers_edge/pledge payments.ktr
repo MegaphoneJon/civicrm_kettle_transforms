@@ -461,7 +461,7 @@
     <notepad>
       <note>&lt;-- Specify the custom field and value here. NB: index this custom field in Civi (mark it "searchable") or you'll have a bad time!</note>
       <xloc>240</xloc>
-      <yloc>288</yloc>
+      <yloc>208</yloc>
       <width>780</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -482,7 +482,7 @@
     <notepad>
       <note>&lt;-- same</note>
       <xloc>240</xloc>
-      <yloc>352</yloc>
+      <yloc>272</yloc>
       <width>64</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -665,18 +665,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set PledgeId = AdjustmentId if null</from>
-      <to>Get pledge_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: Installment</from>
       <to>Only scheduled payments > $0</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Only scheduled payments > $0</from>
-      <to>Set PledgeId = AdjustmentId if null</to>
+      <to>Get pledge_id</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -720,7 +715,7 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>464</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -803,7 +798,7 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>784</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -850,7 +845,7 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>352</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -897,7 +892,55 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>288</yloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Only scheduled payments > $0</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>scheduled_amount</leftvalue>
+            <function>&gt;</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>0</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -930,6 +973,8 @@ i.InstallmentId
 FROM Installment i
 LEFT JOIN InstallmentPayment ip ON i.InstallmentId = ip.InstallmentId
 LEFT JOIN GIFT g ON ip.PaymentId = g.ID
+/* Adjustments are stored in here too - when an adjustment happens, the pledge ID of the original value is blanked */
+WHERE i.PledgeId IS NOT NULL 
 ORDER BY i.AdjustmentId
 /* Write-off Types: Covenant WriteOff, MG Write Off, Write Off */</sql>
     <limit>0</limit>
@@ -1003,7 +1048,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>544</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1144,7 +1189,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>864</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1162,7 +1207,6 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     <fields>
       <field>
         <name>scheduled_amount</name>
-        <rename />
       </field>
       <field>
         <name>Dte</name>
@@ -1170,23 +1214,18 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
       </field>
       <field>
         <name>actual_amount</name>
-        <rename />
       </field>
       <field>
         <name>pledge_id</name>
-        <rename />
       </field>
       <field>
         <name>contribution_id</name>
-        <rename />
       </field>
       <field>
         <name>status_id</name>
-        <rename />
       </field>
       <field>
         <name>InstallmentId</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1199,7 +1238,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>624</yloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1364,7 +1403,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>784</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1402,108 +1441,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Only scheduled payments > $0</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Set PledgeId = AdjustmentId if null</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>scheduled_amount</leftvalue>
-            <function>&gt;</function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>0</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set PledgeId = AdjustmentId if null</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>// If there's a payment, it's completed; otherwise it's pending.  We're not going to get into 
-// "Overdue"; we'll let the "Process Pledges" Scheduled Job fix that for us.
-// 2 is "Pending"
-// 1 is "Completed"
-var PledgeId;
-
-if (!PledgeId) {
-  PledgeId = AdjustmentId;
-}
-
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>PledgeId</name>
-        <rename>PledgeId</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>208</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

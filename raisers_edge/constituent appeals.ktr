@@ -436,60 +436,59 @@
   </info>
   <notepads>
     <notepad>
-      <note>This is database-specific.  Find it with:
-SELECT id FROM civicrm_option_group WHERE title = 'Appeal';</note>
-      <xloc>327</xloc>
-      <yloc>159</yloc>
-      <width>392</width>
-      <heigth>42</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Warning: Live update to Civi db, you know the drill.</note>
-      <xloc>907</xloc>
-      <yloc>204</yloc>
-      <width>307</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>Instructions:
-* You need to create an activity type "Appeal".  Put its activity_type_id in the "Set Constants" step.
-* You need to create a custom field "Appeal" that applies to the "Appeal" activity type.  It should be an 
+* If necessary, this script creates an activity type "Appeal".
+* You need to create a custom field "Appeal Name" that applies to the "Appeal" activity type.  It should be an 
 alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice options from the contributions appeal field.
 Put its custom field ID into "remove/rename fields".</note>
-      <xloc>481</xloc>
-      <yloc>8</yloc>
+      <xloc>608</xloc>
+      <yloc>16</yloc>
       <width>724</width>
-      <heigth>90</heigth>
+      <heigth>85</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>FIXME: Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
+      <xloc>240</xloc>
+      <yloc>896</yloc>
+      <width>350</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
+      <xloc>224</xloc>
+      <yloc>128</yloc>
+      <width>400</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -633,23 +632,8 @@ Put its custom field ID into "remove/rename fields".</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: CONSTITUENT_APPEALS</from>
-      <to>Fix punctuation in appeals</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix punctuation in appeals</from>
-      <to>Add option_value_group ids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add option_value_group ids</from>
-      <to>lookup appeal in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>lookup appeal in Civi</from>
-      <to>Filter unrecofnized appeal types</to>
+      <to>Filter unrecognized appeal types</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -664,31 +648,21 @@ Put its custom field ID into "remove/rename fields".</note>
     </hop>
     <hop>
       <from>Unique appeals</from>
-      <to>invalid_appeals</to>
+      <to>invalid_constituent_appeals</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter unrecofnized appeal types</from>
+      <from>Filter unrecognized appeal types</from>
       <to>Appeal type field only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>invalid_appeals</from>
-      <to>is_active = 0</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecofnized appeal types</from>
-      <to>external ID to target_contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to target_contact_id in Civi</from>
-      <to>status_id =2 (completed),source_contact_id=2 (admin), activity_type_id=80 (appeal)</to>
+      <to>status_id =2 (completed),source_contact_id=2 (admin)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>status_id =2 (completed),source_contact_id=2 (admin), activity_type_id=80 (appeal)</from>
+      <from>status_id =2 (completed),source_contact_id=2 (admin)</from>
       <to>remove/rename fields</to>
       <enabled>Y</enabled>
     </hop>
@@ -708,54 +682,121 @@ Put its custom field ID into "remove/rename fields".</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>is_active = 0</from>
-      <to>create value, equal to label 3</to>
+      <from>Create activity type</from>
+      <to>Get OptionValue value from JSON</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>create value, equal to label 3</from>
-      <to>Create appeals</to>
-      <enabled>N</enabled>
+      <from>Detect empty stream</from>
+      <to>Set fields to create campaign_type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Drop all non-value fields</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get OptionValue value from JSON</from>
+      <to>Drop all non-value fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set fields to create campaign_type</from>
+      <to>Create activity type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get activity_type_id of Appeal</from>
+      <to>Detect empty stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get activity_type_id of Appeal</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join the activity_type_id</from>
+      <to>Fix punctuation in appeals</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Join the activity_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix punctuation in appeals</from>
+      <to>Join the option_group_id of Appeal names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get option_group_id of Appeal names</from>
+      <to>Join the option_group_id of Appeal names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: CONSTITUENT_APPEALS</from>
+      <to>Step 1 contacts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Join the activity_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join the option_group_id of Appeal names</from>
+      <to>Join the option_group_id of Packages</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join the option_group_id of Packages</from>
+      <to>lookup appeal in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get option_group_id of Packages</from>
+      <to>Join the option_group_id of Packages</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Package field only</from>
+      <to>Sort by package</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort by package</from>
+      <to>Unique packages</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique packages</from>
+      <to>invalid_constituent_packages</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized appeal types</from>
+      <to>lookup package in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup package in Civi</from>
+      <to>Filter unrecognized packages</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized packages</from>
+      <to>external ID to target_contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized packages</from>
+      <to>Package field only</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add option_value_group ids</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>temp_appeal_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>97</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>276</xloc>
-      <yloc>168</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Appeal type field only</name>
     <type>SelectValues</type>
@@ -770,9 +811,7 @@ Put its custom field ID into "remove/rename fields".</note>
     <fields>
       <field>
         <name>appeal</name>
-      </field>
-      <field>
-        <name>temp_appeal_id</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -784,13 +823,13 @@ Put its custom field ID into "remove/rename fields".</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>438</xloc>
-      <yloc>303</yloc>
+      <xloc>368</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Create appeals</name>
+    <name>Create activity type</name>
     <type>CiviCrmOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -906,11 +945,13 @@ Put its custom field ID into "remove/rename fields".</note>
     <entity-name>WordReplacement</entity-name>
     <action-name>create</action-name>
     <action-name>delete</action-name>
+    <action-name>getfield</action-name>
     <action-name>getlist</action-name>
     <action-name>getrefcount</action-name>
     <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
     <field>
-      <fieldDef>{"title":"Option Component","FKClassName":"CRM_Core_DAO_Component","description":"Component that this option value belongs\/caters to.","name":"component_id","html":{"type":"Select"},"type":1,"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"}}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>component_id</fieldName>
       <name>component_id</name>
       <title>Option Component</title>
@@ -918,7 +959,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Is Active","default":"1","description":"Is this option active?","name":"is_active","type":16}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>is_active</fieldName>
       <name>is_active</name>
       <title>Option Is Active</title>
@@ -926,7 +967,23 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Order","description":"Controls display sort order.","name":"weight","required":true,"type":1}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>color</fieldName>
+      <name>color</name>
+      <title>Color</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>icon</fieldName>
+      <name>icon</name>
+      <title>Icon</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>weight</fieldName>
       <name>weight</name>
       <title>Order</title>
@@ -934,7 +991,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"cols":60,"title":"Option Description","description":"Optional description.","name":"description","html":{"type":"TextArea"},"type":32,"rows":8}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>description</fieldName>
       <name>description</name>
       <title>Option Description</title>
@@ -942,7 +999,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Label","maxlength":255,"description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","name":"label","required":true,"type":2,"size":45}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>label</fieldName>
       <name>label</name>
       <title>Option Label</title>
@@ -950,7 +1007,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option is Default?","description":"Is this the default option for the group?","name":"is_default","type":16}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>is_default</fieldName>
       <name>is_default</name>
       <title>Option is Default?</title>
@@ -958,7 +1015,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Grouping Name","maxlength":255,"description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","name":"grouping","type":2,"size":45}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>grouping</fieldName>
       <name>grouping</name>
       <title>Option Grouping Name</title>
@@ -966,23 +1023,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Domain","FKClassName":"CRM_Core_DAO_Domain","description":"Which Domain is this option value for","name":"domain_id","type":1,"FKApiName":"Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"}}</fieldDef>
-      <fieldName>domain_id</fieldName>
-      <name>domain_id</name>
-      <title>Option Domain</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"title":"Option Is Reserved?","description":"Is this a predefined system object?","name":"is_reserved","type":16}</fieldDef>
-      <fieldName>is_reserved</fieldName>
-      <name>is_reserved</name>
-      <title>Option Is Reserved?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"title":"Filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","name":"filter","type":1}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>filter</fieldName>
       <name>filter</name>
       <title>Filter</title>
@@ -990,7 +1031,23 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Group ID","FKClassName":"CRM_Core_DAO_OptionGroup","description":"Group which this option belongs to.","name":"option_group_id","html":{"type":"Select"},"required":true,"type":1,"FKApiName":"OptionGroup","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"}}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
+      <fieldName>is_reserved</fieldName>
+      <name>is_reserved</name>
+      <title>Option Is Reserved?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
+      <fieldName>domain_id</fieldName>
+      <name>domain_id</name>
+      <title>Option Domain</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
       <fieldName>option_group_id</fieldName>
       <name>option_group_id</name>
       <title>Option Group ID</title>
@@ -998,7 +1055,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"export":true,"title":"Option Name","maxlength":255,"dataPattern":"","description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","name":"name","headerPattern":"","import":true,"where":"civicrm_option_value.name","type":2,"size":45}</fieldDef>
+      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>name</fieldName>
       <name>name</name>
       <title>Option Name</title>
@@ -1006,7 +1063,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Value ID","api.aliases":["option_value_id"],"description":"Option ID","name":"id","required":true,"type":1}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>id</fieldName>
       <name>id</name>
       <title>Option Value ID</title>
@@ -1014,7 +1071,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Visibility","default":"NULL","name":"visibility_id","type":1}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>visibility_id</fieldName>
       <name>visibility_id</name>
       <title>Option Visibility</title>
@@ -1022,7 +1079,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option Value","maxlength":512,"description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","name":"value","required":true,"type":2,"size":45}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>value</fieldName>
       <name>value</name>
       <title>Option Value</title>
@@ -1030,32 +1087,22 @@ Put its custom field ID into "remove/rename fields".</note>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"title":"Option is Header?","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","name":"is_optgroup","type":16}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
       <fieldName>is_optgroup</fieldName>
       <name>is_optgroup</name>
       <title>Option is Header?</title>
       <type>2</type>
       <source>getfields</source>
     </field>
-    <key-index>appeal</key-index>
-    <key-index>temp_appeal_id</key-index>
-    <key-index>is_active</key-index>
-    <key-index>value</key-index>
+    <key-index>option_group_id</key-index>
+    <key-index>label</key-index>
     <output-field>
-      <input-field>temp_appeal_id</input-field>
+      <input-field>option_group_id</input-field>
       <output-field>option_group_id</output-field>
     </output-field>
     <output-field>
-      <input-field>is_active</input-field>
-      <output-field>is_active</output-field>
-    </output-field>
-    <output-field>
-      <input-field>appeal</input-field>
+      <input-field>label</input-field>
       <output-field>label</output-field>
-    </output-field>
-    <output-field>
-      <input-field>value</input-field>
-      <output-field>value</output-field>
     </output-field>
     <cluster_schema />
     <remotesteps>
@@ -1065,13 +1112,92 @@ Put its custom field ID into "remove/rename fields".</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>921</xloc>
-      <yloc>250</yloc>
+      <xloc>336</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter unrecofnized appeal types</name>
+    <name>Detect empty stream</name>
+    <type>DetectEmptyStream</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Drop all non-value fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>value</name>
+        <rename>activity_type_id</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized appeal types</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1081,7 +1207,7 @@ Put its custom field ID into "remove/rename fields".</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>external ID to target_contact_id in Civi</send_true_to>
+    <send_true_to>lookup package in Civi</send_true_to>
     <send_false_to>Appeal type field only</send_false_to>
     <compare>
       <condition>
@@ -1099,8 +1225,8 @@ Put its custom field ID into "remove/rename fields".</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>286</xloc>
-      <yloc>295</yloc>
+      <xloc>176</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1158,8 +1284,138 @@ Put its custom field ID into "remove/rename fields".</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>281</xloc>
-      <yloc>103</yloc>
+      <xloc>176</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get OptionValue value from JSON</name>
+    <type>JsonInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <include>N</include>
+    <include_field />
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <ignoreMissingPath>N</ignoreMissingPath>
+    <rownum_field />
+    <file>
+      <name />
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>value</name>
+        <path>$..value</path>
+        <type>String</type>
+        <format>#</format>
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField>Result</valueField>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get activity_type_id of Appeal</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cov.value as activity_type_id from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'activity_type' AND cov.label = "Appeal";</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>0</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get option_group_id of Appeal names</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cog.id as appeal_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Appeal";</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1197,8 +1453,80 @@ Put its custom field ID into "remove/rename fields".</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>282</xloc>
-      <yloc>714</yloc>
+      <xloc>176</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the activity_type_id</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the option_group_id of Appeal names</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1217,13 +1545,15 @@ Put its custom field ID into "remove/rename fields".</note>
     <sql>SELECT
   ca.APPEAL_ID
 , APPEAL.DESCRIPTION as appeal
+, PACKAGE.DESCRIPTION as package
 , COMMENTS
 , CONSTIT_ID
 , DTE
-, ca.ID
-, Response
+, r.CONSTITUENT_ID
 FROM CONSTITUENT_APPEALS ca
-LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
+LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id
+LEFT JOIN PACKAGE on ca.PackageId = Package.id
+LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1237,8 +1567,58 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>276</xloc>
-      <yloc>13</yloc>
+      <xloc>176</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set fields to create campaign_type</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>option_group_id</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>activity_type</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>label</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>Appeal</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1278,8 +1658,64 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>511</xloc>
-      <yloc>290</yloc>
+      <xloc>496</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1298,12 +1734,7 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
     <count_field />
     <reject_duplicate_row>N</reject_duplicate_row>
     <error_description />
-    <fields>
-      <field>
-        <name>appeal</name>
-        <case_insensitive>Y</case_insensitive>
-      </field>
-    </fields>
+    <fields>      </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1312,8 +1743,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>581</xloc>
-      <yloc>279</yloc>
+      <xloc>608</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1373,7 +1804,7 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>custom_21</name>
+        <name>custom_210</name>
         <type>String</type>
         <format />
         <currency />
@@ -1409,18 +1840,6 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>Response</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>status_id</name>
         <type>Integer</type>
         <format>0</format>
@@ -1446,11 +1865,23 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </field>
       <field>
         <name>activity_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_211</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1465,47 +1896,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>285</xloc>
-      <yloc>798</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>create value, equal to label 3</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <calculation>
-      <field_name>value</field_name>
-      <calc_type>COPY_FIELD</calc_type>
-      <field_a>appeal</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>834</xloc>
-      <yloc>261</yloc>
+      <xloc>176</xloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1531,7 +1923,7 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTIT_ID</name>
+        <name>CONSTITUENT_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -1557,8 +1949,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>285</xloc>
-      <yloc>375</yloc>
+      <xloc>176</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1601,8 +1993,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>286</xloc>
-      <yloc>581</yloc>
+      <xloc>176</xloc>
+      <yloc>1104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1645,13 +2037,13 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>286</xloc>
-      <yloc>638</yloc>
+      <xloc>176</xloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>invalid_appeals</name>
+    <name>invalid_constituent_appeals</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1675,7 +2067,7 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/invalid_appeals</name>
+      <name>${LOCALFILES}/errors/invalid_constituent_appeals</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1714,46 +2106,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>669</xloc>
-      <yloc>267</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>is_active = 0</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>752</xloc>
-      <yloc>278</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1785,7 +2139,7 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
         <name2 />
       </key>
       <key>
-        <name>temp_appeal_id</name>
+        <name>appeal_option_group_id</name>
         <field>option_group_id</field>
         <condition>=</condition>
         <name2 />
@@ -1805,8 +2159,8 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>280</xloc>
-      <yloc>229</yloc>
+      <xloc>176</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1824,10 +2178,11 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
     <fields>
       <field>
         <name>target_contact_id</name>
+        <rename />
       </field>
       <field>
         <name>custom_appeal</name>
-        <rename>custom_21</rename>
+        <rename>custom_210</rename>
       </field>
       <field>
         <name>COMMENTS</name>
@@ -1838,16 +2193,20 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
         <rename>activity_date_time</rename>
       </field>
       <field>
-        <name>Response</name>
-      </field>
-      <field>
         <name>status_id</name>
+        <rename />
       </field>
       <field>
         <name>source_contact_id</name>
+        <rename />
       </field>
       <field>
         <name>activity_type_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>custom_package</name>
+        <rename>custom_211</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1859,13 +2218,13 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>289</xloc>
-      <yloc>525</yloc>
+      <xloc>176</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>status_id =2 (completed),source_contact_id=2 (admin), activity_type_id=80 (appeal)</name>
+    <name>status_id =2 (completed),source_contact_id=2 (admin)</name>
     <type>Constant</type>
     <description />
     <distribute>Y</distribute>
@@ -1900,17 +2259,190 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>976</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get option_group_id of Packages</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cog.id as package_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Package" LIMIT 1;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the option_group_id of Packages</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Package field only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
       <field>
-        <name>activity_type_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>80</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <name>package</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized packages</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>external ID to target_contact_id in Civi</send_true_to>
+    <send_false_to>Package field only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>custom_package</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>package</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by package</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>package</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
       </field>
     </fields>
     <cluster_schema />
@@ -1921,8 +2453,159 @@ LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>284</xloc>
-      <yloc>455</yloc>
+      <xloc>496</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique packages</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>      </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_constituent_packages</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_constituent_packages</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>package</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>lookup package in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_option_value</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>package</name>
+        <field>label</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>package_option_group_id</name>
+        <field>option_group_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>value</name>
+        <rename>custom_package</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -435,7 +435,7 @@
   </info>
   <notepads>
     <notepad>
-      <note>&lt;-- This erorr checking only matters if you're
+      <note>&lt;-- This error checking only matters if you're
   trying to match against existing Civi records,
   otherwise it has no effect.</note>
       <xloc>464</xloc>
@@ -793,7 +793,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: RECORDS with gift history</from>
+      <from>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</from>
       <to>Merge Join</to>
       <enabled>Y</enabled>
     </hop>
@@ -1187,7 +1187,7 @@ contact_id = null;</jsScript_script>
       <schema_name />
     </partitioning>
     <join_type>LEFT OUTER</join_type>
-    <step1>RE: RECORDS with gift history</step1>
+    <step1>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</step1>
     <step2>Sort by CONSTITUENT_ID</step2>
     <keys_1>
       <key>CONSTITUENT_ID</key>
@@ -1468,7 +1468,7 @@ WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID 
     </GUI>
   </step>
   <step>
-    <name>RE: RECORDS with gift history</name>
+    <name>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -1490,6 +1490,54 @@ CONSTITUENT_ID
 FROM RECORDS
 JOIN Gift g ON RECORDS.ID = g.CONSTIT_ID
 WHERE IS_CONSTITUENT = -1
+UNION
+SELECT
+CONSTITUENT_ID
+, KEY_INDICATOR
+, RECORDS.ID
+, FIRST_NAME
+, LAST_NAME
+, MIDDLE_NAME
+, ORG_NAME
+FROM RECORDS
+JOIN CONSTIT_SOLICITORS cs
+ON RECORDS.ID = cs.CONSTIT_ID
+UNION
+SELECT
+CONSTITUENT_ID
+, KEY_INDICATOR
+, RECORDS.ID
+, FIRST_NAME
+, LAST_NAME
+, MIDDLE_NAME
+, ORG_NAME
+FROM RECORDS
+JOIN CONSTIT_SOLICITORS cs
+ON RECORDS.ID = cs.SOLICITOR_ID
+UNION
+SELECT
+CONSTITUENT_ID
+, KEY_INDICATOR
+, RECORDS.ID
+, FIRST_NAME
+, LAST_NAME
+, MIDDLE_NAME
+, ORG_NAME
+FROM RECORDS
+JOIN GiftSoftCredit 
+ON RECORDS.ID = GiftSoftCredit.ConstitId
+UNION
+SELECT
+CONSTITUENT_ID
+, KEY_INDICATOR
+, RECORDS.ID
+, FIRST_NAME
+, LAST_NAME
+, MIDDLE_NAME
+, ORG_NAME
+FROM RECORDS
+JOIN GiftSolicitor
+ON RECORDS.ID = GiftSolicitor.SolicitorId
 ORDER BY CONSTITUENT_ID</sql>
     <limit>0</limit>
     <lookup />
@@ -1504,8 +1552,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>181</xloc>
-      <yloc>44</yloc>
+      <xloc>176</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

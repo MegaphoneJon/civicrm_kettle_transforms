@@ -1005,6 +1005,30 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
         <source_value>Nativ Alumnus/a</source_value>
         <target_value>Nativ Alumni</target_value>
       </field>
+      <field>
+        <source_value>USY Alumnus</source_value>
+        <target_value>USY Alumni</target_value>
+      </field>
+      <field>
+        <source_value>USY Alumna</source_value>
+        <target_value>USY Alumni</target_value>
+      </field>
+      <field>
+        <source_value>Yeshiva Alumnus</source_value>
+        <target_value>Yeshiva Alumni</target_value>
+      </field>
+      <field>
+        <source_value>Yeshiva Alumna</source_value>
+        <target_value>Yeshiva Alumni</target_value>
+      </field>
+      <field>
+        <source_value>Nativ Alumnus</source_value>
+        <target_value>Nativ Alumni</target_value>
+      </field>
+      <field>
+        <source_value>Nativ Alumna</source_value>
+        <target_value>Nativ Alumni</target_value>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>

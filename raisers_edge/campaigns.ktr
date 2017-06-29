@@ -660,7 +660,7 @@ Use with caution!</note>
     </hop>
     <hop>
       <from>Create campaign_type_id</from>
-      <to>Get campign_type_id from JSON</to>
+      <to>Get OptionValue value from JSON</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -684,7 +684,7 @@ Use with caution!</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get campign_type_id from JSON</from>
+      <from>Get OptionValue value from JSON</from>
       <to>Drop all non-value fields</to>
       <enabled>Y</enabled>
     </hop>
@@ -1596,7 +1596,7 @@ Use with caution!</note>
     </GUI>
   </step>
   <step>
-    <name>Get campign_type_id from JSON</name>
+    <name>Get OptionValue value from JSON</name>
     <type>JsonInput</type>
     <description />
     <distribute>Y</distribute>

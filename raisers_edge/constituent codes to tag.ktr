@@ -630,11 +630,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove unneeded fields</from>
-      <to>cli_constituent_codes_to_tag</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>tag name to tag_id</from>
       <to>Filter invalid tag_id</to>
       <enabled>Y</enabled>
@@ -687,6 +682,21 @@
     <hop>
       <from>Step 1 contacts only</from>
       <to>Which codes to convert</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove unneeded fields</from>
+      <to>find existing tags</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>find existing tags</from>
+      <to>Filter existing tags</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter existing tags</from>
+      <to>cli_constituent_codes_to_tag</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -925,6 +935,62 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </GUI>
   </step>
   <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Unique rows</name>
     <type>Unique</type>
     <description />
@@ -1088,7 +1154,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>640</yloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1286,8 +1352,8 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only</name>
-    <type>SimpleMapping</type>
+    <name>find existing tags</name>
+    <type>DBLookup</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1296,38 +1362,41 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_entity_tag</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>entity_id</name>
+        <field>entity_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>tag_id</name>
+        <field>tag_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>entity_table</name>
+        <field>entity_table</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1337,7 +1406,41 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>80</yloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter existing tags</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>id</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
