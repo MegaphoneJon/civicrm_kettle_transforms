@@ -438,8 +438,8 @@
       <note>&lt;-- This error checking only matters if you're
   trying to match against existing Civi records,
   otherwise it has no effect.</note>
-      <xloc>464</xloc>
-      <yloc>528</yloc>
+      <xloc>320</xloc>
+      <yloc>672</yloc>
       <width>290</width>
       <heigth>52</heigth>
       <fontname>Sans</fontname>
@@ -460,7 +460,7 @@
     <notepad>
       <note>&lt;-- This is standard.  The current step is org-specific.</note>
       <xloc>896</xloc>
-      <yloc>48</yloc>
+      <yloc>272</yloc>
       <width>331</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -482,8 +482,8 @@
       <note>&lt;-- Ideally, use RECORDS.ID as your external identifier.  In some cases,
   RECORDS.CONSTITUENT_ID might be necessary.  Use with caution, 
   non-constituents won't have this record.</note>
-      <xloc>911</xloc>
-      <yloc>161</yloc>
+      <xloc>896</xloc>
+      <yloc>384</yloc>
       <width>438</width>
       <heigth>52</heigth>
       <fontname>Sans</fontname>
@@ -504,7 +504,7 @@
     <notepad>
       <note>Optional: Match on email if no external ID</note>
       <xloc>1040</xloc>
-      <yloc>496</yloc>
+      <yloc>720</yloc>
       <width>260</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -524,8 +524,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- These two are org-specific</note>
-      <xloc>1043</xloc>
-      <yloc>323</yloc>
+      <xloc>1040</xloc>
+      <yloc>544</yloc>
       <width>190</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -547,8 +547,8 @@
       <note>&lt;-- Org-specific - we're keeping RECORDS.ID as a field called "match_field"
   so we can use the "step 1 contacts only" transform despite this job calling
   for using CONSTITUENT_ID as the external_identifier.</note>
-      <xloc>304</xloc>
-      <yloc>960</yloc>
+      <xloc>160</xloc>
+      <yloc>1104</yloc>
       <width>468</width>
       <heigth>52</heigth>
       <fontname>Sans</fontname>
@@ -568,8 +568,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- org-specific cleanup</note>
-      <xloc>421</xloc>
-      <yloc>115</yloc>
+      <xloc>464</xloc>
+      <yloc>48</yloc>
       <width>154</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -589,9 +589,30 @@
     </notepad>
     <notepad>
       <note>&lt;-- Sooo org-specific.</note>
-      <xloc>505</xloc>
-      <yloc>902</yloc>
+      <xloc>352</xloc>
+      <yloc>1040</yloc>
       <width>139</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- org-specific dedupe rule</note>
+      <xloc>288</xloc>
+      <yloc>480</yloc>
+      <width>179</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -753,28 +774,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy (do nothing)</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Has a Constituent ID</from>
       <to>ERROR: No constituent ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Has a Constituent ID</from>
-      <to>individual-organization mismatch</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>step 1 fields only</from>
       <to>cli_step_1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>Has a Constituent ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -803,11 +809,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge in fixed names</from>
-      <to>Separate organizations</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>individual-organization mismatch</from>
       <to>org_name_mismatch</to>
       <enabled>Y</enabled>
@@ -825,6 +826,36 @@
     <hop>
       <from>Add a "ZZ" to CONSTITUENT_ID</from>
       <to>step 1 fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Has a Constituent ID</from>
+      <to>get add'l Civi fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>get add'l Civi fields</from>
+      <to>individual-organization mismatch</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>Has a Constituent ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge in fixed names</from>
+      <to>Separate organizations</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -878,8 +909,8 @@ contact_id = null;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>896</yloc>
+      <xloc>288</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -903,7 +934,7 @@ contact_id = null;</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>384</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1115,8 +1146,8 @@ contact_id = null;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>576</yloc>
+      <xloc>416</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1131,7 +1162,7 @@ contact_id = null;</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>individual-organization mismatch</send_true_to>
+    <send_true_to>get add'l Civi fields</send_true_to>
     <send_false_to>ERROR: No constituent ID</send_false_to>
     <compare>
       <condition>
@@ -1170,8 +1201,8 @@ contact_id = null;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>544</yloc>
+      <xloc>240</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1379,7 +1410,7 @@ WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID 
     </remotesteps>
     <GUI>
       <xloc>864</xloc>
-      <yloc>368</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1420,7 +1451,7 @@ WHERE IS_CONSTITUENT = -1</sql>
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>48</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1463,7 +1494,7 @@ WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID 
     </remotesteps>
     <GUI>
       <xloc>880</xloc>
-      <yloc>304</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1596,7 +1627,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>256</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1675,7 +1706,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>304</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1713,7 +1744,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>288</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1865,8 +1896,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>1152</yloc>
+      <xloc>64</xloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1903,29 +1934,58 @@ ORDER BY CONSTITUENT_ID</sql>
         <default />
         <type>Integer</type>
       </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>get add'l Civi fields</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>CONSTITUENT_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
-        <name>first_name</name>
-        <rename>civi_first_name</rename>
+        <name>contact_type</name>
+        <rename>civi_contact_type</rename>
         <default />
-        <type>String</type>
-      </value>
-      <value>
-        <name>last_name</name>
-        <rename>civi_last_name</rename>
-        <default />
-        <type>String</type>
+        <type>None</type>
       </value>
       <value>
         <name>organization_name</name>
         <rename>civi_organization_name</rename>
         <default />
-        <type>String</type>
-      </value>
-      <value>
-        <name>contact_type</name>
-        <rename>civi_contact_type</rename>
-        <default />
-        <type>String</type>
+        <type>None</type>
       </value>
     </lookup>
     <cluster_schema />
@@ -1937,7 +1997,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>464</yloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1982,8 +2042,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>688</yloc>
+      <xloc>240</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2050,8 +2110,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>864</yloc>
+      <xloc>176</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2107,8 +2167,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>1024</yloc>
+      <xloc>80</xloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2167,7 +2227,63 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>160</yloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

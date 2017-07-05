@@ -482,7 +482,7 @@
     <notepad>
       <note>&lt;-- FIXME Use RECORDS.ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>176</xloc>
-      <yloc>288</yloc>
+      <yloc>352</yloc>
       <width>372</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -660,11 +660,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Non-blank codes</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter invalid tag_id</from>
       <to>Add entity_table</to>
       <enabled>Y</enabled>
@@ -697,6 +692,16 @@
     <hop>
       <from>Filter existing tags</from>
       <to>cli_constituent_codes_to_tag</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Non-blank codes</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -734,7 +739,41 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>512</yloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter existing tags</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>id</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -768,7 +807,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>432</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -889,7 +928,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>576</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -930,7 +969,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>448</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1020,7 +1059,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>448</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1154,7 +1193,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>768</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1184,7 +1223,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>432</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1231,7 +1270,66 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>288</yloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>find existing tags</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_entity_tag</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>entity_id</name>
+        <field>entity_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>tag_id</name>
+        <field>tag_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>entity_table</name>
+        <field>entity_table</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1300,7 +1398,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>432</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1347,13 +1445,13 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>368</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>find existing tags</name>
-    <type>DBLookup</type>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1362,41 +1460,38 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_entity_tag</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>entity_id</name>
-        <field>entity_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>tag_id</name>
-        <field>tag_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>entity_table</name>
-        <field>entity_table</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1406,41 +1501,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter existing tags</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>id</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>688</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

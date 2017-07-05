@@ -482,7 +482,7 @@
     <notepad>
       <note>&lt;-- FIXME Use RECORDS.ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>160</xloc>
-      <yloc>304</yloc>
+      <yloc>352</yloc>
       <width>372</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -670,11 +670,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Non-blank codes</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: Constituent Codes</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
@@ -682,6 +677,16 @@
     <hop>
       <from>Step 1 contacts only</from>
       <to>Which codes to convert</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Non-blank codes</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -715,7 +720,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>448</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -839,7 +844,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>528</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -880,7 +885,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -970,7 +975,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1144,7 +1149,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>592</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1174,7 +1179,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>448</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1221,7 +1226,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>304</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1268,7 +1273,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>384</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1337,7 +1342,63 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>448</yloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

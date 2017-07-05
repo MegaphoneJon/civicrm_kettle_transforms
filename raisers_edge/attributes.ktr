@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>&lt;-- To reintegrate multi-value records</note>
-      <xloc>576</xloc>
-      <yloc>752</yloc>
+      <xloc>784</xloc>
+      <yloc>816</yloc>
       <width>224</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -479,8 +479,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific: Multi-value custom fields only.</note>
-      <xloc>224</xloc>
-      <yloc>384</yloc>
+      <xloc>176</xloc>
+      <yloc>400</yloc>
       <width>285</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -500,8 +500,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific</note>
-      <xloc>576</xloc>
-      <yloc>576</yloc>
+      <xloc>784</xloc>
+      <yloc>640</yloc>
       <width>100</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -521,8 +521,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific</note>
-      <xloc>384</xloc>
-      <yloc>608</yloc>
+      <xloc>480</xloc>
+      <yloc>688</yloc>
       <width>100</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -542,8 +542,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific</note>
-      <xloc>208</xloc>
-      <yloc>624</yloc>
+      <xloc>176</xloc>
+      <yloc>688</yloc>
       <width>100</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -563,8 +563,8 @@
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific</note>
-      <xloc>192</xloc>
-      <yloc>784</yloc>
+      <xloc>176</xloc>
+      <yloc>832</yloc>
       <width>104</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -606,7 +606,7 @@
     <notepad>
       <note>&lt;-- FIXME Use RECORDS.ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>240</xloc>
-      <yloc>512</yloc>
+      <yloc>592</yloc>
       <width>372</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -809,11 +809,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy (do nothing)</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi</from>
       <to>Atributes to Groups</to>
       <enabled>Y</enabled>
@@ -938,6 +933,16 @@
       <to>Keep only the attributes we want</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Atributes to Activities</name>
@@ -983,8 +988,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>624</yloc>
+      <xloc>416</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1032,8 +1037,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>576</yloc>
+      <xloc>736</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1081,8 +1086,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>624</yloc>
+      <xloc>128</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1171,8 +1176,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>448</yloc>
+      <xloc>352</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1204,8 +1209,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>912</yloc>
+      <xloc>736</xloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1237,8 +1242,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>992</yloc>
+      <xloc>736</xloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1282,8 +1287,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>128</yloc>
+      <xloc>448</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1306,8 +1311,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>448</yloc>
+      <xloc>112</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1345,8 +1350,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>672</yloc>
+      <xloc>416</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1486,8 +1491,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>256</yloc>
+      <xloc>112</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1537,7 +1542,7 @@ if(Category == 'Interests' &amp;&amp; COMMENTS != null) {
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>336</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1634,8 +1639,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>688</yloc>
+      <xloc>128</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1712,8 +1717,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>320</yloc>
+      <xloc>112</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1758,8 +1763,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>784</yloc>
+      <xloc>416</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1796,7 +1801,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>912</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2204,8 +2209,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>768</yloc>
+      <xloc>128</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2348,8 +2353,8 @@ LEFT JOIN RECORDS r ON r.ID = ca.PARENTID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>816</yloc>
+      <xloc>736</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2396,8 +2401,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>1136</yloc>
+      <xloc>736</xloc>
+      <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2486,8 +2491,64 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
+      <xloc>112</xloc>
       <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>external_identifier</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2533,8 +2594,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>736</yloc>
+      <xloc>416</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2614,8 +2675,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>144</yloc>
+      <xloc>592</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2755,8 +2816,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>1072</yloc>
+      <xloc>416</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2932,8 +2993,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>1184</yloc>
+      <xloc>736</xloc>
+      <yloc>1248</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3026,7 +3087,7 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>976</yloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3074,8 +3135,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>656</yloc>
+      <xloc>736</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3128,7 +3189,7 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>528</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3171,8 +3232,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>944</yloc>
+      <xloc>416</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3215,8 +3276,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>992</yloc>
+      <xloc>416</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3263,7 +3324,7 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>848</yloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3305,8 +3366,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>384</yloc>
+      <xloc>112</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3354,8 +3415,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>752</yloc>
+      <xloc>736</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3416,8 +3477,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>1056</yloc>
+      <xloc>736</xloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3466,13 +3527,13 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>864</yloc>
+      <xloc>416</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only</name>
+    <name>Check the dedupe list</name>
     <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
@@ -3485,7 +3546,7 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
     <directory_path />
     <mappings>
       <input>
@@ -3496,8 +3557,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
           <rename_on_output>Y</rename_on_output>
           <description />
           <connector>
-            <parent>external_identifier</parent>
-            <child>ID</child>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
           </connector>
         </mapping>
       </input>
@@ -3522,8 +3583,8 @@ if (!(!custom_96 &amp;&amp; !custom_97 &amp;&amp; !custom_98 &amp;&amp; !custom_
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>64</yloc>
+      <xloc>144</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

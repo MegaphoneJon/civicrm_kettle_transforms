@@ -476,6 +476,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&lt;-- THIS is the typical address search.</note>
+      <xloc>821</xloc>
+      <yloc>759</yloc>
+      <width>240</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -601,11 +622,6 @@
   </connection>
   <order>
     <hop>
-      <from>Split Fields</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap PREFERRED to is_primary</from>
       <to>Truncate address fields</to>
       <enabled>Y</enabled>
@@ -666,11 +682,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Rename/Remove unused fields</from>
-      <to>Check for existing addresses</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Check for existing addresses</from>
       <to>New addresses only</to>
       <enabled>Y</enabled>
@@ -695,7 +706,119 @@
       <to>Split Fields</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Rename/Remove unused fields</from>
+      <to>Data Validator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Data Validator</from>
+      <to>Check for existing addresses</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Data Validator</from>
+      <to>invalid_addresses2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split Fields</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Check for existing addresses</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_address</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id</name>
+        <field>contact_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>street_address</name>
+        <field>street_address</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>New addresses only</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>id</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>RE: Addresses</name>
     <type>TableInput</type>
@@ -771,7 +894,7 @@ WHERE INDICATOR &lt;&gt; 7 AND INDICATOR &lt;&gt; 1 AND ADDRESS_BLOCK IS NOT NUL
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>176</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -862,19 +985,15 @@ var ADDRESS_BLOCK = replace(ADDRESS_BLOCK,'~$','');</jsScript_script>
       </field>
       <field>
         <name>contact_id</name>
-        <rename />
       </field>
       <field>
         <name>location_type_id</name>
-        <rename />
       </field>
       <field>
         <name>country_id</name>
-        <rename />
       </field>
       <field>
         <name>state_province_id</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -886,7 +1005,7 @@ var ADDRESS_BLOCK = replace(ADDRESS_BLOCK,'~$','');</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>176</xloc>
       <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1003,7 +1122,7 @@ var ADDRESS_BLOCK = replace(ADDRESS_BLOCK,'~$','');</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>176</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1068,8 +1187,81 @@ var ADDRESS_BLOCK = replace(ADDRESS_BLOCK,'~$','');</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>1040</yloc>
+      <xloc>176</xloc>
+      <yloc>1104</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort to remove dupes</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>ADDRESS_BLOCK</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>CITY</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>POST_CODE</name>
+        <ascending>N</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>STATE</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>CONSTIT_ID</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1172,7 +1364,7 @@ var ADDRESS_BLOCK = replace(ADDRESS_BLOCK,'~$','');</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
+      <xloc>176</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1297,8 +1489,54 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>176</xloc>
       <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>ADDRESS_BLOCK</name>
+        <case_insensitive>Y</case_insensitive>
+      </field>
+      <field>
+        <name>CITY</name>
+        <case_insensitive>Y</case_insensitive>
+      </field>
+      <field>
+        <name>STATE</name>
+        <case_insensitive>Y</case_insensitive>
+      </field>
+      <field>
+        <name>CONSTIT_ID</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1385,7 +1623,7 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>176</xloc>
       <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1562,8 +1800,8 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>944</yloc>
+      <xloc>176</xloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1632,7 +1870,7 @@ if(address3){
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>1120</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1701,7 +1939,7 @@ if(address3){
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>1120</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1747,8 +1985,8 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>384</yloc>
+      <xloc>176</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2107,7 +2345,7 @@ if(address3){
     </GUI>
   </step>
   <step>
-    <name>Check for existing addresses</name>
+    <name>Check for existing addresses 2</name>
     <type>DBLookup</type>
     <description />
     <distribute>Y</distribute>
@@ -2178,14 +2416,69 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>752</xloc>
+      <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Data Validator</name>
+    <type>Validator</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <validate_all>Y</validate_all>
+    <concat_errors>Y</concat_errors>
+    <concat_separator>|</concat_separator>
+    <validator_field>
+      <name>contact_id</name>
+      <validation_name>contact_id exists</validation_name>
+      <max_length />
+      <min_length />
+      <null_allowed>N</null_allowed>
+      <only_null_allowed>N</only_null_allowed>
+      <only_numeric_allowed>N</only_numeric_allowed>
+      <data_type>Integer</data_type>
+      <data_type_verified>Y</data_type_verified>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <max_value />
+      <min_value>1</min_value>
+      <start_string />
+      <end_string />
+      <start_string_not_allowed />
+      <end_string_not_allowed />
+      <regular_expression />
+      <regular_expression_not_allowed />
+      <error_code />
+      <error_description>No contact_id</error_description>
+      <is_sourcing_values>N</is_sourcing_values>
+      <sourcing_step />
+      <sourcing_field />
+      <allowed_value />
+    </validator_field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
       <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>New addresses only</name>
-    <type>FilterRows</type>
+    <name>invalid_addresses2</name>
+    <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2194,87 +2487,157 @@ if(address3){
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>id</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>880</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort to remove dupes</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_addresses2</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
     <fields>
       <field>
-        <name>ADDRESS_BLOCK</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>street_address</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>CITY</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>supplemental_address_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>POST_CODE</name>
-        <ascending>N</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>supplemental_address_2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>STATE</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>city</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>CONSTIT_ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>postal_code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_primary</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>location_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_province_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
     </fields>
     <cluster_schema />
@@ -2285,14 +2648,14 @@ if(address3){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>192</yloc>
+      <xloc>352</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2301,28 +2664,38 @@ if(address3){
       <method>none</method>
       <schema_name />
     </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>ADDRESS_BLOCK</name>
-        <case_insensitive>Y</case_insensitive>
-      </field>
-      <field>
-        <name>CITY</name>
-        <case_insensitive>Y</case_insensitive>
-      </field>
-      <field>
-        <name>STATE</name>
-        <case_insensitive>Y</case_insensitive>
-      </field>
-      <field>
-        <name>CONSTIT_ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2332,11 +2705,23 @@ if(address3){
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>256</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
+    <error>
+      <source_step>Data Validator</source_step>
+      <target_step>invalid_addresses2</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error_validation</descriptions_valuename>
+      <fields_valuename />
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>

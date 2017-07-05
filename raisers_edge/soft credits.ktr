@@ -437,8 +437,8 @@
   <notepads>
     <notepad>
       <note>&lt;-- Look up the custom field name (and table name!) used to store the RE GiftID.</note>
-      <xloc>330</xloc>
-      <yloc>405</yloc>
+      <xloc>320</xloc>
+      <yloc>480</yloc>
       <width>482</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -481,7 +481,7 @@ Your RE may not have this table.</note>
     <notepad>
       <note>&lt;-- FIXME Use ConstitId, not RECORDS.CONSTITUENT_ID</note>
       <xloc>336</xloc>
-      <yloc>336</yloc>
+      <yloc>432</yloc>
       <width>351</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -655,21 +655,6 @@ Your RE may not have this table.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Amount as BigNumber</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: soft credits</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: Gift Solicitor data</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi</from>
       <to>GiftId to contribution_id in Civi</to>
       <enabled>Y</enabled>
@@ -719,6 +704,26 @@ Your RE may not have this table.</note>
       <to>Filter tributes so we can look up amounts</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>RE: soft credits</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: Gift Solicitor data</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Amount as BigNumber</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Amount as BigNumber</name>
@@ -765,6 +770,102 @@ Your RE may not have this table.</note>
     </GUI>
   </step>
   <step>
+    <name>Filter out pledges/GL Reversals/Adjustments</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Pledge</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>MG Pledge</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>GL Reversal</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>type</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Adjustment</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Filter tributes so we can look up amounts</name>
     <type>FilterRows</type>
     <description />
@@ -794,7 +895,50 @@ Your RE may not have this table.</note>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>560</yloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter zero amounts</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>amount</leftvalue>
+        <function>&gt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>BigNumber</type>
+          <text>0.0</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask>######0.0###################;-######0.0###################</mask>
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -841,7 +985,7 @@ Your RE may not have this table.</note>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>400</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -889,7 +1033,7 @@ Your RE may not have this table.</note>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>752</yloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -936,7 +1080,7 @@ Your RE may not have this table.</note>
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>640</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1146,7 +1290,7 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>688</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1176,7 +1320,7 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1317,7 +1461,7 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>944</yloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1364,13 +1508,13 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>320</yloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter zero amounts</name>
-    <type>FilterRows</type>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1379,25 +1523,38 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>amount</leftvalue>
-        <function>&gt;</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>BigNumber</type>
-          <text>0.0</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask>######0.0###################;-######0.0###################</mask>
-        </value>
-      </condition>
-    </compare>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1407,103 +1564,7 @@ LEFT JOIN GIFT g on gsc.GiftId = g.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>848</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter out pledges/GL Reversals/Adjustments</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>type</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>Pledge</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>MG Pledge</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>GL Reversal</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>type</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>Adjustment</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>480</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -463,7 +463,7 @@ Put its custom field ID into "remove/rename fields".</note>
     <notepad>
       <note>FIXME: Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>240</xloc>
-      <yloc>896</yloc>
+      <yloc>960</yloc>
       <width>350</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -788,12 +788,17 @@ Put its custom field ID into "remove/rename fields".</note>
     </hop>
     <hop>
       <from>Filter unrecognized packages</from>
-      <to>external ID to target_contact_id in Civi</to>
+      <to>Package field only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Filter unrecognized packages</from>
-      <to>Package field only</to>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to target_contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -811,7 +816,6 @@ Put its custom field ID into "remove/rename fields".</note>
     <fields>
       <field>
         <name>appeal</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1231,6 +1235,52 @@ Put its custom field ID into "remove/rename fields".</note>
     </GUI>
   </step>
   <step>
+    <name>Filter unrecognized packages</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Check the dedupe list</send_true_to>
+    <send_false_to>Package field only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>custom_package</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>package</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fix punctuation in appeals</name>
     <type>ReplaceString</type>
     <description />
@@ -1420,6 +1470,37 @@ Put its custom field ID into "remove/rename fields".</note>
     </GUI>
   </step>
   <step>
+    <name>Get option_group_id of Packages</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cog.id as package_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Package" LIMIT 1;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>If activity_date_time is null</name>
     <type>IfNull</type>
     <description />
@@ -1454,7 +1535,7 @@ Put its custom field ID into "remove/rename fields".</note>
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>1232</yloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1527,6 +1608,72 @@ Put its custom field ID into "remove/rename fields".</note>
     <GUI>
       <xloc>176</xloc>
       <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the option_group_id of Packages</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Package field only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>package</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1664,6 +1811,47 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </GUI>
   </step>
   <step>
+    <name>Sort by package</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>package</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Step 1 contacts only</name>
     <type>SimpleMapping</type>
     <description />
@@ -1745,6 +1933,35 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <GUI>
       <xloc>608</xloc>
       <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique packages</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>      </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1897,7 +2114,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>1312</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1950,7 +2167,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>896</yloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1994,7 +2211,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>1104</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2038,7 +2255,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>1152</yloc>
+      <yloc>1216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2112,382 +2329,6 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </GUI>
   </step>
   <step>
-    <name>lookup appeal in Civi</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_option_value</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>appeal</name>
-        <field>label</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>appeal_option_group_id</name>
-        <field>option_group_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>value</name>
-        <rename>custom_appeal</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>remove/rename fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>target_contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>custom_appeal</name>
-        <rename>custom_210</rename>
-      </field>
-      <field>
-        <name>COMMENTS</name>
-        <rename>note</rename>
-      </field>
-      <field>
-        <name>DTE</name>
-        <rename>activity_date_time</rename>
-      </field>
-      <field>
-        <name>status_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>source_contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>activity_type_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>custom_package</name>
-        <rename>custom_211</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>status_id =2 (completed),source_contact_id=2 (admin)</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>status_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>source_contact_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>976</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get option_group_id of Packages</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as package_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Package" LIMIT 1;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>528</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join the option_group_id of Packages</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Package field only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>package</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>816</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter unrecognized packages</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>external ID to target_contact_id in Civi</send_true_to>
-    <send_false_to>Package field only</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>custom_package</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>OR</operator>
-            <leftvalue>package</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue />
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>816</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort by package</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>package</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>2</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>816</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique packages</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>      </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>816</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>invalid_constituent_packages</name>
     <type>TextFileOutput</type>
     <description />
@@ -2557,6 +2398,59 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </GUI>
   </step>
   <step>
+    <name>lookup appeal in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_option_value</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>appeal</name>
+        <field>label</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>appeal_option_group_id</name>
+        <field>option_group_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>value</name>
+        <rename>custom_appeal</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>lookup package in Civi</name>
     <type>DBLookup</type>
     <description />
@@ -2606,6 +2500,167 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <GUI>
       <xloc>176</xloc>
       <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remove/rename fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>target_contact_id</name>
+      </field>
+      <field>
+        <name>custom_appeal</name>
+        <rename>custom_210</rename>
+      </field>
+      <field>
+        <name>COMMENTS</name>
+        <rename>note</rename>
+      </field>
+      <field>
+        <name>DTE</name>
+        <rename>activity_date_time</rename>
+      </field>
+      <field>
+        <name>status_id</name>
+      </field>
+      <field>
+        <name>source_contact_id</name>
+      </field>
+      <field>
+        <name>activity_type_id</name>
+      </field>
+      <field>
+        <name>custom_package</name>
+        <rename>custom_211</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1104</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>status_id =2 (completed),source_contact_id=2 (admin)</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>status_id</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>2</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>source_contact_id</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>2</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

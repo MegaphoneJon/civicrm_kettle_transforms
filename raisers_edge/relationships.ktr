@@ -437,7 +437,7 @@
     <notepad>
       <note>lookup relationship_type_b</note>
       <xloc>1232</xloc>
-      <yloc>864</yloc>
+      <yloc>960</yloc>
       <width>164</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -458,7 +458,7 @@
     <notepad>
       <note>Deal with hardcoded relationship type fields</note>
       <xloc>304</xloc>
-      <yloc>448</yloc>
+      <yloc>544</yloc>
       <width>263</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -479,7 +479,7 @@
     <notepad>
       <note>Set your custom field IDs here.</note>
       <xloc>912</xloc>
-      <yloc>1024</yloc>
+      <yloc>1120</yloc>
       <width>192</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -521,7 +521,7 @@
     <notepad>
       <note>Also set a generic relationship_type "is related to" here.</note>
       <xloc>1344</xloc>
-      <yloc>1120</yloc>
+      <yloc>1216</yloc>
       <width>332</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -584,7 +584,7 @@
     <notepad>
       <note>&lt;-- FIXME Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>1168</xloc>
-      <yloc>240</yloc>
+      <yloc>256</yloc>
       <width>368</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -605,7 +605,7 @@
     <notepad>
       <note>&lt;-- FIXME Use RELATION_ID, not RECORDS.CONSTITUENT_ID</note>
       <xloc>1168</xloc>
-      <yloc>304</yloc>
+      <yloc>400</yloc>
       <width>375</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -948,11 +948,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>external ID to contact_id in Civi 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: CONSTIT_RELATIONSHIPS</from>
       <to>relationship types only</to>
       <enabled>Y</enabled>
@@ -1058,11 +1053,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Step 1 contacts only 2</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi 2</from>
       <to>Dummy (do nothing) 2</to>
       <enabled>Y</enabled>
@@ -1080,6 +1070,26 @@
     <hop>
       <from>Unique rows 2</from>
       <to>cli_relationship</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only 2</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>Check the dedupe list 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list 2</from>
+      <to>external ID to contact_id in Civi 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1110,7 +1120,7 @@
     </remotesteps>
     <GUI>
       <xloc>960</xloc>
-      <yloc>336</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1148,7 +1158,7 @@
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>688</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1186,7 +1196,7 @@
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>704</yloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1281,7 +1291,7 @@
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1248</yloc>
+      <yloc>1344</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1342,7 +1352,7 @@
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1312</yloc>
+      <yloc>1408</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1385,7 +1395,7 @@
     </remotesteps>
     <GUI>
       <xloc>1440</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1409,7 +1419,7 @@
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>496</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1433,7 +1443,7 @@
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>528</yloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1469,7 +1479,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>704</yloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1500,7 +1510,7 @@
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>288</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1534,7 +1544,7 @@
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>912</yloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1568,7 +1578,7 @@
     </remotesteps>
     <GUI>
       <xloc>1376</xloc>
-      <yloc>912</yloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1712,7 +1722,7 @@
     </remotesteps>
     <GUI>
       <xloc>1488</xloc>
-      <yloc>1024</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1755,7 +1765,7 @@
     </remotesteps>
     <GUI>
       <xloc>320</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1791,7 +1801,7 @@
     </remotesteps>
     <GUI>
       <xloc>720</xloc>
-      <yloc>672</yloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1822,7 +1832,7 @@
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>304</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1865,7 +1875,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>576</yloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1908,7 +1918,7 @@
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1951,7 +1961,7 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1994,7 +2004,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>608</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2037,7 +2047,7 @@
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>592</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2073,7 +2083,7 @@
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>672</yloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2104,7 +2114,7 @@
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>304</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2142,7 +2152,7 @@
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>688</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2202,7 +2212,7 @@ LEFT JOIN RECORDS r2 ON r2.ID = RELATION_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1120</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2275,7 +2285,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1072</xloc>
-      <yloc>1168</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2492,7 +2502,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>784</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2757,7 +2767,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>736</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2800,7 +2810,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>640</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2834,7 +2844,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1184</xloc>
-      <yloc>1104</yloc>
+      <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2864,7 +2874,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1200</xloc>
-      <yloc>928</yloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2894,7 +2904,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1408</xloc>
-      <yloc>1040</yloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2924,23 +2934,18 @@ if (end_date != null){
       </field>
       <field>
         <name>description</name>
-        <rename />
       </field>
       <field>
         <name>contact_id_a</name>
-        <rename />
       </field>
       <field>
         <name>contact_id_b</name>
-        <rename />
       </field>
       <field>
         <name>relationship_type_id</name>
-        <rename />
       </field>
       <field>
         <name>is_active</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2953,7 +2958,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>1024</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2996,7 +3001,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>608</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3026,7 +3031,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1424</xloc>
-      <yloc>656</yloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3080,6 +3085,63 @@ if (end_date != null){
     </GUI>
   </step>
   <step>
+    <name>Sort rows 2</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>contact_id_a</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>relationship_type_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>1472</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Spouse of</name>
     <type>JoinRows</type>
     <description />
@@ -3111,7 +3173,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>736</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3142,7 +3204,119 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>304</yloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Step 1 contacts only</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTIT_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Step 1 contacts only 2</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>RELATION_ID</parent>
+            <child>ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3172,6 +3346,35 @@ if (end_date != null){
     <GUI>
       <xloc>1456</xloc>
       <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique rows 2</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>      </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>1536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3312,7 +3515,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1504</yloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3417,7 +3620,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1264</xloc>
-      <yloc>1200</yloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3469,8 +3672,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>240</yloc>
+      <xloc>1120</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3523,7 +3726,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>304</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3580,7 +3783,7 @@ contact_id_a = temp;
     </remotesteps>
     <GUI>
       <xloc>1248</xloc>
-      <yloc>992</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3658,7 +3861,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>576</yloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4039,7 +4242,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1744</xloc>
-      <yloc>1056</yloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4075,7 +4278,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1296</xloc>
-      <yloc>1088</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4188,7 +4391,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
+      <xloc>1264</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4236,7 +4439,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>848</yloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4283,7 +4486,7 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </remotesteps>
     <GUI>
       <xloc>1296</xloc>
-      <yloc>896</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4331,7 +4534,7 @@ if (MATCH_NOTES) {
     </remotesteps>
     <GUI>
       <xloc>912</xloc>
-      <yloc>768</yloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4380,7 +4583,7 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>656</yloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4435,12 +4638,12 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     </remotesteps>
     <GUI>
       <xloc>1616</xloc>
-      <yloc>992</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only</name>
+    <name>Check the dedupe list</name>
     <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
@@ -4453,7 +4656,7 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
     <directory_path />
     <mappings>
       <input>
@@ -4464,8 +4667,8 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
           <rename_on_output>Y</rename_on_output>
           <description />
           <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
+            <parent>CONSTITUENT_ID_A</parent>
+            <child>CONSTITUENT_ID</child>
           </connector>
         </mapping>
       </input>
@@ -4490,13 +4693,13 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>80</yloc>
+      <xloc>1120</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only 2</name>
+    <name>Check the dedupe list 2</name>
     <type>SimpleMapping</type>
     <description />
     <distribute>Y</distribute>
@@ -4509,7 +4712,7 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
     <directory_path />
     <mappings>
       <input>
@@ -4520,8 +4723,8 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
           <rename_on_output>Y</rename_on_output>
           <description />
           <connector>
-            <parent>RELATION_ID</parent>
-            <child>ID</child>
+            <parent>CONSTITUENT_ID_B</parent>
+            <child>CONSTITUENT_ID</child>
           </connector>
         </mapping>
       </input>
@@ -4546,94 +4749,8 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>contact_id_a</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>contact_id_b</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>relationship_type_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>1376</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows 2</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>      </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>1440</yloc>
+      <xloc>1120</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

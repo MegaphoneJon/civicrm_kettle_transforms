@@ -437,8 +437,8 @@
     <notepad>
       <note>You can either concatenate prefixes/suffixes into one,
 or drop the second prefix/suffix.</note>
-      <xloc>120</xloc>
-      <yloc>1039</yloc>
+      <xloc>128</xloc>
+      <yloc>1136</yloc>
       <width>323</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -459,8 +459,8 @@ or drop the second prefix/suffix.</note>
     <notepad>
       <note>Use this if you're trying to bring salutation types from RE into Civi.
 Most times, you can skip this and bring all salutations as customized salutations.</note>
-      <xloc>124</xloc>
-      <yloc>930</yloc>
+      <xloc>128</xloc>
+      <yloc>1040</yloc>
       <width>483</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -481,8 +481,8 @@ Most times, you can skip this and bring all salutations as customized salutation
     <notepad>
       <note>If you're dropping the second prefix/suffix, this gives
 a list of all contacts who have a second prefix/suffix.</note>
-      <xloc>641</xloc>
-      <yloc>1086</yloc>
+      <xloc>656</xloc>
+      <yloc>1184</yloc>
       <width>317</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -503,8 +503,8 @@ a list of all contacts who have a second prefix/suffix.</note>
     <notepad>
       <note>WARNING: Enabling the subtransform
 steps will result in live data written to Civi.</note>
-      <xloc>1194</xloc>
-      <yloc>105</yloc>
+      <xloc>1200</xloc>
+      <yloc>208</yloc>
       <width>257</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -527,8 +527,8 @@ steps will result in live data written to Civi.</note>
 No Valid Address
 Inactive
 Anonymous</note>
-      <xloc>1200</xloc>
-      <yloc>656</yloc>
+      <xloc>1216</xloc>
+      <yloc>768</yloc>
       <width>234</width>
       <heigth>74</heigth>
       <fontname>Arial</fontname>
@@ -548,8 +548,8 @@ Anonymous</note>
     </notepad>
     <notepad>
       <note>NOTE: Remap to YOUR custom field IDs</note>
-      <xloc>768</xloc>
-      <yloc>912</yloc>
+      <xloc>784</xloc>
+      <yloc>1024</yloc>
       <width>255</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -569,8 +569,8 @@ Anonymous</note>
     </notepad>
     <notepad>
       <note>&lt;-- Use ID, CONSTITUENT_ID is org-specific</note>
-      <xloc>192</xloc>
-      <yloc>112</yloc>
+      <xloc>208</xloc>
+      <yloc>224</yloc>
       <width>270</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -590,8 +590,8 @@ Anonymous</note>
     </notepad>
     <notepad>
       <note>See Megaphone #57 on notes for questions for the client re: this transform.</note>
-      <xloc>1664</xloc>
-      <yloc>736</yloc>
+      <xloc>1680</xloc>
+      <yloc>848</yloc>
       <width>468</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -612,8 +612,8 @@ Anonymous</note>
     <notepad>
       <note>Org-specific -->
 (Greetings Mappings)</note>
-      <xloc>0</xloc>
-      <yloc>576</yloc>
+      <xloc>16</xloc>
+      <yloc>688</yloc>
       <width>140</width>
       <heigth>38</heigth>
       <fontname>Sans</fontname>
@@ -634,7 +634,7 @@ Anonymous</note>
     <notepad>
       <note>&lt;-- This is because we don't always bring over every RE contact.</note>
       <xloc>160</xloc>
-      <yloc>64</yloc>
+      <yloc>80</yloc>
       <width>400</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -654,8 +654,8 @@ Anonymous</note>
     </notepad>
     <notepad>
       <note>&lt;-- Org-specific</note>
-      <xloc>928</xloc>
-      <yloc>768</yloc>
+      <xloc>944</xloc>
+      <yloc>880</yloc>
       <width>104</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -1033,11 +1033,6 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Step 1 contacts only</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add subject and entity_table</from>
       <to>Privacy = 2</to>
       <enabled>Y</enabled>
@@ -1060,6 +1055,16 @@ Anonymous</note>
     <hop>
       <from>Handle custom greetings/salutations</from>
       <to>Set greetings id to "customized" if the value isn't null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Check the dedupe list</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Check the dedupe list</from>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1097,8 +1102,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>528</yloc>
+      <xloc>1280</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1136,8 +1141,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>576</yloc>
+      <xloc>1168</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1175,8 +1180,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>576</yloc>
+      <xloc>1072</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1214,8 +1219,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>704</yloc>
+      <xloc>1168</xloc>
+      <yloc>816</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1268,8 +1273,64 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>720</yloc>
+      <xloc>912</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1354,8 +1415,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>76</xloc>
-      <yloc>1000</yloc>
+      <xloc>80</xloc>
+      <yloc>1104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1440,8 +1501,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>76</xloc>
-      <yloc>1071</yloc>
+      <xloc>80</xloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1518,8 +1579,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>448</yloc>
+      <xloc>464</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1596,8 +1657,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>512</yloc>
+      <xloc>464</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1634,8 +1695,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>576</yloc>
+      <xloc>816</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1658,8 +1719,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>400</yloc>
+      <xloc>992</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1682,8 +1743,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1491</xloc>
-      <yloc>232</yloc>
+      <xloc>1504</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1725,8 +1786,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>432</yloc>
+      <xloc>1280</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1768,8 +1829,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>496</yloc>
+      <xloc>1184</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1811,8 +1872,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>480</yloc>
+      <xloc>1056</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1845,8 +1906,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>592</yloc>
+      <xloc>912</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1914,8 +1975,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1324</xloc>
-      <yloc>233</yloc>
+      <xloc>1328</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1985,8 +2046,8 @@ var PRIMARY_ADDRESSEE = '';</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>640</yloc>
+      <xloc>208</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2055,8 +2116,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>848</yloc>
+      <xloc>224</xloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2232,8 +2293,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>960</yloc>
+      <xloc>384</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2275,8 +2336,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>336</yloc>
+      <xloc>960</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2344,8 +2405,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1207</xloc>
-      <yloc>180</yloc>
+      <xloc>1216</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2413,8 +2474,47 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1222</xloc>
-      <yloc>269</yloc>
+      <xloc>1232</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Privacy = 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <calculation>
+      <field_name>privacy</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>2</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2470,8 +2570,8 @@ FROM RECORDS</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>42</xloc>
-      <yloc>6</yloc>
+      <xloc>32</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2514,8 +2614,8 @@ WHERE TITLE_2 IS NOT NULL OR SUFFIX_2 IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>591</xloc>
-      <yloc>1080</yloc>
+      <xloc>592</xloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2586,8 +2686,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>384</yloc>
+      <xloc>464</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2619,8 +2719,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>608</yloc>
+      <xloc>448</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2656,8 +2756,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>784</yloc>
+      <xloc>480</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2697,8 +2797,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>720</yloc>
+      <xloc>480</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2730,8 +2830,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>160</yloc>
+      <xloc>464</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2822,8 +2922,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>256</yloc>
+      <xloc>784</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2858,8 +2958,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>768</yloc>
+      <xloc>1168</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2965,8 +3065,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>496</yloc>
+      <xloc>784</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2994,8 +3094,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>128</yloc>
+      <xloc>784</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3023,8 +3123,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>192</yloc>
+      <xloc>784</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3071,8 +3171,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>304</yloc>
+      <xloc>464</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3106,8 +3206,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>672</yloc>
+      <xloc>912</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3207,8 +3307,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>768</yloc>
+      <xloc>224</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3264,7 +3364,7 @@ if (PRIMARY_ADDRESSEE !== null){
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>64</yloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3302,8 +3402,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>544</yloc>
+      <xloc>944</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3839,8 +3939,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>352</yloc>
+      <xloc>1120</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4052,8 +4152,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>736</yloc>
+      <xloc>704</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4169,8 +4269,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>832</yloc>
+      <xloc>928</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4250,8 +4350,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>912</yloc>
+      <xloc>736</xloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4343,8 +4443,58 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>848</yloc>
+      <xloc>1184</xloc>
+      <yloc>960</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>email/addressee greetings</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>email_greeting_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif>8</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>addressee_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif>7</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4396,8 +4546,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>112</yloc>
+      <xloc>160</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4443,8 +4593,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>336</yloc>
+      <xloc>208</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4490,8 +4640,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>400</yloc>
+      <xloc>208</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4537,8 +4687,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>480</yloc>
+      <xloc>208</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4584,8 +4734,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>192</yloc>
+      <xloc>208</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4631,8 +4781,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>272</yloc>
+      <xloc>208</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4772,8 +4922,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>600</xloc>
-      <yloc>1158</yloc>
+      <xloc>608</xloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4819,97 +4969,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
-      <yloc>656</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Privacy = 2</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <calculation>
-      <field_name>privacy</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>2</field_a>
-      <field_b />
-      <field_c />
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
+      <xloc>1168</xloc>
       <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>email/addressee greetings</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>email_greeting_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal />
-        <group />
-        <nullif>8</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>addressee_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal />
-        <group />
-        <nullif>7</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
