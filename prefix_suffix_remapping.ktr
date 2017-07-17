@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>prefix_suffix_remapping</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
-    <directory>&#x2f;</directory>
+    <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -53,25 +53,25 @@
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -427,15 +427,22 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014&#x2f;09&#x2f;18 18&#x3a;32&#x3a;38.298</created_date>
+    <created_date>2014/09/18 18:32:38.298</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014&#x2f;09&#x2f;18 18&#x3a;32&#x3a;38.298</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <modified_date>2014/09/18 18:32:38.298</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>This transformation will&#x3a;&#xa;&#x2a; clean up obvious problems &#x28;e.g. &#x22;mr&#x22; to &#x22;Mr.&#x22;&#x29;.&#xa;&#x2a; remap prefixes to prefix_ids &#x28;and suffixes to suffix_ids&#x29;&#xa;&#x2a; output a list of prefixes unknown to your current CiviCRM database&#xa;&#xa;TODO&#x3a;&#xa;&#x2a; create unknown prefixes&#x3f;&#xa;</note>
+      <note>This transformation will:
+* clean up obvious problems (e.g. "mr" to "Mr.").
+* remap prefixes to prefix_ids (and suffixes to suffix_ids)
+* output a list of prefixes unknown to your current CiviCRM database
+
+TODO:
+* create unknown prefixes?
+</note>
       <xloc>266</xloc>
       <yloc>52</yloc>
       <width>411</width>
@@ -456,7 +463,8 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>There&#x27;s a bug in the case sensitivity here, which makes things more difficult.&#xa;http&#x3a;&#x2f;&#x2f;forums.pentaho.com&#x2f;showthread.php&#x3f;97209-It-looks-like-the-Group-By-Step-is-not-case-sensitive-in-PDI</note>
+      <note>There's a bug in the case sensitivity here, which makes things more difficult.
+http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-is-not-case-sensitive-in-PDI</note>
       <xloc>211</xloc>
       <yloc>467</yloc>
       <width>649</width>
@@ -482,32 +490,68 @@
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
+    <database>${CIVIDB}</database>
     <port>3306</port>
-    <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
-    <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
     </attributes>
   </connection>
   <order>
     <hop>
       <from>Add prefix and suffix option group IDs</from>
-      <to>Trim prefix&#x2f;suffix fields</to>
+      <to>Trim prefix/suffix fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -516,7 +560,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Trim prefix&#x2f;suffix fields</from>
+      <from>Trim prefix/suffix fields</from>
       <to>Remap Prefixes</to>
       <enabled>Y</enabled>
     </hop>
@@ -582,6 +626,11 @@
     </hop>
     <hop>
       <from>Force prefix_id and suffix_id to integers</from>
+      <to>drop option_group_ids</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>drop option_group_ids</from>
       <to>Main data stream</to>
       <enabled>Y</enabled>
     </hop>
@@ -589,45 +638,45 @@
   <step>
     <name>Add prefix and suffix option group IDs</name>
     <type>Calculator</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <calculation>
       <field_name>prefix_option_group_id</field_name>
       <calc_type>CONSTANT</calc_type>
       <field_a>6</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
     <calculation>
       <field_name>suffix_option_group_id</field_name>
       <calc_type>CONSTANT</calc_type>
       <field_a>7</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -639,42 +688,41 @@
       <yloc>110</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Filter unrecognized prefixes</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-<send_true_to>Filter unrecognized suffixes</send_true_to>
-<send_false_to>Sort by prefix</send_false_to>
+    <send_true_to>Filter unrecognized suffixes</send_true_to>
+    <send_false_to>Sort by prefix</send_false_to>
     <compare>
-<condition>
- <negated>Y</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>prefix</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>prefix_id</leftvalue>
-   <function>IS NULL</function>
-   <rightvalue/>
-   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>Y</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>prefix</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>prefix_id</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -686,42 +734,41 @@
       <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Filter unrecognized suffixes</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-<send_true_to>Force prefix_id and suffix_id to integers</send_true_to>
-<send_false_to>Sort by suffix</send_false_to>
+    <send_true_to>Force prefix_id and suffix_id to integers</send_true_to>
+    <send_false_to>Sort by suffix</send_false_to>
     <compare>
-<condition>
- <negated>Y</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>suffix</leftvalue>
-   <function>IS NOT NULL</function>
-   <rightvalue/>
-   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <leftvalue>suffix_id</leftvalue>
-   <function>IS NULL</function>
-   <rightvalue/>
-   </condition>
-  </conditions>
- </condition>
+      <condition>
+        <negated>Y</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>suffix</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>suffix_id</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
     </compare>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -733,51 +780,56 @@
       <yloc>645</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Force prefix_id and suffix_id to integers</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>prefix_id</name>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>prefix_id</name>
         <rename>prefix_id</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask>0</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>      <meta>        <name>suffix_id</name>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>suffix_id</name>
         <rename>suffix_id</rename>
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask>0</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>    <cluster_schema/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -789,35 +841,34 @@
       <yloc>727</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Group by 2</name>
     <type>GroupBy</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>prefix</name>
-        </field>
-      </group>
-      <fields>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>prefix</name>
+      </field>
+    </group>
+    <fields>
       </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -829,35 +880,34 @@
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Group by 2 2</name>
     <type>GroupBy</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <all_rows>N</all_rows>
-      <ignore_aggregate>N</ignore_aggregate>
-      <field_ignore/>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>grp</prefix>
-      <add_linenr>N</add_linenr>
-      <linenr_fieldname/>
-      <give_back_row>N</give_back_row>
-      <group>
-        <field>
-          <name>suffix</name>
-        </field>
-      </group>
-      <fields>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>suffix</name>
+      </field>
+    </group>
+    <fields>
       </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -869,20 +919,19 @@
       <yloc>649</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Main data stream</name>
     <type>MappingOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -890,26 +939,25 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>123</xloc>
-      <yloc>799</yloc>
+      <xloc>128</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Remap Prefixes</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <field_to_use>prefix</field_to_use>
-    <target_field/>
-    <non_match_default/>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
         <source_value>Bro.</source_value>
@@ -944,11 +992,11 @@
         <target_value>Dr.</target_value>
       </field>
       <field>
-        <source_value>Dr.&#x2f;</source_value>
+        <source_value>Dr./</source_value>
         <target_value>Dr.</target_value>
       </field>
       <field>
-        <source_value>Dr. &#x26; Mrs.</source_value>
+        <source_value>Dr. &amp; Mrs.</source_value>
         <target_value>Dr. and Mrs.</target_value>
       </field>
       <field>
@@ -1016,15 +1064,15 @@
         <target_value>Mr.</target_value>
       </field>
       <field>
-        <source_value>Mr &#x26; MRS</source_value>
+        <source_value>Mr &amp; MRS</source_value>
         <target_value>Mr. and Mrs.</target_value>
       </field>
       <field>
-        <source_value>Mr &#x26; Mrs</source_value>
+        <source_value>Mr &amp; Mrs</source_value>
         <target_value>Mr. and Mrs.</target_value>
       </field>
       <field>
-        <source_value>Mr &#x26; Mrs.</source_value>
+        <source_value>Mr &amp; Mrs.</source_value>
         <target_value>Mr. and Mrs.</target_value>
       </field>
       <field>
@@ -1032,11 +1080,11 @@
         <target_value>Mr. and Mrs.</target_value>
       </field>
       <field>
-        <source_value>Mr. &#x26; Mrs.</source_value>
+        <source_value>Mr. &amp; Mrs.</source_value>
         <target_value>Mr. and Mrs.</target_value>
       </field>
       <field>
-        <source_value>Mr. &#x26; Ms.</source_value>
+        <source_value>Mr. &amp; Ms.</source_value>
         <target_value>Mr. and Ms.</target_value>
       </field>
       <field>
@@ -1124,7 +1172,7 @@
         <target_value>Professor</target_value>
       </field>
       <field>
-        <source_value>Professor &#x28;ret&#x29;</source_value>
+        <source_value>Professor (ret)</source_value>
         <target_value>Professor</target_value>
       </field>
       <field>
@@ -1209,10 +1257,10 @@
       </field>
       <field>
         <source_value>.</source_value>
-        <target_value/>
+        <target_value />
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1224,22 +1272,21 @@
       <yloc>268</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Remap Suffixes</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>N</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <field_to_use>suffix</field_to_use>
-    <target_field/>
-    <non_match_default/>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
         <source_value>D.D.S.</source_value>
@@ -1382,7 +1429,7 @@
         <target_value>DDS</target_value>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1394,26 +1441,25 @@
       <yloc>342</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Sort by prefix</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>prefix</name>
@@ -1424,7 +1470,7 @@
         <presorted>N</presorted>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1436,26 +1482,25 @@
       <yloc>565</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Sort by suffix</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>suffix</name>
@@ -1466,7 +1511,7 @@
         <presorted>N</presorted>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1478,28 +1523,27 @@
       <yloc>647</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
-    <name>Trim prefix&#x2f;suffix fields</name>
+    <name>Trim prefix/suffix fields</name>
     <type>StringOperations</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <in_stream_name>prefix</in_stream_name>
-        <out_stream_name/>
+        <out_stream_name />
         <trim_type>both</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
+        <pad_char />
+        <pad_len />
         <init_cap>no</init_cap>
         <mask_xml>none</mask_xml>
         <digits>none</digits>
@@ -1507,19 +1551,19 @@
       </field>
       <field>
         <in_stream_name>suffix</in_stream_name>
-        <out_stream_name/>
+        <out_stream_name />
         <trim_type>both</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
+        <pad_char />
+        <pad_len />
         <init_cap>no</init_cap>
         <mask_xml>none</mask_xml>
         <digits>none</digits>
         <remove_special_characters>none</remove_special_characters>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1531,20 +1575,19 @@
       <yloc>191</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Unknown Prefixes</name>
     <type>MappingOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1556,20 +1599,19 @@
       <yloc>516</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Unknown Suffixes</name>
     <type>MappingOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1581,18 +1623,17 @@
       <yloc>710</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>input prefix_suffix</name>
     <type>MappingInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -1607,9 +1648,9 @@
         <length>-1</length>
         <precision>-1</precision>
       </field>
-        <select_unspecified>Y</select_unspecified>
+      <select_unspecified>Y</select_unspecified>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1621,49 +1662,48 @@
       <yloc>22</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>prefix_id lookup</name>
     <type>DBLookup</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
+      <schema />
       <table>civicrm_option_value</table>
-      <orderby/>
+      <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>prefix</name>
         <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <key>
         <name>prefix_option_group_id</name>
         <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
         <name>value</name>
         <rename>prefix_id</rename>
-        <default/>
+        <default />
         <type>Integer</type>
       </value>
     </lookup>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1675,49 +1715,48 @@
       <yloc>423</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>suffix_id lookup</name>
     <type>DBLookup</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
     <cache>Y</cache>
     <cache_load_all>N</cache_load_all>
     <cache_size>0</cache_size>
     <lookup>
-      <schema/>
+      <schema />
       <table>civicrm_option_value</table>
-      <orderby/>
+      <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>suffix</name>
         <field>name</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <key>
         <name>suffix_option_group_id</name>
         <field>option_group_id</field>
-        <condition>&#x3d;</condition>
-        <name2/>
+        <condition>=</condition>
+        <name2 />
       </key>
       <value>
         <name>value</name>
         <rename>suffix_id</rename>
-        <default/>
+        <default />
         <type>Integer</type>
       </value>
     </lookup>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1729,8 +1768,40 @@
       <yloc>503</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
+  <step>
+    <name>drop option_group_ids</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>prefix_option_group_id</name>
+      </remove>
+      <remove>
+        <name>suffix_option_group_id</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>

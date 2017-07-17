@@ -614,7 +614,7 @@ Use with caution!</note>
     <hop>
       <from>invalid_activity_types</from>
       <to>Create Activity Types</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
   </order>
   <step>

@@ -631,7 +631,7 @@ Use with caution!</note>
     <hop>
       <from>invalid_campaigns</from>
       <to>Create Campaigns</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Create Campaigns</from>

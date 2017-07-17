@@ -3883,30 +3883,6 @@ if (PRIMARY_ADDRESSEE !== null){
         <precision>-1</precision>
       </field>
       <field>
-        <name>prefix_option_group_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>suffix_option_group_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>prefix_id</name>
         <type>String</type>
         <format />

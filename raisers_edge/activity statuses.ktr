@@ -604,7 +604,7 @@ Use with caution!</note>
     <hop>
       <from>invalid_activity_status</from>
       <to>Create Activity Types</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>RE: Actions 2</from>
@@ -1015,6 +1015,40 @@ Use with caution!</note>
     </GUI>
   </step>
   <step>
+    <name>RE: Actions 2</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>SELECT STATUS.LONGDESCRIPTION as status
+FROM ACTIONS a
+LEFT JOIN TABLEENTRIES as STATUS ON a.STATUS = STATUS.TABLEENTRIESID
+GROUP BY STATUS.LONGDESCRIPTION</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>invalid_activity_status</name>
     <type>TextFileOutput</type>
     <description />
@@ -1157,40 +1191,6 @@ Use with caution!</note>
     <GUI>
       <xloc>224</xloc>
       <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: Actions 2</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT STATUS.LONGDESCRIPTION as status
-FROM ACTIONS a
-LEFT JOIN TABLEENTRIES as STATUS ON a.STATUS = STATUS.TABLEENTRIESID
-GROUP BY STATUS.LONGDESCRIPTION</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

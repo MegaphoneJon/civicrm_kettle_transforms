@@ -500,6 +500,27 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific</note>
+      <xloc>219</xloc>
+      <yloc>742</yloc>
+      <width>104</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -652,7 +673,7 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     <hop>
       <from>invalid_packages</from>
       <to>Create packages</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Create packages</from>
@@ -681,6 +702,16 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     </hop>
     <hop>
       <from>Filter out duplicate packages</from>
+      <to>lookup package data in RE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup package data in RE</from>
+      <to>Make all is_active = 1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Make all is_active = 1</from>
       <to>invalid_packages</to>
       <enabled>Y</enabled>
     </hop>
@@ -990,6 +1021,45 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     </GUI>
   </step>
   <step>
+    <name>Filter out duplicate packages</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>option_value</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fix punctuation in fields</name>
     <type>ReplaceString</type>
     <description />
@@ -1226,8 +1296,8 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>768</yloc>
+      <xloc>592</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1656,8 +1726,8 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>656</yloc>
+      <xloc>144</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1715,8 +1785,8 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </GUI>
   </step>
   <step>
-    <name>Filter out duplicate packages</name>
-    <type>FilterRows</type>
+    <name>Make all is_active = 1</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1725,21 +1795,19 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>option_value</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue />
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <field_to_use>is_active</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1749,7 +1817,7 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>544</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

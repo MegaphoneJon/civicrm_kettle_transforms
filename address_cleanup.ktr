@@ -599,11 +599,6 @@ because it allows caching.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Force country_id, state_province_id and location_type_id to integers</from>
-      <to>valid addresses</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter postal codes that are too long</from>
       <to>Filter address fields that are too long</to>
       <enabled>Y</enabled>
@@ -741,6 +736,11 @@ because it allows caching.</note>
     <hop>
       <from>Remap obviously US States</from>
       <to>state_province_id by name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Force country_id, state_province_id and location_type_id to integers</from>
+      <to>valid addresses</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -3068,7 +3068,7 @@ because it allows caching.</note>
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>624</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
