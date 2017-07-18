@@ -499,7 +499,7 @@
     </hop>
     <hop>
       <from>Prioritize streams</from>
-      <to>noimport_cli_step_1</to>
+      <to>noimport_log</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -602,7 +602,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}\importlogs\log_${filename}</name>
+      <name>${LOCALFILES}\importlogs\raw_log_${filename}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -905,7 +905,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     </GUI>
   </step>
   <step>
-    <name>noimport_cli_step_1</name>
+    <name>noimport_log</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -929,7 +929,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/noimport_cli_step_1</name>
+      <name>${LOCALFILES}/importlogs/noimport_${filename}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
