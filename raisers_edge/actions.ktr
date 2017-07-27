@@ -458,7 +458,7 @@
     <notepad>
       <note>&lt;-- Org-specific: Using CONSTITUENT_ID instead of CONSTIT_ID for external_identifier</note>
       <xloc>208</xloc>
-      <yloc>208</yloc>
+      <yloc>288</yloc>
       <width>525</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
@@ -479,8 +479,50 @@
     <notepad>
       <note>&lt;-- same-ish. Should be external_identifier = action_contact_id</note>
       <xloc>208</xloc>
-      <yloc>320</yloc>
+      <yloc>400</yloc>
       <width>391</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- We only support one Source Contact ID currently.</note>
+      <xloc>224</xloc>
+      <yloc>96</yloc>
+      <width>331</width>
+      <heigth>24</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- DELETE ME</note>
+      <xloc>240</xloc>
+      <yloc>472</yloc>
+      <width>101</width>
       <heigth>24</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -622,11 +664,6 @@
   </connection>
   <order>
     <hop>
-      <from>Remap Priority ID</from>
-      <to>campaign to campaign_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>type to activity_type_id</from>
       <to>Filter unrecognized activity types</to>
       <enabled>Y</enabled>
@@ -654,11 +691,6 @@
     <hop>
       <from>fix date format</from>
       <to>fix date format 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi 2</from>
-      <to>Remap Priority ID</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -762,11 +794,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: Actions</from>
-      <to>Step 1 contacts only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>remove unused fields</from>
       <to>cli_activity</to>
       <enabled>Y</enabled>
@@ -789,6 +816,41 @@
     <hop>
       <from>Check the dedupe list 2</from>
       <to>external ID to contact_id in Civi 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: Actions</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Step 1 contacts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap Priority ID</from>
+      <to>external ID to contact_id in Civi (solicitor)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi 2</from>
+      <to>org-specific last-minute fixes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>org-specific last-minute fixes</from>
+      <to>Remap Priority ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi (solicitor)</from>
+      <to>Handle null values for action and solicitor constituent IDs</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Handle null values for action and solicitor constituent IDs</from>
+      <to>campaign to campaign_id</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -818,7 +880,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>1088</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -848,7 +910,7 @@
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>768</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -870,6 +932,8 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>var ActualNotes;
+
+
 
 if(!ActualNotes) {
   ActualNotes = '';
@@ -903,7 +967,119 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1152</yloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check the dedupe list 2</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>action_CONSTITUENT_ID</parent>
+            <child>CONSTITUENT_ID</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -941,7 +1117,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>1280</yloc>
+      <yloc>1568</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -987,7 +1163,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>768</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1026,7 +1202,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1088</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1065,7 +1241,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1264</yloc>
+      <yloc>1552</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1096,7 +1272,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>512</yloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1127,7 +1303,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>448</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1163,7 +1339,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>496</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1199,7 +1375,7 @@ if(letter) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>560</yloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1246,7 +1422,7 @@ if(phone_number) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1216</yloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1263,11 +1439,12 @@ if(phone_number) {
     </partitioning>
     <connection>Raiser's Edge</connection>
     <sql>SELECT
-  a.ADDED_BY
+  a.ID AS ACTION_ID
+, a.ADDED_BY
 , a.AUTO_REMIND
 , a.RECORDS_ID as external_identifier
 , cr.RELATION_ID as action_contact_id
-, a.DTE as activity_date_time
+, a.DTE as activity_date_time -- This should maybe pull from ActionNotepad instead?
 , LETTER.LONGDESCRIPTION as letter
 , a.PRIORITY as priority_id
 , a.REMIND_VALUE
@@ -1284,19 +1461,24 @@ if(phone_number) {
 , TYPE.LONGDESCRIPTION as type
 , LOCATION.LONGDESCRIPTION as location
 , ActionNotepad.ActualNotes
+, ActionNotepad.Description
 , CAMPAIGN.DESCRIPTION as campaign
 , r.CONSTITUENT_ID
 , r2.CONSTITUENT_ID AS action_CONSTITUENT_ID
+, r3.CONSTITUENT_ID AS solicitor_CONSTITUENT_ID
 FROM ACTIONS a
 LEFT JOIN TABLEENTRIES as STATUS ON a.STATUS = STATUS.TABLEENTRIESID
 LEFT JOIN TABLEENTRIES as TYPE ON a.[TYPE] = [TYPE].TABLEENTRIESID
-LEFT JOIN TABLEENTRIES as LOCATION ON a.[Location] = LOCATION.TABLEENTRIESID 
+LEFT JOIN TABLEENTRIES as LOCATION ON a.[Location] = LOCATION.TABLEENTRIESID
 LEFT JOIN TABLEENTRIES as LETTER on a.[LETTER_CODE] = LETTER.TABLEENTRIESID
-LEFT JOIN ActionNotepad ON a.ID = ActionNotepad.NotesId
+LEFT JOIN ActionNotepad ON a.ID = ActionNotepad.ParentId
 LEFT JOIN CAMPAIGN on a.CAMPAIGN_ID = CAMPAIGN.id
 LEFT JOIN CONSTIT_RELATIONSHIPS cr on a.CONTACT_ID = cr.ID
 LEFT JOIN RECORDS r ON a.RECORDS_ID = r.ID
-LEFT JOIN RECORDS r2 ON cr.RELATION_ID = r2.ID</sql>
+LEFT JOIN RECORDS r2 ON cr.RELATION_ID = r2.ID
+LEFT JOIN ACTION_SOLICITOR aso ON a.ID = aso.ACTION_ID
+LEFT JOIN RECORDS r3 ON aso.RECORDS_ID = r3.ID
+ORDER BY a.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1352,7 +1534,7 @@ LEFT JOIN RECORDS r2 ON cr.RELATION_ID = r2.ID</sql>
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>384</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1416,7 +1598,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>960</yloc>
+      <yloc>1248</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1457,7 +1639,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>480</xloc>
-      <yloc>1088</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1498,7 +1680,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>768</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1554,7 +1736,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>96</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1583,7 +1765,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>1088</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1617,7 +1799,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>768</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1664,7 +1846,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>432</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1855,6 +2037,18 @@ if(Completed == -1) {
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>subject</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1865,7 +2059,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1472</yloc>
+      <yloc>1760</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1904,7 +2098,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>656</yloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1947,12 +2141,6 @@ if(Completed == -1) {
         <default />
         <type>String</type>
       </value>
-      <value>
-        <name>id</name>
-        <rename>source_contact_id</rename>
-        <default />
-        <type>String</type>
-      </value>
     </lookup>
     <cluster_schema />
     <remotesteps>
@@ -1963,7 +2151,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>208</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2016,7 +2204,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>320</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2060,7 +2248,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>832</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2104,7 +2292,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>896</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2176,168 +2364,48 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
+        <name>action_CONSTITUENT_ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ACTION_ID</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ACTION_ID_1</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>ADDED_BY</name>
         <type>Integer</type>
         <format>0</format>
         <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>AUTO_REMIND</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>action_contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>activity_date_time</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>letter</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>priority_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>REMIND_VALUE</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CATEGORY</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Completed</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>COMPLETED_DATE</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>phone_number</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Remind_Frequency</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>WORDDOCNAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -2368,6 +2436,102 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
+        <name>AUTO_REMIND</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ActualNotes</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ActualNotes_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CATEGORY</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>COMPLETED_DATE</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Completed</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Description</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Description_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>OUTLOOK_EMAIL_SUBJECT</name>
         <type>String</type>
         <format />
@@ -2380,7 +2544,31 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>status</name>
+        <name>REMIND_VALUE</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Remind_Frequency</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>WORDDOCNAME</name>
         <type>String</type>
         <format />
         <currency />
@@ -2392,31 +2580,19 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>type</name>
-        <type>String</type>
-        <format />
+        <name>action_contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
         <currency />
-        <decimal />
-        <group />
+        <decimal>.</decimal>
+        <group>,</group>
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>location</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ActualNotes</name>
+        <name>activity_date_time</name>
         <type>String</type>
         <format />
         <currency />
@@ -2440,7 +2616,7 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>CONSTITUENT_ID</name>
+        <name>display_name</name>
         <type>String</type>
         <format />
         <currency />
@@ -2452,7 +2628,79 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>action_CONSTITUENT_ID</name>
+        <name>external_identifier</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>letter</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>location</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>phone_number</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>priority_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>solicitor_CONSTITUENT_ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>status</name>
         <type>String</type>
         <format />
         <currency />
@@ -2476,7 +2724,31 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>display_name</name>
+        <name>type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id_action</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>action_contact_display_name</name>
         <type>String</type>
         <format />
         <currency />
@@ -2500,19 +2772,7 @@ if(Completed == -1) {
         <precision>-1</precision>
       </field>
       <field>
-        <name>contact_id_action</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>action_contact_display_name</name>
+        <name>source_contact_display_name</name>
         <type>String</type>
         <format />
         <currency />
@@ -2581,7 +2841,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>1264</yloc>
+      <yloc>1552</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2650,7 +2910,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>720</xloc>
-      <yloc>1088</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2719,7 +2979,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>720</xloc>
-      <yloc>768</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2772,6 +3032,10 @@ if(Completed == -1) {
       <field>
         <name>status</name>
       </field>
+      <field>
+        <name>Description</name>
+        <rename>subject</rename>
+      </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema />
@@ -2783,7 +3047,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1328</yloc>
+      <yloc>1616</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2836,7 +3100,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1024</yloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2889,13 +3153,13 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>704</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
+    <name>Group by</name>
+    <type>GroupBy</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2904,38 +3168,189 @@ if(Completed == -1) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>ACTION_ID</name>
+      </field>
+      <field>
+        <name>ActualNotes</name>
+      </field>
+      <field>
+        <name>Description</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>ACTION_ID</aggregate>
+        <subject>ACTION_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>ADDED_BY</aggregate>
+        <subject>ADDED_BY</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>AUTO_REMIND</aggregate>
+        <subject>AUTO_REMIND</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>external_identifier</aggregate>
+        <subject>external_identifier</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>action_contact_id</aggregate>
+        <subject>action_contact_id</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>activity_date_time</aggregate>
+        <subject>activity_date_time</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>letter</aggregate>
+        <subject>letter</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>priority_id</aggregate>
+        <subject>priority_id</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>REMIND_VALUE</aggregate>
+        <subject>REMIND_VALUE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>CATEGORY</aggregate>
+        <subject>CATEGORY</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Completed</aggregate>
+        <subject>Completed</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>COMPLETED_DATE</aggregate>
+        <subject>COMPLETED_DATE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>phone_number</aggregate>
+        <subject>phone_number</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Remind_Frequency</aggregate>
+        <subject>Remind_Frequency</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>WORDDOCNAME</aggregate>
+        <subject>WORDDOCNAME</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>APPEAL_ID</aggregate>
+        <subject>APPEAL_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>APPEAL_LETTER_CODE</aggregate>
+        <subject>APPEAL_LETTER_CODE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>OUTLOOK_EMAIL_SUBJECT</aggregate>
+        <subject>OUTLOOK_EMAIL_SUBJECT</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>status</aggregate>
+        <subject>status</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>type</aggregate>
+        <subject>type</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>location</aggregate>
+        <subject>location</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>ActualNotes</aggregate>
+        <subject>ActualNotes</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Description</aggregate>
+        <subject>Description</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>campaign</aggregate>
+        <subject>campaign</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>CONSTITUENT_ID</aggregate>
+        <subject>CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>action_CONSTITUENT_ID</aggregate>
+        <subject>action_CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>solicitor_CONSTITUENT_ID</aggregate>
+        <subject>solicitor_CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2945,53 +3360,50 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>160</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Check the dedupe list 2</name>
-    <type>SimpleMapping</type>
+    <name>external ID to contact_id in Civi (solicitor)</name>
+    <type>DBLookup</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>action_CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>solicitor_CONSTITUENT_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>source_contact_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+      <value>
+        <name>display_name</name>
+        <rename>source_contact_display_name</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3001,7 +3413,121 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>256</yloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>org-specific last-minute fixes</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>solicitor_CONSTITUENT_ID</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>988891350D</source_value>
+        <target_value>VIP-103320</target_value>
+      </field>
+      <field>
+        <source_value>22003</source_value>
+        <target_value>5314197D</target_value>
+      </field>
+      <field>
+        <source_value>25204</source_value>
+        <target_value>5189771D</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Handle null values for action and solicitor constituent IDs</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>
+var action_contact_display_name;
+var source_contact_id;
+var source_contact_display_name;
+
+// If action_CONSTITUENT_ID is null, then the action_contact_display_name is bogus and needs to go.
+if (!action_CONSTITUENT_ID) {
+  action_contact_display_name = null;
+}
+
+// If there's no solicitor ID, set the target ID to the source ID - source ID is mandatory.
+if(!solicitor_CONSTITUENT_ID) {
+  source_contact_id = target_contact_id;
+  source_contact_display_name = display_name;
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>action_contact_display_name</name>
+        <rename>action_contact_display_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>source_contact_id</name>
+        <rename>source_contact_id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>source_contact_display_name</name>
+        <rename>source_contact_display_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
