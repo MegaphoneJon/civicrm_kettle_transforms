@@ -465,8 +465,8 @@ TODO:
     <notepad>
       <note>There's a bug in the case sensitivity here, which makes things more difficult.
 http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-is-not-case-sensitive-in-PDI</note>
-      <xloc>211</xloc>
-      <yloc>467</yloc>
+      <xloc>208</xloc>
+      <yloc>528</yloc>
       <width>649</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -560,11 +560,6 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Trim prefix/suffix fields</from>
-      <to>Remap Prefixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>input prefix_suffix</from>
       <to>Add prefix and suffix option group IDs</to>
       <enabled>Y</enabled>
@@ -632,6 +627,16 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <hop>
       <from>drop option_group_ids</from>
       <to>Main data stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Trim prefix/suffix fields</from>
+      <to>Remove leading punctuation and spaces</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove leading punctuation and spaces</from>
+      <to>Remap Prefixes</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -730,8 +735,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>126</xloc>
-      <yloc>576</yloc>
+      <xloc>112</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -776,8 +781,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>127</xloc>
-      <yloc>645</yloc>
+      <xloc>112</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -837,8 +842,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>125</xloc>
-      <yloc>727</yloc>
+      <xloc>112</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -876,8 +881,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>332</xloc>
-      <yloc>560</yloc>
+      <xloc>320</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -915,8 +920,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>347</xloc>
-      <yloc>649</yloc>
+      <xloc>336</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -940,7 +945,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>864</yloc>
+      <yloc>928</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1268,8 +1273,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>114</xloc>
-      <yloc>268</yloc>
+      <xloc>112</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1437,8 +1442,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>116</xloc>
-      <yloc>342</yloc>
+      <xloc>112</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1478,8 +1483,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>245</xloc>
-      <yloc>565</yloc>
+      <xloc>240</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1519,8 +1524,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>260</xloc>
-      <yloc>647</yloc>
+      <xloc>256</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1595,8 +1600,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>466</xloc>
-      <yloc>516</yloc>
+      <xloc>464</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1620,7 +1625,40 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>710</yloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>drop option_group_ids</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>prefix_option_group_id</name>
+      </remove>
+      <remove>
+        <name>suffix_option_group_id</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1711,8 +1749,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>118</xloc>
-      <yloc>423</yloc>
+      <xloc>112</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1764,14 +1802,14 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>120</xloc>
-      <yloc>503</yloc>
+      <xloc>112</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>drop option_group_ids</name>
-    <type>SelectValues</type>
+    <name>Remove leading punctuation and spaces</name>
+    <type>ReplaceString</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1781,13 +1819,17 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <schema_name />
     </partitioning>
     <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>prefix_option_group_id</name>
-      </remove>
-      <remove>
-        <name>suffix_option_group_id</name>
-      </remove>
+      <field>
+        <in_stream_name>suffix</in_stream_name>
+        <out_stream_name />
+        <use_regex>yes</use_regex>
+        <replace_string>^[, ]+(.*)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1797,8 +1839,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>800</yloc>
+      <xloc>112</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
