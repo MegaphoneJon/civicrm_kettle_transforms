@@ -465,8 +465,8 @@ TODO:
     <notepad>
       <note>There's a bug in the case sensitivity here, which makes things more difficult.
 http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-is-not-case-sensitive-in-PDI</note>
-      <xloc>208</xloc>
-      <yloc>528</yloc>
+      <xloc>288</xloc>
+      <yloc>432</yloc>
       <width>649</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -565,21 +565,6 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter unrecognized prefixes</from>
-      <to>Filter unrecognized suffixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecognized prefixes</from>
-      <to>Sort by prefix</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecognized suffixes</from>
-      <to>Sort by suffix</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort by prefix</from>
       <to>Group by 2</to>
       <enabled>Y</enabled>
@@ -595,11 +580,6 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>suffix_id lookup</from>
-      <to>Filter unrecognized prefixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap Suffixes</from>
       <to>prefix_id lookup</to>
       <enabled>Y</enabled>
@@ -612,11 +592,6 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <hop>
       <from>Group by 2 2</from>
       <to>Unknown Suffixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecognized suffixes</from>
-      <to>Force prefix_id and suffix_id to integers</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -637,6 +612,31 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <hop>
       <from>Remove leading punctuation and spaces</from>
       <to>Remap Prefixes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>suffix_id lookup</from>
+      <to>Force prefix_id and suffix_id to integers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>suffix_id lookup</from>
+      <to>Filter unrecognized prefixes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>suffix_id lookup</from>
+      <to>Filter unrecognized suffixes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized suffixes</from>
+      <to>Sort by suffix</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized prefixes</from>
+      <to>Sort by prefix</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -705,11 +705,11 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Filter unrecognized suffixes</send_true_to>
-    <send_false_to>Sort by prefix</send_false_to>
+    <send_true_to />
+    <send_false_to />
     <compare>
       <condition>
-        <negated>Y</negated>
+        <negated>N</negated>
         <conditions>
           <condition>
             <negated>N</negated>
@@ -735,8 +735,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>640</yloc>
+      <xloc>320</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -751,11 +751,11 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Force prefix_id and suffix_id to integers</send_true_to>
-    <send_false_to>Sort by suffix</send_false_to>
+    <send_true_to />
+    <send_false_to />
     <compare>
       <condition>
-        <negated>Y</negated>
+        <negated>N</negated>
         <conditions>
           <condition>
             <negated>N</negated>
@@ -781,7 +781,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>320</xloc>
       <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
@@ -843,7 +843,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>784</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -881,7 +881,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>528</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -920,7 +920,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>544</xloc>
       <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
@@ -944,8 +944,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>928</yloc>
+      <xloc>112</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1448,6 +1448,43 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     </GUI>
   </step>
   <step>
+    <name>Remove leading punctuation and spaces</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>suffix</in_stream_name>
+        <out_stream_name />
+        <use_regex>yes</use_regex>
+        <replace_string>^[, ]+(.*)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Sort by prefix</name>
     <type>SortRows</type>
     <description />
@@ -1483,7 +1520,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>448</xloc>
       <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1524,7 +1561,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>464</xloc>
       <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1600,7 +1637,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>672</xloc>
       <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1624,7 +1661,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>656</xloc>
       <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1657,8 +1694,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>864</yloc>
+      <xloc>112</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1758,7 +1795,7 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <name>suffix_id lookup</name>
     <type>DBLookup</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1804,43 +1841,6 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <GUI>
       <xloc>112</xloc>
       <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove leading punctuation and spaces</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>suffix</in_stream_name>
-        <out_stream_name />
-        <use_regex>yes</use_regex>
-        <replace_string>^[, ]+(.*)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
