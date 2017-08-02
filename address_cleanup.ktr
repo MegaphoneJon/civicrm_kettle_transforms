@@ -1841,6 +1841,26 @@ because it allows caching.</note>
         <source_value>Ontario Canada</source_value>
         <target_value>Canada</target_value>
       </field>
+      <field>
+        <source_value>Korea, North</source_value>
+        <target_value>Korea, Democratic People's Republic of</target_value>
+      </field>
+      <field>
+        <source_value>Korea, South</source_value>
+        <target_value>Korea, Republic of</target_value>
+      </field>
+      <field>
+        <source_value>Iran</source_value>
+        <target_value>Iran, Islamic Republic Of</target_value>
+      </field>
+      <field>
+        <source_value>Armed Forces Pacific</source_value>
+        <target_value>United States</target_value>
+      </field>
+      <field>
+        <source_value>Puerto Rico</source_value>
+        <target_value>United States</target_value>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
