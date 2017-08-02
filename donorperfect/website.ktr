@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>email</name>
+    <name>website</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,34 +427,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2016/03/20 01:00:29.953</created_date>
+    <created_date>2017/08/02 16:09:49.356</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2016/03/20 01:00:29.953</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2017/08/02 16:09:49.356</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>TODO: Use last_modified date to determine if any of this data should get overwritten by Civi.</note>
-      <xloc>344</xloc>
-      <yloc>271</yloc>
-      <width>552</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -522,51 +500,86 @@
   </connection>
   <order>
     <hop>
-      <from>Donor ID to contact_id</from>
+      <from>Website fields only</from>
       <to>Remove blanks</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove non-import fields</from>
-      <to>cli_email</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>email_wrapper</from>
-      <to>Remove non-import fields</to>
+      <from>Contacts</from>
+      <to>Website fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Remove blanks</from>
-      <to>email_wrapper</to>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>email_wrapper</from>
-      <to>invalid_email</to>
+      <from>Check for existing websites</from>
+      <to>New websites only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Contacts</from>
-      <to>email fields only</to>
+      <from>New websites only</from>
+      <to>cli_website</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>email fields only</from>
-      <to>No email type = Main</to>
+      <from>generate websites</from>
+      <to>Check for existing websites</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>No email type = Main</from>
-      <to>Remap email types</to>
+      <from>generate websites</from>
+      <to>invalid_websites</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap email types</from>
-      <to>Donor ID to contact_id</to>
+      <from>website_type = Main</from>
+      <to>generate websites</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>website_type = Main</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Website fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+        <rename>DONOR_ID</rename>
+      </field>
+      <field>
+        <name>WEB</name>
+        <rename>url</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Contacts</name>
     <type>CsvInput</type>
@@ -824,7 +837,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ALTPHTYPE2_DESCR</name>
+        <name>ALTPHTYPE2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1151,8 +1164,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>0</yloc>
+      <xloc>112</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1172,8 +1185,153 @@
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>EMAIL</leftvalue>
-        <function>IS NOT NULL</function>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>url</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>external ID to contact_id in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>DONOR_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Check for existing websites</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_website</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id</name>
+        <field>contact_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>url</name>
+        <field>url</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>website_type_id</name>
+        <field>website_type_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>513</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>New websites only</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>id</leftvalue>
+        <function>IS NULL</function>
         <rightvalue />
       </condition>
     </compare>
@@ -1185,49 +1343,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>393</yloc>
+      <xloc>112</xloc>
+      <yloc>577</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove non-import fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>email</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>location_type_id</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>275</xloc>
-      <yloc>530</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_email</name>
+    <name>cli_website</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1251,7 +1373,7 @@
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_email</name>
+      <name>${LOCALFILES}/data/cli_website</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1270,7 +1392,7 @@
     </file>
     <fields>
       <field>
-        <name>email</name>
+        <name>url</name>
         <type>String</type>
         <format />
         <currency />
@@ -1294,7 +1416,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>location_type_id</name>
+        <name>website_type_id</name>
         <type>Integer</type>
         <format>0</format>
         <currency />
@@ -1314,68 +1436,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>282</xloc>
-      <yloc>690</yloc>
+      <xloc>112</xloc>
+      <yloc>641</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>email fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
-      </field>
-      <field>
-        <name>EMAIL</name>
-        <rename />
-      </field>
-      <field>
-        <name>EMAIL_STATUS_DESCR</name>
-        <rename />
-      </field>
-      <field>
-        <name>EMAIL_STATUS_DATE</name>
-        <rename />
-      </field>
-      <field>
-        <name>EMAIL_TYPE_DESCR</name>
-        <rename />
-      </field>
-      <field>
-        <name>NO_EMAIL</name>
-        <rename />
-      </field>
-      <field>
-        <name>NO_EMAIL_REASON_DESCR</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>146</xloc>
-      <yloc>79</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>email_wrapper</name>
+    <name>generate websites</name>
     <type>Mapping</type>
     <description />
     <distribute>N</distribute>
@@ -1388,41 +1455,41 @@
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>/home/jon/local/transforms/email_wrapper.ktr</filename>
+    <filename>///home/jon/local/transforms/website_cleanup.ktr</filename>
     <directory_path />
     <mappings>
       <input>
         <mapping>
           <input_step />
-          <output_step>email wrapper</output_step>
+          <output_step />
           <main_path>Y</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
           <connector>
-            <parent>EMAIL</parent>
-            <child>email</child>
-          </connector>
-          <connector>
-            <parent>EMAIL_TYPE_DESCR</parent>
-            <child>location_type</child>
+            <parent>url</parent>
+            <child>url</child>
           </connector>
           <connector>
             <parent>contact_id</parent>
             <child>contact_id</child>
           </connector>
+          <connector>
+            <parent>website_type</parent>
+            <child>website_type</child>
+          </connector>
         </mapping>
       </input>
       <output>
         <mapping>
-          <input_step>valid emails</input_step>
-          <output_step>Remove non-import fields</output_step>
+          <input_step>valid_website</input_step>
+          <output_step>Check for existing websites</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
         </mapping>
         <mapping>
-          <input_step>invalid emails with names</input_step>
-          <output_step>invalid_email</output_step>
+          <input_step>invalid_website</input_step>
+          <output_step>invalid_websites</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
@@ -1442,13 +1509,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>471</yloc>
+      <xloc>112</xloc>
+      <yloc>433</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>invalid_email</name>
+    <name>invalid_websites</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1472,7 +1539,7 @@
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/invalid_email</name>
+      <name>${LOCALFILES}/errors/invalid_websites</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1491,19 +1558,7 @@
     </file>
     <fields>
       <field>
-        <name>email</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type</name>
+        <name>url</name>
         <type>String</type>
         <format />
         <currency />
@@ -1527,81 +1582,9 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>location_type_id</name>
+        <name>website_type_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>result</name>
-        <type>Boolean</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error message</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
-        <type>String</type>
-        <format />
         <currency />
         <decimal />
         <group />
@@ -1619,14 +1602,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>676</yloc>
+      <xloc>256</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Donor ID to contact_id</name>
-    <type>DBLookup</type>
+    <name>website_type = Main</name>
+    <type>Constant</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1635,65 +1618,17 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>﻿"DONOR_ID"</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>146</xloc>
-      <yloc>324</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>No email type = Main</name>
-    <type>IfNull</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <replaceAllByValue />
-    <replaceAllMask />
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
     <fields>
       <field>
-        <name>EMAIL_TYPE_DESCR</name>
-        <value>Main</value>
-        <mask />
+        <name>website_type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>Main</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
@@ -1705,41 +1640,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remap email types</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>EMAIL_TYPE_DESCR</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>Personal</source_value>
-        <target_value>Home</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>240</yloc>
+      <xloc>112</xloc>
+      <yloc>353</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

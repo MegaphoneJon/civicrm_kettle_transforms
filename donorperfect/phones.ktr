@@ -857,7 +857,40 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ADDRESS_TYPE</name>
+        <name>CITY</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>STATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ZIP</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>COUNTRY_DESCR</name>
         <type>String</type>
         <format />
         <currency />
@@ -880,17 +913,6 @@
       </field>
       <field>
         <name>ALTPHTYPE2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHTYPE2_DESCR</name>
         <type>String</type>
         <format />
         <currency />
@@ -1044,17 +1066,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>EMAIL_STATUS</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>EMAIL_STATUS_DESCR</name>
         <type>String</type>
         <format />
@@ -1067,17 +1078,6 @@
       </field>
       <field>
         <name>EMAIL_STATUS_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL_TYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1110,17 +1110,6 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>NO_EMAIL_REASON</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>NO_EMAIL_REASON_DESCR</name>
         <type>String</type>
         <format />
@@ -1133,17 +1122,6 @@
       </field>
       <field>
         <name>WEB</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>DONOR_TYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1188,17 +1166,6 @@
       </field>
       <field>
         <name>DNC_FLAG</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NOMAIL_REASON</name>
         <type>String</type>
         <format />
         <currency />
@@ -1325,6 +1292,45 @@
     </GUI>
   </step>
   <step>
+    <name>If field value is null</name>
+    <type>IfNull</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue />
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>Type</name>
+        <value>OTHER</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>New phones only 2</name>
     <type>FilterRows</type>
     <description />
@@ -1389,6 +1395,45 @@
     <GUI>
       <xloc>276</xloc>
       <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove blanks 2</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>phone</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1567,6 +1612,129 @@
     <GUI>
       <xloc>288</xloc>
       <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sync streams</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>phone</name>
+      </field>
+      <field>
+        <name>Type</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sync streams 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>phone</name>
+      </field>
+      <field>
+        <name>Type</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>alternate phone fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>ALTPHONE1</name>
+      </field>
+      <field>
+        <name>ALTPHTYPE1</name>
+      </field>
+      <field>
+        <name>ALTPHONE2</name>
+      </field>
+      <field>
+        <name>ALTPHTYPE2</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1829,6 +1997,66 @@
     </GUI>
   </step>
   <step>
+    <name>non-alternate phone fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+      </field>
+      <field>
+        <name>ATTYPHON</name>
+      </field>
+      <field>
+        <name>BUSINESS_PHONE</name>
+      </field>
+      <field>
+        <name>EXECPHON</name>
+      </field>
+      <field>
+        <name>FAX_PHONE</name>
+      </field>
+      <field>
+        <name>HPHONE_VERIFY</name>
+      </field>
+      <field>
+        <name>HOME_PHONE</name>
+      </field>
+      <field>
+        <name>MOBILE_PHONE</name>
+      </field>
+      <field>
+        <name>PH_APP_DATE</name>
+      </field>
+      <field>
+        <name>OLD_HOME_PHONE</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>normalize phones</name>
     <type>Normaliser</type>
     <description />
@@ -1876,62 +2104,38 @@
     </GUI>
   </step>
   <step>
-    <name>non-alternate phone fields only</name>
-    <type>SelectValues</type>
+    <name>normalize phones 2</name>
+    <type>Normaliser</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <typefield>Ignoreme</typefield>
     <fields>
       <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
+        <name>ALTPHONE1</name>
+        <value>phone1</value>
+        <norm>phone</norm>
       </field>
       <field>
-        <name>ATTYPHON</name>
-        <rename />
+        <name>ALTPHTYPE1</name>
+        <value>phone1</value>
+        <norm>Type</norm>
       </field>
       <field>
-        <name>BUSINESS_PHONE</name>
-        <rename />
+        <name>ALTPHONE2</name>
+        <value>phone2</value>
+        <norm>phone</norm>
       </field>
       <field>
-        <name>EXECPHON</name>
-        <rename />
+        <name>ALTPHTYPE2</name>
+        <value>phone2</value>
+        <norm>Type</norm>
       </field>
-      <field>
-        <name>FAX_PHONE</name>
-        <rename />
-      </field>
-      <field>
-        <name>HPHONE_VERIFY</name>
-        <rename />
-      </field>
-      <field>
-        <name>HOME_PHONE</name>
-        <rename />
-      </field>
-      <field>
-        <name>MOBILE_PHONE</name>
-        <rename />
-      </field>
-      <field>
-        <name>PH_APP_DATE</name>
-        <rename />
-      </field>
-      <field>
-        <name>OLD_HOME_PHONE</name>
-        <rename />
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1941,8 +2145,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>192</yloc>
+      <xloc>432</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2020,268 +2224,6 @@
     <GUI>
       <xloc>288</xloc>
       <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>alternate phone fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>ALTPHONE1</name>
-        <rename />
-      </field>
-      <field>
-        <name>ALTPHTYPE1</name>
-        <rename />
-      </field>
-      <field>
-        <name>ALTPHONE2</name>
-        <rename />
-      </field>
-      <field>
-        <name>ALTPHTYPE2</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>normalize phones 2</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>Ignoreme</typefield>
-    <fields>
-      <field>
-        <name>ALTPHONE1</name>
-        <value>phone1</value>
-        <norm>phone</norm>
-      </field>
-      <field>
-        <name>ALTPHTYPE1</name>
-        <value>phone1</value>
-        <norm>Type</norm>
-      </field>
-      <field>
-        <name>ALTPHONE2</name>
-        <value>phone2</value>
-        <norm>phone</norm>
-      </field>
-      <field>
-        <name>ALTPHTYPE2</name>
-        <value>phone2</value>
-        <norm>Type</norm>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove blanks 2</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>phone</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sync streams</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>phone</name>
-        <rename />
-      </field>
-      <field>
-        <name>Type</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sync streams 2</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>phone</name>
-        <rename />
-      </field>
-      <field>
-        <name>Type</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>If field value is null</name>
-    <type>IfNull</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <replaceAllByValue />
-    <replaceAllMask />
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>Type</name>
-        <value>OTHER</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

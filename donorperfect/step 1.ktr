@@ -484,156 +484,6 @@
     </hop>
   </order>
   <step>
-    <name>Import fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename>external_identifier</rename>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>first_name</rename>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>last_name</rename>
-      </field>
-      <field>
-        <name>organization_name</name>
-      </field>
-      <field>
-        <name>contact_type</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set Contact Type</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>ORG_REC</field_to_use>
-    <target_field>contact_type</target_field>
-    <non_match_default>Individual</non_match_default>
-    <fields>
-      <field>
-        <source_value>Y</source_value>
-        <target_value>Organization</target_value>
-      </field>
-      <field>
-        <source_value>N</source_value>
-        <target_value>Individual</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set name correctly for orgs</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var organization_name = null;
-var FIRST_NAME;
-var LAST_NAME;
-
-if (contact_type == 'Organization') {
-  organization_name = LAST_NAME;
-  LAST_NAME = null;
-  FIRST_NAME = null;
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>organization_name</name>
-        <rename>organization_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>FIRST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>LAST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Contacts</name>
     <type>CsvInput</type>
     <description />
@@ -835,7 +685,40 @@ if (contact_type == 'Organization') {
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ADDRESS_TYPE</name>
+        <name>CITY</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>STATE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>ZIP</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>COUNTRY_DESCR</name>
         <type>String</type>
         <format />
         <currency />
@@ -847,17 +730,6 @@ if (contact_type == 'Organization') {
       </field>
       <field>
         <name>ADDRESS_TYPE_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHTYPE2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1022,17 +894,6 @@ if (contact_type == 'Organization') {
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>EMAIL_STATUS</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>EMAIL_STATUS_DESCR</name>
         <type>String</type>
         <format />
@@ -1045,17 +906,6 @@ if (contact_type == 'Organization') {
       </field>
       <field>
         <name>EMAIL_STATUS_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL_TYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1088,17 +938,6 @@ if (contact_type == 'Organization') {
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>NO_EMAIL_REASON</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
         <name>NO_EMAIL_REASON_DESCR</name>
         <type>String</type>
         <format />
@@ -1111,17 +950,6 @@ if (contact_type == 'Organization') {
       </field>
       <field>
         <name>WEB</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>DONOR_TYPE</name>
         <type>String</type>
         <format />
         <currency />
@@ -1166,17 +994,6 @@ if (contact_type == 'Organization') {
       </field>
       <field>
         <name>DNC_FLAG</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NOMAIL_REASON</name>
         <type>String</type>
         <format />
         <currency />
@@ -1256,6 +1073,156 @@ if (contact_type == 'Organization') {
     </GUI>
   </step>
   <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+        <rename>external_identifier</rename>
+      </field>
+      <field>
+        <name>FIRST_NAME</name>
+        <rename>first_name</rename>
+      </field>
+      <field>
+        <name>LAST_NAME</name>
+        <rename>last_name</rename>
+      </field>
+      <field>
+        <name>organization_name</name>
+      </field>
+      <field>
+        <name>contact_type</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set Contact Type</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ORG_REC</field_to_use>
+    <target_field>contact_type</target_field>
+    <non_match_default>Individual</non_match_default>
+    <fields>
+      <field>
+        <source_value>Y</source_value>
+        <target_value>Organization</target_value>
+      </field>
+      <field>
+        <source_value>N</source_value>
+        <target_value>Individual</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set name correctly for orgs</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var organization_name = null;
+var FIRST_NAME;
+var LAST_NAME;
+
+if (contact_type == 'Organization') {
+  organization_name = LAST_NAME;
+  LAST_NAME = null;
+  FIRST_NAME = null;
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>organization_name</name>
+        <rename>organization_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>FIRST_NAME</name>
+        <rename>FIRST_NAME</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>LAST_NAME</name>
+        <rename>LAST_NAME</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Step 1 fields only</name>
     <type>SelectValues</type>
     <description />
@@ -1269,19 +1236,15 @@ if (contact_type == 'Organization') {
     <fields>
       <field>
         <name>﻿"DONOR_ID"</name>
-        <rename />
       </field>
       <field>
         <name>FIRST_NAME</name>
-        <rename />
       </field>
       <field>
         <name>LAST_NAME</name>
-        <rename />
       </field>
       <field>
         <name>ORG_REC</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

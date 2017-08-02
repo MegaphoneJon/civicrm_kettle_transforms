@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>email</name>
+    <name>addresses</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,34 +427,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2016/03/20 01:00:29.953</created_date>
+    <created_date>2017/08/02 13:09:56.075</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2016/03/20 01:00:29.953</modified_date>
+    <modified_date>2017/08/02 13:09:56.075</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>TODO: Use last_modified date to determine if any of this data should get overwritten by Civi.</note>
-      <xloc>344</xloc>
-      <yloc>271</yloc>
-      <width>552</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -522,51 +500,133 @@
   </connection>
   <order>
     <hop>
-      <from>Donor ID to contact_id</from>
+      <from>Contacts</from>
+      <to>Address fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Address fields only</from>
       <to>Remove blanks</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove non-import fields</from>
-      <to>cli_email</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>email_wrapper</from>
-      <to>Remove non-import fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remove blanks</from>
-      <to>email_wrapper</to>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>email_wrapper</from>
-      <to>invalid_email</to>
+      <from>Rename/consolidate location types</from>
+      <to>address_cleanup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Contacts</from>
-      <to>email fields only</to>
+      <from>address_cleanup</from>
+      <to>invalid_addresses</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>email fields only</from>
-      <to>No email type = Main</to>
+      <from>address_cleanup</from>
+      <to>invalid_address_location_types</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>No email type = Main</from>
-      <to>Remap email types</to>
+      <from>external ID to contact_id in Civi</from>
+      <to>Rename/consolidate location types</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap email types</from>
-      <to>Donor ID to contact_id</to>
+      <from>address_cleanup</from>
+      <to>Rename/Remove unused fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set allowed countries/states</from>
+      <to>cli_allowed_countries</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set allowed countries/states</from>
+      <to>cli_allowed_provinces</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_addresses</from>
+      <to>Set allowed countries/states</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rename/Remove unused fields</from>
+      <to>cli_addresses</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Address fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>﻿"DONOR_ID"</name>
+        <rename>DONOR_ID</rename>
+      </field>
+      <field>
+        <name>ADDRESS</name>
+        <rename />
+      </field>
+      <field>
+        <name>ADDRESS2</name>
+        <rename />
+      </field>
+      <field>
+        <name>ADDRESS3</name>
+        <rename />
+      </field>
+      <field>
+        <name>ADDRESS4</name>
+        <rename />
+      </field>
+      <field>
+        <name>CITY</name>
+        <rename />
+      </field>
+      <field>
+        <name>STATE</name>
+        <rename />
+      </field>
+      <field>
+        <name>ZIP</name>
+        <rename />
+      </field>
+      <field>
+        <name>COUNTRY_DESCR</name>
+        <rename />
+      </field>
+      <field>
+        <name>ADDRESS_TYPE_DESCR</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Contacts</name>
     <type>CsvInput</type>
@@ -824,7 +884,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ALTPHTYPE2_DESCR</name>
+        <name>ALTPHTYPE2</name>
         <type>String</type>
         <format />
         <currency />
@@ -1151,8 +1211,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>0</yloc>
+      <xloc>96</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1171,10 +1231,36 @@
     <send_false_to />
     <compare>
       <condition>
-        <negated>N</negated>
-        <leftvalue>EMAIL</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
+        <negated>Y</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>ADDRESS</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>CITY</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>STATE</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>ZIP</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
       </condition>
     </compare>
     <cluster_schema />
@@ -1185,50 +1271,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>393</yloc>
+      <xloc>96</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove non-import fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>email</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>location_type_id</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>275</xloc>
-      <yloc>530</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_email</name>
-    <type>TextFileOutput</type>
+    <name>external ID to contact_id in Civi</name>
+    <type>DBLookup</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1237,75 +1287,29 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/cli_email</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>email</name>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>DONOR_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default />
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1314,14 +1318,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>282</xloc>
-      <yloc>690</yloc>
+      <xloc>96</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>email fields only</name>
-    <type>SelectValues</type>
+    <name>Rename/consolidate location types</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1330,36 +1334,82 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <field_to_use>ADDRESS_TYPE_DESCR</field_to_use>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename />
+        <source_value>Second Home</source_value>
+        <target_value>Second Home</target_value>
       </field>
       <field>
-        <name>EMAIL</name>
-        <rename />
+        <source_value>Group Home</source_value>
+        <target_value>Group Home</target_value>
       </field>
       <field>
-        <name>EMAIL_STATUS_DESCR</name>
-        <rename />
+        <source_value>Alternate Email</source_value>
+        <target_value />
       </field>
       <field>
-        <name>EMAIL_STATUS_DATE</name>
-        <rename />
+        <source_value>CELL</source_value>
+        <target_value />
       </field>
       <field>
-        <name>EMAIL_TYPE_DESCR</name>
-        <rename />
+        <source_value>Check Mail</source_value>
+        <target_value />
       </field>
       <field>
-        <name>NO_EMAIL</name>
-        <rename />
+        <source_value>Cross Reference</source_value>
+        <target_value />
       </field>
       <field>
-        <name>NO_EMAIL_REASON_DESCR</name>
-        <rename />
+        <source_value>Group Home</source_value>
+        <target_value>Group Home</target_value>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <field>
+        <source_value>Home</source_value>
+        <target_value>Home</target_value>
+      </field>
+      <field>
+        <source_value>HOME2</source_value>
+        <target_value>Home</target_value>
+      </field>
+      <field>
+        <source_value>No Forwarding Address - NCOA</source_value>
+        <target_value>Old Address</target_value>
+      </field>
+      <field>
+        <source_value>Old Address</source_value>
+        <target_value>Old Address</target_value>
+      </field>
+      <field>
+        <source_value>Physical Address</source_value>
+        <target_value>Physical Address</target_value>
+      </field>
+      <field>
+        <source_value>Previous</source_value>
+        <target_value>Old Address</target_value>
+      </field>
+      <field>
+        <source_value>Seasonal Address</source_value>
+        <target_value>Second Home</target_value>
+      </field>
+      <field>
+        <source_value>School</source_value>
+        <target_value>School</target_value>
+      </field>
+      <field>
+        <source_value>Vacation Home</source_value>
+        <target_value>Second Home</target_value>
+      </field>
+      <field>
+        <source_value>Work</source_value>
+        <target_value>Work</target_value>
+      </field>
+      <field>
+        <source_value>Work2</source_value>
+        <target_value>Work</target_value>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1369,13 +1419,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>79</yloc>
+      <xloc>96</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>email_wrapper</name>
+    <name>address_cleanup</name>
     <type>Mapping</type>
     <description />
     <distribute>N</distribute>
@@ -1388,41 +1438,56 @@
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>/home/jon/local/transforms/email_wrapper.ktr</filename>
+    <filename>/home/jon/local/transforms/address_cleanup.ktr</filename>
     <directory_path />
     <mappings>
       <input>
         <mapping>
           <input_step />
-          <output_step>email wrapper</output_step>
+          <output_step>Mapping Input</output_step>
           <main_path>Y</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
           <connector>
-            <parent>EMAIL</parent>
-            <child>email</child>
+            <parent>ADDRESS</parent>
+            <child>street_address</child>
           </connector>
           <connector>
-            <parent>EMAIL_TYPE_DESCR</parent>
+            <parent>STATE</parent>
+            <child>state</child>
+          </connector>
+          <connector>
+            <parent>COUNTRY_DESCR</parent>
+            <child>country</child>
+          </connector>
+          <connector>
+            <parent>ADDRESS_TYPE_DESCR</parent>
             <child>location_type</child>
           </connector>
           <connector>
-            <parent>contact_id</parent>
-            <child>contact_id</child>
+            <parent>ZIP</parent>
+            <child>postal_code</child>
           </connector>
         </mapping>
       </input>
       <output>
         <mapping>
-          <input_step>valid emails</input_step>
-          <output_step>Remove non-import fields</output_step>
+          <input_step>valid addresses</input_step>
+          <output_step>Rename/Remove unused fields</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
         </mapping>
         <mapping>
-          <input_step>invalid emails with names</input_step>
-          <output_step>invalid_email</output_step>
+          <input_step>invalid addresses</input_step>
+          <output_step>invalid_addresses</output_step>
+          <main_path>N</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+        <mapping>
+          <input_step>invalid location types</input_step>
+          <output_step>invalid_address_location_types</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
           <description />
@@ -1442,13 +1507,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>146</xloc>
-      <yloc>471</yloc>
+      <xloc>96</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>invalid_email</name>
+    <name>invalid_addresses</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1472,7 +1537,7 @@
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/invalid_email</name>
+      <name>${LOCALFILES}/errors/invalid_addresses</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1491,7 +1556,103 @@
     </file>
     <fields>
       <field>
-        <name>email</name>
+        <name>DONOR_ID</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>street_address</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS3</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ADDRESS4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CITY</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>postal_code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country</name>
         <type>String</type>
         <format />
         <currency />
@@ -1527,6 +1688,102 @@
         <precision>-1</precision>
       </field>
       <field>
+        <name>country_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_id_iso</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_id_name</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_id_name</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_id_abbrev</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_province_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>location_type_id</name>
         <type>Integer</type>
         <format>0</format>
@@ -1539,67 +1796,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>result</name>
-        <type>Boolean</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error message</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>external_identifier</name>
+        <name>error</name>
         <type>String</type>
         <format />
         <currency />
@@ -1619,14 +1816,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>676</yloc>
+      <xloc>256</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Donor ID to contact_id</name>
-    <type>DBLookup</type>
+    <name>invalid_address_location_types</name>
+    <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1635,66 +1832,326 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>﻿"DONOR_ID"</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default />
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_address_location_types</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>location_type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rename/Remove unused fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>street_address</name>
+        <rename />
+      </field>
+      <field>
+        <name>ADDRESS2</name>
+        <rename>supplemental_address_1</rename>
+      </field>
+      <field>
+        <name>CITY</name>
+        <rename>city</rename>
+      </field>
+      <field>
+        <name>state_province_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>postal_code</name>
+        <rename />
+      </field>
+      <field>
+        <name>country_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>location_type_id</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set allowed countries/states</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/set allowed countries and states.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+          <connector>
+            <parent>country_id</parent>
+            <child>country_id</child>
+          </connector>
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step>Allowed countries</input_step>
+          <output_step>cli_allowed_countries</output_step>
+          <main_path>N</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+        <mapping>
+          <input_step>Allowed states</input_step>
+          <output_step>cli_allowed_provinces</output_step>
+          <main_path>N</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>cli_addresses</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/cli_addresses</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>contact_id</name>
         <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>146</xloc>
-      <yloc>324</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>No email type = Main</name>
-    <type>IfNull</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <replaceAllByValue />
-    <replaceAllMask />
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
       <field>
-        <name>EMAIL_TYPE_DESCR</name>
-        <value>Main</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
+        <name>street_address</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>supplemental_address_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>city</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>state_province_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>postal_code</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>location_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
     </fields>
     <cluster_schema />
@@ -1705,14 +2162,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
+      <xloc>96</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remap email types</name>
-    <type>ValueMapper</type>
+    <name>cli_allowed_countries</name>
+    <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1721,13 +2178,49 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>EMAIL_TYPE_DESCR</field_to_use>
-    <target_field />
-    <non_match_default />
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/cli_allowed_countries</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
     <fields>
       <field>
-        <source_value>Personal</source_value>
-        <target_value>Home</target_value>
+        <name>countryLimit</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
       </field>
     </fields>
     <cluster_schema />
@@ -1738,8 +2231,77 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>240</yloc>
+      <xloc>64</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>cli_allowed_provinces</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/cli_allowed_provinces</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>provinceLimit</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
