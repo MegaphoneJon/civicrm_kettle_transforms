@@ -653,7 +653,9 @@
 , ccf.in_selector
 FROM civicrm_custom_field ccf
 JOIN civicrm_custom_group ccg ON ccf.custom_group_id = ccg.id
-LEFT JOIN civicrm_option_group cog ON ccf.option_group_id = cog.id</sql>
+LEFT JOIN civicrm_option_group cog ON ccf.option_group_id = cog.id
+ORDER BY ccf.id
+</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -697,6 +699,7 @@ LEFT JOIN civicrm_option_group cog ON ccf.option_group_id = cog.id</sql>
 ,is_reserved
 ,weight
 FROM civicrm_custom_group
+ORDER BY id
 </sql>
     <limit>0</limit>
     <lookup />
