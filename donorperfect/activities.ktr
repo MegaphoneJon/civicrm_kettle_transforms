@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>step 1</name>
+    <name>activities</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,34 +427,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/07/28 17:39:34.982</created_date>
+    <created_date>2017/08/03 14:34:44.990</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/07/28 17:39:34.982</modified_date>
+    <modified_date>2017/08/03 14:34:44.990</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>DonorPerfect</note>
-      <xloc>224</xloc>
-      <yloc>32</yloc>
-      <width>88</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -521,43 +500,63 @@
   </connection>
   <order>
     <hop>
-      <from>Contacts</from>
-      <to>Step 1 fields only</to>
+      <from>Contacts (Activities)</from>
+      <to>Relevant fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Step 1 fields only</from>
-      <to>Set Contact Type</to>
+      <from>Relevant fields only</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product)</from>
+      <to>remap BY_WHOM to assignee_DONOR_ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get source ID</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap BY_WHOM to assignee_DONOR_ID</from>
+      <to>donor ID to target_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>assignee donor ID to assignee_id in Civi</from>
+      <to>null assignee_id if assignee_DONOR_ID is null</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Import fields only</from>
-      <to>cli_step_1</to>
+      <to>cli_activities</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set Contact Type</from>
-      <to>Set name correctly for orgs</to>
+      <from>donor ID to target_id in Civi</from>
+      <to>Handle null activity types</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set name correctly for orgs</from>
-      <to>check for existing record</to>
+      <from>Handle null activity types</from>
+      <to>assignee donor ID to assignee_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>check for existing record</from>
-      <to>Remove existing records</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove existing records</from>
+      <from>Org-specific fix for double space in activity code</from>
       <to>Import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>null assignee_id if assignee_DONOR_ID is null</from>
+      <to>Org-specific fix for double space in activity code</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Contacts</name>
+    <name>Contacts (Activities)</name>
     <type>CsvInput</type>
     <description />
     <distribute>N</distribute>
@@ -567,7 +566,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>/home/jon/ownCloud/work/Clients/AGH/civicrm/raw data/AGH_Contact_Export.csv</filename>
+    <filename>/home/jon/ownCloud/work/Clients/AGH/civicrm/raw data/AGH_Activity_Export.csv</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -593,7 +592,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>FIRST_NAME</name>
+        <name>ACTIVITY_CODE</name>
         <type>String</type>
         <format />
         <currency />
@@ -604,7 +603,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>LAST_NAME</name>
+        <name>ACTIVITY_CODE_DESCR</name>
         <type>String</type>
         <format />
         <currency />
@@ -615,7 +614,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>ORG_REC</name>
+        <name>CONTACT_DATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -626,7 +625,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>EMAIL</name>
+        <name>COMPLETED_DATE</name>
         <type>String</type>
         <format />
         <currency />
@@ -637,7 +636,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>GVGREEN</name>
+        <name>BY_WHOM</name>
         <type>String</type>
         <format />
         <currency />
@@ -648,7 +647,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>GVMAIL</name>
+        <name>BY_WHOM_DESCR</name>
         <type>String</type>
         <format />
         <currency />
@@ -659,7 +658,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>PROF_TITLE</name>
+        <name>COMMENT</name>
         <type>String</type>
         <format />
         <currency />
@@ -670,7 +669,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>TITLE</name>
+        <name>CONTACT_ID</name>
         <type>String</type>
         <format />
         <currency />
@@ -681,447 +680,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>OPT_LINE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SUFFIX</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ADDRESS</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>TADDRESS</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ADDRESS2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ADDRESS3</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ADDRESS4</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>CITY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>STATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ZIP</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>COUNTRY_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ADDRESS_TYPE_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHTYPE2_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHONE1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHONE2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ALTPHTYPE1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>ATTYPHON</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>BUSINESS_PHONE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EXECPHON</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>FAX_PHONE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>HPHONE_VERIFY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>HOME_PHONE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>MOBILE_PHONE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>PH_APP_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>OLD_HOME_PHONE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL_STATUS_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL_STATUS_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>EMAIL_TYPE_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NO_EMAIL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NO_EMAIL_REASON_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>WEB</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>DONOR_TYPE_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NOMAIL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NOSOL</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>DNC_FLAG</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>NOMAIL_REASON_DESCR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>CREATED_BY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>CREATED_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>MODIFIED_BY</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>MODIFIED_DATE</name>
+        <name>SUBJECT</name>
         <type>String</type>
         <format />
         <currency />
@@ -1140,8 +699,78 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>176</xloc>
       <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get source ID</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id AS source_contact_id FROM civicrm_contact WHERE organization_name = 'PWSA (USA)'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Handle null activity types</name>
+    <type>IfNull</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue />
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>ACTIVITY_CODE_DESCR</name>
+        <value>Imported from DPO: no activity type</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1149,7 +778,7 @@
     <name>Import fields only</name>
     <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1158,22 +787,36 @@
     </partitioning>
     <fields>
       <field>
-        <name>﻿"DONOR_ID"</name>
-        <rename>external_identifier</rename>
+        <name>CONTACT_DATE</name>
+        <rename>activity_date_time</rename>
       </field>
       <field>
-        <name>FIRST_NAME</name>
-        <rename>first_name</rename>
+        <name>COMPLETED_DATE</name>
+        <rename>custom_1</rename>
       </field>
       <field>
-        <name>LAST_NAME</name>
-        <rename>last_name</rename>
+        <name>COMMENT</name>
+        <rename>details</rename>
       </field>
       <field>
-        <name>organization_name</name>
+        <name>SUBJECT</name>
+        <rename>subject</rename>
       </field>
       <field>
-        <name>contact_type</name>
+        <name>source_contact_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>target_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>assignee_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>ACTIVITY_CODE_DESCR</name>
+        <rename>activity_name</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1185,14 +828,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>560</yloc>
+      <xloc>176</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set Contact Type</name>
-    <type>ValueMapper</type>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1201,19 +844,18 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>ORG_REC</field_to_use>
-    <target_field>contact_type</target_field>
-    <non_match_default>Individual</non_match_default>
-    <fields>
-      <field>
-        <source_value>Y</source_value>
-        <target_value>Organization</target_value>
-      </field>
-      <field>
-        <source_value>N</source_value>
-        <target_value>Individual</target_value>
-      </field>
-    </fields>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1222,84 +864,16 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>208</yloc>
+      <xloc>176</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set name correctly for orgs</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var organization_name = null;
-var FIRST_NAME;
-var LAST_NAME;
-
-if (contact_type == 'Organization') {
-  organization_name = LAST_NAME;
-  LAST_NAME = null;
-  FIRST_NAME = null;
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>organization_name</name>
-        <rename>organization_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>FIRST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>LAST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Step 1 fields only</name>
+    <name>Relevant fields only</name>
     <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1309,15 +883,28 @@ if (contact_type == 'Organization') {
     <fields>
       <field>
         <name>﻿"DONOR_ID"</name>
+        <rename>DONOR_ID</rename>
       </field>
       <field>
-        <name>FIRST_NAME</name>
+        <name>ACTIVITY_CODE_DESCR</name>
       </field>
       <field>
-        <name>LAST_NAME</name>
+        <name>CONTACT_DATE</name>
       </field>
       <field>
-        <name>ORG_REC</name>
+        <name>COMPLETED_DATE</name>
+      </field>
+      <field>
+        <name>BY_WHOM_DESCR</name>
+      </field>
+      <field>
+        <name>COMMENT</name>
+      </field>
+      <field>
+        <name>CONTACT_ID</name>
+      </field>
+      <field>
+        <name>SUBJECT</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1329,13 +916,60 @@ if (contact_type == 'Organization') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>128</yloc>
+      <xloc>176</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>cli_step_1</name>
+    <name>assignee donor ID to assignee_id in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>assignee_DONOR_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>assignee_id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>cli_activities</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1359,7 +993,7 @@ if (contact_type == 'Organization') {
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_step_1</name>
+      <name>${LOCALFILES}/data/cli_activities</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -1378,7 +1012,7 @@ if (contact_type == 'Organization') {
     </file>
     <fields>
       <field>
-        <name>external_identifier</name>
+        <name>activity_date_time</name>
         <type>String</type>
         <format />
         <currency />
@@ -1390,7 +1024,7 @@ if (contact_type == 'Organization') {
         <precision>-1</precision>
       </field>
       <field>
-        <name>first_name</name>
+        <name>custom_1</name>
         <type>String</type>
         <format />
         <currency />
@@ -1402,7 +1036,7 @@ if (contact_type == 'Organization') {
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_name</name>
+        <name>details</name>
         <type>String</type>
         <format />
         <currency />
@@ -1414,7 +1048,7 @@ if (contact_type == 'Organization') {
         <precision>-1</precision>
       </field>
       <field>
-        <name>organization_name</name>
+        <name>subject</name>
         <type>String</type>
         <format />
         <currency />
@@ -1426,7 +1060,43 @@ if (contact_type == 'Organization') {
         <precision>-1</precision>
       </field>
       <field>
-        <name>contact_type</name>
+        <name>source_contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>target_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>assignee_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>activity_name</name>
         <type>String</type>
         <format />
         <currency />
@@ -1446,13 +1116,13 @@ if (contact_type == 'Organization') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>656</yloc>
+      <xloc>176</xloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>check for existing record</name>
+    <name>donor ID to target_id in Civi</name>
     <type>DBLookup</type>
     <description />
     <distribute>Y</distribute>
@@ -1473,14 +1143,14 @@ if (contact_type == 'Organization') {
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>﻿"DONOR_ID"</name>
+        <name>DONOR_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
       </key>
       <value>
         <name>id</name>
-        <rename>id</rename>
+        <rename>target_id</rename>
         <default />
         <type>Integer</type>
       </value>
@@ -1493,32 +1163,46 @@ if (contact_type == 'Organization') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>336</yloc>
+      <xloc>176</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove existing records</name>
-    <type>FilterRows</type>
+    <name>null assignee_id if assignee_DONOR_ID is null</name>
+    <type>ScriptValueMod</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>id</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var assignee_id;
+
+if (!assignee_DONOR_ID) {
+  assignee_id = null;
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>assignee_id</name>
+        <rename>assignee_id</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1527,8 +1211,346 @@ if (contact_type == 'Organization') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>448</yloc>
+      <xloc>176</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remap BY_WHOM to assignee_DONOR_ID</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>BY_WHOM_DESCR</field_to_use>
+    <target_field>assignee_DONOR_ID</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>alogan</source_value>
+        <target_value>38854</target_value>
+      </field>
+      <field>
+        <source_value>bbush</source_value>
+        <target_value>39436</target_value>
+      </field>
+      <field>
+        <source_value>bevans</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>bkarp</source_value>
+        <target_value>24314</target_value>
+      </field>
+      <field>
+        <source_value>bmartinez</source_value>
+        <target_value>22108</target_value>
+      </field>
+      <field>
+        <source_value>bmcmanus</source_value>
+        <target_value>3951</target_value>
+      </field>
+      <field>
+        <source_value>bseely</source_value>
+        <target_value>10970</target_value>
+      </field>
+      <field>
+        <source_value>bshelley</source_value>
+        <target_value>50468</target_value>
+      </field>
+      <field>
+        <source_value>cbeles</source_value>
+        <target_value>12854</target_value>
+      </field>
+      <field>
+        <source_value>cboser</source_value>
+        <target_value>12656</target_value>
+      </field>
+      <field>
+        <source_value>cloker</source_value>
+        <target_value>3595</target_value>
+      </field>
+      <field>
+        <source_value>dapplebee</source_value>
+        <target_value>20391</target_value>
+      </field>
+      <field>
+        <source_value>dbmoore</source_value>
+        <target_value>45506</target_value>
+      </field>
+      <field>
+        <source_value>dcooper</source_value>
+        <target_value>1084</target_value>
+      </field>
+      <field>
+        <source_value>dlseely</source_value>
+        <target_value>10970</target_value>
+      </field>
+      <field>
+        <source_value>dseely</source_value>
+        <target_value>10970</target_value>
+      </field>
+      <field>
+        <source_value>dvangorder</source_value>
+        <target_value>50469</target_value>
+      </field>
+      <field>
+        <source_value>dvongorder</source_value>
+        <target_value>50469</target_value>
+      </field>
+      <field>
+        <source_value>dyoung</source_value>
+        <target_value>50303</target_value>
+      </field>
+      <field>
+        <source_value>efarrar</source_value>
+        <target_value>16000</target_value>
+      </field>
+      <field>
+        <source_value>ggrimsley</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>jbolander</source_value>
+        <target_value>11845</target_value>
+      </field>
+      <field>
+        <source_value>jhannings</source_value>
+        <target_value>42312</target_value>
+      </field>
+      <field>
+        <source_value>jheinemann</source_value>
+        <target_value>2632</target_value>
+      </field>
+      <field>
+        <source_value>jmallow</source_value>
+        <target_value>37231</target_value>
+      </field>
+      <field>
+        <source_value>jnovak</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>jojha</source_value>
+        <target_value>36114</target_value>
+      </field>
+      <field>
+        <source_value>jokanuma</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>KBeaver</source_value>
+        <target_value>338</target_value>
+      </field>
+      <field>
+        <source_value>kclark1</source_value>
+        <target_value>35491</target_value>
+      </field>
+      <field>
+        <source_value>krsmith</source_value>
+        <target_value>5516</target_value>
+      </field>
+      <field>
+        <source_value>kstarkey</source_value>
+        <target_value>45945</target_value>
+      </field>
+      <field>
+        <source_value>kstarky</source_value>
+        <target_value>45945</target_value>
+      </field>
+      <field>
+        <source_value>lboatwright</source_value>
+        <target_value>42545</target_value>
+      </field>
+      <field>
+        <source_value>lgilliland</source_value>
+        <target_value>42425</target_value>
+      </field>
+      <field>
+        <source_value>lhickok</source_value>
+        <target_value>41433</target_value>
+      </field>
+      <field>
+        <source_value>LinSherman</source_value>
+        <target_value>18123</target_value>
+      </field>
+      <field>
+        <source_value>lmoline</source_value>
+        <target_value>9334</target_value>
+      </field>
+      <field>
+        <source_value>mkaide</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>mkerneklian</source_value>
+        <target_value>50470</target_value>
+      </field>
+      <field>
+        <source_value>mtorbert</source_value>
+        <target_value>27790</target_value>
+      </field>
+      <field>
+        <source_value>mziccardi</source_value>
+        <target_value>13691</target_value>
+      </field>
+      <field>
+        <source_value>nbergenske</source_value>
+        <target_value>42515</target_value>
+      </field>
+      <field>
+        <source_value>nlinden</source_value>
+        <target_value>50471</target_value>
+      </field>
+      <field>
+        <source_value>nroberto</source_value>
+        <target_value>37785</target_value>
+      </field>
+      <field>
+        <source_value>pfarrara</source_value>
+        <target_value>36603</target_value>
+      </field>
+      <field>
+        <source_value>pferrara</source_value>
+        <target_value>36603</target_value>
+      </field>
+      <field>
+        <source_value>preece</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>PWSA_USA01AdminDPO</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>PWSA_USA02AdminDPO</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>PWSA1</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>PWSA2</source_value>
+        <target_value>50472</target_value>
+      </field>
+      <field>
+        <source_value>PWSA3</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>PWSAadmindpo</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>rbos</source_value>
+        <target_value>50196</target_value>
+      </field>
+      <field>
+        <source_value>rlutz</source_value>
+        <target_value>8380</target_value>
+      </field>
+      <field>
+        <source_value>rosadog</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>rplummer</source_value>
+        <target_value>36823</target_value>
+      </field>
+      <field>
+        <source_value>skoch</source_value>
+        <target_value>41974</target_value>
+      </field>
+      <field>
+        <source_value>sleightman</source_value>
+        <target_value>9683</target_value>
+      </field>
+      <field>
+        <source_value>slward</source_value>
+        <target_value>44643</target_value>
+      </field>
+      <field>
+        <source_value>spfalzgraf</source_value>
+        <target_value>40238</target_value>
+      </field>
+      <field>
+        <source_value>squeior</source_value>
+        <target_value>49428</target_value>
+      </field>
+      <field>
+        <source_value>squesenberry</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Terri</source_value>
+        <target_value>4796</target_value>
+      </field>
+      <field>
+        <source_value>test7</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>tprobs</source_value>
+        <target_value>4796</target_value>
+      </field>
+      <field>
+        <source_value>tprobst</source_value>
+        <target_value>4796</target_value>
+      </field>
+      <field>
+        <source_value>vvance</source_value>
+        <target_value>39846</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Org-specific fix for double space in activity code</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ACTIVITY_CODE_DESCR</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>FS-Guardianship  Questions</source_value>
+        <target_value>FS-Guardianship Questions</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
