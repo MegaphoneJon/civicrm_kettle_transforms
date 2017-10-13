@@ -368,18 +368,23 @@
           <variable_type>JVM</variable_type>
         </field>
         <field>
+          <variable_name>TESTSERVER</variable_name>
+          <variable_value>testserver.megaphonetech.com</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>DEVCMSROOT</variable_name>
+          <variable_value>/home/jon/local/civicrm-buildkit/build/dmaster</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TESTCMSROOT</variable_name>
+          <variable_value>/var/www/site/htdocs</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
           <variable_name>RSAKEY</variable_name>
           <variable_value>/home/jon/.ssh/id_rsa.pem</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DBPASSWORD</variable_name>
-          <variable_value>087GiPu908a1DwSi</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>CIVIROOT</variable_name>
-          <variable_value>/home/jon/local/civicrm-buildkit/build/dmaster</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -389,17 +394,17 @@
         </field>
         <field>
           <variable_name>IMPORTSCRIPT</variable_name>
-          <variable_value>${${CIVIROOT}/sites/all/modules/civicrm/bin/csv/import.php</variable_value>
+          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/import.php</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>EXPORTSCRIPT</variable_name>
-          <variable_value>${${CIVIROOT}/sites/all/modules/civicrm/bin/csv/export.php</variable_value>
+          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/export.php</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>DELETESCRIPT</variable_name>
-          <variable_value>${${CIVIROOT}/sites/all/modules/civicrm/bin/csv/delete.php</variable_value>
+          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/delete.php</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -424,12 +429,7 @@
         </field>
         <field>
           <variable_name>SITEPASSWORD</variable_name>
-          <variable_value>9nVCGuWKIBht</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>RESTPATH</variable_name>
-          <variable_value>http://${SITEURL}/sites/all/modules/civicrm/extern/rest.php</variable_value>
+          <variable_value>adminpassword123</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -449,7 +449,47 @@
         </field>
         <field>
           <variable_name>MYSQLPW</variable_name>
-          <variable_value>087GiPu908a1DwSi</variable_value>
+          <variable_value>12345ismyluggagecombo</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>RESTPATH</variable_name>
+          <variable_value>http://${SITEURL}/sites/all/modules/civicrm/extern/rest.php</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TRANSFORMREPO</variable_name>
+          <variable_value>/home/jon/local/transforms</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>DEVSSHUSER</variable_name>
+          <variable_value>jon</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TESTSSHUSER</variable_name>
+          <variable_value>root</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>KEYFILE</variable_name>
+          <variable_value>/home/jon/.ssh/id_rsa.pem</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TESTSQLDUMP</variable_name>
+          <variable_value>/var/www/site/sqldumps</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TESTMYSQLUSER</variable_name>
+          <variable_value>${MYSQLUSER}</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
+          <variable_name>TESTMYSQLPW</variable_name>
+          <variable_value>54321ismytestsitepassword</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>

@@ -25,6 +25,16 @@
         <description>MySQL password</description>
       </parameter>
       <parameter>
+        <name>server</name>
+        <default_value>${DEVSERVER}</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>sshuser</name>
+        <default_value>${DEVSSHUSER}</default_value>
+        <description />
+      </parameter>
+      <parameter>
         <name>user</name>
         <default_value />
         <description>MySQL user</description>
@@ -477,8 +487,8 @@ mysql -u${user} -p${password} ${databasename} &lt; ${dumpname}
 </command>
     <commandfieldname />
     <port>22</port>
-    <servername>${DEVSERVER}</servername>
-    <userName>jon</userName>
+    <servername>${server}</servername>
+    <userName>${sshuser}</userName>
     <password>Encrypted </password>
     <usePrivateKey>Y</usePrivateKey>
     <keyFileName>${RSAKEY}</keyFileName>
