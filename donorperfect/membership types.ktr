@@ -1,0 +1,1061 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>membership types</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2017/08/01 16:19:18.018</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2017/08/01 16:19:18.018</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>Target CiviCRM</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${CIVIDB}</database>
+    <port>3306</port>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>Membership Types.csv</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parent organization's contact id</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product)</from>
+      <to>financial_type_id lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>financial_type_id lookup</from>
+      <to>Import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import fields only</from>
+      <to>Create Membership Type</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>Create Membership Type</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>MembershipType</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>result</ResultField>
+    <DebugMode>N</DebugMode>
+    <action-name>create</action-name>
+    <action-name>delete</action-name>
+    <action-name>getfield</action-name>
+    <action-name>getlist</action-name>
+    <action-name>getrefcount</action-name>
+    <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
+    <field>
+      <fieldDef>{"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_financial_type"},"description":"If membership is paid by a contribution - what financial type should be used. FK to civicrm_financial_type.id","type":1,"title":"Membership Financial Type","table_name":"civicrm_membership_type","is_core_field":true,"required":true,"FKApiName":"FinancialType","bao":"CRM_Member_BAO_MembershipType","FKClassName":"CRM_Financial_DAO_FinancialType","name":"financial_type_id","localizable":0,"entity":"MembershipType"}</fieldDef>
+      <fieldName>financial_type_id</fieldName>
+      <name>financial_type_id</name>
+      <title>Membership Financial Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","default":"1","name":"is_active","description":"Is this membership_type enabled","localizable":0,"type":16,"title":"Is Active","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>is_active</fieldName>
+      <name>is_active</name>
+      <title>Is Active</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":30,"maxlength":64,"name":"relationship_type_id","description":"FK to Relationship Type ID","localizable":0,"type":2,"title":"Membership Type Relationship","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>relationship_type_id</fieldName>
+      <name>relationship_type_id</name>
+      <title>Membership Type Relationship</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":30,"maxlength":64,"pseudoconstant":{"callback":"CRM_Core_SelectValues::memberVisibility"},"name":"visibility","localizable":0,"html":{"size":30,"maxlength":64,"type":"Select"},"type":2,"title":"Visible","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>visibility</fieldName>
+      <name>visibility</name>
+      <title>Visible</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","name":"max_related","description":"Maximum number of related memberships.","localizable":0,"type":1,"title":"Max Related Members for Type","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>max_related</fieldName>
+      <name>max_related</name>
+      <title>Max Related Members for Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","precision":[20,2],"name":"minimum_fee","description":"Minimum fee for this membership (0 for free\/complimentary memberships).","localizable":0,"type":1024,"title":"membership Type Minimum Fee","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>minimum_fee</fieldName>
+      <name>minimum_fee</name>
+      <title>membership Type Minimum Fee</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":45,"maxlength":255,"name":"description","description":"Description of Membership Type","localizable":1,"html":{"size":45,"maxlength":255,"type":"TextArea"},"type":2,"title":"Membership Type Description","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>description</fieldName>
+      <name>description</name>
+      <title>Membership Type Description</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":45,"maxlength":128,"name":"relationship_direction","localizable":0,"type":2,"title":"Relationship Direction","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>relationship_direction</fieldName>
+      <name>relationship_direction</name>
+      <title>Relationship Direction</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","name":"weight","localizable":0,"type":1,"title":"Order","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>weight</fieldName>
+      <name>weight</name>
+      <title>Order</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","name":"duration_interval","description":"Number of duration units in membership period (e.g. 1 year, 12 months).","localizable":0,"type":1,"title":"Membership Type Duration Interval","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>duration_interval</fieldName>
+      <name>duration_interval</name>
+      <title>Membership Type Duration Interval</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"maxlength":8,"pseudoconstant":{"callback":"CRM_Core_SelectValues::membershipTypeUnitList"},"description":"Unit in which membership period is expressed.","type":2,"title":"Membership Type Duration Unit","table_name":"civicrm_membership_type","is_core_field":true,"bao":"CRM_Member_BAO_MembershipType","size":8,"name":"duration_unit","localizable":0,"html":{"size":8,"maxlength":8,"type":"Select"},"entity":"MembershipType"}</fieldDef>
+      <fieldName>duration_unit</fieldName>
+      <name>duration_unit</name>
+      <title>Membership Type Duration Unit</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":45,"maxlength":255,"name":"receipt_text_renewal","description":"Receipt Text for membership renewal","localizable":0,"html":{"size":45,"maxlength":255,"type":"TextArea"},"type":2,"title":"Membership Type Renewal Text","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>receipt_text_renewal</fieldName>
+      <name>receipt_text_renewal</name>
+      <title>Membership Type Renewal Text</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"description":"Which Domain is this match entry for","type":1,"title":"Membership Type Domain","table_name":"civicrm_membership_type","is_core_field":true,"required":true,"FKApiName":"Domain","bao":"CRM_Member_BAO_MembershipType","FKClassName":"CRM_Core_DAO_Domain","name":"domain_id","localizable":0,"entity":"MembershipType"}</fieldDef>
+      <fieldName>domain_id</fieldName>
+      <name>domain_id</name>
+      <title>Membership Type Domain</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","pseudoconstant":{"callback":"CRM_Core_SelectValues::memberAutoRenew"},"name":"auto_renew","description":"0 = No auto-renew option; 1 = Give option, but not required; 2 = Auto-renew required;","localizable":0,"type":16,"title":"Auto Renew","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>auto_renew</fieldName>
+      <name>auto_renew</name>
+      <title>Auto Renew</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","name":"fixed_period_start_day","description":"For fixed period memberships, month and day (mmdd) on which subscription\/membership will start. Period start is back-dated unless after rollover day.","localizable":0,"type":1,"title":"Fixed Period Start Day","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>fixed_period_start_day</fieldName>
+      <name>fixed_period_start_day</name>
+      <title>Fixed Period Start Day</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","name":"fixed_period_rollover_day","description":"For fixed period memberships, signups after this day (mmdd) rollover to next period.","localizable":0,"type":1,"title":"Fixed Period Rollover Day","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>fixed_period_rollover_day</fieldName>
+      <name>fixed_period_rollover_day</name>
+      <title>Fixed Period Rollover Day</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":45,"maxlength":255,"name":"receipt_text_signup","description":"Receipt Text for membership signup","localizable":0,"html":{"size":45,"maxlength":255,"type":"TextArea"},"type":2,"title":"Membership Type Receipt Text","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>receipt_text_signup</fieldName>
+      <name>receipt_text_signup</name>
+      <title>Membership Type Receipt Text</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","api.aliases":["membership_type_id"],"name":"id","description":"Membership Id","localizable":0,"type":1,"title":"Membership Type ID","table_name":"civicrm_membership_type","is_core_field":true,"required":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>id</fieldName>
+      <name>id</name>
+      <title>Membership Type ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","FKClassName":"CRM_Contact_DAO_Contact","name":"member_of_contact_id","description":"Owner organization for this membership type. FK to Contact ID","localizable":0,"type":1,"title":"Membership Type Organization","table_name":"civicrm_membership_type","is_core_field":true,"required":true,"entity":"MembershipType","FKApiName":"Contact"}</fieldDef>
+      <fieldName>member_of_contact_id</fieldName>
+      <name>member_of_contact_id</name>
+      <title>Membership Type Organization</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"headerPattern":"","import":true,"maxlength":128,"description":"Name of Membership Type","dataPattern":"","type":2,"title":"Membership Type","table_name":"civicrm_membership_type","is_core_field":true,"bao":"CRM_Member_BAO_MembershipType","size":45,"name":"name","localizable":1,"where":"civicrm_membership_type.name","export":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>membership_type</fieldName>
+      <name>name</name>
+      <title>Membership Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Member_BAO_MembershipType","size":8,"maxlength":8,"pseudoconstant":{"callback":"CRM_Core_SelectValues::periodType"},"name":"period_type","description":"Rolling membership period starts on signup date. Fixed membership periods start on fixed_period_start_day.","localizable":0,"type":2,"title":"Membership Type Plan","table_name":"civicrm_membership_type","is_core_field":true,"entity":"MembershipType"}</fieldDef>
+      <fieldName>period_type</fieldName>
+      <name>period_type</name>
+      <title>Membership Type Plan</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>domain_id</key-index>
+    <key-index>duration_unit</key-index>
+    <key-index>duration_interval</key-index>
+    <key-index>period_type</key-index>
+    <key-index>name</key-index>
+    <key-index>is_active</key-index>
+    <key-index>member_of_contact_id</key-index>
+    <key-index>financial_type_id</key-index>
+    <output-field>
+      <input-field>domain_id</input-field>
+      <output-field>domain_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>is_active</input-field>
+      <output-field>is_active</output-field>
+    </output-field>
+    <output-field>
+      <input-field>financial_type_id</input-field>
+      <output-field>financial_type_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>name</input-field>
+      <output-field>membership_type</output-field>
+    </output-field>
+    <output-field>
+      <input-field>duration_interval</input-field>
+      <output-field>duration_interval</output-field>
+    </output-field>
+    <output-field>
+      <input-field>member_of_contact_id</input-field>
+      <output-field>member_of_contact_id</output-field>
+    </output-field>
+    <output-field>
+      <input-field>duration_unit</input-field>
+      <output-field>duration_unit</output-field>
+    </output-field>
+    <output-field>
+      <input-field>period_type</input-field>
+      <output-field>period_type</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parent organization's contact id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select id AS member_of_contact_id from civicrm_contact WHERE display_name = 'PWSA (USA)';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>domain_id</name>
+      </field>
+      <field>
+        <name>duration_unit</name>
+      </field>
+      <field>
+        <name>duration_interval</name>
+      </field>
+      <field>
+        <name>period_type</name>
+      </field>
+      <field>
+        <name>name</name>
+      </field>
+      <field>
+        <name>is_active</name>
+      </field>
+      <field>
+        <name>member_of_contact_id</name>
+      </field>
+      <field>
+        <name>financial_type_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Membership Types.csv</name>
+    <type>CsvInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filename>/home/jon/ownCloud/work/Clients/AGH/civicrm/raw data/membership types.csv</filename>
+    <filename_field />
+    <rownum_field />
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding>UTF-8</encoding>
+    <fields>
+      <field>
+        <name>domain_id</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>financial_type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>duration_unit</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>duration_interval</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>period_type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>financial_type_id lookup</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_financial_type</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>financial_type</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>financial_type_id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>
