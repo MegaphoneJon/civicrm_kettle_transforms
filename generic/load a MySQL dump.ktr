@@ -480,7 +480,7 @@
       <schema_name />
     </partitioning>
     <dynamicCommandField>N</dynamicCommandField>
-    <command>gunzip ${dumpname}.gz; 
+    <command>gunzip --force ${dumpname}.gz; 
 mysqladmin -u${user} -p${password} -f drop ${databasename}; 
 mysqladmin -u${user} -p${password} create ${databasename}; 
 mysql -u${user} -p${password} ${databasename} &lt; ${dumpname}
