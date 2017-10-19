@@ -591,6 +591,582 @@
       <xloc>80</xloc>
       <yloc>256</yloc>
     </entry>
+    <entry>
+      <name>Load the step1 image</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_step1.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>144</yloc>
+    </entry>
+    <entry>
+      <name>Load a baseline image 2</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/baseline.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>80</yloc>
+    </entry>
+    <entry>
+      <name>Export custom fields</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/Export Custom Groups and Fields.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/baseline.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1036</xloc>
+      <yloc>283</yloc>
+    </entry>
+    <entry>
+      <name>Upload CLI CSVs to dev</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/Upload CLI CSVs to dev server.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1036</xloc>
+      <yloc>91</yloc>
+    </entry>
+    <entry>
+      <name>Load the customfields image</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_customfields.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>208</yloc>
+    </entry>
+    <entry>
+      <name>Load a step2 dump</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_step2.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>416</yloc>
+    </entry>
+    <entry>
+      <name>Load the option values image</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_optionvalues.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>272</yloc>
+    </entry>
+    <entry>
+      <name>Create a step2 dump 2</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/create a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_step2.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>352</yloc>
+    </entry>
+    <entry>
+      <name>Load final dump</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_final.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1280</xloc>
+      <yloc>496</yloc>
+    </entry>
+    <entry>
+      <name>Create a baseline dump</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/create a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/${CIVIDB}_baseline.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1036</xloc>
+      <yloc>219</yloc>
+    </entry>
+    <entry>
+      <name>Sync dev to test</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/sync CiviCRM dev to test.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1036</xloc>
+      <yloc>155</yloc>
+    </entry>
   </entries>
   <hops>
     <hop>
@@ -638,6 +1214,46 @@
       <backgroundcolorred>255</backgroundcolorred>
       <backgroundcolorgreen>205</backgroundcolorgreen>
       <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>     Admin functions     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</note>
+      <xloc>960</xloc>
+      <yloc>64</yloc>
+      <width>162</width>
+      <heigth>290</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>Y</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>30</backgroundcolorred>
+      <backgroundcolorgreen>144</backgroundcolorgreen>
+      <backgroundcolorblue>255</backgroundcolorblue>
       <bordercolorred>100</bordercolorred>
       <bordercolorgreen>100</bordercolorgreen>
       <bordercolorblue>100</bordercolorblue>
