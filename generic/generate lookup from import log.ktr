@@ -9,6 +9,11 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>filename</name>
+        <default_value />
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -443,11 +448,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>source file</from>
-      <to>Add a line number 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>line 1 only</from>
       <to>Split field to rows</to>
       <enabled>Y</enabled>
@@ -473,13 +473,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Split field to rows</from>
-      <to>field_type = String</to>
+      <from>field_type = String</from>
+      <to>fieldname only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>field_type = String</from>
-      <to>fieldname only</to>
+      <from>source file</from>
+      <to>Add a line number 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get file paths</from>
+      <to>ETL Metadata Injection</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Split field to rows</from>
+      <to>strip off quotation marks</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>strip off quotation marks</from>
+      <to>field_type = String</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -513,7 +528,7 @@
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>272</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -606,11 +621,11 @@
         <source_field>fieldname</source_field>
       </mapping>
       <mapping>
-        <target_step_name>CSV Output</target_step_name>
-        <target_attribute_key>FORCE_ENCLOSURE</target_attribute_key>
+        <target_step_name>import log</target_step_name>
+        <target_attribute_key>FILENAME</target_attribute_key>
         <target_detail>N</target_detail>
-        <source_step />
-        <source_field>Y</source_field>
+        <source_step>Get file paths</source_step>
+        <source_field>import_log_path</source_field>
       </mapping>
       <mapping>
         <target_step_name>source file</target_step_name>
@@ -618,6 +633,13 @@
         <target_detail>Y</target_detail>
         <source_step>fieldname only</source_step>
         <source_field>field_type</source_field>
+      </mapping>
+      <mapping>
+        <target_step_name>source file</target_step_name>
+        <target_attribute_key>FILENAME</target_attribute_key>
+        <target_detail>N</target_detail>
+        <source_step>Get file paths</source_step>
+        <source_field>source_file_path</source_field>
       </mapping>
       <mapping>
         <target_step_name>CSV Output</target_step_name>
@@ -640,6 +662,13 @@
         <source_step>Prioritize streams</source_step>
         <source_field>fieldname</source_field>
       </mapping>
+      <mapping>
+        <target_step_name>CSV Output</target_step_name>
+        <target_attribute_key>FILENAME</target_attribute_key>
+        <target_detail>N</target_detail>
+        <source_step>Get file paths</source_step>
+        <source_field>output_file_path</source_field>
+      </mapping>
     </mappings>
     <cluster_schema />
     <remotesteps>
@@ -651,6 +680,68 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get file paths</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>import_log_path</name>
+        <variable>${LOCALFILES}/importlogs/raw_log_${filename}.txt</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>source_file_path</name>
+        <variable>${LOCALFILES}/data/${filename}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>output_file_path</name>
+        <variable>${LOCALFILES}/data/import_lookup_${filename}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -713,7 +804,7 @@
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>416</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -827,7 +918,7 @@
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>352</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -842,7 +933,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>/home/jon/ownCloud/work/Clients/ACT/civicrm/data/cli_event.csv</filename>
+    <filename>${LOCALFILES}\data\${filename}</filename>
     <filename_field />
     <rownum_field />
     <include_filename>N</include_filename>
@@ -877,7 +968,44 @@
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>192</yloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>strip off quotation marks</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>fieldname</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>"</replace_string>
+        <replace_by_string />
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
