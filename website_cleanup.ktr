@@ -793,7 +793,7 @@ if (String(url) == 'http://') {
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>select id AS website_option_group_id from civicrm_option_group WHERE title = 'Website Type';</sql>
+    <sql>select id AS website_option_group_id from civicrm_option_group WHERE name = 'website_type';</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
