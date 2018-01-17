@@ -1177,7 +1177,7 @@ location_type (make a blank one if you don't have one)</note>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>location_type</name>
-        <field>display_name</field>
+        <field>name</field>
         <condition>=</condition>
         <name2 />
       </key>
