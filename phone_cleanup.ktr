@@ -487,7 +487,7 @@ if both of these streams have records.</note>
       <xloc>802</xloc>
       <yloc>580</yloc>
       <width>330</width>
-      <heigth>38</heigth>
+      <heigth>40</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -614,21 +614,6 @@ if both of these streams have records.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Force phone_type_id and location_type_id to integers</from>
-      <to>valid phones</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove records without location_id and phone_type_id</from>
-      <to>Remove non-import fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove non-import fields</from>
-      <to>Force phone_type_id and location_type_id to integers</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remove phones > 32 chars</from>
       <to>Add reason: "Phone length > 32 characters"</to>
       <enabled>Y</enabled>
@@ -661,6 +646,21 @@ if both of these streams have records.</note>
     <hop>
       <from>Add reason: "Phone length > 32 characters"</from>
       <to>get names for invalid phone</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove records without location_id and phone_type_id</from>
+      <to>Force phone_type_id and location_type_id to integers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Force phone_type_id and location_type_id to integers</from>
+      <to>Remove temporary phone fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove temporary phone fields</from>
+      <to>valid phones</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1153,45 +1153,6 @@ if both of these streams have records.</note>
     </GUI>
   </step>
   <step>
-    <name>Remove non-import fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>phone</name>
-      </field>
-      <field>
-        <name>location_type_id</name>
-      </field>
-      <field>
-        <name>phone_type_id</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>364</xloc>
-      <yloc>745</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Remove phones > 32 chars</name>
     <type>FilterRows</type>
     <description />
@@ -1245,7 +1206,7 @@ if both of these streams have records.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Remove non-import fields</send_true_to>
+    <send_true_to>Force phone_type_id and location_type_id to integers</send_true_to>
     <send_false_to>Reason: Missing location_type_id or phone_type_id</send_false_to>
     <compare>
       <condition>
@@ -1431,7 +1392,7 @@ if both of these streams have records.</note>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>location_type</name>
-        <field>display_name</field>
+        <field>name</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1491,7 +1452,7 @@ if both of these streams have records.</note>
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <select_unspecified>Y</select_unspecified>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1625,8 +1586,47 @@ if both of these streams have records.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>362</xloc>
-      <yloc>884</yloc>
+      <xloc>368</xloc>
+      <yloc>976</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove temporary phone fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>location_type</name>
+      </remove>
+      <remove>
+        <name>phone_type</name>
+      </remove>
+      <remove>
+        <name>phone_option_group</name>
+      </remove>
+      <remove>
+        <name>phone_option_group_id</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
