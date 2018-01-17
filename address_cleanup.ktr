@@ -669,11 +669,6 @@ because it allows caching.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>state_province_id by abbrev</from>
-      <to>Combine state_province_ids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Combine state_province_ids</from>
       <to>location_type_id lookup</to>
       <enabled>Y</enabled>
@@ -746,6 +741,21 @@ because it allows caching.</note>
     <hop>
       <from>Remove fields not needed in parent transform</from>
       <to>valid addresses</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>state_province_id by abbrev</from>
+      <to>Add leading zeros to US zip codes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add leading zeros to US zip codes</from>
+      <to>default to skipping geocodes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>default to skipping geocodes</from>
+      <to>Combine state_province_ids</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -984,6 +994,57 @@ because it allows caching.</note>
     </GUI>
   </step>
   <step>
+    <name>Add leading zeros to US zip codes</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var postal_code;
+if (country_id == 1228 &amp;&amp; postal_code) {
+  if (postal_code.length == 4) {
+    postal_code = '0' + postal_code;
+  }
+  if (postal_code.length == 3) {
+    postal_code = '00' + postal_code;
+  }
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>postal_code</name>
+        <rename>postal_code</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Canada to US</name>
     <type>ValueMapper</type>
     <description />
@@ -1089,8 +1150,8 @@ because it allows caching.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1184</yloc>
+      <xloc>96</xloc>
+      <yloc>1456</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2039,6 +2100,51 @@ because it allows caching.</note>
     <GUI>
       <xloc>864</xloc>
       <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove fields not needed in parent transform</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>country_1</name>
+      </remove>
+      <remove>
+        <name>country_id_iso</name>
+      </remove>
+      <remove>
+        <name>country_id_name</name>
+      </remove>
+      <remove>
+        <name>state_id_name</name>
+      </remove>
+      <remove>
+        <name>state_1</name>
+      </remove>
+      <remove>
+        <name>state_id_abbrev</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3098,8 +3204,8 @@ because it allows caching.</note>
     </GUI>
   </step>
   <step>
-    <name>Remove fields not needed in parent transform</name>
-    <type>SelectValues</type>
+    <name>default to skipping geocodes</name>
+    <type>Constant</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -3109,25 +3215,18 @@ because it allows caching.</note>
       <schema_name />
     </partitioning>
     <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>country_1</name>
-      </remove>
-      <remove>
-        <name>country_id_iso</name>
-      </remove>
-      <remove>
-        <name>country_id_name</name>
-      </remove>
-      <remove>
-        <name>state_id_name</name>
-      </remove>
-      <remove>
-        <name>state_1</name>
-      </remove>
-      <remove>
-        <name>state_id_abbrev</name>
-      </remove>
+      <field>
+        <name>skip_geocode</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -3137,8 +3236,8 @@ because it allows caching.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>640</yloc>
+      <xloc>80</xloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
