@@ -865,7 +865,7 @@
       <fieldName>min_multiple</fieldName>
       <name>min_multiple</name>
       <title>Minimum Multiple Records</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -873,7 +873,7 @@
       <fieldName>collapse_adv_display</fieldName>
       <name>collapse_adv_display</name>
       <title>Collapse Group Display</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -881,7 +881,7 @@
       <fieldName>collapse_display</fieldName>
       <name>collapse_display</name>
       <title>Collapse Custom Group?</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -889,11 +889,11 @@
       <fieldName>is_active</fieldName>
       <name>is_active</name>
       <title>Custom Group Is Active?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","size":45,"maxlength":255,"name":"extends_entity_column_value","description":"linking custom group for dynamic object","localizable":0,"type":2,"title":"Custom Group Subtype","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","serialize":1,"size":45,"maxlength":255,"name":"extends_entity_column_value","description":"linking custom group for dynamic object","localizable":0,"type":2,"title":"Custom Group Subtype","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>extends_entity_column_value</fieldName>
       <name>extends_entity_column_value</name>
       <title>Custom Group Subtype</title>
@@ -905,7 +905,7 @@
       <fieldName>weight</fieldName>
       <name>weight</name>
       <title>Order</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -921,7 +921,7 @@
       <fieldName>help_post</fieldName>
       <name>help_post</name>
       <title>Custom Group Post Text</title>
-      <type>2</type>
+      <type>32</type>
       <source>getfields</source>
     </field>
     <field>
@@ -937,7 +937,7 @@
       <fieldName>is_multiple</fieldName>
       <name>is_multiple</name>
       <title>Supports Multiple Records</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
@@ -945,7 +945,7 @@
       <fieldName>is_reserved</fieldName>
       <name>is_reserved</name>
       <title>Reserved Group?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
@@ -953,7 +953,7 @@
       <fieldName>created_id</fieldName>
       <name>created_id</name>
       <title>Custom Group Created By</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -969,7 +969,7 @@
       <fieldName>help_pre</fieldName>
       <name>help_pre</name>
       <title>Custom Group Pre Text</title>
-      <type>2</type>
+      <type>32</type>
       <source>getfields</source>
     </field>
     <field>
@@ -985,7 +985,7 @@
       <fieldName>is_public</fieldName>
       <name>is_public</name>
       <title>Custom Group Is Public?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
@@ -993,7 +993,7 @@
       <fieldName>extends_entity_column_id</fieldName>
       <name>extends_entity_column_id</name>
       <title>Custom Group Subtype List</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1009,7 +1009,7 @@
       <fieldName>id</fieldName>
       <name>id</name>
       <title>Custom Group ID</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1017,7 +1017,7 @@
       <fieldName>created_date</fieldName>
       <name>created_date</name>
       <title>Custom Group Created Date</title>
-      <type>2</type>
+      <type>12</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1025,7 +1025,7 @@
       <fieldName>max_multiple</fieldName>
       <name>max_multiple</name>
       <title>Maximum Multiple Records</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <key-index>title</key-index>
@@ -1034,6 +1034,8 @@
     <key-index>collapse_adv_display</key-index>
     <key-index>collapse_display</key-index>
     <key-index>extends</key-index>
+    <key-index>extends_entity_column_id</key-index>
+    <key-index>extends_entity_column_value</key-index>
     <key-index>is_active</key-index>
     <key-index>is_public</key-index>
     <key-index>is_reserved</key-index>
@@ -1063,8 +1065,16 @@
       <output-field>name</output-field>
     </output-field>
     <output-field>
+      <input-field>extends_entity_column_value</input-field>
+      <output-field>extends_entity_column_value</output-field>
+    </output-field>
+    <output-field>
       <input-field>is_public</input-field>
       <output-field>is_public</output-field>
+    </output-field>
+    <output-field>
+      <input-field>extends_entity_column_id</input-field>
+      <output-field>extends_entity_column_id</output-field>
     </output-field>
     <output-field>
       <input-field>weight</input-field>
@@ -1491,6 +1501,115 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get OptionGroup ID from JSON</name>
+    <type>JsonInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <include>N</include>
+    <include_field />
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <readurl>N</readurl>
+    <removeSourceField>N</removeSourceField>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <ignoreMissingPath>N</ignoreMissingPath>
+    <rownum_field />
+    <file>
+      <name />
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>id</name>
+        <path>id</path>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <IsInFields>Y</IsInFields>
+    <IsAFile>N</IsAFile>
+    <valueField>Result</valueField>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Get OptionGroup ID from JSON</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>option_group</name>
+        <field>name</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>option_group_id</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2269,115 +2388,6 @@
     <GUI>
       <xloc>1040</xloc>
       <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get OptionGroup ID from JSON</name>
-    <type>JsonInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <include>N</include>
-    <include_field />
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <ignoreMissingPath>N</ignoreMissingPath>
-    <rownum_field />
-    <file>
-      <name />
-      <filemask />
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>id</name>
-        <path>id</path>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <IsInFields>Y</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField>Result</valueField>
-    <shortFileFieldName />
-    <pathFieldName />
-    <hiddenFieldName />
-    <lastModificationTimeFieldName />
-    <uriNameFieldName />
-    <rootUriNameFieldName />
-    <extensionFieldName />
-    <sizeFieldName />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>Get OptionGroup ID from JSON</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>option_group</name>
-        <field>name</field>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>option_group_id</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
