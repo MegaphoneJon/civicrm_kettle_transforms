@@ -350,156 +350,6 @@
   <shared_objects_file />
   <entries>
     <entry>
-      <name>Set variables - Jon Linux desktop</name>
-      <description />
-      <type>SET_VARIABLES</type>
-      <replacevars>N</replacevars>
-      <filename />
-      <file_variable_type>JVM</file_variable_type>
-      <fields>
-        <field>
-          <variable_name>LOCALFILES</variable_name>
-          <variable_value>/home/jon/temp/example</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DEVSERVER</variable_name>
-          <variable_value>localhost</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTSERVER</variable_name>
-          <variable_value>testserver.megaphonetech.com</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DEVCMSROOT</variable_name>
-          <variable_value>/home/jon/local/civicrm-buildkit/build/dmaster</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTCMSROOT</variable_name>
-          <variable_value>/var/www/site/htdocs</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>RSAKEY</variable_name>
-          <variable_value>/home/jon/.ssh/id_rsa.pem</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>SQLDUMP</variable_name>
-          <variable_value>${CIVIROOT}/sqldumps</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>IMPORTSCRIPT</variable_name>
-          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/import.php</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>EXPORTSCRIPT</variable_name>
-          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/export.php</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DELETESCRIPT</variable_name>
-          <variable_value>${CIVIROOT}/sites/all/modules/civicrm/bin/csv/delete.php</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DRUPALDB</variable_name>
-          <variable_value>dmastercms_8espe</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>CIVIDB</variable_name>
-          <variable_value>dmasterciv_3kx3n</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>SITEURL</variable_name>
-          <variable_value>dmaster.localhost</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>SITEUSER</variable_name>
-          <variable_value>admin</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>SITEPASSWORD</variable_name>
-          <variable_value>adminpassword123</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>SITEKEY</variable_name>
-          <variable_value>MuDyiHscxHOoAVjK</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>APIKEY</variable_name>
-          <variable_value>9ru6LjUB2oqvM8ljNfUogx5N8hT3uD5q</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>MYSQLUSER</variable_name>
-          <variable_value>dmasterciv_3kx3n</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>MYSQLPW</variable_name>
-          <variable_value>12345ismyluggagecombo</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>RESTPATH</variable_name>
-          <variable_value>http://${SITEURL}/sites/all/modules/civicrm/extern/rest.php</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TRANSFORMREPO</variable_name>
-          <variable_value>/home/jon/local/transforms</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>DEVSSHUSER</variable_name>
-          <variable_value>jon</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTSSHUSER</variable_name>
-          <variable_value>root</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>KEYFILE</variable_name>
-          <variable_value>/home/jon/.ssh/id_rsa.pem</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTSQLDUMP</variable_name>
-          <variable_value>/var/www/site/sqldumps</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTMYSQLUSER</variable_name>
-          <variable_value>${MYSQLUSER}</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-        <field>
-          <variable_name>TESTMYSQLPW</variable_name>
-          <variable_value>54321ismytestsitepassword</variable_value>
-          <variable_type>JVM</variable_type>
-        </field>
-      </fields>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>96</yloc>
-    </entry>
-    <entry>
       <name>START</name>
       <description />
       <type>SPECIAL</type>
@@ -1167,11 +1017,76 @@
       <xloc>1036</xloc>
       <yloc>155</yloc>
     </entry>
+    <entry>
+      <name>Load a baseline image</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${TRANSFORMREPO}/generic/load a MySQL dump.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>user</name>
+          <stream_name />
+          <value>${MYSQLUSER}</value>
+        </parameter>
+        <parameter>
+          <name>password</name>
+          <stream_name />
+          <value>${MYSQLPW}</value>
+        </parameter>
+        <parameter>
+          <name>databasename</name>
+          <stream_name />
+          <value>${CIVIDB}</value>
+        </parameter>
+        <parameter>
+          <name>dumpname</name>
+          <stream_name />
+          <value>${SQLDUMP}/baseline.sql</value>
+        </parameter>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>80</xloc>
+      <yloc>96</yloc>
+    </entry>
   </entries>
   <hops>
     <hop>
+      <from>Create an API key on user 1</from>
+      <to>Export custom groups/fields</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
-      <to>Set variables - Jon Linux desktop</to>
+      <to>Load a baseline image</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -1179,7 +1094,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Set variables - Jon Linux desktop</from>
+      <from>Load a baseline image</from>
       <to>Create an API key on user 1</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -1187,23 +1102,14 @@
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
-    <hop>
-      <from>Create an API key on user 1</from>
-      <to>Export custom groups/fields</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>N</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
   </hops>
   <notepads>
     <notepad>
       <note>This step only makes sense if your transform is designed to work on a new install of Civi.</note>
-      <xloc>144</xloc>
-      <yloc>192</yloc>
+      <xloc>128</xloc>
+      <yloc>176</yloc>
       <width>542</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname />
       <fontsize>-1</fontsize>
       <fontbold>N</fontbold>
@@ -1243,7 +1149,7 @@
       <xloc>960</xloc>
       <yloc>64</yloc>
       <width>162</width>
-      <heigth>290</heigth>
+      <heigth>310</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>Y</fontbold>
@@ -1272,7 +1178,7 @@
       <name>{"_":"Embedded MetaStore Elements","namespace":"pentaho","type":"Default Run Configuration"}</name>
       <attribute>
         <key>Pentaho local</key>
-        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
+        <value>{"children":[{"children":[],"id":"server","value":null},{"children":[],"id":"clustered","value":"N"},{"children":[],"id":"name","value":"Pentaho local"},{"children":[],"id":"description","value":null},{"children":[],"id":"pentaho","value":"N"},{"children":[],"id":"readOnly","value":"Y"},{"children":[],"id":"sendResources","value":"N"},{"children":[],"id":"logRemoteExecutionLocally","value":"N"},{"children":[],"id":"remote","value":"N"},{"children":[],"id":"local","value":"Y"},{"children":[],"id":"showTransformations","value":"N"}],"id":"Pentaho local","value":null,"name":"Pentaho local","owner":null,"ownerPermissionsList":[]}</value>
       </attribute>
     </group>
   </attributes>
