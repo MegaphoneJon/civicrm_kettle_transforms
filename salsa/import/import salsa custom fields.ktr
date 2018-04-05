@@ -352,7 +352,7 @@
     <userName>jon</userName>
     <password>Encrypted </password>
     <usePrivateKey>Y</usePrivateKey>
-    <keyFileName>&#x24;&#x7b;RSAKEY&#x7d;</keyFileName>
+    <keyFileName>&#x24;&#x7b;KEYFILE&#x7d;</keyFileName>
     <passPhrase/>
     <stdOutFieldName>stdOut</stdOutFieldName>
     <stdErrFieldName>stdErr</stdErrFieldName>

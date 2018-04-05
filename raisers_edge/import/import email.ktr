@@ -139,7 +139,7 @@ php ${IMPORTSCRIPT} -e Email --file=${SQLDUMP}&#47;csvs&#47;cli_email.csv
     <userName>jon</userName>
     <password>Encrypted </password>
     <usePrivateKey>Y</usePrivateKey>
-    <keyFileName>${RSAKEY}</keyFileName>
+    <keyFileName>${KEYFILE}</keyFileName>
     <passPhrase/>
     <stdOutFieldName>stdOut</stdOutFieldName>
     <stdErrFieldName>stdErr</stdErrFieldName>

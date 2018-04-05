@@ -480,7 +480,7 @@ gzip ${dumpname}
     <userName>jon</userName>
     <password>Encrypted </password>
     <usePrivateKey>Y</usePrivateKey>
-    <keyFileName>${RSAKEY}</keyFileName>
+    <keyFileName>${KEYFILE}</keyFileName>
     <passPhrase>Encrypted </passPhrase>
     <stdOutFieldName>stdOut</stdOutFieldName>
     <stdErrFieldName>stdErr</stdErrFieldName>

@@ -264,7 +264,7 @@
           <variable_type>JVM</variable_type>
         </field>
         <field>
-          <variable_name>RSAKEY</variable_name>
+          <variable_name>KEYFILE</variable_name>
           <variable_value>&#x2f;home&#x2f;you&#x2f;.ssh&#x2f;id_rsa.pem</variable_value>
           <variable_type>JVM</variable_type>
         </field>
