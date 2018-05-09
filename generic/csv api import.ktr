@@ -493,11 +493,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Prioritize streams</from>
-      <to>noimport_log</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Reorder</from>
       <to>Prioritize streams</to>
       <enabled>Y</enabled>
@@ -535,6 +530,26 @@
     <hop>
       <from>Quotes around error_description</from>
       <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Prioritize streams</from>
+      <to>Count the failed import rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Count the failed import rows</from>
+      <to>Delete header row if no failed import rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Delete header row if no failed import rows</from>
+      <to>Remove count</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove count</from>
+      <to>noimport_log</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -775,7 +790,7 @@
     <name>Prioritize streams</name>
     <type>PrioritizeStreams</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -800,6 +815,50 @@
     <GUI>
       <xloc>144</xloc>
       <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Quotes around error_description</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var error_description = '"' + error_description + '"'
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>error_description</name>
+        <rename>error_description</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -933,7 +992,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     <footer>N</footer>
     <format>DOS</format>
     <compression>None</compression>
-    <encoding />
+    <encoding>UTF-8</encoding>
     <endedLine />
     <fileNameInField>N</fileNameInField>
     <fileNameField />
@@ -1148,7 +1207,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -1208,7 +1267,7 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>816</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1283,8 +1342,8 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
     </GUI>
   </step>
   <step>
-    <name>Quotes around error_description</name>
-    <type>ScriptValueMod</type>
+    <name>Count the failed import rows</name>
+    <type>GroupBy</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1293,24 +1352,22 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
       <method>none</method>
       <schema_name />
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var error_description = '"' + error_description + '"'
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
+    <all_rows>Y</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      </group>
     <fields>
       <field>
-        <name>error_description</name>
-        <rename>error_description</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
+        <aggregate>count</aggregate>
+        <subject>line_number</subject>
+        <type>COUNT_ALL</type>
+        <valuefield />
       </field>
     </fields>
     <cluster_schema />
@@ -1321,8 +1378,81 @@ php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>512</yloc>
+      <xloc>144</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Delete header row if no failed import rows</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>count</leftvalue>
+        <function>&gt;</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>912</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove count</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>count</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
