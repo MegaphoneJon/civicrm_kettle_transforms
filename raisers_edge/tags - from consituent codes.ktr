@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>constituent codes to EntityTag</name>
+    <name>tags - from consituent codes</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>EntityTag</default_value>
+        <default_value>Tag</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>cli_constituent_codes_to_tag.csv</default_value>
+        <default_value>tags_from_constituent_codes.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -614,17 +614,12 @@
   </connection>
   <order>
     <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>tag name to tag_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>tag name to tag_id</from>
       <to>Filter invalid tag_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>constituent code only</from>
+      <from>constituent code (tag) only</from>
       <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
@@ -634,23 +629,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>invalid_constituent_codes_to_tag</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter invalid tag_id</from>
-      <to>constituent code only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter invalid tag_id</from>
-      <to>Add entity_table</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add entity_table</from>
-      <to>Remove unneeded fields</to>
+      <to>constituent code (tag) only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -659,27 +639,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove unneeded fields</from>
-      <to>find existing tags</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>find existing tags</from>
-      <to>Filter existing tags</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Step 1 contacts only</from>
       <to>Non-blank codes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Non-blank codes</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>CSV Output</from>
+      <from>tags_from_constituent_codes</from>
       <to>Last Step</to>
       <enabled>Y</enabled>
     </hop>
@@ -709,83 +674,16 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter existing tags</from>
-      <to>CSV Output</to>
+      <from>Unique rows</from>
+      <to>tags_from_constituent_codes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Non-blank codes</from>
+      <to>tag name to tag_id</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add entity_table</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>entity_table</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>civicrm_contact</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter existing tags</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>id</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Filter invalid tag_id</name>
     <type>FilterRows</type>
@@ -798,7 +696,7 @@
       <schema_name />
     </partitioning>
     <send_true_to>Add entity_table</send_true_to>
-    <send_false_to>constituent code only</send_false_to>
+    <send_false_to>constituent code (tag) only</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -816,7 +714,7 @@
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>496</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -903,43 +801,6 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </GUI>
   </step>
   <step>
-    <name>Remove unneeded fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>contact_id</name>
-        <rename>entity_id</rename>
-      </field>
-      <field>
-        <name>tag_id</name>
-      </field>
-      <field>
-        <name>entity_table</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Sort rows</name>
     <type>SortRows</type>
     <description />
@@ -959,7 +820,7 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>LONGDESCRIPTION</name>
+        <name>name</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -975,8 +836,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>512</yloc>
+      <xloc>112</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1051,12 +912,7 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     <count_field />
     <reject_duplicate_row>N</reject_duplicate_row>
     <error_description />
-    <fields>
-      <field>
-        <name>LONGDESCRIPTION</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
+    <fields>      </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1065,8 +921,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>512</yloc>
+      <xloc>112</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,7 +968,7 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </GUI>
   </step>
   <step>
-    <name>constituent code only</name>
+    <name>constituent code (tag) only</name>
     <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
@@ -1125,6 +981,7 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     <fields>
       <field>
         <name>LONGDESCRIPTION</name>
+        <rename>name</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1136,183 +993,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>external ID to contact_id in Civi</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTIT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>112</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>find existing tags</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_entity_tag</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>entity_id</name>
-        <field>entity_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>tag_id</name>
-        <field>tag_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>entity_table</name>
-        <field>entity_table</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>invalid_constituent_codes_to_tag</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/errors/invalid_constituent_codes_to_tag</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>LONGDESCRIPTION</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>100</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>496</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1359,12 +1041,12 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>432</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>CSV Output</name>
+    <name>tags_from_constituent_codes</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1407,31 +1089,7 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </file>
     <fields>
       <field>
-        <name>entity_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>tag_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>entity_table</name>
+        <name>name</name>
         <type>String</type>
         <format />
         <currency />
@@ -1452,7 +1110,31 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>832</yloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1489,8 +1171,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>832</yloc>
+      <xloc>352</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1533,8 +1215,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>672</yloc>
+      <xloc>352</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1583,8 +1265,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>672</yloc>
+      <xloc>528</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1613,32 +1295,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Last Step</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>928</yloc>
+      <xloc>528</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1667,8 +1325,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>752</yloc>
+      <xloc>352</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1713,8 +1371,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>912</yloc>
+      <xloc>352</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1777,8 +1435,8 @@ LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>832</yloc>
+      <xloc>528</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
