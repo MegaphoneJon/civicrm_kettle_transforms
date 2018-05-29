@@ -741,7 +741,9 @@ cog.name
 , cog.is_locked
 FROM civicrm_option_group cog
 JOIN civicrm_custom_field ccf ON cog.id = ccf.option_group_id
-</sql>
+-- this fixes a bug when exporting fields with no custom groups
+UNION
+SELECT 'bogus group', 'do not import this', 0, 0, 0, 0, 0</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -793,6 +795,9 @@ cov.label
 FROM civicrm_option_value cov
 JOIN civicrm_option_group cog ON cov.option_group_id = cog.id
 JOIN civicrm_custom_field ccf ON ccf.option_group_id = cov.option_group_id
+-- this fixes a bug when exporting fields with no option groups/values
+UNION
+SELECT 'do not import this', 0,0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0
 </sql>
     <limit>0</limit>
     <lookup />

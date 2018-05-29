@@ -434,16 +434,32 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>FIXME: This doesn't work when you don't have any custom fields that do NOT use an option value.</note>
+      <xloc>432</xloc>
+      <yloc>16</yloc>
+      <width>605</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
       <from>api_custom_field</from>
       <to>Wait for CustomGroup to finish</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>api_option_value</from>
-      <to>Wait for OptionGroup to finish</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -454,16 +470,6 @@
     <hop>
       <from>api_custom_group</from>
       <to>Create CustomGroup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>api_option_group</from>
-      <to>Create OptionGroup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Create OptionGroup</from>
-      <to>Get OptionGroup ID from JSON</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -479,6 +485,36 @@
     <hop>
       <from>Get OptionGroup ID from JSON</from>
       <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_option_group</from>
+      <to>Filter the bogus export group</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter the bogus export group</from>
+      <to>Create OptionGroup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_option_value</from>
+      <to>Filter the bogus export value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter the bogus export value</from>
+      <to>Wait for OptionGroup to finish</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create OptionGroup</from>
+      <to>Detect empty stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Detect empty stream</from>
+      <to>Get OptionGroup ID from JSON</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -865,7 +901,7 @@
       <fieldName>min_multiple</fieldName>
       <name>min_multiple</name>
       <title>Minimum Multiple Records</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -873,7 +909,7 @@
       <fieldName>collapse_adv_display</fieldName>
       <name>collapse_adv_display</name>
       <title>Collapse Group Display</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -881,7 +917,7 @@
       <fieldName>collapse_display</fieldName>
       <name>collapse_display</name>
       <title>Collapse Custom Group?</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -889,7 +925,7 @@
       <fieldName>is_active</fieldName>
       <name>is_active</name>
       <title>Custom Group Is Active?</title>
-      <type>16</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -905,7 +941,7 @@
       <fieldName>weight</fieldName>
       <name>weight</name>
       <title>Order</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -921,7 +957,7 @@
       <fieldName>help_post</fieldName>
       <name>help_post</name>
       <title>Custom Group Post Text</title>
-      <type>32</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -937,7 +973,7 @@
       <fieldName>is_multiple</fieldName>
       <name>is_multiple</name>
       <title>Supports Multiple Records</title>
-      <type>16</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -945,7 +981,7 @@
       <fieldName>is_reserved</fieldName>
       <name>is_reserved</name>
       <title>Reserved Group?</title>
-      <type>16</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -953,7 +989,7 @@
       <fieldName>created_id</fieldName>
       <name>created_id</name>
       <title>Custom Group Created By</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -969,7 +1005,7 @@
       <fieldName>help_pre</fieldName>
       <name>help_pre</name>
       <title>Custom Group Pre Text</title>
-      <type>32</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -985,7 +1021,7 @@
       <fieldName>is_public</fieldName>
       <name>is_public</name>
       <title>Custom Group Is Public?</title>
-      <type>16</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -993,7 +1029,7 @@
       <fieldName>extends_entity_column_id</fieldName>
       <name>extends_entity_column_id</name>
       <title>Custom Group Subtype List</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1009,7 +1045,7 @@
       <fieldName>id</fieldName>
       <name>id</name>
       <title>Custom Group ID</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1017,7 +1053,7 @@
       <fieldName>created_date</fieldName>
       <name>created_date</name>
       <title>Custom Group Created Date</title>
-      <type>12</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1025,7 +1061,7 @@
       <fieldName>max_multiple</fieldName>
       <name>max_multiple</name>
       <title>Maximum Multiple Records</title>
-      <type>1</type>
+      <type>2</type>
       <source>getfields</source>
     </field>
     <key-index>title</key-index>
@@ -1501,7 +1537,7 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>256</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1670,7 +1706,7 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>176</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2388,6 +2424,116 @@
     <GUI>
       <xloc>1040</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter the bogus export group</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>description</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>do not import this</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter the bogus export value</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>label</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>do not import this</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Detect empty stream</name>
+    <type>DetectEmptyStream</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
