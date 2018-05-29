@@ -304,8 +304,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>192</xloc>
-      <yloc>160</yloc>
+      <xloc>48</xloc>
+      <yloc>32</yloc>
     </entry>
     <entry>
       <name>Set variables - Jon Linux laptop</name>
@@ -316,23 +316,28 @@
       <file_variable_type>JVM</file_variable_type>
       <fields>
         <field>
+          <variable_name>CLIENT</variable_name>
+          <variable_value>example</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+        <field>
           <variable_name>LOCALFILES</variable_name>
-          <variable_value>/home/jon/ownCloud/work/Clients/EXAMPLE/civicrm</variable_value>
+          <variable_value>/home/jon/ownCloud/work/Clients/${CLIENT}/civicrm</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>DEVSERVER</variable_name>
-          <variable_value>example.local</variable_value>
+          <variable_value>localhost</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>DEVCMSROOT</variable_name>
-          <variable_value>/home/jon/local/example</variable_value>
+          <variable_value>/home/jon/local/${CLIENT}/htdocs</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>SQLDUMP</variable_name>
-          <variable_value>${DEVCMSROOT}/sites/sqldumps</variable_value>
+          <variable_value>${DEVCMSROOT}/../sql-dumps</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -347,17 +352,17 @@
         </field>
         <field>
           <variable_name>CMSDB</variable_name>
-          <variable_value>example_drupal</variable_value>
+          <variable_value>${CLIENT}_dev_drupal</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>CIVIDB</variable_name>
-          <variable_value>example_civi</variable_value>
+          <variable_value>${CLIENT}_dev_civi</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>MYSQLUSER</variable_name>
-          <variable_value>example</variable_value>
+          <variable_value>${CLIENT}_dev</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -382,12 +387,12 @@
         </field>
         <field>
           <variable_name>SCHEMANAME</variable_name>
-          <variable_value>example</variable_value>
+          <variable_value>${CLIENT}</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>SITEURL</variable_name>
-          <variable_value>example.local</variable_value>
+          <variable_value>${CLIENT}.local</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -427,12 +432,12 @@
         </field>
         <field>
           <variable_name>TESTCMSROOT</variable_name>
-          <variable_value>/var/www/example.megaphonetech.com/htdocs</variable_value>
+          <variable_value>/var/www/${CLIENT}.megaphonetech.com/htdocs</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
           <variable_name>TESTSQLDUMP</variable_name>
-          <variable_value>/var/www/example.megaphonetech.com/sqldumps</variable_value>
+          <variable_value>/var/www/${CLIENT}.megaphonetech.com/sql-dumps</variable_value>
           <variable_type>JVM</variable_type>
         </field>
         <field>
@@ -445,12 +450,17 @@
           <variable_value>g0xlqyVN1GvxzjQe9WFOVfz0uB6xglHb</variable_value>
           <variable_type>JVM</variable_type>
         </field>
+        <field>
+          <variable_name>TESTCIVIDB</variable_name>
+          <variable_value>${CLIENT}_test_civi</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>256</xloc>
-      <yloc>192</yloc>
+      <xloc>112</xloc>
+      <yloc>64</yloc>
     </entry>
   </entries>
   <hops>
