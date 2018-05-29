@@ -458,6 +458,27 @@ because it allows caching.</note>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>&lt;-- Questionable</note>
+      <xloc>285</xloc>
+      <yloc>183</yloc>
+      <width>110</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -523,16 +544,6 @@ because it allows caching.</note>
     </attributes>
   </connection>
   <order>
-    <hop>
-      <from>Remap blank country to united States</from>
-      <to>Remap countries</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remap countries</from>
-      <to>remap states</to>
-      <enabled>Y</enabled>
-    </hop>
     <hop>
       <from>Filter invalid countries</from>
       <to>Add error</to>
@@ -639,16 +650,6 @@ because it allows caching.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Unique rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique rows</from>
-      <to>invalid location types</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add error 2</from>
       <to>location type only</to>
       <enabled>Y</enabled>
@@ -686,11 +687,6 @@ because it allows caching.</note>
     <hop>
       <from>trim fields</from>
       <to>Title Case Country</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Title Case Country</from>
-      <to>Remap blank country to united States</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -756,6 +752,26 @@ because it allows caching.</note>
     <hop>
       <from>default to skipping geocodes</from>
       <to>Combine state_province_ids</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Get counts</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get counts</from>
+      <to>invalid location types</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Title Case Country</from>
+      <to>Remap countries</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap countries</from>
+      <to>remap states</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1274,9 +1290,21 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>country_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>country_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>country</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
       </condition>
     </compare>
     <cluster_schema />
@@ -1511,6 +1539,51 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     </GUI>
   </step>
   <step>
+    <name>Get counts</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>location_type</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>count</aggregate>
+        <subject>location_type</subject>
+        <type>COUNT_ALL</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Mapping Input</name>
     <type>MappingInput</type>
     <description />
@@ -1595,8 +1668,8 @@ if (country_id == 1228 &amp;&amp; postal_code) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>208</yloc>
+      <xloc>224</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1927,6 +2000,26 @@ if (country_id == 1228 &amp;&amp; postal_code) {
         <source_value>Puerto Rico</source_value>
         <target_value>United States</target_value>
       </field>
+      <field>
+        <source_value>Other</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Syria</source_value>
+        <target_value>Syrian Arab Republic</target_value>
+      </field>
+      <field>
+        <source_value>Macedonia</source_value>
+        <target_value>Macedonia, Republic Of</target_value>
+      </field>
+      <field>
+        <source_value>Morroco</source_value>
+        <target_value>Morocco</target_value>
+      </field>
+      <field>
+        <source_value>No Address</source_value>
+        <target_value />
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1937,7 +2030,7 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>272</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2262,35 +2355,6 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>      </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Uppercase the state</name>
     <type>StringOperations</type>
     <description />
@@ -2424,6 +2488,44 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     </GUI>
   </step>
   <step>
+    <name>default to skipping geocodes</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>skip_geocode</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1312</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>invalid addresses</name>
     <type>MappingOutput</type>
     <description />
@@ -2466,7 +2568,7 @@ if (country_id == 1228 &amp;&amp; postal_code) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>1184</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3200,44 +3302,6 @@ if (country_id == 1228 &amp;&amp; postal_code) {
     <GUI>
       <xloc>576</xloc>
       <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>default to skipping geocodes</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>skip_geocode</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
