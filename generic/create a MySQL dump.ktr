@@ -471,6 +471,8 @@
     </partitioning>
     <dynamicCommandField>N</dynamicCommandField>
     <command>mysqldump -u${user} -p${password} ${databasename} > ${dumpname}
+# Remove definer usernames
+perl -pi -e 's#\/\*\!5001.*localhost`[^\*]*\*\/##g' ${dumpname}
 rm ${dumpname}.gz
 gzip ${dumpname}
 </command>
