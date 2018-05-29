@@ -442,7 +442,7 @@
       <xloc>208</xloc>
       <yloc>176</yloc>
       <width>325</width>
-      <heigth>52</heigth>
+      <heigth>55</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -463,28 +463,7 @@
       <xloc>176</xloc>
       <yloc>96</yloc>
       <width>400</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- FIXME Use RECORDS.ID, not RECORDS.CONSTITUENT_ID</note>
-      <xloc>160</xloc>
-      <yloc>352</yloc>
-      <width>372</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -665,27 +644,17 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Which codes to convert</from>
-      <to>Non-blank codes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: Constituent Codes</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Step 1 contacts only</from>
-      <to>Which codes to convert</to>
+      <to>Non-blank codes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Non-blank codes</from>
-      <to>Check the dedupe list</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check the dedupe list</from>
       <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
@@ -785,11 +754,8 @@
 , DATE_FROM
 , DATE_TO
 , LONGDESCRIPTION
-, r.CONSTITUENT_ID
 FROM CONSTITUENT_CODES cc
 LEFT JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
-JOIN RECORDS r on r.ID = cc.CONSTIT_ID
-
 </sql>
     <limit>0</limit>
     <lookup />
@@ -1043,8 +1009,8 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>176</yloc>
+      <xloc>240</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1205,7 +1171,7 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTITUENT_ID</name>
+        <name>CONSTIT_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -1343,62 +1309,6 @@ JOIN RECORDS r on r.ID = cc.CONSTIT_ID
     <GUI>
       <xloc>496</xloc>
       <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

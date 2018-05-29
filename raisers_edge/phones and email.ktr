@@ -6,8 +6,59 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Phone</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>cli_phone.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2entity</name>
+        <default_value>Email</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2name</name>
+        <default_value>cli_email.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output3entity</name>
+        <default_value>Website</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output3name</name>
+        <default_value>cli_website.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output4entity</name>
+        <default_value>Contact</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output4name</name>
+        <default_value>cli_do_not_phone.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output5entity</name>
+        <default_value>Contact</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output5name</name>
+        <default_value>cli_do_not_email.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -435,16 +486,16 @@
   </info>
   <notepads>
     <notepad>
-      <note>We're removing dupes here
+      <note>&lt;-- We're removing dupes here
 kind of agressively.  Might also want to compare
 on do_not_call and location_type
 
 Note we dedupe aggressively again at the bottom
 for phone on phone_numeric</note>
-      <xloc>688</xloc>
-      <yloc>160</yloc>
-      <width>296</width>
-      <heigth>100</heigth>
+      <xloc>1088</xloc>
+      <yloc>208</yloc>
+      <width>298</width>
+      <heigth>106</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -463,9 +514,9 @@ for phone on phone_numeric</note>
     <notepad>
       <note>&lt;-- This is because we don't always bring over every RE contact.</note>
       <xloc>576</xloc>
-      <yloc>80</yloc>
+      <yloc>176</yloc>
       <width>400</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -486,7 +537,28 @@ for phone on phone_numeric</note>
       <xloc>576</xloc>
       <yloc>480</yloc>
       <width>320</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- optional. "Do not email" is also brought over "on_hold"</note>
+      <xloc>838</xloc>
+      <yloc>991</yloc>
+      <width>362</width>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -657,16 +729,6 @@ for phone on phone_numeric</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Drop "Sequence"</from>
-      <to>Unique rows (HashSet)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique rows (HashSet)</from>
-      <to>Remap Do Not Call -1 to 1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>filter all "do not call"</from>
       <to>Remove non-import fields 4</to>
       <enabled>Y</enabled>
@@ -679,7 +741,7 @@ for phone on phone_numeric</note>
     <hop>
       <from>Remove non-import fields 2</from>
       <to>filter all "do not email"</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>filter all "do not email"</from>
@@ -719,11 +781,6 @@ for phone on phone_numeric</note>
     <hop>
       <from>Remap location types 2</from>
       <to>email_wrapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove non-import fields 2</from>
-      <to>Check for existing emails</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -772,16 +829,6 @@ for phone on phone_numeric</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: PHONES</from>
-      <to>Step 1 contacts only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts only</from>
-      <to>Drop "Sequence"</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap phone types</from>
       <to>create phone_numeric</to>
       <enabled>Y</enabled>
@@ -817,13 +864,188 @@ for phone on phone_numeric</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove blank phone numbers</from>
-      <to>Check the dedupe list</to>
+      <from>Drop "Sequence"</from>
+      <to>Remap Do Not Call -1 to 1</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Check the dedupe list</from>
+      <from>Remove blank phone numbers</from>
       <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 2</from>
+      <to>Single file SFTP 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 3</from>
+      <to>Single file SFTP 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 2</from>
+      <to>SFTP when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 3</from>
+      <to>SFTP when complete 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 2</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 3</from>
+      <to>Import when complete 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 3</from>
+      <to>import entity 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 2</from>
+      <to>Get CSV folder 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 3</from>
+      <to>Get CSV folder 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_phone</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_email</from>
+      <to>Last Step 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_website</from>
+      <to>Last Step 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 4</from>
+      <to>Single file SFTP 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 5</from>
+      <to>Single file SFTP 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 4</from>
+      <to>SFTP when complete 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 5</from>
+      <to>SFTP when complete 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 4</from>
+      <to>Import when complete 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 5</from>
+      <to>Import when complete 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 4</from>
+      <to>import entity 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 5</from>
+      <to>import entity 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 4</from>
+      <to>Get CSV folder 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 5</from>
+      <to>Get CSV folder 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_do_not_phone</from>
+      <to>Last Step 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_do_not_email</from>
+      <to>Last Step 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: PHONES</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Step 1 contacts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Drop "Sequence"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove non-import fields 2</from>
+      <to>do_not_email to on_hold</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>do_not_email to on_hold</from>
+      <to>Check for existing emails</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -882,7 +1104,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1008</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1075,7 +1297,937 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>144</yloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1043</xloc>
+      <yloc>938</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1324</xloc>
+      <yloc>943</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 3</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1624</xloc>
+      <yloc>945</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 4</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>1280</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 5</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1280</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1043</xloc>
+      <yloc>778</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 2</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output2name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1324</xloc>
+      <yloc>783</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 3</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output3name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1624</xloc>
+      <yloc>785</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 4</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output2name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 5</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output3name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1139</xloc>
+      <yloc>810</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output2entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output2name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1420</xloc>
+      <yloc>815</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 3</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output3entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output3name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1720</xloc>
+      <yloc>817</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 4</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output4entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output4name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>1152</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 5</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output5entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output5name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>1152</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1139</xloc>
+      <yloc>890</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1420</xloc>
+      <yloc>895</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 3</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1720</xloc>
+      <yloc>897</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 4</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 5</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>1232</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>1344</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>1280</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 3</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>816</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 4</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>1072</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 5</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1109,7 +2261,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1088</yloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1194,18 +2346,23 @@ for phone on phone_numeric</note>
     </partitioning>
     <connection>Raiser's Edge</connection>
     <sql>SELECT DISTINCT
-CONSTIT_ID
+ca.CONSTIT_ID
 , NUM
 , DO_NOT_CALL
 , LONGDESCRIPTION AS location_type
 , cap."SEQUENCE"
-, r.CONSTITUENT_ID
+, PHONES.PHONESID
+, PHONES.*
 FROM CONSTIT_ADDRESS_PHONES cap
 LEFT JOIN PHONES ON cap.PHONESID = PHONES.PHONESID
 LEFT JOIN CONSTIT_ADDRESS ca ON CONSTITADDRESSID = ca.ID
 LEFT JOIN TABLEENTRIES ON PHONETYPEID = TABLEENTRIESID
 LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
---Ordering by sequence ensures the first phone numbers (etc) are primary</sql>
+WHERE PHONES.INACTIVE = 0
+--Phones/email can be joined to multiple addresses, need to eliminate dupes
+--Sequence so we get primary number correct
+ORDER BY PHONES.PHONESID, cap."SEQUENCE"
+</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1253,7 +2410,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>272</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1331,6 +2488,18 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       <field>
         <source_value>Home E-mail 1</source_value>
         <target_value>Home</target_value>
+      </field>
+      <field>
+        <source_value>Email 1</source_value>
+        <target_value>Main</target_value>
+      </field>
+      <field>
+        <source_value>Email 2</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Email 3</source_value>
+        <target_value>Other</target_value>
       </field>
     </fields>
     <cluster_schema />
@@ -1656,7 +2825,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>336</yloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1784,7 +2953,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <error_description />
     <fields>
       <field>
-        <name>CONSTITUENT_ID</name>
+        <name>CONSTIT_ID</name>
         <case_insensitive>N</case_insensitive>
       </field>
       <field>
@@ -1845,6 +3014,156 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <GUI>
       <xloc>672</xloc>
       <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1043</xloc>
+      <yloc>858</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1324</xloc>
+      <yloc>863</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 3</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1624</xloc>
+      <yloc>865</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 4</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>1200</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 5</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1913,7 +3232,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
         <value>
           <name>constant</name>
           <type>String</type>
-          <text>Website|Website2|Twitter|Web address</text>
+          <text>Website|Website2|Twitter|Web address|www</text>
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
@@ -1931,6 +3250,236 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <GUI>
       <xloc>528</xloc>
       <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1043</xloc>
+      <yloc>1018</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 2</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1324</xloc>
+      <yloc>1023</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 3</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1624</xloc>
+      <yloc>1025</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 4</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>1360</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 5</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>1360</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1986,7 +3535,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>80</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2020,7 +3569,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>1024</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2050,11 +3599,11 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_do_not_email</name>
+      <name>${LOCALFILES}/data/${output5name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2131,11 +3680,11 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_do_not_phone</name>
+      <name>${LOCALFILES}/data/${output4name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2212,11 +3761,11 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_email</name>
+      <name>${LOCALFILES}/data/${output2name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2243,7 +3792,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
         <precision>-1</precision>
       </field>
       <field>
-        <name>do_not_email</name>
+        <name>on_hold</name>
         <type>Integer</type>
         <format>0</format>
         <currency />
@@ -2288,7 +3837,7 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1168</yloc>
+      <yloc>1216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2317,11 +3866,11 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_phone</name>
+      <name>${LOCALFILES}/data/${output1name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2422,11 +3971,11 @@ LEFT JOIN RECORDS r ON r.ID = ca.CONSTIT_ID
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_website</name>
+      <name>${LOCALFILES}/data/${output3name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2675,7 +4224,7 @@ var phone_numeric = phone.replace(/\D/g, '');
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTITUENT_ID</name>
+        <name>CONSTIT_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -2856,6 +4405,326 @@ var phone_numeric = phone.replace(/\D/g, '');
     <GUI>
       <xloc>784</xloc>
       <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1139</xloc>
+      <yloc>970</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 2</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1420</xloc>
+      <yloc>975</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 3</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1720</xloc>
+      <yloc>977</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 4</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>1312</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 5</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3375,7 +5244,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>CONSTITUENT_ID</name>
+        <name>CONSTIT_ID</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -3405,8 +5274,8 @@ var phone_numeric = phone.replace(/\D/g, '');
     </GUI>
   </step>
   <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
+    <name>Unique rows</name>
+    <type>Unique</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -3415,38 +5284,16 @@ var phone_numeric = phone.replace(/\D/g, '');
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>PHONESID</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3456,7 +5303,50 @@ var phone_numeric = phone.replace(/\D/g, '');
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>400</yloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>do_not_email to on_hold</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>email</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_email</name>
+        <rename>on_hold</rename>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>location_type_id</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

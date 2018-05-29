@@ -6,8 +6,19 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Activity</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>cli_activity.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -438,52 +449,10 @@
       <note>Run after campaigns, activity status and activity types are imported.</note>
       <xloc>224</xloc>
       <yloc>16</yloc>
-      <width>407</width>
-      <heigth>25</heigth>
+      <width>408</width>
+      <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific: Using CONSTITUENT_ID instead of CONSTIT_ID for external_identifier</note>
-      <xloc>208</xloc>
-      <yloc>288</yloc>
-      <width>525</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- same-ish. Should be external_identifier = action_contact_id</note>
-      <xloc>208</xloc>
-      <yloc>400</yloc>
-      <width>391</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -502,28 +471,7 @@
       <xloc>224</xloc>
       <yloc>96</yloc>
       <width>331</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- DELETE ME</note>
-      <xloc>240</xloc>
-      <yloc>472</yloc>
-      <width>101</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -799,26 +747,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Step 1 contacts only</from>
-      <to>Check the dedupe list</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check the dedupe list</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>Check the dedupe list 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check the dedupe list 2</from>
-      <to>external ID to contact_id in Civi 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: Actions</from>
       <to>Group by</to>
       <enabled>Y</enabled>
@@ -834,16 +762,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>external ID to contact_id in Civi 2</from>
-      <to>org-specific last-minute fixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>org-specific last-minute fixes</from>
-      <to>Remap Priority ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi (solicitor)</from>
       <to>Handle null values for action and solicitor constituent IDs</to>
       <enabled>Y</enabled>
@@ -851,6 +769,51 @@
     <hop>
       <from>Handle null values for action and solicitor constituent IDs</from>
       <to>campaign to campaign_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi 2</from>
+      <to>Remap Priority ID</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>external ID to contact_id in Civi 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cli_activity</from>
+      <to>Last Step</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -968,118 +931,6 @@ if(letter) {
     <GUI>
       <xloc>160</xloc>
       <yloc>1440</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list 2</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>action_CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1246,6 +1097,88 @@ if(letter) {
     </GUI>
   </step>
   <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>999</xloc>
+      <yloc>1281</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>999</xloc>
+      <yloc>1121</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get option_group_id of activity_status</name>
     <type>TableInput</type>
     <description />
@@ -1304,6 +1237,366 @@ if(letter) {
     <GUI>
       <xloc>384</xloc>
       <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1095</xloc>
+      <yloc>1153</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>ACTION_ID</name>
+      </field>
+      <field>
+        <name>ActualNotes</name>
+      </field>
+      <field>
+        <name>Description</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>ACTION_ID</aggregate>
+        <subject>ACTION_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>ADDED_BY</aggregate>
+        <subject>ADDED_BY</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>AUTO_REMIND</aggregate>
+        <subject>AUTO_REMIND</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>external_identifier</aggregate>
+        <subject>external_identifier</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>action_contact_id</aggregate>
+        <subject>action_contact_id</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>activity_date_time</aggregate>
+        <subject>activity_date_time</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>letter</aggregate>
+        <subject>letter</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>priority_id</aggregate>
+        <subject>priority_id</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>REMIND_VALUE</aggregate>
+        <subject>REMIND_VALUE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>CATEGORY</aggregate>
+        <subject>CATEGORY</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Completed</aggregate>
+        <subject>Completed</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>COMPLETED_DATE</aggregate>
+        <subject>COMPLETED_DATE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>phone_number</aggregate>
+        <subject>phone_number</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Remind_Frequency</aggregate>
+        <subject>Remind_Frequency</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>WORDDOCNAME</aggregate>
+        <subject>WORDDOCNAME</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>APPEAL_ID</aggregate>
+        <subject>APPEAL_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>APPEAL_LETTER_CODE</aggregate>
+        <subject>APPEAL_LETTER_CODE</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>OUTLOOK_EMAIL_SUBJECT</aggregate>
+        <subject>OUTLOOK_EMAIL_SUBJECT</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>status</aggregate>
+        <subject>status</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>type</aggregate>
+        <subject>type</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>location</aggregate>
+        <subject>location</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>ActualNotes</aggregate>
+        <subject>ActualNotes</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Description</aggregate>
+        <subject>Description</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>campaign</aggregate>
+        <subject>campaign</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>CONSTITUENT_ID</aggregate>
+        <subject>CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>action_CONSTITUENT_ID</aggregate>
+        <subject>action_CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>solicitor_CONSTITUENT_ID</aggregate>
+        <subject>solicitor_CONSTITUENT_ID</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Handle null values for action and solicitor constituent IDs</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>
+var action_contact_display_name;
+var source_contact_id;
+var source_contact_display_name;
+
+// If action_CONSTITUENT_ID is null, then the action_contact_display_name is bogus and needs to go.
+if (!action_CONSTITUENT_ID) {
+  action_contact_display_name = null;
+}
+
+// If there's no solicitor ID, set the target ID to the source ID - source ID is mandatory.
+if(!solicitor_CONSTITUENT_ID) {
+  source_contact_id = target_contact_id;
+  source_contact_display_name = display_name;
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>action_contact_display_name</name>
+        <rename>action_contact_display_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>source_contact_id</name>
+        <rename>source_contact_id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>source_contact_display_name</name>
+        <rename>source_contact_display_name</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1095</xloc>
+      <yloc>1233</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1376,6 +1669,30 @@ if(letter) {
     <GUI>
       <xloc>160</xloc>
       <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>1776</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1599,6 +1916,82 @@ if(Completed == -1) {
     <GUI>
       <xloc>160</xloc>
       <yloc>1248</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>999</xloc>
+      <yloc>1201</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>999</xloc>
+      <yloc>1361</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1875,11 +2268,11 @@ if(Completed == -1) {
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_activity</name>
+      <name>${LOCALFILES}/data/${output1name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -2059,7 +2452,7 @@ if(Completed == -1) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1760</yloc>
+      <yloc>1696</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2124,7 +2517,7 @@ if(Completed == -1) {
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTITUENT_ID</name>
+        <name>external_identifier</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -2156,6 +2549,59 @@ if(Completed == -1) {
     </GUI>
   </step>
   <step>
+    <name>external ID to contact_id in Civi (solicitor)</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>solicitor_CONSTITUENT_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>source_contact_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+      <value>
+        <name>display_name</name>
+        <rename>source_contact_display_name</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>external ID to contact_id in Civi 2</name>
     <type>DBLookup</type>
     <description />
@@ -2177,7 +2623,7 @@ if(Completed == -1) {
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>action_CONSTITUENT_ID</name>
+        <name>action_contact_id</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -2293,6 +2739,70 @@ if(Completed == -1) {
     <GUI>
       <xloc>160</xloc>
       <yloc>1184</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1095</xloc>
+      <yloc>1313</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3154,380 +3664,6 @@ if(Completed == -1) {
     <GUI>
       <xloc>160</xloc>
       <yloc>992</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname />
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>ACTION_ID</name>
-      </field>
-      <field>
-        <name>ActualNotes</name>
-      </field>
-      <field>
-        <name>Description</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>ACTION_ID</aggregate>
-        <subject>ACTION_ID</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>ADDED_BY</aggregate>
-        <subject>ADDED_BY</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>AUTO_REMIND</aggregate>
-        <subject>AUTO_REMIND</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>external_identifier</aggregate>
-        <subject>external_identifier</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>action_contact_id</aggregate>
-        <subject>action_contact_id</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>activity_date_time</aggregate>
-        <subject>activity_date_time</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>letter</aggregate>
-        <subject>letter</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>priority_id</aggregate>
-        <subject>priority_id</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>REMIND_VALUE</aggregate>
-        <subject>REMIND_VALUE</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>CATEGORY</aggregate>
-        <subject>CATEGORY</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>Completed</aggregate>
-        <subject>Completed</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>COMPLETED_DATE</aggregate>
-        <subject>COMPLETED_DATE</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>phone_number</aggregate>
-        <subject>phone_number</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>Remind_Frequency</aggregate>
-        <subject>Remind_Frequency</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>WORDDOCNAME</aggregate>
-        <subject>WORDDOCNAME</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>APPEAL_ID</aggregate>
-        <subject>APPEAL_ID</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>APPEAL_LETTER_CODE</aggregate>
-        <subject>APPEAL_LETTER_CODE</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>OUTLOOK_EMAIL_SUBJECT</aggregate>
-        <subject>OUTLOOK_EMAIL_SUBJECT</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>status</aggregate>
-        <subject>status</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>type</aggregate>
-        <subject>type</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>location</aggregate>
-        <subject>location</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>ActualNotes</aggregate>
-        <subject>ActualNotes</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>Description</aggregate>
-        <subject>Description</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>campaign</aggregate>
-        <subject>campaign</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>CONSTITUENT_ID</aggregate>
-        <subject>CONSTITUENT_ID</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>action_CONSTITUENT_ID</aggregate>
-        <subject>action_CONSTITUENT_ID</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>solicitor_CONSTITUENT_ID</aggregate>
-        <subject>solicitor_CONSTITUENT_ID</subject>
-        <type>FIRST_INCL_NULL</type>
-        <valuefield />
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>external ID to contact_id in Civi (solicitor)</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>solicitor_CONSTITUENT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>source_contact_id</rename>
-        <default />
-        <type>String</type>
-      </value>
-      <value>
-        <name>display_name</name>
-        <rename>source_contact_display_name</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>org-specific last-minute fixes</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>solicitor_CONSTITUENT_ID</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>988891350D</source_value>
-        <target_value>VIP-103320</target_value>
-      </field>
-      <field>
-        <source_value>22003</source_value>
-        <target_value>5314197D</target_value>
-      </field>
-      <field>
-        <source_value>25204</source_value>
-        <target_value>5189771D</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Handle null values for action and solicitor constituent IDs</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>
-var action_contact_display_name;
-var source_contact_id;
-var source_contact_display_name;
-
-// If action_CONSTITUENT_ID is null, then the action_contact_display_name is bogus and needs to go.
-if (!action_CONSTITUENT_ID) {
-  action_contact_display_name = null;
-}
-
-// If there's no solicitor ID, set the target ID to the source ID - source ID is mandatory.
-if(!solicitor_CONSTITUENT_ID) {
-  source_contact_id = target_contact_id;
-  source_contact_display_name = display_name;
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>action_contact_display_name</name>
-        <rename>action_contact_display_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>source_contact_id</name>
-        <rename>source_contact_id</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>source_contact_display_name</name>
-        <rename>source_contact_display_name</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -462,7 +462,7 @@ Use with caution!</note>
       <xloc>192</xloc>
       <yloc>80</yloc>
       <width>400</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -483,7 +483,7 @@ Use with caution!</note>
       <xloc>713</xloc>
       <yloc>201</yloc>
       <width>466</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -631,7 +631,7 @@ Use with caution!</note>
     <hop>
       <from>invalid_campaigns</from>
       <to>Create Campaigns</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Create Campaigns</from>

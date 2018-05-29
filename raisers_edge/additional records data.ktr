@@ -568,32 +568,11 @@ Anonymous</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&lt;-- Use ID, CONSTITUENT_ID is org-specific</note>
-      <xloc>208</xloc>
-      <yloc>224</yloc>
-      <width>270</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>See Megaphone #57 on notes for questions for the client re: this transform.</note>
       <xloc>1680</xloc>
       <yloc>848</yloc>
       <width>468</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -615,7 +594,7 @@ Anonymous</note>
       <xloc>16</xloc>
       <yloc>688</yloc>
       <width>140</width>
-      <heigth>38</heigth>
+      <heigth>40</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -636,7 +615,7 @@ Anonymous</note>
       <xloc>160</xloc>
       <yloc>80</yloc>
       <width>400</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -657,7 +636,7 @@ Anonymous</note>
       <xloc>944</xloc>
       <yloc>880</yloc>
       <width>104</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -1059,11 +1038,6 @@ Anonymous</note>
     </hop>
     <hop>
       <from>Step 1 contacts only</from>
-      <to>Check the dedupe list</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check the dedupe list</from>
       <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
@@ -1275,62 +1249,6 @@ Anonymous</note>
     <GUI>
       <xloc>912</xloc>
       <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4496,7 +4414,7 @@ if (PRIMARY_ADDRESSEE !== null){
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTITUENT_ID</name>
+        <name>ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />

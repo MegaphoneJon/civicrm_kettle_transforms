@@ -462,7 +462,7 @@ Use with caution!</note>
       <xloc>192</xloc>
       <yloc>96</yloc>
       <width>400</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -486,7 +486,7 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
       <xloc>576</xloc>
       <yloc>464</yloc>
       <width>503</width>
-      <heigth>66</heigth>
+      <heigth>70</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -508,7 +508,7 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <xloc>624</xloc>
       <yloc>16</yloc>
       <width>474</width>
-      <heigth>38</heigth>
+      <heigth>40</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>

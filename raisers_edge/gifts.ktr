@@ -443,8 +443,8 @@
 * Fill in the option_value_group ID next to the "see below" note above</note>
       <xloc>992</xloc>
       <yloc>1504</yloc>
-      <width>411</width>
-      <heigth>100</heigth>
+      <width>413</width>
+      <heigth>106</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -487,28 +487,7 @@ because we need to use it later to do soft credit lookups.</note>
       <xloc>192</xloc>
       <yloc>560</yloc>
       <width>400</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- FIXME Use CONSTIT_ID, not RECORDS.CONSTITUENT_ID</note>
-      <xloc>192</xloc>
-      <yloc>784</yloc>
-      <width>368</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -529,7 +508,7 @@ because we need to use it later to do soft credit lookups.</note>
       <xloc>160</xloc>
       <yloc>2496</yloc>
       <width>220</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -553,7 +532,7 @@ or "Packages" or "Constituent Appeals" transform</note>
       <xloc>240</xloc>
       <yloc>1248</yloc>
       <width>309</width>
-      <heigth>66</heigth>
+      <heigth>70</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -574,49 +553,7 @@ or "Packages" or "Constituent Appeals" transform</note>
       <xloc>160</xloc>
       <yloc>1360</yloc>
       <width>104</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific fund stuff</note>
-      <xloc>688</xloc>
-      <yloc>688</yloc>
-      <width>167</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;--Org-specific fund stuff ends here</note>
-      <xloc>160</xloc>
-      <yloc>1072</yloc>
-      <width>227</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -637,28 +574,7 @@ or "Packages" or "Constituent Appeals" transform</note>
       <xloc>160</xloc>
       <yloc>2416</yloc>
       <width>362</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific - We're taking a very expansive view of "duplicate" here.</note>
-      <xloc>160</xloc>
-      <yloc>3008</yloc>
-      <width>449</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -680,28 +596,7 @@ the financial type, use these steps.</note>
       <xloc>1008</xloc>
       <yloc>992</yloc>
       <width>401</width>
-      <heigth>38</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific, currently Civi can't really search notes on contributions</note>
-      <xloc>160</xloc>
-      <yloc>3104</yloc>
-      <width>446</width>
-      <heigth>24</heigth>
+      <heigth>40</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -724,7 +619,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <xloc>496</xloc>
       <yloc>1408</yloc>
       <width>549</width>
-      <heigth>52</heigth>
+      <heigth>55</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -742,31 +637,10 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </notepad>
     <notepad>
       <note>NOTE: We're not currently removing existing gifts here, you probably want to.</note>
-      <xloc>160</xloc>
-      <yloc>3200</yloc>
+      <xloc>192</xloc>
+      <yloc>2992</yloc>
       <width>481</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific; delete</note>
-      <xloc>176</xloc>
-      <yloc>2608</yloc>
-      <width>149</width>
-      <heigth>24</heigth>
+      <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -1047,41 +921,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fund list</from>
-      <to>Get abbreviation from fund</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get abbreviation from fund</from>
-      <to>Sort by fund abbreviation</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>Sort by fund ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Blank FUND_ID if custom_196</from>
-      <to>lookup campaigns in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by fund ID</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by fund abbreviation</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Stream lookup</from>
-      <to>Blank FUND_ID if custom_196</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Convert date format to the format Civi expects 2</from>
       <to>Sort by GifId</to>
       <enabled>Y</enabled>
@@ -1207,11 +1046,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Check for existing gifts</from>
-      <to>Import note as custom_209</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter unrecognized appeals</from>
       <to>lookup package in Civi</to>
       <enabled>Y</enabled>
@@ -1252,38 +1086,28 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add an end_receive_date</from>
-      <to>Check for existing gifts</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Import note as custom_209</from>
-      <to>import fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>import fields only</from>
       <to>cli_gift</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fix punctuation in fields</from>
-      <to>Check the dedupe list</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check the dedupe list</from>
       <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Rename fields for import</from>
-      <to>Null if bad batch_id</to>
+      <from>Add an end_receive_date</from>
+      <to>import fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Null if bad batch_id</from>
+      <from>Rename fields for import</from>
       <to>Data Validator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>lookup campaigns in Civi</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1409,68 +1233,6 @@ var end_receive_date = receive_date + " 23:59:59.999";</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Blank FUND_ID if custom_196</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//custom_196 is the option value for this fund.
-//FUND_ID will get imported as custom_197 - but only if custom_196 is blank.
-var custom_196;
-var FUND_ID;
-
-if (!custom_196) {
-  custom_196 = 65; //65 = "Legacy Fund"
-} else {
-  FUND_ID = null;
-}
-
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>custom_196</name>
-        <rename>custom_196</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>FUND_ID</name>
-        <rename>FUND_ID</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>1008</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Campaigns only</name>
     <type>SelectValues</type>
     <description />
@@ -1497,121 +1259,6 @@ if (!custom_196) {
     <GUI>
       <xloc>288</xloc>
       <yloc>1184</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check for existing gifts</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contribution</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>contact_id</name>
-        <field>contact_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>total_amount</name>
-        <field>total_amount</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>receive_date</name>
-        <field>receive_date</field>
-        <condition>BETWEEN</condition>
-        <name2>end_receive_date</name2>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>id</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>3008</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2421,89 +2068,6 @@ if (!custom_196) {
     </GUI>
   </step>
   <step>
-    <name>Fund list</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT label, value as custom_196 from civicrm_option_value WHERE option_group_id = 167;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get abbreviation from fund</name>
-    <type>RegexEval</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <script>.*\(([^)]*)\)$</script>
-    <matcher>label</matcher>
-    <resultfieldname />
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>abbreviation</name>
-        <type>String</type>
-        <format />
-        <group />
-        <decimal />
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif />
-        <ifnull />
-        <trimtype>none</trimtype>
-        <currency />
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>784</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Get option_group_id of payment_instrument</name>
     <type>TableInput</type>
     <description />
@@ -2601,37 +2165,6 @@ if (!custom_196) {
     </GUI>
   </step>
   <step>
-    <name>Import note as custom_209</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>note</name>
-        <rename>custom_209</rename>
-      </field>
-      <select_unspecified>Y</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>3104</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Join Rows (cartesian product)</name>
     <type>JoinRows</type>
     <description />
@@ -2701,8 +2234,8 @@ if (!custom_196) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>3264</yloc>
+      <xloc>304</xloc>
+      <yloc>3056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3220,15 +2753,19 @@ if (CHECK_DATE != null){
       </field>
       <field>
         <name>note</name>
+        <rename />
       </field>
       <field>
         <name>note_date</name>
+        <rename />
       </field>
       <field>
         <name>contact_id</name>
+        <rename />
       </field>
       <field>
         <name>campaign_id</name>
+        <rename />
       </field>
       <field>
         <name>custom_appeal</name>
@@ -3236,18 +2773,19 @@ if (CHECK_DATE != null){
       </field>
       <field>
         <name>payment_instrument_id</name>
+        <rename />
       </field>
       <field>
         <name>financial_type_id</name>
+        <rename />
       </field>
       <field>
         <name>receive_date</name>
+        <rename />
       </field>
       <field>
         <name>custom_recurring_gift</name>
-      </field>
-      <field>
-        <name>custom_196</name>
+        <rename />
       </field>
       <field>
         <name>FUND_ID</name>
@@ -3519,88 +3057,6 @@ if (CHECK_DATE != null){
     </GUI>
   </step>
   <step>
-    <name>Sort by fund ID</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>FUND_ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>848</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort by fund abbreviation</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>abbreviation</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>848</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Sort by package</name>
     <type>SortRows</type>
     <description />
@@ -3743,47 +3199,6 @@ if (CHECK_DATE != null){
     <GUI>
       <xloc>128</xloc>
       <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Stream lookup</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>Sort by fund abbreviation</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>N</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>FUND_ID</name>
-        <field>abbreviation</field>
-      </key>
-      <value>
-        <name>custom_196</name>
-        <rename>custom_196</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>928</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4084,18 +3499,6 @@ if (CHECK_DATE != null){
     </file>
     <fields>
       <field>
-        <name>custom_209</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>campaign_id</name>
         <type>Integer</type>
         <format>0</format>
@@ -4126,18 +3529,6 @@ if (CHECK_DATE != null){
         <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_196</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -4240,18 +3631,6 @@ if (CHECK_DATE != null){
         <precision>-1</precision>
       </field>
       <field>
-        <name>id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>net_amount</name>
         <type>BigNumber</type>
         <format>0.00</format>
@@ -4321,7 +3700,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>3424</yloc>
+      <yloc>3088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4347,7 +3726,7 @@ if (CHECK_DATE != null){
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>CONSTITUENT_ID</name>
+        <name>CONSTIT_ID</name>
         <field>external_identifier</field>
         <condition>=</condition>
         <name2 />
@@ -4459,61 +3838,68 @@ if (CHECK_DATE != null){
     </partitioning>
     <fields>
       <field>
-        <name>custom_209</name>
-      </field>
-      <field>
         <name>campaign_id</name>
+        <rename />
       </field>
       <field>
         <name>check_number</name>
+        <rename />
       </field>
       <field>
         <name>contact_id</name>
-      </field>
-      <field>
-        <name>custom_196</name>
+        <rename />
       </field>
       <field>
         <name>custom_197</name>
+        <rename />
       </field>
       <field>
         <name>custom_200</name>
+        <rename />
       </field>
       <field>
         <name>custom_201</name>
+        <rename />
       </field>
       <field>
         <name>custom_202</name>
+        <rename />
       </field>
       <field>
         <name>custom_203</name>
+        <rename />
       </field>
       <field>
         <name>custom_212</name>
+        <rename />
       </field>
       <field>
         <name>custom_25</name>
+        <rename />
       </field>
       <field>
         <name>financial_type_id</name>
-      </field>
-      <field>
-        <name>id</name>
+        <rename />
       </field>
       <field>
         <name>net_amount</name>
+        <rename />
       </field>
       <field>
         <name>payment_instrument_id</name>
+        <rename />
       </field>
       <field>
         <name>receive_date</name>
+        <rename />
       </field>
       <field>
         <name>thankyou_date</name>
+        <rename />
       </field>
       <field>
         <name>total_amount</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4526,7 +3912,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>3296</yloc>
+      <yloc>3008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6285,36 +5671,6 @@ if (type == 'Stock' || type == 'Gift-in-Kind') {
     <GUI>
       <xloc>128</xloc>
       <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Null if bad batch_id</name>
-    <type>NullIf</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>custom_25</name>
-        <value>CASH/CHECK</value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>2608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

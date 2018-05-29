@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>step 1 contacts only</name>
+    <name>location types</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -427,62 +428,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/06/09 14:26:55.972</created_date>
+    <created_date>2014/08/07 17:11:45.673</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/06/09 14:26:55.972</modified_date>
+    <modified_date>2014/08/07 17:11:45.673</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>If you're not bringing over all RE contacts (e.g. only constituents, only those with gift history)
-you can drop this mapping into your transforms.  It won't affect you if you're bringing all contacts
-except to slow things down a bit.</note>
-      <xloc>96</xloc>
-      <yloc>48</yloc>
-      <width>603</width>
-      <heigth>55</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Make sure the match field is an integer!</note>
-      <xloc>481</xloc>
-      <yloc>176</yloc>
-      <width>274</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>ALSO: Don't pass a stream with a field called "ID" into this.</note>
-      <xloc>960</xloc>
-      <yloc>64</yloc>
-      <width>366</width>
+      <note>&lt;-- List "approved" location types here.</note>
+      <xloc>212</xloc>
+      <yloc>59</yloc>
+      <width>249</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -502,44 +459,121 @@ except to slow things down a bit.</note>
   </notepads>
   <order>
     <hop>
-      <from>Sort rows</from>
-      <to>Merge Join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 2</from>
-      <to>Merge Join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mapping input specification</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts</from>
-      <to>match_field only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>match_field only</from>
-      <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join</from>
-      <to>remove match_field</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>remove match_field</from>
-      <to>Mapping output specification</to>
+      <from>Data Grid</from>
+      <to>Create Location Type</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Mapping input specification</name>
-    <type>MappingInput</type>
+    <name>Create Location Type</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>LocationType</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>result</ResultField>
+    <DebugMode>N</DebugMode>
+    <action-name>create</action-name>
+    <action-name>delete</action-name>
+    <action-name>getfield</action-name>
+    <action-name>getlist</action-name>
+    <action-name>getrefcount</action-name>
+    <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","name":"is_reserved","description":"Is this location type a predefined system location?","localizable":0,"type":16,"title":"Location Type is Reserved?","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>is_reserved</fieldName>
+      <name>is_reserved</name>
+      <title>Location Type is Reserved?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","name":"is_active","description":"Is this property active?","localizable":0,"type":16,"title":"Location Type is Active?","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>is_active</fieldName>
+      <name>is_active</name>
+      <title>Location Type is Active?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","size":30,"maxlength":64,"name":"name","description":"Location Type Name.","localizable":0,"type":2,"title":"Location Type","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>name</fieldName>
+      <name>name</name>
+      <title>Location Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","size":30,"maxlength":64,"name":"vcard_name","description":"vCard Location Type Name.","localizable":0,"type":2,"title":"vCard Location Type","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>vcard_name</fieldName>
+      <name>vcard_name</name>
+      <title>vCard Location Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","size":45,"maxlength":255,"name":"description","description":"Location Type Description.","localizable":0,"type":2,"title":"Description","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>description</fieldName>
+      <name>description</name>
+      <title>Description</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","api.aliases":["location_type_id"],"name":"id","description":"Location Type ID","localizable":0,"type":1,"title":"Location Type ID","table_name":"civicrm_location_type","is_core_field":true,"required":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>id</fieldName>
+      <name>id</name>
+      <title>Location Type ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","size":30,"maxlength":64,"name":"display_name","description":"Location Type Display Name.","localizable":1,"type":2,"title":"Display Name","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>display_name</fieldName>
+      <name>display_name</name>
+      <title>Display Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"bao":"CRM_Core_BAO_LocationType","name":"is_default","description":"Is this location type the default?","localizable":0,"type":16,"title":"Default Location Type?","table_name":"civicrm_location_type","is_core_field":true,"entity":"LocationType"}</fieldDef>
+      <fieldName>is_default</fieldName>
+      <name>is_default</name>
+      <title>Default Location Type?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>name</key-index>
+    <output-field>
+      <input-field>name</input-field>
+      <output-field>name</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Data Grid</name>
+    <type>DataGrid</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -550,111 +584,25 @@ except to slow things down a bit.</note>
     </partitioning>
     <fields>
       <field>
-        <name>ID</name>
+        <name>name</name>
         <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Mapping output specification</name>
-    <type>MappingOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>528</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Join</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Sort rows</step1>
-    <step2>Sort rows 2</step2>
-    <keys_1>
-      <key>ID</key>
-    </keys_1>
-    <keys_2>
-      <key>match_field</key>
-    </keys_2>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <data>
+      <line>
+        <item>Old</item>
+      </line>
+      <line>
+        <item>NCOA</item>
+      </line>
+    </data>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -663,226 +611,8 @@ except to slow things down a bit.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>match_field</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Step 1 contacts</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>${LOCALFILES}/data/cli_step_1.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>Y</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding />
-    <fields>
-      <field>
-        <name>external_identifier</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>first_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>last_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>middle_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>organization_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>contact_type</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>match_field only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>external_identifier</name>
-        <rename>match_field</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>remove match_field</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>match_field</name>
-      </remove>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>448</yloc>
+      <xloc>112</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

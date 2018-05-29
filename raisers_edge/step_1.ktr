@@ -6,8 +6,19 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Contact</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>cli_step_1.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -434,201 +445,6 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>&lt;-- This error checking only matters if you're
-  trying to match against existing Civi records,
-  otherwise it has no effect.</note>
-      <xloc>320</xloc>
-      <yloc>672</yloc>
-      <width>290</width>
-      <heigth>52</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- This is standard.  The current step is org-specific.</note>
-      <xloc>896</xloc>
-      <yloc>272</yloc>
-      <width>331</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Ideally, use RECORDS.ID as your external identifier.  In some cases,
-  RECORDS.CONSTITUENT_ID might be necessary.  Use with caution, 
-  non-constituents won't have this record.</note>
-      <xloc>896</xloc>
-      <yloc>384</yloc>
-      <width>438</width>
-      <heigth>52</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>Optional: Match on email if no external ID</note>
-      <xloc>1040</xloc>
-      <yloc>720</yloc>
-      <width>260</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- These two are org-specific</note>
-      <xloc>1040</xloc>
-      <yloc>544</yloc>
-      <width>190</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific - we're keeping RECORDS.ID as a field called "match_field"
-  so we can use the "step 1 contacts only" transform despite this job calling
-  for using CONSTITUENT_ID as the external_identifier.</note>
-      <xloc>160</xloc>
-      <yloc>1104</yloc>
-      <width>468</width>
-      <heigth>52</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- org-specific cleanup</note>
-      <xloc>464</xloc>
-      <yloc>48</yloc>
-      <width>154</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Sooo org-specific.</note>
-      <xloc>352</xloc>
-      <yloc>1040</yloc>
-      <width>139</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- org-specific dedupe rule</note>
-      <xloc>288</xloc>
-      <yloc>480</yloc>
-      <width>179</width>
-      <heigth>24</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -689,69 +505,6 @@
       </attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>Target CiviCRM</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>${CIVIDB}</database>
-    <port>3306</port>
-    <username>${MYSQLUSER}</username>
-    <password>${MYSQLPW}</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
-        <attribute>500</attribute>
-      </attribute>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
-        <attribute>true</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STREAM_RESULTS</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
       <from>Separate organizations</from>
@@ -774,146 +527,51 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Has a Constituent ID</from>
-      <to>ERROR: No constituent ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>step 1 fields only</from>
-      <to>cli_step_1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Name mismatch list</from>
-      <to>Sort by CONSTITUENT_ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>org_name_mismatch</from>
-      <to>step 1 fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by CONSTITUENT_ID</from>
-      <to>Merge Join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</from>
-      <to>Merge Join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join</from>
-      <to>Merge in fixed names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>individual-organization mismatch</from>
-      <to>org_name_mismatch</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>individual-organization mismatch</from>
-      <to>Add a "ZZ" to CONSTITUENT_ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>org_name_mismatch</from>
-      <to>Add a "ZZ" to CONSTITUENT_ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add a "ZZ" to CONSTITUENT_ID</from>
-      <to>step 1 fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Has a Constituent ID</from>
-      <to>get add'l Civi fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>get add'l Civi fields</from>
-      <to>individual-organization mismatch</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi</from>
-      <to>Has a Constituent ID</to>
+      <from>RE: RECORDS</from>
+      <to>Separate organizations</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Dummy (do nothing)</from>
-      <to>Check the dedupe list</to>
+      <to>step 1 fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Check the dedupe list</from>
-      <to>external ID to contact_id in Civi</to>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge in fixed names</from>
-      <to>Separate organizations</to>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>step 1 fields only</from>
+      <to>CSV Output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add a "ZZ" to CONSTITUENT_ID</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var CONSTITUENT_ID;
-var contact_id;
-CONSTITUENT_ID = CONSTITUENT_ID + "ZZ";
-contact_id = null;</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <rename>CONSTITUENT_ID</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename>contact_id</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Dummy (do nothing)</name>
     <type>Dummy</type>
@@ -934,446 +592,12 @@ contact_id = null;</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>400</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>ERROR: No constituent ID</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/errors/no_constituent_id</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>KEY_INDICATOR</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>MIDDLE_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ORG_NAME</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_type</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>civi_first_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>civi_last_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>civi_organization_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>civi_contact_type</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Has a Constituent ID</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>get add'l Civi fields</send_true_to>
-    <send_false_to>ERROR: No constituent ID</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>CONSTITUENT_ID</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>CONSTITUENT_ID</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text />
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>Y</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Join</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</step1>
-    <step2>Sort by CONSTITUENT_ID</step2>
-    <keys_1>
-      <key>CONSTITUENT_ID</key>
-    </keys_1>
-    <keys_2>
-      <key>CONSTITUENT_ID</key>
-    </keys_2>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge in fixed names</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var FIRST_NAME;
-var LAST_NAME;
-
-if (fix_first_name) {
-  FIRST_NAME = fix_first_name;
-}
-if (fix_last_name) {
-  LAST_NAME = fix_last_name;
-}
-  </jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>FIRST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>LAST_NAME</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Name mismatch list</name>
-    <type>CsvInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filename>/home/jon/ownCloud/work/Clients/USCJ/civicrm/raw data/name mismatch 6-21-2017.csv</filename>
-    <filename_field />
-    <rownum_field />
-    <include_filename>N</include_filename>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <header>Y</header>
-    <buffer_size>50000</buffer_size>
-    <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
-    <parallel>N</parallel>
-    <newline_possible>N</newline_possible>
-    <encoding>UTF-8</encoding>
-    <fields>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>fix_first_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>fix_last_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: RECORDS 2 Primary = Yes</name>
+    <name>RE: RECORDS</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -1393,9 +617,7 @@ CONSTITUENT_ID
 , MIDDLE_NAME
 , ORG_NAME
 
-FROM RECORDS
-JOIN ConstituentAttributes ca ON RECORDS.ID = ca.PARENTID
-WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID = 136) AND ca.BOOLEAN = -1</sql>
+FROM RECORDS</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1409,181 +631,7 @@ WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: RECORDS Constituents only</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-
-FROM RECORDS
-WHERE IS_CONSTITUENT = -1</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: RECORDS Primary = Yes with gift history</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT DISTINCT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-
-FROM RECORDS
-JOIN ConstituentAttributes ca ON RECORDS.ID = ca.PARENTID
-JOIN Gift g ON RECORDS.ID = g.CONSTIT_ID
-WHERE IS_CONSTITUENT = -1 AND (ca.ATTRIBUTETYPESID = 135 OR ca.ATTRIBUTETYPESID = 136) AND ca.BOOLEAN = -1</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>528</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: RECORDS with gift history, with soft creditees, contact solicitors, gift solicitors</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT DISTINCT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-FROM RECORDS
-JOIN Gift g ON RECORDS.ID = g.CONSTIT_ID
-WHERE IS_CONSTITUENT = -1
-UNION
-SELECT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-FROM RECORDS
-JOIN CONSTIT_SOLICITORS cs
-ON RECORDS.ID = cs.CONSTIT_ID
-UNION
-SELECT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-FROM RECORDS
-JOIN CONSTIT_SOLICITORS cs
-ON RECORDS.ID = cs.SOLICITOR_ID
-UNION
-SELECT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-FROM RECORDS
-JOIN GiftSoftCredit 
-ON RECORDS.ID = GiftSoftCredit.ConstitId
-UNION
-SELECT
-CONSTITUENT_ID
-, KEY_INDICATOR
-, RECORDS.ID
-, FIRST_NAME
-, LAST_NAME
-, MIDDLE_NAME
-, ORG_NAME
-FROM RECORDS
-JOIN GiftSolicitor
-ON RECORDS.ID = GiftSolicitor.SolicitorId
-ORDER BY CONSTITUENT_ID</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
+      <xloc>208</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1626,49 +674,8 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort by CONSTITUENT_ID</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>112</yloc>
+      <xloc>208</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1706,7 +713,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>352</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1743,13 +750,390 @@ ORDER BY CONSTITUENT_ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>336</yloc>
+      <xloc>320</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>cli_step_1</name>
+    <name>step 1 fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>ID</name>
+        <rename>external_identifier</rename>
+      </field>
+      <field>
+        <name>FIRST_NAME</name>
+        <rename>first_name</rename>
+      </field>
+      <field>
+        <name>LAST_NAME</name>
+        <rename>last_name</rename>
+      </field>
+      <field>
+        <name>MIDDLE_NAME</name>
+        <rename>middle_name</rename>
+      </field>
+      <field>
+        <name>ORG_NAME</name>
+        <rename>organization_name</rename>
+      </field>
+      <field>
+        <name>contact_type</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>535</xloc>
+      <yloc>273</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>535</xloc>
+      <yloc>113</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>711</xloc>
+      <yloc>113</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>711</xloc>
+      <yloc>193</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>535</xloc>
+      <yloc>193</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>535</xloc>
+      <yloc>353</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>711</xloc>
+      <yloc>273</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV Output</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1773,11 +1157,11 @@ ORDER BY CONSTITUENT_ID</sql>
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/data/cli_step_1</name>
+      <name>${LOCALFILES}/data/${output1name}</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
+      <extention />
       <append>N</append>
       <split>N</split>
       <haspartno>N</haspartno>
@@ -1793,11 +1177,11 @@ ORDER BY CONSTITUENT_ID</sql>
     <fields>
       <field>
         <name>external_identifier</name>
-        <type>String</type>
-        <format />
+        <type>Integer</type>
+        <format>0</format>
         <currency />
-        <decimal />
-        <group />
+        <decimal>.</decimal>
+        <group>,</group>
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1863,78 +1247,7 @@ ORDER BY CONSTITUENT_ID</sql>
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>match_field</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>1296</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>external ID to contact_id in Civi</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTITUENT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>contact_id</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1944,346 +1257,7 @@ ORDER BY CONSTITUENT_ID</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>get add'l Civi fields</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTITUENT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>contact_type</name>
-        <rename>civi_contact_type</rename>
-        <default />
-        <type>None</type>
-      </value>
-      <value>
-        <name>organization_name</name>
-        <rename>civi_organization_name</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>individual-organization mismatch</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>org_name_mismatch</send_true_to>
-    <send_false_to>Add a "ZZ" to CONSTITUENT_ID</send_false_to>
-    <compare>
-      <condition>
-        <negated>Y</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>contact_id</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>contact_type</leftvalue>
-            <function>&lt;></function>
-            <rightvalue>civi_contact_type</rightvalue>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>org_name_mismatch</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>step 1 fields only</send_true_to>
-    <send_false_to>Add a "ZZ" to CONSTITUENT_ID</send_false_to>
-    <compare>
-      <condition>
-        <negated>Y</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>contact_id</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <conditions>
-              <condition>
-                <negated>N</negated>
-                <operator>OR</operator>
-                <leftvalue>ORG_NAME</leftvalue>
-                <function>&lt;></function>
-                <rightvalue>civi_organization_name</rightvalue>
-              </condition>
-            </conditions>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>KEY_INDICATOR</leftvalue>
-            <function>=</function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>O</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>1008</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>step 1 fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <rename>external_identifier</rename>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>first_name</rename>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>last_name</rename>
-      </field>
-      <field>
-        <name>MIDDLE_NAME</name>
-        <rename>middle_name</rename>
-      </field>
-      <field>
-        <name>ORG_NAME</name>
-        <rename>organization_name</rename>
-      </field>
-      <field>
-        <name>contact_type</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>ID</name>
-        <rename>match_field</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>1168</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>step 1 fields only 2</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>ID</name>
-        <rename>external_identifier</rename>
-      </field>
-      <field>
-        <name>FIRST_NAME</name>
-        <rename>first_name</rename>
-      </field>
-      <field>
-        <name>LAST_NAME</name>
-        <rename>last_name</rename>
-      </field>
-      <field>
-        <name>MIDDLE_NAME</name>
-        <rename>middle_name</rename>
-      </field>
-      <field>
-        <name>ORG_NAME</name>
-        <rename>organization_name</rename>
-      </field>
-      <field>
-        <name>contact_type</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>civi_first_name</name>
-      </field>
-      <field>
-        <name>civi_last_name</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
       <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check the dedupe list</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/ownCloud/work/Clients/USCJ/civicrm/transforms/dedupe lookup mapping.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTITUENT_ID</parent>
-            <child>CONSTITUENT_ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
