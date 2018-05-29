@@ -582,6 +582,7 @@ FROM civicrm_contribution_soft ccs
 LEFT JOIN civicrm_option_value cov ON ccs.soft_credit_type_id = cov.value
 JOIN civicrm_option_group cog ON cov.option_group_id = cog.id AND cog.name = 'soft_credit_type'
 JOIN civicrm_contact contact ON contact_id = contact.id
+WHERE contact.is_deleted &lt;&gt; 1
 ORDER BY soft_credit_type
 </sql>
     <limit>0</limit>
@@ -720,53 +721,6 @@ ORDER BY soft_credit_type
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>contribution_id</name>
-        <rename>Gift Import ID</rename>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <rename>HMS Import ID</rename>
-      </field>
-      <field>
-        <name>soft_credit_type</name>
-        <rename>HMS Type</rename>
-      </field>
-      <field>
-        <name>Honor Reason</name>
-        <rename />
-      </field>
-      <field>
-        <name>amount</name>
-        <rename>Split Amount</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Map HMS Type</name>
     <type>ValueMapper</type>
     <description />
@@ -800,6 +754,52 @@ ORDER BY soft_credit_type
     <GUI>
       <xloc>272</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contribution_id</name>
+        <rename>Gift Import ID</rename>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <rename>HMS Import ID</rename>
+      </field>
+      <field>
+        <name>soft_credit_type</name>
+        <rename>HMS Type</rename>
+      </field>
+      <field>
+        <name>Honor Reason</name>
+      </field>
+      <field>
+        <name>amount</name>
+        <rename>Split Amount</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -430,7 +430,7 @@
     <created_date>2018/05/07 21:06:21.560</created_date>
     <modified_user>-</modified_user>
     <modified_date>2018/05/07 21:06:21.560</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -576,222 +576,6 @@
     </hop>
   </order>
   <step>
-    <name>CiviCRM db</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT
-  id
-, contact_type
-, contact_sub_type
-, do_not_email
-, do_not_phone
-, do_not_mail
-, do_not_sms
-, do_not_trade
-, is_opt_out
-, legal_identifier
-, external_identifier
-, sort_name
-, display_name
-, nick_name
-, legal_name
-, image_URL
-, preferred_communication_method
-, preferred_language
-, preferred_mail_format
-, hash
-, api_key
-, source
-, first_name
-, middle_name
-, last_name
-, prefix_id
-, suffix_id
-, formal_title
-, communication_style_id
-, email_greeting_id
-, email_greeting_custom
-, email_greeting_display
-, postal_greeting_id
-, postal_greeting_custom
-, postal_greeting_display
-, addressee_id
-, addressee_custom
-, addressee_display
-, job_title
-, gender_id
-, birth_date
-, is_deceased
-, deceased_date
-, household_name
-, primary_contact_id
-, organization_name
-, sic_code
-, user_unique_id
-, employer_id
-, is_deleted
-, created_date
-, modified_date
-FROM civicrm_contact
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>id</name>
-        <rename>External ID</rename>
-      </field>
-      <field>
-        <name>Salsa ID</name>
-        <rename />
-      </field>
-      <field>
-        <name>modified_date</name>
-        <rename>Timestamp</rename>
-      </field>
-      <field>
-        <name>created_date</name>
-        <rename>Original Timestamp</rename>
-      </field>
-      <field>
-        <name>Constituent Type</name>
-        <rename />
-      </field>
-      <field>
-        <name>ind_type</name>
-        <rename>Ind Type</rename>
-      </field>
-      <field>
-        <name>org_type</name>
-        <rename>Org Type</rename>
-      </field>
-      <field>
-        <name>Org Contact Name</name>
-        <rename />
-      </field>
-      <field>
-        <name>Org Contact Position</name>
-        <rename />
-      </field>
-      <field>
-        <name>legal_name</name>
-        <rename>Alias</rename>
-      </field>
-      <field>
-        <name>Title</name>
-        <rename />
-      </field>
-      <field>
-        <name>first_name</name>
-        <rename>First Name</rename>
-      </field>
-      <field>
-        <name>middle_name</name>
-        <rename>Middle Name</rename>
-      </field>
-      <field>
-        <name>last_org_name</name>
-        <rename>Last or Org Name</rename>
-      </field>
-      <field>
-        <name>Name Suffix</name>
-        <rename />
-      </field>
-      <field>
-        <name>Designation</name>
-        <rename />
-      </field>
-      <field>
-        <name>nick_name</name>
-        <rename>Nickname</rename>
-      </field>
-      <field>
-        <name>Maiden Name</name>
-        <rename />
-      </field>
-      <field>
-        <name>VIP</name>
-        <rename />
-      </field>
-      <field>
-        <name>Gender</name>
-        <rename />
-      </field>
-      <field>
-        <name>birth_date</name>
-        <rename>DOB</rename>
-      </field>
-      <field>
-        <name>deceased_date</name>
-        <rename>Deceased Date</rename>
-      </field>
-      <field>
-        <name>legal_identifier</name>
-        <rename>Govt ID</rename>
-      </field>
-      <field>
-        <name>Ethnicity/Race</name>
-        <rename />
-      </field>
-      <field>
-        <name>Religion</name>
-        <rename />
-      </field>
-      <field>
-        <name>preferred_contact_method</name>
-        <rename>Preferred Contact Method</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Add blank constants</name>
     <type>Constant</type>
     <description />
@@ -926,6 +710,90 @@ FROM civicrm_contact
     </GUI>
   </step>
   <step>
+    <name>CiviCRM db</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT
+  id
+, contact_type
+, contact_sub_type
+, do_not_email
+, do_not_phone
+, do_not_mail
+, do_not_sms
+, do_not_trade
+, is_opt_out
+, legal_identifier
+, external_identifier
+, sort_name
+, display_name
+, nick_name
+, legal_name
+, image_URL
+, preferred_communication_method
+, preferred_language
+, preferred_mail_format
+, hash
+, api_key
+, source
+, first_name
+, middle_name
+, last_name
+, prefix_id
+, suffix_id
+, formal_title
+, communication_style_id
+, email_greeting_id
+, email_greeting_custom
+, email_greeting_display
+, postal_greeting_id
+, postal_greeting_custom
+, postal_greeting_display
+, addressee_id
+, addressee_custom
+, addressee_display
+, job_title
+, gender_id
+, birth_date
+, is_deceased
+, deceased_date
+, household_name
+, primary_contact_id
+, organization_name
+, sic_code
+, user_unique_id
+, employer_id
+, is_deleted
+, created_date
+, modified_date
+FROM civicrm_contact</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Constituent Type</name>
     <type>ValueMapper</type>
     <description />
@@ -959,200 +827,6 @@ FROM civicrm_contact
     <GUI>
       <xloc>224</xloc>
       <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Ind/Org Type</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var ind_type = null;
-var org_type = null;
-if (contact_type == 'Individual') {
-  ind_type = contact_sub_type;
-}
-if (contact_type == 'Organization') {
-  org_type = contact_sub_type;
-}
-
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>ind_type</name>
-        <rename>ind_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>org_type</name>
-        <rename>org_type</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Prefixes</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'individual_prefix';</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Suffixes</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'individual_suffix';</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Gender</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'gender';</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Prefix lookup</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>Prefixes</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>N</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>Y</integer_pair>
-    <lookup>
-      <key>
-        <name>prefix_id</name>
-        <field>value</field>
-      </key>
-      <value>
-        <name>label</name>
-        <rename>Title</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1569,6 +1243,175 @@ if (contact_type == 'Organization') {
     </GUI>
   </step>
   <step>
+    <name>Gender</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'gender';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Gender Mapping</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>Gender</field_to_use>
+    <target_field />
+    <non_match_default>U</non_match_default>
+    <fields>
+      <field>
+        <source_value>Male</source_value>
+        <target_value>M</target_value>
+      </field>
+      <field>
+        <source_value>Female</source_value>
+        <target_value>F</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Gender lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Gender</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>Y</integer_pair>
+    <lookup>
+      <key>
+        <name>gender_id</name>
+        <field>value</field>
+      </key>
+      <value>
+        <name>label</name>
+        <rename>Gender</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Ind/Org Type</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var ind_type = null;
+var org_type = null;
+if (contact_type == 'Individual') {
+  ind_type = contact_sub_type;
+}
+if (contact_type == 'Organization') {
+  org_type = contact_sub_type;
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>ind_type</name>
+        <rename>ind_type</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>org_type</name>
+        <rename>org_type</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Last/Org Name</name>
     <type>ScriptValueMod</type>
     <description />
@@ -1616,125 +1459,6 @@ if (contact_type == 'Organization') {
     <GUI>
       <xloc>224</xloc>
       <yloc>752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Suffix lookup</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>Suffixes</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>N</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>Y</integer_pair>
-    <lookup>
-      <key>
-        <name>suffix_id</name>
-        <field>value</field>
-      </key>
-      <value>
-        <name>label</name>
-        <rename>Name Suffix</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Gender lookup</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>Gender</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>N</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>Y</integer_pair>
-    <lookup>
-      <key>
-        <name>gender_id</name>
-        <field>value</field>
-      </key>
-      <value>
-        <name>label</name>
-        <rename>Gender</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Gender Mapping</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>Gender</field_to_use>
-    <target_field />
-    <non_match_default>U</non_match_default>
-    <fields>
-      <field>
-        <source_value>Male</source_value>
-        <target_value>M</target_value>
-      </field>
-      <field>
-        <source_value>Female</source_value>
-        <target_value>F</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1804,6 +1528,269 @@ if (do_not_mail == 1 &amp;&amp; do_not_phone == 1 &amp;&amp; (do_not_email == 1 
     <GUI>
       <xloc>224</xloc>
       <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Prefix lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Prefixes</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>Y</integer_pair>
+    <lookup>
+      <key>
+        <name>prefix_id</name>
+        <field>value</field>
+      </key>
+      <value>
+        <name>label</name>
+        <rename>Title</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Prefixes</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'individual_prefix';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>id</name>
+        <rename>External ID</rename>
+      </field>
+      <field>
+        <name>Salsa ID</name>
+      </field>
+      <field>
+        <name>modified_date</name>
+        <rename>Timestamp</rename>
+      </field>
+      <field>
+        <name>created_date</name>
+        <rename>Original Timestamp</rename>
+      </field>
+      <field>
+        <name>Constituent Type</name>
+      </field>
+      <field>
+        <name>ind_type</name>
+        <rename>Ind Type</rename>
+      </field>
+      <field>
+        <name>org_type</name>
+        <rename>Org Type</rename>
+      </field>
+      <field>
+        <name>Org Contact Name</name>
+      </field>
+      <field>
+        <name>Org Contact Position</name>
+      </field>
+      <field>
+        <name>legal_name</name>
+        <rename>Alias</rename>
+      </field>
+      <field>
+        <name>Title</name>
+      </field>
+      <field>
+        <name>first_name</name>
+        <rename>First Name</rename>
+      </field>
+      <field>
+        <name>middle_name</name>
+        <rename>Middle Name</rename>
+      </field>
+      <field>
+        <name>last_org_name</name>
+        <rename>Last or Org Name</rename>
+      </field>
+      <field>
+        <name>Name Suffix</name>
+      </field>
+      <field>
+        <name>Designation</name>
+      </field>
+      <field>
+        <name>nick_name</name>
+        <rename>Nickname</rename>
+      </field>
+      <field>
+        <name>Maiden Name</name>
+      </field>
+      <field>
+        <name>VIP</name>
+      </field>
+      <field>
+        <name>Gender</name>
+      </field>
+      <field>
+        <name>birth_date</name>
+        <rename>DOB</rename>
+      </field>
+      <field>
+        <name>deceased_date</name>
+        <rename>Deceased Date</rename>
+      </field>
+      <field>
+        <name>legal_identifier</name>
+        <rename>Govt ID</rename>
+      </field>
+      <field>
+        <name>Ethnicity/Race</name>
+      </field>
+      <field>
+        <name>Religion</name>
+      </field>
+      <field>
+        <name>preferred_contact_method</name>
+        <rename>Preferred Contact Method</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Suffix lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Suffixes</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>N</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>Y</integer_pair>
+    <lookup>
+      <key>
+        <name>suffix_id</name>
+        <field>value</field>
+      </key>
+      <value>
+        <name>label</name>
+        <rename>Name Suffix</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Suffixes</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select value, label from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'individual_suffix';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

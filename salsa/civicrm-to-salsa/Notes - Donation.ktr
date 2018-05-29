@@ -528,7 +528,7 @@
 , note
 , modified_date
 , 'from CiviCRM' as subject
-FROM civicrm_note
+FROM civicrm_note cn
 WHERE entity_table = 'civicrm_contribution'
 </sql>
     <limit>0</limit>

@@ -528,7 +528,15 @@
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>select contact_id AS 'External ID', title, 1 AS value from civicrm_group_contact cgc JOIN civicrm_group cg ON cgc.group_id = cg.id WHERE status = 'Added'</sql>
+    <sql>select 
+contact_id AS 'External ID'
+, title
+, 1 AS value 
+from civicrm_group_contact cgc 
+JOIN civicrm_group cg ON cgc.group_id = cg.id 
+JOIN civicrm_contact cc ON cgc.contact_id = cc.id
+WHERE status = 'Added'
+AND cc.is_deleted &lt;&gt; 1</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>

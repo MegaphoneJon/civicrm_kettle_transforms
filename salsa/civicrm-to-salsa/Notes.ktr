@@ -431,7 +431,7 @@
     <created_date>2018/05/08 00:19:58.789</created_date>
     <modified_user>-</modified_user>
     <modified_date>2018/05/08 00:19:58.789</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -526,10 +526,12 @@
     <sql>SELECT
 entity_id
 , note
-, modified_date
+, cn.modified_date
 , subject
-FROM civicrm_note
+FROM civicrm_note cn
+JOIN civicrm_contact cc on cn.entity_id = cc.id
 WHERE entity_table = 'civicrm_contact'
+AND cc.is_deleted &lt;&gt; 1
 </sql>
     <limit>0</limit>
     <lookup />

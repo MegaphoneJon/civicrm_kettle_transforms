@@ -11,6 +11,69 @@
   <modified_date>2018/05/07 21:03:19.020</modified_date>
   <parameters>
     </parameters>
+  <connection>
+    <name>Target CiviCRM</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${CIVIDB}</database>
+    <port>3306</port>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -360,7 +423,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>112</yloc>
+      <yloc>304</yloc>
     </entry>
     <entry>
       <name>Address</name>
@@ -416,7 +479,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>192</yloc>
+      <yloc>384</yloc>
     </entry>
     <entry>
       <name>Contact</name>
@@ -472,7 +535,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
     </entry>
     <entry>
       <name>Group</name>
@@ -528,7 +591,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>336</yloc>
+      <yloc>528</yloc>
     </entry>
     <entry>
       <name>Custom Fields</name>
@@ -584,7 +647,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>320</xloc>
-      <yloc>384</yloc>
+      <yloc>576</yloc>
     </entry>
     <entry>
       <name>Relations</name>
@@ -640,7 +703,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>416</yloc>
+      <yloc>608</yloc>
     </entry>
     <entry>
       <name>Notes</name>
@@ -696,7 +759,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>480</yloc>
+      <yloc>672</yloc>
     </entry>
     <entry>
       <name>Donation</name>
@@ -752,7 +815,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>544</yloc>
+      <yloc>736</yloc>
     </entry>
     <entry>
       <name>Honor-Memorial-Soft Credit</name>
@@ -808,7 +871,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>624</yloc>
+      <yloc>816</yloc>
     </entry>
     <entry>
       <name>Notes - Donation</name>
@@ -864,7 +927,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>720</yloc>
+      <yloc>912</yloc>
     </entry>
     <entry>
       <name>Notes - My Salsa CRM</name>
@@ -920,19 +983,44 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>80</xloc>
-      <yloc>800</yloc>
+      <yloc>992</yloc>
+    </entry>
+    <entry>
+      <name>SQL</name>
+      <description />
+      <type>SQL</type>
+      <sql># Fix improperly imported folks
+UPDATE civicrm_contact SET contact_type = 'Organization' WHERE first_name IS NULL AND organization_name IS NOT NULL and contact_type = 'Individual'</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename />
+      <sendOneStatement>F</sendOneStatement>
+      <connection>Target CiviCRM</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>80</xloc>
+      <yloc>128</yloc>
+    </entry>
+    <entry>
+      <name>Convert Households to Individuals</name>
+      <description />
+      <type>SQL</type>
+      <sql># Fix improperly imported folks
+UPDATE civicrm_contact SET contact_type = 'Individual', first_name = household_name WHERE contact_type = 'Household'</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename />
+      <sendOneStatement>F</sendOneStatement>
+      <connection>Target CiviCRM</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>80</xloc>
+      <yloc>224</yloc>
     </entry>
   </entries>
   <hops>
-    <hop>
-      <from>START</from>
-      <to>Constituent</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>Constituent</from>
       <to>Address</to>
@@ -1014,12 +1102,39 @@
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
+    <hop>
+      <from>START</from>
+      <to>SQL</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>SQL</from>
+      <to>Convert Households to Individuals</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Convert Households to Individuals</from>
+      <to>Constituent</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
     <notepad>
       <note>&lt;-- aka "Email/Phone/etc"</note>
       <xloc>128</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <width>166</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
@@ -1041,8 +1156,8 @@
       <note>&lt;-- My client didn't have these so I didn't build this.
      It should be done by looping through civicrm_option_group to build a SQL statement,
      which can be ETL injected into another transform.</note>
-      <xloc>401</xloc>
-      <yloc>392</yloc>
+      <xloc>400</xloc>
+      <yloc>592</yloc>
       <width>549</width>
       <heigth>55</heigth>
       <fontname>Sans</fontname>
@@ -1062,9 +1177,51 @@
     </notepad>
     <notepad>
       <note>&lt;-- Export Activities as Notes</note>
-      <xloc>146</xloc>
-      <yloc>802</yloc>
+      <xloc>144</xloc>
+      <yloc>992</yloc>
       <width>185</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific fix</note>
+      <xloc>128</xloc>
+      <yloc>128</yloc>
+      <width>123</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Sketchy af.  YMMV</note>
+      <xloc>144</xloc>
+      <yloc>224</yloc>
+      <width>142</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
