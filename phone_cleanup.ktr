@@ -481,28 +481,6 @@ version to version, can't be hardcoded. :-(</note>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
-    <notepad>
-      <note>There's a bug in Pentaho here. This transform breaks
-if both of these streams have records.</note>
-      <xloc>802</xloc>
-      <yloc>580</yloc>
-      <width>330</width>
-      <heigth>40</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -661,6 +639,11 @@ if both of these streams have records.</note>
     <hop>
       <from>Remove temporary phone fields</from>
       <to>valid phones</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove irrelevant fields 3</from>
+      <to>get names for invalid phone</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1242,6 +1225,45 @@ if both of these streams have records.</note>
     </GUI>
   </step>
   <step>
+    <name>Remove temporary phone fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>location_type</name>
+      </remove>
+      <remove>
+        <name>phone_type</name>
+      </remove>
+      <remove>
+        <name>phone_option_group</name>
+      </remove>
+      <remove>
+        <name>phone_option_group_id</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Trim phones</name>
     <type>StringOperations</type>
     <description />
@@ -1588,45 +1610,6 @@ if both of these streams have records.</note>
     <GUI>
       <xloc>368</xloc>
       <yloc>976</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove temporary phone fields</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>location_type</name>
-      </remove>
-      <remove>
-        <name>phone_type</name>
-      </remove>
-      <remove>
-        <name>phone_option_group</name>
-      </remove>
-      <remove>
-        <name>phone_option_group_id</name>
-      </remove>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
