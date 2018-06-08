@@ -6,8 +6,39 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Contact</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>additional_records_data.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2entity</name>
+        <default_value>Note</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2name</name>
+        <default_value>match_notes.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output3entity</name>
+        <default_value>CustomValue</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output3name</name>
+        <default_value>contact_custom_fields.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -437,8 +468,8 @@
     <notepad>
       <note>You can either concatenate prefixes/suffixes into one,
 or drop the second prefix/suffix.</note>
-      <xloc>128</xloc>
-      <yloc>1136</yloc>
+      <xloc>432</xloc>
+      <yloc>1104</yloc>
       <width>323</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -459,8 +490,8 @@ or drop the second prefix/suffix.</note>
     <notepad>
       <note>Use this if you're trying to bring salutation types from RE into Civi.
 Most times, you can skip this and bring all salutations as customized salutations.</note>
-      <xloc>128</xloc>
-      <yloc>1040</yloc>
+      <xloc>368</xloc>
+      <yloc>976</yloc>
       <width>483</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -481,8 +512,8 @@ Most times, you can skip this and bring all salutations as customized salutation
     <notepad>
       <note>If you're dropping the second prefix/suffix, this gives
 a list of all contacts who have a second prefix/suffix.</note>
-      <xloc>656</xloc>
-      <yloc>1184</yloc>
+      <xloc>928</xloc>
+      <yloc>1424</yloc>
       <width>317</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -501,55 +532,9 @@ a list of all contacts who have a second prefix/suffix.</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>WARNING: Enabling the subtransform
-steps will result in live data written to Civi.</note>
-      <xloc>1200</xloc>
-      <yloc>208</yloc>
-      <width>257</width>
-      <heigth>42</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>TODO: Programmattically create tags:
-No Valid Address
-Inactive
-Anonymous</note>
-      <xloc>1216</xloc>
-      <yloc>768</yloc>
-      <width>234</width>
-      <heigth>74</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>NOTE: Remap to YOUR custom field IDs</note>
-      <xloc>784</xloc>
-      <yloc>1024</yloc>
+      <xloc>640</xloc>
+      <yloc>2144</yloc>
       <width>255</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -569,8 +554,8 @@ Anonymous</note>
     </notepad>
     <notepad>
       <note>See Megaphone #57 on notes for questions for the client re: this transform.</note>
-      <xloc>1680</xloc>
-      <yloc>848</yloc>
+      <xloc>576</xloc>
+      <yloc>304</yloc>
       <width>468</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
@@ -589,10 +574,10 @@ Anonymous</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Org-specific -->
+      <note>&lt;-- Org-specific
 (Greetings Mappings)</note>
-      <xloc>16</xloc>
-      <yloc>688</yloc>
+      <xloc>160</xloc>
+      <yloc>560</yloc>
       <width>140</width>
       <heigth>40</heigth>
       <fontname>Sans</fontname>
@@ -632,10 +617,54 @@ Anonymous</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&lt;-- Org-specific</note>
-      <xloc>944</xloc>
-      <yloc>880</yloc>
-      <width>104</width>
+      <note>&lt;-- These steps attach to "Dummy" to import No Valid Address,
+      Inactive and Anonymous as Tags.  Current thinking prefers
+      bringing them in as custom fields.</note>
+      <xloc>2288</xloc>
+      <yloc>1744</yloc>
+      <width>394</width>
+      <heigth>55</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>FIXME - Debug step</note>
+      <xloc>192</xloc>
+      <yloc>2032</yloc>
+      <width>129</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>0</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Client-specific</note>
+      <xloc>208</xloc>
+      <yloc>1808</yloc>
+      <width>116</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -802,11 +831,6 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy</from>
-      <to>Remove Unneeded fields, change prefix/suffix id to integer</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter records with match notes</from>
       <to>Select values 2</to>
       <enabled>Y</enabled>
@@ -817,23 +841,8 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy</from>
-      <to>Filter Anonymous records</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter Anonymous records</from>
       <to>Add Anonymous</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy</from>
-      <to>Filter No Valid Address</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy</from>
-      <to>Filter Inactive records</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -907,11 +916,6 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove Unneeded fields, change prefix/suffix id to integer</from>
-      <to>cli_additional_records_data</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Handle null greetings/salutations</from>
       <to>Remap is_deceased</to>
       <enabled>Y</enabled>
@@ -919,11 +923,6 @@ Anonymous</note>
     <hop>
       <from>Dummy</from>
       <to>Custom fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Custom fields only</from>
-      <to>cli_re_contact_custom_fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -935,21 +934,6 @@ Anonymous</note>
       <from>RE: RECORDS 2</from>
       <to>multiple prefix and-or suffix</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Generate prefixes/suffixes in Civi</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Output unrecognized prefixes</from>
-      <to>Generate prefixes/suffixes in Civi</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Output unrecognized suffixes</from>
-      <to>Generate prefixes/suffixes in Civi</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Remap "No Target" to 0</from>
@@ -987,11 +971,6 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap ANONYMOUS</from>
-      <to>Remove bogus prefixes (specific to this org)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap prefixes/suffixes</from>
       <to>No Contact ID</to>
       <enabled>Y</enabled>
@@ -1002,23 +981,13 @@ Anonymous</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap prefixes/suffixes</from>
-      <to>Output unrecognized suffixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>RE: RECORDS</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add subject and entity_table</from>
-      <to>Privacy = 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Privacy = 2</from>
-      <to>cli_match_notes</to>
+      <from>Remap prefixes/suffixes</from>
+      <to>Output unrecognized suffixes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1039,6 +1008,146 @@ Anonymous</note>
     <hop>
       <from>Step 1 contacts only</from>
       <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap ANONYMOUS</from>
+      <to>Remap No Valid Address (flip)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap No Valid Address (flip)</from>
+      <to>Remap Inactive (flip)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap Inactive (flip)</from>
+      <to>Remap do_not_email</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap do_not_email</from>
+      <to>Remove bogus prefixes (specific to this org)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 2</from>
+      <to>Single file SFTP 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder 3</from>
+      <to>Single file SFTP 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 2</from>
+      <to>SFTP when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names 3</from>
+      <to>SFTP when complete 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 2</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters 3</from>
+      <to>Import when complete 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 3</from>
+      <to>import entity 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 2</from>
+      <to>Get CSV folder 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete 3</from>
+      <to>Get CSV folder 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>match_notes</from>
+      <to>Last Step 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>additional_records_data</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>contact_custom_fields</from>
+      <to>Last Step 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add subject and entity_table</from>
+      <to>match_notes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Custom fields only</from>
+      <to>contact_custom_fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove Unneeded fields, change prefix/suffix id to integer</from>
+      <to>Remove greeting-related fields for now</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove greeting-related fields for now</from>
+      <to>additional_records_data</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy</from>
+      <to>Map Do Not Mail from Mailing Code</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Do Not Mail from Mailing Code</from>
+      <to>Remove Unneeded fields, change prefix/suffix id to integer</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1076,8 +1185,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
-      <yloc>640</yloc>
+      <xloc>2240</xloc>
+      <yloc>1776</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1115,8 +1224,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>688</yloc>
+      <xloc>2128</xloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1154,8 +1263,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>688</yloc>
+      <xloc>2032</xloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1193,8 +1302,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>816</yloc>
+      <xloc>2128</xloc>
+      <yloc>1952</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1247,8 +1356,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>832</yloc>
+      <xloc>400</xloc>
+      <yloc>2080</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1333,8 +1442,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>1104</yloc>
+      <xloc>384</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1419,8 +1528,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>1168</yloc>
+      <xloc>384</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1488,6 +1597,23 @@ Anonymous</note>
         <currency_symbol />
         <storage_type />
       </meta>
+      <meta>
+        <name>DATE_LAST_CHANGED</name>
+        <rename>DATE_LAST_CHANGED</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss.SSS</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1497,8 +1623,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>560</yloc>
+      <xloc>96</xloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1566,6 +1692,23 @@ Anonymous</note>
         <currency_symbol />
         <storage_type />
       </meta>
+      <meta>
+        <name>DATE_LAST_CHANGED</name>
+        <rename>DATE_LAST_CHANGED</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMddHHmmss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1575,8 +1718,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>624</yloc>
+      <xloc>96</xloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1593,15 +1736,51 @@ Anonymous</note>
     </partitioning>
     <fields>
       <field>
-        <name>DATE_ADDED</name>
-        <rename>custom_195</rename>
-      </field>
-      <field>
         <name>contact_id</name>
         <rename>entity_id</rename>
       </field>
       <field>
+        <name>DATE_ADDED</name>
+        <rename>custom_1</rename>
+      </field>
+      <field>
         <name>target_1</name>
+      </field>
+      <field>
+        <name>DATE_LAST_CHANGED</name>
+        <rename>custom_2</rename>
+      </field>
+      <field>
+        <name>ID</name>
+        <rename>custom_3</rename>
+      </field>
+      <field>
+        <name>CONSTITUENT_ID</name>
+        <rename>custom_4</rename>
+      </field>
+      <field>
+        <name>ADDED_BY</name>
+        <rename>custom_7</rename>
+      </field>
+      <field>
+        <name>LAST_CHANGED_BY</name>
+        <rename>custom_8</rename>
+      </field>
+      <field>
+        <name>NO_VALID_ADDRESSES</name>
+        <rename>custom_9</rename>
+      </field>
+      <field>
+        <name>INACTIVE</name>
+        <rename>custom_10</rename>
+      </field>
+      <field>
+        <name>ANONYMOUS</name>
+        <rename>custom_11</rename>
+      </field>
+      <field>
+        <name>INCOME</name>
+        <rename>custom_12</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1613,8 +1792,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>688</yloc>
+      <xloc>592</xloc>
+      <yloc>1808</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1637,32 +1816,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1504</xloc>
-      <yloc>336</yloc>
+      <xloc>416</xloc>
+      <yloc>1744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1704,8 +1859,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
-      <yloc>544</yloc>
+      <xloc>2240</xloc>
+      <yloc>1680</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1747,8 +1902,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>608</yloc>
+      <xloc>2144</xloc>
+      <yloc>1744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1790,8 +1945,8 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>592</yloc>
+      <xloc>2016</xloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1824,14 +1979,14 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>704</yloc>
+      <xloc>400</xloc>
+      <yloc>1952</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Generate prefixes/suffixes in Civi</name>
-    <type>Mapping</type>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1840,51 +1995,20 @@ Anonymous</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>///home/jon/local/transforms/create_prefix_or_suffix.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step>Output unrecognized prefixes</input_step>
-          <output_step>Prefixes</output_step>
-          <main_path>N</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>prefix</parent>
-            <child>label</child>
-          </connector>
-        </mapping>
-        <mapping>
-          <input_step>Output unrecognized suffixes</input_step>
-          <output_step>Suffixes</output_step>
-          <main_path>N</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>suffix</parent>
-            <child>label</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step>Dummy (do nothing)</output_step>
-          <main_path>N</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>N</allow_multiple_output>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1893,8 +2017,366 @@ Anonymous</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>336</yloc>
+      <xloc>1035</xloc>
+      <yloc>1870</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1316</xloc>
+      <yloc>1875</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 3</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1616</xloc>
+      <yloc>1877</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1035</xloc>
+      <yloc>1710</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 2</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output2name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1316</xloc>
+      <yloc>1715</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 3</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output3name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1616</xloc>
+      <yloc>1717</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1131</xloc>
+      <yloc>1742</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output2entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output2name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1412</xloc>
+      <yloc>1747</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters 3</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output3entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output3name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1712</xloc>
+      <yloc>1749</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1917,17 +2399,16 @@ Anonymous</note>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>// If PRIMARY_SALUTATION_EDIT is -1, then this is a custom salutation
 var postal_greeting_id;
+var PRIMARY_SALUTATION_EDIT;
+
 if (PRIMARY_SALUTATION_EDIT == -1) {
   postal_greeting_id = 4;
 } else {
   // if it's NOT a custom salutation, kill the salutation, otherwise Civi will try to import
   // it as a custom greeting and get fucked up.
   var PRIMARY_SALUTATION = '';
-  // USCJ: Use the formal greeting if none is specified
-  postal_greeting_id = 6;
-}
-// USCJ: Remove custom addressee
-var PRIMARY_ADDRESSEE = '';</jsScript_script>
+  postal_greeting_id = null;
+}</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -1964,8 +2445,8 @@ var PRIMARY_ADDRESSEE = '';</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>752</yloc>
+      <xloc>96</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2034,8 +2515,170 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>960</yloc>
+      <xloc>96</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1131</xloc>
+      <yloc>1822</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1412</xloc>
+      <yloc>1827</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 3</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1712</xloc>
+      <yloc>1829</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>2224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step 3</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>2224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2211,8 +2854,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>1072</yloc>
+      <xloc>688</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2254,8 +2897,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>448</yloc>
+      <xloc>416</xloc>
+      <yloc>1680</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2323,8 +2966,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>288</yloc>
+      <xloc>672</xloc>
+      <yloc>1520</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2392,47 +3035,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Privacy = 2</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <calculation>
-      <field_name>privacy</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>2</field_a>
-      <field_b />
-      <field_c />
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>880</yloc>
+      <xloc>688</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2449,32 +3053,38 @@ if (postal_greeting_id == null) {
     </partitioning>
     <connection>Raiser's Edge</connection>
     <sql>SELECT
-TARGET
-, ID
-, CONSTITUENT_ID
-, BIRTH_DATE
-, NO_EMAIL
-, DECEASED_DATE
-, SUFFIX_1
-, SUFFIX_2
-, TITLE_1
-, TITLE_2
-, NICKNAME
-, SEX
-, DECEASED
-, ANONYMOUS
-, MATCH_NOTES
-, NO_VALID_ADDRESSES
-, INACTIVE
-, PRIMARY_SALUTATION
-, PRIMARY_ADDRESSEE
-, PRIMARY_SALUTATION_ID
-, PRIMARY_ADDRESSEE_ID
-, PRIMARY_SALUTATION_EDIT
-, PRIMARY_ADDRESSEE_EDIT
-, DATE_ADDED
-
-FROM RECORDS</sql>
+r.TARGET
+, r.ID
+, r.CONSTITUENT_ID
+, r.BIRTH_DATE
+, r.NO_EMAIL
+, r.DECEASED_DATE
+, r.SUFFIX_1
+, r.SUFFIX_2
+, r.TITLE_1
+, r.TITLE_2
+, r.NICKNAME
+, r.SEX
+, r.DECEASED
+, r.ANONYMOUS
+, r.MATCH_NOTES
+, r.NO_VALID_ADDRESSES
+, r.INACTIVE
+, r.PRIMARY_SALUTATION
+, r.PRIMARY_ADDRESSEE
+, r.PRIMARY_SALUTATION_ID
+, r.PRIMARY_ADDRESSEE_ID
+, r.PRIMARY_SALUTATION_EDIT
+, r.PRIMARY_ADDRESSEE_EDIT
+, r.DATE_ADDED
+, r.DATE_LAST_CHANGED
+, u1.NAME AS ADDED_BY
+, u2.NAME AS LAST_CHANGED_BY
+, t1.LONGDESCRIPTION AS INCOME
+FROM RECORDS r
+JOIN USERS u1 ON r.ADDED_BY = u1.USER_ID
+JOIN USERS u2 ON r.LAST_CHANGED_BY = u2.USER_ID
+LEFT JOIN TABLEENTRIES t1 ON t1.TABLEENTRIESID = r.INCOME</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -2488,8 +3098,8 @@ FROM RECORDS</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>16</yloc>
+      <xloc>96</xloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2532,8 +3142,8 @@ WHERE TITLE_2 IS NOT NULL OR SUFFIX_2 IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>1184</yloc>
+      <xloc>864</xloc>
+      <yloc>1424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2604,8 +3214,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>496</yloc>
+      <xloc>96</xloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2637,8 +3247,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>720</yloc>
+      <xloc>96</xloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2654,16 +3264,16 @@ if (DECEASED_DATE != null){
       <schema_name />
     </partitioning>
     <field_to_use>ANONYMOUS</field_to_use>
-    <target_field>anonymous_donor</target_field>
+    <target_field />
     <non_match_default />
     <fields>
       <field>
         <source_value>-1</source_value>
-        <target_value>anonymous_donor</target_value>
+        <target_value>1</target_value>
       </field>
       <field>
         <source_value>0</source_value>
-        <target_value />
+        <target_value>0</target_value>
       </field>
     </fields>
     <cluster_schema />
@@ -2674,8 +3284,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>896</yloc>
+      <xloc>96</xloc>
+      <yloc>1312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2715,8 +3325,119 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>832</yloc>
+      <xloc>96</xloc>
+      <yloc>1248</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap Inactive (flip)</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INACTIVE</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap No Valid Address (flip)</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>NO_VALID_ADDRESSES</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>1376</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap do_not_email</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>NO_EMAIL</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>0</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2748,8 +3469,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>272</yloc>
+      <xloc>96</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2840,8 +3561,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>368</yloc>
+      <xloc>128</xloc>
+      <yloc>1696</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2876,8 +3597,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>880</yloc>
+      <xloc>2128</xloc>
+      <yloc>2016</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2899,7 +3620,7 @@ if (DECEASED_DATE != null){
       </field>
       <field>
         <name>NO_EMAIL</name>
-        <rename>do_not_email</rename>
+        <rename>is_opt_out</rename>
       </field>
       <field>
         <name>DECEASED_DATE</name>
@@ -2923,21 +3644,31 @@ if (DECEASED_DATE != null){
       </field>
       <field>
         <name>contact_id</name>
+        <rename />
       </field>
       <field>
         <name>addressee_id</name>
+        <rename />
       </field>
       <field>
         <name>postal_greeting_id</name>
+        <rename />
       </field>
       <field>
         <name>gender</name>
+        <rename />
       </field>
       <field>
         <name>prefix_id</name>
+        <rename />
       </field>
       <field>
         <name>suffix_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -2983,8 +3714,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>608</yloc>
+      <xloc>160</xloc>
+      <yloc>1936</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3012,8 +3743,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>240</yloc>
+      <xloc>128</xloc>
+      <yloc>1568</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3041,8 +3772,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>304</yloc>
+      <xloc>128</xloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3089,8 +3820,165 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>416</yloc>
+      <xloc>96</xloc>
+      <yloc>912</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove greeting-related fields for now</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>birth_date</name>
+        <rename />
+      </field>
+      <field>
+        <name>is_opt_out</name>
+        <rename />
+      </field>
+      <field>
+        <name>deceased_date</name>
+        <rename />
+      </field>
+      <field>
+        <name>nick_name</name>
+        <rename />
+      </field>
+      <field>
+        <name>is_deceased</name>
+        <rename />
+      </field>
+      <field>
+        <name>contact_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>gender</name>
+        <rename />
+      </field>
+      <field>
+        <name>prefix_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>suffix_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2032</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1035</xloc>
+      <yloc>1790</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1316</xloc>
+      <yloc>1795</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 3</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1616</xloc>
+      <yloc>1797</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3124,8 +4012,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>784</yloc>
+      <xloc>400</xloc>
+      <yloc>2016</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3225,8 +4113,146 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>880</yloc>
+      <xloc>96</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1035</xloc>
+      <yloc>1950</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 2</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1316</xloc>
+      <yloc>1955</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP 3</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1616</xloc>
+      <yloc>1957</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3320,8 +4346,185 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>656</yloc>
+      <xloc>400</xloc>
+      <yloc>1888</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>additional_records_data</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>birth_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_opt_out</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>deceased_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>nick_name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_deceased</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>gender</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>prefix_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>suffix_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3833,419 +5036,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_additional_records_data</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/cli_additional_records_data</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>birth_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>do_not_email</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>deceased_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nick_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_deceased</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_greeting_custom</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>addressee_custom</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>addressee_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>postal_greeting_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>gender</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>prefix_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>suffix_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>848</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_match_notes</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/cli_match_notes</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>note</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>entity_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>subject</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>entity_table</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>privacy</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_re_contact_custom_fields</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/cli_re_contact_custom_fields</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>custom_195</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>entity_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>1024</yloc>
+      <xloc>576</xloc>
+      <yloc>1680</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4337,8 +5129,209 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>960</yloc>
+      <xloc>2144</xloc>
+      <yloc>2096</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>contact_custom_fields</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output3name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>entity_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>target_1</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_2</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_3</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_4</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_7</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_8</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_9</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_10</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_11</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_12</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>2160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4361,7 +5354,7 @@ if (PRIMARY_ADDRESSEE !== null){
         <currency />
         <decimal />
         <group />
-        <nullif>8</nullif>
+        <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4373,7 +5366,7 @@ if (PRIMARY_ADDRESSEE !== null){
         <currency />
         <decimal />
         <group />
-        <nullif>7</nullif>
+        <nullif>1</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4387,8 +5380,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>688</yloc>
+      <xloc>96</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4440,8 +5433,200 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>224</yloc>
+      <xloc>96</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1131</xloc>
+      <yloc>1902</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 2</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1412</xloc>
+      <yloc>1907</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity 3</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1712</xloc>
+      <yloc>1909</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4487,8 +5672,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>448</yloc>
+      <xloc>96</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4534,8 +5719,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>512</yloc>
+      <xloc>96</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4581,8 +5766,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>592</yloc>
+      <xloc>96</xloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4628,8 +5813,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>304</yloc>
+      <xloc>96</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4675,8 +5860,113 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>384</yloc>
+      <xloc>96</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>match_notes</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output2name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>note</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>entity_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>subject</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>entity_table</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>2160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4816,8 +6106,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>1264</yloc>
+      <xloc>880</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4863,8 +6153,45 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>768</yloc>
+      <xloc>2128</xloc>
+      <yloc>1904</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Do Not Mail from Mailing Code</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INCOME</field_to_use>
+    <target_field>do_not_mail</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>Do Not Mail</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>Remove from Mailing List</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>1808</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

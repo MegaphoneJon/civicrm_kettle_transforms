@@ -870,32 +870,32 @@ for phone on phone_numeric</note>
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get File Names 2</from>
       <to>SFTP when complete 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get File Names 3</from>
       <to>SFTP when complete 3</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
       <to>Import when complete</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters 2</from>
       <to>Import when complete 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters 3</from>
       <to>Import when complete 3</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Import when complete</from>
