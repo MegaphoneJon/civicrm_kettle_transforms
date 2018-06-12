@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>RE Packages</name>
+    <name>funds</name>
     <description />
     <extended_description />
     <trans_version />
@@ -9,6 +9,16 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>OptionValue</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>option_value_funds.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -436,28 +446,6 @@
   </info>
   <notepads>
     <notepad>
-      <note>Enabling the "CiviCRM Output" hops will create the corresponding values in CiviCRM.  
-Use with caution!</note>
-      <xloc>224</xloc>
-      <yloc>912</yloc>
-      <width>521</width>
-      <heigth>42</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>&lt;-- This is because we don't always bring over every RE contact.</note>
       <xloc>192</xloc>
       <yloc>96</yloc>
@@ -479,12 +467,14 @@ Use with caution!</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>This is smart enough to only bring over packages that are used either on gifts 
-or constituent appeals that are actually tied to contacts being brought over.</note>
-      <xloc>624</xloc>
+      <note>This is smart enough to only bring over funds that are used on gifts
+ that are actually tied to contacts being brought over.
+
+Also: This assumes fund is just an ordinary custom field in Civi.</note>
+      <xloc>768</xloc>
       <yloc>16</yloc>
-      <width>485</width>
-      <heigth>40</heigth>
+      <width>419</width>
+      <heigth>70</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -495,50 +485,6 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <backgroundcolorred>255</backgroundcolorred>
       <backgroundcolorgreen>205</backgroundcolorgreen>
       <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific</note>
-      <xloc>219</xloc>
-      <yloc>742</yloc>
-      <width>104</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>FIXME: This should be refactored to be basically identical to "Appeals",
-            but my current client doesn't use packages.  Switch to modern
-            import methodology - and grab IDs, not descriptions, up top.</note>
-      <xloc>659</xloc>
-      <yloc>180</yloc>
-      <width>442</width>
-      <heigth>55</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>0</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
       <bordercolorred>100</bordercolorred>
       <bordercolorgreen>100</bordercolorgreen>
       <bordercolorblue>100</bordercolorblue>
@@ -669,79 +615,104 @@ or constituent appeals that are actually tied to contacts being brought over.</n
   </connection>
   <order>
     <hop>
-      <from>RE: Packages in use</from>
+      <from>RE: Appeals in use</from>
       <to>Step 1 contacts only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Sort by FundId</from>
+      <to>Unique FundIds</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique FundIds</from>
+      <to>FundId only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized funds</from>
+      <to>lookup fund data in RE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>FundId only</from>
+      <to>Join the option_group_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get option_group_id of funds</from>
+      <to>Join the option_group_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join the option_group_id</from>
+      <to>lookup fund in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup fund in Civi</from>
+      <to>Filter unrecognized funds</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup fund data in RE</from>
+      <to>Order by sequence</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Order by sequence</from>
+      <to>Remap "Inactive" to "is_active"</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap "Inactive" to "is_active"</from>
+      <to>Import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import fields only</from>
+      <to>CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Step 1 contacts only</from>
-      <to>Fix punctuation in fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by package</from>
-      <to>Unique packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix punctuation in fields</from>
-      <to>Sort by package</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique packages</from>
-      <to>Packages only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>invalid_packages</from>
-      <to>Create packages</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Create packages</from>
-      <to>log_api_packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get option_group_id of Packages</from>
-      <to>Join the option_group_id of Packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Packages only</from>
-      <to>Join the option_group_id of Packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Join the option_group_id of Packages</from>
-      <to>lookup package in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup package in Civi</from>
-      <to>Filter out duplicate packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter out duplicate packages</from>
-      <to>lookup package data in RE</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup package data in RE</from>
-      <to>Make all is_active = 1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Make all is_active = 1</from>
-      <to>invalid_packages</to>
+      <to>Sort by FundId</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Create packages</name>
-    <type>CiviCrmOutput</type>
+    <name>FundId only</name>
+    <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -750,286 +721,13 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <method>none</method>
       <schema_name />
     </partitioning>
-    <ApiKey>${APIKEY}</ApiKey>
-    <SiteKey>${SITEKEY}</SiteKey>
-    <Entity>OptionValue</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>${RESTPATH}</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-    <entity-name>Acl</entity-name>
-    <entity-name>AclRole</entity-name>
-    <entity-name>ActionSchedule</entity-name>
-    <entity-name>Activity</entity-name>
-    <entity-name>ActivityContact</entity-name>
-    <entity-name>ActivityType</entity-name>
-    <entity-name>Address</entity-name>
-    <entity-name>Batch</entity-name>
-    <entity-name>Campaign</entity-name>
-    <entity-name>Case</entity-name>
-    <entity-name>CaseType</entity-name>
-    <entity-name>Constant</entity-name>
-    <entity-name>Contact</entity-name>
-    <entity-name>ContactType</entity-name>
-    <entity-name>Contribution</entity-name>
-    <entity-name>ContributionPage</entity-name>
-    <entity-name>ContributionRecur</entity-name>
-    <entity-name>ContributionSoft</entity-name>
-    <entity-name>Country</entity-name>
-    <entity-name>CustomField</entity-name>
-    <entity-name>CustomGroup</entity-name>
-    <entity-name>CustomSearch</entity-name>
-    <entity-name>CustomValue</entity-name>
-    <entity-name>Dashboard</entity-name>
-    <entity-name>DashboardContact</entity-name>
-    <entity-name>Domain</entity-name>
-    <entity-name>Email</entity-name>
-    <entity-name>Entity</entity-name>
-    <entity-name>EntityTag</entity-name>
-    <entity-name>Event</entity-name>
-    <entity-name>Extension</entity-name>
-    <entity-name>File</entity-name>
-    <entity-name>FinancialAccount</entity-name>
-    <entity-name>FinancialType</entity-name>
-    <entity-name>Grant</entity-name>
-    <entity-name>Group</entity-name>
-    <entity-name>GroupContact</entity-name>
-    <entity-name>GroupNesting</entity-name>
-    <entity-name>GroupOrganization</entity-name>
-    <entity-name>Im</entity-name>
-    <entity-name>Job</entity-name>
-    <entity-name>LineItem</entity-name>
-    <entity-name>LocBlock</entity-name>
-    <entity-name>Location</entity-name>
-    <entity-name>LocationType</entity-name>
-    <entity-name>MailSettings</entity-name>
-    <entity-name>Mailing</entity-name>
-    <entity-name>MailingComponent</entity-name>
-    <entity-name>MailingContact</entity-name>
-    <entity-name>MailingEventConfirm</entity-name>
-    <entity-name>MailingEventResubscribe</entity-name>
-    <entity-name>MailingEventSubscribe</entity-name>
-    <entity-name>MailingEventUnsubscribe</entity-name>
-    <entity-name>MailingGroup</entity-name>
-    <entity-name>MailingJob</entity-name>
-    <entity-name>MailingRecipients</entity-name>
-    <entity-name>Membership</entity-name>
-    <entity-name>MembershipBlock</entity-name>
-    <entity-name>MembershipPayment</entity-name>
-    <entity-name>MembershipStatus</entity-name>
-    <entity-name>MembershipType</entity-name>
-    <entity-name>MessageTemplate</entity-name>
-    <entity-name>Note</entity-name>
-    <entity-name>OptionGroup</entity-name>
-    <entity-name>OptionValue</entity-name>
-    <entity-name>Participant</entity-name>
-    <entity-name>ParticipantPayment</entity-name>
-    <entity-name>ParticipantStatusType</entity-name>
-    <entity-name>PaymentProcessor</entity-name>
-    <entity-name>PaymentProcessorType</entity-name>
-    <entity-name>Phone</entity-name>
-    <entity-name>Pledge</entity-name>
-    <entity-name>PledgePayment</entity-name>
-    <entity-name>Premium</entity-name>
-    <entity-name>PriceField</entity-name>
-    <entity-name>PriceFieldValue</entity-name>
-    <entity-name>PriceSet</entity-name>
-    <entity-name>PrintLabel</entity-name>
-    <entity-name>Product</entity-name>
-    <entity-name>Profile</entity-name>
-    <entity-name>Relationship</entity-name>
-    <entity-name>RelationshipType</entity-name>
-    <entity-name>ReportInstance</entity-name>
-    <entity-name>ReportTemplate</entity-name>
-    <entity-name>Setting</entity-name>
-    <entity-name>SmsProvider</entity-name>
-    <entity-name>Survey</entity-name>
-    <entity-name>SurveyRespondant</entity-name>
-    <entity-name>System</entity-name>
-    <entity-name>SystemLog</entity-name>
-    <entity-name>Tag</entity-name>
-    <entity-name>UFField</entity-name>
-    <entity-name>UFGroup</entity-name>
-    <entity-name>UFJoin</entity-name>
-    <entity-name>UFMatch</entity-name>
-    <entity-name>Website</entity-name>
-    <entity-name>WordReplacement</entity-name>
-    <action-name>create</action-name>
-    <action-name>delete</action-name>
-    <action-name>getfield</action-name>
-    <action-name>getlist</action-name>
-    <action-name>getrefcount</action-name>
-    <action-name>setvalue</action-name>
-    <action-name>validate</action-name>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>component_id</fieldName>
-      <name>component_id</name>
-      <title>Option Component</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_active</fieldName>
-      <name>is_active</name>
-      <title>Option Is Active</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>color</fieldName>
-      <name>color</name>
-      <title>Color</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>icon</fieldName>
-      <name>icon</name>
-      <title>Icon</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>weight</fieldName>
-      <name>weight</name>
-      <title>Order</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>description</fieldName>
-      <name>description</name>
-      <title>Option Description</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>label</fieldName>
-      <name>label</name>
-      <title>Option Label</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_default</fieldName>
-      <name>is_default</name>
-      <title>Option is Default?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>grouping</fieldName>
-      <name>grouping</name>
-      <title>Option Grouping Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>filter</fieldName>
-      <name>filter</name>
-      <title>Filter</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_reserved</fieldName>
-      <name>is_reserved</name>
-      <title>Option Is Reserved?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
-      <fieldName>domain_id</fieldName>
-      <name>domain_id</name>
-      <title>Option Domain</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
-      <fieldName>option_group_id</fieldName>
-      <name>option_group_id</name>
-      <title>Option Group ID</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>name</fieldName>
-      <name>name</name>
-      <title>Option Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>id</fieldName>
-      <name>id</name>
-      <title>Option Value ID</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>visibility_id</fieldName>
-      <name>visibility_id</name>
-      <title>Option Visibility</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>value</fieldName>
-      <name>value</name>
-      <title>Option Value</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_optgroup</fieldName>
-      <name>is_optgroup</name>
-      <title>Option is Header?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <key-index>package</key-index>
-    <key-index>option_group_id</key-index>
-    <key-index>option_value</key-index>
-    <key-index>is_active</key-index>
-    <key-index>DATEADDED</key-index>
-    <output-field>
-      <input-field>option_value</input-field>
-      <output-field>option_value</output-field>
-    </output-field>
-    <output-field>
-      <input-field>package</input-field>
-      <output-field>label</output-field>
-    </output-field>
-    <output-field>
-      <input-field>is_active</input-field>
-      <output-field>is_active</output-field>
-    </output-field>
-    <output-field>
-      <input-field>DATEADDED</input-field>
-      <output-field>DATEADDED</output-field>
-    </output-field>
-    <output-field>
-      <input-field>option_group_id</input-field>
-      <output-field>option_group_id</output-field>
-    </output-field>
+    <fields>
+      <field>
+        <name>FundId</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1039,12 +737,12 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>960</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter out duplicate packages</name>
+    <name>Filter unrecognized funds</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1066,6 +764,13 @@ or constituent appeals that are actually tied to contacts being brought over.</n
             <function>IS NULL</function>
             <rightvalue />
           </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>FundId</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
         </conditions>
       </condition>
     </compare>
@@ -1078,71 +783,12 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>544</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fix punctuation in fields</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>package</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>&amp;</replace_string>
-        <replace_by_string>and</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>package</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>'</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>package</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>"</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get option_group_id of Packages</name>
+    <name>Get option_group_id of funds</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1153,7 +799,7 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as option_group_id FROM civicrm_option_group cog WHERE cog.title = "Package" LIMIT 1;</sql>
+    <sql>SELECT cog.id as option_group_id FROM civicrm_option_group cog WHERE cog.title = "Fund";</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1167,13 +813,13 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>320</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Join the option_group_id of Packages</name>
+    <name>Join the option_group_id</name>
     <type>JoinRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1204,79 +850,12 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>400</yloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Make all is_active = 1</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>is_active</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>-1</source_value>
-        <target_value>1</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>736</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Packages only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>package</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: Packages in use</name>
+    <name>RE: Appeals in use</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1287,25 +866,16 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>/* We only bring in appeals that exist on a gift or a constituent appeal. */
+    <sql>/* We only bring in funds that exist on a gift. */
 SELECT
 g.CONSTIT_ID
-, PACKAGE.DESCRIPTION as package
+, FundId
 , r.CONSTITUENT_ID
 FROM GiftSplit gs
-LEFT JOIN PACKAGE on gs.PackageId = PACKAGE.id 
+LEFT JOIN FUND on gs.FundId = FUND.id 
 LEFT JOIN GIFT g on gs.GiftId = g.ID
 LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
-WHERE PACKAGE.DESCRIPTION IS NOT NULL
-UNION
-SELECT
-ca.CONSTIT_ID
-, PACKAGE.DESCRIPTION as package
-, r.CONSTITUENT_ID
-FROM CONSTITUENT_APPEALS ca
-LEFT JOIN PACKAGE on ca.PackageId = PACKAGE.id
-JOIN RECORDS r ON ca.CONSTIT_ID = r.ID
-WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
+WHERE FUND.DESCRIPTION IS NOT NULL</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1356,13 +926,13 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>720</yloc>
+      <xloc>144</xloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort by package</name>
+    <name>Sort by FundId</name>
     <type>SortRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1381,7 +951,7 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>package</name>
+        <name>FundId</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -1459,7 +1029,7 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </GUI>
   </step>
   <step>
-    <name>Unique packages</name>
+    <name>Unique FundIds</name>
     <type>Unique</type>
     <description />
     <distribute>Y</distribute>
@@ -1475,7 +1045,7 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     <error_description />
     <fields>
       <field>
-        <name>package</name>
+        <name>FundId</name>
         <case_insensitive>N</case_insensitive>
       </field>
     </fields>
@@ -1493,253 +1063,7 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </GUI>
   </step>
   <step>
-    <name>invalid_packages</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/errors/invalid_packages</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>package</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_group_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_value</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DATEADDED</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>880</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>log_api_packages</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/importlogs/log_api_packages.txt</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>package</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_group_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_value</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DATEADDED</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Result</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>1056</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>lookup package data in RE</name>
+    <name>lookup fund data in RE</name>
     <type>DBLookup</type>
     <description />
     <distribute>N</distribute>
@@ -1755,13 +1079,13 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     <cache_size>0</cache_size>
     <lookup>
       <schema />
-      <table>APPEAL</table>
+      <table>FUND</table>
       <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>package</name>
-        <field>DESCRIPTION</field>
+        <name>FundId</name>
+        <field>ID</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1772,10 +1096,16 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
         <type>Integer</type>
       </value>
       <value>
-        <name>DATEADDED</name>
-        <rename>DATEADDED</rename>
+        <name>SEQUENCE</name>
+        <rename>SEQUENCE</rename>
         <default />
-        <type>None</type>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>DESCRIPTION</name>
+        <rename>label</rename>
+        <default />
+        <type>String</type>
       </value>
     </lookup>
     <cluster_schema />
@@ -1787,12 +1117,12 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>624</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>lookup package in Civi</name>
+    <name>lookup fund in Civi</name>
     <type>DBLookup</type>
     <description />
     <distribute>N</distribute>
@@ -1813,8 +1143,8 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>package</name>
-        <field>label</field>
+        <name>FundId</name>
+        <field>value</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1840,7 +1170,522 @@ WHERE PACKAGE.DESCRIPTION IS NOT NULL</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>464</yloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>742</xloc>
+      <yloc>721</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>742</xloc>
+      <yloc>561</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>838</xloc>
+      <yloc>593</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>838</xloc>
+      <yloc>673</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>1024</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>742</xloc>
+      <yloc>641</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>742</xloc>
+      <yloc>801</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV Output</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>value</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>option_group_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>label</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>838</xloc>
+      <yloc>753</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Order by sequence</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>SEQUENCE</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>FundId</name>
+        <rename>value</rename>
+      </field>
+      <field>
+        <name>option_group_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>is_active</name>
+        <rename />
+      </field>
+      <field>
+        <name>label</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
