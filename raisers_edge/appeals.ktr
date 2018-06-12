@@ -492,11 +492,13 @@ e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</n
     </notepad>
     <notepad>
       <note>This is smart enough to only bring over appeals that are used either on gifts 
-or constituent appeals that are actually tied to contacts being brought over.</note>
-      <xloc>624</xloc>
+or constituent appeals that are actually tied to contacts being brought over.
+
+Also: This assumes appeal is just an ordinary custom field in Civi.</note>
+      <xloc>768</xloc>
       <yloc>16</yloc>
       <width>474</width>
-      <heigth>40</heigth>
+      <heigth>70</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -642,18 +644,8 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Step 1 contacts only</from>
-      <to>Fix punctuation in fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort by Appeal</from>
       <to>Unique appeals</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix punctuation in fields</from>
-      <to>Sort by Appeal</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -694,12 +686,12 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
       <to>Import when complete 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Import when complete 2</from>
@@ -734,6 +726,11 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     <hop>
       <from>Import fields only</from>
       <to>CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Step 1 contacts only</from>
+      <to>Sort by Appeal</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -867,8 +864,8 @@ or constituent appeals that are actually tied to contacts being brought over.</n
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
+      <xloc>304</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -954,7 +951,7 @@ or constituent appeals that are actually tied to contacts being brought over.</n
     <sql>/* We only bring in appeals that exist on a gift or a constituent appeal. */
 SELECT
 g.CONSTIT_ID
-, APPEAL.DESCRIPTION as appeal
+, AppealId as appeal
 , r.CONSTITUENT_ID
 FROM GiftSplit gs
 LEFT JOIN Appeal on gs.AppealId = APPEAL.id 
@@ -964,7 +961,7 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL
 UNION
 SELECT
 ca.CONSTIT_ID
-, APPEAL.DESCRIPTION as appeal
+, ca.APPEAL_ID as appeal
 , r.CONSTITUENT_ID
 FROM CONSTITUENT_APPEALS ca
 LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id
@@ -1179,7 +1176,7 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>appeal</name>
-        <field>DESCRIPTION</field>
+        <field>ID</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1196,10 +1193,10 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
         <type>Integer</type>
       </value>
       <value>
-        <name>id</name>
-        <rename>value</rename>
+        <name>DESCRIPTION</name>
+        <rename>label</rename>
         <default />
-        <type>Integer</type>
+        <type>String</type>
       </value>
     </lookup>
     <cluster_schema />
@@ -1238,7 +1235,7 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
         <name>appeal</name>
-        <field>label</field>
+        <field>value</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1574,12 +1571,12 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
     </file>
     <fields>
       <field>
-        <name>label</name>
-        <type>String</type>
-        <format />
+        <name>value</name>
+        <type>Integer</type>
+        <format>0</format>
         <currency />
-        <decimal />
-        <group />
+        <decimal>.</decimal>
+        <group>,</group>
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1610,12 +1607,12 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>value</name>
-        <type>Integer</type>
-        <format>0</format>
+        <name>label</name>
+        <type>String</type>
+        <format />
         <currency />
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal />
+        <group />
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -1754,7 +1751,7 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
     <fields>
       <field>
         <name>appeal</name>
-        <rename>label</rename>
+        <rename>value</rename>
       </field>
       <field>
         <name>option_group_id</name>
@@ -1765,7 +1762,7 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
         <rename />
       </field>
       <field>
-        <name>value</name>
+        <name>label</name>
         <rename />
       </field>
       <select_unspecified>N</select_unspecified>
