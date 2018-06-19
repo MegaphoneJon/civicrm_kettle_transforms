@@ -5145,7 +5145,7 @@ if (type == 'Stock' || type == 'Gift-in-Kind') {
         <valuefield />
       </field>
       <field>
-        <aggregate>line_item_amounts</aggregate>
+        <aggregate>line_item_line_total</aggregate>
         <subject>total_amount</subject>
         <type>CONCAT_COMMA</type>
         <valuefield />
@@ -5276,11 +5276,36 @@ if (type == 'Stock' || type == 'Gift-in-Kind') {
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>var data = [];
 var params = {};
+// This is ignored on non-order APIs.
+var lineItems = [];
+
+// Loop through the columns for this row.
 for (var i=0;i&lt;getInputRowMeta().size();i++) {
+  // Get the metadata for this column.
   var valueMeta = getInputRowMeta().getValueMeta(i);
+  // Get the name of this column.
   var fieldName = valueMeta.getName();
+  // Get the value of this column in this row.
   var fieldValue = valueMeta.getString(row[i]);
-  if(fieldValue) {
+  // If this is a line_item param, add it to the line items array.
+  if (fieldName.indexOf("line_item_") === 0) {
+    splitValues = String(fieldValue).split(", ");
+    lineItemCount = splitValues.length;
+    for (var j = 0; j &lt; lineItemCount; j++) {
+//      lineItems.push(
+      var lineItem = {};
+      lineItem.line_item = {};
+      lineItem.line_item[j] = {};
+      lineItems.push(lineItem);
+    }
+    innerFieldName = String(fieldName).slice(10);
+    params[innerFieldName] = splitValues;
+    params.temp = lineItemCount;
+    params.line_items = lineItems;
+    
+  }
+  // Otherwise, just add to params (unless it's blank).
+  else if (fieldValue) {
     params[fieldName] = String(fieldValue); //valueMeta.getString(row[i]);
   }
 }
