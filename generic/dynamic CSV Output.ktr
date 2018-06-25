@@ -457,16 +457,33 @@ Set the filename in the "outputname" parameter of the parent's mapping step.</no
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>The blocking step resolves a deadlock.  See:
+https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
+      <xloc>544</xloc>
+      <yloc>240</yloc>
+      <width>395</width>
+      <heigth>40</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
       <from>Mapping input specification</from>
       <to>Metadata structure of stream</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mapping input specification</from>
-      <to>ETL Metadata Injection</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -476,6 +493,16 @@ Set the filename in the "outputname" parameter of the parent's mapping step.</no
     </hop>
     <hop>
       <from>Metadata structure of stream</from>
+      <to>ETL Metadata Injection</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mapping input specification</from>
+      <to>Blocking Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Blocking Step</from>
       <to>ETL Metadata Injection</to>
       <enabled>Y</enabled>
     </hop>
@@ -500,7 +527,7 @@ Set the filename in the "outputname" parameter of the parent's mapping step.</no
     <source_output_fields>    </source_output_fields>
     <target_file />
     <no_execution>N</no_execution>
-    <stream_source_step>Mapping input specification</stream_source_step>
+    <stream_source_step>Blocking Step</stream_source_step>
     <stream_target_step>Input stream</stream_target_step>
     <mappings>
       <mapping>
@@ -528,32 +555,6 @@ Set the filename in the "outputname" parameter of the parent's mapping step.</no
     <GUI>
       <xloc>336</xloc>
       <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Metadata structure of stream</name>
-    <type>StepMetastructure</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <outputRowcount>N</outputRowcount>
-    <rowcountField />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -605,6 +606,61 @@ Set the filename in the "outputname" parameter of the parent's mapping step.</no
     <GUI>
       <xloc>336</xloc>
       <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Metadata structure of stream</name>
+    <type>StepMetastructure</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <outputRowcount>N</outputRowcount>
+    <rowcountField />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Blocking Step</name>
+    <type>BlockingStep</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <pass_all_rows>Y</pass_all_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>block</prefix>
+    <cache_size>5000</cache_size>
+    <compress>Y</compress>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
