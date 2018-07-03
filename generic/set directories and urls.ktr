@@ -1,0 +1,2056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>set directories and urls</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2018/06/29 01:05:24.837</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2018/06/29 01:05:24.837</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>Set directories and URLs per my standard convention.</note>
+      <xloc>667</xloc>
+      <yloc>50</yloc>
+      <width>338</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <order>
+    <hop>
+      <from>Settings</from>
+      <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CMSTYPE</from>
+      <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join</from>
+      <to>Remove CMS and CMSTYPE</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove CMS and CMSTYPE</from>
+      <to>CiviCrm Output</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>CiviCrm Output</name>
+    <type>CiviCrmOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <ApiKey>${APIKEY}</ApiKey>
+    <SiteKey>${SITEKEY}</SiteKey>
+    <Entity>Setting</Entity>
+    <EntityAction>create</EntityAction>
+    <RestUrl>${RESTPATH}</RestUrl>
+    <ResultField>result</ResultField>
+    <DebugMode>N</DebugMode>
+    <action-name>create</action-name>
+    <action-name>fill</action-name>
+    <action-name>getdefaults</action-name>
+    <action-name>getlist</action-name>
+    <action-name>revert</action-name>
+    <action-name>setvalue</action-name>
+    <action-name>validate</action-name>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":4,"maxlength":8},"group_name":"Mailing Preferences","is_domain":1,"description":"The time to sleep in between each e-mail in micro seconds. Setting this above 0 allows you to control the rate at which e-mail messages are sent to the mail server, avoiding filling up the mail queue very quickly. Set to 0 to disable.","type":"Integer","title":"Mailer Throttle Time","is_contact":0,"default":0,"html_type":"text","name":"mailThrottleTime","quick_form_type":"Element","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>mailThrottleTime</fieldName>
+      <name>mailThrottleTime</name>
+      <title>Mailer Throttle Time</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Contact_BAO_GroupContactCache::getModes"},"description":"Should the smart groups be by cron jobs or user actions","type":"String","title":"Smart Group Refresh Mode","is_contact":0,"default":"opportunistic","html_type":"radio","name":"smart_group_cache_refresh_mode","group":"core","help_text":"In \"Opportunistic Flush\" mode, caches are flushed in response to user actions; this mode is broadly compatible but may add latency during form-submissions. In \"Cron Flush\" mode, you should schedule a cron job to flush caches; this can improve latency on form-submissions but requires more setup."}</fieldDef>
+      <fieldName>smart_group_cache_refresh_mode</fieldName>
+      <name>smart_group_cache_refresh_mode</name>
+      <title>Smart Group Refresh Mode</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":0,"group_name":"Search Preferences","is_domain":1,"name":"includeNickNameInName","description":"If enabled, nicknames are automatically included when users search by Name.","type":"Boolean","title":"Include Nickname","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>includeNickNameInName</fieldName>
+      <name>includeNickNameInName</name>
+      <title>Include Nickname</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":64},"group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"String","title":"Recaptcha Site Key","is_contact":0,"default":null,"html_type":"Text","name":"recaptchaPublicKey","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>recaptchaPublicKey</fieldName>
+      <name>recaptchaPublicKey</name>
+      <title>Recaptcha Site Key</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":"1","group_name":"Mailing Preferences","is_domain":1,"name":"write_activity_record","description":null,"type":"Boolean","title":"Enable CiviMail to create activities on delivery","quick_form_type":"YesNo","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>write_activity_record</fieldName>
+      <name>write_activity_record</name>
+      <title>Enable CiviMail to create activities on delivery</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","html_attributes":{"class":"crm-select2"},"group_name":"Search Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Search::getAvailableProfiles"},"description":"If set, this will be the default profile used for contact search.","type":"Integer","title":"Default Contact Search Profile","is_contact":0,"default":null,"html_type":"Select","name":"defaultSearchProfileID","quick_form_type":"Select","group":"Search Preferences","help_text":null}</fieldDef>
+      <fieldName>defaultSearchProfileID</fieldName>
+      <name>defaultSearchProfileID</name>
+      <title>Default Contact Search Profile</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","group_name":"CiviCRM Preferences","is_domain":1,"description":"CiviCRM will use this setting as path to bootstrap WP.","type":"String","title":"WordPress Path to wp-load.php","is_contact":0,"default":"","html_type":"text","name":"wpLoadPhp","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>wpLoadPhp</fieldName>
+      <name>wpLoadPhp</name>
+      <title>WordPress Path to wp-load.php</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":"0","group_name":"Developer Preferences","is_domain":1,"name":"backtrace","description":"Set this value to Yes if you want to display a backtrace listing when a fatal error is encountered. This feature should NOT be enabled for production sites","type":"Boolean","title":"Display Backtrace","quick_form_type":"YesNo","group":"developer","is_contact":0}</fieldDef>
+      <fieldName>backtrace</fieldName>
+      <name>backtrace</name>
+      <title>Display Backtrace</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"class":"crm-select2"},"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Contact_Form_Task_PDFLetterCommon::getLoggingOptions"},"description":"When generating a letter (PDF\/Word) via mail-merge, how should the letter be recorded?","type":"String","title":"Record generated letters","is_contact":0,"default":"multiple","html_type":"Select","name":"recordGeneratedLetters","quick_form_type":"Select","group":"core","help_text":null}</fieldDef>
+      <fieldName>recordGeneratedLetters</fieldName>
+      <name>recordGeneratedLetters</name>
+      <title>Record generated letters</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"2","maxlength":"8"},"is_domain":1,"group_name":"Localization Preferences","description":"Global CSV separator character. Modify this setting to enable import and export of different kinds of CSV files (for example: ',' ';' ':' '|' ).","type":"String","title":"Import \/ Export Field Separator","is_contact":0,"default":",","html_type":"text","name":"fieldSeparator","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>fieldSeparator</fieldName>
+      <name>fieldSeparator</name>
+      <title>Import / Export Field Separator</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":null,"type":"String","title":"Temporary Files Directory","is_contact":0,"default":null,"html_type":"Text","name":"uploadDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":"File system path where temporary CiviCRM files - such as import data files - are uploaded."}</fieldDef>
+      <fieldName>uploadDir</fieldName>
+      <name>uploadDir</name>
+      <title>Temporary Files Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"class":"crm-select2"},"on_change":["CRM_Admin_Form_Setting_Localization::onChangeDefaultCurrency"],"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getCurrencySymbols"},"description":"Default currency assigned to contributions and other monetary transactions.","type":"String","title":"Default Currency","is_contact":0,"default":"USD","html_type":"Select","name":"defaultCurrency","quick_form_type":"Select","group":"localization","help_text":null}</fieldDef>
+      <fieldName>defaultCurrency</fieldName>
+      <name>defaultCurrency</name>
+      <title>Default Currency</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":4,"maxlength":32},"group_name":"Mailing Preferences","is_domain":1,"description":"Separator character used when CiviMail generates VERP (variable envelope return path) Mail-From addresses.","type":"String","title":"VERP Separator","is_contact":0,"default":".","html_type":"text","name":"verpSeparator","quick_form_type":"Element","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>verpSeparator</fieldName>
+      <name>verpSeparator</name>
+      <title>VERP Separator</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Localization Preferences","is_domain":1,"description":"","type":"String","title":"Date Format: Complete Date","is_contact":0,"default":"%B %E%f, %Y","html_type":"text","name":"dateformatFull","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>dateformatFull</fieldName>
+      <name>dateformatFull</name>
+      <title>Date Format: Complete Date</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":[],"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Case_Info::getMultiClientOptions"},"description":"How many clients may be associated with a given case? (Set \"Default\" to load setting from the legacy \"Settings.xml\" file.)","type":"String","title":"Allow Multiple Case Clients","is_contact":0,"default":"default","html_type":"Select","name":"civicaseAllowMultipleClients","quick_form_type":"Select","group":"core","help_text":""}</fieldDef>
+      <fieldName>civicaseAllowMultipleClients</fieldName>
+      <name>civicaseAllowMultipleClients</name>
+      <title>Allow Multiple Case Clients</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","html_attributes":{"size":5,"style":"width:150px","class":"advmultiselect"},"on_change":["CRM_Case_Info::onToggleComponents","CRM_Core_Component::flushEnabledComponents","call:\/\/resources\/resetCacheCode"],"group_name":"CiviCRM Preferences","is_domain":"1","description":null,"type":"Array","title":"Enable Components","is_contact":0,"default":null,"html_type":"advmultiselect","name":"enable_components","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>enable_components</fieldName>
+      <name>enable_components</name>
+      <title>Enable Components</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Multi Site Preferences","is_domain":1,"name":"domain_group_id","description":null,"title":"Multisite Domain Group","type":"Integer","group":"multisite","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>domain_group_id</fieldName>
+      <name>domain_group_id</name>
+      <title>Multisite Domain Group</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Localization Preferences","is_domain":1,"description":null,"type":"String","title":"Monetary Amount Display","is_contact":0,"default":"%c %a","html_type":"text","name":"moneyformat","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>moneyformat</fieldName>
+      <name>moneyformat</name>
+      <title>Monetary Amount Display</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"multiple":1,"class":"crm-select2"},"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Core_I18n::languages"},"description":"","type":"Array","title":"Available Languages (Multi-lingual)","is_contact":0,"default":null,"html_type":"Select","name":"languageLimit","quick_form_type":"Select","group":"localization","help_text":null}</fieldDef>
+      <fieldName>languageLimit</fieldName>
+      <name>languageLimit</name>
+      <title>Available Languages (Multi-lingual)</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"profile_add_to_group_double_optin","description":"When CiviMail is enabled, users who \"subscribe\" to a group from a profile Group(s) checkbox will receive a confirmation email. They must respond (opt-in) before they are added to the group.","type":"Integer","title":"Enable Double Opt-in for Profile Group(s) field","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>profile_add_to_group_double_optin</fieldName>
+      <name>profile_add_to_group_double_optin</name>
+      <title>Enable Double Opt-in for Profile Group(s) field</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"class":"crm-select2"},"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getDefaultLanguageOptions"},"description":"Default language (if any) for contact records","type":"String","title":"Default Language for contacts","is_contact":0,"default":"*default*","html_type":"Select","name":"contact_default_language","quick_form_type":"Select","group":"localization","help_text":"If a contact is created with no language this setting will determine the language data (if any) to save.You may or may not wish to make an assumption here about whether it matches the site language"}</fieldDef>
+      <fieldName>contact_default_language</fieldName>
+      <name>contact_default_language</name>
+      <title>Default Language for contacts</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"contact_undelete","description":"If enabled, deleted contacts will be moved to trash (instead of being destroyed). Users with the proper permission are able to search for the deleted contacts and restore them (or delete permanently).","type":"Boolean","title":"Contact Trash and Undelete","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>contact_undelete</fieldName>
+      <name>contact_undelete</name>
+      <title>Contact Trash and Undelete</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"class":"crm-select2"},"on_change":["CRM_Admin_Form_Setting_Localization::onChangeLcMessages"],"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getDefaultLocaleOptions"},"description":"","type":"String","title":"Default Language","is_contact":0,"default":"en_US","html_type":"Select","name":"lcMessages","quick_form_type":"Select","group":"localization","help_text":null}</fieldDef>
+      <fieldName>lcMessages</fieldName>
+      <name>lcMessages</name>
+      <title>Default Language</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"html_attributes":{"size":4,"maxlength":8},"group_name":"Mailing Preferences","is_domain":1,"description":"The number of emails sendable via simple mail. Make sure you understand the implications for your spam reputation and legal requirements for bulk emails before editing. As there is some risk both to your spam reputation and the products if this is misused it is a hidden setting","type":"Integer","title":"Simple mail limit","is_contact":0,"default":50,"html_type":"text","name":"simple_mail_limit","quick_form_type":"Element","group":"mailing","help_text":"CiviCRM forces users sending more than this number of mails to use CiviMails. CiviMails have additional precautions: not sending to contacts who do not want bulk mail, adding domain name and opt out links. You should familiarise yourself with the law relevant to you on bulk mailings if changing this setting. For the US https:\/\/en.wikipedia.org\/wiki\/CAN-SPAM_Act_of_2003 is a good place to start."}</fieldDef>
+      <fieldName>simple_mail_limit</fieldName>
+      <name>simple_mail_limit</name>
+      <title>Simple mail limit</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":"0","group_name":"Localization Preferences","is_domain":1,"name":"inheritLocale","description":"","type":"Boolean","title":"Inherit CMS Language","quick_form_type":"YesNo","group":"localization","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>inheritLocale</fieldName>
+      <name>inheritLocale</name>
+      <title>Inherit CMS Language</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":0,"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"hash_mailing_url","description":"If enabled, a randomized hash key will be used to reference the mailing URL in the mailing.viewUrl token, instead of the mailing ID","type":"Integer","title":"Hashed Mailing URL's","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>hash_mailing_url</fieldName>
+      <name>hash_mailing_url</name>
+      <title>Hashed Mailing URL's</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","html_attributes":[],"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getAvailableCountries"},"description":"This value is selected by default when adding a new contact address.","type":"String","title":"Default Country","is_contact":0,"default":"1228","html_type":"Select","name":"defaultContactCountry","quick_form_type":"Select","group":"localization","help_text":null}</fieldDef>
+      <fieldName>defaultContactCountry</fieldName>
+      <name>defaultContactCountry</name>
+      <title>Default Country</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"user_dashboard_options"},"description":null,"type":"String","title":"Contact Dashboard","is_contact":0,"default":"\u00011\u00012\u00013\u00014\u00015\u00017\u00018\u0001","html_type":"checkboxes","name":"user_dashboard_options","group":"core","help_text":null}</fieldDef>
+      <fieldName>user_dashboard_options</fieldName>
+      <name>user_dashboard_options</name>
+      <title>Contact Dashboard</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":"1","pseudoconstant":{"optionGroupName":"contact_view_options"},"description":null,"type":"String","title":"Viewing Contacts","is_contact":0,"default":"\u00011\u00012\u00013\u00014\u00015\u00016\u00017\u00018\u00019\u000110\u000111\u000113\u0001","html_type":"checkboxes","name":"contact_view_options","group":"core","help_text":null}</fieldDef>
+      <fieldName>contact_view_options</fieldName>
+      <name>contact_view_options</name>
+      <title>Viewing Contacts</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":[],"group_name":"Developer Preferences","is_domain":1,"pseudoconstant":{"callback":"\\Civi\\Core\\AssetBuilder::getCacheModes"},"description":"Store computed JS\/CSS content in cache files? (Note: In \"Auto\" mode, the \"Debug\" setting will determine whether to activate the cache.)","type":"String","title":"Asset Caching","is_contact":0,"default":"auto","html_type":"Select","name":"assetCache","quick_form_type":"Select","group":"developer","help_text":null}</fieldDef>
+      <fieldName>assetCache</fieldName>
+      <name>assetCache</name>
+      <title>Asset Caching</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"default":1,"group_name":"Mailing Preferences","is_domain":1,"name":"allow_mail_from_logged_in_contact","description":"Allow sending email from the logged in contact's email address","type":"Boolean","title":"Allow mail from logged in contact","quick_form_type":"YesNo","group":"mailing","is_contact":0,"help_text":"CiviCRM allows you to send email from the domain from email addresses and the logged in contact id addresses by default. Disable this if you only want to allow the domain from addresses to be used."}</fieldDef>
+      <fieldName>allow_mail_from_logged_in_contact</fieldName>
+      <name>allow_mail_from_logged_in_contact</name>
+      <title>Allow mail from logged in contact</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Search::getContactAutocompleteOptions"},"description":"Selected fields will be displayed in back-office autocomplete dropdown search results (Quick Search, etc.). Contact Name is always included.","type":"String","title":"Autocomplete Contact Search","is_contact":0,"default":"\u00011\u00012\u0001","name":"contact_autocomplete_options","quick_form_type":"CheckBox","group":"core","help_text":null}</fieldDef>
+      <fieldName>contact_autocomplete_options</fieldName>
+      <name>contact_autocomplete_options</name>
+      <title>Autocomplete Contact Search</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":256},"group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"String","title":"Path to wkhtmltopdf executable","is_contact":0,"default":null,"html_type":"Text","name":"wkhtmltopdfPath","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>wkhtmltopdfPath</fieldName>
+      <name>wkhtmltopdfPath</name>
+      <title>Path to wkhtmltopdf executable</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"32","maxlength":"64"},"is_domain":1,"group_name":"Map Preferences","description":"Enter the API key or Application ID associated with your geocoding provider (not required for Yahoo).","type":"String","title":"Geo Provider Key","is_contact":0,"default":null,"html_type":"text","name":"geoAPIKey","quick_form_type":"Element","help_text":null,"group":"map"}</fieldDef>
+      <fieldName>geoAPIKey</fieldName>
+      <name>geoAPIKey</name>
+      <title>Geo Provider Key</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"syncCMSEmail","description":"If enabled, then CMS email id will be syncronised with CiviCRM contacts's primary email.","type":"Boolean","title":"Sync CMS Email","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>syncCMSEmail</fieldName>
+      <name>syncCMSEmail</name>
+      <title>Sync CMS Email</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"String","title":"Unique Site ID","is_contact":0,"default":"","html_type":"text","name":"site_id","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>site_id</fieldName>
+      <name>site_id</name>
+      <title>Unique Site ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"Localization Preferences","pseudoconstant":{"callback":"CRM_Core_SelectValues::getDatePluginInputFormats"},"description":"","type":"String","title":"Date Input Format","is_contact":0,"default":"mm\/dd\/yy","html_type":"Select","name":"dateInputFormat","quick_form_type":"Select","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>dateInputFormat</fieldName>
+      <name>dateInputFormat</name>
+      <title>Date Input Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":0,"group_name":"Mailing Preferences","is_domain":1,"name":"replyTo","description":"Allow CiviMail users to send mailings with a custom Reply-To header","type":"Boolean","title":"Enable Custom Reply-To","quick_form_type":"YesNo","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>replyTo</fieldName>
+      <name>replyTo</name>
+      <title>Enable Custom Reply-To</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":64},"group_name":"CiviCRM Preferences","is_domain":1,"description":"You can specify the reCAPTCHA theme options as comma separated data.(eg: theme:'blackglass', lang : 'fr' ). Check the available options at &lt;a href=\"https:\/\/developers.google.com\/recaptcha\/docs\/display#config\">Customizing the Look and Feel of reCAPTCHA&lt;\/a>.","type":"String","title":"Recaptcha Options","is_contact":0,"default":null,"html_type":"Text","name":"recaptchaOptions","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>recaptchaOptions</fieldName>
+      <name>recaptchaOptions</name>
+      <title>Recaptcha Options</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"verifySSL","description":"If disabled, outbound web-service requests will allow unverified, insecure HTTPS connections","type":"Boolean","title":"Verify SSL?","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":"Unless you are absolutely unable to configure your server to check the SSL certificate of the remote server you should leave this set to Yes"}</fieldDef>
+      <fieldName>verifySSL</fieldName>
+      <name>verifySSL</name>
+      <title>Verify SSL?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","on_change":["CRM_Logging_Schema::onToggle"],"is_domain":1,"group_name":"CiviCRM Preferences","description":"If enabled, all actions will be logged with a complete record of changes.","type":"Boolean","title":"Logging","is_contact":0,"default":"0","html_type":"","name":"logging","validate_callback":"CRM_Logging_Schema::checkLoggingSupport","quick_form_type":"YesNo","help_text":null,"group":"core"}</fieldDef>
+      <fieldName>logging</fieldName>
+      <name>logging</name>
+      <title>Logging</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":"1","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"radio","name":"contact_smart_group_display","description":null,"type":"String","title":"Viewing Smart Groups","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>contact_smart_group_display</fieldName>
+      <name>contact_smart_group_display</name>
+      <title>Viewing Smart Groups</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Search::getContactReferenceOptions"},"description":"Selected fields will be displayed in autocomplete dropdown search results for 'Contact Reference' custom fields. Contact Name is always included. NOTE: You must assign 'access contact reference fields' permission to the anonymous role if you want to use custom contact reference fields in profiles on public pages. For most situations, you should use the 'Limit List to Group' setting when configuring a contact reference field which will be used in public forms to prevent exposing your entire contact list.","type":"String","title":"Contact Reference Options","is_contact":0,"default":"\u00011\u00012\u0001","name":"contact_reference_options","quick_form_type":"CheckBox","group":"core","help_text":null}</fieldDef>
+      <fieldName>contact_reference_options</fieldName>
+      <name>contact_reference_options</name>
+      <title>Contact Reference Options</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2,"maxlength":2},"group_name":"Search Preferences","is_domain":1,"description":"The maximum number of contacts to show at a time when typing in an autocomplete field.","type":"Integer","title":"Autocomplete Results","is_contact":0,"default":10,"html_type":"text","name":"search_autocomplete_count","quick_form_type":"Element","group":"Search Preferences","help_text":null}</fieldDef>
+      <fieldName>search_autocomplete_count</fieldName>
+      <name>search_autocomplete_count</name>
+      <title>Autocomplete Results</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":"Path where site specific templates are stored if any. This directory is searched first if set. Custom JavaScript code can be added to templates by creating files named templateFile.extra.tpl. (learn more...)","type":"String","title":"Custom Template Directory","is_contact":0,"default":null,"html_type":"Text","name":"customTemplateDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":null}</fieldDef>
+      <fieldName>customTemplateDir</fieldName>
+      <name>customTemplateDir</name>
+      <title>Custom Template Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":"Path where documents and images which are attachments to contact records are stored (e.g. contact photos, resumes, contracts, etc.). These attachments are defined using 'file' type custom fields.","type":"String","title":"Custom Files Directory","is_contact":0,"default":null,"html_type":"Text","name":"customFileUploadDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":null}</fieldDef>
+      <fieldName>customFileUploadDir</fieldName>
+      <name>customFileUploadDir</name>
+      <title>Custom Files Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2},"group_name":"Localization Preferences","is_domain":1,"description":null,"type":"String","title":"Thousands Separator","is_contact":0,"default":",","html_type":"text","name":"monetaryThousandSeparator","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>monetaryThousandSeparator</fieldName>
+      <name>monetaryThousandSeparator</name>
+      <title>Thousands Separator</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Member Preferences","is_domain":1,"pseudoconstant":{"name":"contributionPage"},"description":"If you select a default online contribution page for self-service membership renewals, a \"renew\" link pointing to that page will be displayed on the Contact Dashboard for memberships which were entered offline. You will need to ensure that the membership block for the selected online contribution page includes any currently available memberships.","type":"Integer","title":"Default online membership renewal page","is_contact":0,"default":null,"html_type":"Select","name":"default_renewal_contribution_page","group":"member","help_text":null}</fieldDef>
+      <fieldName>default_renewal_contribution_page</fieldName>
+      <name>default_renewal_contribution_page</name>
+      <title>Default online membership renewal page</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":128},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Service providing CiviCRM community messages","type":"String","title":"Community Messages URL","is_contact":0,"default":"*default*","html_type":"Text","name":"communityMessagesUrl","quick_form_type":"Element","group":"core","help_text":"Use \"*default*\" for the system default or override with a custom URL"}</fieldDef>
+      <fieldName>communityMessagesUrl</fieldName>
+      <name>communityMessagesUrl</name>
+      <title>Community Messages URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"CiviCRM Preferences","description":"Do some tables pre-date CRM-18193?","type":"Boolean","title":"All tables use Unique Connection ID","is_contact":0,"default":0,"html_type":"","name":"logging_all_tables_uniquid","quick_form_type":"YesNo","help_text":"This indicates there are no tables holdng pre-uniqid log_conn_id values (CRM-18193)","group":"core"}</fieldDef>
+      <fieldName>logging_all_tables_uniquid</fieldName>
+      <name>logging_all_tables_uniquid</name>
+      <title>All tables use Unique Connection ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Localization Preferences","is_domain":1,"description":"","type":"String","title":"Date Format: Month and Year","is_contact":0,"default":"%B %Y","html_type":"text","name":"dateformatPartial","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>dateformatPartial</fieldName>
+      <name>dateformatPartial</name>
+      <title>Date Format: Month and Year</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"civimail_workflow","description":"When CiviMail is enabled, users who \"subscribe\" to a group from a profile Group(s) checkbox will receive a confirmation email. They must respond (opt-in) before they are added to the group.","type":"Integer","title":"Use CiviMail Workflow","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>civimail_workflow</fieldName>
+      <name>civimail_workflow</name>
+      <title>Use CiviMail Workflow</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"address_options"},"description":null,"type":"String","title":"Addressing Options","is_contact":0,"default":"\u00011\u00012\u00013\u00014\u00015\u00016\u00018\u00019\u000110\u000111\u0001","html_type":"Text","name":"address_options","group":"core","help_text":null}</fieldDef>
+      <fieldName>address_options</fieldName>
+      <name>address_options</name>
+      <title>Addressing Options</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"multiple":1,"class":"crm-select2"},"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Utils_Recent::getProviders"},"description":"What providers may save views in CiviCRM's \"Recently viewed\" list. If empty, all are in.","type":"Array","title":"Recent Items Providers","is_contact":0,"default":"","html_type":"Select","name":"recentItemsProviders","quick_form_type":"Select","group":"core","help_text":null}</fieldDef>
+      <fieldName>recentItemsProviders</fieldName>
+      <name>recentItemsProviders</name>
+      <title>Recent Items Providers</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"class":"crm-select2"},"is_domain":1,"group_name":"Map Preferences","pseudoconstant":{"callback":"CRM_Core_SelectValues::mapProvider"},"description":"Choose the mapping provider that has the best coverage for the majority of your contact addresses.","type":"String","title":"Mapping Provider","is_contact":0,"default":null,"html_type":"Select","name":"mapProvider","quick_form_type":"Select","help_text":null,"group":"map"}</fieldDef>
+      <fieldName>mapProvider</fieldName>
+      <name>mapProvider</name>
+      <title>Mapping Provider</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Multi Site Preferences","is_domain":1,"name":"is_enabled","description":"Multisite is enabled","title":"Multisite Is enabled","type":"Integer","group":"multisite","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>is_enabled</fieldName>
+      <name>is_enabled</name>
+      <title>Multisite Is enabled</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"description":null,"type":"Integer","title":"Enable Deferred Revenue","is_contact":0,"default":0,"html_type":"checkbox","name":"deferred_revenue_enabled","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>deferred_revenue_enabled</fieldName>
+      <name>deferred_revenue_enabled</name>
+      <title>Enable Deferred Revenue</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":"Path where site specific PHP code files are stored if any. This directory is searched first if set.","type":"String","title":"Custom PHP Directory","is_contact":0,"default":null,"html_type":"Text","name":"customPHPPathDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":null}</fieldDef>
+      <fieldName>customPHPPathDir</fieldName>
+      <name>customPHPPathDir</name>
+      <title>Custom PHP Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"12","maxlength":"60"},"is_domain":1,"group_name":"Localization Preferences","description":"","type":"String","title":"Date Format: Year Only","is_contact":0,"default":"%Y","html_type":"text","name":"dateformatYear","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>dateformatYear</fieldName>
+      <name>dateformatYear</name>
+      <title>Date Format: Year Only</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":4,"maxlength":8},"group_name":"Mailing Preferences","is_domain":1,"description":"The maximum number of mailer delivery jobs executing simultaneously (0 = allow as many processes to execute as started by cron)","type":"Integer","title":"Mailer Cron Job Limit","is_contact":0,"default":0,"html_type":"text","name":"mailerJobsMax","quick_form_type":"Element","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>mailerJobsMax</fieldName>
+      <name>mailerJobsMax</name>
+      <title>Mailer Cron Job Limit</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":null,"group_name":"Address Preferences","is_domain":1,"html_type":"Text","name":"address_standardization_userid","description":null,"type":"String","title":"Web service user ID","group":"address","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>address_standardization_userid</fieldName>
+      <name>address_standardization_userid</name>
+      <title>Web service user ID</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":0,"group_name":"Address Preferences","is_domain":1,"name":"hideCountryMailingLabels","description":"Do not display the country field in mailing labels when the country is the same as that of the domain","type":"Boolean","title":"Hide Country in Mailing Labels when same as domain country","quick_form_type":"YesNo","group":"address","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>hideCountryMailingLabels</fieldName>
+      <name>hideCountryMailingLabels</name>
+      <title>Hide Country in Mailing Labels when same as domain country</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":4,"maxlength":8},"group_name":"Mailing Preferences","is_domain":1,"description":"Throttle email delivery by setting the maximum number of emails sent during each CiviMail run (0 = unlimited).","type":"Integer","title":"Mailer Batch Limit","is_contact":0,"default":0,"html_type":"text","name":"mailerBatchLimit","quick_form_type":"Element","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>mailerBatchLimit</fieldName>
+      <name>mailerBatchLimit</name>
+      <title>Mailer Batch Limit</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":null,"group_name":"Address Preferences","is_domain":1,"html_type":"Select","name":"address_standardization_provider","description":null,"type":"String","title":"Address Standardization Provider.","group":"address","is_contact":0,"help_text":"CiviCRM includes an optional plugin for interfacing with the United States Postal Services (USPS) Address Standardization web service. You must register to use the USPS service at https:\/\/www.usps.com\/business\/web-tools-apis\/address-information.htm. If you are approved, they will provide you with a User ID and the URL for the service. Plugins for other address standardization services may be available from 3rd party developers. If installed, they will be included in the drop-down below. "}</fieldDef>
+      <fieldName>address_standardization_provider</fieldName>
+      <name>address_standardization_provider</name>
+      <title>Address Standardization Provider.</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":1,"group_name":"Search Preferences","is_domain":1,"name":"includeAlphabeticalPager","description":"If disabled, the alphabetical pager will not be displayed on the search screens. This will improve response time on search results on large datasets.","type":"Boolean","title":"Include Alphabetical Pager","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>includeAlphabeticalPager</fieldName>
+      <name>includeAlphabeticalPager</name>
+      <title>Include Alphabetical Pager</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","default":0,"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"disable_mandatory_tokens_check","description":"Don't check for presence of mandatory tokens (domain address; unsubscribe\/opt-out) before sending mailings. WARNING: Mandatory tokens are a safe-guard which facilitate compliance with the US CAN-SPAM Act. They should only be disabled if your organization adopts other mechanisms for compliance or if your organization is not subject to CAN-SPAM.","type":"Integer","title":"Disable check for mandatory tokens","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>disable_mandatory_tokens_check</fieldName>
+      <name>disable_mandatory_tokens_check</name>
+      <title>Disable check for mandatory tokens</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"1","group_name":"Contribute Preferences","is_domain":1,"name":"cvv_backoffice_required","description":"Is the CVV code required for back office credit card transactions","type":"Boolean","title":"CVV required for backoffice?","quick_form_type":"YesNo","group":"contribute","is_contact":0,"help_text":"If set it back-office credit card transactions will required a cvv code. Leave as required unless you have a very strong reason to change"}</fieldDef>
+      <fieldName>cvv_backoffice_required</fieldName>
+      <name>cvv_backoffice_required</name>
+      <title>CVV required for backoffice?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Multi Site Preferences","is_domain":1,"name":"event_price_set_domain_id","description":"","title":"Domain Event Price Set","type":"Integer","group":"multisite","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>event_price_set_domain_id</fieldName>
+      <name>event_price_set_domain_id</name>
+      <title>Domain Event Price Set</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"CiviCRM Preferences","description":"Set this when you intend to manage trigger creation outside of CiviCRM","type":"Boolean","title":"(EXPERIMENTAL) MySQL user does not have trigger permissions","is_contact":0,"default":0,"html_type":"","name":"logging_no_trigger_permission","quick_form_type":"YesNo","group":"core","help_text":"(EXPERIMENTAL) If the MySQL user does not have permission to administer triggers, then you must create the triggers outside CiviCRM. No support is provided for this configuration."}</fieldDef>
+      <fieldName>logging_no_trigger_permission</fieldName>
+      <name>logging_no_trigger_permission</name>
+      <title>(EXPERIMENTAL) MySQL user does not have trigger permissions</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Mailing Preferences","is_domain":1,"description":"If checked, mailings will default to tracking replies using VERP-ed Reply-To. ","type":"Integer","title":"Track replies using VERP in Reply-To header","is_contact":0,"default":"0","html_type":"checkbox","name":"track_civimail_replies","validate_callback":"CRM_Core_BAO_Setting::validateBoolSetting","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>track_civimail_replies</fieldName>
+      <name>track_civimail_replies</name>
+      <title>Track replies using VERP in Reply-To header</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"CiviCRM Preferences","description":"This is the date when CRM-18193 was implemented","type":"Date","title":"Logging Unique ID not recorded before","is_contact":0,"default":null,"html_type":"","name":"logging_uniqueid_date","quick_form_type":"DateTime","help_text":"This is the date when CRM-18193 was implemented","group":"core"}</fieldDef>
+      <fieldName>logging_uniqueid_date</fieldName>
+      <name>logging_uniqueid_date</name>
+      <title>Logging Unique ID not recorded before</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Utils_Date::getFullWeekdayNames"},"description":"","type":"String","title":"Week begins on","is_contact":0,"default":"0","html_type":"Select","name":"weekBegins","quick_form_type":"Select","group":"localization","help_text":null}</fieldDef>
+      <fieldName>weekBegins</fieldName>
+      <name>weekBegins</name>
+      <title>Week begins on</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2,"maxlength":8},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Maximum Size of file (documents, images, etc.) which can attached to emails or activities.&lt;br \/>Note: php.ini should support this file size.","type":"Integer","title":"Maximum File Size (in MB)","is_contact":0,"default":3,"html_type":"text","name":"maxFileSize","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>maxFileSize</fieldName>
+      <name>maxFileSize</name>
+      <title>Maximum File Size (in MB)</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":5,"style":"width:150px","class":"advmultiselect"},"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getAvailableCountries"},"description":"","type":"Array","title":"Available States and Provinces (by Country)","is_contact":0,"default":[],"html_type":"advmultiselect","name":"provinceLimit","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>provinceLimit</fieldName>
+      <name>provinceLimit</name>
+      <title>Available States and Provinces (by Country)</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"ajaxPopupsEnabled","description":null,"type":"Boolean","title":"Ajax Popups Enabled","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>ajaxPopupsEnabled</fieldName>
+      <name>ajaxPopupsEnabled</name>
+      <title>Ajax Popups Enabled</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"\u00011\u00012\u00013\u00014\u00015\u00016\u00017\u00018\u00019\u000110\u000111\u000112\u000113\u000115\u000116\u000117\u000118\u000119\u0001","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"advanced_search_options"},"html_type":"checkboxes","name":"advanced_search_options","description":null,"type":"String","title":"Contact Search","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>advanced_search_options</fieldName>
+      <name>advanced_search_options</name>
+      <title>Contact Search</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"1","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"activity_assignee_notification","description":null,"type":"String","title":"Notify Activity Assignees","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>activity_assignee_notification</fieldName>
+      <name>activity_assignee_notification</name>
+      <title>Notify Activity Assignees</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"CiviCRM Preferences","is_domain":1,"description":"Code appended to resource URLs (JS\/CSS) to coerce HTTP caching","type":"String","title":"resCacheCode","is_contact":0,"default":null,"html_type":"text","name":"resCacheCode","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>resCacheCode</fieldName>
+      <name>resCacheCode</name>
+      <title>resCacheCode</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"12","maxlength":"60"},"is_domain":1,"group_name":"Localization Preferences","description":"","type":"String","title":"Date Format: Financial Batch","is_contact":0,"default":"%m\/%d\/%Y","html_type":"text","name":"dateformatFinancialBatch","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>dateformatFinancialBatch</fieldName>
+      <name>dateformatFinancialBatch</name>
+      <title>Date Format: Financial Batch</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":"0","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"activity_assignee_notification_ics","description":null,"type":"String","title":"Include ICal Invite to Activity Assignees","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>activity_assignee_notification_ics</fieldName>
+      <name>activity_assignee_notification_ics</name>
+      <title>Include ICal Invite to Activity Assignees</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":64},"group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"String","title":"Recaptcha Secret Key","is_contact":0,"default":null,"html_type":"Text","name":"recaptchaPrivateKey","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>recaptchaPrivateKey</fieldName>
+      <name>recaptchaPrivateKey</name>
+      <title>Recaptcha Secret Key</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":2,"maxlength":3},"group_name":"CiviCRM Preferences","is_domain":1,"description":"How many items should CiviCRM store in it's \"Recently viewed\" list.","type":"Integer","title":"Size of \"Recent Items\" stack","is_contact":0,"default":20,"html_type":"text","name":"recentItemsMaxCount","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>recentItemsMaxCount</fieldName>
+      <name>recentItemsMaxCount</name>
+      <title>Size of "Recent Items" stack</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2},"group_name":"Localization Preferences","is_domain":1,"description":null,"type":"String","title":"Decimal Delimiter","is_contact":0,"default":".","html_type":"text","name":"monetaryDecimalPoint","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>monetaryDecimalPoint</fieldName>
+      <name>monetaryDecimalPoint</name>
+      <title>Decimal Delimiter</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":1,"group_name":"Search Preferences","is_domain":1,"name":"includeOrderByClause","description":"If disabled, the search results will not be ordered. This may improve response time on search results on large datasets","type":"Boolean","title":"Include Order By Clause","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>includeOrderByClause</fieldName>
+      <name>includeOrderByClause</name>
+      <title>Include Order By Clause</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"{contact.address_name}\n{contact.street_address}\n{contact.supplemental_address_1}\n{contact.supplemental_address_2}\n{contact.supplemental_address_3}\n{contact.city}{, }{contact.state_province}{ }{contact.postal_code}\n{contact.country}","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"TextArea","name":"address_format","description":null,"type":"String","title":"Address Format","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>address_format</fieldName>
+      <name>address_format</name>
+      <title>Address Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"Unconfirmed","group_name":"Campaign Preferences","is_domain":1,"html_type":"Text","name":"tag_unconfirmed","description":null,"type":"String","title":"Tag for Unconfirmed Petition Signers","group":"campaign","is_contact":0,"help_text":"If set, new contacts that are created when signing a petition are assigned a tag of this name."}</fieldDef>
+      <fieldName>tag_unconfirmed</fieldName>
+      <name>tag_unconfirmed</name>
+      <title>Tag for Unconfirmed Petition Signers</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"pseudoconstant":{"name":"contributionPage"},"description":null,"type":"Integer","title":"Default invoice payment page","is_contact":0,"default":null,"html_type":"select","name":"default_invoice_page","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>default_invoice_page</fieldName>
+      <name>default_invoice_page</name>
+      <title>Default invoice payment page</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":1,"group_name":"Search Preferences","is_domain":1,"name":"searchPrimaryDetailsOnly","description":"If enabled, only primary details (eg contact's primary email, phone, etc) will be included in Basic and Advanced Search results. Disabling this feature will allow users to match contacts using any email, phone etc detail.","type":"Boolean","title":"Search Primary Details Only","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>searchPrimaryDetailsOnly</fieldName>
+      <name>searchPrimaryDetailsOnly</name>
+      <title>Search Primary Details Only</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Localization Preferences","is_domain":1,"description":null,"type":"String","title":"Monetary Value Display","is_contact":0,"default":"%!i","html_type":"text","name":"moneyvalueformat","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>moneyvalueformat</fieldName>
+      <name>moneyvalueformat</name>
+      <title>Monetary Value Display</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Localization Preferences","is_domain":1,"description":"","type":"String","title":"Date Format: Complete Date and Time","is_contact":0,"default":"%B %E%f, %Y %l:%M %P","html_type":"text","name":"dateformatDatetime","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>dateformatDatetime</fieldName>
+      <name>dateformatDatetime</name>
+      <title>Date Format: Complete Date and Time</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"URL Preferences","is_domain":1,"description":"Base URL for extension resources (images, stylesheets, etc). This should match extensionsDir.","title":"Extension Resource URL","type":"String","is_contact":0,"default":null,"html_type":"Text","name":"extensionsURL","validate_callback":"CRM_Utils_Rule::urlish","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"url","help_text":null}</fieldDef>
+      <fieldName>extensionsURL</fieldName>
+      <name>extensionsURL</name>
+      <title>Extension Resource URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"30","maxlength":"100"},"is_domain":1,"group_name":"Localization Preferences","description":"","type":"String","title":"Custom Translate Function","is_contact":0,"default":null,"html_type":"text","name":"customTranslateFunction","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>customTranslateFunction</fieldName>
+      <name>customTranslateFunction</name>
+      <title>Custom Translate Function</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"CKEditor","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Select","name":"editor_id","description":null,"type":"String","title":"Wysiwig Editor","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>editor_id</fieldName>
+      <name>editor_id</name>
+      <title>Wysiwig Editor</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"Integer","title":"systemStatusCheckResult","is_contact":0,"default":0,"html_type":"text","name":"systemStatusCheckResult","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>systemStatusCheckResult</fieldName>
+      <name>systemStatusCheckResult</name>
+      <title>systemStatusCheckResult</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"description":"Default to only loading matches against this number of contacts","type":"Integer","title":"Default limit for dedupe screen","is_contact":0,"default":0,"html_type":"text","name":"dedupe_default_limit","quick_form_type":"Element","group":"core","help_text":"Deduping larger databases can crash the server. By configuring a limit other than 0 here the dedupe query will only search for matches against a limited number of contacts."}</fieldDef>
+      <fieldName>dedupe_default_limit</fieldName>
+      <name>dedupe_default_limit</name>
+      <title>Default limit for dedupe screen</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","html_attributes":{"size":64,"maxlength":64},"group_name":"Search Preferences","is_domain":1,"description":null,"type":"String","title":"How to handle full-tet queries","is_contact":0,"default":"simple","html_type":"Text","name":"fts_query_mode","quick_form_type":"Element","group":"Search Preferences","help_text":null}</fieldDef>
+      <fieldName>fts_query_mode</fieldName>
+      <name>fts_query_mode</name>
+      <title>How to handle full-tet queries</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":false,"group_name":"CiviCRM Preferences","is_domain":1,"name":"allowPermDeleteFinancial","description":"Allow Permanent Delete for contacts who are linked to live financial transactions","type":"Boolean","title":"Contact Permanent Delete","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>allowPermDeleteFinancial</fieldName>
+      <name>allowPermDeleteFinancial</name>
+      <title>Contact Permanent Delete</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"Localization Preferences","description":"This value is selected by default when adding a new contact address.","type":"Integer","title":"Default State\/Province","is_contact":0,"default":null,"html_type":"ChainSelect","name":"defaultContactStateProvince","quick_form_type":"ChainSelect","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>defaultContactStateProvince</fieldName>
+      <name>defaultContactStateProvince</name>
+      <title>Default State/Province</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":0,"group_name":"CiviCRM Preferences","is_domain":1,"name":"secondDegRelPermissions","description":"If enabled, contacts with the permission to edit a related contact will inherit that contact's permission to edit other related contacts","type":"Boolean","title":"Allow second-degree relationship permissions","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>secondDegRelPermissions</fieldName>
+      <name>secondDegRelPermissions</name>
+      <title>Allow second-degree relationship permissions</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"default":"1","group_name":"Mailing Preferences","is_domain":1,"name":"auto_recipient_rebuild","description":"Enable this setting to rebuild recipient list automatically during composing mail. Disable will allow you to rebuild recipient manually.","type":"Boolean","title":"Enable automatic CiviMail recipient count display","quick_form_type":"YesNo","group":"mailing","is_contact":0,"help_text":"CiviMail automatically fetches recipient list and count whenever mailing groups are included or excluded while composing bulk mail. This phenomena may degrade performance for large sites, so disable this setting to build and fetch recipients for selected groups, manually."}</fieldDef>
+      <fieldName>auto_recipient_rebuild</fieldName>
+      <name>auto_recipient_rebuild</name>
+      <title>Enable automatic CiviMail recipient count display</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"{contact.last_name}{, }{contact.first_name}","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"sort_name_format","description":null,"type":"String","title":"Sort Name Format","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>sort_name_format</fieldName>
+      <name>sort_name_format</name>
+      <title>Sort Name Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","default":"0","group_name":"CiviCRM Preferences","is_domain":1,"name":"disable_core_css","description":"Prevent the stylesheet \"civicrm.css\" from being loaded.","type":"Boolean","title":"Disable CiviCRM css","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>disable_core_css</fieldName>
+      <name>disable_core_css</name>
+      <title>Disable CiviCRM css</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Event Preferences","is_domain":1,"name":"enable_cart","description":"WRITE ME","type":"Boolean","title":"Enable Event Cart","quick_form_type":"Element","group":"event","is_contact":0,"help_text":"WRITE ME"}</fieldDef>
+      <fieldName>enable_cart</fieldName>
+      <name>enable_cart</name>
+      <title>Enable Event Cart</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2,"maxlength":8},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Maximum number of files (documents, images, etc.) which can attached to emails or activities.","type":"Integer","title":"Maximum Attachments","is_contact":0,"default":3,"html_type":"text","name":"max_attachments","quick_form_type":"Element","group":"core","legacy_key":"maxAttachments","help_text":null}</fieldDef>
+      <fieldName>max_attachments</fieldName>
+      <name>max_attachments</name>
+      <title>Maximum Attachments</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"description":null,"type":"Integer","title":"Always post to Accounts Receivable?","is_contact":0,"default":0,"html_type":"checkbox","name":"always_post_to_accounts_receivable","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>always_post_to_accounts_receivable</fieldName>
+      <name>always_post_to_accounts_receivable</name>
+      <title>Always post to Accounts Receivable?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"description":"If enabled, CiviCRM will permit submissions from external sites to profiles. This is disabled by default to limit abuse.","type":"Boolean","title":"Accept profile submissions from external sites","is_contact":0,"default":false,"html_type":"radio","name":"remote_profile_submissions","quick_form_type":"YesNo","group":"core","help_text":null}</fieldDef>
+      <fieldName>remote_profile_submissions</fieldName>
+      <name>remote_profile_submissions</name>
+      <title>Accept profile submissions from external sites</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"securityAlert","description":"If enabled, CiviCRM will display pop-up notifications (no more than once per day) for security and misconfiguration issues identified in the system check.","type":"Boolean","title":"Status Alerts","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>securityAlert</fieldName>
+      <name>securityAlert</name>
+      <title>Status Alerts</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"12","maxlength":"60"},"is_domain":1,"group_name":"Localization Preferences","description":"","type":"String","title":"Date Format: Short date Month Day Year","is_contact":0,"default":"%m\/%d\/%Y","html_type":"text","name":"dateformatshortdate","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>dateformatshortdate</fieldName>
+      <name>dateformatshortdate</name>
+      <title>Date Format: Short date Month Day Year</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":[],"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Case_Info::getSortOptions"},"description":"How to sort activity-types on the \"Manage Case\" screen? (Set \"Default\" to load setting from the legacy \"Settings.xml\" file.)","type":"String","title":"Activity Type Sorting","is_contact":0,"default":"default","html_type":"Select","name":"civicaseNaturalActivityTypeSort","quick_form_type":"Select","group":"core","help_text":""}</fieldDef>
+      <fieldName>civicaseNaturalActivityTypeSort</fieldName>
+      <name>civicaseNaturalActivityTypeSort</name>
+      <title>Activity Type Sorting</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"CiviCRM Preferences","is_domain":1,"description":"If set, CiviCRM will use this setting as the base url.","type":"String","title":"WordPress Base Page","is_contact":0,"default":"","html_type":"text","name":"wpBasePage","quick_form_type":"Element","group":"core","help_text":"By default, CiviCRM will generate front-facing pages using the home page at http:\/\/wp\/ as its base. If you want to use a different template for CiviCRM pages, set the path here."}</fieldDef>
+      <fieldName>wpBasePage</fieldName>
+      <name>wpBasePage</name>
+      <title>WordPress Base Page</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":0,"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"civimail_multiple_bulk_emails","description":"If enabled, CiviMail will deliver a copy of the email to each bulk email listed for the contact.","type":"Integer","title":" Multiple Bulk Emails","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>civimail_multiple_bulk_emails</fieldName>
+      <name>civimail_multiple_bulk_emails</name>
+      <title> Multiple Bulk Emails</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","group_name":"Search Preferences","is_domain":1,"description":"The number of minutes to cache smart group contacts. We strongly recommend that this value be greater than zero, since a value of zero means no caching at all. If your contact data changes frequently, you should set this value to at least 5 minutes.","type":"Integer","title":"Smart group cache timeout","is_contact":0,"default":5,"html_type":"text","name":"smartGroupCacheTimeout","quick_form_type":"Element","group":"Search Preferences","help_text":null}</fieldDef>
+      <fieldName>smartGroupCacheTimeout</fieldName>
+      <name>smartGroupCacheTimeout</name>
+      <title>Smart group cache timeout</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"1","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"contact_ajax_check_similar","description":null,"type":"String","title":"Ajax Check Similar","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>contact_ajax_check_similar</fieldName>
+      <name>contact_ajax_check_similar</name>
+      <title>Ajax Check Similar</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":"0","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"preserve_activity_tab_filter","description":"When enabled, any filter settings a user selects on the contact's Activity tab will be remembered as they visit other contacts","type":"String","title":"Preserve activity filters as a user preference","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>preserve_activity_tab_filter</fieldName>
+      <name>preserve_activity_tab_filter</name>
+      <title>Preserve activity filters as a user preference</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","on_change":["CRM_Core_BAO_PreferencesDate::onChangeSetting"],"is_domain":1,"group_name":"Localization Preferences","pseudoconstant":{"callback":"CRM_Core_SelectValues::getTimeFormats"},"description":"","type":"String","title":"Time Input Format","is_contact":0,"default":"1","html_type":"Select","name":"timeInputFormat","quick_form_type":"Select","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>timeInputFormat</fieldName>
+      <name>timeInputFormat</name>
+      <title>Time Input Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":[],"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Case_Info::getRedactOptions"},"description":"Should activity emails be redacted? (Set \"Default\" to load setting from the legacy \"Settings.xml\" file.)","type":"String","title":"Redact Activity Email","is_contact":0,"default":"default","html_type":"Select","name":"civicaseRedactActivityEmail","quick_form_type":"Select","group":"core","help_text":""}</fieldDef>
+      <fieldName>civicaseRedactActivityEmail</fieldName>
+      <name>civicaseRedactActivityEmail</name>
+      <title>Redact Activity Email</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"32","maxlength":"64"},"is_domain":1,"group_name":"CiviCRM Preferences","description":"","type":"String","title":"Drupal Users Table Name","is_contact":0,"default":null,"html_type":"text","name":"userFrameworkUsersTableName","quick_form_type":"Element","help_text":null,"group":"core"}</fieldDef>
+      <fieldName>userFrameworkUsersTableName</fieldName>
+      <name>userFrameworkUsersTableName</name>
+      <title>Drupal Users Table Name</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":4,"maxlength":8},"group_name":"Mailing Preferences","is_domain":1,"description":"If you want to utilize multi-threading enter the size you want your sub jobs to be split into. Recommended values are between 1,000 and 10,000. Use a lower value if your server has multiple cron jobs running simultaneously, but do not use values smaller than 1,000. Enter \"0\" to disable multi-threading and process mail as one single job - batch limits still apply.","type":"Integer","title":"Mailer Job Size","is_contact":0,"default":0,"html_type":"text","name":"mailerJobSize","quick_form_type":"Element","group":"mailing","help_text":null}</fieldDef>
+      <fieldName>mailerJobSize</fieldName>
+      <name>mailerJobSize</name>
+      <title>Mailer Job Size</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"1","group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"profile_double_optin","description":"When CiviMail is enabled, users who \"subscribe\" to a group from a profile Group(s) checkbox will receive a confirmation email. They must respond (opt-in) before they are added to the group.","type":"Integer","title":"Enable Double Opt-in for Profile Group(s) field","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>profile_double_optin</fieldName>
+      <name>profile_double_optin</name>
+      <title>Enable Double Opt-in for Profile Group(s) field</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"{contact.addressee}\n{contact.street_address}\n{contact.supplemental_address_1}\n{contact.supplemental_address_2}\n{contact.supplemental_address_3}\n{contact.city}{, }{contact.state_province}{ }{contact.postal_code}\n{contact.country}","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"mailing_format","description":null,"type":"String","title":"Mailing Format","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>mailing_format</fieldName>
+      <name>mailing_format</name>
+      <title>Mailing Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"description":"Enabling this setting will update related contribution of membership(s) except if the membership is paid for with a recurring contribution.","type":"Integer","title":"Automatically update related contributions when Membership Type is changed","is_contact":0,"default":0,"html_type":"checkbox","name":"update_contribution_on_membership_type_change","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>update_contribution_on_membership_type_change</fieldName>
+      <name>update_contribution_on_membership_type_change</name>
+      <title>Automatically update related contributions when Membership Type is changed</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":0,"group_name":"CiviCRM Preferences","is_domain":1,"name":"doNotAttachPDFReceipt","description":"If enabled, CiviCRM sends PDF receipt as an attachment during event signup or online contribution.","type":"Boolean","title":"Attach PDF copy to receipts","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>doNotAttachPDFReceipt</fieldName>
+      <name>doNotAttachPDFReceipt</name>
+      <title>Attach PDF copy to receipts</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"12","maxlength":"30"},"is_domain":1,"group_name":"Localization Preferences","description":"If import files are NOT encoded as UTF-8, specify an alternate character encoding for these files. The default of Windows-1252 will work for Excel-created .CSV files on many computers.","type":"String","title":"Legacy Encoding","is_contact":0,"default":"Windows-1252","html_type":"text","name":"legacyEncoding","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>legacyEncoding</fieldName>
+      <name>legacyEncoding</name>
+      <title>Legacy Encoding</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"description":"A flag indicating whether this system has run a post-installation routine","type":"Boolean","title":"System Installed","is_contact":0,"default":false,"name":"installed","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"YesNo","group":"core","help_text":null}</fieldDef>
+      <fieldName>installed</fieldName>
+      <name>installed</name>
+      <title>System Installed</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":2,"maxlength":8},"group_name":"CiviCRM Preferences","is_domain":1,"description":null,"type":"Integer","title":"Checksum Lifespan","is_contact":0,"default":7,"html_type":"Text","name":"checksum_timeout","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>checksum_timeout</fieldName>
+      <name>checksum_timeout</name>
+      <title>Checksum Lifespan</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"32","maxlength":"64"},"is_domain":1,"group_name":"Map Preferences","description":"Enter your API Key or Application ID. An API Key is currently optional for Google Maps API, but may be helpful diagnosing any problems and required for higher volumes of requests. Refer to developers.google.com for the latest information.","type":"String","title":"Map Provider Key","is_contact":0,"default":null,"html_type":"text","name":"mapAPIKey","quick_form_type":"Element","help_text":null,"group":"map"}</fieldDef>
+      <fieldName>mapAPIKey</fieldName>
+      <name>mapAPIKey</name>
+      <title>Map Provider Key</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","is_domain":1,"group_name":"Localization Preferences","description":"","type":"Array","title":"Fiscal Year Start","is_contact":0,"default":{"d":1,"M":1},"html_type":"MonthDay","name":"fiscalYearStart","quick_form_type":"MonthDay","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>fiscalYearStart</fieldName>
+      <name>fiscalYearStart</name>
+      <title>Fiscal Year Start</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":1,"group_name":"Search Preferences","is_domain":1,"name":"includeEmailInName","description":"If enabled, email addresses are automatically included when users search by Name. Disabling this feature will speed up search significantly for larger databases, but users will need to use the Email search fields (from Advanced Search, Search Builder, or Profiles) to find contacts by email address.","type":"Boolean","title":"Include Email","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>includeEmailInName</fieldName>
+      <name>includeEmailInName</name>
+      <title>Include Email</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":{"outBound_option":"3"},"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"mailing_backend","description":null,"type":"Array","title":"Mailing Backend","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>mailing_backend</fieldName>
+      <name>mailing_backend</name>
+      <title>Mailing Backend</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"URL Preferences","is_domain":1,"description":"URL of the location for uploaded image files.","title":"Image Upload URL","type":"String","is_contact":0,"default":null,"html_type":"Text","name":"imageUploadURL","validate_callback":"CRM_Utils_Rule::urlish","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"url","help_text":null}</fieldDef>
+      <fieldName>imageUploadURL</fieldName>
+      <name>imageUploadURL</name>
+      <title>Image Upload URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Multi Site Preferences","is_domain":1,"name":"uniq_email_per_site","description":"","type":"Integer","title":"Unique Email per Domain?","group":"multisite","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>uniq_email_per_site</fieldName>
+      <name>uniq_email_per_site</name>
+      <title>Unique Email per Domain?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"class":"crm-select2"},"is_domain":1,"group_name":"Map Preferences","pseudoconstant":{"callback":"CRM_Core_SelectValues::geoProvider"},"description":"You may choose a different webservice for geocoding. This is required if there is no geo-coding plugin for your selected mapping provider. You can leave the Geocoding fields blank if you are using Google as your mapping provider.","type":"String","title":"Geocoding Provider","is_contact":0,"default":null,"html_type":"Select","name":"geoProvider","quick_form_type":"Select","help_text":null,"group":"map"}</fieldDef>
+      <fieldName>geoProvider</fieldName>
+      <name>geoProvider</name>
+      <title>Geocoding Provider</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":false,"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"include_message_id","description":"","type":"Integer","title":"Enable CiviMail to generate Message-ID header","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>include_message_id</fieldName>
+      <name>include_message_id</name>
+      <title>Enable CiviMail to generate Message-ID header</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.4","on_change":[["CRM_Core_InnoDBIndexer","onToggleFts"]],"group_name":"Search Preferences","is_domain":1,"description":"Enable InnoDB full-text search optimizations. (Requires MySQL 5.6+)","type":"Boolean","title":"InnoDB Full Text Search","is_contact":0,"default":0,"name":"enable_innodb_fts","quick_form_type":"YesNo","group":"Search Preferences","help_text":null}</fieldDef>
+      <fieldName>enable_innodb_fts</fieldName>
+      <name>enable_innodb_fts</name>
+      <title>InnoDB Full Text Search</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"multiple":1,"class":"huge crm-select2"},"group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"activity_type"},"type":"Array","title":"Do not notify assignees for","default":[],"html_type":"Select","name":"do_not_notify_assignees_for","quick_form_type":"Select","group":"core","help_text":"These activity types will be excluded from automated email notifications to assignees."}</fieldDef>
+      <fieldName>do_not_notify_assignees_for</fieldName>
+      <name>do_not_notify_assignees_for</name>
+      <title>Do not notify assignees for</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":2,"maxlength":8},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Maximum number of minutes that secure form data should linger","type":"Integer","title":"Secure Cache Timeout","is_contact":0,"default":20,"html_type":"text","name":"secure_cache_timeout_minutes","quick_form_type":"Element","group":"core","help_text":null}</fieldDef>
+      <fieldName>secure_cache_timeout_minutes</fieldName>
+      <name>secure_cache_timeout_minutes</name>
+      <title>Secure Cache Timeout</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":0,"group_name":"CiviCRM Preferences","is_domain":1,"name":"enableSSL","description":"If enabled, inbound HTTP requests for sensitive pages will be redirected to HTTPS.","type":"Boolean","title":"Force SSL?","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":"If enabled, inbound HTTP requests for sensitive pages will be redirected to HTTPS."}</fieldDef>
+      <fieldName>enableSSL</fieldName>
+      <name>enableSSL</name>
+      <title>Force SSL?</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"URL Preferences","is_domain":1,"description":"You can modify the look and feel of CiviCRM by adding your own stylesheet. For small to medium sized modifications, use your css file to override some of the styles in civicrm.css. Or if you need to make drastic changes, you can choose to disable civicrm.css completely.","title":"Custom CSS URL","type":"String","is_contact":0,"default":null,"html_type":"Text","name":"customCSSURL","validate_callback":"CRM_Utils_Rule::urlish","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"url","help_text":null}</fieldDef>
+      <fieldName>customCSSURL</fieldName>
+      <name>customCSSURL</name>
+      <title>Custom CSS URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":128},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Service providing the Getting Started data","type":"String","title":"Getting Started URL","is_contact":0,"default":"*default*","html_type":"Text","name":"gettingStartedUrl","quick_form_type":"Element","group":"core","help_text":"Use \"*default*\" for the system default or override with a custom URL"}</fieldDef>
+      <fieldName>gettingStartedUrl</fieldName>
+      <name>gettingStartedUrl</name>
+      <title>Getting Started URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"CiviCRM Preferences","is_domain":1,"description":"Enable tracking of activity revisions embedded within the \"civicrm_activity\" table. Alternatively, see \"Administer => System Settings => Misc => Logging\".","type":"Boolean","title":"Enable Embedded Activity Revisions","is_contact":0,"default":false,"html_type":"radio","name":"civicaseActivityRevisions","quick_form_type":"YesNo","group":"core","help_text":""}</fieldDef>
+      <fieldName>civicaseActivityRevisions</fieldName>
+      <name>civicaseActivityRevisions</name>
+      <title>Enable Embedded Activity Revisions</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":1,"group_name":"CiviCRM Preferences","is_domain":1,"name":"empoweredBy","description":"When enabled, \"empowered by CiviCRM\" is displayed at the bottom of public forms.","type":"Boolean","title":"Display \"empowered by CiviCRM\"","quick_form_type":"YesNo","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>empoweredBy</fieldName>
+      <name>empoweredBy</name>
+      <title>Display "empowered by CiviCRM"</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":null,"group_name":"Developer Preferences","is_domain":1,"html_type":"text","name":"fatalErrorHandler","description":"Enter the path and class for a custom PHP error-handling function if you want to override built-in CiviCRM error handling for your site.","type":"String","title":"Fatal Error Handler","quick_form_type":"Element","group":"developer","is_contact":0}</fieldDef>
+      <fieldName>fatalErrorHandler</fieldName>
+      <name>fatalErrorHandler</name>
+      <title>Fatal Error Handler</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"CiviCRM Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"contact_edit_options"},"description":null,"type":"String","title":"Editing Contacts","is_contact":0,"default":"\u00011\u00012\u00013\u00014\u00015\u00016\u00017\u00018\u00019\u000111\u000112\u000114\u000115\u000116\u000117\u0001","html_type":"checkboxes","name":"contact_edit_options","group":"core","help_text":null}</fieldDef>
+      <fieldName>contact_edit_options</fieldName>
+      <name>contact_edit_options</name>
+      <title>Editing Contacts</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":128},"group_name":"CiviCRM Preferences","is_domain":1,"description":"Blog feed URL used by the blog dashlet","type":"String","title":"Blog Feed URL","is_contact":0,"default":"*default*","html_type":"Text","name":"blogUrl","quick_form_type":"Element","group":"core","help_text":"Use \"*default*\" for the system default or override with a custom URL"}</fieldDef>
+      <fieldName>blogUrl</fieldName>
+      <name>blogUrl</name>
+      <title>Blog Feed URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.6","default":1,"group_name":"Search Preferences","is_domain":1,"name":"includeWildCardInName","description":"If enabled, wildcards are automatically added to the beginning AND end of the search term when users search for contacts by Name. EXAMPLE: Searching for 'ada' will return any contact whose name includes those letters - e.g. 'Adams, Janet', 'Nadal, Jorge', etc. If disabled, a wildcard is added to the end of the search term only. EXAMPLE: Searching for 'ada' will return any contact whose last name begins with those letters - e.g. 'Adams, Janet' but NOT 'Nadal, Jorge'. Disabling this feature will speed up search significantly for larger databases, but users must manually enter wildcards ('%' or '_') to the beginning of the search term if they want to find all records which contain those letters. EXAMPLE: '%ada' will return 'Nadal, Jorge'.","type":"Boolean","title":"Automatic Wildcard","quick_form_type":"YesNo","group":"Search Preferences","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>includeWildCardInName</fieldName>
+      <name>includeWildCardInName</name>
+      <title>Automatic Wildcard</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","group_name":"Developer Preferences","is_domain":1,"description":"Set this value to Yes if you want to use one of CiviCRM's debugging tools. This feature should NOT be enabled for production sites","type":"Boolean","title":"Enable Debugging","is_contact":0,"default":"0","config_key":"debug","name":"debug_enabled","quick_form_type":"YesNo","group":"developer","help_text":"Do not turn this on on production sites"}</fieldDef>
+      <fieldName>debug_enabled</fieldName>
+      <name>debug_enabled</name>
+      <title>Enable Debugging</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","html_attributes":{"size":"12","maxlength":"60"},"is_domain":1,"group_name":"Localization Preferences","description":"","type":"String","title":"Date Format: Time Only","is_contact":0,"default":"%l:%M %P","html_type":"text","name":"dateformatTime","quick_form_type":"Element","help_text":null,"group":"localization"}</fieldDef>
+      <fieldName>dateformatTime</fieldName>
+      <name>dateformatTime</name>
+      <title>Date Format: Time Only</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"description":null,"type":"Integer","title":"Enable Access Control by Financial Type","is_contact":0,"default":0,"html_type":"checkbox","name":"acl_financial_type","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>acl_financial_type</fieldName>
+      <name>acl_financial_type</name>
+      <title>Enable Access Control by Financial Type</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":"Path where CiviCRM extensions are stored.","type":"String","title":"Extensions Directory","is_contact":0,"default":null,"html_type":"Text","name":"extensionsDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":null}</fieldDef>
+      <fieldName>extensionsDir</fieldName>
+      <name>extensionsDir</name>
+      <title>Extensions Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Directory Preferences","is_domain":1,"description":"File system path where image files are uploaded. Currently, this path is used for images associated with premiums (CiviContribute thank-you gifts).","type":"String","title":"Image Directory","is_contact":0,"default":null,"html_type":"Text","name":"imageUploadDir","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"directory","help_text":null}</fieldDef>
+      <fieldName>imageUploadDir</fieldName>
+      <name>imageUploadDir</name>
+      <title>Image Directory</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"0","group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"civimail_server_wide_lock","description":null,"type":"Integer","title":"Lock Mails Server-Wide for Mail Sending","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>civimail_server_wide_lock</fieldName>
+      <name>civimail_server_wide_lock</name>
+      <title>Lock Mails Server-Wide for Mail Sending</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"URL Preferences","is_domain":1,"description":"Absolute URL of the location where the civicrm module or component has been installed.","title":"CiviCRM Resource URL","type":"String","is_contact":0,"default":null,"html_type":"Text","name":"userFrameworkResourceURL","validate_callback":"CRM_Utils_Rule::urlish","bootstrap_comment":"This is a boot setting which may be loaded during bootstrap. Defaults are loaded via SettingsBag::getSystemDefaults().","quick_form_type":"Element","group":"url","help_text":null}</fieldDef>
+      <fieldName>userFrameworkResourceURL</fieldName>
+      <name>userFrameworkResourceURL</name>
+      <title>CiviCRM Resource URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","default":{"due_date_period":"days","tax_display_settings":"Inclusive","notes":"","invoice_prefix":"INV_","due_date":"10","tax_term":"Sales Tax","credit_notes_prefix":"CN_"},"group_name":"Contribute Preferences","is_domain":1,"name":"contribution_invoice_settings","description":null,"type":"Array","title":"Contribution Invoice Settings","group":"contribute","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>contribution_invoice_settings</fieldName>
+      <name>contribution_invoice_settings</name>
+      <title>Contribution Invoice Settings</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","on_change":["CRM_Core_BAO_Setting::onChangeEnvironmentSetting"],"group_name":"Developer Preferences","is_domain":1,"pseudoconstant":{"optionGroupName":"environment"},"description":"Setting to define the environment in which this CiviCRM instance is running.","type":"String","title":"Environment","is_contact":0,"default":"Production","html_type":"Select","name":"environment","quick_form_type":"Select","group":"developer"}</fieldDef>
+      <fieldName>environment</fieldName>
+      <name>environment</name>
+      <title>Environment</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"Petition Contacts","group_name":"Campaign Preferences","is_domain":1,"html_type":"Text","name":"petition_contacts","description":null,"type":"String","title":"Petition Signers Group","group":"campaign","is_contact":0,"help_text":"If set, new contacts that are created when signing a petition are assigned a tag of this name."}</fieldDef>
+      <fieldName>petition_contacts</fieldName>
+      <name>petition_contacts</name>
+      <title>Petition Signers Group</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","default":"{contact.individual_prefix}{ }{contact.first_name}{ }{contact.last_name}{ }{contact.individual_suffix}","group_name":"CiviCRM Preferences","is_domain":1,"html_type":"Text","name":"display_name_format","description":null,"type":"String","title":"Display Name Format","group":"core","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>display_name_format</fieldName>
+      <name>display_name_format</name>
+      <title>Display Name Format</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.7","group_name":"Contribute Preferences","is_domain":1,"description":null,"type":"Integer","title":"Enable Tax and Invoicing","is_contact":0,"default":0,"html_type":"checkbox","name":"invoicing","quick_form_type":"Element","group":"contribute","help_text":null}</fieldDef>
+      <fieldName>invoicing</fieldName>
+      <name>invoicing</name>
+      <title>Enable Tax and Invoicing</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","group_name":"Event Preferences","is_domain":1,"description":"Configure how many events should be shown on the dashboard. This overrides the default value of 10 entries.","type":"Integer","title":"Dashboard entries","is_contact":0,"default":10,"html_type":"select","name":"show_events","quick_form_type":"Element","group":"event","help_text":null}</fieldDef>
+      <fieldName>show_events</fieldName>
+      <name>show_events</name>
+      <title>Dashboard entries</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":64,"maxlength":128},"group_name":"Extension Preferences","is_domain":1,"description":"","type":"String","title":"Extension Repo URL","is_contact":0,"default":"https:\/\/civicrm.org\/extdir\/ver={ver}|cms={uf}","html_type":"Text","name":"ext_repo_url","quick_form_type":"Element","group":"ext","help_text":""}</fieldDef>
+      <fieldName>ext_repo_url</fieldName>
+      <name>ext_repo_url</name>
+      <title>Extension Repo URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.1","group_name":"Address Preferences","is_domain":1,"description":null,"type":"Text","title":"Web Service URL","is_contact":0,"default":null,"html_type":"Text","name":"address_standardization_url","validate_callback":"CRM_Utils_Rule::url","group":"address","help_text":"Web Service URL"}</fieldDef>
+      <fieldName>address_standardization_url</fieldName>
+      <name>address_standardization_url</name>
+      <title>Web Service URL</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","html_attributes":{"size":5,"style":"width:150px","class":"advmultiselect"},"group_name":"Localization Preferences","is_domain":1,"pseudoconstant":{"callback":"CRM_Admin_Form_Setting_Localization::getAvailableCountries"},"description":"","type":"Array","title":"Available Countries","is_contact":0,"default":[],"html_type":"advmultiselect","name":"countryLimit","quick_form_type":"Element","group":"localization","help_text":null}</fieldDef>
+      <fieldName>countryLimit</fieldName>
+      <name>countryLimit</name>
+      <title>Available Countries</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.5","default":1,"group_name":"Mailing Preferences","is_domain":1,"html_type":"checkbox","name":"dedupe_email_default","description":"Set the \"dedupe e-mail\" option when sending a new mailing to \"true\" by default.","type":"Integer","title":"CiviMail dedupes e-mail addresses by default","group":"mailing","is_contact":0,"help_text":null}</fieldDef>
+      <fieldName>dedupe_email_default</fieldName>
+      <name>dedupe_email_default</name>
+      <title>CiviMail dedupes e-mail addresses by default</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <field>
+      <fieldDef>{"add":"4.3","default":"0","group_name":"Developer Preferences","is_domain":1,"name":"userFrameworkLogging","description":"Set this value to Yes if you want CiviCRM error\/debugging messages to appear in the Drupal error logs","type":"Boolean","title":"Enable Drupal Watchdog Logging","quick_form_type":"YesNo","group":"developer","is_contact":0,"help_text":"Set this value to Yes if you want CiviCRM error\/debugging messages the appear in your CMS' error log. In the case of Drupal, this will cause all CiviCRM error messages to appear in the watchdog (assuming you have Drupal's watchdog enabled)"}</fieldDef>
+      <fieldName>userFrameworkLogging</fieldName>
+      <name>userFrameworkLogging</name>
+      <title>Enable Drupal Watchdog Logging</title>
+      <type>2</type>
+      <source>getfields</source>
+    </field>
+    <key-index>extensionsURL</key-index>
+    <key-index>extensionsDir</key-index>
+    <key-index>customTemplateDir</key-index>
+    <key-index>customPHPPathDir</key-index>
+    <output-field>
+      <input-field>customTemplateDir</input-field>
+      <output-field>customTemplateDir</output-field>
+    </output-field>
+    <output-field>
+      <input-field>customPHPPathDir</input-field>
+      <output-field>customPHPPathDir</output-field>
+    </output-field>
+    <output-field>
+      <input-field>extensionsDir</input-field>
+      <output-field>extensionsDir</output-field>
+    </output-field>
+    <output-field>
+      <input-field>extensionsURL</input-field>
+      <output-field>extensionsURL</output-field>
+    </output-field>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CMSTYPE</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>CMSTYPE</name>
+        <variable>${CMSTYPE}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge Join</name>
+    <type>MergeJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>Settings</step1>
+    <step2>Get CMSTYPE</step2>
+    <keys_1>
+      <key>CMS</key>
+    </keys_1>
+    <keys_2>
+      <key>CMSTYPE</key>
+    </keys_2>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove CMS and CMSTYPE</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>CMS</name>
+      </remove>
+      <remove>
+        <name>CMSTYPE</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Settings</name>
+    <type>DataGrid</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>CMS</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>extensionsURL</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>extensionsDir</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>customTemplateDir</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>customPHPPathDir</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>Backdrop</item>
+        <item>[cms.root]/civicrm-custom</item>
+        <item>[cms.root]/civicrm-custom</item>
+        <item>[cms.root]/civicrm-custom/templates</item>
+        <item>[cms.root]/civicrm-custom</item>
+      </line>
+      <line>
+        <item>Drupal</item>
+        <item>[cms.root]/sites/all/civicrm/extensions</item>
+        <item>[cms.root]/sites/all/civicrm/extensions</item>
+        <item>[cms.root]/sites/all/civicrm/templates</item>
+        <item>[cms.root]/sites/all/civicrm</item>
+      </line>
+      <line>
+        <item>WordPress</item>
+        <item>[cms.root]/wp-content/civicrm-custom/extensions/</item>
+        <item>[cms.root]/wp-content/civicrm-custom/extensions/</item>
+        <item>[cms.root]/wp-content/civicrm-custom/templates</item>
+        <item>[cms.root]/wp-content/civicrm-custom/</item>
+      </line>
+    </data>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>
