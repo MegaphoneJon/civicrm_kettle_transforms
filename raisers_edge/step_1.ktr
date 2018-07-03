@@ -565,12 +565,12 @@
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
       <to>Import when complete 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Import when complete 2</from>
