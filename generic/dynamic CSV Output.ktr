@@ -566,13 +566,6 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
         <source_step>Metadata structure of stream</source_step>
         <source_field>Fieldname</source_field>
       </mapping>
-      <mapping>
-        <target_step_name>CSV Output</target_step_name>
-        <target_attribute_key>FILENAME</target_attribute_key>
-        <target_detail>N</target_detail>
-        <source_step />
-        <source_field>${LOCALFILES}/data/${outputname}</source_field>
-      </mapping>
     </mappings>
     <cluster_schema />
     <remotesteps>

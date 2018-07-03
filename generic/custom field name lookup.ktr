@@ -635,7 +635,7 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
     <trans_name />
     <filename>${TRANSFORMREPO}/generic/custom field name lookup - inner.ktr</filename>
     <directory_path />
-    <source_step>Input stream</source_step>
+    <source_step>Select values</source_step>
     <source_output_fields>    </source_output_fields>
     <target_file />
     <no_execution>N</no_execution>
