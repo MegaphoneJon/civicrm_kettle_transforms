@@ -16,7 +16,7 @@
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>gifts.csv</default_value>
+        <default_value>gifts.json</default_value>
         <description />
       </parameter>
     </parameters>
@@ -446,31 +446,10 @@
   </info>
   <notepads>
     <notepad>
-      <note>FIXME: This is temporary!</note>
-      <xloc>224</xloc>
-      <yloc>2064</yloc>
-      <width>164</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>0</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>RE's internal gift ID must be stored as a custom field
 because we need to use it later to do soft credit lookups.</note>
       <xloc>576</xloc>
-      <yloc>1696</yloc>
+      <yloc>1744</yloc>
       <width>340</width>
       <heigth>42</heigth>
       <fontname>Arial</fontname>
@@ -491,50 +470,8 @@ because we need to use it later to do soft credit lookups.</note>
     <notepad>
       <note>&lt;-- This is because we don't always bring over every RE contact.</note>
       <xloc>192</xloc>
-      <yloc>560</yloc>
+      <yloc>608</yloc>
       <width>400</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Set your custom field IDs here.</note>
-      <xloc>176</xloc>
-      <yloc>2160</yloc>
-      <width>220</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- This is optional, just makes it easier to eyeball the data</note>
-      <xloc>176</xloc>
-      <yloc>1984</yloc>
-      <width>362</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -556,7 +493,7 @@ because we need to use it later to do soft credit lookups.</note>
 https://civicrm.org/blog/fabiansystopia/manage-and-analyse-your-campaigns-with-civicrm
 as an alternative to how I'm handling campaign/appeals/packages</note>
       <xloc>816</xloc>
-      <yloc>1264</yloc>
+      <yloc>1312</yloc>
       <width>549</width>
       <heigth>55</heigth>
       <fontname>Sans</fontname>
@@ -576,8 +513,8 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </notepad>
     <notepad>
       <note>NOTE: We're not currently removing existing gifts here, you probably want to.</note>
-      <xloc>0</xloc>
-      <yloc>2368</yloc>
+      <xloc>208</xloc>
+      <yloc>2016</yloc>
       <width>481</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
@@ -596,10 +533,10 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>FIXME - debug filter</note>
-      <xloc>192</xloc>
-      <yloc>32</yloc>
-      <width>130</width>
+      <note>&lt;-- Client-specific - Gift Type of "Other" is actually a scholarship awarded</note>
+      <xloc>227</xloc>
+      <yloc>92</yloc>
+      <width>448</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -609,8 +546,8 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <fontcolorgreen>0</fontcolorgreen>
       <fontcolorblue>0</fontcolorblue>
       <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>0</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
       <bordercolorred>100</bordercolorred>
       <bordercolorgreen>100</bordercolorgreen>
       <bordercolorblue>100</bordercolorblue>
@@ -821,11 +758,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Convert date format to the format Civi expects 2</from>
-      <to>Sort by GifId</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>lookup payment_instrument</from>
       <to>Filter unrecognized payment_instrument</to>
       <enabled>Y</enabled>
@@ -863,11 +795,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     <hop>
       <from>pay instrument fields only</from>
       <to>Sort by payment_instrument</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: GiftSplit</from>
-      <to>Filter zero amount</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -996,11 +923,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter unrecognized gift subtypes</from>
-      <to>lookup fund in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter unrecognized funds</from>
       <to>Fund field only</to>
       <enabled>Y</enabled>
@@ -1021,11 +943,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get option_group_id of fund</from>
-      <to>Join option_group_ids</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter unrecognized campaigns</from>
       <to>lookup appeal in Civi</to>
       <enabled>Y</enabled>
@@ -1033,16 +950,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     <hop>
       <from>Filter unrecognized funds</from>
       <to>Reformat currency, date, and anonymous fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by GifId</from>
-      <to>financial_type_id = 1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>financial_type_id = 1</from>
-      <to>Rename fields for import</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1056,11 +963,6 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CSV Output</from>
-      <to>Last Step</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Get CSV folder</from>
       <to>Single file SFTP</to>
       <enabled>Y</enabled>
@@ -1068,7 +970,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
@@ -1077,7 +979,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </hop>
     <hop>
       <from>Import when complete 2</from>
-      <to>import entity</to>
+      <to>import entity - JSON</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1086,316 +988,76 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Rename fields for import</from>
-      <to>CSV Output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Rename fields for import</from>
-      <to>Group by</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Group by</from>
-      <to>Create Order API JSON</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Create Order API JSON</from>
       <to>data only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Sort by GiftId</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get the PriceField and PriceFieldValue ids</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized gift subtypes</from>
+      <to>Funds have 64 char max</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Funds have 64 char max</from>
+      <to>lookup fund in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: GiftSplit</from>
+      <to>Remove scholarships</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove scholarships</from>
+      <to>Filter zero amount</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product)</from>
+      <to>custom field name substitution 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>custom field name substitution 2</from>
+      <to>Create Order API JSON</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rename fields for import</from>
+      <to>Sort by GiftId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JSON output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects 2</from>
+      <to>Rename fields for import</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>data only</from>
-      <to>gift-temp.json</to>
+      <to>JSON output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>CSV Output</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/${output1name}</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>GiftId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>total_amount</name>
-        <type>BigNumber</type>
-        <format>0.00</format>
-        <currency />
-        <decimal>.</decimal>
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>net_amount</name>
-        <type>BigNumber</type>
-        <format>0.00</format>
-        <currency />
-        <decimal>.</decimal>
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>thankyou_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>check_number</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CHECK_DATE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>BATCH_NUMBER</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ANONYMOUS</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>note</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>note_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>campaign_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_17</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>payment_instrument_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>financial_type_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>receive_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_16</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_14</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_15</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>2320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Campaigns only</name>
     <type>SelectValues</type>
@@ -1422,7 +1084,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>784</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1456,6 +1118,23 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
         <currency_symbol />
         <storage_type />
       </meta>
+      <meta>
+        <name>CHECK_DATE</name>
+        <rename>CHECK_DATE</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1466,7 +1145,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1840</yloc>
+      <yloc>1792</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1500,6 +1179,23 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
         <currency_symbol />
         <storage_type />
       </meta>
+      <meta>
+        <name>CHECK_DATE</name>
+        <rename>CHECK_DATE</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1510,7 +1206,125 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1904</yloc>
+      <yloc>1856</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Create Order API JSON</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var data = [];
+var params = {};
+// Line item vars are ignored on non-order APIs.
+var lineItems = [];
+var lineItemCount = 0;
+var lineItemValues = {};
+var price_field_id;
+var price_field_value_id;
+// Loop through the columns for this row.
+for (var i=0;i&lt;getInputRowMeta().size();i++) {
+  // Get the metadata for this column.
+  var valueMeta = getInputRowMeta().getValueMeta(i);
+  // Get the name of this column.
+  var fieldName = valueMeta.getName();
+  // Get the value of this column in this row.
+  var fieldValue = valueMeta.getString(row[i]);
+  // If this is a line_item param, add it to the lineItemValues object.
+  if (fieldName.indexOf("line_item_") === 0) {
+    // Get this value's field name.
+    innerFieldName = String(fieldName).slice(10);
+    // Split the values we previously concatenated back out.
+    lineItemValues[innerFieldName] = String(fieldValue).split(", ");
+    lineItemCount = lineItemValues[innerFieldName].length;
+  }
+  // Otherwise, just add to params (unless it's blank).
+  else if (fieldValue) {
+    params[fieldName] = String(fieldValue); //valueMeta.getString(row[i]);
+  }
+}
+
+// OK, at this point we've added all the non-line item params and put the line item params in an array.
+// Now, let's build the line items array.
+if (lineItemCount) {
+  for (var j = 0; j &lt; lineItemCount; j++) {
+    // Build the ridiculous data structure.
+    var lineItem = {};
+    lineItem.line_item = {};
+    lineItem.line_item[j] = {};
+    // Loop through the lineItemValues object and populate the line items.
+    for (var innerFieldName in lineItemValues) {
+      lineItem.line_item[j][innerFieldName] = lineItemValues[innerFieldName][j];
+    }
+    // Add in some required fields for line items.
+    lineItem.line_item[j].entity_table = 'civicrm_contribution';
+    lineItem.line_item[j].qty = 1;
+    lineItem.line_item[j].price_field_id = price_field_id;
+    // We've generated several PriceFieldValue records (10 to start), sequentially.
+    lineItem.line_item[j].price_field_value_id = price_field_value_id + j;
+    lineItem.line_item[j].unit_price = lineItem.line_item[j].line_total;
+    lineItems.push(lineItem);
+  }
+
+  // Put the line items into params.
+  params.line_items = lineItems;
+}
+
+
+var paramsJson = JSON.stringify(params);
+data =  '[[ "Order", "create", ' + paramsJson + ']]';
+var temp = JSON.stringify(lineItemValues);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>paramsJson</name>
+        <rename>paramsJson</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>data</name>
+        <rename>data</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>temp</name>
+        <rename>temp</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1606,7 +1420,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>144</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1652,7 +1466,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>944</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1698,7 +1512,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>784</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1737,7 +1551,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>1120</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1760,7 +1574,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
         <conditions>
           <condition>
             <negated>N</negated>
-            <leftvalue>ignoreme_fund</leftvalue>
+            <leftvalue>financial_type_id</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue />
           </condition>
@@ -1783,7 +1597,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1798,7 +1612,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>lookup fund in Civi</send_true_to>
+    <send_true_to>Funds have 64 char max</send_true_to>
     <send_false_to>Gift Subtype fields Only</send_false_to>
     <compare>
       <condition>
@@ -1829,7 +1643,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1216</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1875,7 +1689,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1072</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1920,8 +1734,8 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>1504</yloc>
+      <xloc>448</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1960,7 +1774,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2003,7 +1817,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>96</yloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2022,6 +1836,9 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       <field>
         <name>FundId</name>
       </field>
+      <field>
+        <name>fund_name</name>
+      </field>
       <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema />
@@ -2033,7 +1850,39 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Funds have 64 char max</name>
+    <type>StringCut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>fund_name</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>64</cut_to>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>1328</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2070,8 +1919,8 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1182</xloc>
-      <yloc>2178</yloc>
+      <xloc>480</xloc>
+      <yloc>2240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2114,8 +1963,8 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1182</xloc>
-      <yloc>2018</yloc>
+      <xloc>480</xloc>
+      <yloc>2080</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2146,38 +1995,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>656</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get option_group_id of fund</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as temp_fund_id FROM civicrm_option_group cog WHERE cog.title = "Fund";</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>288</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2208,7 +2026,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>272</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2239,7 +2057,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>320</yloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2270,7 +2088,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>320</yloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2301,7 +2119,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>368</xloc>
-      <yloc>304</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2350,8 +2168,40 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1358</xloc>
-      <yloc>2018</yloc>
+      <xloc>656</xloc>
+      <yloc>2080</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get the PriceField and PriceFieldValue ids</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>-- See "Price Sets for Line Items" transform.
+select id as price_field_value_id, price_field_id from civicrm_price_field_value WHERE label = 'Import Line 1';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>2048</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2381,7 +2231,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>1216</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2414,7 +2264,118 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>1072</yloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>GiftId</name>
+      </field>
+      <field>
+        <name>net_amount</name>
+      </field>
+      <field>
+        <name>thankyou_date</name>
+      </field>
+      <field>
+        <name>check_number</name>
+      </field>
+      <field>
+        <name>note</name>
+      </field>
+      <field>
+        <name>note_date</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>payment_instrument_id</name>
+      </field>
+      <field>
+        <name>receive_date</name>
+      </field>
+      <field>
+        <name>Gift_Type</name>
+      </field>
+      <field>
+        <name>Check_Date</name>
+      </field>
+      <field>
+        <name>Anonymous_Gift</name>
+      </field>
+      <field>
+        <name>Gift_Subtype</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>total_amount</aggregate>
+        <subject>total_amount</subject>
+        <type>SUM</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>line_item_line_total</aggregate>
+        <subject>total_amount</subject>
+        <type>CONCAT_COMMA</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>campaign_id</aggregate>
+        <subject>campaign_id</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>financial_type_id</aggregate>
+        <subject>financial_type_id</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>line_item_financial_type_id</aggregate>
+        <subject>financial_type_id</subject>
+        <type>CONCAT_COMMA</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>Appeal</aggregate>
+        <subject>Appeal</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2064</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2443,8 +2404,113 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1358</xloc>
-      <yloc>2098</yloc>
+      <xloc>656</xloc>
+      <yloc>2160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>JSON output</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure />
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>data</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2480,7 +2546,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>336</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2504,7 +2570,7 @@ as an alternative to how I'm handling campaign/appeals/packages</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>2416</yloc>
+      <yloc>2464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2527,6 +2593,7 @@ gs.GiftId
 , g.RECEIPT_AMOUNT
 , g.DTE as receive_date
 , gs.FundId
+, f.DESCRIPTION as fund_name
 , gs.CampaignId
 , gs.AppealId
 , gs.PackageId
@@ -2541,13 +2608,13 @@ gs.GiftId
 , DBO.TranslateGiftType(g.TYPE) as type
 , g.REF as note
 , g.REFERENCE_DATE as note_date
---, BOOLEAN as recurring_gift
+-- , BOOLEAN as recurring_gift
 , r.CONSTITUENT_ID
 FROM GiftSplit gs
 LEFT JOIN GIFT g on gs.GiftId = g.ID
---LEFT JOIN GiftAttributes ON GiftID = PARENTID
+-- LEFT JOIN GiftAttributes ON GiftID = PARENTID
 LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
-WHERE g.CONSTIT_ID = 146701</sql>
+JOIN FUND f ON gs.FundId = f.ID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -2562,7 +2629,7 @@ WHERE g.CONSTIT_ID = 146701</sql>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>32</yloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2657,7 +2724,7 @@ WHERE g.CONSTIT_ID = 146701</sql>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1552</yloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2729,7 +2796,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1776</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2766,7 +2833,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1616</yloc>
+      <yloc>1664</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2819,7 +2886,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>208</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2856,7 +2923,50 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>1712</yloc>
+      <yloc>1760</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove scholarships</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>type</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Other</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2874,7 +2984,6 @@ if (CHECK_DATE != null){
     <fields>
       <field>
         <name>GiftId</name>
-        <rename />
       </field>
       <field>
         <name>Amount</name>
@@ -2894,59 +3003,44 @@ if (CHECK_DATE != null){
       </field>
       <field>
         <name>CHECK_DATE</name>
-        <rename />
-      </field>
-      <field>
-        <name>BATCH_NUMBER</name>
-        <rename />
+        <rename>Check_Date</rename>
       </field>
       <field>
         <name>ANONYMOUS</name>
-        <rename />
+        <rename>Anonymous_Gift</rename>
       </field>
       <field>
         <name>note</name>
-        <rename />
       </field>
       <field>
         <name>note_date</name>
-        <rename />
       </field>
       <field>
         <name>contact_id</name>
-        <rename />
       </field>
       <field>
         <name>campaign_id</name>
-        <rename />
       </field>
       <field>
         <name>AppealId</name>
-        <rename>custom_17</rename>
+        <rename>Appeal</rename>
       </field>
       <field>
         <name>payment_instrument_id</name>
-        <rename />
       </field>
       <field>
         <name>financial_type_id</name>
-        <rename />
       </field>
       <field>
         <name>receive_date</name>
-        <rename />
-      </field>
-      <field>
-        <name>FundId</name>
-        <rename>custom_16</rename>
       </field>
       <field>
         <name>type_id</name>
-        <rename>custom_14</rename>
+        <rename>Gift_Type</rename>
       </field>
       <field>
         <name>giftsubtype</name>
-        <rename>custom_15</rename>
+        <rename>Gift_Subtype</rename>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2959,7 +3053,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>2160</yloc>
+      <yloc>1920</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2988,8 +3082,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1182</xloc>
-      <yloc>2098</yloc>
+      <xloc>480</xloc>
+      <yloc>2160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3034,8 +3128,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1175</xloc>
-      <yloc>2257</yloc>
+      <xloc>480</xloc>
+      <yloc>2320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3076,48 +3170,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>784</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort by GifId</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>GiftId</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>1984</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3158,7 +3211,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>1216</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3199,7 +3252,48 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>1072</yloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by GiftId</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>GiftId</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2000</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3240,7 +3334,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>944</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3281,7 +3375,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3321,8 +3415,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>1504</yloc>
+      <xloc>768</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3371,7 +3465,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3427,7 +3521,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>560</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3461,7 +3555,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1216</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3495,7 +3589,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>1072</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3524,7 +3618,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>784</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3543,12 +3637,7 @@ if (CHECK_DATE != null){
     <count_field />
     <reject_duplicate_row>N</reject_duplicate_row>
     <error_description />
-    <fields>
-      <field>
-        <name>fund</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
+    <fields>      </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3558,7 +3647,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3587,7 +3676,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3615,8 +3704,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>1504</yloc>
+      <xloc>864</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3645,7 +3734,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>944</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3675,7 +3764,92 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>944</yloc>
+      <yloc>992</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>custom field name substitution 2</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>data only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>data</name>
+      </field>
+      <field>
+        <name>temp</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>2320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3728,7 +3902,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>640</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3758,50 +3932,12 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>1200</xloc>
-      <yloc>1120</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>financial_type_id = 1</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>financial_type_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>2064</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>import entity</name>
+    <name>import entity - JSON</name>
     <type>TransExecutor</type>
     <description />
     <distribute>Y</distribute>
@@ -3814,17 +3950,12 @@ if (CHECK_DATE != null){
     <specification_method>filename</specification_method>
     <trans_object_id />
     <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <filename>file:///home/jon/local/transforms/generic/json api import.ktr</filename>
     <directory_path />
     <group_size>1</group_size>
     <group_field />
     <group_time />
     <parameters>
-      <variablemapping>
-        <variable>entity</variable>
-        <field>entity</field>
-        <input>CiviCRM API entity</input>
-      </variablemapping>
       <variablemapping>
         <variable>filename</variable>
         <field>name</field>
@@ -3859,8 +3990,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1358</xloc>
-      <yloc>2178</yloc>
+      <xloc>656</xloc>
+      <yloc>2240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3941,7 +4072,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>784</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4001,6 +4132,18 @@ if (CHECK_DATE != null){
         <precision>-1</precision>
       </field>
       <field>
+        <name>fund_name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>is_active</name>
         <type>Integer</type>
         <format>0</format>
@@ -4034,7 +4177,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4103,7 +4246,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>944</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4171,8 +4314,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>1504</yloc>
+      <xloc>976</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4241,7 +4384,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>1216</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4322,7 +4465,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
-      <yloc>1072</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4415,7 +4558,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4468,7 +4611,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>864</yloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4515,7 +4658,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>784</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4562,7 +4705,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>704</yloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4609,7 +4752,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>1360</xloc>
-      <yloc>1120</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4635,7 +4778,7 @@ if (CHECK_DATE != null){
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>fund</name>
+        <name>FundId</name>
         <field>ID</field>
         <condition>=</condition>
         <name2 />
@@ -4662,7 +4805,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>624</xloc>
-      <yloc>1360</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4683,25 +4826,19 @@ if (CHECK_DATE != null){
     <cache_size>0</cache_size>
     <lookup>
       <schema />
-      <table>civicrm_option_value</table>
+      <table>civicrm_financial_type</table>
       <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>FundId</name>
-        <field>value</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>temp_fund_id</name>
-        <field>option_group_id</field>
+        <name>fund_name</name>
+        <field>name</field>
         <condition>=</condition>
         <name2 />
       </key>
       <value>
-        <name>value</name>
-        <rename>ignoreme_fund</rename>
+        <name>id</name>
+        <rename>financial_type_id</rename>
         <default />
         <type>Integer</type>
       </value>
@@ -4715,7 +4852,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1280</yloc>
+      <yloc>1408</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4768,7 +4905,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1008</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4820,8 +4957,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>1424</yloc>
+      <xloc>448</xloc>
+      <yloc>1552</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4874,7 +5011,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>384</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4927,7 +5064,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1136</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4956,8 +5093,8 @@ if (CHECK_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>1504</yloc>
+      <xloc>656</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4993,7 +5130,7 @@ if (CHECK_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>464</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5070,399 +5207,7 @@ if (type == 'Stock' || type == 'Gift-in-Kind') {
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname />
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>GiftId</name>
-      </field>
-      <field>
-        <name>net_amount</name>
-      </field>
-      <field>
-        <name>thankyou_date</name>
-      </field>
-      <field>
-        <name>check_number</name>
-      </field>
-      <field>
-        <name>CHECK_DATE</name>
-      </field>
-      <field>
-        <name>BATCH_NUMBER</name>
-      </field>
-      <field>
-        <name>ANONYMOUS</name>
-      </field>
-      <field>
-        <name>note</name>
-      </field>
-      <field>
-        <name>note_date</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>payment_instrument_id</name>
-      </field>
-      <field>
-        <name>receive_date</name>
-      </field>
-      <field>
-        <name>custom_14</name>
-      </field>
-      <field>
-        <name>custom_15</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>total_amount</aggregate>
-        <subject>total_amount</subject>
-        <type>SUM</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>line_item_line_total</aggregate>
-        <subject>total_amount</subject>
-        <type>CONCAT_COMMA</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>custom_16</aggregate>
-        <subject>custom_16</subject>
-        <type>FIRST</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>campaign_id</aggregate>
-        <subject>campaign_id</subject>
-        <type>FIRST</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>custom_17</aggregate>
-        <subject>custom_17</subject>
-        <type>FIRST</type>
-        <valuefield />
-      </field>
-      <field>
-        <aggregate>financial_type_id</aggregate>
-        <subject>financial_type_id</subject>
-        <type>FIRST</type>
-        <valuefield />
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>gift-temp.json</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure />
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/gift-temp.json</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>data</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Create Order API JSON</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var data = [];
-var params = {};
-// This is ignored on non-order APIs.
-var lineItems = [];
-
-// Loop through the columns for this row.
-for (var i=0;i&lt;getInputRowMeta().size();i++) {
-  // Get the metadata for this column.
-  var valueMeta = getInputRowMeta().getValueMeta(i);
-  // Get the name of this column.
-  var fieldName = valueMeta.getName();
-  // Get the value of this column in this row.
-  var fieldValue = valueMeta.getString(row[i]);
-  // If this is a line_item param, add it to the line items array.
-  if (fieldName.indexOf("line_item_") === 0) {
-    splitValues = String(fieldValue).split(", ");
-    lineItemCount = splitValues.length;
-    for (var j = 0; j &lt; lineItemCount; j++) {
-//      lineItems.push(
-      var lineItem = {};
-      lineItem.line_item = {};
-      lineItem.line_item[j] = {};
-      lineItems.push(lineItem);
-    }
-    innerFieldName = String(fieldName).slice(10);
-    params[innerFieldName] = splitValues;
-    params.temp = lineItemCount;
-    params.line_items = lineItems;
-    
-  }
-  // Otherwise, just add to params (unless it's blank).
-  else if (fieldValue) {
-    params[fieldName] = String(fieldValue); //valueMeta.getString(row[i]);
-  }
-}
-
-var paramsJson = JSON.stringify(params);
-data =  '[[ "Order", "create", ' + paramsJson + ']]';</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>paramsJson</name>
-        <rename>paramsJson</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>data</name>
-        <rename>data</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Create Order API JSON 2</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>// get instance of RowMetaInterface, which represents metadata of your input row:
-var rowMetaInterface = getInputRowMeta();
-// get List of ValueMetaInterface objects, which represent each of your input fields:
-var valueMetaList = rowMetaInterface.getValueMetaList();
-// get this object to be able to iterate over the list:
-var iterator = valueMetaList.iterator();
-
-// I am going to save all results into this JS object, then convert it to JSON string and pass into a variable
-var allFields = [];
-while (iterator.hasNext()) {
-    // get current ValueMetaInterface object:
-    var valueMetaInterface = iterator.next();
-    // The name of current field:
-    var fieldName = valueMetaInterface.getName();
-    // getType() returns just an internal integer number of the type:
-    var typeIndex = valueMetaInterface.getType();
-    // typeName will hold the actual String name of the type:
-    var typeName = org.pentaho.di.core.row.ValueMetaInterface.typeCodes[typeIndex];
-
-    // Prepare data to be converted to JSON:
-    var field = {};
-    // wrap Java String into a JavaScript String object to be able to convert them into Json
-    var value = valueMetaInterface.getString();
-    field[String(fieldName)] = value;
-    allFields.push(field);
-}
-
-var allFieldsJson = JSON.stringify(allFields);
-/*  scope of the variable:
-    "s": System scope
-    "r": root
-    "p": parent
-    "g": grandparent*/
-/*var variableScope = "r";
-setVariable("inputFields", allFieldsJson, variableScope);
-writeToLog("b", "JSON string:");
-writeToLog("b", allFieldsJson);
-
-// In other job/transformation you'll be able to parse json object into a javascript object back:
-var fields = JSON.parse(allFieldsJson);
-for (var i = 0; i &lt; fields.length; i++) {
-    fieldName = fields[i].fieldName;
-    fieldType = fields[i].fieldType;
-    writeToLog("b", "Field number " + i + ":");
-    writeToLog("b", fieldName);
-    writeToLog("b", fieldType);
-}
-*/</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>allFieldsJson</name>
-        <rename>allFieldsJson</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>2288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>data only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>data</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2352</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

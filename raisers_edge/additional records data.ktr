@@ -532,10 +532,10 @@ a list of all contacts who have a second prefix/suffix.</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>NOTE: Remap to YOUR custom field IDs</note>
+      <note>NOTE: Remap to YOUR custom field names</note>
       <xloc>640</xloc>
-      <yloc>2144</yloc>
-      <width>255</width>
+      <yloc>1808</yloc>
+      <width>273</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
@@ -1116,18 +1116,8 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>contact_custom_fields</from>
-      <to>Last Step 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Add subject and entity_table</from>
       <to>match_notes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Custom fields only</from>
-      <to>contact_custom_fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1148,6 +1138,21 @@ a list of all contacts who have a second prefix/suffix.</note>
     <hop>
       <from>Map Do Not Mail from Mailing Code</from>
       <to>Remove Unneeded fields, change prefix/suffix id to integer</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Custom fields only</from>
+      <to>custom field name substitution</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>custom field name substitution</from>
+      <to>Dynamic CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step 3</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1741,46 +1746,47 @@ a list of all contacts who have a second prefix/suffix.</note>
       </field>
       <field>
         <name>DATE_ADDED</name>
-        <rename>custom_1</rename>
-      </field>
-      <field>
-        <name>target_1</name>
+        <rename>RE_Date_Created</rename>
       </field>
       <field>
         <name>DATE_LAST_CHANGED</name>
-        <rename>custom_2</rename>
+        <rename>RE_Date_Last_Modified</rename>
       </field>
       <field>
         <name>ID</name>
-        <rename>custom_3</rename>
+        <rename>RE_System_Record_ID</rename>
       </field>
       <field>
         <name>CONSTITUENT_ID</name>
-        <rename>custom_4</rename>
+        <rename>RE_Constituent_ID</rename>
       </field>
       <field>
         <name>ADDED_BY</name>
-        <rename>custom_7</rename>
+        <rename>RE_Created_By</rename>
       </field>
       <field>
         <name>LAST_CHANGED_BY</name>
-        <rename>custom_8</rename>
+        <rename>RE_Last_Modifed_By</rename>
       </field>
       <field>
         <name>NO_VALID_ADDRESSES</name>
-        <rename>custom_9</rename>
+        <rename>Valid_Address</rename>
       </field>
       <field>
         <name>INACTIVE</name>
-        <rename>custom_10</rename>
+        <rename>Active</rename>
       </field>
       <field>
         <name>ANONYMOUS</name>
-        <rename>custom_11</rename>
+        <rename>Anonymous</rename>
       </field>
       <field>
         <name>INCOME</name>
-        <rename>custom_12</rename>
+        <rename>Mailing_Code</rename>
+      </field>
+      <field>
+        <name>target_1</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2679,6 +2685,43 @@ if (postal_greeting_id == null) {
     <GUI>
       <xloc>592</xloc>
       <yloc>2224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Do Not Mail from Mailing Code</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INCOME</field_to_use>
+    <target_field>do_not_mail</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>Do Not Mail</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>Remove from Mailing List</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>1808</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3644,31 +3687,24 @@ if (DECEASED_DATE != null){
       </field>
       <field>
         <name>contact_id</name>
-        <rename />
       </field>
       <field>
         <name>addressee_id</name>
-        <rename />
       </field>
       <field>
         <name>postal_greeting_id</name>
-        <rename />
       </field>
       <field>
         <name>gender</name>
-        <rename />
       </field>
       <field>
         <name>prefix_id</name>
-        <rename />
       </field>
       <field>
         <name>suffix_id</name>
-        <rename />
       </field>
       <field>
         <name>do_not_mail</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -3839,43 +3875,33 @@ if (DECEASED_DATE != null){
     <fields>
       <field>
         <name>birth_date</name>
-        <rename />
       </field>
       <field>
         <name>is_opt_out</name>
-        <rename />
       </field>
       <field>
         <name>deceased_date</name>
-        <rename />
       </field>
       <field>
         <name>nick_name</name>
-        <rename />
       </field>
       <field>
         <name>is_deceased</name>
-        <rename />
       </field>
       <field>
         <name>contact_id</name>
-        <rename />
       </field>
       <field>
         <name>gender</name>
-        <rename />
       </field>
       <field>
         <name>prefix_id</name>
-        <rename />
       </field>
       <field>
         <name>suffix_id</name>
-        <rename />
       </field>
       <field>
         <name>do_not_mail</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -5135,207 +5161,6 @@ if (PRIMARY_ADDRESSEE !== null){
     </GUI>
   </step>
   <step>
-    <name>contact_custom_fields</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/${output3name}</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>entity_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>target_1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_3</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_4</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_7</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_8</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_9</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_10</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_11</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>custom_12</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>email/addressee greetings</name>
     <type>Constant</type>
     <description />
@@ -6159,29 +5984,44 @@ if (PRIMARY_ADDRESSEE !== null){
     </GUI>
   </step>
   <step>
-    <name>Map Do Not Mail from Mailing Code</name>
-    <type>ValueMapper</type>
+    <name>custom field name substitution</name>
+    <type>SimpleMapping</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>INCOME</field_to_use>
-    <target_field>do_not_mail</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>Do Not Mail</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>Remove from Mailing List</source_value>
-        <target_value>1</target_value>
-      </field>
-    </fields>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6190,8 +6030,66 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>1808</yloc>
+      <xloc>592</xloc>
+      <yloc>1904</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dynamic CSV Output</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output3name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>2048</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
