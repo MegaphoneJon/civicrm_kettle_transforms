@@ -479,6 +479,27 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>IMPORTANT: This currently fails if there are no custom field names to look up.</note>
+      <xloc>368</xloc>
+      <yloc>528</yloc>
+      <width>474</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>255</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>Target CiviCRM</name>
@@ -565,11 +586,6 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join</from>
-      <to>ETL Metadata Injection</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Mapping input specification</from>
       <to>Metadata structure of stream</to>
       <enabled>Y</enabled>
@@ -586,6 +602,16 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
     </hop>
     <hop>
       <from>Blocking Step</from>
+      <to>ETL Metadata Injection</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join</from>
+      <to>Calculate newname</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculate newname</from>
       <to>ETL Metadata Injection</to>
       <enabled>Y</enabled>
     </hop>
@@ -646,15 +672,15 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
         <target_step_name>Select values</target_step_name>
         <target_attribute_key>FIELD_RENAME</target_attribute_key>
         <target_detail>Y</target_detail>
-        <source_step>Merge Join</source_step>
+        <source_step>Calculate newname</source_step>
         <source_field>newname</source_field>
       </mapping>
       <mapping>
         <target_step_name>Select values</target_step_name>
         <target_attribute_key>FIELD_NAME</target_attribute_key>
         <target_detail>Y</target_detail>
-        <source_step>Merge Join</source_step>
-        <source_field>name</source_field>
+        <source_step>Calculate newname</source_step>
+        <source_field>Fieldname</source_field>
       </mapping>
     </mappings>
     <cluster_schema />
@@ -682,7 +708,7 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>select name, CONCAT('custom_', id) as newname from civicrm_custom_field ORDER BY name;</sql>
+    <sql>select name, CONCAT('custom_', id) as substitute from civicrm_custom_field ORDER BY name;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -763,7 +789,7 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows</step1>
     <step2>Look up custom field names/ids</step2>
     <keys_1>
@@ -780,8 +806,8 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>240</yloc>
+      <xloc>528</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -847,8 +873,8 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>176</yloc>
+      <xloc>432</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -879,6 +905,45 @@ https://wiki.pentaho.com/display/EAI/Transformation+Deadlocks</note>
     <GUI>
       <xloc>416</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculate newname</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <calculation>
+      <field_name>newname</field_name>
+      <calc_type>NVL</calc_type>
+      <field_a>substitute</field_a>
+      <field_b>Fieldname</field_b>
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
