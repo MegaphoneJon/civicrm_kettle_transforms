@@ -651,6 +651,7 @@
 , ccf.is_view
 , ccf.text_length
 , ccf.in_selector
+, ccf.filter
 FROM civicrm_custom_field ccf
 JOIN civicrm_custom_group ccg ON ccf.custom_group_id = ccg.id
 LEFT JOIN civicrm_option_group cog ON ccf.option_group_id = cog.id
@@ -1091,6 +1092,18 @@ if (extends_entity_column_id == 3) {
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>filter</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>255</length>
         <precision>-1</precision>
       </field>
     </fields>
