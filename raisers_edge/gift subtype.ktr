@@ -662,12 +662,12 @@ Also: This assumes fund is just an ordinary custom field in Civi.</note>
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
       <to>Import when complete 2</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Import when complete 2</from>
@@ -875,7 +875,6 @@ Also: This assumes fund is just an ordinary custom field in Civi.</note>
     <fields>
       <field>
         <name>GIFTSUBTYPE</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1073,15 +1072,12 @@ Also: This assumes fund is just an ordinary custom field in Civi.</note>
       </field>
       <field>
         <name>option_group_id</name>
-        <rename />
       </field>
       <field>
         <name>is_active</name>
-        <rename />
       </field>
       <field>
         <name>label</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>

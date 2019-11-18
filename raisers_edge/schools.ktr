@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>appeals</name>
+    <name>schools</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>OptionValue</default_value>
+        <default_value>Contact</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>option_value_appeals.csv</default_value>
+        <default_value>schools.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,82 +438,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014/09/24 17:16:02.269</created_date>
+    <created_date>2018/07/27 13:51:38.414</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <modified_date>2018/07/27 13:51:38.414</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
-      <xloc>192</xloc>
-      <yloc>96</yloc>
-      <width>400</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Set your option_group_ids 
-  corresponding to Appeal custom field here.
-
-e.g. SELECT option_group_id FROM civicrm_custom_field WHERE label = 'Appeal';</note>
-      <xloc>432</xloc>
-      <yloc>368</yloc>
-      <width>503</width>
-      <heigth>70</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>This is smart enough to only bring over appeals that are used either on gifts 
-or constituent appeals that are actually tied to contacts being brought over.
-
-Also: This assumes appeal is just an ordinary custom field in Civi.</note>
-      <xloc>768</xloc>
-      <yloc>16</yloc>
-      <width>474</width>
-      <heigth>70</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -639,43 +570,23 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
   </connection>
   <order>
     <hop>
-      <from>RE: Appeals in use</from>
-      <to>Step 1 contacts only</to>
+      <from>RE: Schools</from>
+      <to>Get contact_id where applicable</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort by Appeal</from>
-      <to>Unique appeals</to>
+      <from>Get contact_id where applicable</from>
+      <to>Add contact type/subtype</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique appeals</from>
-      <to>Appeals only</to>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter unrecognized appeals</from>
-      <to>lookup appeal data in RE</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Appeals only</from>
-      <to>Join the option_group_id of Appeal names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get option_group_id of Appeal names</from>
-      <to>Join the option_group_id of Appeal names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Join the option_group_id of Appeal names</from>
-      <to>lookup appeal in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup appeal in Civi</from>
-      <to>Filter unrecognized appeals</to>
+      <from>Add contact type/subtype</from>
+      <to>Dynamic CSV Output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -703,40 +614,10 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       <to>Get CSV folder</to>
       <enabled>Y</enabled>
     </hop>
-    <hop>
-      <from>CSV Output</from>
-      <to>Last Step</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup appeal data in RE</from>
-      <to>Order by sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Order by sequence</from>
-      <to>Remap "Inactive" to "is_active"</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remap "Inactive" to "is_active"</from>
-      <to>Import fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Import fields only</from>
-      <to>CSV Output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts only</from>
-      <to>Sort by Appeal</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
   <step>
-    <name>Appeals only</name>
-    <type>SelectValues</type>
+    <name>Add contact type/subtype</name>
+    <type>Constant</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -747,113 +628,28 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
     </partitioning>
     <fields>
       <field>
-        <name>appeal</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>CSV Output</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/${output1name}</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>value</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>option_group_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>label</name>
+        <name>contact_type</name>
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
-        <nullif />
-        <trim_type>both</trim_type>
+        <nullif>Organization</nullif>
         <length>-1</length>
         <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>contact_sub_type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>School</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
     <cluster_schema />
@@ -864,14 +660,14 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>944</yloc>
+      <xloc>112</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter unrecognized appeals</name>
-    <type>FilterRows</type>
+    <name>Dynamic CSV Output</name>
+    <type>Mapping</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -880,28 +676,40 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>option_value</leftvalue>
-            <function>IS NULL</function>
-            <rightvalue />
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>appeal</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue />
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output1name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -910,67 +718,8 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fix punctuation in fields</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>&amp;</replace_string>
-        <replace_by_string>and</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>'</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>"</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>192</yloc>
+      <xloc>112</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1007,8 +756,8 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>742</xloc>
-      <yloc>721</yloc>
+      <xloc>325</xloc>
+      <yloc>309</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1051,14 +800,14 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>742</xloc>
-      <yloc>561</yloc>
+      <xloc>325</xloc>
+      <yloc>149</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get option_group_id of Appeal names</name>
-    <type>TableInput</type>
+    <name>Get contact_id where applicable</name>
+    <type>DBLookup</type>
     <description />
     <distribute>N</distribute>
     <custom_distribution />
@@ -1068,12 +817,28 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as option_group_id FROM civicrm_option_group cog WHERE cog.title = "Appeal";</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>organization_name</name>
+        <field>organization_name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1082,8 +847,8 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>368</yloc>
+      <xloc>112</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1132,48 +897,8 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>838</xloc>
-      <yloc>593</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Import fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>appeal</name>
-        <rename>value</rename>
-      </field>
-      <field>
-        <name>option_group_id</name>
-      </field>
-      <field>
-        <name>is_active</name>
-      </field>
-      <field>
-        <name>label</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>864</yloc>
+      <xloc>501</xloc>
+      <yloc>149</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1202,44 +927,8 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>838</xloc>
-      <yloc>673</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join the option_group_id of Appeal names</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>416</yloc>
+      <xloc>501</xloc>
+      <yloc>229</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1262,54 +951,13 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>1024</yloc>
+      <xloc>112</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Order by sequence</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>SEQUENCE</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: Appeals in use</name>
+    <name>RE: Schools</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1320,25 +968,14 @@ Also: This assumes appeal is just an ordinary custom field in Civi.</note>
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>/* We only bring in appeals that exist on a gift or a constituent appeal. */
-SELECT
-g.CONSTIT_ID
-, AppealId as appeal
-, r.CONSTITUENT_ID
-FROM GiftSplit gs
-LEFT JOIN Appeal on gs.AppealId = APPEAL.id 
-LEFT JOIN GIFT g on gs.GiftId = g.ID
-LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
-WHERE APPEAL.DESCRIPTION IS NOT NULL
-UNION
-SELECT
-ca.CONSTIT_ID
-, ca.APPEAL_ID as appeal
-, r.CONSTITUENT_ID
-FROM CONSTITUENT_APPEALS ca
-LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id
-JOIN RECORDS r ON ca.CONSTIT_ID = r.ID
-WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
+    <sql>SELECT
+t.LONGDESCRIPTION as organization_name
+FROM TABLEENTRIES t
+JOIN CODETABLES c ON t.CODETABLESID = c.CODETABLESID
+WHERE name = 'Schools'
+
+
+</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1352,45 +989,8 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remap "Inactive" to "is_active"</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>is_active</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>-1</source_value>
-        <target_value>0</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>800</yloc>
+      <xloc>112</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1419,8 +1019,8 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>742</xloc>
-      <yloc>641</yloc>
+      <xloc>325</xloc>
+      <yloc>229</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1465,139 +1065,8 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>742</xloc>
-      <yloc>801</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort by Appeal</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>appeal</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>2</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Step 1 contacts only</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique appeals</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>appeal</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>272</yloc>
+      <xloc>325</xloc>
+      <yloc>389</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1660,120 +1129,8 @@ WHERE APPEAL.DESCRIPTION IS NOT NULL</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>838</xloc>
-      <yloc>753</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>lookup appeal data in RE</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>APPEAL</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>appeal</name>
-        <field>ID</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>INACTIVE</name>
-        <rename>is_active</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>SEQUENCE</name>
-        <rename>SEQUENCE</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>DESCRIPTION</name>
-        <rename>label</rename>
-        <default />
-        <type>String</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>lookup appeal in Civi</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_option_value</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>appeal</name>
-        <field>value</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>option_group_id</name>
-        <field>option_group_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>value</name>
-        <rename>option_value</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>480</yloc>
+      <xloc>501</xloc>
+      <yloc>309</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

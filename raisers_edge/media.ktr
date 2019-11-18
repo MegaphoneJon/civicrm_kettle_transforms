@@ -2,47 +2,408 @@
 <transformation>
   <info>
     <name>media</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
-    <directory>&#x2f;</directory>
+    <directory>/</directory>
     <parameters>
     </parameters>
     <log>
-<trans-log-table><connection/>
-<schema/>
-<table/>
-<size_limit_lines/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
-<perf-log-table><connection/>
-<schema/>
-<table/>
-<interval/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
-<channel-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
-<step-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
-<metrics-log-table><connection/>
-<schema/>
-<table/>
-<timeout_days/>
-<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -53,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -65,16 +426,19 @@
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
-  <created_user>-</created_user>
-  <created_date>2016&#x2f;03&#x2f;06 19&#x3a;42&#x3a;51.796</created_date>
-  <modified_user>-</modified_user>
-  <modified_date>2016&#x2f;03&#x2f;06 19&#x3a;42&#x3a;51.796</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <created_user>-</created_user>
+    <created_date>2016/03/06 19:42:51.796</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2016/03/06 19:42:51.796</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>This presumes you have two copies of your actual media files&#x3a;&#xa;One in &#x24;&#x7b;LOCALFILES&#x7d; and one in your &#x22;custom files&#x22; folder in Civi.&#xa;Later versions might actually create that second copy and set the permissions&#xa;correctly &#x28;www-data must have read AND write&#x29;, but for now, DIY.</note>
+      <note>This presumes you have two copies of your actual media files:
+One in ${LOCALFILES} and one in your "custom files" folder in Civi.
+Later versions might actually create that second copy and set the permissions
+correctly (www-data must have read AND write), but for now, DIY.</note>
       <xloc>458</xloc>
       <yloc>58</yloc>
       <width>464</width>
@@ -96,211 +460,172 @@
     </notepad>
   </notepads>
   <connection>
-    <name>CCR</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ccr_civi</database>
-    <port>3306</port>
-    <username>ccr</username>
-    <password>Encrypted 2befddfa903df938da80cad78db9ba8d5</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_civi</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>CPEHN legacy</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>cpehn_legacy</database>
-    <port>3306</port>
-    <username>cpehn</username>
-    <password>Encrypted 2bef9c6bb0292a481ae01ab758e91ae88</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code><attribute>convertToNull</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Newpress2</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>newpress_civi</database>
-    <port>3306</port>
-    <username>newpress</username>
-    <password>Encrypted 2bee8c7a702d3938cb90ca365d297a6d8</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>Raiser&#x27;s Edge LCCR</name>
-    <server>b1rnml2</server>
-    <type>MSSQLNATIVE</type>
-    <access>Native</access>
-    <database>LCCR</database>
-    <port>50827</port>
-    <username>jon</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb798f52fdc3fd89</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>MSSQLUseIntegratedSecurity</code><attribute>false</attribute></attribute>
-      <attribute><code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>50827</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
     <name>Target CiviCRM</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>&#x24;&#x7b;CIVIDB&#x7d;</database>
+    <database>${CIVIDB}</database>
     <port>3306</port>
-    <username>&#x24;&#x7b;MYSQLUSER&#x7d;</username>
-    <password>&#x24;&#x7b;MYSQLPW&#x7d;</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>UJC</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>ujc_civi</database>
-    <port>3306</port>
-    <username>ujc</username>
-    <password>Encrypted 2beffceb105cf918cbe10a265d785a6df</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
-      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
-      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
-      <attribute><code>PORT_NUMBER</code><attribute>3306</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
-      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
-      <attribute><code>STREAM_RESULTS</code><attribute>Y</attribute></attribute>
-      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>N</attribute></attribute>
-      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Get media filenames</from><to>relevant fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>relevant fields only</from><to>Get only number from filename</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get only number from filename</from><to>selec</to><enabled>Y</enabled> </hop>
-  <hop> <from>selec</from><to>entity_table &#x3d; civicrm_activity</to><enabled>Y</enabled> </hop>
-  <hop> <from>entity_table &#x3d; civicrm_activity</from><to>Look up MIME type</to><enabled>Y</enabled> </hop>
-  <hop> <from>Look up MIME type</from><to>Generate options.move-file</to><enabled>Y</enabled> </hop>
-  <hop> <from>Generate options.move-file</from><to>import fields only</to><enabled>Y</enabled> </hop>
-  <hop> <from>import fields only</from><to>cli_media</to><enabled>Y</enabled> </hop>
+    <hop>
+      <from>Get media filenames</from>
+      <to>relevant fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>relevant fields only</from>
+      <to>Get only number from filename</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get only number from filename</from>
+      <to>selec</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>selec</from>
+      <to>entity_table = civicrm_activity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>entity_table = civicrm_activity</from>
+      <to>Look up MIME type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Look up MIME type</from>
+      <to>Generate options.move-file</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate options.move-file</from>
+      <to>import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>import fields only</from>
+      <to>cli_media</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Generate options.move-file</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//A more clever implementation would use a CiviCRM API lookup to grab the "custom files"
+//folder path.  I'm just hard-coding it.
+
+//Can't put a period or dash in the variable name.  We'll fix that in a moment.
+var movefile;
+custom_file_folder = '/home/jon/local/lccr/wp-content/plugins/files/civicrm/custom/';
+movefile = custom_file_folder + short_filename;
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>movefile</name>
+        <rename>movefile</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Get media filenames</name>
     <type>GetFileNames</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <filter>
       <filterfiletype>all_files</filterfiletype>
     </filter>
@@ -308,173 +633,333 @@
     <rownum>N</rownum>
     <isaddresult>Y</isaddresult>
     <filefield>N</filefield>
-    <rownum_field/>
-    <filename_Field/>
-    <wildcard_Field/>
-    <exclude_wildcard_Field/>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
     <dynamic_include_subfolders>N</dynamic_include_subfolders>
     <limit>0</limit>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;media&#x2f;</name>
-      <filemask>.&#x2a;</filemask>
-      <exclude_filemask/>
+      <name>${LOCALFILES}/media/</name>
+      <filemask>.*</filemask>
+      <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
     </file>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>295</xloc>
-      <yloc>47</yloc>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>relevant fields only</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>short_filename</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>extension</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>296</xloc>
-      <yloc>115</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>Get only number from filename</name>
     <type>ScriptValueMod</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <compatible>N</compatible>
     <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var row_number&#x3b;&#xa;&#xa;row_number &#x3d; short_filename.match&#x28; &#x2f;&#x5c;d&#x2b;&#x2f;g &#x29;&#x3b;&#xa;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>row_number</name>
+        <jsScript_script>var row_number;
+
+row_number = short_filename.match( /\d+/g );
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>row_number</name>
         <rename>row_number</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>300</xloc>
-      <yloc>181</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>selec</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>civicrm_activity</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>row_number</name>
-        <field>phone_number</field>
-        <condition>&#x3d;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id</name>
-        <rename>entity_id</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>296</xloc>
-      <yloc>251</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>entity_table &#x3d; civicrm_activity</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>entity_table</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>civicrm_activity</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>299</xloc>
-      <yloc>313</yloc>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
+  <step>
+    <name>Look up MIME type</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>extension</field_to_use>
+    <target_field>mime_type</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>avi</source_value>
+        <target_value>video/msvideo, video/avi, video/x-msvideo</target_value>
+      </field>
+      <field>
+        <source_value>bmp</source_value>
+        <target_value>image/bmp</target_value>
+      </field>
+      <field>
+        <source_value>bz2</source_value>
+        <target_value>application/x-bzip2</target_value>
+      </field>
+      <field>
+        <source_value>css</source_value>
+        <target_value>text/css</target_value>
+      </field>
+      <field>
+        <source_value>dtd</source_value>
+        <target_value>application/xml-dtd</target_value>
+      </field>
+      <field>
+        <source_value>doc</source_value>
+        <target_value>application/msword</target_value>
+      </field>
+      <field>
+        <source_value>docx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.wordprocessingml.document</target_value>
+      </field>
+      <field>
+        <source_value>dotx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.wordprocessingml.template</target_value>
+      </field>
+      <field>
+        <source_value>es</source_value>
+        <target_value>application/ecmascript</target_value>
+      </field>
+      <field>
+        <source_value>exe</source_value>
+        <target_value>application/octet-stream</target_value>
+      </field>
+      <field>
+        <source_value>gif</source_value>
+        <target_value>image/gif</target_value>
+      </field>
+      <field>
+        <source_value>gz</source_value>
+        <target_value>application/x-gzip</target_value>
+      </field>
+      <field>
+        <source_value>hqx</source_value>
+        <target_value>application/mac-binhex40</target_value>
+      </field>
+      <field>
+        <source_value>html</source_value>
+        <target_value>text/html</target_value>
+      </field>
+      <field>
+        <source_value>jar</source_value>
+        <target_value>application/java-archive</target_value>
+      </field>
+      <field>
+        <source_value>jpg</source_value>
+        <target_value>image/jpeg</target_value>
+      </field>
+      <field>
+        <source_value>js</source_value>
+        <target_value>application/x-javascript</target_value>
+      </field>
+      <field>
+        <source_value>midi</source_value>
+        <target_value>audio/x-midi</target_value>
+      </field>
+      <field>
+        <source_value>mp3</source_value>
+        <target_value>audio/mpeg</target_value>
+      </field>
+      <field>
+        <source_value>mpeg</source_value>
+        <target_value>video/mpeg</target_value>
+      </field>
+      <field>
+        <source_value>ogg</source_value>
+        <target_value>audio/vorbis</target_value>
+      </field>
+      <field>
+        <source_value>pdf</source_value>
+        <target_value>application/pdf</target_value>
+      </field>
+      <field>
+        <source_value>pl</source_value>
+        <target_value>application/x-perl</target_value>
+      </field>
+      <field>
+        <source_value>png</source_value>
+        <target_value>image/png</target_value>
+      </field>
+      <field>
+        <source_value>potx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.presentationml.template</target_value>
+      </field>
+      <field>
+        <source_value>ppsx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.presentationml.slideshow</target_value>
+      </field>
+      <field>
+        <source_value>ppt</source_value>
+        <target_value>application/vnd.ms-powerpoint</target_value>
+      </field>
+      <field>
+        <source_value>pptx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.presentationml.presentation</target_value>
+      </field>
+      <field>
+        <source_value>ps</source_value>
+        <target_value>application/postscript</target_value>
+      </field>
+      <field>
+        <source_value>qt</source_value>
+        <target_value>video/quicktime</target_value>
+      </field>
+      <field>
+        <source_value>ra</source_value>
+        <target_value>audio/x-pn-realaudio</target_value>
+      </field>
+      <field>
+        <source_value>ram</source_value>
+        <target_value>audio/x-pn-realaudio</target_value>
+      </field>
+      <field>
+        <source_value>rdf</source_value>
+        <target_value>application/rdf, application/rdf+xml</target_value>
+      </field>
+      <field>
+        <source_value>rtf</source_value>
+        <target_value>application/rtf</target_value>
+      </field>
+      <field>
+        <source_value>sgml</source_value>
+        <target_value>text/sgml</target_value>
+      </field>
+      <field>
+        <source_value>sit</source_value>
+        <target_value>application/x-stuffit</target_value>
+      </field>
+      <field>
+        <source_value>sldx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.presentationml.slide</target_value>
+      </field>
+      <field>
+        <source_value>svg</source_value>
+        <target_value>image/svg+xml</target_value>
+      </field>
+      <field>
+        <source_value>swf</source_value>
+        <target_value>application/x-shockwave-flash</target_value>
+      </field>
+      <field>
+        <source_value>tar.gz</source_value>
+        <target_value>application/x-tar</target_value>
+      </field>
+      <field>
+        <source_value>tgz</source_value>
+        <target_value>application/x-tar</target_value>
+      </field>
+      <field>
+        <source_value>tiff</source_value>
+        <target_value>image/tiff</target_value>
+      </field>
+      <field>
+        <source_value>tsv</source_value>
+        <target_value>text/tab-separated-values</target_value>
+      </field>
+      <field>
+        <source_value>txt</source_value>
+        <target_value>text/plain</target_value>
+      </field>
+      <field>
+        <source_value>wav</source_value>
+        <target_value>audio/wav, audio/x-wav</target_value>
+      </field>
+      <field>
+        <source_value>xlam</source_value>
+        <target_value>application/vnd.ms-excel.addin.macroEnabled.12</target_value>
+      </field>
+      <field>
+        <source_value>xls</source_value>
+        <target_value>application/vnd.ms-excel</target_value>
+      </field>
+      <field>
+        <source_value>xlsb</source_value>
+        <target_value>application/vnd.ms-excel.sheet.binary.macroEnabled.12</target_value>
+      </field>
+      <field>
+        <source_value>xlsx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet </target_value>
+      </field>
+      <field>
+        <source_value>xltx</source_value>
+        <target_value>application/vnd.openxmlformats-officedocument.spreadsheetml.template </target_value>
+      </field>
+      <field>
+        <source_value>xml</source_value>
+        <target_value>application/xml</target_value>
+      </field>
+      <field>
+        <source_value>zip</source_value>
+        <target_value>application/zip</target_value>
+      </field>
+      <field>
+        <source_value>ole</source_value>
+        <target_value>application/octet-stream</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>cli_media</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <separator>,</separator>
-    <enclosure>&#x22;</enclosure>
+    <enclosure>"</enclosure>
     <enclosure_forced>Y</enclosure_forced>
     <enclosure_fix_disabled>N</enclosure_fix_disabled>
     <header>Y</header>
@@ -482,12 +967,12 @@
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>&#x24;&#x7b;LOCALFILES&#x7d;&#x2f;data&#x2f;cli_media</name>
+      <name>${LOCALFILES}/data/cli_media</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -498,7 +983,7 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
@@ -508,11 +993,11 @@
       <field>
         <name>name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -521,10 +1006,10 @@
         <name>entity_id</name>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
+        <currency />
         <decimal>.</decimal>
         <group>,</group>
-        <nullif/>
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -532,11 +1017,11 @@
       <field>
         <name>entity_table</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -544,11 +1029,11 @@
       <field>
         <name>mime_type</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -556,334 +1041,194 @@
       <field>
         <name>options.move-file</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>303</xloc>
-      <yloc>536</yloc>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
-    <name>Look up MIME type</name>
-    <type>ValueMapper</type>
-    <description/>
+    <name>entity_table = civicrm_activity</name>
+    <type>Constant</type>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>extension</field_to_use>
-    <target_field>mime_type</target_field>
-    <non_match_default/>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
     <fields>
       <field>
-        <source_value>avi</source_value>
-        <target_value>video&#x2f;msvideo, video&#x2f;avi, video&#x2f;x-msvideo</target_value>
-      </field>
-      <field>
-        <source_value>bmp</source_value>
-        <target_value>image&#x2f;bmp</target_value>
-      </field>
-      <field>
-        <source_value>bz2</source_value>
-        <target_value>application&#x2f;x-bzip2</target_value>
-      </field>
-      <field>
-        <source_value>css</source_value>
-        <target_value>text&#x2f;css</target_value>
-      </field>
-      <field>
-        <source_value>dtd</source_value>
-        <target_value>application&#x2f;xml-dtd</target_value>
-      </field>
-      <field>
-        <source_value>doc</source_value>
-        <target_value>application&#x2f;msword</target_value>
-      </field>
-      <field>
-        <source_value>docx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.wordprocessingml.document</target_value>
-      </field>
-      <field>
-        <source_value>dotx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.wordprocessingml.template</target_value>
-      </field>
-      <field>
-        <source_value>es</source_value>
-        <target_value>application&#x2f;ecmascript</target_value>
-      </field>
-      <field>
-        <source_value>exe</source_value>
-        <target_value>application&#x2f;octet-stream</target_value>
-      </field>
-      <field>
-        <source_value>gif</source_value>
-        <target_value>image&#x2f;gif</target_value>
-      </field>
-      <field>
-        <source_value>gz</source_value>
-        <target_value>application&#x2f;x-gzip</target_value>
-      </field>
-      <field>
-        <source_value>hqx</source_value>
-        <target_value>application&#x2f;mac-binhex40</target_value>
-      </field>
-      <field>
-        <source_value>html</source_value>
-        <target_value>text&#x2f;html</target_value>
-      </field>
-      <field>
-        <source_value>jar</source_value>
-        <target_value>application&#x2f;java-archive</target_value>
-      </field>
-      <field>
-        <source_value>jpg</source_value>
-        <target_value>image&#x2f;jpeg</target_value>
-      </field>
-      <field>
-        <source_value>js</source_value>
-        <target_value>application&#x2f;x-javascript</target_value>
-      </field>
-      <field>
-        <source_value>midi</source_value>
-        <target_value>audio&#x2f;x-midi</target_value>
-      </field>
-      <field>
-        <source_value>mp3</source_value>
-        <target_value>audio&#x2f;mpeg</target_value>
-      </field>
-      <field>
-        <source_value>mpeg</source_value>
-        <target_value>video&#x2f;mpeg</target_value>
-      </field>
-      <field>
-        <source_value>ogg</source_value>
-        <target_value>audio&#x2f;vorbis</target_value>
-      </field>
-      <field>
-        <source_value>pdf</source_value>
-        <target_value>application&#x2f;pdf</target_value>
-      </field>
-      <field>
-        <source_value>pl</source_value>
-        <target_value>application&#x2f;x-perl</target_value>
-      </field>
-      <field>
-        <source_value>png</source_value>
-        <target_value>image&#x2f;png</target_value>
-      </field>
-      <field>
-        <source_value>potx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.presentationml.template</target_value>
-      </field>
-      <field>
-        <source_value>ppsx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.presentationml.slideshow</target_value>
-      </field>
-      <field>
-        <source_value>ppt</source_value>
-        <target_value>application&#x2f;vnd.ms-powerpoint</target_value>
-      </field>
-      <field>
-        <source_value>pptx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.presentationml.presentation</target_value>
-      </field>
-      <field>
-        <source_value>ps</source_value>
-        <target_value>application&#x2f;postscript</target_value>
-      </field>
-      <field>
-        <source_value>qt</source_value>
-        <target_value>video&#x2f;quicktime</target_value>
-      </field>
-      <field>
-        <source_value>ra</source_value>
-        <target_value>audio&#x2f;x-pn-realaudio</target_value>
-      </field>
-      <field>
-        <source_value>ram</source_value>
-        <target_value>audio&#x2f;x-pn-realaudio</target_value>
-      </field>
-      <field>
-        <source_value>rdf</source_value>
-        <target_value>application&#x2f;rdf, application&#x2f;rdf&#x2b;xml</target_value>
-      </field>
-      <field>
-        <source_value>rtf</source_value>
-        <target_value>application&#x2f;rtf</target_value>
-      </field>
-      <field>
-        <source_value>sgml</source_value>
-        <target_value>text&#x2f;sgml</target_value>
-      </field>
-      <field>
-        <source_value>sit</source_value>
-        <target_value>application&#x2f;x-stuffit</target_value>
-      </field>
-      <field>
-        <source_value>sldx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.presentationml.slide</target_value>
-      </field>
-      <field>
-        <source_value>svg</source_value>
-        <target_value>image&#x2f;svg&#x2b;xml</target_value>
-      </field>
-      <field>
-        <source_value>swf</source_value>
-        <target_value>application&#x2f;x-shockwave-flash</target_value>
-      </field>
-      <field>
-        <source_value>tar.gz</source_value>
-        <target_value>application&#x2f;x-tar</target_value>
-      </field>
-      <field>
-        <source_value>tgz</source_value>
-        <target_value>application&#x2f;x-tar</target_value>
-      </field>
-      <field>
-        <source_value>tiff</source_value>
-        <target_value>image&#x2f;tiff</target_value>
-      </field>
-      <field>
-        <source_value>tsv</source_value>
-        <target_value>text&#x2f;tab-separated-values</target_value>
-      </field>
-      <field>
-        <source_value>txt</source_value>
-        <target_value>text&#x2f;plain</target_value>
-      </field>
-      <field>
-        <source_value>wav</source_value>
-        <target_value>audio&#x2f;wav, audio&#x2f;x-wav</target_value>
-      </field>
-      <field>
-        <source_value>xlam</source_value>
-        <target_value>application&#x2f;vnd.ms-excel.addin.macroEnabled.12</target_value>
-      </field>
-      <field>
-        <source_value>xls</source_value>
-        <target_value>application&#x2f;vnd.ms-excel</target_value>
-      </field>
-      <field>
-        <source_value>xlsb</source_value>
-        <target_value>application&#x2f;vnd.ms-excel.sheet.binary.macroEnabled.12</target_value>
-      </field>
-      <field>
-        <source_value>xlsx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.spreadsheetml.sheet </target_value>
-      </field>
-      <field>
-        <source_value>xltx</source_value>
-        <target_value>application&#x2f;vnd.openxmlformats-officedocument.spreadsheetml.template </target_value>
-      </field>
-      <field>
-        <source_value>xml</source_value>
-        <target_value>application&#x2f;xml</target_value>
-      </field>
-      <field>
-        <source_value>zip</source_value>
-        <target_value>application&#x2f;zip</target_value>
-      </field>
-      <field>
-        <source_value>ole</source_value>
-        <target_value>application&#x2f;octet-stream</target_value>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>304</xloc>
-      <yloc>362</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Generate options.move-file</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;A more clever implementation would use a CiviCRM API lookup to grab the &#x22;custom files&#x22;&#xa;&#x2f;&#x2f;folder path.  I&#x27;m just hard-coding it.&#xa;&#xa;&#x2f;&#x2f;Can&#x27;t put a period or dash in the variable name.  We&#x27;ll fix that in a moment.&#xa;var movefile&#x3b;&#xa;custom_file_folder &#x3d; &#x27;&#x2f;home&#x2f;jon&#x2f;local&#x2f;lccr&#x2f;wp-content&#x2f;plugins&#x2f;files&#x2f;civicrm&#x2f;custom&#x2f;&#x27;&#x3b;&#xa;movefile &#x3d; custom_file_folder &#x2b; short_filename&#x3b;&#xa;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>movefile</name>
-        <rename>movefile</rename>
+        <name>entity_table</name>
         <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>civicrm_activity</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>302</xloc>
-      <yloc>427</yloc>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
   <step>
     <name>import fields only</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>      <field>        <name>short_filename</name>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>short_filename</name>
         <rename>name</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>entity_id</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>entity_table</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>mime_type</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>movefile</name>
+      </field>
+      <field>
+        <name>entity_id</name>
+      </field>
+      <field>
+        <name>entity_table</name>
+      </field>
+      <field>
+        <name>mime_type</name>
+      </field>
+      <field>
+        <name>movefile</name>
         <rename>options.move-file</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>303</xloc>
-      <yloc>489</yloc>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
-      </GUI>
-    </step>
-
+    </GUI>
+  </step>
+  <step>
+    <name>relevant fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>short_filename</name>
+      </field>
+      <field>
+        <name>extension</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>selec</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_activity</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>row_number</name>
+        <field>phone_number</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>entity_id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
   </step_error_handling>
-   <slave-step-copy-partition-distribution>
-</slave-step-copy-partition-distribution>
-   <slave_transformation>N</slave_transformation>
-
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
 </transformation>

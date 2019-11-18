@@ -533,8 +533,8 @@ a list of all contacts who have a second prefix/suffix.</note>
     </notepad>
     <notepad>
       <note>NOTE: Remap to YOUR custom field names</note>
-      <xloc>640</xloc>
-      <yloc>1808</yloc>
+      <xloc>208</xloc>
+      <yloc>2096</yloc>
       <width>273</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
@@ -640,30 +640,9 @@ a list of all contacts who have a second prefix/suffix.</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>FIXME - Debug step</note>
-      <xloc>192</xloc>
-      <yloc>2032</yloc>
-      <width>129</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>0</backgroundcolorgreen>
-      <backgroundcolorblue>0</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>&lt;-- Client-specific</note>
       <xloc>208</xloc>
-      <yloc>1808</yloc>
+      <yloc>1872</yloc>
       <width>116</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
@@ -811,26 +790,6 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>lookup TITLE_1 in RE db</from>
-      <to>lookup TITLE_2 in RE db</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup TITLE_2 in RE db</from>
-      <to>lookup SUFFIX_1 in RE db</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup SUFFIX_1 in RE db</from>
-      <to>lookup SUFFIX_2 in RE db</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup SUFFIX_2 in RE db</from>
-      <to>lookup TARGET in RE db</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter records with match notes</from>
       <to>Select values 2</to>
       <enabled>Y</enabled>
@@ -921,11 +880,6 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dummy</from>
-      <to>Custom fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Set greetings id to "customized" if the value isn't null</from>
       <to>Handle null greetings/salutations</to>
       <enabled>Y</enabled>
@@ -1011,11 +965,6 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap ANONYMOUS</from>
-      <to>Remap No Valid Address (flip)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap No Valid Address (flip)</from>
       <to>Remap Inactive (flip)</to>
       <enabled>Y</enabled>
@@ -1041,11 +990,6 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get CSV folder 3</from>
-      <to>Single file SFTP 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
       <enabled>Y</enabled>
@@ -1053,11 +997,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     <hop>
       <from>Get File Names 2</from>
       <to>SFTP when complete 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get File Names 3</from>
-      <to>SFTP when complete 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1071,11 +1010,6 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get parameters 3</from>
-      <to>Import when complete 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Import when complete</from>
       <to>import entity</to>
       <enabled>Y</enabled>
@@ -1083,11 +1017,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     <hop>
       <from>Import when complete 2</from>
       <to>import entity 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Import when complete 3</from>
-      <to>import entity 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1101,18 +1030,8 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>SFTP when complete 3</from>
-      <to>Get CSV folder 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>match_notes</from>
       <to>Last Step 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>additional_records_data</from>
-      <to>Last Step</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1122,12 +1041,7 @@ a list of all contacts who have a second prefix/suffix.</note>
     </hop>
     <hop>
       <from>Remove Unneeded fields, change prefix/suffix id to integer</from>
-      <to>Remove greeting-related fields for now</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove greeting-related fields for now</from>
-      <to>additional_records_data</to>
+      <to>Import fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1136,23 +1050,48 @@ a list of all contacts who have a second prefix/suffix.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Remap ANONYMOUS</from>
+      <to>Remap IS_CONSTITUENT</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap IS_CONSTITUENT</from>
+      <to>Remap No Valid Address (flip)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup TITLE_1 in RE db</from>
+      <to>lookup SUFFIX_1 in RE db</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup SUFFIX_1 in RE db</from>
+      <to>lookup TARGET in RE db</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Map Do Not Mail from Mailing Code</from>
+      <to>skip_greeting_processing = 1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>skip_greeting_processing = 1</from>
       <to>Remove Unneeded fields, change prefix/suffix id to integer</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Custom fields only</from>
+      <from>Import fields only</from>
       <to>custom field name substitution</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>custom field name substitution</from>
       <to>Dynamic CSV Output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dynamic CSV Output</from>
-      <to>Last Step 3</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1361,8 +1300,8 @@ a list of all contacts who have a second prefix/suffix.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>2080</yloc>
+      <xloc>608</xloc>
+      <yloc>2176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1729,81 +1668,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     </GUI>
   </step>
   <step>
-    <name>Custom fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>contact_id</name>
-        <rename>entity_id</rename>
-      </field>
-      <field>
-        <name>DATE_ADDED</name>
-        <rename>RE_Date_Created</rename>
-      </field>
-      <field>
-        <name>DATE_LAST_CHANGED</name>
-        <rename>RE_Date_Last_Modified</rename>
-      </field>
-      <field>
-        <name>ID</name>
-        <rename>RE_System_Record_ID</rename>
-      </field>
-      <field>
-        <name>CONSTITUENT_ID</name>
-        <rename>RE_Constituent_ID</rename>
-      </field>
-      <field>
-        <name>ADDED_BY</name>
-        <rename>RE_Created_By</rename>
-      </field>
-      <field>
-        <name>LAST_CHANGED_BY</name>
-        <rename>RE_Last_Modifed_By</rename>
-      </field>
-      <field>
-        <name>NO_VALID_ADDRESSES</name>
-        <rename>Valid_Address</rename>
-      </field>
-      <field>
-        <name>INACTIVE</name>
-        <rename>Active</rename>
-      </field>
-      <field>
-        <name>ANONYMOUS</name>
-        <rename>Anonymous</rename>
-      </field>
-      <field>
-        <name>INCOME</name>
-        <rename>Mailing_Code</rename>
-      </field>
-      <field>
-        <name>target_1</name>
-        <rename />
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>1808</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Dummy</name>
     <type>Dummy</type>
     <description />
@@ -1823,7 +1687,65 @@ a list of all contacts who have a second prefix/suffix.</note>
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>1744</yloc>
+      <yloc>1808</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dynamic CSV Output</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output1name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1985,8 +1907,8 @@ a list of all contacts who have a second prefix/suffix.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>1952</yloc>
+      <xloc>608</xloc>
+      <yloc>2048</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2063,44 +1985,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     <GUI>
       <xloc>1316</xloc>
       <yloc>1875</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get CSV folder 3</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>csv</name>
-        <variable>${SQLDUMP}/csvs</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1616</xloc>
-      <yloc>1877</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2189,50 +2073,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     <GUI>
       <xloc>1316</xloc>
       <yloc>1715</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get File Names 3</name>
-    <type>GetFileNames</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field />
-    <filename_Field />
-    <wildcard_Field />
-    <exclude_wildcard_Field />
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
-    <file>
-      <name>${LOCALFILES}/data/${output3name}</name>
-      <filemask />
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1616</xloc>
-      <yloc>1717</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2333,56 +2173,6 @@ a list of all contacts who have a second prefix/suffix.</note>
     <GUI>
       <xloc>1412</xloc>
       <yloc>1747</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get parameters 3</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>entity</name>
-        <variable>${output3entity}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>name</name>
-        <variable>${output3name}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1712</xloc>
-      <yloc>1749</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2527,6 +2317,118 @@ if (postal_greeting_id == null) {
     </GUI>
   </step>
   <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>BIRTH_DATE</name>
+        <rename>birth_date</rename>
+      </field>
+      <field>
+        <name>NO_EMAIL</name>
+        <rename>is_opt_out</rename>
+      </field>
+      <field>
+        <name>DECEASED_DATE</name>
+        <rename>deceased_date</rename>
+      </field>
+      <field>
+        <name>NICKNAME</name>
+        <rename>nick_name</rename>
+      </field>
+      <field>
+        <name>DECEASED</name>
+        <rename>is_deceased</rename>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>gender</name>
+      </field>
+      <field>
+        <name>prefix_id</name>
+      </field>
+      <field>
+        <name>suffix_id</name>
+      </field>
+      <field>
+        <name>do_not_mail</name>
+      </field>
+      <field>
+        <name>IS_CONSTITUENT</name>
+        <rename>do_not_trade</rename>
+      </field>
+      <field>
+        <name>skip_greeting_processing</name>
+      </field>
+      <field>
+        <name>DATE_ADDED</name>
+        <rename>RE_Date_Created</rename>
+      </field>
+      <field>
+        <name>DATE_LAST_CHANGED</name>
+        <rename>RE_Date_Last_Modified</rename>
+      </field>
+      <field>
+        <name>ID</name>
+        <rename>RE_System_Record_ID</rename>
+      </field>
+      <field>
+        <name>CONSTITUENT_ID</name>
+        <rename>RE_Constituent_ID</rename>
+      </field>
+      <field>
+        <name>ADDED_BY</name>
+        <rename>RE_Created_By</rename>
+      </field>
+      <field>
+        <name>LAST_CHANGED_BY</name>
+        <rename>RE_Last_Modifed_By</rename>
+      </field>
+      <field>
+        <name>NO_VALID_ADDRESSES</name>
+        <rename>Valid_Address</rename>
+      </field>
+      <field>
+        <name>INACTIVE</name>
+        <rename>Active</rename>
+      </field>
+      <field>
+        <name>ANONYMOUS</name>
+        <rename>Anonymous</rename>
+      </field>
+      <field>
+        <name>INCOME</name>
+        <rename>Mailing_Code</rename>
+      </field>
+      <field>
+        <name>target_1</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2096</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Import when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
@@ -2569,7 +2471,7 @@ if (postal_greeting_id == null) {
     </partitioning>
     <steps>
       <step>
-        <name>Single file SFTP</name>
+        <name>Single file SFTP 2</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -2583,36 +2485,6 @@ if (postal_greeting_id == null) {
     <GUI>
       <xloc>1412</xloc>
       <yloc>1827</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Import when complete 3</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Single file SFTP</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1712</xloc>
-      <yloc>1829</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2636,7 +2508,7 @@ if (postal_greeting_id == null) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>2208</yloc>
+      <yloc>2368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2659,32 +2531,8 @@ if (postal_greeting_id == null) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>2224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Last Step 3</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2224</yloc>
+      <xloc>608</xloc>
+      <yloc>2320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2721,7 +2569,7 @@ if (postal_greeting_id == null) {
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1808</yloc>
+      <yloc>1872</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2941,7 +2789,7 @@ if (postal_greeting_id == null) {
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>1680</yloc>
+      <yloc>1744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3010,7 +2858,7 @@ if (postal_greeting_id == null) {
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>1520</yloc>
+      <yloc>1584</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3079,7 +2927,7 @@ if (postal_greeting_id == null) {
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>1600</yloc>
+      <yloc>1664</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3124,6 +2972,7 @@ r.TARGET
 , u1.NAME AS ADDED_BY
 , u2.NAME AS LAST_CHANGED_BY
 , t1.LONGDESCRIPTION AS INCOME
+, r.IS_CONSTITUENT
 FROM RECORDS r
 JOIN USERS u1 ON r.ADDED_BY = u1.USER_ID
 JOIN USERS u2 ON r.LAST_CHANGED_BY = u2.USER_ID
@@ -3374,6 +3223,43 @@ if (DECEASED_DATE != null){
     </GUI>
   </step>
   <step>
+    <name>Remap IS_CONSTITUENT</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>IS_CONSTITUENT</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>-1</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>1376</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Remap Inactive (flip)</name>
     <type>ValueMapper</type>
     <description />
@@ -3406,7 +3292,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>1440</yloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3443,7 +3329,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>1376</yloc>
+      <yloc>1440</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3480,7 +3366,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>1504</yloc>
+      <yloc>1568</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3605,7 +3491,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1696</yloc>
+      <yloc>1760</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3657,55 +3543,6 @@ if (DECEASED_DATE != null){
       <schema_name />
     </partitioning>
     <fields>
-      <field>
-        <name>BIRTH_DATE</name>
-        <rename>birth_date</rename>
-      </field>
-      <field>
-        <name>NO_EMAIL</name>
-        <rename>is_opt_out</rename>
-      </field>
-      <field>
-        <name>DECEASED_DATE</name>
-        <rename>deceased_date</rename>
-      </field>
-      <field>
-        <name>NICKNAME</name>
-        <rename>nick_name</rename>
-      </field>
-      <field>
-        <name>DECEASED</name>
-        <rename>is_deceased</rename>
-      </field>
-      <field>
-        <name>PRIMARY_SALUTATION</name>
-        <rename>postal_greeting_custom</rename>
-      </field>
-      <field>
-        <name>PRIMARY_ADDRESSEE</name>
-        <rename>addressee_custom</rename>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>addressee_id</name>
-      </field>
-      <field>
-        <name>postal_greeting_id</name>
-      </field>
-      <field>
-        <name>gender</name>
-      </field>
-      <field>
-        <name>prefix_id</name>
-      </field>
-      <field>
-        <name>suffix_id</name>
-      </field>
-      <field>
-        <name>do_not_mail</name>
-      </field>
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>prefix_id</name>
@@ -3751,7 +3588,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>1936</yloc>
+      <yloc>2000</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3780,7 +3617,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1568</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3809,7 +3646,7 @@ if (DECEASED_DATE != null){
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1632</yloc>
+      <yloc>1696</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3862,63 +3699,6 @@ if (DECEASED_DATE != null){
     </GUI>
   </step>
   <step>
-    <name>Remove greeting-related fields for now</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>birth_date</name>
-      </field>
-      <field>
-        <name>is_opt_out</name>
-      </field>
-      <field>
-        <name>deceased_date</name>
-      </field>
-      <field>
-        <name>nick_name</name>
-      </field>
-      <field>
-        <name>is_deceased</name>
-      </field>
-      <field>
-        <name>contact_id</name>
-      </field>
-      <field>
-        <name>gender</name>
-      </field>
-      <field>
-        <name>prefix_id</name>
-      </field>
-      <field>
-        <name>suffix_id</name>
-      </field>
-      <field>
-        <name>do_not_mail</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>2032</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>SFTP when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
@@ -3961,7 +3741,7 @@ if (DECEASED_DATE != null){
     </partitioning>
     <steps>
       <step>
-        <name>Last Step</name>
+        <name>Last Step 2</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -3975,36 +3755,6 @@ if (DECEASED_DATE != null){
     <GUI>
       <xloc>1316</xloc>
       <yloc>1795</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SFTP when complete 3</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Last Step</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1616</xloc>
-      <yloc>1797</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4038,8 +3788,8 @@ if (DECEASED_DATE != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>2016</yloc>
+      <xloc>608</xloc>
+      <yloc>2112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4237,52 +3987,6 @@ if (PRIMARY_ADDRESSEE !== null){
     </GUI>
   </step>
   <step>
-    <name>Single file SFTP 3</name>
-    <type>SFTPPut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <servername>${DEVSERVER}</servername>
-    <serverport>22</serverport>
-    <username>${DEVSSHUSER}</username>
-    <password>Encrypted </password>
-    <sourceFileFieldName>filename</sourceFileFieldName>
-    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
-    <inputIsStream>N</inputIsStream>
-    <addFilenameResut>N</addFilenameResut>
-    <usekeyfilename>Y</usekeyfilename>
-    <keyfilename>${KEYFILE}</keyfilename>
-    <keyfilepass>Encrypted </keyfilepass>
-    <compression>none</compression>
-    <proxyType />
-    <proxyHost />
-    <proxyPort />
-    <proxyUsername />
-    <proxyPassword>Encrypted </proxyPassword>
-    <createRemoteFolder>Y</createRemoteFolder>
-    <aftersftpput>nothing</aftersftpput>
-    <destinationfolderFieldName>csv</destinationfolderFieldName>
-    <createdestinationfolder>Y</createdestinationfolder>
-    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1616</xloc>
-      <yloc>1957</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Step 1 contacts only</name>
     <type>SimpleMapping</type>
     <description />
@@ -4372,185 +4076,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>1888</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>additional_records_data</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/${output1name}</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention />
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>birth_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_opt_out</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>deceased_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nick_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_deceased</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>gender</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>prefix_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>suffix_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>do_not_mail</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>2144</yloc>
+      <xloc>608</xloc>
+      <yloc>1984</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5063,7 +4590,7 @@ if (PRIMARY_ADDRESSEE !== null){
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
-      <yloc>1680</yloc>
+      <yloc>1744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5157,6 +4684,58 @@ if (PRIMARY_ADDRESSEE !== null){
     <GUI>
       <xloc>2144</xloc>
       <yloc>2096</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>custom field name substitution</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>2176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5392,70 +4971,6 @@ if (PRIMARY_ADDRESSEE !== null){
     </GUI>
   </step>
   <step>
-    <name>import entity 3</name>
-    <type>TransExecutor</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
-    <directory_path />
-    <group_size>1</group_size>
-    <group_field />
-    <group_time />
-    <parameters>
-      <variablemapping>
-        <variable>entity</variable>
-        <field>entity</field>
-        <input>CiviCRM API entity</input>
-      </variablemapping>
-      <variablemapping>
-        <variable>filename</variable>
-        <field>name</field>
-        <input>filename to import</input>
-      </variablemapping>
-      <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    <execution_result_target_step />
-    <execution_time_field>ExecutionTime</execution_time_field>
-    <execution_result_field>ExecutionResult</execution_result_field>
-    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
-    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
-    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
-    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
-    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
-    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
-    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
-    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
-    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
-    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
-    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
-    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
-    <result_rows_target_step />
-    <result_files_target_step />
-    <result_files_file_name_field>FileName</result_files_file_name_field>
-    <executors_output_step />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1712</xloc>
-      <yloc>1909</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>lookup SUFFIX_1 in RE db</name>
     <type>DBLookup</type>
     <description />
@@ -5544,7 +5059,7 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>336</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5685,8 +5200,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>288</yloc>
+      <xloc>352</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5790,8 +5305,8 @@ if (PRIMARY_ADDRESSEE !== null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>2160</yloc>
+      <xloc>608</xloc>
+      <yloc>2256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5937,6 +5452,44 @@ if (PRIMARY_ADDRESSEE !== null){
     </GUI>
   </step>
   <step>
+    <name>skip_greeting_processing = 1</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>skip_greeting_processing</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>1936</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>tag lookup</name>
     <type>DBLookup</type>
     <description />
@@ -5980,116 +5533,6 @@ if (PRIMARY_ADDRESSEE !== null){
     <GUI>
       <xloc>2128</xloc>
       <yloc>1904</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>custom field name substitution</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>1904</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dynamic CSV Output</name>
-    <type>Mapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <variablemapping>
-          <variable>outputname</variable>
-          <input>${output3name}</input>
-        </variablemapping>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>2048</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

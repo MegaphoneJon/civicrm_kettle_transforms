@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>delete auto-generated pledge payments</name>
+    <name>payment instrument EntityFinancialAccount</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
-      <parameter>
-        <name>output1entity</name>
-        <default_value>PledgePayment</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>output1name</name>
-        <default_value>delete_pledge_payments.csv</default_value>
-        <description />
-      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -438,65 +427,18 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/06/25 19:46:00.128</created_date>
+    <created_date>2018/11/06 12:53:23.432</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/06/25 19:46:00.128</modified_date>
+    <modified_date>2018/11/06 12:53:23.432</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>When creating pledges via the API, Civi automatically generates the corresponding pledge payments.
-While that's correct behavior generally, when importing from RE you want to import the existing pledge
-payments without having to link them to Civi's - especially since RE's scheduling mechanism is more
-sophisticated than Civi's and so you can't actually map everything correctly to the exact date.
-
-Instead, we delete all the pledge payments created by Civi so we can import our own.</note>
-      <xloc>752</xloc>
-      <yloc>48</yloc>
-      <width>639</width>
-      <heigth>100</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- org-specific SQL.  Generic SQL commented out inside.</note>
-      <xloc>224</xloc>
-      <yloc>48</yloc>
-      <width>360</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- This is DELETE, not import!</note>
-      <xloc>672</xloc>
-      <yloc>368</yloc>
-      <width>197</width>
+      <note>Run after "payment instrument"</note>
+      <xloc>425</xloc>
+      <yloc>51</yloc>
+      <width>206</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -578,47 +520,12 @@ Instead, we delete all the pledge payments created by Civi so we can import our 
     </attributes>
   </connection>
   <order>
-    <hop>
-      <from>Dynamic CSV Output</from>
-      <to>Last Step</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Civi: find auto-generated pledge payment IDs</from>
-      <to>Dynamic CSV Output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get CSV folder</from>
-      <to>Single file SFTP</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get File Names</from>
-      <to>SFTP when complete</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get parameters</from>
-      <to>Delete when complete</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Delete when complete</from>
-      <to>delete entity</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>SFTP when complete</from>
-      <to>Get CSV folder</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
   <step>
-    <name>Civi: find auto-generated pledge payment IDs</name>
-    <type>TableInput</type>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -626,14 +533,26 @@ Instead, we delete all the pledge payments created by Civi so we can import our 
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>-- The "bogus" field works around the CSV API tool rejecting CSVs with only one column.
-SELECT id, '1' as bogus from civicrm_pledge_payment
-</sql>
-    <limit>0</limit>
-    <lookup />
     <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <single_statement>N</single_statement>
+    <replace_variables>N</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>INSERT INTO civicrm_entity_financial_account (entity_table, entity_id, account_relationship, financial_account_id)
+  SELECT 'civicrm_option_value', cov.id AS entity_id, '6' AS account_relationship, cfa.id AS financial_account_id
+  FROM civicrm_option_value cov 
+  JOIN civicrm_option_group cog ON cov.option_group_id = cog.id 
+  JOIN civicrm_financial_account cfa ON cov.label = cfa.name
+  WHERE cog.name = 'payment_instrument'
+  AND cfa.account_type_code = 'BANK'
+-- Org-specific below
+  AND cov.label != 'Credit Card'</sql>
+    <set_params>N</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+    </arguments>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -642,392 +561,8 @@ SELECT id, '1' as bogus from civicrm_pledge_payment
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dynamic CSV Output</name>
-    <type>Mapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <variablemapping>
-          <variable>outputname</variable>
-          <input>${output1name}</input>
-        </variablemapping>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Last Step</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get CSV folder</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>csv</name>
-        <variable>${SQLDUMP}/csvs</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get File Names</name>
-    <type>GetFileNames</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field />
-    <filename_Field />
-    <wildcard_Field />
-    <exclude_wildcard_Field />
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
-    <file>
-      <name>${LOCALFILES}/data/${output1name}</name>
-      <filemask />
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get parameters</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>entity</name>
-        <variable>${output1entity}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>name</name>
-        <variable>${output1name}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>576</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Delete when complete</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Single file SFTP</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>576</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SFTP when complete</name>
-    <type>BlockUntilStepsFinish</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <steps>
-      <step>
-        <name>Last Step</name>
-        <CopyNr>0</CopyNr>
-      </step>
-    </steps>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Single file SFTP</name>
-    <type>SFTPPut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <servername>${DEVSERVER}</servername>
-    <serverport>22</serverport>
-    <username>${DEVSSHUSER}</username>
-    <password>Encrypted </password>
-    <sourceFileFieldName>filename</sourceFileFieldName>
-    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
-    <inputIsStream>N</inputIsStream>
-    <addFilenameResut>N</addFilenameResut>
-    <usekeyfilename>Y</usekeyfilename>
-    <keyfilename>${KEYFILE}</keyfilename>
-    <keyfilepass>Encrypted </keyfilepass>
-    <compression>none</compression>
-    <proxyType />
-    <proxyHost />
-    <proxyPort />
-    <proxyUsername />
-    <proxyPassword>Encrypted </proxyPassword>
-    <createRemoteFolder>Y</createRemoteFolder>
-    <aftersftpput>nothing</aftersftpput>
-    <destinationfolderFieldName>csv</destinationfolderFieldName>
-    <createdestinationfolder>Y</createdestinationfolder>
-    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>delete entity</name>
-    <type>TransExecutor</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/csv api delete.ktr</filename>
-    <directory_path />
-    <group_size>1</group_size>
-    <group_field />
-    <group_time />
-    <parameters>
-      <variablemapping>
-        <variable>entity</variable>
-        <field>entity</field>
-        <input>CiviCRM API entity</input>
-      </variablemapping>
-      <variablemapping>
-        <variable>filename</variable>
-        <field>name</field>
-        <input>filename to import</input>
-      </variablemapping>
-      <inherit_all_vars>Y</inherit_all_vars>
-    </parameters>
-    <execution_result_target_step />
-    <execution_time_field>ExecutionTime</execution_time_field>
-    <execution_result_field>ExecutionResult</execution_result_field>
-    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
-    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
-    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
-    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
-    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
-    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
-    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
-    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
-    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
-    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
-    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
-    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
-    <result_rows_target_step />
-    <result_files_target_step />
-    <result_files_file_name_field>FileName</result_files_file_name_field>
-    <executors_output_step />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>576</xloc>
-      <yloc>384</yloc>
+      <xloc>240</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

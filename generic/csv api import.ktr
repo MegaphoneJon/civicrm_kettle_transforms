@@ -1027,7 +1027,7 @@
     <dynamicCommandField>N</dynamicCommandField>
     <command>#this sed command adds commas to the end of each line, which fixes single-field imports
 #sed -i 's/$/,/' ${SQLDUMP}/csvs/${filename}
-php ${IMPORTSCRIPT} -e ${entity} --file=${SQLDUMP}/csvs/${filename}
+php ${IMPORTSCRIPT} -e ${entity} --file='${SQLDUMP}/csvs/${filename}'
 </command>
     <commandfieldname />
     <port>22</port>

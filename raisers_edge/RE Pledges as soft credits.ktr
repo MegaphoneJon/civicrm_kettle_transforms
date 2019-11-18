@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>constituent appeals</name>
+    <name>RE Pledges as soft credits</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>Activity</default_value>
+        <default_value>ContributionSoft</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>constituent_appeals.csv</default_value>
+        <default_value>matching_gift_soft_credit.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,25 +438,21 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014/10/02 22:25:38.478</created_date>
+    <created_date>2017/06/25 15:31:14.817</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014/10/02 22:25:38.478</modified_date>
+    <modified_date>2017/06/25 15:31:14.817</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Instructions:
-* If necessary, this script creates an activity type "Appeal".
-* You need to create a custom field "Appeal Name" that applies to the "Appeal" activity type.  It should be an 
-alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice options from the contributions appeal field.
-</note>
-      <xloc>608</xloc>
+      <note>Import campaigns/funds first</note>
+      <xloc>192</xloc>
       <yloc>16</yloc>
-      <width>724</width>
-      <heigth>90</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
+      <width>187</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -471,10 +467,53 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
-      <xloc>224</xloc>
-      <yloc>128</yloc>
-      <width>400</width>
+      <note>&lt;-- Seems like everyone makes equal installment amounts,
+  so I could use the calculator - but just to be safe</note>
+      <xloc>160</xloc>
+      <yloc>576</yloc>
+      <width>367</width>
+      <heigth>40</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific</note>
+      <xloc>144</xloc>
+      <yloc>1648</yloc>
+      <width>104</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>This imports RE matching gifts as soft credits to the original donor, and as a pending contribution if unpaid.</note>
+      <xloc>448</xloc>
+      <yloc>16</yloc>
+      <width>663</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -616,18 +655,73 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
   </connection>
   <order>
     <hop>
-      <from>fix date format</from>
-      <to>fix date format 2</to>
+      <from>Campaigns only</from>
+      <to>Sort by Campaign</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>lookup appeal in Civi</from>
-      <to>Filter unrecognized appeal types</to>
+      <from>Filter unrecognized campaigns</from>
+      <to>Campaigns only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Appeal type field only</from>
-      <to>Sort by appeal</to>
+      <from>Sort by Campaign</from>
+      <to>Unique campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique campaigns</from>
+      <to>invalid_campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>lookup campaigns in Civi</from>
+      <to>Filter unrecognized campaigns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi</from>
+      <to>lookup campaigns in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized campaigns</from>
+      <to>get original_installment_amount</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects</from>
+      <to>Convert date format to the format Civi expects 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Reformat lenient dates</from>
+      <to>Convert date format to the format Civi expects</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>get original_installment_amount</from>
+      <to>Reformat lenient dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects 2</from>
+      <to>Map frequency_unit</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map frequency_unit</from>
+      <to>Map frequency_interval</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map frequency_interval</from>
+      <to>Calculate frequency_day</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter unrecognized appeals</from>
+      <to>appeal fields Only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -636,137 +730,77 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Sort by fund</from>
+      <to>Unique funds</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Unique appeals</from>
-      <to>invalid_constituent_appeals</to>
+      <to>invalid_appeals</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter unrecognized appeal types</from>
-      <to>Appeal type field only</to>
+      <from>Unique funds</from>
+      <to>lookup fund data in RE</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>external ID to target_contact_id in Civi</from>
-      <to>status_id =2 (completed),source_contact_id=2 (admin)</to>
+      <from>appeal fields Only</from>
+      <to>Sort by appeal</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>status_id =2 (completed),source_contact_id=2 (admin)</from>
-      <to>remove/rename fields</to>
+      <from>financial type only</from>
+      <to>Sort by fund</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>remove/rename fields</from>
-      <to>fix date format</to>
+      <from>lookup fund data in RE</from>
+      <to>invalid_funds</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>fix date format 2</from>
-      <to>If activity_date_time is null</to>
+      <from>Filter unrecognized financial type</from>
+      <to>financial type only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Create activity type</from>
-      <to>Get OptionValue value from JSON</to>
+      <from>lookup appeal in Civi</from>
+      <to>Filter unrecognized appeals</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Detect empty stream</from>
-      <to>Set fields to create campaign_type</to>
+      <from>Filter unrecognized appeals</from>
+      <to>Filter unrecognized financial type</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Drop all non-value fields</from>
-      <to>Dummy (do nothing)</to>
+      <from>Select values</from>
+      <to>Funds have 64 char max</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get OptionValue value from JSON</from>
-      <to>Drop all non-value fields</to>
+      <from>Funds have 64 char max</from>
+      <to>financial_type lookup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set fields to create campaign_type</from>
-      <to>Create activity type</to>
+      <from>financial_type lookup</from>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get activity_type_id of Appeal</from>
-      <to>Detect empty stream</to>
+      <from>Calculate frequency_day</from>
+      <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get activity_type_id of Appeal</from>
-      <to>Dummy (do nothing)</to>
+      <from>Get option_group_id for Appeals</from>
+      <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Join the activity_type_id</from>
-      <to>Fix punctuation in appeals</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing)</from>
-      <to>Join the activity_type_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fix punctuation in appeals</from>
-      <to>Join the option_group_id of Appeal names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get option_group_id of Appeal names</from>
-      <to>Join the option_group_id of Appeal names</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: CONSTITUENT_APPEALS</from>
-      <to>Step 1 contacts only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts only</from>
-      <to>Join the activity_type_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Package field only</from>
-      <to>Sort by package</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get option_group_id of Packages</from>
-      <to>Join the option_group_id of Packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by package</from>
-      <to>Unique packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique packages</from>
-      <to>invalid_constituent_packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>lookup package in Civi</from>
-      <to>Filter unrecognized packages</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecognized packages</from>
-      <to>Package field only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter unrecognized appeal types</from>
-      <to>external ID to target_contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Join the option_group_id of Appeal names</from>
+      <from>Join Rows (cartesian product)</from>
       <to>lookup appeal in Civi</to>
       <enabled>Y</enabled>
     </hop>
@@ -776,13 +810,13 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If activity_date_time is null</from>
-      <to>custom field name substitution</to>
+      <from>Filter unrecognized financial type</from>
+      <to>Remove pledges with campaign IDs</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>custom field name substitution</from>
-      <to>Dynamic CSV Output</to>
+      <from>Remove pledges with campaign IDs</from>
+      <to>import fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -793,15 +827,15 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
     <hop>
       <from>Get File Names</from>
       <to>SFTP when complete</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Get parameters</from>
-      <to>Import when complete</to>
-      <enabled>Y</enabled>
+      <to>Import when complete 2</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Import when complete</from>
+      <from>Import when complete 2</from>
       <to>import entity</to>
       <enabled>Y</enabled>
     </hop>
@@ -810,9 +844,116 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <to>Get CSV folder</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>import fields only</from>
+      <to>custom field name substitution</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>custom field name substitution</from>
+      <to>Dynamic CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: GiftSplit</from>
+      <to>Matching gifts only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Matching gifts only</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
-    <name>Appeal type field only</name>
+    <name>Calculate frequency_day</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//What day of the period is the payment due?
+var frequency_day;
+temp_date = null;
+first_of_year = null;
+
+
+// Annual.  This is the hardest; need to calculate day of year of, e.g. November 3rd.
+if (INSTALLMENT_FREQUENCY == 1) {
+  // "2017" can be any non-leap year
+  temp_date = new Date(2017, Schedule_Month - 1, Schedule_DayOfMonth);
+  start = new Date(2017, 0, 0);
+  diff = temp_date - start + (start.getTimezoneOffset() - temp_date.getTimezoneOffset()) * 60 * 1000;
+  //var diff = now - start;
+  oneDay = 1000 * 60 * 60 * 24;
+  frequency_day = Math.floor(diff / oneDay);
+}
+
+// Every 1/2/3/6 months
+if (INSTALLMENT_FREQUENCY >= 2 &amp;&amp; INSTALLMENT_FREQUENCY &lt;= 5) {
+  // "X Day of the Month"-style scheduling
+  if (Schedule_MonthlyType == 1) {
+    frequency_day = Schedule_DayOfMonth;
+  }
+  // "3rd Friday of the Month"-style scheduling.  Can't really do this in Civi, so make it up.
+  if (Schedule_MonthlyType == 2) {
+    frequency_day = 30;
+  }
+}
+
+// Twice a month on arbitrary days.  Civi doesn't support it and I don't really need to either, so...
+if (INSTALLMENT_FREQUENCY == 6) {
+  frequency_day = 1;
+}
+
+// Irregular - can't really say.
+if (INSTALLMENT_FREQUENCY == 9) {
+  frequency_day = 1;
+}
+
+// Single Installment
+if (INSTALLMENT_FREQUENCY == 10) {
+  frequency_day = 1;
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>frequency_day</name>
+        <rename>frequency_day</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Campaigns only</name>
     <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
@@ -824,7 +965,7 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
     </partitioning>
     <fields>
       <field>
-        <name>appeal</name>
+        <name>campaign</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -836,329 +977,16 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>688</yloc>
+      <xloc>240</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Create activity type</name>
-    <type>CiviCrmOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <ApiKey>${APIKEY}</ApiKey>
-    <SiteKey>${SITEKEY}</SiteKey>
-    <Entity>OptionValue</Entity>
-    <EntityAction>create</EntityAction>
-    <RestUrl>${RESTPATH}</RestUrl>
-    <ResultField>Result</ResultField>
-    <DebugMode>N</DebugMode>
-    <entity-name>Acl</entity-name>
-    <entity-name>AclRole</entity-name>
-    <entity-name>ActionSchedule</entity-name>
-    <entity-name>Activity</entity-name>
-    <entity-name>ActivityContact</entity-name>
-    <entity-name>ActivityType</entity-name>
-    <entity-name>Address</entity-name>
-    <entity-name>Batch</entity-name>
-    <entity-name>Campaign</entity-name>
-    <entity-name>Case</entity-name>
-    <entity-name>CaseType</entity-name>
-    <entity-name>Constant</entity-name>
-    <entity-name>Contact</entity-name>
-    <entity-name>ContactType</entity-name>
-    <entity-name>Contribution</entity-name>
-    <entity-name>ContributionPage</entity-name>
-    <entity-name>ContributionRecur</entity-name>
-    <entity-name>ContributionSoft</entity-name>
-    <entity-name>Country</entity-name>
-    <entity-name>CustomField</entity-name>
-    <entity-name>CustomGroup</entity-name>
-    <entity-name>CustomSearch</entity-name>
-    <entity-name>CustomValue</entity-name>
-    <entity-name>Dashboard</entity-name>
-    <entity-name>DashboardContact</entity-name>
-    <entity-name>Domain</entity-name>
-    <entity-name>Email</entity-name>
-    <entity-name>Entity</entity-name>
-    <entity-name>EntityTag</entity-name>
-    <entity-name>Event</entity-name>
-    <entity-name>Extension</entity-name>
-    <entity-name>File</entity-name>
-    <entity-name>FinancialAccount</entity-name>
-    <entity-name>FinancialType</entity-name>
-    <entity-name>Grant</entity-name>
-    <entity-name>Group</entity-name>
-    <entity-name>GroupContact</entity-name>
-    <entity-name>GroupNesting</entity-name>
-    <entity-name>GroupOrganization</entity-name>
-    <entity-name>Im</entity-name>
-    <entity-name>Job</entity-name>
-    <entity-name>LineItem</entity-name>
-    <entity-name>LocBlock</entity-name>
-    <entity-name>Location</entity-name>
-    <entity-name>LocationType</entity-name>
-    <entity-name>MailSettings</entity-name>
-    <entity-name>Mailing</entity-name>
-    <entity-name>MailingComponent</entity-name>
-    <entity-name>MailingContact</entity-name>
-    <entity-name>MailingEventConfirm</entity-name>
-    <entity-name>MailingEventResubscribe</entity-name>
-    <entity-name>MailingEventSubscribe</entity-name>
-    <entity-name>MailingEventUnsubscribe</entity-name>
-    <entity-name>MailingGroup</entity-name>
-    <entity-name>MailingJob</entity-name>
-    <entity-name>MailingRecipients</entity-name>
-    <entity-name>Membership</entity-name>
-    <entity-name>MembershipBlock</entity-name>
-    <entity-name>MembershipPayment</entity-name>
-    <entity-name>MembershipStatus</entity-name>
-    <entity-name>MembershipType</entity-name>
-    <entity-name>MessageTemplate</entity-name>
-    <entity-name>Note</entity-name>
-    <entity-name>OptionGroup</entity-name>
-    <entity-name>OptionValue</entity-name>
-    <entity-name>Participant</entity-name>
-    <entity-name>ParticipantPayment</entity-name>
-    <entity-name>ParticipantStatusType</entity-name>
-    <entity-name>PaymentProcessor</entity-name>
-    <entity-name>PaymentProcessorType</entity-name>
-    <entity-name>Phone</entity-name>
-    <entity-name>Pledge</entity-name>
-    <entity-name>PledgePayment</entity-name>
-    <entity-name>Premium</entity-name>
-    <entity-name>PriceField</entity-name>
-    <entity-name>PriceFieldValue</entity-name>
-    <entity-name>PriceSet</entity-name>
-    <entity-name>PrintLabel</entity-name>
-    <entity-name>Product</entity-name>
-    <entity-name>Profile</entity-name>
-    <entity-name>Relationship</entity-name>
-    <entity-name>RelationshipType</entity-name>
-    <entity-name>ReportInstance</entity-name>
-    <entity-name>ReportTemplate</entity-name>
-    <entity-name>Setting</entity-name>
-    <entity-name>SmsProvider</entity-name>
-    <entity-name>Survey</entity-name>
-    <entity-name>SurveyRespondant</entity-name>
-    <entity-name>System</entity-name>
-    <entity-name>SystemLog</entity-name>
-    <entity-name>Tag</entity-name>
-    <entity-name>UFField</entity-name>
-    <entity-name>UFGroup</entity-name>
-    <entity-name>UFJoin</entity-name>
-    <entity-name>UFMatch</entity-name>
-    <entity-name>Website</entity-name>
-    <entity-name>WordReplacement</entity-name>
-    <action-name>create</action-name>
-    <action-name>delete</action-name>
-    <action-name>getfield</action-name>
-    <action-name>getlist</action-name>
-    <action-name>getrefcount</action-name>
-    <action-name>setvalue</action-name>
-    <action-name>validate</action-name>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Component","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_component"},"name":"component_id","description":"Component that this option value belongs\/caters to.","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Option Component","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>component_id</fieldName>
-      <name>component_id</name>
-      <title>Option Component</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"1","name":"is_active","description":"Is this option active?","localizable":0,"type":16,"title":"Option Is Active","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_active</fieldName>
-      <name>is_active</name>
-      <title>Option Is Active</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"color","description":"Hex color value e.g. #ffffff","localizable":0,"type":2,"title":"Color","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>color</fieldName>
-      <name>color</name>
-      <title>Color</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","size":45,"maxlength":255,"name":"icon","description":"crm-i icon class","localizable":0,"type":2,"title":"Icon","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>icon</fieldName>
-      <name>icon</name>
-      <title>Icon</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"weight","description":"Controls display sort order.","localizable":0,"type":1,"title":"Order","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>weight</fieldName>
-      <name>weight</name>
-      <title>Order</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"description","description":"Optional description.","localizable":1,"html":{"type":"TextArea","rows":8,"cols":60},"type":32,"title":"Option Description","rows":8,"cols":60,"table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>description</fieldName>
-      <name>description</name>
-      <title>Option Description</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"label","description":"Option string as displayed to users - e.g. the label in an HTML OPTION tag.","localizable":1,"type":2,"title":"Option Label","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>label</fieldName>
-      <name>label</name>
-      <title>Option Label</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_default","description":"Is this the default option for the group?","localizable":0,"type":16,"title":"Option is Default?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_default</fieldName>
-      <name>is_default</name>
-      <title>Option is Default?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":255,"name":"grouping","description":"Use to sort and\/or set display properties for sub-set(s) of options within an option group. EXAMPLE: Use for college_interest field, to differentiate partners from non-partners.","localizable":0,"type":2,"title":"Option Grouping Name","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>grouping</fieldName>
-      <name>grouping</name>
-      <title>Option Grouping Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"filter","description":"Bitwise logic can be used to create subsets of options within an option_group for different uses.","localizable":0,"type":1,"title":"Filter","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>filter</fieldName>
-      <name>filter</name>
-      <title>Filter</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_reserved","description":"Is this a predefined system object?","localizable":0,"type":16,"title":"Option Is Reserved?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_reserved</fieldName>
-      <name>is_reserved</name>
-      <title>Option Is Reserved?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_Domain","pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_domain"},"name":"domain_id","description":"Which Domain is this option value for","localizable":0,"type":1,"title":"Option Domain","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue","FKApiName":"Domain"}</fieldDef>
-      <fieldName>domain_id</fieldName>
-      <name>domain_id</name>
-      <title>Option Domain</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"api.aliases":["option_group_name"],"pseudoconstant":{"keyColumn":"id","labelColumn":"name","table":"civicrm_option_group"},"description":"Group which this option belongs to.","type":1,"title":"Option Group ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"FKApiName":"OptionGroup","bao":"CRM_Core_BAO_OptionValue","FKClassName":"CRM_Core_DAO_OptionGroup","name":"option_group_id","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"entity":"OptionValue"}</fieldDef>
-      <fieldName>option_group_id</fieldName>
-      <name>option_group_id</name>
-      <title>Option Group ID</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"headerPattern":"","import":true,"maxlength":255,"description":"Stores a fixed (non-translated) name for this option value. Lookup functions should use the name as the key for the option value row.","dataPattern":"","type":2,"title":"Option Name","table_name":"civicrm_option_value","is_core_field":true,"bao":"CRM_Core_BAO_OptionValue","size":45,"name":"name","localizable":0,"where":"civicrm_option_value.name","export":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>name</fieldName>
-      <name>name</name>
-      <title>Option Name</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","api.aliases":["option_value_id"],"name":"id","description":"Option ID","localizable":0,"type":1,"title":"Option Value ID","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>id</fieldName>
-      <name>id</name>
-      <title>Option Value ID</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","default":"NULL","name":"visibility_id","localizable":0,"type":1,"title":"Option Visibility","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>visibility_id</fieldName>
-      <name>visibility_id</name>
-      <title>Option Visibility</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","size":45,"maxlength":512,"name":"value","description":"The actual value stored (as a foreign key) in the data record. Functions which need lookup option_value.title should use civicrm_option_value.option_group_id plus civicrm_option_value.value as the key.","localizable":0,"type":2,"title":"Option Value","table_name":"civicrm_option_value","is_core_field":true,"required":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>value</fieldName>
-      <name>value</name>
-      <title>Option Value</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_OptionValue","name":"is_optgroup","description":"Is this row simply a display header? Expected usage is to render these as OPTGROUP tags within a SELECT field list of options?","localizable":0,"type":16,"title":"Option is Header?","table_name":"civicrm_option_value","is_core_field":true,"entity":"OptionValue"}</fieldDef>
-      <fieldName>is_optgroup</fieldName>
-      <name>is_optgroup</name>
-      <title>Option is Header?</title>
-      <type>2</type>
-      <source>getfields</source>
-    </field>
-    <key-index>option_group_id</key-index>
-    <key-index>label</key-index>
-    <output-field>
-      <input-field>option_group_id</input-field>
-      <output-field>option_group_id</output-field>
-    </output-field>
-    <output-field>
-      <input-field>label</input-field>
-      <output-field>label</output-field>
-    </output-field>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Detect empty stream</name>
-    <type>DetectEmptyStream</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Drop all non-value fields</name>
+    <name>Convert date format to the format Civi expects</name>
     <type>SelectValues</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1166,11 +994,24 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <schema_name />
     </partitioning>
     <fields>
-      <field>
-        <name>value</name>
-        <rename>activity_type_id</rename>
-      </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1180,22 +1021,110 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>304</yloc>
+      <xloc>80</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
+    <name>Convert date format to the format Civi expects 2</name>
+    <type>SelectValues</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>receive_date</name>
+        <rename>receive_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>start_date</name>
+        <rename>start_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>create_date</name>
+        <rename>create_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>modified_date</name>
+        <rename>modified_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1204,8 +1133,8 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>352</yloc>
+      <xloc>80</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1262,13 +1191,13 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1472</yloc>
+      <xloc>80</xloc>
+      <yloc>1872</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter unrecognized appeal types</name>
+    <name>Filter unrecognized appeals</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1278,56 +1207,22 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>external ID to target_contact_id in Civi</send_true_to>
-    <send_false_to>Appeal type field only</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>custom_appeal</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter unrecognized packages</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Check the dedupe list</send_true_to>
-    <send_false_to>Package field only</send_false_to>
+    <send_true_to>Filter unrecognized financial type</send_true_to>
+    <send_false_to>appeal fields Only</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
         <conditions>
           <condition>
             <negated>N</negated>
-            <leftvalue>custom_package</leftvalue>
+            <leftvalue>custom_appeal</leftvalue>
             <function>IS NOT NULL</function>
             <rightvalue />
           </condition>
           <condition>
             <negated>N</negated>
             <operator>OR</operator>
-            <leftvalue>package</leftvalue>
+            <leftvalue>appeal</leftvalue>
             <function>IS NULL</function>
             <rightvalue />
           </condition>
@@ -1342,14 +1237,99 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>848</yloc>
+      <xloc>80</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fix punctuation in appeals</name>
-    <type>ReplaceString</type>
+    <name>Filter unrecognized campaigns</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>get original_installment_amount</send_true_to>
+    <send_false_to>Campaigns only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>campaign_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>campaign</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter unrecognized financial type</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Remove pledges with campaign IDs</send_true_to>
+    <send_false_to>financial type only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>financial_type_id</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Funds have 64 char max</name>
+    <type>StringCut</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1360,37 +1340,10 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>appeal</in_stream_name>
+        <in_stream_name>fund</in_stream_name>
         <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>&amp;</replace_string>
-        <replace_by_string>and</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>"</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-      <field>
-        <in_stream_name>appeal</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>'</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
+        <cut_from>0</cut_from>
+        <cut_to>64</cut_to>
       </field>
     </fields>
     <cluster_schema />
@@ -1401,8 +1354,8 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>416</yloc>
+      <xloc>80</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1439,8 +1392,8 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>542</xloc>
-      <yloc>1421</yloc>
+      <xloc>560</xloc>
+      <yloc>1872</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1483,81 +1436,13 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>542</xloc>
-      <yloc>1261</yloc>
+      <xloc>560</xloc>
+      <yloc>1712</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get OptionValue value from JSON</name>
-    <type>JsonInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <include>N</include>
-    <include_field />
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <ignoreMissingPath>N</ignoreMissingPath>
-    <rownum_field />
-    <file>
-      <name />
-      <filemask />
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>value</name>
-        <path>$..value</path>
-        <type>String</type>
-        <format>#</format>
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <IsInFields>Y</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField>Result</valueField>
-    <shortFileFieldName />
-    <pathFieldName />
-    <hiddenFieldName />
-    <lastModificationTimeFieldName />
-    <uriNameFieldName />
-    <rootUriNameFieldName />
-    <extensionFieldName />
-    <sizeFieldName />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get activity_type_id of Appeal</name>
+    <name>Get option_group_id for Appeals</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1568,7 +1453,7 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>SELECT cov.value as activity_type_id from civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'activity_type' AND cov.label = "Appeal";</sql>
+    <sql>SELECT id as appeal_ogid FROM civicrm_option_group WHERE title = 'Appeal';</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1582,70 +1467,8 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>0</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get option_group_id of Appeal names</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as appeal_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Appeal";</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get option_group_id of Packages</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT cog.id as package_option_group_id FROM civicrm_option_group cog WHERE cog.title = "Package" LIMIT 1;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>752</yloc>
+      <xloc>272</xloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1694,52 +1517,13 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>638</xloc>
-      <yloc>1293</yloc>
+      <xloc>736</xloc>
+      <yloc>1712</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>If activity_date_time is null</name>
-    <type>IfNull</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <replaceAllByValue>2001-12-31</replaceAllByValue>
-    <replaceAllMask />
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>activity_date_time</name>
-        <value>2001-12-31</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>1296</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Import when complete</name>
+    <name>Import when complete 2</name>
     <type>BlockUntilStepsFinish</type>
     <description />
     <distribute>N</distribute>
@@ -1763,116 +1547,44 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>638</xloc>
-      <yloc>1373</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join the activity_type_id</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join the option_group_id of Appeal names</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join the option_group_id of Packages</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>736</xloc>
-      <yloc>768</yloc>
+      <yloc>1792</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1895,14 +1607,14 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1552</yloc>
+      <xloc>80</xloc>
+      <yloc>1936</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Package field only</name>
-    <type>SelectValues</type>
+    <name>Map frequency_interval</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1911,11 +1623,42 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <method>none</method>
       <schema_name />
     </partitioning>
+    <field_to_use>INSTALLMENT_FREQUENCY</field_to_use>
+    <target_field>frequency_interval</target_field>
+    <non_match_default />
     <fields>
       <field>
-        <name>package</name>
+        <source_value>1</source_value>
+        <target_value>1</target_value>
       </field>
-      <select_unspecified>N</select_unspecified>
+      <field>
+        <source_value>2</source_value>
+        <target_value>6</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>1</target_value>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1925,13 +1668,74 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>80</xloc>
+      <yloc>928</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map frequency_unit</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>INSTALLMENT_FREQUENCY</field_to_use>
+    <target_field>frequency_unit</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>year</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>week</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>month</target_value>
+      </field>
+      <field>
+        <source_value>10</source_value>
+        <target_value>month</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>RE: CONSTITUENT_APPEALS</name>
+    <name>RE: GiftSplit</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1942,18 +1746,49 @@ alphanumeric autocomplete-select, reusing the existing "Appeal" multiple choice 
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>SELECT
-  ca.APPEAL_ID
+    <sql>/* Find all GIFT records with one or more associated Installment records. */
+SELECT DISTINCT
+g.CONSTIT_ID
+, g.ID as GiftId
+, g.Amount
+, g.DTE as receive_date
+, FUND.DESCRIPTION as fund
+, FUND.FUND_ID
+, CAMPAIGN.DESCRIPTION as campaign
 , APPEAL.DESCRIPTION as appeal
-, PACKAGE.DESCRIPTION as package
-, COMMENTS
-, CONSTIT_ID
-, DTE
+, g.PAYMENT_TYPE
+, g.ACKNOWLEDGEDATE
+, DBO.TranslateGiftType(g.TYPE) as type
+, g.REF as note
+,DATE_1ST_PAY
+,g.DATEADDED
+,g.DATECHANGED
+,INSTALLMENT_FREQUENCY
+,NUMBER_OF_INSTALLMENTS
+,POST_DATE
+,POST_STATUS
+,REMIND_FLAG
+,Schedule_Month
+,Schedule_DayOfMonth
+,Schedule_MonthlyDayOfWeek
+,Schedule_Spacing
+,Schedule_MonthlyType
+,Schedule_MonthlyOrdinal
+,Schedule_WeeklyDayOfWeek
+,Schedule_DayOfMonth2
+,Schedule_SMDayType1
+,Schedule_SMDayType2
+,NextTransactionDate
+,Schedule_EndDate
+,FrequencyDescription
 , r.CONSTITUENT_ID
-FROM CONSTITUENT_APPEALS ca
-LEFT JOIN APPEAL on ca.APPEAL_ID = APPEAL.id
-LEFT JOIN PACKAGE on ca.PackageId = Package.id
-LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
+FROM Gift g
+LEFT JOIN GiftSplit gs on g.ID = gs.GiftId
+LEFT JOIN FUND on gs.FundId = FUND.id
+LEFT JOIN APPEAL on gs.AppealId = APPEAL.id
+LEFT JOIN CAMPAIGN on gs.CampaignId = CAMPAIGN.id 
+LEFT JOIN RECORDS r ON g.CONSTIT_ID = r.ID
+JOIN Installment i ON g.ID = i.PledgeId</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1967,8 +1802,141 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>16</yloc>
+      <xloc>80</xloc>
+      <yloc>0</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Reformat lenient dates</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+var acknowledge_date;
+
+if (acknowledge_date != null){
+	if (acknowledge_date.length == 4){
+	 acknowledge_date = acknowledge_date + '0101';
+	}
+	if (acknowledge_date.length == 6){
+	 acknowledge_date = acknowledge_date + '01';
+	}
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>acknowledge_date</name>
+        <rename>acknowledge_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Matching gifts only</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>type</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>MG Pledge</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove pledges with campaign IDs</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>campaign_id</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1648</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1997,14 +1965,14 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>542</xloc>
-      <yloc>1341</yloc>
+      <xloc>560</xloc>
+      <yloc>1792</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Set fields to create campaign_type</name>
-    <type>Constant</type>
+    <name>Select values</name>
+    <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2015,29 +1983,111 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </partitioning>
     <fields>
       <field>
-        <name>option_group_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>activity_type</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <name>CONSTIT_ID</name>
       </field>
       <field>
-        <name>label</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>Appeal</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <name>GiftId</name>
       </field>
+      <field>
+        <name>Amount</name>
+        <rename>amount</rename>
+      </field>
+      <field>
+        <name>receive_date</name>
+      </field>
+      <field>
+        <name>fund</name>
+      </field>
+      <field>
+        <name>FUND_ID</name>
+      </field>
+      <field>
+        <name>campaign</name>
+      </field>
+      <field>
+        <name>appeal</name>
+      </field>
+      <field>
+        <name>PAYMENT_TYPE</name>
+      </field>
+      <field>
+        <name>ACKNOWLEDGEDATE</name>
+        <rename>acknowledge_date</rename>
+      </field>
+      <field>
+        <name>type</name>
+      </field>
+      <field>
+        <name>note</name>
+      </field>
+      <field>
+        <name>DATE_1ST_PAY</name>
+        <rename>start_date</rename>
+      </field>
+      <field>
+        <name>DATEADDED</name>
+        <rename>create_date</rename>
+      </field>
+      <field>
+        <name>DATECHANGED</name>
+        <rename>modified_date</rename>
+      </field>
+      <field>
+        <name>INSTALLMENT_FREQUENCY</name>
+      </field>
+      <field>
+        <name>NUMBER_OF_INSTALLMENTS</name>
+        <rename>installments</rename>
+      </field>
+      <field>
+        <name>POST_DATE</name>
+      </field>
+      <field>
+        <name>POST_STATUS</name>
+      </field>
+      <field>
+        <name>Schedule_Month</name>
+      </field>
+      <field>
+        <name>Schedule_DayOfMonth</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyDayOfWeek</name>
+      </field>
+      <field>
+        <name>Schedule_Spacing</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyType</name>
+      </field>
+      <field>
+        <name>Schedule_MonthlyOrdinal</name>
+      </field>
+      <field>
+        <name>Schedule_WeeklyDayOfWeek</name>
+      </field>
+      <field>
+        <name>Schedule_DayOfMonth2</name>
+      </field>
+      <field>
+        <name>Schedule_SMDayType1</name>
+      </field>
+      <field>
+        <name>Schedule_SMDayType2</name>
+      </field>
+      <field>
+        <name>NextTransactionDate</name>
+      </field>
+      <field>
+        <name>Schedule_EndDate</name>
+      </field>
+      <field>
+        <name>FrequencyDescription</name>
+      </field>
+      <field>
+        <name>CONSTITUENT_ID</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -2047,8 +2097,8 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>80</yloc>
+      <xloc>80</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2093,8 +2143,49 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>542</xloc>
-      <yloc>1501</yloc>
+      <xloc>560</xloc>
+      <yloc>1952</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort by Campaign</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>2</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2134,13 +2225,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>688</yloc>
+      <xloc>384</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort by package</name>
+    <name>Sort by fund</name>
     <type>SortRows</type>
     <description />
     <distribute>Y</distribute>
@@ -2159,7 +2250,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>package</name>
+        <name>fund</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -2175,64 +2266,8 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>848</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Step 1 contacts only</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>128</yloc>
+      <xloc>384</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2251,7 +2286,12 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <count_field />
     <reject_duplicate_row>N</reject_duplicate_row>
     <error_description />
-    <fields>      </fields>
+    <fields>
+      <field>
+        <name>appeal</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2260,13 +2300,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>688</yloc>
+      <xloc>464</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique packages</name>
+    <name>Unique campaigns</name>
     <type>Unique</type>
     <description />
     <distribute>Y</distribute>
@@ -2280,7 +2320,12 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <count_field />
     <reject_duplicate_row>N</reject_duplicate_row>
     <error_description />
-    <fields>      </fields>
+    <fields>
+      <field>
+        <name>campaign</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2289,8 +2334,72 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>848</yloc>
+      <xloc>512</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique funds</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>fund</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>1504</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>appeal fields Only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>appeal</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2341,13 +2450,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1392</yloc>
+      <xloc>80</xloc>
+      <yloc>1808</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>external ID to target_contact_id in Civi</name>
+    <name>external ID to contact_id in Civi</name>
     <type>DBLookup</type>
     <description />
     <distribute>N</distribute>
@@ -2375,7 +2484,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </key>
       <value>
         <name>id</name>
-        <rename>target_contact_id</rename>
+        <rename>contact_id</rename>
         <default />
         <type>String</type>
       </value>
@@ -2394,13 +2503,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>960</yloc>
+      <xloc>80</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>fix date format</name>
+    <name>financial type only</name>
     <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
@@ -2411,24 +2520,10 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       <schema_name />
     </partitioning>
     <fields>
+      <field>
+        <name>fund</name>
+      </field>
       <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>activity_date_time</name>
-        <rename>activity_date_time</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -2438,42 +2533,45 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1168</yloc>
+      <xloc>288</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>fix date format 2</name>
-    <type>SelectValues</type>
+    <name>financial_type lookup</name>
+    <type>DBLookup</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>activity_date_time</name>
-        <rename>activity_date_time</rename>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_financial_type</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fund</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>financial_type_id</rename>
+        <default />
         <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-    </fields>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2482,8 +2580,55 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1216</yloc>
+      <xloc>80</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>get original_installment_amount</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Installment</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>GiftId</name>
+        <field>PledgeId</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Amount</name>
+        <rename>original_installment_amount</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2546,13 +2691,98 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>638</xloc>
-      <yloc>1453</yloc>
+      <xloc>736</xloc>
+      <yloc>1872</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>invalid_constituent_appeals</name>
+    <name>import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>amount</name>
+      </field>
+      <field>
+        <name>receive_date</name>
+      </field>
+      <field>
+        <name>acknowledge_date</name>
+      </field>
+      <field>
+        <name>start_date</name>
+      </field>
+      <field>
+        <name>create_date</name>
+      </field>
+      <field>
+        <name>modified_date</name>
+      </field>
+      <field>
+        <name>installments</name>
+      </field>
+      <field>
+        <name>financial_type_id</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>campaign_id</name>
+      </field>
+      <field>
+        <name>original_installment_amount</name>
+      </field>
+      <field>
+        <name>frequency_unit</name>
+      </field>
+      <field>
+        <name>frequency_interval</name>
+      </field>
+      <field>
+        <name>frequency_day</name>
+      </field>
+      <field>
+        <name>FrequencyDescription</name>
+        <rename>Frequency_Description</rename>
+      </field>
+      <field>
+        <name>note</name>
+        <rename>RE_Pledge_Note</rename>
+      </field>
+      <field>
+        <name>custom_appeal</name>
+        <rename>Pledge_Appeal</rename>
+      </field>
+      <field>
+        <name>GiftId</name>
+        <rename>RE_GiftId</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1728</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_appeals</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -2576,7 +2806,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/invalid_constituent_appeals</name>
+      <name>${LOCALFILES}/errors/invalid_appeals</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2615,13 +2845,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>688</yloc>
+      <xloc>576</xloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>invalid_constituent_packages</name>
+    <name>invalid_campaigns</name>
     <type>TextFileOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -2645,7 +2875,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <fileNameField />
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>${LOCALFILES}/errors/invalid_constituent_packages</name>
+      <name>${LOCALFILES}/errors/invalid_campaigns</name>
       <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
@@ -2664,12 +2894,96 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     </file>
     <fields>
       <field>
-        <name>package</name>
+        <name>campaign</name>
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>campaign_type_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>start_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>end_date</name>
+        <type>Timestamp</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>goal_revenue</name>
+        <type>BigNumber</type>
+        <format>#.###############################################;-#.###############################################</format>
+        <currency />
+        <decimal>.</decimal>
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>description</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>external_identifier</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
         <nullif />
         <trim_type>both</trim_type>
         <length>-1</length>
@@ -2684,8 +2998,89 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>848</yloc>
+      <xloc>640</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_funds</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_funds</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>fund</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_active</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2717,7 +3112,7 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
         <name2 />
       </key>
       <key>
-        <name>appeal_option_group_id</name>
+        <name>appeal_ogid</name>
         <field>option_group_id</field>
         <condition>=</condition>
         <name2 />
@@ -2737,13 +3132,13 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>624</yloc>
+      <xloc>80</xloc>
+      <yloc>1280</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>lookup package in Civi</name>
+    <name>lookup campaigns in Civi</name>
     <type>DBLookup</type>
     <description />
     <distribute>N</distribute>
@@ -2759,25 +3154,19 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
     <cache_size>0</cache_size>
     <lookup>
       <schema />
-      <table>civicrm_option_value</table>
+      <table>civicrm_campaign</table>
       <orderby />
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>package</name>
-        <field>label</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>package_option_group_id</name>
-        <field>option_group_id</field>
+        <name>campaign</name>
+        <field>title</field>
         <condition>=</condition>
         <name2 />
       </key>
       <value>
-        <name>value</name>
-        <rename>custom_package</rename>
+        <name>id</name>
+        <rename>campaign_id</rename>
         <default />
         <type>String</type>
       </value>
@@ -2790,57 +3179,45 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>784</yloc>
+      <xloc>80</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>remove/rename fields</name>
-    <type>SelectValues</type>
+    <name>lookup fund data in RE</name>
+    <type>DBLookup</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>target_contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>custom_appeal</name>
-        <rename>Appeal_Name</rename>
-      </field>
-      <field>
-        <name>COMMENTS</name>
-        <rename>note</rename>
-      </field>
-      <field>
-        <name>DTE</name>
-        <rename>activity_date_time</rename>
-      </field>
-      <field>
-        <name>status_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>source_contact_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>activity_type_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>appeal</name>
-        <rename>subject</rename>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>FUND</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fund</name>
+        <field>DESCRIPTION</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>INACTIVE</name>
+        <rename>is_active</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2849,58 +3226,8 @@ LEFT JOIN RECORDS r ON ca.CONSTIT_ID = r.ID</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>1104</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>status_id =2 (completed),source_contact_id=2 (admin)</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>status_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>source_contact_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>2</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>1040</yloc>
+      <xloc>656</xloc>
+      <yloc>1504</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

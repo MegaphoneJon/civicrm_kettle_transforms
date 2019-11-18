@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>funds</name>
+    <name>salutations option values</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,22 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>FinancialType</default_value>
+        <default_value>OptionValue</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>financialtypes.csv</default_value>
+        <default_value>salutation_type_options.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2entity</name>
+        <default_value>OptionValue</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output2name</name>
+        <default_value>greeting_options.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,20 +448,21 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014/09/24 17:16:02.269</created_date>
+    <created_date>2018/11/14 17:19:08.809</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <modified_date>2018/11/14 17:19:08.809</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Use this transform (not "funds as custom field") when you need to migrate GL accounting information from
-Raiser's Edge.</note>
-      <xloc>560</xloc>
-      <yloc>32</yloc>
-      <width>662</width>
-      <heigth>40</heigth>
+      <note>This requires the Salutations extension: https://github.com/josephlacey/com.jlacey.salutations
+
+If it's installed, you can use this to migrate the "Type" and "Salutation" fields from Raiser's Edge.</note>
+      <xloc>448</xloc>
+      <yloc>16</yloc>
+      <width>594</width>
+      <heigth>55</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -468,10 +479,31 @@ Raiser's Edge.</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&lt;-- Org-specific</note>
-      <xloc>192</xloc>
-      <yloc>640</yloc>
-      <width>104</width>
+      <note>&lt;-- if you don't have a corresponding token in Civi remove it</note>
+      <xloc>528</xloc>
+      <yloc>560</yloc>
+      <width>374</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Careful your RE ids don't overlap your Civi option values!</note>
+      <xloc>528</xloc>
+      <yloc>720</yloc>
+      <width>374</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -613,6 +645,21 @@ Raiser's Edge.</note>
   </connection>
   <order>
     <hop>
+      <from>get salutation_type option_group_ids</from>
+      <to>Join Rows (cartesian product) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Salutation types</from>
+      <to>Join Rows (cartesian product) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Get CSV folder</from>
       <to>Single file SFTP</to>
       <enabled>Y</enabled>
@@ -624,11 +671,11 @@ Raiser's Edge.</note>
     </hop>
     <hop>
       <from>Get parameters</from>
-      <to>Import when complete 2</to>
+      <to>Import when complete</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Import when complete 2</from>
+      <from>Import when complete</from>
       <to>import entity</to>
       <enabled>Y</enabled>
     </hop>
@@ -638,323 +685,91 @@ Raiser's Edge.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>is_active = 1</to>
+      <from>Join Rows (cartesian product) 2</from>
+      <to>Dynamic CSV Output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Funds have 64 char max</from>
-      <to>Unique rows</to>
+      <from>Salutation values</from>
+      <to>Row Normaliser</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RE: FUND</from>
-      <to>Funds have 64 char max</to>
+      <from>Row Normaliser</from>
+      <to>re token lookup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>CONSTIT_ID to Civi ID</to>
+      <from>re token lookup</from>
+      <to>Filter null tokens</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Add constants</to>
+      <from>Filter null tokens</from>
+      <to>Map to civi token</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort by ID</from>
-      <to>Add value fields changing sequence</to>
+      <from>Map to civi token</from>
+      <to>Group by</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add value fields changing sequence</from>
-      <to>Row denormaliser</to>
+      <from>Group by</from>
+      <to>Filter WARNING tokens</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>category option_group_id</from>
+      <from>Filter WARNING tokens</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>get postal_greeting option_group_ids</from>
       <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Join Rows (cartesian product)</from>
-      <to>Category lookup</to>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Category lookup</from>
-      <to>Filter rows</to>
+      <from>Dynamic CSV Output 2</from>
+      <to>Last Step 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>is_active = 1</from>
-      <to>Join Rows (cartesian product)</to>
+      <from>Select values</from>
+      <to>Dynamic CSV Output 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Import fields only</from>
-      <to>custom field name substitution</to>
+      <from>Get CSV folder 2</from>
+      <to>Single file SFTP 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dynamic CSV Output</from>
-      <to>Last Step</to>
+      <from>Get File Names 2</from>
+      <to>SFTP when complete 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>custom field name substitution</from>
-      <to>Dynamic CSV Output</to>
+      <from>Get parameters 2</from>
+      <to>Import when complete 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CONSTIT_ID to Civi ID</from>
-      <to>Last Minute fix to identical-ish funds</to>
+      <from>Import when complete 2</from>
+      <to>import entity 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>Last Minute fix to identical-ish funds</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Last Minute fix to identical-ish funds</from>
-      <to>Check for existing funds</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Row denormaliser</from>
-      <to>Import fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check for existing funds</from>
-      <to>New funds only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>New funds only</from>
-      <to>Sort by ID</to>
+      <from>SFTP when complete 2</from>
+      <to>Get CSV folder 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>Fund_Relationship</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add value fields changing sequence</name>
-    <type>FieldsChangeSequence</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <start>1</start>
-    <increment>1</increment>
-    <resultfieldName>relationship_number</resultfieldName>
-    <fields>
-      <field>
-        <name>ID</name>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>CONSTIT_ID to Civi ID</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTIT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>Fund_Relationship</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Category lookup</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_option_value</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>Category</name>
-        <field>label</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>option_group_id</name>
-        <field>option_group_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>value</name>
-        <rename>Fund_Category</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check for existing funds</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_financial_type</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>DESCRIPTION</name>
-        <field>name</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>duplicate</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Dynamic CSV Output</name>
     <type>Mapping</type>
@@ -1008,13 +823,71 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>1232</yloc>
+      <xloc>164</xloc>
+      <yloc>234</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name>Dynamic CSV Output 2</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output2name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter WARNING tokens</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1024,12 +897,55 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>CONSTIT_ID to Civi ID</send_true_to>
-    <send_false_to>Add constants</send_false_to>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>Y</negated>
+        <leftvalue>civi_token</leftvalue>
+        <function>CONTAINS</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>WARNING</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter null tokens</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>CONSTIT_ID</leftvalue>
+        <leftvalue>re_token</leftvalue>
         <function>IS NOT NULL</function>
         <rightvalue />
       </condition>
@@ -1042,40 +958,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Funds have 64 char max</name>
-    <type>StringCut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>DESCRIPTION</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>64</cut_to>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>128</yloc>
+      <xloc>480</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,8 +996,46 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>432</yloc>
+      <xloc>1008</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1156,8 +1078,52 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>272</yloc>
+      <xloc>1008</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names 2</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output2name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1206,16 +1172,16 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>272</yloc>
+      <xloc>1184</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Import fields only</name>
-    <type>SelectValues</type>
+    <name>Get parameters 2</name>
+    <type>GetVariable</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1224,42 +1190,29 @@ Raiser's Edge.</note>
     </partitioning>
     <fields>
       <field>
-        <name>DESCRIPTION</name>
-        <rename>name</rename>
+        <name>entity</name>
+        <variable>${output2entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
       <field>
-        <name>is_active</name>
+        <name>name</name>
+        <variable>${output2name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
-      <field>
-        <name>FUND_ID</name>
-        <rename>Fund_ID</rename>
-      </field>
-      <field>
-        <name>START_DATE</name>
-        <rename>Fund_Start_Date</rename>
-      </field>
-      <field>
-        <name>Fund_Category</name>
-      </field>
-      <field>
-        <name>Fund_Legal_Name</name>
-      </field>
-      <field>
-        <name>Fund_Type</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_1</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_2</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_3</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_4</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -1269,13 +1222,70 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>1040</yloc>
+      <xloc>1184</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Import when complete 2</name>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>SEQUENCE</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>re_token</aggregate>
+        <subject>re_token</subject>
+        <type>CONCAT_STRING</type>
+        <valuefield> </valuefield>
+      </field>
+      <field>
+        <aggregate>civi_token</aggregate>
+        <subject>civi_token</subject>
+        <type>CONCAT_STRING</type>
+        <valuefield> </valuefield>
+      </field>
+      <field>
+        <aggregate>id</aggregate>
+        <subject>id</subject>
+        <type>FIRST_INCL_NULL</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
     <distribute>N</distribute>
@@ -1299,8 +1309,38 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>352</yloc>
+      <xloc>1184</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP 2</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1184</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1335,14 +1375,14 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>368</yloc>
+      <xloc>480</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Last Minute fix to identical-ish funds</name>
-    <type>ScriptValueMod</type>
+    <name>Join Rows (cartesian product) 2</name>
+    <type>JoinRows</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1351,37 +1391,18 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var DESCRIPTION;
-var i;
-
-if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Europe, US') {
-  if (!i) {
-   i = 1;
-  }
-  else {
-   i++;
-  }
-  DESCRIPTION = 'Kaiserlian, Simon &amp; Eranouhi Memorial ' + i + ' [Schlr-Armenia, Europe,';
-}
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>DESCRIPTION</name>
-        <rename>DESCRIPTION</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1390,8 +1411,8 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>640</yloc>
+      <xloc>160</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1414,14 +1435,14 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>1296</yloc>
+      <xloc>164</xloc>
+      <yloc>314</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>New funds only</name>
-    <type>FilterRows</type>
+    <name>Last Step 2</name>
+    <type>Dummy</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1430,16 +1451,6 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>duplicate</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1448,74 +1459,14 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>768</yloc>
+      <xloc>480</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>RE: FUND</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT
-f.ID
-, f.DESCRIPTION
--- , f.FUND_CATEGORY
-, f.FUND_ID
-, f.NOTES
-, f.RESTRICTED_FLAG
-, f."SEQUENCE"
-, f.START_DATE
-, f.END_DATE
-, f.FUNDTYPE
-, gldd.GLCREDIT_NUMBER
--- Here are client-specific bits
-, t.LONGDESCRIPTION as gift_type
-, t2.LONGDESCRIPTION as Category
-, t3.LONGDESCRIPTION as Fund_Type
-, fa_legalname.TEXT as Fund_Legal_Name
-, cf.CONSTIT_ID
-FROM FUND f
-LEFT JOIN FundDistribution fd ON f.ID = fd.FundId
-LEFT JOIN GLDISTRIBUTIONDETAIL gldd on fd.GLDistributionID = gldd.DISTRIBUTION_ID
-LEFT JOIN TABLEENTRIES t ON fd.GiftTypeID = t.TABLEENTRIESID
-LEFT JOIN TABLEENTRIES t2 ON f.FUND_CATEGORY = t2.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_type ON f.ID = fa_type.PARENTID AND fa_type.ATTRIBUTETYPESID = 50
-LEFT JOIN TABLEENTRIES t3 ON fa_type.TABLEENTRIESID = t3.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_legalname ON f.ID = fa_legalname.PARENTID AND fa_legalname.ATTRIBUTETYPESID = 49
-LEFT JOIN CONSTIT_Funds cf ON f.ID = cf.FUND_ID
-ORDER BY f.ID, cf.CONSTIT_ID
-
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row denormaliser</name>
-    <type>Denormaliser</type>
+    <name>Map to civi token</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1524,68 +1475,169 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <key_field>relationship_number</key_field>
-    <group>
-      <field>
-        <name>ID</name>
-      </field>
-    </group>
+    <field_to_use>re_token</field_to_use>
+    <target_field>civi_token</target_field>
+    <non_match_default />
     <fields>
       <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>1</key_value>
-        <target_name>Fund_Relationship_1</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
+        <source_value>[Last Name]</source_value>
+        <target_value>{contact.last_name}</target_value>
       </field>
       <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>2</key_value>
-        <target_name>Fund_Relationship_2</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
+        <source_value>[First Name]</source_value>
+        <target_value>{contact.first_name}</target_value>
       </field>
       <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>3</key_value>
-        <target_name>Fund_Relationship_3</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
+        <source_value>[Middle Name]</source_value>
+        <target_value>{contact.middle_initial}</target_value>
       </field>
       <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>4</key_value>
-        <target_name>Fund_Relationship_4</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
+        <source_value>[Nickname]</source_value>
+        <target_value>{contact.nickname}</target_value>
+      </field>
+      <field>
+        <source_value>[Title 1]</source_value>
+        <target_value>{contact.individual_prefix}</target_value>
+      </field>
+      <field>
+        <source_value>[Title 2]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Suffix 1]</source_value>
+        <target_value>{contact.individual_suffix}</target_value>
+      </field>
+      <field>
+        <source_value>[Suffix 2]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Position]</source_value>
+        <target_value>{contact.job_title}</target_value>
+      </field>
+      <field>
+        <source_value>[Maiden Name]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Last Name]</source_value>
+        <target_value>{related.last_name___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse First Name]</source_value>
+        <target_value>{related.first_name___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Middle Name]</source_value>
+        <target_value>{contact.spouse_middle_initial}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Nickname]</source_value>
+        <target_value>{related.nickname___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Title 1]</source_value>
+        <target_value>{related.individual_prefix___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Title 2]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Suffix 1]</source_value>
+        <target_value>{related.individual_suffix___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Suffix 2]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Position]</source_value>
+        <target_value>{related.job_title___reltype_0_Spouse_of_Spouse_of}</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Maiden Name]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Contact]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Organization Name]</source_value>
+        <target_value>{contact.display_name}</target_value>
+      </field>
+      <field>
+        <source_value>[Class Of]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Spouse Class Of]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Constituency Abbrev]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Constituency]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Constituent ID]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Membership Cat]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Constituent Addr/Sal]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Deceased]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Prospect Classification]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>[Prospect Status]</source_value>
+        <target_value>WARNING</target_value>
+      </field>
+      <field>
+        <source_value>The</source_value>
+        <target_value>The</target_value>
+      </field>
+      <field>
+        <source_value>Family</source_value>
+        <target_value>Family</target_value>
+      </field>
+      <field>
+        <source_value>&amp;</source_value>
+        <target_value>&amp;</target_value>
+      </field>
+      <field>
+        <source_value>-</source_value>
+        <target_value>-</target_value>
+      </field>
+      <field>
+        <source_value>,</source_value>
+        <target_value>,</target_value>
+      </field>
+      <field>
+        <source_value>Children</source_value>
+        <target_value>Children</target_value>
+      </field>
+      <field>
+        <source_value>Attn:</source_value>
+        <target_value>Attn:</target_value>
+      </field>
+      <field>
+        <source_value>and</source_value>
+        <target_value>and</target_value>
       </field>
     </fields>
     <cluster_schema />
@@ -1596,8 +1648,135 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>944</yloc>
+      <xloc>480</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row Normaliser</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>token_number</typefield>
+    <fields>
+      <field>
+        <name>CODE1</name>
+        <value>CODE1</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE2</name>
+        <value>CODE2</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE3</name>
+        <value>CODE3</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE4</name>
+        <value>CODE4</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE5</name>
+        <value>CODE5</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE6</name>
+        <value>CODE6</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE7</name>
+        <value>CODE7</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE8</name>
+        <value>CODE8</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE9</name>
+        <value>CODE9</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE10</name>
+        <value>CODE10</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE11</name>
+        <value>CODE11</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE12</name>
+        <value>CODE12</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE13</name>
+        <value>CODE13</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE14</name>
+        <value>CODE14</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE15</name>
+        <value>CODE15</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE16</name>
+        <value>CODE16</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE17</name>
+        <value>CODE17</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE18</name>
+        <value>CODE18</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE19</name>
+        <value>CODE19</value>
+        <norm>code</norm>
+      </field>
+      <field>
+        <name>CODE20</name>
+        <value>CODE20</value>
+        <norm>code</norm>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1626,8 +1805,181 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>352</yloc>
+      <xloc>1008</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step 2</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Salutation types</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>SELECT
+te.LONGDESCRIPTION as label
+FROM TABLEENTRIES te
+JOIN CODETABLES ct ON te.CODETABLESID = ct.CODETABLESID
+WHERE ct.NAME = 'Addr/Sal Types'
+ORDER BY te.SEQUENCE</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Salutation values</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>-- This only grabs salutations that are actually in use
+SELECT
+  CODE1
+, CODE10
+, CODE11
+, CODE12
+, CODE13
+, CODE14
+, CODE15
+, CODE16
+, CODE17
+, CODE18
+, CODE19
+, CODE2
+, CODE20
+, CODE3
+, CODE4
+, CODE5
+, CODE6
+, CODE7
+, CODE8
+, CODE9
+, ID
+, "SEQUENCE"
+FROM SALUTATIONS
+WHERE ID IN (SELECT SALUTATION_ID as id
+FROM CONSTITUENT_SALUTATION
+UNION
+SELECT PRIMARY_ADDRESSEE_ID as id
+FROM RECORDS
+UNION
+SELECT PRIMARY_SALUTATION_ID as id
+FROM RECORDS)
+ORDER BY SEQUENCE
+-- UNION works differently in MS SQL - we don't need to GROUP BY after the fact</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>civi_token</name>
+        <rename>label</rename>
+      </field>
+      <field>
+        <name>id</name>
+        <rename>value</rename>
+      </field>
+      <field>
+        <name>option_group_id</name>
+      </field>
+      <field>
+        <name>re_token</name>
+        <rename>name</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1672,14 +2024,14 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>512</yloc>
+      <xloc>1008</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort by ID</name>
-    <type>SortRows</type>
+    <name>Single file SFTP 2</name>
+    <type>SFTPPut</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1688,23 +2040,28 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1713,51 +2070,13 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>832</yloc>
+      <xloc>1008</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>CONSTIT_ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>category option_group_id</name>
+    <name>get postal_greeting option_group_ids</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -1768,8 +2087,7 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>select option_group_id from civicrm_custom_field WHERE name = 'Fund_Category';
-</sql>
+    <sql>select id as option_group_id from civicrm_option_group WHERE name = 'postal_greeting';</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1783,50 +2101,29 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>304</yloc>
+      <xloc>640</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>custom field name substitution</name>
-    <type>SimpleMapping</type>
+    <name>get salutation_type option_group_ids</name>
+    <type>TableInput</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
+    <connection>Target CiviCRM</connection>
+    <sql>select id as option_group_id from civicrm_option_group WHERE name IN ('salutation_type_options');</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1835,8 +2132,8 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>1120</yloc>
+      <xloc>288</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1899,14 +2196,14 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>432</yloc>
+      <xloc>1184</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>is_active = 1</name>
-    <type>Constant</type>
+    <name>import entity 2</name>
+    <type>TransExecutor</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1915,20 +2212,46 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1937,8 +2260,55 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>288</yloc>
+      <xloc>1184</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>re token lookup</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>SALUTATION_FIELDS</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>code</name>
+        <field>ID</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>FIELDNAME</name>
+        <rename>re_token</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

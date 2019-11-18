@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>RE Pledge Payments</name>
+    <name>gift constituency option values</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>PledgePayment</default_value>
+        <default_value>OptionValue</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>pledge_payments.csv</default_value>
+        <default_value>option_value_gift_constituency.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,79 +438,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017/06/25 18:56:34.689</created_date>
+    <created_date>2018/12/12 00:15:27.491</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017/06/25 18:56:34.689</modified_date>
+    <modified_date>2018/12/12 00:15:27.491</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>Pre-requisites:
-* Pledge and Contributions are both imported.
-* The Contribution has a custom field with the RE gift ID.</note>
-      <xloc>432</xloc>
-      <yloc>0</yloc>
-      <width>355</width>
-      <heigth>55</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific. You may want to do the same if you use CiviAccounts;
-     instead, import matching gift pledges as contributions/soft credits.</note>
-      <xloc>224</xloc>
-      <yloc>80</yloc>
-      <width>438</width>
-      <heigth>40</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Very org-specific.</note>
-      <xloc>256</xloc>
-      <yloc>352</yloc>
-      <width>136</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -636,13 +570,8 @@
   </connection>
   <order>
     <hop>
-      <from>Convert date format to the format Civi expects 2</from>
-      <to>Set status_id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>import fields only</from>
-      <to>option.create_new=1</to>
+      <from>Get option_group_id of gift constituency</from>
+      <to>Join the option_group_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -676,193 +605,21 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Set status_id</from>
-      <to>Data Validator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Data Validator</from>
-      <to>import fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Data Validator</from>
-      <to>invalid_pledge_payments</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: Installment</from>
-      <to>Remove matching gift pledges</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove matching gift pledges</from>
-      <to>Only scheduled payments > $0</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove pledge(s) tied to scholarship budget</from>
-      <to>Convert date format to the format Civi expects 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>get custom data on gifts</from>
-      <to>Look up contribution ID from RE_Gift_ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Look up contribution ID from RE_Gift_ID</from>
-      <to>Remove pledge(s) tied to scholarship budget</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>option.create_new=1</from>
+      <from>Join the option_group_id</from>
       <to>Dynamic CSV Output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>get custom data on pledges</from>
-      <to>Look up contribution ID from RE_Gift_ID 2</to>
+      <from>RE: GiftSplit</from>
+      <to>remove sequence</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Only scheduled payments > $0</from>
-      <to>Look up contribution ID from RE_Gift_ID 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Look up contribution ID from RE_Gift_ID 2</from>
-      <to>Look up contribution ID from RE_Gift_ID</to>
+      <from>remove sequence</from>
+      <to>Join the option_group_id</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Convert date format to the format Civi expects 2</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>Dte</name>
-        <rename>Dte</rename>
-        <type>Date</type>
-        <length>3</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Data Validator</name>
-    <type>Validator</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <validate_all>Y</validate_all>
-    <concat_errors>Y</concat_errors>
-    <concat_separator>|</concat_separator>
-    <validator_field>
-      <name>status_id</name>
-      <validation_name>Numeric present status_id</validation_name>
-      <max_length />
-      <min_length />
-      <null_allowed>N</null_allowed>
-      <only_null_allowed>N</only_null_allowed>
-      <only_numeric_allowed>Y</only_numeric_allowed>
-      <data_type>Integer</data_type>
-      <data_type_verified>Y</data_type_verified>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <max_value />
-      <min_value />
-      <start_string />
-      <end_string />
-      <start_string_not_allowed />
-      <end_string_not_allowed />
-      <regular_expression />
-      <regular_expression_not_allowed />
-      <error_code />
-      <error_description>Invalid status_id</error_description>
-      <is_sourcing_values>N</is_sourcing_values>
-      <sourcing_step />
-      <sourcing_field />
-      <allowed_value />
-    </validator_field>
-    <validator_field>
-      <name>pledge_id</name>
-      <validation_name>Numeric present pledge_id</validation_name>
-      <max_length />
-      <min_length />
-      <null_allowed>N</null_allowed>
-      <only_null_allowed>N</only_null_allowed>
-      <only_numeric_allowed>Y</only_numeric_allowed>
-      <data_type>None</data_type>
-      <data_type_verified>N</data_type_verified>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <max_value />
-      <min_value />
-      <start_string />
-      <end_string />
-      <start_string_not_allowed />
-      <end_string_not_allowed />
-      <regular_expression />
-      <regular_expression_not_allowed />
-      <error_code />
-      <error_description>Invalid pledge_id</error_description>
-      <is_sourcing_values>N</is_sourcing_values>
-      <sourcing_step />
-      <sourcing_field />
-      <allowed_value />
-    </validator_field>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Dynamic CSV Output</name>
     <type>Mapping</type>
@@ -916,8 +673,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>832</yloc>
+      <xloc>208</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -954,8 +711,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>541</xloc>
-      <yloc>963</yloc>
+      <xloc>576</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -998,8 +755,39 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>541</xloc>
-      <yloc>803</yloc>
+      <xloc>576</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get option_group_id of gift constituency</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cog.id as option_group_id FROM civicrm_option_group cog WHERE cog.title = "Gift Constituency";</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>386</xloc>
+      <yloc>114</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1048,8 +836,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>717</xloc>
-      <yloc>803</yloc>
+      <xloc>672</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1078,8 +866,44 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>717</xloc>
-      <yloc>883</yloc>
+      <xloc>672</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join the option_group_id</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1102,61 +926,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>896</yloc>
+      <xloc>208</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Only scheduled payments > $0</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>scheduled_amount</leftvalue>
-            <function>&gt;</function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>0</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: Installment</name>
+    <name>RE: GiftSplit</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1167,31 +943,12 @@
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>/* Find all pledge installments, and their related payments if they exist. */
-SELECT
-i.InstallmentId
-, i.PledgeId
-, i.AdjustmentId
-, i.Amount as scheduled_amount
-, i.Dte
-, ip.Amount as actual_amount
-, ip.PaymentId
-, g.CONSTIT_ID
-, g.RECEIPT_AMOUNT
-, g.DTE as receive_date
-, g.TYPE
-, DBO.TranslateGiftType(g.TYPE) as type_1
-/* Get the original pledge type too, for filtering */
-, original_pledge.TYPE
-, DBO.TranslateGiftType(original_pledge.TYPE) as original_pledge_type
-FROM Installment i
-LEFT JOIN InstallmentPayment ip ON i.InstallmentId = ip.InstallmentId
-LEFT JOIN GIFT g ON ip.PaymentId = g.ID
-LEFT JOIN GIFT original_pledge ON i.PledgeId = original_pledge.ID
-/* Adjustments are stored in here too - when an adjustment happens, the pledge ID of the original value is blanked */
-WHERE i.PledgeId IS NOT NULL 
-ORDER BY i.AdjustmentId
-/* Write-off Types: Covenant WriteOff, MG Write Off, Write Off */</sql>
+    <sql>SELECT DISTINCT
+t.LONGDESCRIPTION as label, t.SEQUENCE
+FROM GIFT g
+LEFT JOIN TABLEENTRIES t on t.TABLEENTRIESID = g.CONSTITUENT_CODE
+WHERE LONGDESCRIPTION IS NOT NULL
+ORDER BY t.SEQUENCE</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1205,99 +962,8 @@ ORDER BY i.AdjustmentId
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>0</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove matching gift pledges</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>original_pledge_type</leftvalue>
-        <function>&lt;></function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>MG Pledge</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove pledge(s) tied to scholarship budget</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>PledgeId</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>217290</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>352</yloc>
+      <xloc>208</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1326,65 +992,8 @@ ORDER BY i.AdjustmentId
       </output>
     </remotesteps>
     <GUI>
-      <xloc>541</xloc>
-      <yloc>883</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set status_id</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>// If there's a payment, it's completed; otherwise it's pending, unless it's a write-off.  
-// We're not going to get into "Overdue"; we'll let the "Process Pledges" Scheduled Job fix that for us.
-// 1 is "Completed"
-// 2 is "Pending"
-// 3 is "Cancelled"
-var status_id = 2;
-
-if (contribution_id != null) {
-  status_id = 1;
-}
-
-// Write Off
-if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Write Off') {
-  status_id = 3;
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>status_id</name>
-        <rename>status_id</rename>
-        <type>Integer</type>
-        <length>1</length>
-        <precision>0</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>496</yloc>
+      <xloc>576</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1429,8 +1038,8 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
       </output>
     </remotesteps>
     <GUI>
-      <xloc>541</xloc>
-      <yloc>1043</yloc>
+      <xloc>576</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1493,16 +1102,16 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
       </output>
     </remotesteps>
     <GUI>
-      <xloc>717</xloc>
-      <yloc>963</yloc>
+      <xloc>672</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>import fields only</name>
+    <name>remove sequence</name>
     <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1511,32 +1120,7 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
     </partitioning>
     <fields>
       <field>
-        <name>scheduled_amount</name>
-        <rename />
-      </field>
-      <field>
-        <name>Dte</name>
-        <rename>scheduled_date</rename>
-      </field>
-      <field>
-        <name>actual_amount</name>
-        <rename />
-      </field>
-      <field>
-        <name>pledge_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>contribution_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>status_id</name>
-        <rename />
-      </field>
-      <field>
-        <name>InstallmentId</name>
-        <rename />
+        <name>label</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1548,461 +1132,12 @@ if (type_1 == 'Covenant WriteOff' || type_1 == 'MG Write Off' || type_1 == 'Writ
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>invalid_pledge_payments</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/errors/invalid_pledge_payments</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>InstallmentId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PledgeId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>AdjustmentId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>scheduled_amount</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency />
-        <decimal>.</decimal>
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Dte</name>
-        <type>Date</type>
-        <format>yyyy-MM-dd</format>
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>actual_amount</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency />
-        <decimal>.</decimal>
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>PaymentId</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CONSTIT_ID</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>RECEIPT_AMOUNT</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency />
-        <decimal>.</decimal>
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>receive_date</name>
-        <type>Timestamp</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TYPE</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>type_1</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>pledge_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contribution_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>status_id</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>Error</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>option.create_new=1</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>option.create_new</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Look up contribution ID from RE_Gift_ID</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>get custom data on gifts</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>PaymentId</name>
-        <field>lookup_key</field>
-      </key>
-      <value>
-        <name>entity_id</name>
-        <rename>contribution_id</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>get custom data on gifts</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT ${RE_Gift_ID_column_name} AS lookup_key, ${RE_Gift_ID_table_name}.* 
-FROM ${RE_Gift_ID_table_name} 
-WHERE ${RE_Gift_ID_column_name} IS NOT NULL
-ORDER BY lookup_key</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Look up contribution ID from RE_Gift_ID 2</name>
-    <type>StreamLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <from>get custom data on pledges</from>
-    <input_sorted>N</input_sorted>
-    <preserve_memory>Y</preserve_memory>
-    <sorted_list>N</sorted_list>
-    <integer_pair>N</integer_pair>
-    <lookup>
-      <key>
-        <name>PledgeId</name>
-        <field>lookup_key</field>
-      </key>
-      <value>
-        <name>entity_id</name>
-        <rename>pledge_id</rename>
-        <default />
-        <type>None</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>get custom data on pledges</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>SELECT ${RE_GiftId_column_name} AS lookup_key, ${RE_GiftId_table_name}.* 
-FROM ${RE_GiftId_table_name} 
-WHERE ${RE_GiftId_column_name} IS NOT NULL
-ORDER BY lookup_key</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>160</yloc>
+      <xloc>208</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
-    <error>
-      <source_step>Data Validator</source_step>
-      <target_step>invalid_pledge_payments</target_step>
-      <is_enabled>Y</is_enabled>
-      <nr_valuename />
-      <descriptions_valuename>Error</descriptions_valuename>
-      <fields_valuename />
-      <codes_valuename />
-      <max_errors />
-      <max_pct_errors />
-      <min_pct_rows />
-    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>

@@ -458,18 +458,8 @@
   </notepads>
   <order>
     <hop>
-      <from>api_custom_field</from>
-      <to>Wait for CustomGroup to finish</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Wait for OptionGroup to finish</from>
       <to>Create OptionValue</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>api_custom_group</from>
-      <to>Create CustomGroup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -488,18 +478,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>api_option_group</from>
-      <to>Filter the bogus export group</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter the bogus export group</from>
       <to>Create OptionGroup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>api_option_value</from>
-      <to>Filter the bogus export value</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -520,6 +500,46 @@
     <hop>
       <from>Create OptionGroup</from>
       <to>Get OptionGroup ID from JSON</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_option_value</from>
+      <to>Escape ampersands and apostrophes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Escape ampersands and apostrophes</from>
+      <to>Filter the bogus export value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_custom_field</from>
+      <to>Escape ampersands and apostrophes 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Escape ampersands and apostrophes 2</from>
+      <to>Wait for CustomGroup to finish</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_option_group</from>
+      <to>Escape ampersands and apostrophes 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Escape ampersands and apostrophes 3</from>
+      <to>Filter the bogus export group</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>api_custom_group</from>
+      <to>Escape ampersands and apostrophes 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Escape ampersands and apostrophes 4</from>
+      <to>Create CustomGroup</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -872,7 +892,7 @@
     </remotesteps>
     <GUI>
       <xloc>816</xloc>
-      <yloc>320</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -899,6 +919,7 @@
     <action-name>getfield</action-name>
     <action-name>getlist</action-name>
     <action-name>getrefcount</action-name>
+    <action-name>getunique</action-name>
     <action-name>setvalue</action-name>
     <action-name>validate</action-name>
     <field>
@@ -906,31 +927,31 @@
       <fieldName>min_multiple</fieldName>
       <name>min_multiple</name>
       <title>Minimum Multiple Records</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","name":"collapse_adv_display","description":"Will this group be in collapsed or expanded mode on advanced search display ?","localizable":0,"type":1,"title":"Collapse Group Display","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"0","name":"collapse_adv_display","description":"Will this group be in collapsed or expanded mode on advanced search display ?","localizable":0,"type":1,"title":"Collapse Group Display","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>collapse_adv_display</fieldName>
       <name>collapse_adv_display</name>
       <title>Collapse Group Display</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","name":"collapse_display","description":"Will this group be in collapsed or expanded mode on initial display ?","localizable":0,"type":1,"title":"Collapse Custom Group?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"0","name":"collapse_display","description":"Will this group be in collapsed or expanded mode on initial display ?","localizable":0,"type":1,"title":"Collapse Custom Group?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>collapse_display</fieldName>
       <name>collapse_display</name>
       <title>Collapse Custom Group?</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","name":"is_active","description":"Is this property active?","localizable":0,"type":16,"title":"Custom Group Is Active?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"1","name":"is_active","description":"Is this property active?","localizable":0,"type":16,"title":"Custom Group Is Active?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>is_active</fieldName>
       <name>is_active</name>
       <title>Custom Group Is Active?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
@@ -946,7 +967,7 @@
       <fieldName>weight</fieldName>
       <name>weight</name>
       <title>Order</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -962,7 +983,7 @@
       <fieldName>help_post</fieldName>
       <name>help_post</name>
       <title>Custom Group Post Text</title>
-      <type>2</type>
+      <type>32</type>
       <source>getfields</source>
     </field>
     <field>
@@ -974,19 +995,19 @@
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","name":"is_multiple","description":"Does this group hold multiple values?","localizable":0,"type":16,"title":"Supports Multiple Records","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"0","name":"is_multiple","description":"Does this group hold multiple values?","localizable":0,"type":16,"title":"Supports Multiple Records","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>is_multiple</fieldName>
       <name>is_multiple</name>
       <title>Supports Multiple Records</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","name":"is_reserved","description":"Is this a reserved Custom Group?","localizable":0,"type":16,"title":"Reserved Group?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"0","name":"is_reserved","description":"Is this a reserved Custom Group?","localizable":0,"type":16,"title":"Reserved Group?","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>is_reserved</fieldName>
       <name>is_reserved</name>
       <title>Reserved Group?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
@@ -994,7 +1015,7 @@
       <fieldName>created_id</fieldName>
       <name>created_id</name>
       <title>Custom Group Created By</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1010,7 +1031,7 @@
       <fieldName>help_pre</fieldName>
       <name>help_pre</name>
       <title>Custom Group Pre Text</title>
-      <type>2</type>
+      <type>32</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1026,15 +1047,15 @@
       <fieldName>is_public</fieldName>
       <name>is_public</name>
       <title>Custom Group Is Public?</title>
-      <type>2</type>
+      <type>16</type>
       <source>getfields</source>
     </field>
     <field>
-      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"NULL","name":"extends_entity_column_id","description":"FK to civicrm_option_value.id (for option group custom_data_type.)","localizable":0,"type":1,"title":"Custom Group Subtype List","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
+      <fieldDef>{"bao":"CRM_Core_BAO_CustomGroup","default":"NULL","pseudoconstant":{"optionEditPath":"civicrm\/admin\/options\/custom_data_type","optionGroupName":"custom_data_type"},"name":"extends_entity_column_id","description":"FK to civicrm_option_value.id (for option group custom_data_type.)","localizable":0,"html":{"size":6,"maxlength":14,"type":"Select"},"type":1,"title":"Custom Group Subtype List","table_name":"civicrm_custom_group","is_core_field":true,"entity":"CustomGroup"}</fieldDef>
       <fieldName>extends_entity_column_id</fieldName>
       <name>extends_entity_column_id</name>
       <title>Custom Group Subtype List</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1050,7 +1071,7 @@
       <fieldName>id</fieldName>
       <name>id</name>
       <title>Custom Group ID</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1058,7 +1079,7 @@
       <fieldName>created_date</fieldName>
       <name>created_date</name>
       <title>Custom Group Created Date</title>
-      <type>2</type>
+      <type>12</type>
       <source>getfields</source>
     </field>
     <field>
@@ -1066,7 +1087,7 @@
       <fieldName>max_multiple</fieldName>
       <name>max_multiple</name>
       <title>Maximum Multiple Records</title>
-      <type>2</type>
+      <type>1</type>
       <source>getfields</source>
     </field>
     <key-index>title</key-index>
@@ -1077,13 +1098,16 @@
     <key-index>extends</key-index>
     <key-index>extends_entity_column_id</key-index>
     <key-index>extends_entity_column_value</key-index>
+    <key-index>is_multiple</key-index>
+    <key-index>min_multiple</key-index>
+    <key-index>max_multiple</key-index>
     <key-index>is_active</key-index>
     <key-index>is_public</key-index>
     <key-index>is_reserved</key-index>
     <key-index>weight</key-index>
     <output-field>
-      <input-field>is_reserved</input-field>
-      <output-field>is_reserved</output-field>
+      <input-field>min_multiple</input-field>
+      <output-field>min_multiple</output-field>
     </output-field>
     <output-field>
       <input-field>collapse_adv_display</input-field>
@@ -1098,16 +1122,32 @@
       <output-field>is_active</output-field>
     </output-field>
     <output-field>
+      <input-field>extends_entity_column_value</input-field>
+      <output-field>extends_entity_column_value</output-field>
+    </output-field>
+    <output-field>
+      <input-field>weight</input-field>
+      <output-field>weight</output-field>
+    </output-field>
+    <output-field>
+      <input-field>title</input-field>
+      <output-field>title</output-field>
+    </output-field>
+    <output-field>
+      <input-field>is_multiple</input-field>
+      <output-field>is_multiple</output-field>
+    </output-field>
+    <output-field>
+      <input-field>is_reserved</input-field>
+      <output-field>is_reserved</output-field>
+    </output-field>
+    <output-field>
       <input-field>extends</input-field>
       <output-field>extends</output-field>
     </output-field>
     <output-field>
       <input-field>name</input-field>
       <output-field>name</output-field>
-    </output-field>
-    <output-field>
-      <input-field>extends_entity_column_value</input-field>
-      <output-field>extends_entity_column_value</output-field>
     </output-field>
     <output-field>
       <input-field>is_public</input-field>
@@ -1118,16 +1158,12 @@
       <output-field>extends_entity_column_id</output-field>
     </output-field>
     <output-field>
-      <input-field>weight</input-field>
-      <output-field>weight</output-field>
-    </output-field>
-    <output-field>
       <input-field>style</input-field>
       <output-field>style</output-field>
     </output-field>
     <output-field>
-      <input-field>title</input-field>
-      <output-field>title</output-field>
+      <input-field>max_multiple</input-field>
+      <output-field>max_multiple</output-field>
     </output-field>
     <cluster_schema />
     <remotesteps>
@@ -1275,7 +1311,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>224</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1542,7 +1578,7 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>320</yloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1566,7 +1602,7 @@
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>288</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1609,7 +1645,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>160</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1652,7 +1688,7 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>160</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1720,7 +1756,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>368</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1761,7 +1797,7 @@
     </remotesteps>
     <GUI>
       <xloc>816</xloc>
-      <yloc>256</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1791,7 +1827,7 @@
     </remotesteps>
     <GUI>
       <xloc>816</xloc>
-      <yloc>176</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1821,7 +1857,7 @@
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>240</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2143,6 +2179,39 @@
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>is_multiple</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>min_multiple</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>max_multiple</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>is_active</name>
         <type>String</type>
         <format />
@@ -2196,7 +2265,7 @@
     </remotesteps>
     <GUI>
       <xloc>192</xloc>
-      <yloc>80</yloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2312,7 +2381,7 @@
     </remotesteps>
     <GUI>
       <xloc>352</xloc>
-      <yloc>80</yloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2539,6 +2608,198 @@
     <GUI>
       <xloc>1040</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Escape ampersands and apostrophes</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>label</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>&amp;</replace_string>
+        <replace_by_string>%26</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>label</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>'</replace_string>
+        <replace_by_string>%27</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Escape ampersands and apostrophes 2</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>label</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>&amp;</replace_string>
+        <replace_by_string>%26</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>label</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>'</replace_string>
+        <replace_by_string>%27</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Escape ampersands and apostrophes 3</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>title</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>&amp;</replace_string>
+        <replace_by_string>%26</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>title</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>'</replace_string>
+        <replace_by_string>%27</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Escape ampersands and apostrophes 4</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>title</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>&amp;</replace_string>
+        <replace_by_string>%26</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>title</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>'</replace_string>
+        <replace_by_string>%27</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

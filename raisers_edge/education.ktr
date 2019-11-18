@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>funds</name>
+    <name>education</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>FinancialType</default_value>
+        <default_value>Relationship</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>financialtypes.csv</default_value>
+        <default_value>education.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,56 +438,13 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014/09/24 17:16:02.269</created_date>
+    <created_date>2019/02/06 18:39:04.100</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <modified_date>2019/02/06 18:39:04.100</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
-    <notepad>
-      <note>Use this transform (not "funds as custom field") when you need to migrate GL accounting information from
-Raiser's Edge.</note>
-      <xloc>560</xloc>
-      <yloc>32</yloc>
-      <width>662</width>
-      <heigth>40</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific</note>
-      <xloc>192</xloc>
-      <yloc>640</yloc>
-      <width>104</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
   <connection>
     <name>Raiser's Edge</name>
@@ -613,6 +570,11 @@ Raiser's Edge.</note>
   </connection>
   <order>
     <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Get CSV folder</from>
       <to>Single file SFTP</to>
       <enabled>Y</enabled>
@@ -624,11 +586,11 @@ Raiser's Edge.</note>
     </hop>
     <hop>
       <from>Get parameters</from>
-      <to>Import when complete 2</to>
+      <to>Import when complete</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Import when complete 2</from>
+      <from>Import when complete</from>
       <to>import entity</to>
       <enabled>Y</enabled>
     </hop>
@@ -638,58 +600,28 @@ Raiser's Edge.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>is_active = 1</to>
+      <from>external ID to contact_id in Civi</from>
+      <to>org_name to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Funds have 64 char max</from>
-      <to>Unique rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: FUND</from>
-      <to>Funds have 64 char max</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>CONSTIT_ID to Civi ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by ID</from>
-      <to>Add value fields changing sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add value fields changing sequence</from>
-      <to>Row denormaliser</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>category option_group_id</from>
+      <from>org_name to contact_id in Civi</from>
       <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Join Rows (cartesian product)</from>
-      <to>Category lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Category lookup</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>is_active = 1</from>
+      <from>Get relationship_type_id</from>
       <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects</from>
+      <to>Convert date format to the format Civi expects 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert date format to the format Civi expects 2</from>
+      <to>Import fields only</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -698,48 +630,58 @@ Raiser's Edge.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Dynamic CSV Output</from>
-      <to>Last Step</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>custom field name substitution</from>
       <to>Dynamic CSV Output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CONSTIT_ID to Civi ID</from>
-      <to>Last Minute fix to identical-ish funds</to>
+      <from>Get degree_ogid</from>
+      <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>Last Minute fix to identical-ish funds</to>
+      <from>Join Rows (cartesian product)</from>
+      <to>get degree</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Last Minute fix to identical-ish funds</from>
-      <to>Check for existing funds</to>
+      <from>get degree</from>
+      <to>Reformat lenient dates</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row denormaliser</from>
-      <to>Import fields only</to>
+      <from>end date</from>
+      <to>Add school contact_subtype</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Check for existing funds</from>
-      <to>New funds only</to>
+      <from>Add school contact_subtype</from>
+      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>New funds only</from>
-      <to>Sort by ID</to>
+      <from>RE: Education</from>
+      <to>end date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group double majors</from>
+      <to>Convert date format to the format Civi expects</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Reformat lenient dates</from>
+      <to>Sort to find double majors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort to find double majors</from>
+      <to>Group double majors</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add constants</name>
+    <name>Add school contact_subtype</name>
     <type>Constant</type>
     <description />
     <distribute>Y</distribute>
@@ -751,13 +693,13 @@ Raiser's Edge.</note>
     </partitioning>
     <fields>
       <field>
-        <name>Fund_Relationship</name>
-        <type>Integer</type>
+        <name>contact_subtype</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
-        <nullif />
+        <nullif>School</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -771,29 +713,41 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>560</yloc>
+      <xloc>128</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Add value fields changing sequence</name>
-    <type>FieldsChangeSequence</type>
+    <name>Convert date format to the format Civi expects</name>
+    <type>SelectValues</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <start>1</start>
-    <increment>1</increment>
-    <resultfieldName>relationship_number</resultfieldName>
     <fields>
-      <field>
-        <name>ID</name>
-      </field>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>end_date</name>
+        <rename>end_date</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -804,97 +758,41 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>896</yloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>CONSTIT_ID to Civi ID</name>
-    <type>DBLookup</type>
+    <name>Convert date format to the format Civi expects 2</name>
+    <type>SelectValues</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTIT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>Fund_Relationship</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Category lookup</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_option_value</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>Category</name>
-        <field>label</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>option_group_id</name>
-        <field>option_group_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>value</name>
-        <rename>Fund_Category</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>end_date</name>
+        <rename>end_date</rename>
+        <type>String</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -904,54 +802,7 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check for existing funds</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_financial_type</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>DESCRIPTION</name>
-        <field>name</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>duplicate</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>704</yloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1009,7 +860,7 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1232</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1024,14 +875,23 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>CONSTIT_ID to Civi ID</send_true_to>
-    <send_false_to>Add constants</send_false_to>
+    <send_true_to />
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>CONSTIT_ID</leftvalue>
-        <function>IS NOT NULL</function>
+        <leftvalue>RECORD_ID</leftvalue>
+        <function>=</function>
         <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>120585</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
       </condition>
     </compare>
     <cluster_schema />
@@ -1042,40 +902,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Funds have 64 char max</name>
-    <type>StringCut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>DESCRIPTION</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>64</cut_to>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>128</yloc>
+      <xloc>240</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,8 +940,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>432</yloc>
+      <xloc>400</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1156,8 +984,39 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>272</yloc>
+      <xloc>400</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get degree_ogid</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select id AS degree_ogid from civicrm_option_group WHERE name = 'Degree';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1206,14 +1065,14 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>272</yloc>
+      <xloc>496</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Import fields only</name>
-    <type>SelectValues</type>
+    <name>Get relationship_type_id</name>
+    <type>TableInput</type>
     <description />
     <distribute>N</distribute>
     <custom_distribution />
@@ -1222,42 +1081,204 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select id AS relationship_type_id from civicrm_relationship_type WHERE name_a_b = 'School is';</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group double majors</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>contact_id_a</name>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+      </field>
+      <field>
+        <name>EDUCATION_ID</name>
+      </field>
+    </group>
     <fields>
       <field>
-        <name>DESCRIPTION</name>
-        <rename>name</rename>
+        <aggregate>CLASS_OF</aggregate>
+        <subject>CLASS_OF</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>is_active</name>
+        <aggregate>CAMPUS</aggregate>
+        <subject>CAMPUS</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>FUND_ID</name>
-        <rename>Fund_ID</rename>
+        <aggregate>RECORD_ID</aggregate>
+        <subject>RECORD_ID</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>START_DATE</name>
-        <rename>Fund_Start_Date</rename>
+        <aggregate>school</aggregate>
+        <subject>school</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>Fund_Category</name>
+        <aggregate>major</aggregate>
+        <subject>major</subject>
+        <type>CONCAT_STRING</type>
+        <valuefield>, </valuefield>
       </field>
       <field>
-        <name>Fund_Legal_Name</name>
+        <aggregate>minor</aggregate>
+        <subject>minor</subject>
+        <type>CONCAT_STRING</type>
+        <valuefield>, </valuefield>
       </field>
       <field>
-        <name>Fund_Type</name>
+        <aggregate>school_type</aggregate>
+        <subject>school_type</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>Fund_Relationship_1</name>
+        <aggregate>degree_type</aggregate>
+        <subject>degree_type</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>Fund_Relationship_2</name>
+        <aggregate>DATE_GRADUATED</aggregate>
+        <subject>DATE_GRADUATED</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>Fund_Relationship_3</name>
+        <aggregate>DATE_LEFT</aggregate>
+        <subject>DATE_LEFT</subject>
+        <type>FIRST</type>
+        <valuefield />
       </field>
       <field>
-        <name>Fund_Relationship_4</name>
+        <aggregate>end_date</aggregate>
+        <subject>end_date</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>contact_subtype</aggregate>
+        <subject>contact_subtype</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>relationship_type_id</aggregate>
+        <subject>relationship_type_id</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>degree_ogid</aggregate>
+        <subject>degree_ogid</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>degree</aggregate>
+        <subject>degree</subject>
+        <type>FIRST</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id_a</name>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+      </field>
+      <field>
+        <name>end_date</name>
+      </field>
+      <field>
+        <name>relationship_type_id</name>
+      </field>
+      <field>
+        <name>CLASS_OF</name>
+        <rename>class_year</rename>
+      </field>
+      <field>
+        <name>CAMPUS</name>
+        <rename>description</rename>
+      </field>
+      <field>
+        <name>major</name>
+      </field>
+      <field>
+        <name>minor</name>
+      </field>
+      <field>
+        <name>school_type</name>
+      </field>
+      <field>
+        <name>degree</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1270,12 +1291,12 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1040</yloc>
+      <yloc>928</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Import when complete 2</name>
+    <name>Import when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
     <distribute>N</distribute>
@@ -1299,8 +1320,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>352</yloc>
+      <xloc>496</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1336,62 +1357,7 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Last Minute fix to identical-ish funds</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var DESCRIPTION;
-var i;
-
-if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Europe, US') {
-  if (!i) {
-   i = 1;
-  }
-  else {
-   i++;
-  }
-  DESCRIPTION = 'Kaiserlian, Simon &amp; Eranouhi Memorial ' + i + ' [Schlr-Armenia, Europe,';
-}
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>DESCRIPTION</name>
-        <rename>DESCRIPTION</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>640</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1415,46 +1381,12 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1296</yloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>New funds only</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>duplicate</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: FUND</name>
+    <name>RE: Education</name>
     <type>TableInput</type>
     <description />
     <distribute>N</distribute>
@@ -1465,36 +1397,24 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
       <schema_name />
     </partitioning>
     <connection>Raiser's Edge</connection>
-    <sql>SELECT
-f.ID
-, f.DESCRIPTION
--- , f.FUND_CATEGORY
-, f.FUND_ID
-, f.NOTES
-, f.RESTRICTED_FLAG
-, f."SEQUENCE"
-, f.START_DATE
-, f.END_DATE
-, f.FUNDTYPE
-, gldd.GLCREDIT_NUMBER
--- Here are client-specific bits
-, t.LONGDESCRIPTION as gift_type
-, t2.LONGDESCRIPTION as Category
-, t3.LONGDESCRIPTION as Fund_Type
-, fa_legalname.TEXT as Fund_Legal_Name
-, cf.CONSTIT_ID
-FROM FUND f
-LEFT JOIN FundDistribution fd ON f.ID = fd.FundId
-LEFT JOIN GLDISTRIBUTIONDETAIL gldd on fd.GLDistributionID = gldd.DISTRIBUTION_ID
-LEFT JOIN TABLEENTRIES t ON fd.GiftTypeID = t.TABLEENTRIESID
-LEFT JOIN TABLEENTRIES t2 ON f.FUND_CATEGORY = t2.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_type ON f.ID = fa_type.PARENTID AND fa_type.ATTRIBUTETYPESID = 50
-LEFT JOIN TABLEENTRIES t3 ON fa_type.TABLEENTRIESID = t3.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_legalname ON f.ID = fa_legalname.PARENTID AND fa_legalname.ATTRIBUTETYPESID = 49
-LEFT JOIN CONSTIT_Funds cf ON f.ID = cf.FUND_ID
-ORDER BY f.ID, cf.CONSTIT_ID
-
-</sql>
+    <sql>SELECT CLASS_OF, CAMPUS
+, RECORD_ID
+, t.LONGDESCRIPTION as school
+, t2.LONGDESCRIPTION as major
+, t3.LONGDESCRIPTION as minor
+, t4.LONGDESCRIPTION as school_type
+, t5.LONGDESCRIPTION as degree_type
+, DATE_GRADUATED
+, DATE_LEFT
+, e.ID as EDUCATION_ID
+FROM EDUCATION e
+JOIN TABLEENTRIES t ON e.SCHOOL_ID = t.TABLEENTRIESID
+LEFT JOIN EducationMajor ema ON ema.PARENTID = e.ID
+LEFT JOIN TABLEENTRIES t2 ON ema.TABLEENTRIESID = t2.TABLEENTRIESID
+LEFT JOIN EducationMinor emi ON emi.PARENTID = e.ID
+LEFT JOIN TABLEENTRIES t3 ON emi.TABLEENTRIESID = t3.TABLEENTRIESID
+LEFT JOIN TABLEENTRIES t4 ON e.SCHOOL_TYPE = t4.TABLEENTRIESID
+LEFT JOIN TABLEENTRIES t5 ON e.DEGREE = t5.TABLEENTRIESID</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1509,13 +1429,13 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>32</yloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Row denormaliser</name>
-    <type>Denormaliser</type>
+    <name>Reformat lenient dates</name>
+    <type>ScriptValueMod</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1524,68 +1444,36 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
-    <key_field>relationship_number</key_field>
-    <group>
-      <field>
-        <name>ID</name>
-      </field>
-    </group>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Normally this would be "0101" but here we use "0601" because education/graduation
+
+var end_date;
+
+if (end_date != null){
+	if (end_date.length == 4){
+	 end_date = end_date + '0601';
+	}
+	if (end_date.length == 6){
+	 end_date = end_date + '01';
+	}
+}
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>1</key_value>
-        <target_name>Fund_Relationship_1</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>2</key_value>
-        <target_name>Fund_Relationship_2</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>3</key_value>
-        <target_name>Fund_Relationship_3</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>4</key_value>
-        <target_name>Fund_Relationship_4</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
+        <name>end_date</name>
+        <rename>end_date</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
       </field>
     </fields>
     <cluster_schema />
@@ -1597,7 +1485,7 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>944</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1626,8 +1514,8 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>352</yloc>
+      <xloc>400</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1672,13 +1560,13 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>512</yloc>
+      <xloc>400</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort by ID</name>
+    <name>Sort to find double majors</name>
     <type>SortRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1697,7 +1585,23 @@ ORDER BY f.ID, cf.CONSTIT_ID
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>ID</name>
+        <name>contact_id_a</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>EDUCATION_ID</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -1714,77 +1618,7 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>CONSTIT_ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>category option_group_id</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select option_group_id from civicrm_custom_field WHERE name = 'Fund_Category';
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>304</yloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1836,7 +1670,201 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1120</yloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>description</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var description = '';
+if (CAMPUS) {
+  description = CAMPUS;
+}
+/*
+if (description &amp;&amp; CLASS_OF) {
+  description = description + ', ';
+}
+if (CLASS_OF) {
+  description = description + 'Class of ' + CLASS_OF;
+}
+*/</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>description</name>
+        <rename>description</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>end date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <calculation>
+      <field_name>end_date</field_name>
+      <calc_type>NVL</calc_type>
+      <field_a>DATE_GRADUATED</field_a>
+      <field_b>DATE_LEFT</field_b>
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>external ID to contact_id in Civi</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>RECORD_ID</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id_a</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>get degree</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_option_value</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>degree_type</name>
+        <field>label</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>degree_ogid</name>
+        <field>option_group_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>value</name>
+        <rename>degree</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1899,36 +1927,51 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>432</yloc>
+      <xloc>496</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>is_active = 1</name>
-    <type>Constant</type>
+    <name>org_name to contact_id in Civi</name>
+    <type>DBLookup</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <connection>Target CiviCRM</connection>
+    <cache>N</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>school</name>
+        <field>organization_name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>contact_subtype</name>
+        <field>contact_sub_type</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id_b</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1938,7 +1981,7 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>288</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -469,12 +469,33 @@ There's a separate transform for converting them to a group.</note>
     </notepad>
     <notepad>
       <note>&lt;-- Create a multi-value record</note>
-      <xloc>176</xloc>
-      <yloc>464</yloc>
+      <xloc>160</xloc>
+      <yloc>592</yloc>
       <width>187</width>
       <heigth>26</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- org-specific value(s)</note>
+      <xloc>176</xloc>
+      <yloc>96</yloc>
+      <width>154</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
       <fontcolorred>0</fontcolorred>
@@ -613,11 +634,6 @@ There's a separate transform for converting them to a group.</note>
   </connection>
   <order>
     <hop>
-      <from>RE: Constituent Codes</from>
-      <to>external ID to contact_id in Civi</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>external ID to contact_id in Civi</from>
       <to>re-sort on contact ID</to>
       <enabled>Y</enabled>
@@ -697,6 +713,16 @@ There's a separate transform for converting them to a group.</note>
       <to>Last Step</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>RE: Constituent Codes</from>
+      <to>Remove codes that get imported as groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove codes that get imported as groups</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Convert commas to separation characters</name>
@@ -739,7 +765,65 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>528</yloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dynamic CSV Output</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output1name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -852,7 +936,7 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>224</xloc>
-      <yloc>224</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -947,7 +1031,7 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>464</yloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1013,7 +1097,7 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>288</yloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1037,7 +1121,7 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>880</yloc>
+      <yloc>1008</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1090,7 +1174,7 @@ value = value.replace(/, /g,'\x01');
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>368</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1161,7 +1245,7 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>592</yloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1266,7 +1350,59 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>218</yloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>custom field name substitution</name>
+    <type>SimpleMapping</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1312,8 +1448,8 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>109</xloc>
-      <yloc>89</yloc>
+      <xloc>112</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1425,66 +1561,14 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       </output>
     </remotesteps>
     <GUI>
-      <xloc>111</xloc>
-      <yloc>153</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>custom field name substitution</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>112</xloc>
-      <yloc>672</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Dynamic CSV Output</name>
-    <type>Mapping</type>
+    <name>Remove codes that get imported as groups</name>
+    <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1493,40 +1577,25 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <variablemapping>
-          <variable>outputname</variable>
-          <input>${output1name}</input>
-        </variablemapping>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>Y</negated>
+        <leftvalue>LONGDESCRIPTION</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Matching Gift Co</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1536,7 +1605,7 @@ JOIN TABLEENTRIES ON TABLEENTRIESID = CODE
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>784</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

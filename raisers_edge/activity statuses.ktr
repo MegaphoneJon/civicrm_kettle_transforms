@@ -603,7 +603,7 @@ Use with caution!</note>
     </hop>
     <hop>
       <from>invalid_activity_status</from>
-      <to>Create Activity Types</to>
+      <to>Create Activity Statuses</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -613,7 +613,7 @@ Use with caution!</note>
     </hop>
   </order>
   <step>
-    <name>Create Activity Types</name>
+    <name>Create Activity Statuses</name>
     <type>CiviCrmOutput</type>
     <description />
     <distribute>Y</distribute>

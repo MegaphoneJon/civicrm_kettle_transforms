@@ -438,15 +438,11 @@
       <note>This transformation will:
 * clean up obvious problems (e.g. "mr" to "Mr.").
 * remap prefixes to prefix_ids (and suffixes to suffix_ids)
-* output a list of prefixes unknown to your current CiviCRM database
-
-TODO:
-* create unknown prefixes?
-</note>
-      <xloc>266</xloc>
-      <yloc>52</yloc>
+* output a list of prefixes unknown to your current CiviCRM database</note>
+      <xloc>368</xloc>
+      <yloc>32</yloc>
       <width>411</width>
-      <heigth>138</heigth>
+      <heigth>74</heigth>
       <fontname>Arial</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>
@@ -550,18 +546,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
   </connection>
   <order>
     <hop>
-      <from>Add prefix and suffix option group IDs</from>
-      <to>Trim prefix/suffix fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Remap Prefixes</from>
       <to>Remap Suffixes</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>input prefix_suffix</from>
-      <to>Add prefix and suffix option group IDs</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -639,6 +625,26 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       <to>Sort by prefix</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>get option_group_ids</from>
+      <to>Row denormaliser 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>input prefix_suffix</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Row denormaliser 2</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product)</from>
+      <to>Trim prefix/suffix fields</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add prefix and suffix option group IDs</name>
@@ -689,8 +695,8 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
       </output>
     </remotesteps>
     <GUI>
-      <xloc>115</xloc>
-      <yloc>110</yloc>
+      <xloc>416</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1841,6 +1847,130 @@ http://forums.pentaho.com/showthread.php?97209-It-looks-like-the-Group-By-Step-i
     <GUI>
       <xloc>112</xloc>
       <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row denormaliser 2</name>
+    <type>Denormaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <key_field>name</key_field>
+    <group>
+        </group>
+    <fields>
+      <field>
+        <field_name>id</field_name>
+        <key_value>individual_prefix</key_value>
+        <target_name>prefix_option_group_id</target_name>
+        <target_type>Integer</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+      <field>
+        <field_name>id</field_name>
+        <key_value>individual_suffix</key_value>
+        <target_name>suffix_option_group_id</target_name>
+        <target_type>Integer</target_type>
+        <target_format />
+        <target_length>-1</target_length>
+        <target_precision>-1</target_precision>
+        <target_decimal_symbol />
+        <target_grouping_symbol />
+        <target_currency_symbol />
+        <target_null_string />
+        <target_aggregation_type>-</target_aggregation_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>get option_group_ids</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select name, id from civicrm_option_group WHERE name IN ('individual_prefix', 'individual_suffix');</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

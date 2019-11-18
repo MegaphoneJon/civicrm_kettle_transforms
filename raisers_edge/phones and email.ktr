@@ -534,8 +534,8 @@ for phone on phone_numeric</note>
     </notepad>
     <notepad>
       <note>&lt;-- optional. "Do not email" is also brought over "on_hold"</note>
-      <xloc>768</xloc>
-      <yloc>976</yloc>
+      <xloc>784</xloc>
+      <yloc>1024</yloc>
       <width>362</width>
       <heigth>25</heigth>
       <fontname>Sans</fontname>
@@ -758,11 +758,6 @@ for phone on phone_numeric</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remap location types 2</from>
-      <to>email_wrapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Check for existing emails</from>
       <to>New emails only</to>
       <enabled>Y</enabled>
@@ -798,33 +793,8 @@ for phone on phone_numeric</note>
       <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Create phone_type</from>
-      <to>Remap location types3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remap location types3</from>
-      <to>Remap phone types</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remap phone types</from>
-      <to>create phone_numeric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>create phone_numeric</from>
       <to>sort by CONSTITUENT_ID and phone_numeric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>sort by CONSTITUENT_ID and phone_numeric</from>
-      <to>Remove non-unique phone_numeric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove non-unique phone_numeric</from>
-      <to>phone_cleanup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -835,11 +805,6 @@ for phone on phone_numeric</note>
     <hop>
       <from>create phone_numeric 2</from>
       <to>Check for existing phones</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>New phones only</from>
-      <to>cli_phone</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1027,6 +992,46 @@ for phone on phone_numeric</note>
       <to>Check for existing emails</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Import fields only</from>
+      <to>cli_phone</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create phone_type</from>
+      <to>create phone_numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>New phones only</from>
+      <to>Import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sort by CONSTITUENT_ID and phone_numeric</from>
+      <to>Remap phone types</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap phone types</from>
+      <to>Remap location types3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap location types3</from>
+      <to>phone_cleanup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remap location types 2</from>
+      <to>Lowercase emails</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Lowercase emails</from>
+      <to>email_wrapper</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Check for existing emails</name>
@@ -1083,7 +1088,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1056</yloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1147,8 +1152,8 @@ for phone on phone_numeric</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>1120</yloc>
+      <xloc>64</xloc>
+      <yloc>1232</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1941,6 +1946,45 @@ for phone on phone_numeric</note>
     </GUI>
   </step>
   <step>
+    <name>Import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>phone</name>
+      </field>
+      <field>
+        <name>contact_id</name>
+      </field>
+      <field>
+        <name>location_type_id</name>
+      </field>
+      <field>
+        <name>phone_type_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>1360</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Import when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
@@ -1983,7 +2027,7 @@ for phone on phone_numeric</note>
     </partitioning>
     <steps>
       <step>
-        <name>Single file SFTP</name>
+        <name>Single file SFTP 2</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -2013,7 +2057,7 @@ for phone on phone_numeric</note>
     </partitioning>
     <steps>
       <step>
-        <name>Single file SFTP</name>
+        <name>Single file SFTP 3</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -2043,7 +2087,7 @@ for phone on phone_numeric</note>
     </partitioning>
     <steps>
       <step>
-        <name>Single file SFTP</name>
+        <name>Single file SFTP 4</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -2073,7 +2117,7 @@ for phone on phone_numeric</note>
     </partitioning>
     <steps>
       <step>
-        <name>Single file SFTP</name>
+        <name>Single file SFTP 5</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -2109,8 +2153,8 @@ for phone on phone_numeric</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>1344</yloc>
+      <xloc>64</xloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2134,7 +2178,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1280</yloc>
+      <yloc>1344</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2206,7 +2250,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>1184</yloc>
+      <yloc>1232</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2240,7 +2284,7 @@ for phone on phone_numeric</note>
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1136</yloc>
+      <yloc>1200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2273,8 +2317,8 @@ for phone on phone_numeric</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>1184</yloc>
+      <xloc>64</xloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2508,8 +2552,36 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     <non_match_default />
     <fields>
       <field>
+        <source_value>Alt Business</source_value>
+        <target_value>Work</target_value>
+      </field>
+      <field>
+        <source_value>Alt. Bus. Phone</source_value>
+        <target_value>Work</target_value>
+      </field>
+      <field>
         <source_value>Alt. Home Phone</source_value>
-        <target_value>Home 2</target_value>
+        <target_value>Home</target_value>
+      </field>
+      <field>
+        <source_value>Alternate</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Alternate 2</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Alternate 3</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Alternate Fax</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Bank</source_value>
+        <target_value>Other</target_value>
       </field>
       <field>
         <source_value>Bus. Fax</source_value>
@@ -2521,6 +2593,10 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
       </field>
       <field>
         <source_value>Business</source_value>
+        <target_value>Work</target_value>
+      </field>
+      <field>
+        <source_value>Business Fax</source_value>
         <target_value>Work</target_value>
       </field>
       <field>
@@ -2545,14 +2621,18 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
       </field>
       <field>
         <source_value>Cell Phone 2</source_value>
-        <target_value>Main 2</target_value>
-      </field>
-      <field>
-        <source_value>Fax</source_value>
         <target_value>Main</target_value>
       </field>
       <field>
+        <source_value>Fax</source_value>
+        <target_value>Home</target_value>
+      </field>
+      <field>
         <source_value>Home</source_value>
+        <target_value>Home</target_value>
+      </field>
+      <field>
+        <source_value>Home 1</source_value>
         <target_value>Home</target_value>
       </field>
       <field>
@@ -2580,6 +2660,18 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
         <target_value>Home</target_value>
       </field>
       <field>
+        <source_value>Mobile</source_value>
+        <target_value>Main</target_value>
+      </field>
+      <field>
+        <source_value>Mobile 1</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
+        <source_value>Mobile 2</source_value>
+        <target_value>Other</target_value>
+      </field>
+      <field>
         <source_value>Pager</source_value>
         <target_value>Main</target_value>
       </field>
@@ -2599,54 +2691,6 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
         <source_value>Work Phone</source_value>
         <target_value>Work</target_value>
       </field>
-      <field>
-        <source_value>Alt. Bus. Phone</source_value>
-        <target_value>Work 2</target_value>
-      </field>
-      <field>
-        <source_value>Alt Business</source_value>
-        <target_value>Work</target_value>
-      </field>
-      <field>
-        <source_value>Alternate</source_value>
-        <target_value>Other</target_value>
-      </field>
-      <field>
-        <source_value>Alternate 2</source_value>
-        <target_value>Other</target_value>
-      </field>
-      <field>
-        <source_value>Alternate 3</source_value>
-        <target_value>Other</target_value>
-      </field>
-      <field>
-        <source_value>Alternate Fax</source_value>
-        <target_value>Other</target_value>
-      </field>
-      <field>
-        <source_value>Bank</source_value>
-        <target_value>Other</target_value>
-      </field>
-      <field>
-        <source_value>Business Fax</source_value>
-        <target_value>Work</target_value>
-      </field>
-      <field>
-        <source_value>Home 1</source_value>
-        <target_value>Home</target_value>
-      </field>
-      <field>
-        <source_value>Mobile</source_value>
-        <target_value>Main</target_value>
-      </field>
-      <field>
-        <source_value>Mobile 1</source_value>
-        <target_value>Main</target_value>
-      </field>
-      <field>
-        <source_value>Mobile 2</source_value>
-        <target_value>Main</target_value>
-      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -2656,8 +2700,8 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>720</yloc>
+      <xloc>128</xloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2825,8 +2869,8 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>752</yloc>
+      <xloc>128</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2930,7 +2974,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>880</yloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2997,45 +3041,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove non-unique phone_numeric</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>CONSTIT_ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>phone_numeric</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>912</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3125,7 +3131,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </partitioning>
     <steps>
       <step>
-        <name>Last Step</name>
+        <name>Last Step 2</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -3155,7 +3161,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </partitioning>
     <steps>
       <step>
-        <name>Last Step</name>
+        <name>Last Step 3</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -3185,7 +3191,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </partitioning>
     <steps>
       <step>
-        <name>Last Step</name>
+        <name>Last Step 4</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -3215,7 +3221,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </partitioning>
     <steps>
       <step>
-        <name>Last Step</name>
+        <name>Last Step 5</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -3750,7 +3756,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>1104</yloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3936,7 +3942,7 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1216</yloc>
+      <yloc>1280</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4040,8 +4046,8 @@ ORDER BY PHONES.PHONESID, PHONES."SEQUENCE"
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>1280</yloc>
+      <xloc>64</xloc>
+      <yloc>1424</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4178,8 +4184,8 @@ var phone_numeric = NUM.replace(/\D/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>800</yloc>
+      <xloc>304</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4223,8 +4229,8 @@ var phone_numeric = phone.replace(/\D/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>1056</yloc>
+      <xloc>64</xloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4264,7 +4270,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>992</yloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4287,7 +4293,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     <mappings>
       <input>
         <mapping>
-          <input_step>Remap location types 2</input_step>
+          <input_step>Lowercase emails</input_step>
           <output_step>email wrapper</output_step>
           <main_path>N</main_path>
           <rename_on_output>N</rename_on_output>
@@ -4337,7 +4343,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>800</yloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4470,7 +4476,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>976</yloc>
+      <yloc>1024</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5040,7 +5046,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     </remotesteps>
     <GUI>
       <xloc>816</xloc>
-      <yloc>912</yloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5192,8 +5198,8 @@ var phone_numeric = phone.replace(/\D/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>1056</yloc>
+      <xloc>192</xloc>
+      <yloc>1152</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5358,8 +5364,8 @@ var phone_numeric = phone.replace(/\D/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>976</yloc>
+      <xloc>128</xloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5380,7 +5386,7 @@ var phone_numeric = phone.replace(/\D/g, '');
     <free_memory />
     <compress>N</compress>
     <compress_variable />
-    <unique_rows>N</unique_rows>
+    <unique_rows>Y</unique_rows>
     <fields>
       <field>
         <name>CONSTIT_ID</name>
@@ -5407,8 +5413,47 @@ var phone_numeric = phone.replace(/\D/g, '');
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>864</yloc>
+      <xloc>224</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Lowercase emails</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>NUM</in_stream_name>
+        <out_stream_name />
+        <trim_type>both</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

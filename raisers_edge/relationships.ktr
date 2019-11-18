@@ -6,8 +6,19 @@
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Relationship</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>relationships.csv</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -477,29 +488,8 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Set your custom field IDs here.</note>
-      <xloc>912</xloc>
-      <yloc>1120</yloc>
-      <width>192</width>
-      <heigth>26</heigth>
-      <fontname>Arial</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>If you don't define these relationship types in Civi, these records won't be created.</note>
-      <xloc>176</xloc>
+      <xloc>224</xloc>
       <yloc>208</yloc>
       <width>488</width>
       <heigth>26</heigth>
@@ -540,52 +530,10 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>&lt;-- This is because we don't always bring over every RE contact.</note>
-      <xloc>1168</xloc>
-      <yloc>80</yloc>
-      <width>400</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Only keep the relationship if BOTH contacts are coming over.</note>
-      <xloc>1168</xloc>
-      <yloc>144</yloc>
-      <width>399</width>
-      <heigth>25</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
       <note>&lt;-- These two steps are duplicated up top.
       All four get the same mapping.</note>
-      <xloc>1216</xloc>
-      <yloc>848</yloc>
+      <xloc>1200</xloc>
+      <yloc>816</yloc>
       <width>268</width>
       <heigth>40</heigth>
       <fontname>Sans</fontname>
@@ -609,6 +557,93 @@ All four get the same mapping.       --></note>
       <xloc>1328</xloc>
       <yloc>192</yloc>
       <width>244</width>
+      <heigth>40</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Use "Household Head" since "Head of Household"
+      connects to Household records.</note>
+      <xloc>592</xloc>
+      <yloc>288</yloc>
+      <width>332</width>
+      <heigth>40</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&lt;-- Org-specific values.  Review/change.</note>
+      <xloc>1168</xloc>
+      <yloc>257</yloc>
+      <width>252</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Org-specific - note that "is_primary" is disabled above.
+Also "acknowledgee" - but maybe that should be for everyone.</note>
+      <xloc>272</xloc>
+      <yloc>912</yloc>
+      <width>389</width>
+      <heigth>40</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>30</backgroundcolorred>
+      <backgroundcolorgreen>144</backgroundcolorgreen>
+      <backgroundcolorblue>255</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Handle bidirectional relationships (e.g. "Spouse of")
+where the relationship exists in both directions.</note>
+      <xloc>368</xloc>
+      <yloc>1344</yloc>
+      <width>322</width>
       <heigth>40</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
@@ -751,22 +786,12 @@ All four get the same mapping.       --></note>
   <order>
     <hop>
       <from>relationship_type lookup</from>
-      <to>Filter invalid relationships</to>
+      <to>Filter invalid/other relationships</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>relationship_type_b lookup</from>
-      <to>Filter invalid relationships 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter invalid relationships 2</from>
-      <to>flip contact_id_a and contact_id_b</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter invalid relationships</from>
-      <to>Remove relationship_type_id</to>
+      <to>Filter invalid/other relationships 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -780,28 +805,13 @@ All four get the same mapping.       --></note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter invalid relationships</from>
-      <to>Remove unneeded fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>flip contact_id_a and contact_id_b</from>
       <to>Remove unneeded fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>HON_MEM_ACKNOWLEDGE</from>
-      <to>Acknowledges for Honor/Memorial Gifts</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Dummy (do nothing)</from>
       <to>HON_MEM_ACKNOWLEDGE</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>IS_PRIMARY</from>
-      <to>Primary Contact of</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -817,11 +827,6 @@ All four get the same mapping.       --></note>
     <hop>
       <from>Dummy (do nothing)</from>
       <to>SOFTCREDIT_GIFTS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>SOFTCREDIT_GIFTS</from>
-      <to>Automatically Soft Credit</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -850,16 +855,6 @@ All four get the same mapping.       --></note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Create addl relationships for CONTACT_TYPE</from>
-      <to>Set relationship type to contact type</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set relationship type to contact type</from>
-      <to>Remap existing relationships</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Dummy (do nothing)</from>
       <to>MATCHING_GIFT_FLAG</to>
       <enabled>Y</enabled>
@@ -867,26 +862,6 @@ All four get the same mapping.       --></note>
     <hop>
       <from>Reformat lenient dates</from>
       <to>Convert date format to the format Civi expects</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Automatically Soft Credit</from>
-      <to>Filter invalid relationships</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Primary Contact of</from>
-      <to>Filter invalid relationships</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Acknowledges for Honor/Memorial Gifts</from>
-      <to>Filter invalid relationships</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter invalid relationships 2</from>
-      <to>unknown/null relationship filter</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -916,17 +891,12 @@ All four get the same mapping.       --></note>
     </hop>
     <hop>
       <from>replace NOTES with MATCH_NOTES when applicable</from>
-      <to>Filter invalid relationships</to>
+      <to>Filter invalid/other relationships</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Convert date format to the format Civi expects</from>
       <to>Convert date format to the format Civi expects 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove unneeded fields</from>
-      <to>Reformat lenient dates</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -936,17 +906,7 @@ All four get the same mapping.       --></note>
     </hop>
     <hop>
       <from>Dummy (do nothing) 2</from>
-      <to>flip contacts where only RECIP_RELATIONSHIP_TYPE exists</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
       <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Create addl relationships for CONTACT_TYPE</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -966,7 +926,7 @@ All four get the same mapping.       --></note>
     </hop>
     <hop>
       <from>Spouse of</from>
-      <to>Filter invalid relationships</to>
+      <to>Filter invalid/other relationships</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -977,11 +937,6 @@ All four get the same mapping.       --></note>
     <hop>
       <from>Employee relationship_type_id</from>
       <to>Employee of</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Employee of</from>
-      <to>Filter invalid relationships</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -996,7 +951,7 @@ All four get the same mapping.       --></note>
     </hop>
     <hop>
       <from>Head of Household</from>
-      <to>Filter invalid relationships</to>
+      <to>Filter invalid/other relationships</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1016,52 +971,22 @@ All four get the same mapping.       --></note>
     </hop>
     <hop>
       <from>Remove relationship_type_id 2</from>
-      <to>is related to</to>
+      <to>Other</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>"is related to" relationship_type_id</from>
-      <to>is related to</to>
+      <from>"Other" relationship_type_id</from>
+      <to>Other</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>is related to</from>
+      <from>Other</from>
       <to>Remove unneeded fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: CONSTIT_RELATIONSHIPS</from>
-      <to>Step 1 contacts only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts only</from>
-      <to>Step 1 contacts only 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>external ID to contact_id in Civi 2</from>
-      <to>Dummy (do nothing) 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Convert date format to the format Civi expects 2</from>
       <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 2</from>
-      <to>Unique rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique rows 2</from>
-      <to>cli_relationship</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Step 1 contacts only 2</from>
-      <to>external ID to contact_id in Civi</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1094,12 +1019,202 @@ All four get the same mapping.       --></note>
       <to>re_relationship_types</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>IS_PRIMARY</from>
+      <to>Join rel_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Primary contact relationship_type_id</from>
+      <to>Join rel_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HON_MEM_ACKNOWLEDGE</from>
+      <to>Join rel_type_id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Acknowledgee relationship_type_id 2</from>
+      <to>Join rel_type_id 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rel_type_id 2</from>
+      <to>Filter invalid/other relationships</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>SOFTCREDIT_GIFTS</from>
+      <to>Join rel_type_id 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Auto soft credit relationship_type_id 2</from>
+      <to>Join rel_type_id 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>flip contacts where only RECIP_RELATIONSHIP_TYPE exists</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>external ID to contact_id in Civi 2</from>
+      <to>Handle relationships that should be changed based on reciprocal</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>find existing relationships</from>
+      <to>remove existing relationships</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove existing relationships</from>
+      <to>Dynamic CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove notes</from>
+      <to>Reformat lenient dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RE: CONSTIT_RELATIONSHIPS</from>
+      <to>external ID to contact_id in Civi</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 2</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>find existing relationships</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Find symmetrical relationship types</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Stream lookup</from>
+      <to>Symmetrical relationship filter</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Symmetrical relationship filter</from>
+      <to>Remove notes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Symmetrical relationship filter</from>
+      <to>flip contact_id_a and contact_id_b if cid_a is higher</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>flip contact_id_a and contact_id_b if cid_a is higher</from>
+      <to>Remove notes</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Employee of</from>
+      <to>flip contact_id_a and contact_id_b 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>flip contact_id_a and contact_id_b 2</from>
+      <to>Filter invalid/other relationships</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rel_type_id</from>
+      <to>flip contact_id_a and contact_id_b 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Remove unneeded fields</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter invalid/other relationships</from>
+      <to>Remove relationship_type_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter invalid/other relationships</from>
+      <to>Remove unneeded fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter invalid/other relationships 2</from>
+      <to>unknown/null relationship filter</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter invalid/other relationships 2</from>
+      <to>flip contact_id_a and contact_id_b</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>"Other" relationship_type_id</from>
+      <to>define other_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>define other_id</from>
+      <to>Other 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Handle relationships that should be changed based on reciprocal</from>
+      <to>Other 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Other 2</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
-    <name>"is related to" relationship_type_id</name>
+    <name>"Other" relationship_type_id</name>
     <type>TableInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -1107,7 +1222,7 @@ All four get the same mapping.       --></note>
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'is related to'</sql>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Other'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1127,8 +1242,8 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
-    <name>Acknowledges for Honor/Memorial Gifts</name>
-    <type>Constant</type>
+    <name>Acknowledgee relationship_type_id 2</name>
+    <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1137,20 +1252,13 @@ All four get the same mapping.       --></note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>relationship_type_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>99999</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Acknowledges for Honor/Memorial'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1159,36 +1267,29 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>784</yloc>
+      <xloc>224</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Automatically Soft Credit</name>
-    <type>Constant</type>
+    <name>Auto soft credit relationship_type_id 2</name>
+    <type>TableInput</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>relationship_type_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>11</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Automatically Soft Credits'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1197,8 +1298,8 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>800</yloc>
+      <xloc>510</xloc>
+      <yloc>374</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1292,8 +1393,8 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1344</yloc>
+      <xloc>944</xloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1353,51 +1454,8 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1408</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Create addl relationships for CONTACT_TYPE</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>CONTACT_TYPE</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>-1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>#;-#</mask>
-        </value>
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1440</xloc>
-      <yloc>688</yloc>
+      <xloc>944</xloc>
+      <yloc>1792</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1445,7 +1503,65 @@ All four get the same mapping.       --></note>
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>624</yloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dynamic CSV Output</name>
+    <type>Mapping</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/dynamic CSV Output.ktr</filename>
+    <directory_path />
+    <mappings>
+      <input>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>Y</rename_on_output>
+          <description />
+        </mapping>
+      </input>
+      <output>
+        <mapping>
+          <input_step />
+          <output_step />
+          <main_path>Y</main_path>
+          <rename_on_output>N</rename_on_output>
+          <description />
+        </mapping>
+      </output>
+      <parameters>
+        <variablemapping>
+          <variable>outputname</variable>
+          <input>${output1name}</input>
+        </variablemapping>
+        <inherit_all_vars>Y</inherit_all_vars>
+      </parameters>
+    </mappings>
+    <allow_multiple_input>Y</allow_multiple_input>
+    <allow_multiple_output>Y</allow_multiple_output>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>2128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1480,8 +1596,8 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>800</yloc>
+      <xloc>432</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1517,7 +1633,7 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
-    <name>Filter invalid relationships</name>
+    <name>Filter invalid/other relationships</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1527,14 +1643,26 @@ All four get the same mapping.       --></note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Remove unneeded fields</send_true_to>
-    <send_false_to>Remove relationship_type_id</send_false_to>
+    <send_true_to>Remove relationship_type_id</send_true_to>
+    <send_false_to>Remove unneeded fields</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>relationship_type_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>relationship_type_id</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>relationship_type_id</leftvalue>
+            <function>=</function>
+            <rightvalue>other_id</rightvalue>
+          </condition>
+        </conditions>
       </condition>
     </compare>
     <cluster_schema />
@@ -1551,7 +1679,7 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
-    <name>Filter invalid relationships 2</name>
+    <name>Filter invalid/other relationships 2</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1561,14 +1689,26 @@ All four get the same mapping.       --></note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>flip contact_id_a and contact_id_b</send_true_to>
-    <send_false_to>unknown/null relationship filter</send_false_to>
+    <send_true_to>unknown/null relationship filter</send_true_to>
+    <send_false_to>flip contact_id_a and contact_id_b</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>relationship_type_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>relationship_type_id</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>relationship_type_id</leftvalue>
+            <function>=</function>
+            <rightvalue>other_id</rightvalue>
+          </condition>
+        </conditions>
       </condition>
     </compare>
     <cluster_schema />
@@ -1729,6 +1869,286 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
+    <name>Find symmetrical relationship types</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>select id, 1 as symmetrical from civicrm_relationship_type WHERE name_a_b = name_b_a;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>1312</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>1680</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>1520</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get counts</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>RELATIONSHIP_TYPE</name>
+      </field>
+      <field>
+        <name>RECIP_RELATIONSHIP_TYPE</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>count</aggregate>
+        <subject>RELATIONSHIP_TYPE</subject>
+        <type>COUNT_ALL</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1632</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>1552</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>contact_id_a</name>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+      </field>
+      <field>
+        <name>relationship_type_id</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>start_date</aggregate>
+        <subject>start_date</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>end_date</aggregate>
+        <subject>end_date</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>description</aggregate>
+        <subject>description</subject>
+        <type>LAST</type>
+        <valuefield />
+      </field>
+      <field>
+        <aggregate>is_active</aggregate>
+        <subject>is_active</subject>
+        <type>MIN</type>
+        <valuefield />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>1920</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>HON_MEM_ACKNOWLEDGE</name>
     <type>FilterRows</type>
     <description />
@@ -1768,6 +2188,143 @@ All four get the same mapping.       --></note>
     <GUI>
       <xloc>320</xloc>
       <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Handle relationships that should be changed based on reciprocal</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//If you have non-unique relationship names - e.g. "Company/Owner" and "Company/Employee" differentiate them here.
+// We also handle any relationships that need to be changed based on the value of its reciprocal relationship.
+var RELATIONSHIP_TYPE;
+var RECIP_RELATIONSHIP_TYPE;
+
+if (RELATIONSHIP_TYPE == 'AGBU Chapter, Center, Dst Cmte, School etc.' ||
+    RELATIONSHIP_TYPE == 'Foundation' ||
+    RELATIONSHIP_TYPE == 'Law Firm' ||
+    RELATIONSHIP_TYPE == 'Company' ||
+    RELATIONSHIP_TYPE == 'Trust' ||
+    RELATIONSHIP_TYPE == 'Estate' ||
+    RELATIONSHIP_TYPE == 'Armenian Org') {
+  RELATIONSHIP_TYPE = convert_relationship(RELATIONSHIP_TYPE, RECIP_RELATIONSHIP_TYPE);
+}
+
+if (RECIP_RELATIONSHIP_TYPE == 'AGBU Chapter, Center, Dst Cmte, School etc.' ||
+    RECIP_RELATIONSHIP_TYPE == 'Foundation' ||
+    RECIP_RELATIONSHIP_TYPE == 'Law Firm' ||
+    RECIP_RELATIONSHIP_TYPE == 'Company' ||
+    RECIP_RELATIONSHIP_TYPE == 'Trust' ||
+    RECIP_RELATIONSHIP_TYPE == 'Estate' ||
+    RECIP_RELATIONSHIP_TYPE == 'Armenian Org') {
+  RECIP_RELATIONSHIP_TYPE = convert_relationship(RECIP_RELATIONSHIP_TYPE, RELATIONSHIP_TYPE);
+}
+
+// We use a function so we can convert in both redirections.
+function convert_relationship(rel1, rel2) {
+  if (rel2 == 'Chairperson') {
+    rel1 = 'Chairperson is';
+  }
+  if (rel2 == 'Employee of' || rel2 == 'employee') {
+    rel1 = 'Employer of';
+  }
+  if (rel2 == 'Executor') {
+    rel1 = 'Executor is';
+  }
+  if (rel2 == 'Executive Director') {
+    rel1 = 'Executive Director is';
+  }
+  if (rel2 == 'Former Chair') {
+    rel1 = 'Chairperson is';
+    is_active = 0;
+  }
+  if (rel2 == 'Former Employee') {
+    rel1 = 'Employer of';
+    is_active = 0;
+  }
+  if (rel2 == 'Former Member') {
+    rel1 = 'Member is';
+    is_active = 0;
+  }
+  if (rel2 == 'Former Principal') {
+    rel1 = 'Principal is';
+    is_active = 0;
+  }
+  if (rel2 == 'Law Firm') {
+    rel1 = 'Law Firm is';
+  }
+  if (rel2 == 'Member') {
+    rel1 = 'Member is';
+  }
+  if (rel2 == 'Other') {
+    rel1 = 'Other';
+  }
+  if (rel2 == 'Owner of' || rel2 == 'Owner') {
+    rel1 = 'Owner is';
+  }
+  if (rel2 == 'President') {
+    rel1 = 'President is';
+  }
+  if (rel2 == 'Principal') {
+    rel1 = 'Principal is';
+  }
+  if (rel2 == 'Treasurer') {
+    rel1 = 'Treasurer is';
+  }
+  if (rel2 == 'Trustee') {
+    rel1 = 'Trustee is';
+  }
+  if (rel2 == 'Vice-Principal') {
+    rel1 = 'Vice-Principal is';
+  }
+  if (rel2 == 'Vice-Chairman' || rel2 == 'Vice Chairman') {
+    rel1 = 'Vice-Chairman is';
+  }
+  return rel1;
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>RELATIONSHIP_TYPE</name>
+        <rename>RELATIONSHIP_TYPE</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>RECIP_RELATIONSHIP_TYPE</name>
+        <rename>RECIP_RELATIONSHIP_TYPE</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1819,7 +2376,7 @@ All four get the same mapping.       --></note>
       <schema_name />
     </partitioning>
     <connection>Target CiviCRM</connection>
-    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Head of Household for'</sql>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Household Head for'</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1833,8 +2390,8 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>400</yloc>
+      <xloc>544</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2011,6 +2568,168 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>1632</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rel_type_id</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rel_type_id 2</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rel_type_id 3</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>2208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>MATCHING_GIFT_FLAG</name>
     <type>FilterRows</type>
     <description />
@@ -2121,30 +2840,28 @@ All four get the same mapping.       --></note>
     </GUI>
   </step>
   <step>
-    <name>Primary Contact of</name>
-    <type>Constant</type>
+    <name>Other</name>
+    <type>JoinRows</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>relationship_type_id</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>99999</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2153,8 +2870,75 @@ All four get the same mapping.       --></note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>784</yloc>
+      <xloc>1296</xloc>
+      <yloc>1184</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Other 2</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main>Remap website_type</main>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Primary contact relationship_type_id</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT id relationship_type_id FROM civicrm_relationship_type WHERE name_a_b = 'Primary Contact for'</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2193,8 +2977,8 @@ All four get the same mapping.       --></note>
 , RECIP.LONGDESCRIPTION AS RECIP_RELATIONSHIP_TYPE
 , 1 AS is_active
 , cr.id as custom_5
-, r1.CONSTITUENT_ID as CONSTITUENT_ID_A
-, r2.CONSTITUENT_ID as CONSTITUENT_ID_B
+, r1.KEY_INDICATOR as KEY_INDICATOR_B
+, r2.KEY_INDICATOR as KEY_INDICATOR_A
 FROM CONSTIT_RELATIONSHIPS cr
 LEFT JOIN TABLEENTRIES as RLTN ON RELATION_CODE = RLTN.TABLEENTRIESID
 LEFT JOIN TABLEENTRIES as RECIP ON RECIP_RELATION_CODE = RECIP.TABLEENTRIESID
@@ -2286,8 +3070,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>1264</yloc>
+      <xloc>944</xloc>
+      <yloc>1648</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2343,18 +3127,6 @@ if (end_date != null){
         <target_value>Child of</target_value>
       </field>
       <field>
-        <source_value>classmate</source_value>
-        <target_value>Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Cooperating Attorney</source_value>
-        <target_value>is related to</target_value>
-      </field>
-      <field>
-        <source_value>Corporate Contributions</source_value>
-        <target_value>Corporate Contributions Officer for</target_value>
-      </field>
-      <field>
         <source_value>Cousin</source_value>
         <target_value>Cousin of</target_value>
       </field>
@@ -2389,10 +3161,6 @@ if (end_date != null){
       <field>
         <source_value>Executive Assistant</source_value>
         <target_value>Assistant of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Director</source_value>
-        <target_value>Executive Director of</target_value>
       </field>
       <field>
         <source_value>Family</source_value>
@@ -2459,10 +3227,6 @@ if (end_date != null){
         <target_value>Grandchild of</target_value>
       </field>
       <field>
-        <source_value>Grants Manager</source_value>
-        <target_value>Grants Manager of</target_value>
-      </field>
-      <field>
         <source_value>Husband</source_value>
         <target_value>Spouse of</target_value>
       </field>
@@ -2473,10 +3237,6 @@ if (end_date != null){
       <field>
         <source_value>inlaw</source_value>
         <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Law Classmate</source_value>
-        <target_value>Law Classmate of</target_value>
       </field>
       <field>
         <source_value>Mother</source_value>
@@ -2515,8 +3275,425 @@ if (end_date != null){
         <target_value>Partner of</target_value>
       </field>
       <field>
-        <source_value>PR Person</source_value>
-        <target_value>PR Person for</target_value>
+        <source_value>Preferred Contact</source_value>
+        <target_value>Preferred Contact of</target_value>
+      </field>
+      <field>
+        <source_value>President</source_value>
+        <target_value>President of</target_value>
+      </field>
+      <field>
+        <source_value>Primary Contact</source_value>
+        <target_value>Primary Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Pro Bono Contact</source_value>
+        <target_value>Pro Bono Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Program Officer</source_value>
+        <target_value>Program Officer of</target_value>
+      </field>
+      <field>
+        <source_value>Rabbi</source_value>
+        <target_value>Rabbi of</target_value>
+      </field>
+      <field>
+        <source_value>Sibling</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Sister</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>sister</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Solicitor</source_value>
+        <target_value>Solicitor of</target_value>
+      </field>
+      <field>
+        <source_value>Son</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>son</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>Trustee</source_value>
+        <target_value>Trustee of</target_value>
+      </field>
+      <field>
+        <source_value>Uncle</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>uncle</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>Wife</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>wife</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>grandchildren</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>aunt</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>niece</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>brother</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>father</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>daughter</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>employer</source_value>
+        <target_value>Employer of</target_value>
+      </field>
+      <field>
+        <source_value>Child(ren)</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Parent(s)</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>cousin</source_value>
+        <target_value>Cousin of</target_value>
+      </field>
+      <field>
+        <source_value>brother-in-law</source_value>
+        <target_value>Sibling-in-law of</target_value>
+      </field>
+      <field>
+        <source_value>Sister-in-law</source_value>
+        <target_value>Sibling-in-law of</target_value>
+      </field>
+      <field>
+        <source_value>Ex-Spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>Trustee</source_value>
+        <target_value>Trustee of</target_value>
+      </field>
+      <field>
+        <source_value>Owner</source_value>
+        <target_value>Owner of</target_value>
+      </field>
+      <field>
+        <source_value>Niece</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Grandchild(ren)</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Grandparent(s)</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>Intern</source_value>
+        <target_value>Intern is supervised by</target_value>
+      </field>
+      <field>
+        <source_value>Internship Supervisor</source_value>
+        <target_value>Intern Supervisor of</target_value>
+      </field>
+      <field>
+        <source_value>Former Chair</source_value>
+        <target_value>Chairperson of</target_value>
+      </field>
+      <field>
+        <source_value>Chairperson</source_value>
+        <target_value>Chairperson of</target_value>
+      </field>
+      <field>
+        <source_value>Former Principal</source_value>
+        <target_value>Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Principal</source_value>
+        <target_value>Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Vice-Principal</source_value>
+        <target_value>Vice-Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Executive Director</source_value>
+        <target_value>Executive Director of</target_value>
+      </field>
+      <field>
+        <source_value>Vice Chairman</source_value>
+        <target_value>Vice-Chairman of</target_value>
+      </field>
+      <field>
+        <source_value>Member</source_value>
+        <target_value>Member of</target_value>
+      </field>
+      <field>
+        <source_value>Former Member</source_value>
+        <target_value>Member of</target_value>
+      </field>
+      <field>
+        <source_value>Treasurer</source_value>
+        <target_value>Treasurer of</target_value>
+      </field>
+      <field>
+        <source_value>Executor</source_value>
+        <target_value>Executor of</target_value>
+      </field>
+      <field>
+        <source_value>Law Firm</source_value>
+        <target_value>Law Firm of</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap existing reciprocal relationships 2</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>RECIP_RELATIONSHIP_TYPE</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>Advisor</source_value>
+        <target_value>Advisor to</target_value>
+      </field>
+      <field>
+        <source_value>Assistant</source_value>
+        <target_value>Assistant to</target_value>
+      </field>
+      <field>
+        <source_value>Assistant of</source_value>
+        <target_value>Assistant to</target_value>
+      </field>
+      <field>
+        <source_value>Aunt</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>Board</source_value>
+        <target_value>Board Member is</target_value>
+      </field>
+      <field>
+        <source_value>Board Contact</source_value>
+        <target_value>Board Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Board member</source_value>
+        <target_value>Board Member</target_value>
+      </field>
+      <field>
+        <source_value>Brother</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Child</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Cousin</source_value>
+        <target_value>Cousin of</target_value>
+      </field>
+      <field>
+        <source_value>Cousin of</source_value>
+        <target_value>Family Member</target_value>
+      </field>
+      <field>
+        <source_value>coworker</source_value>
+        <target_value>Coworker of</target_value>
+      </field>
+      <field>
+        <source_value>Daughter</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Director</source_value>
+        <target_value>Director of</target_value>
+      </field>
+      <field>
+        <source_value>Employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Employee Of</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Employer</source_value>
+        <target_value>Employer of</target_value>
+      </field>
+      <field>
+        <source_value>Executive Assistant</source_value>
+        <target_value>Assistant of</target_value>
+      </field>
+      <field>
+        <source_value>Family</source_value>
+        <target_value>Family of</target_value>
+      </field>
+      <field>
+        <source_value>Father</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Fellow</source_value>
+        <target_value>Fellow of</target_value>
+      </field>
+      <field>
+        <source_value>Former Board Member</source_value>
+        <target_value>Board Member</target_value>
+      </field>
+      <field>
+        <source_value>Former Employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Friend</source_value>
+        <target_value>Friend of</target_value>
+      </field>
+      <field>
+        <source_value>friend</source_value>
+        <target_value>Friend of</target_value>
+      </field>
+      <field>
+        <source_value>grandaughter</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Grandchild</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>grandchild</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>granddaughter</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>grandfather</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandmother</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>Grandparent</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandparents</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandson</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Husband</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>husband</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>inlaw</source_value>
+        <target_value>Family of</target_value>
+      </field>
+      <field>
+        <source_value>Mother</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>mother</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Neice</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Neighbor</source_value>
+        <target_value>Neighbor of</target_value>
+      </field>
+      <field>
+        <source_value>Nephew</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>nephew</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Parent</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>parents</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Partner</source_value>
+        <target_value>Partner of</target_value>
       </field>
       <field>
         <source_value>Preferred Contact</source_value>
@@ -2635,8 +3812,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>880</yloc>
+      <xloc>1632</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2692,18 +3869,6 @@ if (end_date != null){
         <target_value>Child of</target_value>
       </field>
       <field>
-        <source_value>classmate</source_value>
-        <target_value>Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Cooperating Attorney</source_value>
-        <target_value>is related to</target_value>
-      </field>
-      <field>
-        <source_value>Corporate Contributions</source_value>
-        <target_value>Corporate Contributions Officer for</target_value>
-      </field>
-      <field>
         <source_value>Cousin</source_value>
         <target_value>Cousin of</target_value>
       </field>
@@ -2738,10 +3903,6 @@ if (end_date != null){
       <field>
         <source_value>Executive Assistant</source_value>
         <target_value>Assistant of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Director</source_value>
-        <target_value>Executive Director of</target_value>
       </field>
       <field>
         <source_value>Family</source_value>
@@ -2808,10 +3969,6 @@ if (end_date != null){
         <target_value>Grandchild of</target_value>
       </field>
       <field>
-        <source_value>Grants Manager</source_value>
-        <target_value>Grants Manager of</target_value>
-      </field>
-      <field>
         <source_value>Husband</source_value>
         <target_value>Spouse of</target_value>
       </field>
@@ -2822,10 +3979,6 @@ if (end_date != null){
       <field>
         <source_value>inlaw</source_value>
         <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Law Classmate</source_value>
-        <target_value>Law Classmate of</target_value>
       </field>
       <field>
         <source_value>Mother</source_value>
@@ -2864,8 +4017,425 @@ if (end_date != null){
         <target_value>Partner of</target_value>
       </field>
       <field>
-        <source_value>PR Person</source_value>
-        <target_value>PR Person for</target_value>
+        <source_value>Preferred Contact</source_value>
+        <target_value>Preferred Contact of</target_value>
+      </field>
+      <field>
+        <source_value>President</source_value>
+        <target_value>President of</target_value>
+      </field>
+      <field>
+        <source_value>Primary Contact</source_value>
+        <target_value>Primary Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Pro Bono Contact</source_value>
+        <target_value>Pro Bono Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Program Officer</source_value>
+        <target_value>Program Officer of</target_value>
+      </field>
+      <field>
+        <source_value>Rabbi</source_value>
+        <target_value>Rabbi of</target_value>
+      </field>
+      <field>
+        <source_value>Sibling</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Sister</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>sister</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Solicitor</source_value>
+        <target_value>Solicitor of</target_value>
+      </field>
+      <field>
+        <source_value>Son</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>son</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>Trustee</source_value>
+        <target_value>Trustee of</target_value>
+      </field>
+      <field>
+        <source_value>Uncle</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>uncle</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>Wife</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>wife</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>grandchildren</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>aunt</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>niece</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>brother</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>father</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>daughter</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>employer</source_value>
+        <target_value>Employer of</target_value>
+      </field>
+      <field>
+        <source_value>Child(ren)</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Parent(s)</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>cousin</source_value>
+        <target_value>Cousin of</target_value>
+      </field>
+      <field>
+        <source_value>brother-in-law</source_value>
+        <target_value>Sibling-in-law of</target_value>
+      </field>
+      <field>
+        <source_value>Sister-in-law</source_value>
+        <target_value>Sibling-in-law of</target_value>
+      </field>
+      <field>
+        <source_value>Ex-Spouse</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>Trustee</source_value>
+        <target_value>Trustee of</target_value>
+      </field>
+      <field>
+        <source_value>Owner</source_value>
+        <target_value>Owner of</target_value>
+      </field>
+      <field>
+        <source_value>Niece</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Grandchild(ren)</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Grandparent(s)</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>Intern</source_value>
+        <target_value>Intern is supervised by</target_value>
+      </field>
+      <field>
+        <source_value>Internship Supervisor</source_value>
+        <target_value>Intern Supervisor of</target_value>
+      </field>
+      <field>
+        <source_value>Former Chair</source_value>
+        <target_value>Chairperson of</target_value>
+      </field>
+      <field>
+        <source_value>Chairperson</source_value>
+        <target_value>Chairperson of</target_value>
+      </field>
+      <field>
+        <source_value>Former Principal</source_value>
+        <target_value>Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Principal</source_value>
+        <target_value>Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Vice-Principal</source_value>
+        <target_value>Vice-Principal of</target_value>
+      </field>
+      <field>
+        <source_value>Executive Director</source_value>
+        <target_value>Executive Director of</target_value>
+      </field>
+      <field>
+        <source_value>Vice Chairman</source_value>
+        <target_value>Vice-Chairman of</target_value>
+      </field>
+      <field>
+        <source_value>Member</source_value>
+        <target_value>Member of</target_value>
+      </field>
+      <field>
+        <source_value>Former Member</source_value>
+        <target_value>Member of</target_value>
+      </field>
+      <field>
+        <source_value>Treasurer</source_value>
+        <target_value>Treasurer of</target_value>
+      </field>
+      <field>
+        <source_value>Executor</source_value>
+        <target_value>Executor of</target_value>
+      </field>
+      <field>
+        <source_value>Law Firm</source_value>
+        <target_value>Law Firm of</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remap existing relationships 2</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>RELATIONSHIP_TYPE</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>Advisor</source_value>
+        <target_value>Advisor to</target_value>
+      </field>
+      <field>
+        <source_value>Assistant</source_value>
+        <target_value>Assistant to</target_value>
+      </field>
+      <field>
+        <source_value>Assistant of</source_value>
+        <target_value>Assistant to</target_value>
+      </field>
+      <field>
+        <source_value>Aunt</source_value>
+        <target_value>Aunt/Uncle of</target_value>
+      </field>
+      <field>
+        <source_value>Board</source_value>
+        <target_value>Board Member is</target_value>
+      </field>
+      <field>
+        <source_value>Board Contact</source_value>
+        <target_value>Board Contact of</target_value>
+      </field>
+      <field>
+        <source_value>Board member</source_value>
+        <target_value>Board Member</target_value>
+      </field>
+      <field>
+        <source_value>Brother</source_value>
+        <target_value>Sibling of</target_value>
+      </field>
+      <field>
+        <source_value>Child</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Cousin</source_value>
+        <target_value>Cousin of</target_value>
+      </field>
+      <field>
+        <source_value>Cousin of</source_value>
+        <target_value>Family Member</target_value>
+      </field>
+      <field>
+        <source_value>coworker</source_value>
+        <target_value>Coworker of</target_value>
+      </field>
+      <field>
+        <source_value>Daughter</source_value>
+        <target_value>Child of</target_value>
+      </field>
+      <field>
+        <source_value>Director</source_value>
+        <target_value>Director of</target_value>
+      </field>
+      <field>
+        <source_value>Employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Employee Of</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Employer</source_value>
+        <target_value>Employer of</target_value>
+      </field>
+      <field>
+        <source_value>Executive Assistant</source_value>
+        <target_value>Assistant of</target_value>
+      </field>
+      <field>
+        <source_value>Family</source_value>
+        <target_value>Family of</target_value>
+      </field>
+      <field>
+        <source_value>Father</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Fellow</source_value>
+        <target_value>Fellow of</target_value>
+      </field>
+      <field>
+        <source_value>Former Board Member</source_value>
+        <target_value>Board Member</target_value>
+      </field>
+      <field>
+        <source_value>Former Employee</source_value>
+        <target_value>Employee of</target_value>
+      </field>
+      <field>
+        <source_value>Friend</source_value>
+        <target_value>Friend of</target_value>
+      </field>
+      <field>
+        <source_value>friend</source_value>
+        <target_value>Friend of</target_value>
+      </field>
+      <field>
+        <source_value>grandaughter</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Grandchild</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>grandchild</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>granddaughter</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>grandfather</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandmother</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>Grandparent</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandparents</source_value>
+        <target_value>Grandparent of</target_value>
+      </field>
+      <field>
+        <source_value>grandson</source_value>
+        <target_value>Grandchild of</target_value>
+      </field>
+      <field>
+        <source_value>Husband</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>husband</source_value>
+        <target_value>Spouse of</target_value>
+      </field>
+      <field>
+        <source_value>inlaw</source_value>
+        <target_value>Family of</target_value>
+      </field>
+      <field>
+        <source_value>Mother</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>mother</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Neice</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Neighbor</source_value>
+        <target_value>Neighbor of</target_value>
+      </field>
+      <field>
+        <source_value>Nephew</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>nephew</source_value>
+        <target_value>Niece/Nephew of</target_value>
+      </field>
+      <field>
+        <source_value>Parent</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>parents</source_value>
+        <target_value>Parent of</target_value>
+      </field>
+      <field>
+        <source_value>Partner</source_value>
+        <target_value>Partner of</target_value>
       </field>
       <field>
         <source_value>Preferred Contact</source_value>
@@ -2984,8 +4554,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>832</yloc>
+      <xloc>1632</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3061,8 +4631,38 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>1200</yloc>
+      <xloc>1152</xloc>
+      <yloc>1248</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove notes</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>note</name>
+      </remove>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>1584</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3175,8 +4775,38 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>1120</yloc>
+      <xloc>1056</xloc>
+      <yloc>1136</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>1600</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3224,8 +4854,8 @@ if (end_date != null){
     </GUI>
   </step>
   <step>
-    <name>Set relationship type to contact type</name>
-    <type>SetValueField</type>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -3234,12 +4864,28 @@ if (end_date != null){
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>RELATIONSHIP_TYPE</name>
-        <replaceby>CONTACT_TYPE</replaceby>
-      </field>
-    </fields>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3248,8 +4894,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
-      <yloc>752</yloc>
+      <xloc>1296</xloc>
+      <yloc>1760</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3306,7 +4952,7 @@ if (end_date != null){
     <name>Sort rows 2</name>
     <type>SortRows</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -3354,8 +5000,8 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1472</yloc>
+      <xloc>944</xloc>
+      <yloc>1856</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3427,8 +5073,8 @@ if (end_date != null){
     </GUI>
   </step>
   <step>
-    <name>Step 1 contacts only</name>
-    <type>SimpleMapping</type>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -3437,293 +5083,23 @@ if (end_date != null){
       <method>none</method>
       <schema_name />
     </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>CONSTIT_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Step 1 contacts only 2</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>${Internal.Entry.Current.Directory}/step 1 contacts only.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>RELATION_ID</parent>
-            <child>ID</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>      </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1440</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows 2</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>      </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>1536</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>cli_relationship</name>
-    <type>TextFileOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <separator>,</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>Y</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine />
-    <fileNameInField>N</fileNameInField>
-    <fileNameField />
-    <create_parent_folder>N</create_parent_folder>
-    <file>
-      <name>${LOCALFILES}/data/cli_relationship</name>
-      <is_command>N</is_command>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>start_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>end_date</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>description</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id_a</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>contact_id_b</name>
-        <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
+    <from>Find symmetrical relationship types</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>Y</integer_pair>
+    <lookup>
+      <key>
         <name>relationship_type_id</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_active</name>
+        <field>id</field>
+      </key>
+      <value>
+        <name>symmetrical</name>
+        <rename>symmetrical</rename>
+        <default>0</default>
         <type>Integer</type>
-        <format>0</format>
-        <currency />
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3732,8 +5108,51 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>1600</yloc>
+      <xloc>944</xloc>
+      <yloc>1392</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Symmetrical relationship filter</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>flip contact_id_a and contact_id_b if cid_a is higher</send_true_to>
+    <send_false_to>Remove notes</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>symmetrical</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>1456</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3837,8 +5256,39 @@ if (end_date != null){
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>1296</yloc>
+      <xloc>1184</xloc>
+      <yloc>1344</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>define other_id</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>relationship_type_id</name>
+        <rename>other_id</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3891,7 +5341,7 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>256</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3944,7 +5394,66 @@ if (end_date != null){
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>400</yloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>find existing relationships</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_relationship</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>contact_id_a</name>
+        <field>contact_id_a</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>contact_id_b</name>
+        <field>contact_id_b</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>relationship_type_id</name>
+        <field>relationship_type_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>1984</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4002,6 +5511,145 @@ contact_id_a = temp;
     <GUI>
       <xloc>1248</xloc>
       <yloc>1088</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>flip contact_id_a and contact_id_b 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//RE stores relationships in both directions; make sure the individual comes first so we import the relationship correctly.
+var contact_id_a;
+var contact_id_b;
+var KEY_INDICATOR_A;
+var KEY_INDICATOR_B;
+var temp = contact_id_b;
+if(KEY_INDICATOR_A == 'O' &amp;&amp; KEY_INDICATOR_B == 'I') {
+  contact_id_b = contact_id_a;
+  contact_id_a = temp;
+  temp = KEY_INDICATOR_B;
+  KEY_INDICATOR_B = KEY_INDICATOR_A;
+  KEY_INDICATOR_A = temp;
+}
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>contact_id_a</name>
+        <rename>contact_id_a</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <rename>contact_id_b</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>KEY_INDICATOR_A</name>
+        <rename>KEY_INDICATOR_A</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>KEY_INDICATOR_B</name>
+        <rename>KEY_INDICATOR_B</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>flip contact_id_a and contact_id_b if cid_a is higher</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Flip symmetrical relationships so the lower contact ID is always first.
+var contact_id_a;
+var contact_id_b;
+var temp = contact_id_b;
+if (contact_id_a > contact_id_b) {
+  contact_id_b = contact_id_a;
+  contact_id_a = temp;
+}
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>contact_id_a</name>
+        <rename>contact_id_a</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>contact_id_b</name>
+        <rename>contact_id_b</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>1520</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4084,6 +5732,70 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     </GUI>
   </step>
   <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>1712</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>invalid_relationships</name>
     <type>TextFileOutput</type>
     <description />
@@ -4126,6 +5838,30 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
       <splitevery>0</splitevery>
     </file>
     <fields>
+      <field>
+        <name>RELATIONSHIP_TYPE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>RECIP_RELATIONSHIP_TYPE</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
       <field>
         <name>CONSTIT_ID</name>
         <type>Integer</type>
@@ -4343,30 +6079,6 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
         <precision>-1</precision>
       </field>
       <field>
-        <name>RELATIONSHIP_TYPE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>RECIP_RELATIONSHIP_TYPE</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>is_active</name>
         <type>Integer</type>
         <format>0</format>
@@ -4461,42 +6173,6 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     <GUI>
       <xloc>1744</xloc>
       <yloc>1152</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>is related to</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main>Remap website_type</main>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>1184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4653,6 +6329,12 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
         <condition>=</condition>
         <name2 />
       </key>
+      <key>
+        <name>RECIP_RELATIONSHIP_TYPE</name>
+        <field>name_b_a</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
         <name>id</name>
         <rename>relationship_type_id</rename>
@@ -4717,6 +6399,40 @@ if((RECIP_RELATIONSHIP_TYPE !== null &amp;&amp; RECIP_RELATIONSHIP_TYPE !== 'unk
     <GUI>
       <xloc>1296</xloc>
       <yloc>992</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remove existing relationships</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to />
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>id</leftvalue>
+        <function>IS NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>2048</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4789,7 +6505,13 @@ if (MATCH_NOTES) {
 
 var is_active;
 var RELATIONSHIP_TYPE;
-if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former Employee") {
+if (RELATIONSHIP_TYPE == "Former Board Member" ||
+    RELATIONSHIP_TYPE == "Former Employee" ||
+    RELATIONSHIP_TYPE == 'Ex-Spouse' ||
+    RELATIONSHIP_TYPE == 'Former Employee' ||
+    RELATIONSHIP_TYPE == 'Former Principal' ||
+    RELATIONSHIP_TYPE == 'Former Member' ||
+    RELATIONSHIP_TYPE == 'Former Chair') {
   is_active = 0;
 }</jsScript_script>
       </jsScript>
@@ -4856,6 +6578,22 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
               <mask />
             </value>
           </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>RELATIONSHIP_TYPE</leftvalue>
+            <function>=</function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Other</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
         </conditions>
       </condition>
     </compare>
@@ -4869,752 +6607,6 @@ if (RELATIONSHIP_TYPE == "Former Board Member" || RELATIONSHIP_TYPE == "Former E
     <GUI>
       <xloc>1616</xloc>
       <yloc>1088</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remap existing reciprocal relationships 2</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>RECIP_RELATIONSHIP_TYPE</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>Advisor</source_value>
-        <target_value>Advisor to</target_value>
-      </field>
-      <field>
-        <source_value>Assistant</source_value>
-        <target_value>Assistant to</target_value>
-      </field>
-      <field>
-        <source_value>Assistant of</source_value>
-        <target_value>Assistant to</target_value>
-      </field>
-      <field>
-        <source_value>Aunt</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>Board</source_value>
-        <target_value>Board Member is</target_value>
-      </field>
-      <field>
-        <source_value>Board Contact</source_value>
-        <target_value>Board Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Board member</source_value>
-        <target_value>Board Member</target_value>
-      </field>
-      <field>
-        <source_value>Brother</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Child</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>classmate</source_value>
-        <target_value>Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Cooperating Attorney</source_value>
-        <target_value>is related to</target_value>
-      </field>
-      <field>
-        <source_value>Corporate Contributions</source_value>
-        <target_value>Corporate Contributions Officer for</target_value>
-      </field>
-      <field>
-        <source_value>Cousin</source_value>
-        <target_value>Cousin of</target_value>
-      </field>
-      <field>
-        <source_value>Cousin of</source_value>
-        <target_value>Family Member</target_value>
-      </field>
-      <field>
-        <source_value>coworker</source_value>
-        <target_value>Coworker of</target_value>
-      </field>
-      <field>
-        <source_value>Daughter</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>Director</source_value>
-        <target_value>Director of</target_value>
-      </field>
-      <field>
-        <source_value>Employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Employee Of</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Employer</source_value>
-        <target_value>Employer of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Assistant</source_value>
-        <target_value>Assistant of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Director</source_value>
-        <target_value>Executive Director of</target_value>
-      </field>
-      <field>
-        <source_value>Family</source_value>
-        <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Father</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Fellow</source_value>
-        <target_value>Fellow of</target_value>
-      </field>
-      <field>
-        <source_value>Former Board Member</source_value>
-        <target_value>Board Member</target_value>
-      </field>
-      <field>
-        <source_value>Former Employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Friend</source_value>
-        <target_value>Friend of</target_value>
-      </field>
-      <field>
-        <source_value>friend</source_value>
-        <target_value>Friend of</target_value>
-      </field>
-      <field>
-        <source_value>grandaughter</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>Grandchild</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>grandchild</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>granddaughter</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>grandfather</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandmother</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>Grandparent</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandparents</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandson</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>Grants Manager</source_value>
-        <target_value>Grants Manager of</target_value>
-      </field>
-      <field>
-        <source_value>Husband</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>husband</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>inlaw</source_value>
-        <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Law Classmate</source_value>
-        <target_value>Law Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Mother</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>mother</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Neice</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>Neighbor</source_value>
-        <target_value>Neighbor of</target_value>
-      </field>
-      <field>
-        <source_value>Nephew</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>nephew</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>Parent</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>parents</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Partner</source_value>
-        <target_value>Partner of</target_value>
-      </field>
-      <field>
-        <source_value>PR Person</source_value>
-        <target_value>PR Person for</target_value>
-      </field>
-      <field>
-        <source_value>Preferred Contact</source_value>
-        <target_value>Preferred Contact of</target_value>
-      </field>
-      <field>
-        <source_value>President</source_value>
-        <target_value>President of</target_value>
-      </field>
-      <field>
-        <source_value>Primary Contact</source_value>
-        <target_value>Primary Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Pro Bono Contact</source_value>
-        <target_value>Pro Bono Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Program Officer</source_value>
-        <target_value>Program Officer of</target_value>
-      </field>
-      <field>
-        <source_value>Rabbi</source_value>
-        <target_value>Rabbi of</target_value>
-      </field>
-      <field>
-        <source_value>Sibling</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Sister</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>sister</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Solicitor</source_value>
-        <target_value>Solicitor of</target_value>
-      </field>
-      <field>
-        <source_value>Son</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>son</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>Spouse</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>spouse</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>Trustee</source_value>
-        <target_value>Trustee of</target_value>
-      </field>
-      <field>
-        <source_value>Uncle</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>uncle</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>Wife</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>wife</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>grandchildren</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>aunt</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>niece</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>brother</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>father</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>daughter</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>employer</source_value>
-        <target_value>Employer of</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1632</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remap existing relationships 2</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>RELATIONSHIP_TYPE</field_to_use>
-    <target_field />
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>Advisor</source_value>
-        <target_value>Advisor to</target_value>
-      </field>
-      <field>
-        <source_value>Assistant</source_value>
-        <target_value>Assistant to</target_value>
-      </field>
-      <field>
-        <source_value>Assistant of</source_value>
-        <target_value>Assistant to</target_value>
-      </field>
-      <field>
-        <source_value>Aunt</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>Board</source_value>
-        <target_value>Board Member is</target_value>
-      </field>
-      <field>
-        <source_value>Board Contact</source_value>
-        <target_value>Board Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Board member</source_value>
-        <target_value>Board Member</target_value>
-      </field>
-      <field>
-        <source_value>Brother</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Child</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>classmate</source_value>
-        <target_value>Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Cooperating Attorney</source_value>
-        <target_value>is related to</target_value>
-      </field>
-      <field>
-        <source_value>Corporate Contributions</source_value>
-        <target_value>Corporate Contributions Officer for</target_value>
-      </field>
-      <field>
-        <source_value>Cousin</source_value>
-        <target_value>Cousin of</target_value>
-      </field>
-      <field>
-        <source_value>Cousin of</source_value>
-        <target_value>Family Member</target_value>
-      </field>
-      <field>
-        <source_value>coworker</source_value>
-        <target_value>Coworker of</target_value>
-      </field>
-      <field>
-        <source_value>Daughter</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>Director</source_value>
-        <target_value>Director of</target_value>
-      </field>
-      <field>
-        <source_value>Employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Employee Of</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Employer</source_value>
-        <target_value>Employer of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Assistant</source_value>
-        <target_value>Assistant of</target_value>
-      </field>
-      <field>
-        <source_value>Executive Director</source_value>
-        <target_value>Executive Director of</target_value>
-      </field>
-      <field>
-        <source_value>Family</source_value>
-        <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Father</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Fellow</source_value>
-        <target_value>Fellow of</target_value>
-      </field>
-      <field>
-        <source_value>Former Board Member</source_value>
-        <target_value>Board Member</target_value>
-      </field>
-      <field>
-        <source_value>Former Employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>Friend</source_value>
-        <target_value>Friend of</target_value>
-      </field>
-      <field>
-        <source_value>friend</source_value>
-        <target_value>Friend of</target_value>
-      </field>
-      <field>
-        <source_value>grandaughter</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>Grandchild</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>grandchild</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>granddaughter</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>grandfather</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandmother</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>Grandparent</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandparents</source_value>
-        <target_value>Grandparent of</target_value>
-      </field>
-      <field>
-        <source_value>grandson</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>Grants Manager</source_value>
-        <target_value>Grants Manager of</target_value>
-      </field>
-      <field>
-        <source_value>Husband</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>husband</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>inlaw</source_value>
-        <target_value>Family of</target_value>
-      </field>
-      <field>
-        <source_value>Law Classmate</source_value>
-        <target_value>Law Classmate of</target_value>
-      </field>
-      <field>
-        <source_value>Mother</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>mother</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Neice</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>Neighbor</source_value>
-        <target_value>Neighbor of</target_value>
-      </field>
-      <field>
-        <source_value>Nephew</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>nephew</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>Parent</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>parents</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>Partner</source_value>
-        <target_value>Partner of</target_value>
-      </field>
-      <field>
-        <source_value>PR Person</source_value>
-        <target_value>PR Person for</target_value>
-      </field>
-      <field>
-        <source_value>Preferred Contact</source_value>
-        <target_value>Preferred Contact of</target_value>
-      </field>
-      <field>
-        <source_value>President</source_value>
-        <target_value>President of</target_value>
-      </field>
-      <field>
-        <source_value>Primary Contact</source_value>
-        <target_value>Primary Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Pro Bono Contact</source_value>
-        <target_value>Pro Bono Contact of</target_value>
-      </field>
-      <field>
-        <source_value>Program Officer</source_value>
-        <target_value>Program Officer of</target_value>
-      </field>
-      <field>
-        <source_value>Rabbi</source_value>
-        <target_value>Rabbi of</target_value>
-      </field>
-      <field>
-        <source_value>Sibling</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Sister</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>sister</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>Solicitor</source_value>
-        <target_value>Solicitor of</target_value>
-      </field>
-      <field>
-        <source_value>Son</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>son</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>Spouse</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>spouse</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>Trustee</source_value>
-        <target_value>Trustee of</target_value>
-      </field>
-      <field>
-        <source_value>Uncle</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>uncle</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>Wife</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>wife</source_value>
-        <target_value>Spouse of</target_value>
-      </field>
-      <field>
-        <source_value>grandchildren</source_value>
-        <target_value>Grandchild of</target_value>
-      </field>
-      <field>
-        <source_value>aunt</source_value>
-        <target_value>Aunt/Uncle of</target_value>
-      </field>
-      <field>
-        <source_value>niece</source_value>
-        <target_value>Niece/Nephew of</target_value>
-      </field>
-      <field>
-        <source_value>brother</source_value>
-        <target_value>Sibling of</target_value>
-      </field>
-      <field>
-        <source_value>father</source_value>
-        <target_value>Parent of</target_value>
-      </field>
-      <field>
-        <source_value>daughter</source_value>
-        <target_value>Child of</target_value>
-      </field>
-      <field>
-        <source_value>employee</source_value>
-        <target_value>Employee of</target_value>
-      </field>
-      <field>
-        <source_value>employer</source_value>
-        <target_value>Employer of</target_value>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1632</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get counts</name>
-    <type>GroupBy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname />
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>RELATIONSHIP_TYPE</name>
-      </field>
-      <field>
-        <name>RECIP_RELATIONSHIP_TYPE</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>count</aggregate>
-        <subject>RELATIONSHIP_TYPE</subject>
-        <type>COUNT_ALL</type>
-        <valuefield />
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1632</xloc>
-      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -16,7 +16,7 @@
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>cli_activity.csv</default_value>
+        <default_value>activity.csv</default_value>
         <description />
       </parameter>
     </parameters>

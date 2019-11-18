@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>funds</name>
+    <name>address formats</name>
     <description />
     <extended_description />
     <trans_version />
@@ -11,12 +11,12 @@
     <parameters>
       <parameter>
         <name>output1entity</name>
-        <default_value>FinancialType</default_value>
+        <default_value>AddressFormat</default_value>
         <description />
       </parameter>
       <parameter>
         <name>output1name</name>
-        <default_value>financialtypes.csv</default_value>
+        <default_value>address_format.csv</default_value>
         <description />
       </parameter>
     </parameters>
@@ -438,41 +438,22 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2014/09/24 17:16:02.269</created_date>
+    <created_date>2018/07/10 15:43:37.741</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2014/09/24 17:16:02.269</modified_date>
+    <modified_date>2018/07/10 15:43:37.741</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
     <notepad>
-      <note>Use this transform (not "funds as custom field") when you need to migrate GL accounting information from
-Raiser's Edge.</note>
-      <xloc>560</xloc>
-      <yloc>32</yloc>
-      <width>662</width>
-      <heigth>40</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>9</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
-    <notepad>
-      <note>&lt;-- Org-specific</note>
-      <xloc>192</xloc>
-      <yloc>640</yloc>
-      <width>104</width>
-      <heigth>25</heigth>
+      <note>Converts international address formats from Raiser's Edge to CiviCRM format.
+If your mailing label token is the "address block" token from CiviToken, you'll get
+country-specific mailing labels.  Install "com.megaphonetech.addressl10n" for
+a UI to edit these.</note>
+      <xloc>464</xloc>
+      <yloc>31</yloc>
+      <width>495</width>
+      <heigth>70</heigth>
       <fontname>Sans</fontname>
       <fontsize>9</fontsize>
       <fontbold>N</fontbold>
@@ -613,6 +594,46 @@ Raiser's Edge.</note>
   </connection>
   <order>
     <hop>
+      <from>Address Formats</from>
+      <to>Convert FIELD_NUM to Civi tokens</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Convert FIELD_NUM to Civi tokens</from>
+      <to>Build the address format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Build the address format</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>final format only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fix misnamed countries</from>
+      <to>Get country id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get country id</from>
+      <to>Find invalid countries</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Find invalid countries</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dynamic CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Get CSV folder</from>
       <to>Single file SFTP</to>
       <enabled>Y</enabled>
@@ -624,11 +645,11 @@ Raiser's Edge.</note>
     </hop>
     <hop>
       <from>Get parameters</from>
-      <to>Import when complete 2</to>
+      <to>Import when complete</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Import when complete 2</from>
+      <from>Import when complete</from>
       <to>import entity</to>
       <enabled>Y</enabled>
     </hop>
@@ -638,109 +659,34 @@ Raiser's Edge.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
-      <to>is_active = 1</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Funds have 64 char max</from>
-      <to>Unique rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>RE: FUND</from>
-      <to>Funds have 64 char max</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>CONSTIT_ID to Civi ID</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort by ID</from>
-      <to>Add value fields changing sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add value fields changing sequence</from>
-      <to>Row denormaliser</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>category option_group_id</from>
-      <to>Join Rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Join Rows (cartesian product)</from>
-      <to>Category lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Category lookup</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>is_active = 1</from>
-      <to>Join Rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Import fields only</from>
-      <to>custom field name substitution</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dynamic CSV Output</from>
-      <to>Last Step</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>custom field name substitution</from>
+      <from>address format fields</from>
       <to>Dynamic CSV Output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CONSTIT_ID to Civi ID</from>
-      <to>Last Minute fix to identical-ish funds</to>
+      <from>Find invalid countries</from>
+      <to>Add address_format id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>Last Minute fix to identical-ish funds</to>
+      <from>Add address_format id</from>
+      <to>address format fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Last Minute fix to identical-ish funds</from>
-      <to>Check for existing funds</to>
+      <from>final format only</from>
+      <to>Fix punctuation followed by space</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row denormaliser</from>
-      <to>Import fields only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Check for existing funds</from>
-      <to>New funds only</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>New funds only</from>
-      <to>Sort by ID</to>
+      <from>Fix punctuation followed by space</from>
+      <to>Fix misnamed countries</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add constants</name>
-    <type>Constant</type>
+    <name>Add address_format id</name>
+    <type>Sequence</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -749,199 +695,16 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <fields>
-      <field>
-        <name>Fund_Relationship</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add value fields changing sequence</name>
-    <type>FieldsChangeSequence</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <start>1</start>
-    <increment>1</increment>
-    <resultfieldName>relationship_number</resultfieldName>
-    <fields>
-      <field>
-        <name>ID</name>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>CONSTIT_ID to Civi ID</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_contact</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CONSTIT_ID</name>
-        <field>external_identifier</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>Fund_Relationship</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Category lookup</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_option_value</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>Category</name>
-        <field>label</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>option_group_id</name>
-        <field>option_group_id</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>value</name>
-        <rename>Fund_Category</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Check for existing funds</name>
-    <type>DBLookup</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema />
-      <table>civicrm_financial_type</table>
-      <orderby />
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>DESCRIPTION</name>
-        <field>name</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>id</name>
-        <rename>duplicate</rename>
-        <default />
-        <type>Integer</type>
-      </value>
-    </lookup>
+    <valuename>id</valuename>
+    <use_database>N</use_database>
+    <connection />
+    <schema />
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name />
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -952,6 +715,220 @@ Raiser's Edge.</note>
     <GUI>
       <xloc>128</xloc>
       <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Address Formats</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Raiser's Edge</connection>
+    <sql>SELECT t.LONGDESCRIPTION as country
+, cl.FIELD_NUM
+, cl.LINE_NUM
+, cl.COUNTRY_ID
+, cl.SEQUENCE
+FROM COUNTRY_LABELS cl
+JOIN COUNTRY_CODES cc ON cl.COUNTRY_ID = cc.ID
+JOIN TABLEENTRIES t ON cc.COUNTRYCODESID = t.TABLEENTRIESID 
+ORDER BY cl.COUNTRY_ID, cl.SEQUENCE</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Build the address format</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var format;
+var current_line;
+// Check to see if we've moved to the next country, in which case start over.
+if (SEQUENCE == 1) {
+  current_country = country;
+  format = '{contact.addressee}\n';
+  current_line = LINE_NUM;
+}
+// Add newlines where applicable
+if (LINE_NUM > current_line) {
+  format = format + "\n";
+  current_line = LINE_NUM;
+}
+// If the token is "address lines", put in all the street lines from Civi.
+if (token == 'address_lines') {
+  token = "{contact.street_address}\n{contact.supplemental_address_1}\n{contact.supplemental_address_2}\n{contact.supplemental_address_3}";
+}
+format = format + token;
+
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>format</name>
+        <rename>format</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>current_line</name>
+        <rename>current_line</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Convert FIELD_NUM to Civi tokens</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>FIELD_NUM</field_to_use>
+    <target_field>token</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>address_lines</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>{contact.city}</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>{contact.state_province}</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>{contact.postal_code}</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>{contact.country}</target_value>
+      </field>
+      <field>
+        <source_value>6</source_value>
+        <target_value>{contact.country}</target_value>
+      </field>
+      <field>
+        <source_value>9</source_value>
+        <target_value>{contact.county}</target_value>
+      </field>
+      <field>
+        <source_value>101</source_value>
+        <target_value>{:}</target_value>
+      </field>
+      <field>
+        <source_value>102</source_value>
+        <target_value>{,}</target_value>
+      </field>
+      <field>
+        <source_value>103</source_value>
+        <target_value>{-}</target_value>
+      </field>
+      <field>
+        <source_value>104</source_value>
+        <target_value>{.}</target_value>
+      </field>
+      <field>
+        <source_value>105</source_value>
+        <target_value>{/}</target_value>
+      </field>
+      <field>
+        <source_value>106</source_value>
+        <target_value>{ }</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1009,12 +986,12 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1232</yloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name>Find invalid countries</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1024,13 +1001,13 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>CONSTIT_ID to Civi ID</send_true_to>
-    <send_false_to>Add constants</send_false_to>
+    <send_true_to>Add address_format id</send_true_to>
+    <send_false_to>Dummy (do nothing)</send_false_to>
     <compare>
       <condition>
-        <negated>N</negated>
-        <leftvalue>CONSTIT_ID</leftvalue>
-        <function>IS NOT NULL</function>
+        <negated>Y</negated>
+        <leftvalue>country_id</leftvalue>
+        <function>IS NULL</function>
         <rightvalue />
       </condition>
     </compare>
@@ -1043,13 +1020,13 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>512</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Funds have 64 char max</name>
-    <type>StringCut</type>
+    <name>Fix misnamed countries</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1058,12 +1035,41 @@ Raiser's Edge.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <field_to_use>country</field_to_use>
+    <target_field />
+    <non_match_default />
     <fields>
       <field>
-        <in_stream_name>DESCRIPTION</in_stream_name>
-        <out_stream_name />
-        <cut_from>0</cut_from>
-        <cut_to>64</cut_to>
+        <source_value>Russia</source_value>
+        <target_value>Russian Federation</target_value>
+      </field>
+      <field>
+        <source_value>Syria</source_value>
+        <target_value>Syrian Arab Republic</target_value>
+      </field>
+      <field>
+        <source_value>Morroco</source_value>
+        <target_value>Morocco</target_value>
+      </field>
+      <field>
+        <source_value>Macedonia</source_value>
+        <target_value>Macedonia, Republic Of</target_value>
+      </field>
+      <field>
+        <source_value>Palestinian Territory</source_value>
+        <target_value>Palestine, State of</target_value>
+      </field>
+      <field>
+        <source_value>Korea</source_value>
+        <target_value>Korea, Republic of</target_value>
+      </field>
+      <field>
+        <source_value>Iran</source_value>
+        <target_value>Iran, Islamic Republic Of</target_value>
+      </field>
+      <field>
+        <source_value>Vatican City State</source_value>
+        <target_value>Holy See (Vatican City State)</target_value>
       </field>
     </fields>
     <cluster_schema />
@@ -1075,7 +1081,44 @@ Raiser's Edge.</note>
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>128</yloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fix punctuation followed by space</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>format</in_stream_name>
+        <out_stream_name />
+        <use_regex>yes</use_regex>
+        <replace_string>\{([:,\-\./])\}\{ \}</replace_string>
+        <replace_by_string>\{$1 \}</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1112,8 +1155,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>432</yloc>
+      <xloc>765</xloc>
+      <yloc>742</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1156,8 +1199,55 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>272</yloc>
+      <xloc>765</xloc>
+      <yloc>582</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get country id</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_country</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>country</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>country_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1206,76 +1296,13 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>272</yloc>
+      <xloc>861</xloc>
+      <yloc>614</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Import fields only</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>DESCRIPTION</name>
-        <rename>name</rename>
-      </field>
-      <field>
-        <name>is_active</name>
-      </field>
-      <field>
-        <name>FUND_ID</name>
-        <rename>Fund_ID</rename>
-      </field>
-      <field>
-        <name>START_DATE</name>
-        <rename>Fund_Start_Date</rename>
-      </field>
-      <field>
-        <name>Fund_Category</name>
-      </field>
-      <field>
-        <name>Fund_Legal_Name</name>
-      </field>
-      <field>
-        <name>Fund_Type</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_1</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_2</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_3</name>
-      </field>
-      <field>
-        <name>Fund_Relationship_4</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Import when complete 2</name>
+    <name>Import when complete</name>
     <type>BlockUntilStepsFinish</type>
     <description />
     <distribute>N</distribute>
@@ -1299,99 +1326,8 @@ Raiser's Edge.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join Rows (cartesian product)</name>
-    <type>JoinRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue />
-        <function>=</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Last Minute fix to identical-ish funds</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var DESCRIPTION;
-var i;
-
-if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Europe, US') {
-  if (!i) {
-   i = 1;
-  }
-  else {
-   i++;
-  }
-  DESCRIPTION = 'Kaiserlian, Simon &amp; Eranouhi Memorial ' + i + ' [Schlr-Armenia, Europe,';
-}
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>DESCRIPTION</name>
-        <rename>DESCRIPTION</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>640</yloc>
+      <xloc>861</xloc>
+      <yloc>694</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1415,189 +1351,7 @@ if (DESCRIPTION == 'Kaiserlian, Simon &amp; Eranouhi Memorial [Schlr-Armenia, Eu
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>1296</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>New funds only</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>duplicate</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>RE: FUND</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Raiser's Edge</connection>
-    <sql>SELECT
-f.ID
-, f.DESCRIPTION
--- , f.FUND_CATEGORY
-, f.FUND_ID
-, f.NOTES
-, f.RESTRICTED_FLAG
-, f."SEQUENCE"
-, f.START_DATE
-, f.END_DATE
-, f.FUNDTYPE
-, gldd.GLCREDIT_NUMBER
--- Here are client-specific bits
-, t.LONGDESCRIPTION as gift_type
-, t2.LONGDESCRIPTION as Category
-, t3.LONGDESCRIPTION as Fund_Type
-, fa_legalname.TEXT as Fund_Legal_Name
-, cf.CONSTIT_ID
-FROM FUND f
-LEFT JOIN FundDistribution fd ON f.ID = fd.FundId
-LEFT JOIN GLDISTRIBUTIONDETAIL gldd on fd.GLDistributionID = gldd.DISTRIBUTION_ID
-LEFT JOIN TABLEENTRIES t ON fd.GiftTypeID = t.TABLEENTRIESID
-LEFT JOIN TABLEENTRIES t2 ON f.FUND_CATEGORY = t2.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_type ON f.ID = fa_type.PARENTID AND fa_type.ATTRIBUTETYPESID = 50
-LEFT JOIN TABLEENTRIES t3 ON fa_type.TABLEENTRIESID = t3.TABLEENTRIESID
-LEFT JOIN FundAttributes fa_legalname ON f.ID = fa_legalname.PARENTID AND fa_legalname.ATTRIBUTETYPESID = 49
-LEFT JOIN CONSTIT_Funds cf ON f.ID = cf.FUND_ID
-ORDER BY f.ID, cf.CONSTIT_ID
-
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row denormaliser</name>
-    <type>Denormaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <key_field>relationship_number</key_field>
-    <group>
-      <field>
-        <name>ID</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>1</key_value>
-        <target_name>Fund_Relationship_1</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>2</key_value>
-        <target_name>Fund_Relationship_2</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>3</key_value>
-        <target_name>Fund_Relationship_3</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-      <field>
-        <field_name>Fund_Relationship</field_name>
-        <key_value>4</key_value>
-        <target_name>Fund_Relationship_4</target_name>
-        <target_type>Integer</target_type>
-        <target_format />
-        <target_length>-1</target_length>
-        <target_precision>-1</target_precision>
-        <target_decimal_symbol />
-        <target_grouping_symbol />
-        <target_currency_symbol />
-        <target_null_string />
-        <target_aggregation_type>-</target_aggregation_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>944</yloc>
+      <yloc>960</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1626,8 +1380,41 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>352</yloc>
+      <xloc>765</xloc>
+      <yloc>662</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>format</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1672,14 +1459,14 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>512</yloc>
+      <xloc>765</xloc>
+      <yloc>822</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort by ID</name>
-    <type>SortRows</type>
+    <name>address format fields</name>
+    <type>SelectValues</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1688,21 +1475,58 @@ ORDER BY f.ID, cf.CONSTIT_ID
       <method>none</method>
       <schema_name />
     </partitioning>
+    <fields>
+      <field>
+        <name>country_id</name>
+      </field>
+      <field>
+        <name>format</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>final format only</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
     <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>country</name>
+      </field>
+    </group>
     <fields>
       <field>
-        <name>ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <aggregate>format</aggregate>
+        <subject>format</subject>
+        <type>LAST</type>
+        <valuefield />
       </field>
     </fields>
     <cluster_schema />
@@ -1714,129 +1538,7 @@ ORDER BY f.ID, cf.CONSTIT_ID
     </remotesteps>
     <GUI>
       <xloc>128</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>CONSTIT_ID</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>category option_group_id</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Target CiviCRM</connection>
-    <sql>select option_group_id from civicrm_custom_field WHERE name = 'Fund_Category';
-</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>custom field name substitution</name>
-    <type>SimpleMapping</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>/home/jon/local/transforms/generic/custom field name lookup.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>1120</yloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1899,46 +1601,8 @@ ORDER BY f.ID, cf.CONSTIT_ID
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>is_active = 1</name>
-    <type>Constant</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>is_active</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif>1</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>288</yloc>
+      <xloc>861</xloc>
+      <yloc>774</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
