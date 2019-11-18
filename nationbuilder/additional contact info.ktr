@@ -1,0 +1,3210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>additional contact info</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+      <parameter>
+        <name>output1entity</name>
+        <default_value>Contact</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>output1name</name>
+        <default_value>cli_additional_info.csv</default_value>
+        <description />
+      </parameter>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>N</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2017/10/23 14:10:31.705</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2017/10/23 14:10:31.705</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>&lt;-- org-specific</note>
+      <xloc>256</xloc>
+      <yloc>928</yloc>
+      <width>102</width>
+      <heigth>25</heigth>
+      <fontname>Sans</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <connection>
+    <name>Nationbuilder</name>
+    <server>127.0.0.1</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>nbuild</database>
+    <port>5432</port>
+    <username>nbuild</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce108fc0fc8e</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5432</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>Target CiviCRM</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${CIVIDB}</database>
+    <port>3306</port>
+    <username>${MYSQLUSER}</username>
+    <password>${MYSQLPW}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>signups</from>
+      <to>Rename fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rename fields</from>
+      <to>Booleans to Integers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Booleans to Integers</from>
+      <to>Invert is_opt_in to opt_out</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Invert is_opt_in to opt_out</from>
+      <to>Invert mobile_opt_in to do_not_sms</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Invert mobile_opt_in to do_not_sms</from>
+      <to>Get contact_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get CSV folder</from>
+      <to>Single file SFTP</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get File Names</from>
+      <to>SFTP when complete</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get parameters</from>
+      <to>Import when complete 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Import when complete 2</from>
+      <to>import entity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>SFTP when complete</from>
+      <to>Get CSV folder</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get contact_id</from>
+      <to>Map support level</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map support level</from>
+      <to>Map Gender</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV Output</from>
+      <to>Last Step</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Gender</from>
+      <to>birth_date formatting</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>birth_date formatting</from>
+      <to>Map do_not_contact</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>import fields only</from>
+      <to>CSV Output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Lowercase the language</from>
+      <to>Limit language to first two chars</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Limit language to first two chars</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get Language ID</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map do_not_contact</from>
+      <to>fix locale</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>fix locale</from>
+      <to>Lowercase the language</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Stream lookup</from>
+      <to>remap country of origin</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap country of origin</from>
+      <to>country of origin lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get Civi Ethnicities</from>
+      <to>Ethnicity Lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remap ethnicity</from>
+      <to>Ethnicity Lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Ethnicity Lookup</from>
+      <to>invalid country</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>invalid country</from>
+      <to>import fields only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>invalid country</from>
+      <to>countries only</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>countries only</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>invalid_countries.csv</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Messy multi-country hack</from>
+      <to>remap ethnicity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>country_of_origin_id is a string</from>
+      <to>Messy multi-country hack</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>country of origin lookup</from>
+      <to>country_of_origin_id is a string</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>Booleans to Integers</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>is_opt_out</name>
+        <rename>is_opt_out</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>do_not_sms</name>
+        <rename>do_not_sms</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>is_facebook_fan</name>
+        <rename>is_facebook_fan</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>is_twitter_follower</name>
+        <rename>is_twitter_follower</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>do_not_phone</name>
+        <rename>do_not_phone</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>do_not_contact</name>
+        <rename>do_not_contact</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>is_deceased</name>
+        <rename>is_deceased</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV Output</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>contact_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_opt_out</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_sms</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_phone</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_email</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>do_not_trade</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>current_employer</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>job_title</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>middle_name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>birth_date</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>is_deceased</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_9</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_17</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>gender_id</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>preferred_language</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>custom_18</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1680</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Ethnicity Lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Get Civi Ethnicities</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>ethnicity</name>
+        <field>label</field>
+      </key>
+      <value>
+        <name>value</name>
+        <rename>ethnicity_id</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1472</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get CSV folder</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>csv</name>
+        <variable>${SQLDUMP}/csvs</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>611</xloc>
+      <yloc>473</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get Civi Ethnicities</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cov.id, cov.value, cov.label, cov.name FROM civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.title = 'Ethnicity' ORDER BY value, id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>1392</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filter>
+      <filterfiletype>all_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
+    <rownum_field />
+    <filename_Field />
+    <wildcard_Field />
+    <exclude_wildcard_Field />
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name>${LOCALFILES}/data/${output1name}</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>611</xloc>
+      <yloc>313</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get Language ID</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <sql>SELECT cov.id, cov.value, cov.label, cov.name FROM civicrm_option_value cov JOIN civicrm_option_group cog ON cov.option_group_id = cog.id WHERE cog.name = 'Languages' ORDER BY value, id</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get contact_id</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_contact</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>external_identifier</name>
+        <field>external_identifier</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>contact_id</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get parameters</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>entity</name>
+        <variable>${output1entity}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>name</name>
+        <variable>${output1name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>787</xloc>
+      <yloc>313</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Import when complete 2</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Single file SFTP</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>787</xloc>
+      <yloc>393</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Invert is_opt_in to opt_out</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>is_opt_out</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Invert mobile_opt_in to do_not_sms</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>do_not_sms</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>0</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Last Step</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1744</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Limit language to first two chars</name>
+    <type>StringCut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>language</in_stream_name>
+        <out_stream_name />
+        <cut_from>0</cut_from>
+        <cut_to>2</cut_to>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>912</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Lowercase the language</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>language</in_stream_name>
+        <out_stream_name />
+        <trim_type>none</trim_type>
+        <lower_upper>lower</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Gender</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>gender</field_to_use>
+    <target_field>gender_id</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>F</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>M</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>O</source_value>
+        <target_value>3</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map do_not_contact</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var do_not_sms;
+var do_not_phone;
+var do_not_mail = 0;
+var do_not_email = 0;
+var do_not_trade = 0;
+
+if (do_not_contact == 1) {
+  do_not_sms = do_not_phone = do_not_mail = do_not_email = do_not_trade = 1;
+}
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>do_not_sms</name>
+        <rename>do_not_sms</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>do_not_phone</name>
+        <rename>do_not_phone</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <rename>do_not_mail</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>do_not_email</name>
+        <rename>do_not_email</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>do_not_trade</name>
+        <rename>do_not_trade</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>736</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map support level</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>support_level</field_to_use>
+    <target_field>support_level_text</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>Strong Support</target_value>
+      </field>
+      <field>
+        <source_value>2</source_value>
+        <target_value>Weak Supporter</target_value>
+      </field>
+      <field>
+        <source_value>3</source_value>
+        <target_value>Undecided</target_value>
+      </field>
+      <field>
+        <source_value>4</source_value>
+        <target_value>Weak Oppose</target_value>
+      </field>
+      <field>
+        <source_value>5</source_value>
+        <target_value>Strong Oppose</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Messy multi-country hack</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//VERY client specific
+var ethnicity;
+var country_of_origin_id;
+if (ethnicity == 'Ethiopia/Erithrea') {
+  country_of_origin_id = '1070' + '\x01' + '1068';
+}
+if (ethnicity == 'congolese' || ethnicity == 'Congolese') {
+  country_of_origin_id = '1050' + '\x01' + '1051';
+}
+if (ethnicity == 'Guinean, Burkinabe') {
+  country_of_origin_id = '1034' + '\x01' + '1091';
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>ethnicity</name>
+        <rename>ethnicity</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>country_of_origin_id</name>
+        <rename>country_of_origin_id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1344</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rename fields</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>external_identifier</name>
+      </field>
+      <field>
+        <name>email_opt_in</name>
+        <rename>is_opt_out</rename>
+      </field>
+      <field>
+        <name>mobile_opt_in</name>
+        <rename>do_not_sms</rename>
+      </field>
+      <field>
+        <name>employer</name>
+        <rename>current_employer</rename>
+      </field>
+      <field>
+        <name>occupation</name>
+        <rename>job_title</rename>
+      </field>
+      <field>
+        <name>support_level</name>
+      </field>
+      <field>
+        <name>middle_name</name>
+      </field>
+      <field>
+        <name>sex</name>
+        <rename>gender</rename>
+      </field>
+      <field>
+        <name>born_at</name>
+        <rename>birth_date</rename>
+      </field>
+      <field>
+        <name>do_not_call</name>
+        <rename>do_not_phone</rename>
+      </field>
+      <field>
+        <name>do_not_contact</name>
+      </field>
+      <field>
+        <name>grandparent_id</name>
+      </field>
+      <field>
+        <name>is_deceased</name>
+      </field>
+      <field>
+        <name>ethnicity</name>
+      </field>
+      <field>
+        <name>language</name>
+      </field>
+      <field>
+        <name>locale</name>
+      </field>
+      <field>
+        <name>is_facebook_fan</name>
+      </field>
+      <field>
+        <name>is_twitter_follower</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP when complete</name>
+    <type>BlockUntilStepsFinish</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <steps>
+      <step>
+        <name>Last Step</name>
+        <CopyNr>0</CopyNr>
+      </step>
+    </steps>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>611</xloc>
+      <yloc>393</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Single file SFTP</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${DEVSERVER}</servername>
+    <serverport>22</serverport>
+    <username>${DEVSSHUSER}</username>
+    <password>Encrypted </password>
+    <sourceFileFieldName>filename</sourceFileFieldName>
+    <remoteDirectoryFieldName>csv</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>Y</usekeyfilename>
+    <keyfilename>${KEYFILE}</keyfilename>
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>Y</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName>csv</destinationfolderFieldName>
+    <createdestinationfolder>Y</createdestinationfolder>
+    <remoteFilenameFieldName>short_filename</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>611</xloc>
+      <yloc>553</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>country_of_origin</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>country_of_origin_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>1536</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>Get Language ID</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>language</name>
+        <field>value</field>
+      </key>
+      <value>
+        <name>id</name>
+        <rename>custom_9</rename>
+        <default />
+        <type>None</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>976</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>      </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>1536</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>birth_date formatting</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>birth_date</name>
+        <rename>birth_date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>countries only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>country_of_origin</name>
+      </field>
+      <field>
+        <name>country_of_origin_id</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>1536</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>country of origin lookup</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Target CiviCRM</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>civicrm_country</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>country_of_origin</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>country_of_origin_id</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>country_of_origin_id is a string</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>country_of_origin_id</name>
+        <rename>country_of_origin_id</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1280</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>fix locale</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>locale</in_stream_name>
+        <out_stream_name />
+        <use_regex>yes</use_regex>
+        <replace_string>^en$</replace_string>
+        <replace_by_string>en_US</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+      <field>
+        <in_stream_name>locale</in_stream_name>
+        <out_stream_name />
+        <use_regex>no</use_regex>
+        <replace_string>-</replace_string>
+        <replace_by_string>_</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>800</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import entity</name>
+    <type>TransExecutor</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id />
+    <trans_name />
+    <filename>file:///home/jon/local/transforms/generic/csv api import.ktr</filename>
+    <directory_path />
+    <group_size>1</group_size>
+    <group_field />
+    <group_time />
+    <parameters>
+      <variablemapping>
+        <variable>entity</variable>
+        <field>entity</field>
+        <input>CiviCRM API entity</input>
+      </variablemapping>
+      <variablemapping>
+        <variable>filename</variable>
+        <field>name</field>
+        <input>filename to import</input>
+      </variablemapping>
+      <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    <execution_result_target_step />
+    <execution_time_field>ExecutionTime</execution_time_field>
+    <execution_result_field>ExecutionResult</execution_result_field>
+    <execution_errors_field>ExecutionNrErrors</execution_errors_field>
+    <execution_lines_read_field>ExecutionLinesRead</execution_lines_read_field>
+    <execution_lines_written_field>ExecutionLinesWritten</execution_lines_written_field>
+    <execution_lines_input_field>ExecutionLinesInput</execution_lines_input_field>
+    <execution_lines_output_field>ExecutionLinesOutput</execution_lines_output_field>
+    <execution_lines_rejected_field>ExecutionLinesRejected</execution_lines_rejected_field>
+    <execution_lines_updated_field>ExecutionLinesUpdated</execution_lines_updated_field>
+    <execution_lines_deleted_field>ExecutionLinesDeleted</execution_lines_deleted_field>
+    <execution_files_retrieved_field>ExecutionFilesRetrieved</execution_files_retrieved_field>
+    <execution_exit_status_field>ExecutionExitStatus</execution_exit_status_field>
+    <execution_log_text_field>ExecutionLogText</execution_log_text_field>
+    <execution_log_channelid_field>ExecutionLogChannelId</execution_log_channelid_field>
+    <result_rows_target_step />
+    <result_files_target_step />
+    <result_files_file_name_field>FileName</result_files_file_name_field>
+    <executors_output_step />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>787</xloc>
+      <yloc>473</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>import fields only</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>contact_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>is_opt_out</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_sms</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_phone</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_mail</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_email</name>
+        <rename />
+      </field>
+      <field>
+        <name>do_not_trade</name>
+        <rename />
+      </field>
+      <field>
+        <name>current_employer</name>
+        <rename />
+      </field>
+      <field>
+        <name>job_title</name>
+        <rename />
+      </field>
+      <field>
+        <name>middle_name</name>
+        <rename />
+      </field>
+      <field>
+        <name>birth_date</name>
+        <rename />
+      </field>
+      <field>
+        <name>is_deceased</name>
+        <rename />
+      </field>
+      <field>
+        <name>custom_9</name>
+        <rename />
+      </field>
+      <field>
+        <name>country_of_origin_id</name>
+        <rename>custom_17</rename>
+      </field>
+      <field>
+        <name>gender_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>locale</name>
+        <rename>preferred_language</rename>
+      </field>
+      <field>
+        <name>ethnicity_id</name>
+        <rename>custom_18</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1616</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid country</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>countries only</send_true_to>
+    <send_false_to>import fields only</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>country_of_origin</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>country_of_origin_id</leftvalue>
+            <function>IS NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1536</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>invalid_countries.csv</name>
+    <type>TextFileOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>Y</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine />
+    <fileNameInField>N</fileNameInField>
+    <fileNameField />
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${LOCALFILES}/errors/invalid_countries.csv</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention />
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format />
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>country_of_origin</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>country_of_origin_id</name>
+        <type>Integer</type>
+        <format>0</format>
+        <currency />
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif />
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>1536</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remap country of origin</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ethnicity</field_to_use>
+    <target_field>country_of_origin</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>African American</source_value>
+        <target_value>United States</target_value>
+      </field>
+      <field>
+        <source_value>African American/Ivorian</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>African-American</source_value>
+        <target_value>United States</target_value>
+      </field>
+      <field>
+        <source_value>African-American &amp; Afro-Colombian</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>American</source_value>
+        <target_value>United States</target_value>
+      </field>
+      <field>
+        <source_value>Benin</source_value>
+        <target_value>Benin</target_value>
+      </field>
+      <field>
+        <source_value>Beninese</source_value>
+        <target_value>Benin</target_value>
+      </field>
+      <field>
+        <source_value>Beninian</source_value>
+        <target_value>Benin</target_value>
+      </field>
+      <field>
+        <source_value>Botswanan</source_value>
+        <target_value>Botswana</target_value>
+      </field>
+      <field>
+        <source_value>Burkina Faso</source_value>
+        <target_value>Burkina Faso</target_value>
+      </field>
+      <field>
+        <source_value>Burkina Fasso</source_value>
+        <target_value>Burkina Faso</target_value>
+      </field>
+      <field>
+        <source_value>Burkinabe</source_value>
+        <target_value>Burkina Faso</target_value>
+      </field>
+      <field>
+        <source_value>Burundi</source_value>
+        <target_value>Burundi</target_value>
+      </field>
+      <field>
+        <source_value>Cameroon</source_value>
+        <target_value>Cameroon</target_value>
+      </field>
+      <field>
+        <source_value>Cameroonian</source_value>
+        <target_value>Cameroon</target_value>
+      </field>
+      <field>
+        <source_value>Chad</source_value>
+        <target_value>Chad</target_value>
+      </field>
+      <field>
+        <source_value>Chadian</source_value>
+        <target_value>Chad</target_value>
+      </field>
+      <field>
+        <source_value>congolese</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Congolese</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Egyptian</source_value>
+        <target_value>Egypt</target_value>
+      </field>
+      <field>
+        <source_value>Equatorial Guinee</source_value>
+        <target_value>Equatorial Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Ethiopia/Erithrea</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Ethiopian</source_value>
+        <target_value>Ethiopia</target_value>
+      </field>
+      <field>
+        <source_value>Ethiopiane</source_value>
+        <target_value>Ethiopia</target_value>
+      </field>
+      <field>
+        <source_value>Fulani</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Gabonese</source_value>
+        <target_value>Gabon</target_value>
+      </field>
+      <field>
+        <source_value>Gabonese </source_value>
+        <target_value>Gabon</target_value>
+      </field>
+      <field>
+        <source_value>Gambia</source_value>
+        <target_value>Gambia</target_value>
+      </field>
+      <field>
+        <source_value>Gambian</source_value>
+        <target_value>Gambia</target_value>
+      </field>
+      <field>
+        <source_value>Gambian </source_value>
+        <target_value>Gambia</target_value>
+      </field>
+      <field>
+        <source_value>Gambian Soninke</source_value>
+        <target_value>Gambia</target_value>
+      </field>
+      <field>
+        <source_value>Ghana</source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Ghanaian</source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Ghanaian </source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Ghanaian- American </source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Ghanian</source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Guinea</source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guinea-Conakry</source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guinean</source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guinean </source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guinean- American </source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guinean, Burkinabe</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Guinee</source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guineene</source_value>
+        <target_value>Guinea</target_value>
+      </field>
+      <field>
+        <source_value>Guyanese</source_value>
+        <target_value>Guyana</target_value>
+      </field>
+      <field>
+        <source_value>Indian</source_value>
+        <target_value>India</target_value>
+      </field>
+      <field>
+        <source_value>Ivoreian</source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian</source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>IVorian</source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian </source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian- American </source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian-American</source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Ivory Coast</source_value>
+        <target_value>Côte d'Ivoire</target_value>
+      </field>
+      <field>
+        <source_value>Kenyan</source_value>
+        <target_value>Kenya</target_value>
+      </field>
+      <field>
+        <source_value>latino</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Liberian</source_value>
+        <target_value>Liberia</target_value>
+      </field>
+      <field>
+        <source_value>Liberian - Mandingo</source_value>
+        <target_value>Liberia</target_value>
+      </field>
+      <field>
+        <source_value>Malagasy</source_value>
+        <target_value>Madagascar</target_value>
+      </field>
+      <field>
+        <source_value>mali</source_value>
+        <target_value>Mali</target_value>
+      </field>
+      <field>
+        <source_value>Mali</source_value>
+        <target_value>Mali</target_value>
+      </field>
+      <field>
+        <source_value>Malian</source_value>
+        <target_value>Mali</target_value>
+      </field>
+      <field>
+        <source_value>Malian </source_value>
+        <target_value>Mali</target_value>
+      </field>
+      <field>
+        <source_value>Malien</source_value>
+        <target_value>Mali</target_value>
+      </field>
+      <field>
+        <source_value>Mandingo</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>Mauritanian</source_value>
+        <target_value>Mauritania</target_value>
+      </field>
+      <field>
+        <source_value>Niger</source_value>
+        <target_value>Niger</target_value>
+      </field>
+      <field>
+        <source_value>Nigeria</source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>Nigerian</source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>nigerian</source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>NIgerian</source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>Nigerian </source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>Nigerian- American </source_value>
+        <target_value>Nigeria</target_value>
+      </field>
+      <field>
+        <source_value>Nigerien</source_value>
+        <target_value>Niger</target_value>
+      </field>
+      <field>
+        <source_value>senegal</source_value>
+        <target_value>Senegal</target_value>
+      </field>
+      <field>
+        <source_value>Senegal</source_value>
+        <target_value>Senegal</target_value>
+      </field>
+      <field>
+        <source_value>Senegalease</source_value>
+        <target_value>Senegal</target_value>
+      </field>
+      <field>
+        <source_value>Senegalese</source_value>
+        <target_value>Senegal</target_value>
+      </field>
+      <field>
+        <source_value>Senegalese </source_value>
+        <target_value>Senegal</target_value>
+      </field>
+      <field>
+        <source_value>Sierra Leone</source_value>
+        <target_value>Sierra Leone</target_value>
+      </field>
+      <field>
+        <source_value>Sierra Leonean</source_value>
+        <target_value>Sierra Leone</target_value>
+      </field>
+      <field>
+        <source_value>Soninke</source_value>
+        <target_value />
+      </field>
+      <field>
+        <source_value>South Africa</source_value>
+        <target_value>South Africa</target_value>
+      </field>
+      <field>
+        <source_value>South African</source_value>
+        <target_value>South Africa</target_value>
+      </field>
+      <field>
+        <source_value>South Sudanese </source_value>
+        <target_value>South Sudan</target_value>
+      </field>
+      <field>
+        <source_value>Togolese</source_value>
+        <target_value>Togo</target_value>
+      </field>
+      <field>
+        <source_value>Twi</source_value>
+        <target_value>Ghana</target_value>
+      </field>
+      <field>
+        <source_value>Ugandan </source_value>
+        <target_value>Uganda</target_value>
+      </field>
+      <field>
+        <source_value>Wollof</source_value>
+        <target_value />
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1056</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remap ethnicity</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ethnicity</field_to_use>
+    <target_field />
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>African-American</source_value>
+        <target_value>African-American</target_value>
+      </field>
+      <field>
+        <source_value>Ethiopian</source_value>
+        <target_value>Ethiopian</target_value>
+      </field>
+      <field>
+        <source_value>Ethiopiane</source_value>
+        <target_value>Ethiopian</target_value>
+      </field>
+      <field>
+        <source_value>Fulani</source_value>
+        <target_value>Fulani</target_value>
+      </field>
+      <field>
+        <source_value>Ivoreian</source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian</source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>IVorian</source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian </source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian- American </source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>Ivorian-American</source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>Ivory Coast</source_value>
+        <target_value>Ivorian</target_value>
+      </field>
+      <field>
+        <source_value>latino</source_value>
+        <target_value>Latino</target_value>
+      </field>
+      <field>
+        <source_value>Liberian - Mandingo</source_value>
+        <target_value>Mandingo</target_value>
+      </field>
+      <field>
+        <source_value>Mandingo</source_value>
+        <target_value>Mandingo</target_value>
+      </field>
+      <field>
+        <source_value>Gambian Soninke</source_value>
+        <target_value>Soninke</target_value>
+      </field>
+      <field>
+        <source_value>Soninke</source_value>
+        <target_value>Soninke</target_value>
+      </field>
+      <field>
+        <source_value>Twi</source_value>
+        <target_value>Twi</target_value>
+      </field>
+      <field>
+        <source_value>Wollof</source_value>
+        <target_value>Wollof</target_value>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>1408</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>signups</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Nationbuilder</connection>
+    <sql>SELECT
+  id AS external_identifier
+, email_opt_in
+, mobile_opt_in
+, employer
+, occupation
+, is_facebook_fan
+, is_twitter_follower
+, support_level
+, middle_name
+, sex
+, born_at
+, do_not_call
+, do_not_contact
+, username
+, demo
+, note
+, note_updated_at
+, grandparent_id
+, is_deceased
+, religion
+, ethnicity
+, "language"
+, marital_status
+, profile_content_html
+, locale
+FROM ${SCHEMANAME}.signups
+</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>
